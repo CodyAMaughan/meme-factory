@@ -1,0 +1,4 @@
+{
+  "description": "Meme Factory hooks module",
+  "modules": ["./register.js"]
+}

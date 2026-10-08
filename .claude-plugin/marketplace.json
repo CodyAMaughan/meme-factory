@@ -1,0 +1,15 @@
+{
+  "name": "meme-factory",
+  "description": "Meme Factory: a Claude Code mod for making, approving and posting memes.",
+  "owner": {
+    "name": "Cody Maughan",
+    "url": "https://github.com/CodyAMaughan"
+  },
+  "plugins": [
+    {
+      "name": "meme-factory",
+      "source": "./",
+      "description": "Tell Claude to make a meme. Drafts cook in a side panel, you give feedback and approve, and Claude posts it through your connectors."
+    }
+  ]
+}
