@@ -16,6 +16,7 @@ import {
   hash,
   imageCells,
   isMemePost,
+  memePath,
   jevJudgeBody,
   jevJudgeResult,
   jevPickBody,
@@ -89,6 +90,13 @@ function debug($, step, data = {}) {
 }
 // The browser gallery: a local server the mod spawns on demand, { token, port, ready }.
 let gallery = null
+// The memes this session approved, by memePath: ask-before-posting still knows one after a
+// new meme replaces it in the panel.
+const approvedPaths = new Set()
+// Every meme on screen or approved, as ask-before-posting matches them.
+function memePaths() {
+  return [...approvedPaths, ...(job.drafts ?? []).map((d) => memePath(d.url))]
+}
 let settings = { askBeforePost: true, signature: true, quality: 'best', checkPictures: true, favorites: [] }
 
 function freshJob() {
@@ -182,7 +190,7 @@ export function register(on) {
   // link until the person says so. $.ui.ask reaches them in every permission mode. The mod's
   // own Slack uploads are confirmed in the panel instead, so its calls pass straight through.
   on('tool.call', async ($, e, next) => {
-    if (!settings.askBeforePost || next.origin?.plugin === $.plugin.name || !isMemePost(e)) return next(e)
+    if (!settings.askBeforePost || next.origin?.plugin === $.plugin.name || !isMemePost(e, memePaths())) return next(e)
     const tool = String(e.tool).split('__').pop()
     let answer = ''
     try {
@@ -499,6 +507,7 @@ async function openInBrowser($, url) {
 async function approve($, index = job.selected) {
   const draft = job.drafts[index]
   if (!draft || job.status !== 'review') return
+  approvedPaths.add(memePath(draft.url))
   job = { ...job, status: 'approved', selected: index, approved: draft, post: { stage: 'pick' } }
   changed($)
   await refreshConnectors($)

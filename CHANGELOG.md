@@ -4,6 +4,7 @@ All notable changes to Meme Factory. Versions follow [semantic versioning](https
 
 ## 0.7.1 (2026-10-09)
 
+- Ask-before-posting recognizes your memes on any memegen server, by their image path, so a self-hosted server is covered too. Tested: posts Claude makes directly, and through a subagent, both wait for your OK.
 - The picture check needs no setup and is on by default. Its helper approves its own reads of the mod's pictures in `~/.cache/meme-factory`, and nothing else, so there's no permission rule to add. Turn it off in **Settings → Drafting**.
 
 ## 0.7.0 (2026-10-09)

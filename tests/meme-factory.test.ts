@@ -14,6 +14,8 @@ import {
   keepShort,
   parseReview,
   readCacheHook,
+  memePath,
+  isMemePost,
   applyReview,
   makeDraft,
   fitsBudget,
@@ -567,4 +569,15 @@ test("the picture check approves its own reads: only Read, only inside the cache
   expect(command).toContain('"permissionDecision":"allow"')
   // A folder name the shell pattern can't hold safely gets no hook at all.
   expect(readCacheHook("/Users/o'brien/.cache/meme-factory")).toBeUndefined()
+})
+
+test('ask-before-posting knows the mod’s memes on a self-hosted memegen server', () => {
+  const path = memePath('https://api.memegen.link/images/drake/tests/demos.png?width=800')
+  expect(path).toBe('/images/drake/tests/demos')
+  const post = (text) => ({ tool: 'mcp__slack__post_message', channel: '#dev', text })
+  expect(isMemePost(post('https://memes.example.com/images/drake/tests/demos.jpg'), [path])).toBe(true)
+  expect(isMemePost(post('https://memes.example.com/images/drake/tests/demos.jpg'), [])).toBe(false)
+  expect(isMemePost(post('https://api.memegen.link/images/fine/a/b.png'), [])).toBe(true)
+  expect(isMemePost(post('lunch?'), [path])).toBe(false)
+  expect(isMemePost({ tool: 'Bash', command: 'echo /images/drake/tests/demos' }, [path])).toBe(false)
 })

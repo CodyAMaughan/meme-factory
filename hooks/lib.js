@@ -468,15 +468,26 @@ Post it through the user's connected connectors (MCP tools). The image URL rende
 ${connector}${confirm} Don't interrupt work in progress for this; handle it when you're free.`
 }
 
-// A connector call that carries a meme link: what ask-before-posting holds for approval.
-export function isMemePost(e) {
+// A meme's identity in any link to it: the '/images/...' path, with no host, size or file
+// type, so the same meme matches on api.memegen.link and on a self-hosted memegen server.
+export function memePath(url) {
+  const m = /\/images\/[^?#\s"']+/.exec(String(url ?? ''))
+  return m ? m[0].replace(/\.(png|jpg|jpeg|gif|webp)$/i, '') : ''
+}
+
+// A connector call that carries a meme link: what ask-before-posting holds for approval. It
+// matches any api.memegen.link image, and the mod's own memes (`paths`, from memePath) on
+// whatever server rendered them.
+export function isMemePost(e, paths = []) {
   const tool = String(e?.tool ?? '')
   if (!tool.startsWith('mcp__') || tool.startsWith('mcp__meme-factory__')) return false
+  let text = ''
   try {
-    return JSON.stringify(e).includes('api.memegen.link/images/')
+    text = JSON.stringify(e)
   } catch {
     return false
   }
+  return text.includes('api.memegen.link/images/') || paths.some((p) => p && text.includes(p))
 }
 
 // What the browser gallery shows: plain data, no local file paths.
