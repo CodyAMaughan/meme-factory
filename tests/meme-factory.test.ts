@@ -99,6 +99,8 @@ type Rig = {
   slackDenied?: boolean
   // Answer the mod's own Slack calls with this error
   slackError?: string
+  // Refuse the mod's $.mcp.call Slack calls, as the desktop app's 2.1.293 auto mode does
+  mcpRefused?: boolean
   // Wrap Slack's replies the way the desktop app does: [{ type: 'text', text: '{"result":"..."}' }]
   desktopShape?: boolean
   // A terminal under 144 columns
@@ -170,10 +172,13 @@ function factory(on, rig: Rig = {}) {
     }
     log.calls.push(e)
     if (rig.slackDenied && String(e.tool).startsWith(SLACK)) return { deny: 'The server-side auto mode classifier gave no verdict for this action.' }
+    const slackReply = { slack_list_user_channels: CHANNELS_REPLY, slack_get_file_upload_url: TICKET_REPLY, slack_complete_file_upload: DONE_REPLY }[String(e.tool).slice(SLACK.length)]
+    if (String(e.tool).startsWith(SLACK) && slackReply) return { result: { content: [{ type: 'text', text: slackReply }] } }
     return { result: 'sent' }
   })
   // The mod's own Slack calls go straight to the server; logged under the tool's full name.
   on('mcp.call', ($, e) => {
+    if (rig.mcpRefused) return { deny: `The server-side auto mode classifier gave no verdict for mcp__${e.server}__${e.tool}.` }
     log.calls.push({ server: e.server, tool: `mcp__${e.server}__${e.tool}`, ...e.args })
     const reply = { slack_list_user_channels: CHANNELS_REPLY, slack_get_file_upload_url: TICKET_REPLY, slack_complete_file_upload: DONE_REPLY }[e.tool] ?? 'sent'
     const text = rig.slackError ?? reply
@@ -916,6 +921,41 @@ test("auto mode can't block the mod's own Slack calls: they go to the server, no
   expect(await ui.find({ type: 'Text', text: 'Posted to #social' })).toBeDefined()
   expect(log.calls.filter((c) => c.server === 'sl4ck').map((c) => c.tool.split('__').pop())).toEqual(['slack_list_user_channels', 'slack_get_file_upload_url', 'slack_complete_file_upload'])
   expect(log.calls.some((c) => !c.server && String(c.tool).startsWith(SLACK))).toBe(false)
+})
+
+test("when auto mode refuses the mod's direct Slack calls, they go through Slack's tools instead", async ($, on) => {
+  const { clock, log } = factory(on, { mcpRefused: true })
+  await draftsReady($, clock)
+  const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
+  await ui.press({ key: 'approve' })
+  for (let i = 0; i < 5; i++) await clock.settle()
+  expect(await ui.find({ key: 'ch-C0C5HB6PETU' })).toMatchObject({ props: { label: '#social' } })
+  await ui.press({ key: 'ch-C0C5HB6PETU' })
+  await ui.press({ key: 'post' })
+  await ui.press({ key: 'confirm' })
+  for (let i = 0; i < 5; i++) await clock.settle()
+  expect(await ui.find({ type: 'Text', text: 'Posted to #social' })).toBeDefined()
+  expect(log.calls.filter((c) => String(c.tool).startsWith(SLACK)).map((c) => c.tool.slice(SLACK.length))).toEqual(['slack_list_user_channels', 'slack_get_file_upload_url', 'slack_complete_file_upload'])
+})
+
+test('when both routes are refused, the panel names the permission rule that lets the mod through', async ($, on) => {
+  const { clock } = factory(on, { mcpRefused: true, slackDenied: true })
+  await draftsReady($, clock)
+  const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
+  await ui.press({ key: 'approve' })
+  for (let i = 0; i < 5; i++) await clock.settle()
+  const note = await ui.find({ type: 'Text', text: /channels didn't load/ })
+  expect(note).toBeDefined()
+  const text = JSON.stringify(note)
+  expect(text).toContain('permissions')
+  for (const t of ['slack_list_user_channels', 'slack_get_file_upload_url', 'slack_complete_file_upload']) expect(text).toContain(`${SLACK}${t}`)
+})
+
+test('the self-approval hook leaves calls it did not make alone', async ($, on) => {
+  const { clock } = factory(on)
+  on('tool.check', () => ({ decision: 'ask' }))
+  await draftsReady($, clock)
+  expect((await $.tool.check({ tool: `${SLACK}slack_list_user_channels`, input: {} })).decision).toBe('ask')
 })
 
 test('desktop-shaped Slack replies (text wrapped as a JSON string) still give channels, an upload and a link', async ($, on) => {

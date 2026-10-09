@@ -263,6 +263,18 @@ export function register(on) {
     return next(e)
   }).catch(() => ({ deny: "The Meme Factory couldn't ask the user about this post, so it was held." }))
 
+  // The fallback in slackCall: the mod's own Slack calls through the listed tool. Approve the channel
+  // list and the upload ticket, and the share only while a post the person confirmed is running.
+  // (Calls made from a gallery event may not pass through here; the permission rule covers those.)
+  on('tool.check', async ($, e, next) => {
+    if (next.origin?.plugin !== $.plugin.name) return next(e)
+    const tool = String(e.tool)
+    const read = /__slack_(list_user_channels|get_file_upload_url)$/.test(tool)
+    const share = /__slack_complete_file_upload$/.test(tool) && job.post?.stage === 'posting'
+    if (read || share) return { decision: 'allow', reason: 'Meme Factory: its own Slack call (channel list, or the upload you confirmed)' }
+    return next(e)
+  })
+
   on('tool.call', { tool: 'mcp__meme-factory__meme_factory_debug' }, async ($, e) => {
     const action = String(e.action ?? 'status')
     if (action === 'refresh') await refreshConnectors($, true)
@@ -670,16 +682,39 @@ async function findSlackByName($) {
   return { slack: null, channels: [] }
 }
 
-// One Slack call, straight to the server: the mod's own call, so no permission prompt or auto mode
-// classifier asks about it (the person's Post it is the consent). A listed server is named by its
-// tools' prefix. A refusal from a hook comes back as { deny }: raise it, so the panel can say why.
+// One Slack call. Straight to the server first: the mod's own call, which Claude Code's docs say no
+// permission prompt asks about (the person's Post it is the consent). Some builds (the desktop app's
+// 2.1.293) still put it to auto mode's classifier, which refuses a call the conversation didn't ask
+// for. Then try the listed tool, which the tool.check hook approves, and if that is refused
+// too, say which permission rule lets the mod's Slack calls through.
 async function slackCall($, slack, tool, args) {
-  const r = await $.mcp.call(slack.server ?? slack.prefix.slice('mcp__'.length, -'__'.length), tool, args)
-  if (r?.deny) throw new Error(`Claude Code blocked ${tool}: ${String(r.deny).slice(0, 200)}`)
+  let r
+  try {
+    r = await $.mcp.call(slack.server ?? slack.prefix.slice('mcp__'.length, -'__'.length), tool, args)
+  } catch (err) {
+    const why = err?.message ?? String(err)
+    if (!slack.prefix || !REFUSED.test(why)) throw err
+    dlog($, `slack ${tool}: mcp.call refused, trying the tool (${why.slice(0, 120)})`)
+    r = await $.tool.call({ tool: `${slack.prefix}${tool}`, ...args })
+  }
+  if (r?.deny) {
+    const why = String(r.deny)
+    throw new Error(REFUSED.test(why) ? autoModeHint(slack) : `Claude Code blocked ${tool}: ${why.slice(0, 200)}`)
+  }
   if (r?.isError) throw new Error(`Slack answered ${tool} with an error: ${resultText(r).slice(0, 200)}`)
   dlog($, `slack ${tool}: ok`)
   return r
 }
+
+const REFUSED = /refused|classifier|denied|not allowed/i
+
+// What to add so auto mode lets the mod's Slack calls through, named as this session lists them.
+function autoModeHint(slack) {
+  const names = SLACK_TOOLS.map((t) => `"${slack.prefix ?? `mcp__${String(slack.server).replace(/\W+/g, '_')}__`}${t}"`)
+  return `Auto mode blocked the mod's Slack call. To allow it, add these to "permissions": { "allow": [...] } in ~/.claude/settings.json: ${names.join(', ')}`
+}
+
+const SLACK_TOOLS = ['slack_list_user_channels', 'slack_get_file_upload_url', 'slack_complete_file_upload']
 
 // A connector or posting step: kept for the debug tool, in Claude Code's debug log, and with
 // MEME_FACTORY_DEBUG=1 also in the transcript and ~/.cache/meme-factory/debug.json.

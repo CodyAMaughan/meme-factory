@@ -194,6 +194,7 @@ Previews in the browser gallery and posted links use the plain URL, so on memege
 - **No picture in the terminal.** See [Pictures](#pictures). Press `v` to see it in the browser.
 - **"The gallery needs python3".** Install Python 3, or use the panel.
 - **No Slack channels listed.** Listing them needs a Slack connection with the channel list ([Pictures or links](#pictures-or-links)). Without one, say where in the chat box ("post it to #social on Slack") and the posting helper finds it.
+- **"Auto mode blocked the mod's Slack call."** Some Claude Code builds (the desktop app's 2.1.293, for one) put the mod's own Slack calls to auto mode's check, which refuses a call you didn't ask Claude for in the chat, such as a press of **Post it**. The mod then tries Slack's tools, and if those are refused too, the panel names the three tools to allow. Add them to `"permissions": { "allow": [...] }` in `~/.claude/settings.json`, spelled as the panel shows them (the desktop app's Slack names carry an ID). Other permission modes don't need them.
 - **Added the Slack connector, but nothing changed.** If Slack's Claude Code plugin is enabled too, Claude Code loads only the plugin, since they're the same Slack server. Keep one: `claude plugin disable slack@claude-plugins-official` lets the connector load.
 
 ## Develop
