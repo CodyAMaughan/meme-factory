@@ -35,6 +35,9 @@ import {
   parseCards,
   knownTemplate,
   addTemplates,
+  rankTemplates,
+  shortlistFor,
+  popularity,
 } from '../hooks/lib.js'
 
 const TOOL = 'mcp__meme-factory__make_meme'
@@ -1068,4 +1071,31 @@ test("templates you add to your own memegen server show up, with cards; memegen.
   expect(log.fetched).toContain('https://memes.example.com/templates/')
   expect(saved.get('moreTemplates').cards).toMatchObject([{ id: 'tradeoffer', source: 'server', origin: 'https://memes.example.com' }])
   expect(log.prompts.some((p) => String(p).includes('tradeoffer | Trade Offer'))).toBe(true)
+})
+
+test('search: a rare matching word beats a common one, and popularity only decides between matches', () => {
+  addTemplates([
+    { id: 'rk-pika', name: 'Startled Rodent Zz', lines: 3, shape: 'reaction', core: 'Shock at an obvious outcome.', slots: ['', '', ''], aliases: ['zzshocked rodent'], example: ['', '', ''], rank: 900 },
+    { id: 'rk-pika2', name: 'Startled Rodent Zz Two', lines: 2, shape: 'reaction', core: 'Shock at an obvious outcome.', slots: ['', ''], aliases: ['zzshocked rodent'], example: ['', ''], rank: 9 },
+    { id: 'rk-famous', name: 'Extremely Famous Zz', lines: 2, shape: 'binary-choice', core: 'Choosing.', slots: ['', ''], aliases: [], example: ['', ''], rank: 1 },
+  ])
+  const got = rankTemplates('a zzshocked rodent meme', 5)
+  expect(got.slice(0, 2)).toEqual(['rk-pika2', 'rk-pika'])
+  // The most popular template of all, not a match, ranks below both matches.
+  expect(got.indexOf('rk-famous') === -1 || got.indexOf('rk-famous') > 1).toBe(true)
+  expect(popularity({ rank: 1 })).toBe(1)
+  expect(popularity({ rank: 1 })).toBeGreaterThan(popularity({ rank: 500 }))
+  expect(popularity({})).toBeGreaterThan(0)
+})
+
+test("the writer's shortlist: best matches, then the most popular all-rounders, and only those reach the prompt", () => {
+  const ids = shortlistFor('a zzshocked rodent meme', { matches: 5, popular: 3 })
+  expect(ids).toHaveLength(8)
+  expect(ids).toContain('rk-pika2')
+  expect(ids).toContain('rk-famous')
+  const [rules, task] = writerPrompt({ request: 'x', shortlist: ids })
+  expect(rules.cache).toBe(true)
+  expect(rules.text).not.toContain('rk-')
+  expect(task.text).toContain('rk-pika2 | Startled Rodent Zz Two')
+  expect(task.text.split('\n').filter((l) => l.includes(' | ')).length).toBe(8)
 })
