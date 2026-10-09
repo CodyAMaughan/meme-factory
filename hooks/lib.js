@@ -115,6 +115,7 @@ const WRITER_RULES = `How to write a meme, in order:
 4. Funny, not "fun": think of the obvious joke and don't use it. Use one concrete detail from the request. The last box is the punchline; never explain it. Avoid "nobody:", "me trying to", "when you" and puns on the topic word.
 5. A box marked face covers the main face, and a box listed under small is a narrow label: keep those to 4 words at most, or blank.
 6. Words the user gave exactly are final: put them in the box they fit, unchanged, and write only the other boxes.
+7. Parallel boxes. When the boxes are compared or stacked (shape binary-choice, before-after, escalation, dilemma), make them echo each other: the same grammar and length, ideally the same words with one swapped, so the swap is the joke ("Software Factory" / "Meme Factory"; "Who" / "Whom" / "Whomst"). A shared word, rhythm or rhyme is a bonus. Prefer this when it lands; don't force it.
 
 Catalog (id | name | boxes | shape | core idea | box roles | face box | small boxes | not for):
 ${CATALOG}`
@@ -216,7 +217,7 @@ export function judgePrompt(request, drafts, { exact = [], named = [], order = d
     .map((i) => {
       const d = drafts[i]
       const t = TEMPLATE_BY_ID.get(d.template_id)
-      return `${i}: ${d.template_name} (${t?.core ?? ''} Boxes: ${(t?.slots ?? []).join(' / ')}) -> ${JSON.stringify(d.lines)}`
+      return `${i}: ${d.template_name} (shape ${t?.shape ?? 'other'}. ${t?.core ?? ''} Boxes: ${(t?.slots ?? []).join(' / ')}) -> ${JSON.stringify(d.lines)}`
     })
     .join('\n')
   return `Meme request: ${request}
@@ -225,7 +226,7 @@ ${list}
 
 Compare them side by side. For each, first write in a few words what kills the joke (or "nothing"), then score it 0-10.
 Score 0-2 if any of these: the caption doesn't fit how this template is used (wrong shape, box roles ignored); the user's exact words were changed or left out; it explains the joke; a box runs past 8 words.
-Otherwise add up: template fit 0-3 (it makes the template's own move), surprise 0-3 (you wouldn't predict the punchline), specificity 0-2 (a concrete detail from the request), brevity 0-2 (8 words or fewer: 2; 9-12: 1).
+Otherwise add up: template fit 0-3 (it makes the template's own move; on a binary-choice, before-after, escalation or dilemma template, boxes that echo each other, with the same structure and one word swapped, earn the full 3), surprise 0-3 (you wouldn't predict the punchline), specificity 0-2 (a concrete detail from the request), brevity 0-2 (8 words or fewer: 2; 9-12: 1).
 When two are close, the shorter one wins. Only one candidate per angle can score above 5. 7 or more means you would post it; most should land 3-6.
 Return: {"scores":[{"i":0,"kills":"...","score":5}]}`
 }

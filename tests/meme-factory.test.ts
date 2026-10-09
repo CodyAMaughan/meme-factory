@@ -22,6 +22,8 @@ import {
   postingConnectors,
   resolveDestination,
   topDrafts,
+  writerPrompt,
+  judgePrompt,
 } from '../hooks/lib.js'
 
 const TOOL = 'mcp__meme-factory__make_meme'
@@ -614,4 +616,13 @@ test('without memegen settings, memes come from api.memegen.link with no key or 
     expect(argv.at(-1)).not.toContain('watermark=')
     expect(argv).not.toContain('@-')
   }
+})
+
+test('compared and stacked memes ask for parallel boxes, and the judge rewards them', async () => {
+  const rules = writerPrompt({ request: 'software factories vs meme factories' })[0].text
+  expect(rules).toMatch(/7\. Parallel boxes/)
+  expect(rules).toContain('"Software Factory" / "Meme Factory"')
+  const judged = judgePrompt('software factories vs meme factories', [makeDraft('drake', ['Software Factory', 'Meme Factory'], 0)!])
+  expect(judged).toContain('Drakeposting (shape binary-choice.')
+  expect(judged).toMatch(/one word swapped, earn the full 3/)
 })
