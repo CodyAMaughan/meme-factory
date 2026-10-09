@@ -691,6 +691,7 @@ function serverCard(c, lines) {
     small: Array.isArray(c.small) ? c.small.filter((i) => Number.isInteger(i) && i >= 0 && i < lines) : [],
     avoid: str(c.avoid, 200),
     aliases: list(c.aliases, 60, 5),
+    ...(str(c.visual, 300) ? { visual: str(c.visual, 300) } : {}),
     ...(rank > 0 && rank < 100000 ? { rank: Math.round(rank) } : {}),
   }
 }
@@ -752,7 +753,19 @@ export function parseCards(text, cands) {
 // - Diversity: the shortlist mixes joke shapes, so the writer can find the one that fits, and a
 //   few of the most popular all-rounders are always there to fall back on.
 export const MAX_FULL_CATALOG = 250
-const FIELDS = [['name', 3], ['aliases', 3], ['shape', 2], ['core', 1], ['slots', 1]]
+// The ranking's knobs, in one place so the benchmark (bench/) can try others.
+export const SEARCH = {
+  fields: { name: 3, aliases: 3, shape: 2, core: 1, slots: 1, visual: 1 },
+  popWeight: 0.25, // how much popularity can lift a match (0 to 1)
+  unmatched: 0.12, // what popularity alone is worth, below any match
+  diversity: 0.06, // the cost of each template already taken with the same shape
+  k1: 1.2,
+  b: 0.75,
+}
+export function configureSearch(opts) {
+  Object.assign(SEARCH, opts, opts.fields ? { fields: { ...SEARCH.fields, ...opts.fields } } : {})
+  INDEX = null
+}
 const stem = (w) => w.replace(/(ings|ing|ers|er|ies|es|s|ed)$/, '') || w
 const terms = (text) => words(text).split(' ').filter((w) => w.length >= 2 && !STOP.has(w)).map(stem)
 let INDEX = null
@@ -761,7 +774,8 @@ function searchIndex() {
   const docs = TEMPLATES.map((t) => {
     const tf = new Map()
     let len = 0
-    for (const [field, weight] of FIELDS) {
+    for (const [field, weight] of Object.entries(SEARCH.fields)) {
+      if (!weight) continue
       const v = t[field]
       for (const w of terms(Array.isArray(v) ? v.join(' ') : v ?? '')) {
         tf.set(w, (tf.get(w) ?? 0) + weight)
@@ -790,12 +804,12 @@ export function rankTemplates(query, k = 40) {
       const f = d.tf.get(w)
       if (!f) continue
       const idf = Math.log(1 + (N - df.get(w) + 0.5) / (df.get(w) + 0.5))
-      rel += idf * ((f * 2.2) / (f + 1.2 * (0.25 + 0.75 * (d.len / avg))))
+      rel += idf * ((f * (SEARCH.k1 + 1)) / (f + SEARCH.k1 * (1 - SEARCH.b + SEARCH.b * (d.len / avg))))
     }
     return { t: d.t, rel }
   })
   const top = Math.max(...scored.map((s) => s.rel), 1e-9)
-  for (const s of scored) s.score = s.rel > 0 ? (s.rel / top) * (0.75 + 0.25 * popularity(s.t)) : 0.12 * popularity(s.t)
+  for (const s of scored) s.score = s.rel > 0 ? (s.rel / top) * (1 - SEARCH.popWeight + SEARCH.popWeight * popularity(s.t)) : SEARCH.unmatched * popularity(s.t)
   scored.sort((a, b) => b.score - a.score)
   // Diversity: each template already taken with the same shape costs a little.
   const picked = []
@@ -805,7 +819,7 @@ export function rankTemplates(query, k = 40) {
     let best = 0
     let bestScore = -Infinity
     for (let i = 0; i < pool.length; i++) {
-      const v = pool[i].score - 0.06 * (shapes.get(pool[i].t.shape) ?? 0)
+      const v = pool[i].score - SEARCH.diversity * (shapes.get(pool[i].t.shape) ?? 0)
       if (v > bestScore) [best, bestScore] = [i, v]
     }
     const [chosen] = pool.splice(best, 1)
