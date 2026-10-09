@@ -121,13 +121,17 @@ function factory(on, rig: Rig = {}) {
     log.calls.push(e)
     const o = rig.tool?.(e)
     if (o !== undefined) return o
-    if (e.tool === `${SLACK}slack_list_user_channels`) return { result: channelsReply(rig.channels ?? CHANNELS) }
-    if (e.tool === `${SLACK}slack_get_file_upload_url`) return { result: TICKET_REPLY }
-    if (e.tool === `${SLACK}slack_complete_file_upload`) {
-      if (rig.completeDelay) await clock.sleep(rig.completeDelay)
-      return { result: DONE_REPLY }
-    }
     return { result: 'sent' }
+  })
+  // The mod's own Slack calls go straight to the server; logged, and overridable, under the tool's full name.
+  on('mcp.call', async ($, e) => {
+    const call = { server: e.server, tool: `mcp__${e.server}__${e.tool}`, ...e.args }
+    log.calls.push(call)
+    const o = rig.tool?.(call)
+    if (o !== undefined) return { value: o }
+    if (e.tool === 'slack_complete_file_upload' && rig.completeDelay) await clock.sleep(rig.completeDelay)
+    const reply = { slack_list_user_channels: channelsReply(rig.channels ?? CHANNELS), slack_get_file_upload_url: TICKET_REPLY, slack_complete_file_upload: DONE_REPLY }[e.tool] ?? 'sent'
+    return { value: { content: [{ type: 'text', text: reply }], isError: false } }
   })
   on('store.get', ($, e) => ({ value: saved.get(e.key) }))
   on('store.set', ($, e) => {

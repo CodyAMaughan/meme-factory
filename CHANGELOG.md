@@ -2,6 +2,22 @@
 
 All notable changes to Meme Factory. Versions follow [semantic versioning](https://semver.org).
 
+## 0.9.0 (2026-10-09)
+
+- **Post from the panel, to anywhere.** Places the mod can't upload to itself (Gmail, LinkedIn, a Slack connection without upload tools) used to be handed to Claude as a message in your conversation, which waited until Claude was free and then asked **Post it?** in the chat. Now you confirm in the panel, and the mod's own posting helper, a background agent, posts there with your connectors. Its answer and the message link come back to the panel; your conversation with Claude never sees it.
+  - The helper's own hooks hold it to the job: connectors only, and one post, carrying the meme you approved. A mod's hooks never see a subagent's calls, so the rules live in the helper's agent definition, like the picture check's.
+  - The panel trusts the post the helper's hooks recorded, not the helper's word: a post it claims but never made shows as not posted.
+- **Slack's own plugin is detected.** A Slack connection with no channel list or upload tools (Slack's Claude Code plugin, and the claude.ai connector in some workspaces) shows as **Slack (through Claude)**. It used to be missed, and listed as "Email" because its user search mentions email. These connections post the meme's link: Slack shows the picture only where the mod can upload it.
+- **No permission allowlist.** The mod's own Slack calls go straight to the server (`$.mcp.call`), confirmed in the panel, so auto mode has nothing to refuse and the `tool.check` allowlist is gone.
+- **Claude's memes show up in narrow windows.** Below 144 columns, Claude Code won't open a panel the mod opens on its own, and all you got was a toast. The strip now shows above the prompt, with **Open the panel** (`e`) to dock it; once you've opened it, Claude's memes open it from 110 columns.
+- **The chat box clears when you send.** Claude Code empties the field only once the send returns, and it waited for the whole chat (and any remix it started).
+- **`t` works after approving.** The post view had no Talk key, so `t` typed into Claude's prompt instead.
+- **Helpers stay out of your conversation.** The picture check's report reached the conversation as a message Claude then answered. Reports from the mod's own helpers are dropped now.
+- The chat box no longer says Slack isn't connected when only the channel list is missing.
+- `meme_factory_debug` also reports where the panel is (placed, or waiting) and the posting helper.
+
+Tested in the terminal (Claude Code 2.1.296, auto and manual modes): real posts to a Slack channel and a DM through the posting helper, checked in Slack, with no permission prompt and nothing in the conversation. Not tested: the upload path against a Slack connection with upload tools, the desktop app, Windows.
+
 ## 0.8.2 (2026-10-09)
 
 - **Slack works in the desktop app, for real this time.** Two causes, both found by testing inside the desktop app:
