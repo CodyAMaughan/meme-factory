@@ -62,6 +62,12 @@
   .toggle input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--accent); }
   .fav { display: grid; grid-template-columns: 1fr 1.6fr auto; gap: 8px; }
   @media (max-width: 600px) { .fav { grid-template-columns: 1fr; } }
+  .chat { display: flex; flex-direction: column; gap: 6px; }
+  .chat .log { display: flex; flex-direction: column; gap: 6px; max-height: 220px; overflow-y: auto; }
+  .msg { padding: 7px 11px; border-radius: 12px; max-width: 85%; font-size: 14px; }
+  .msg.you { align-self: flex-end; background: var(--accent); color: var(--accent-ink); }
+  .msg.factory { align-self: flex-start; background: var(--chip); }
+  .confirm { border: 2px solid var(--accent); }
   .gone { position: fixed; inset: auto 16px 16px 16px; max-width: 520px; margin: 0 auto; background: var(--panel);
     border: 1px solid var(--warn); border-radius: 12px; padding: 12px 16px; display: none; }
 </style>
@@ -147,16 +153,25 @@ function newMemeForm(placeholder = 'when the standup was supposed to be 15 minut
   return el('div', { class: 'row' }, input, el('button', { class: 'primary', onclick: go }, 'Make memes'))
 }
 
-function feedbackForm() {
-  const input = el('input', { type: 'text', class: 'grow', placeholder: 'Feedback: meaner, about Mondays, a different format…', maxlength: '300' })
-  const go = () => input.value.trim() && send({ type: 'feedback', text: input.value.trim() })
+function chatBox(placeholder) {
+  const input = el('input', { type: 'text', class: 'grow', placeholder, maxlength: '300' })
+  const go = () => {
+    const text = input.value.trim()
+    if (!text) return
+    input.value = ''
+    if (state.status === 'idle') send({ type: 'new', request: text })
+    else send({ type: 'chat', text })
+  }
   input.addEventListener('keydown', (e) => e.key === 'Enter' && go())
-  return el('div', { class: 'row' }, input, el('button', { onclick: go }, 'Remix with feedback'))
+  const log = el('div', { class: 'log' }, (state.chat || []).map((m) => el('div', { class: `msg ${m.role === 'you' ? 'you' : 'factory'}` }, m.text)))
+  setTimeout(() => (log.scrollTop = log.scrollHeight))
+  return el('div', { class: 'box chat' }, el('h2', {}, 'Chat with the factory'), (state.chat || []).length ? log : null,
+    el('div', { class: 'row' }, input, el('button', { class: 'primary', onclick: go }, 'Send')))
 }
 
 function draftsView() {
   const s = state
-  if (s.status === 'idle') return el('div', {}, el('div', { class: 'empty' }, 'Ask Claude for a meme, or start one here.'), el('p'), newMemeForm())
+  if (s.status === 'idle') return el('div', {}, el('div', { class: 'empty' }, 'Ask Claude for a meme, or start one here.'), el('p'), chatBox('a meme about Mondays'))
   if (s.status === 'error') {
     return el('div', { class: 'box' }, el('div', { class: 'error' }, `The factory jammed: ${s.error}`),
       el('div', { class: 'row' }, el('button', { class: 'primary', onclick: () => send({ type: 'remix' }) }, 'Try again')), newMemeForm())
@@ -175,37 +190,58 @@ function draftsView() {
       el('button', { disabled: s.status === 'working', onclick: () => send({ type: 'remix' }) }, 'Remix'),
       el('span', { class: 'muted' }, 'Click to select, double-click to approve.')),
     el('p'),
-    feedbackForm())
+    chatBox('meaner · use 2 · approve · post it to #social'))
 }
 
 function approvedView() {
   const s = state
   const d = s.approved
-  const where = el('input', { type: 'text', class: 'grow', placeholder: 'e.g. the #random channel on Slack, my LinkedIn', maxlength: '300' })
-  const sendWhere = () => where.value.trim() && send({ type: 'post', target: where.value.trim() })
-  where.addEventListener('keydown', (e) => e.key === 'Enter' && sendWhere())
-  const favs = (s.settings?.favorites || []).filter((f) => f.label && f.target)
-  const connected = new Set(s.connected || [])
+  const post = s.post || { stage: 'pick' }
+  const channels = s.slackChannels || []
+  const favs = (s.settings?.favorites || []).filter((f) => f.label && (f.target || f.channelId))
+  let panel
+  if (post.stage === 'confirm') {
+    panel = el('div', { class: 'box confirm' },
+      el('h2', {}, `Post to #${post.target.name} on Slack?`),
+      el('div', { class: 'muted' }, s.settings?.signature ? 'With: Fresh from the Meme Factory 🏭' : 'No message, just the meme.'),
+      el('div', { class: 'row' },
+        el('button', { class: 'primary', onclick: () => send({ type: 'confirm' }) }, 'Post it'),
+        el('button', { onclick: () => send({ type: 'cancel' }) }, 'Cancel')))
+  } else if (post.stage === 'posting') {
+    panel = el('div', { class: 'box' }, el('h2', {}, `Uploading to #${post.target.name}…`))
+  } else if (post.stage === 'done') {
+    const isFav = favs.some((f) => f.channelId === post.target.id)
+    panel = el('div', { class: 'box' },
+      el('h2', {}, `Posted to #${post.target.name} ✓`),
+      post.link ? el('a', { href: post.link, target: '_blank', rel: 'noreferrer' }, 'Open in Slack') : null,
+      el('div', { class: 'row' },
+        isFav ? el('span', { class: 'muted' }, '★ favorite') : el('button', { onclick: () => send({ type: 'favorite' }) }, `★ Save #${post.target.name}`),
+        el('button', { onclick: () => send({ type: 'cancel' }) }, 'Post somewhere else')))
+  } else {
+    const where = el('input', { type: 'text', class: 'grow', placeholder: 'or say where: my LinkedIn, the #random channel…', maxlength: '300' })
+    const sendWhere = () => where.value.trim() && send({ type: 'post', target: where.value.trim() })
+    where.addEventListener('keydown', (e) => e.key === 'Enter' && sendWhere())
+    panel = el('div', { class: 'box' },
+      el('h2', {}, 'Post it'),
+      post.stage === 'error' ? el('div', { class: 'error' }, `Couldn't post to #${post.target?.name}: ${post.error}`) : null,
+      channels.length ? el('div', {}, el('div', { class: 'muted' }, 'Slack'),
+        el('div', { class: 'chips' }, channels.map((c) => el('button', { onclick: () => send({ type: 'post', channelId: c.id }) }, `#${c.name}`)))) : null,
+      favs.length ? el('div', {}, el('div', { class: 'muted' }, 'Favorites'),
+        el('div', { class: 'chips' }, favs.map((f) => el('button', { title: f.target, onclick: () => send(f.channelId ? { type: 'post', channelId: f.channelId } : { type: 'post', target: f.target }) }, `★ ${f.label}`)))) : null,
+      (s.others || []).length ? el('div', {}, el('div', { class: 'muted' }, 'Through Claude'),
+        el('div', { class: 'chips' }, s.others.map((label) => el('button', { onclick: () => send({ type: 'post', target: label }) }, label)))) : null,
+      el('div', { class: 'row' }, where, el('button', { onclick: sendWhere }, 'Send')),
+      el('div', { class: 'row' },
+        el('button', { onclick: () => send({ type: 'addConnector' }) }, '+ Add a connector'),
+        el('button', { onclick: () => navigator.clipboard?.writeText(d.url) }, 'Copy link'),
+        el('button', { onclick: () => send({ type: 'back' }) }, 'Back to drafts')),
+      el('div', { class: 'muted' }, s.settings?.askBeforePost ? 'You confirm each post before it goes out.' : 'Ask-before-posting is off: picking a channel posts right away.'))
+  }
   return el('div', { class: 'hero' },
     el('div', {},
       el('img', { src: img(d.url, 900), alt: d.lines.filter(Boolean).join(' / ') }),
       el('p', { class: 'muted' }, `${d.template_name}${d.score == null ? '' : ` · judge ${d.score}/10`} · `, el('a', { href: d.url, target: '_blank', rel: 'noreferrer' }, 'full image'))),
-    el('div', { class: 'box' },
-      el('h2', {}, 'Post it'),
-      favs.length ? el('div', {}, el('div', { class: 'muted' }, 'Favorites'),
-        el('div', { class: 'chips' }, favs.map((f) => el('button', { title: f.target, onclick: () => send({ type: 'post', target: f.target, label: f.label }) }, f.label)))) : null,
-      el('div', {}, el('div', { class: 'muted' }, 'Quick picks (✓ looks connected)'),
-        el('div', { class: 'chips' }, (s.destinations || []).map((x) =>
-          el('button', { onclick: () => send({ type: 'post', target: x.label, label: x.label }) }, x.label, connected.has(x.key) ? el('span', { class: 'ok' }, '✓') : null)))),
-      el('div', {}, el('div', { class: 'muted' }, 'Or say where, and Claude routes it'), el('div', { class: 'row' }, where, el('button', { class: 'primary', onclick: sendWhere }, 'Send to Claude'))),
-      el('div', { class: 'muted' }, s.settings?.askBeforePost
-        ? 'Claude will ask you before anything is posted. Change this in Settings.'
-        : 'Ask-before-posting is off: Claude may post without asking. Change this in Settings.'),
-      s.posted?.length ? el('div', { class: 'muted' }, `Handed to Claude: ${s.posted.join(', ')}`) : null,
-      el('div', { class: 'row' },
-        el('button', { onclick: () => navigator.clipboard?.writeText(d.url) }, 'Copy link'),
-        el('button', { onclick: () => send({ type: 'back' }) }, 'Back to drafts')),
-      el('p', { class: 'muted' }, 'Start another:'), newMemeForm('another meme…')))
+    el('div', { style: 'display:flex;flex-direction:column;gap:16px' }, panel, chatBox('post it to #social · make it meaner · new meme about…')))
 }
 
 function settingsView() {
@@ -220,7 +256,11 @@ function settingsView() {
     el('label', { class: 'toggle' },
       el('input', { type: 'checkbox', checked: s.askBeforePost !== false, onchange: (e) => send({ type: 'settings', settings: { askBeforePost: e.target.checked } }) }),
       el('div', {}, el('b', {}, 'Ask me before Claude posts a meme'),
-        el('div', { class: 'muted' }, 'When on, the mod makes Claude Code show a permission prompt for any connector call that contains a meme link, even in auto mode.'))),
+        el('div', { class: 'muted' }, 'Slack posts get a Post it / Cancel step here and in the panel. Posts Claude makes for you (LinkedIn, email…) always ask first, even in auto mode.'))),
+    el('label', { class: 'toggle' },
+      el('input', { type: 'checkbox', checked: s.signature !== false, onchange: (e) => send({ type: 'settings', settings: { signature: e.target.checked } }) }),
+      el('div', {}, el('b', {}, 'Sign posts “Fresh from the Meme Factory 🏭”'),
+        el('div', { class: 'muted' }, 'Adds the line, with “Meme Factory” linking to the mod on GitHub.'))),
     el('h2', {}, 'Favorite destinations'),
     el('div', { class: 'muted' }, 'Describe each one in words; Claude picks the right connector and channel from it.'),
     ...rows,

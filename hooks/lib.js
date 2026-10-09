@@ -185,23 +185,129 @@ export function jevJudgeResult(text, drafts) {
 
 // ---------- Posting through Claude's connectors ----------
 
+export const REPO_URL = 'https://github.com/CodyAMaughan/meme-factory'
+// Slack mrkdwn: the words "Meme Factory" link to the repo.
+export const SIGNATURE = `Fresh from the <${REPO_URL}|Meme Factory> :factory:`
+
+// Connectors Claude can post through, other than Slack (which the mod posts to itself).
 export const DESTINATIONS = [
-  { key: 'slack', label: 'Slack', hotkey: 's', match: /slack/ },
-  { key: 'linkedin', label: 'LinkedIn', hotkey: 'l', match: /linkedin/ },
-  { key: 'x', label: 'X', hotkey: 'x', match: /twitter|tweet|\bx\.com\b|post_to_x/ },
-  { key: 'discord', label: 'Discord', hotkey: 'd', match: /discord/ },
-  { key: 'teams', label: 'Teams', hotkey: 't', match: /microsoft teams|\bteams\b/ },
-  { key: 'email', label: 'Email', hotkey: 'm', match: /gmail|outlook|send_email|send an email|e-?mail/ },
+  { key: 'linkedin', label: 'LinkedIn', match: /linkedin/ },
+  { key: 'x', label: 'X', match: /twitter|tweet|\bx\.com\b|post_to_x/ },
+  { key: 'discord', label: 'Discord', match: /discord/ },
+  { key: 'teams', label: 'Teams', match: /microsoft teams|\bteams\b/ },
+  { key: 'email', label: 'Email', match: /gmail|outlook|e-?mail/ },
 ]
 
-// A guess from the session's tool list: claude.ai connectors often have opaque
-// server ids, so match on tool names and descriptions too.
-export function connectedDestinations(tools) {
-  const haystack = (tools ?? [])
-    .filter((t) => t?.mcp)
-    .map((t) => `${t.name} ${t.description}`.toLowerCase())
-    .join('\n')
-  return new Set(DESTINATIONS.filter((d) => d.match.test(haystack)).map((d) => d.key))
+// A tool that writes somewhere (as opposed to searching or reading).
+const WRITES = /(^|_)(send|post|create|publish|share|reply|draft|upload|tweet)(_|$)/
+
+// What the session can post to, from its tool list. claude.ai connectors have opaque
+// server ids, so a destination counts only when one server has a writing tool and
+// mentions it by name: Microsoft 365's read-only Teams search doesn't make Teams postable.
+export function postingConnectors(tools) {
+  const servers = new Map()
+  for (const t of tools ?? []) {
+    if (!t?.mcp) continue
+    const m = /^mcp__(.+?)__(.+)$/.exec(String(t.name))
+    if (!m || m[1] === 'meme-factory') continue
+    const s = servers.get(m[1]) ?? { prefix: `mcp__${m[1]}__`, names: [], text: '' }
+    s.names.push(m[2])
+    s.text += ` ${m[2]} ${t.description ?? ''}`.toLowerCase()
+    servers.set(m[1], s)
+  }
+  let slack = null
+  const others = new Set()
+  for (const s of servers.values()) {
+    if (s.names.includes('slack_send_message') && s.names.includes('slack_list_user_channels')) {
+      slack = { prefix: s.prefix, canUpload: s.names.includes('slack_get_file_upload_url') && s.names.includes('slack_complete_file_upload') }
+      continue
+    }
+    if (!s.names.some((n) => WRITES.test(n))) continue
+    for (const d of DESTINATIONS) if (d.match.test(s.text)) others.add(d.label)
+  }
+  return { slack, others: DESTINATIONS.filter((d) => others.has(d.label)).map((d) => d.label) }
+}
+
+// Every string inside a tool result, in order: connector results arrive as
+// { result }, { content: [{ text }] } or plain text depending on the host.
+export function resultText(value) {
+  const out = []
+  const walk = (v) => {
+    if (typeof v === 'string') out.push(v)
+    else if (Array.isArray(v)) v.forEach(walk)
+    else if (v && typeof v === 'object') Object.values(v).forEach(walk)
+  }
+  walk(value)
+  return out.join('\n')
+}
+
+// slack_list_user_channels answers in markdown: "### #name" then "- **ID:** C0123".
+export function parseSlackChannels(text) {
+  const channels = []
+  const re = /###\s+#([^\s]+)\s*\n-\s+\*\*ID:\*\*\s+([CG][A-Z0-9]+)/g
+  let m
+  while ((m = re.exec(text))) channels.push({ id: m[2], name: m[1] })
+  return channels
+}
+
+export function parseUploadTicket(raw) {
+  // Connector text can carry JSON-escaped slashes (https:\/\/files...): undo them first.
+  const text = String(raw).replace(/\\\//g, '/')
+  const fileId = /File ID:\s*(F[A-Z0-9]+)/.exec(text)?.[1]
+  const url = /Upload URL:\s*(https:\/\/files\.slack\.com\/\S+)/.exec(text)?.[1]
+  if (!fileId || !url) throw new Error("Slack didn't return an upload URL")
+  return { fileId, url }
+}
+
+export function firstSlackLink(text) {
+  return /https:\/\/[a-z0-9-]+\.slack\.com\/[^\s"')\]]+/i.exec(String(text).replace(/\\\//g, '/'))?.[0] ?? null
+}
+
+// "#social", "social", "the social channel" -> the channel, or a favorite by label.
+export function resolveDestination(text, channels, favorites) {
+  const t = String(text ?? '').toLowerCase().trim()
+  if (!t) return null
+  const fav = (favorites ?? []).find((f) => f.label && t.includes(f.label.toLowerCase()))
+  if (fav?.channelId) return { kind: 'slack', id: fav.channelId, name: fav.channelName ?? fav.label }
+  if (fav) return { kind: 'claude', target: fav.target }
+  const byLength = [...(channels ?? [])].sort((a, b) => b.name.length - a.name.length)
+  const ch = byLength.find((c) => new RegExp(`(^|[^a-z0-9_-])#?${c.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}([^a-z0-9_-]|$)`).test(t))
+  if (ch) return { kind: 'slack', id: ch.id, name: ch.name }
+  return { kind: 'claude', target: text }
+}
+
+// ---------- The chat box ----------
+
+export const CHAT_SYSTEM = `You are the Meme Factory's editor, talking to the user in a small chat box beside their meme drafts.
+Read their message and choose one action. Reply with JSON only, no prose and no code fences:
+{"reply":"one short, friendly sentence","action":{"type":"..."}}
+Actions:
+- {"type":"remix","feedback":"what to change"}: new captions, same request (e.g. "meaner", "about Mondays", "different format")
+- {"type":"select","draft":2}: show draft 1, 2 or 3
+- {"type":"approve","draft":2}: approve a draft (draft optional: the selected one)
+- {"type":"post","destination":"#social"}: post the approved meme; destination in the user's words. If nothing is approved yet, approve the selected draft first by also giving "draft".
+- {"type":"new","request":"..."}: start a different meme
+- {"type":"none"}: just answer
+Never invent a destination the user didn't mention.`
+
+export function chatPrompt(job, slackChannels, favorites, message) {
+  const drafts = job.drafts.map((d, i) => `${i + 1}. ${d.template_name}: ${JSON.stringify(d.lines)}${i === job.selected ? ' (selected)' : ''}`).join('\n')
+  const history = job.chat.slice(-6).map((m) => `${m.role}: ${m.text}`).join('\n')
+  return `Meme request: ${job.request}
+State: ${job.status}${job.approved ? `, approved: ${job.approved.template_name}` : ''}
+Drafts:
+${drafts || '(none yet)'}
+Slack channels: ${slackChannels.map((c) => '#' + c.name).join(', ') || '(Slack not connected)'}
+Favorites: ${favorites.map((f) => f.label).join(', ') || '(none)'}
+Recent chat:
+${history || '(none)'}
+user: ${message}`
+}
+
+export function parseChatAction(text) {
+  const parsed = parseJson(text)
+  const action = parsed?.action && typeof parsed.action === 'object' ? parsed.action : { type: 'none' }
+  return { reply: String(parsed?.reply ?? '').slice(0, 300), action }
 }
 
 // isConnected: true or false for a quick pick, null when the person described the place in words.
@@ -237,7 +343,7 @@ export function isMemePost(e) {
 }
 
 // What the browser gallery shows: plain data, no local file paths.
-export function galleryState(job, connected, settings) {
+export function galleryState(job, connectors, settings) {
   const strip = (d) => d && { id: d.id, template_name: d.template_name, lines: d.lines, url: d.url, score: d.score }
   return {
     status: job.status,
@@ -247,9 +353,11 @@ export function galleryState(job, connected, settings) {
     drafts: job.drafts.map(strip),
     selected: job.selected,
     approved: strip(job.approved),
+    post: job.post,
     posted: job.posted,
-    connected: [...connected],
-    destinations: DESTINATIONS.map((d) => ({ key: d.key, label: d.label })),
+    chat: job.chat.slice(-12),
+    slackChannels: connectors.slack ? connectors.channels : [],
+    others: connectors.others,
     settings,
   }
 }

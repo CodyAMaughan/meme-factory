@@ -22,7 +22,7 @@ from urllib.parse import parse_qs, urlparse
 TOKEN = sys.stdin.readline().strip()
 PAGE = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'index.html'), 'rb').read()
 MAX_BODY = 256 * 1024
-EVENT_TYPES = {'select', 'approve', 'feedback', 'remix', 'new', 'post', 'settings', 'back'}
+EVENT_TYPES = {'select', 'approve', 'chat', 'remix', 'new', 'post', 'confirm', 'cancel', 'favorite', 'addConnector', 'settings', 'back'}
 
 state = {'version': 0, 'body': {}}
 changed = threading.Condition()
