@@ -1,80 +1,122 @@
-# Meme Factory
+<p align="center">
+  <img src="docs/media/banner.png" alt="Meme Factory. Fresh from the factory. A Claude Code mod: ask for a meme, keep working." width="100%">
+</p>
 
-A [Claude Code mod](https://code.claude.com/docs/en/plugins/mods/create) for making memes without leaving your session.
+<p align="center">
+  <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-d9f24a?labelColor=19141f"></a>
+  <a href="https://code.claude.com/docs/en/plugins/mods/create"><img alt="Claude Code mod" src="https://img.shields.io/badge/Claude%20Code-mod-d9f24a?labelColor=19141f"></a>
+  <a href="https://github.com/CodyAMaughan/meme-factory/actions/workflows/ci.yml"><img alt="Tests" src="https://github.com/CodyAMaughan/meme-factory/actions/workflows/ci.yml/badge.svg"></a>
+</p>
 
-1. **Ask for one.** Tell Claude "make a meme about this flaky test", or type `/meme standups that run long`.
-2. **Keep working.** Drafts cook in a side panel. Claude's tool call returns right away, so nothing waits on the meme.
-3. **Review and chat.** The panel shows the 3 best drafts: a picture, the caption, and a judge score. Switch with `1` `2` `3` and approve with `a`, or just type in the **chat box** (`t` jumps to it): "meaner", "make it about Mondays", "use 2", "approve it and post it to #social". Press `v` to do all of this in your browser instead: the [gallery](#browser-gallery) works from any terminal.
-4. **Post.** After you approve, the panel lists your real destinations:
-   - **Slack:** your actual channels. Pick one with `1` `2` `3` (favorites first) or from the **Post to** list, press `p`, confirm **Post it**, and the mod uploads the image itself, so Slack shows the picture, signed "Fresh from the [Meme Factory](https://github.com/CodyAMaughan/meme-factory) 🏭". You get the message link in the panel.
-   - **Favorites:** channels or places you've saved (★ Save after a post, or edit them in Settings).
-   - **Through Claude:** other connectors that can post (Gmail, for example), or anything you type ("my LinkedIn"). The mod hands those to Claude, which works out the connector and channel.
-   - **+ Add a connector:** asks Claude to find one in the [connector directory](https://claude.ai/directory) and show you its Connect card.
+**Fresh from the factory.** Meme Factory is a [Claude Code mod](https://code.claude.com/docs/en/plugins/mods/create). Ask Claude for a meme and three drafts cook in a side panel while you keep working. Pick one, remix it in plain words, approve it, and post it to Slack, signed *Fresh from the [Meme Factory](https://github.com/CodyAMaughan/meme-factory)*.
 
-The mod doesn't include any posting integrations. It uses the connectors you've added to Claude: the Slack connector for uploads, and whatever Claude has for everything else.
+<p align="center">
+  <a href="docs/media/hero.mp4"><img src="docs/media/hero.gif" alt="Asking Claude for a meme: the Meme Factory panel docks beside the transcript, drafts three memes while Claude keeps fixing a test, then the meme is picked, remixed, approved and posted to a Slack channel." width="100%"></a>
+</p>
 
 ## Install
+
+**Paste this into Claude Code** and it sets everything up:
+
+```text
+Install the Meme Factory mod for me. Run `claude plugin marketplace add CodyAMaughan/meme-factory`
+and then `claude plugin install meme-factory@meme-factory`. Check that `claude --version` is 2.1.287
+or later and that `python3` is available, and tell me if either isn't. Then tell me to run
+/reload-plugins (or restart Claude Code) and try `/meme standups that run long`. If I don't have
+the Slack connector, point me to https://claude.ai/directory to add it.
+```
+
+Or run the commands yourself:
 
 ```bash
 claude plugin marketplace add CodyAMaughan/meme-factory
 claude plugin install meme-factory@meme-factory
 ```
 
-Or, from inside a session (Claude Code v2.1.275+):
+Inside a session, `/plugin install meme-factory --marketplace CodyAMaughan/meme-factory` does the same.
 
-```
-/plugin install meme-factory --marketplace CodyAMaughan/meme-factory
-```
-
-Requires **Claude Code v2.1.287 or later** (mods), and `python3` for the browser gallery. Tested with v2.1.293 (Desktop) and v2.1.295 (CLI).
+**Requirements:** Claude Code **v2.1.287 or later** (mods), in the terminal or the Desktop app. `python3` for the browser gallery. To post, the [Slack connector](https://claude.ai/directory); other connectors work through Claude.
 
 ## How it works
 
-| Step | What runs |
+1. **Ask.** Tell Claude "make a meme about this flaky test", or type `/meme standups that run long`. The tool returns right away, so nothing waits on the meme.
+2. **Pick.** Three drafts land in the panel, each with a judge's score. Switch with `1` `2` `3`.
+3. **Remix in plain words.** Type in the chat box (`t` jumps to it): "meaner", "make it about the PM", "use 2", "different format", "approve it and post it to #social".
+4. **Approve and post.** `a` approves. Pick a channel (favorites first), press `p`, confirm, and the mod uploads the image to Slack. You get the message link.
+
+<table>
+  <tr>
+    <td width="50%"><a href="docs/media/remix.mp4"><img src="docs/media/remix.gif" alt="Typing meaner, use 2 and different format in the chat box, and the drafts changing each time"></a><br><b>Remix in plain words.</b> A small model turns what you type into actions.</td>
+    <td width="50%"><a href="docs/media/post.mp4"><img src="docs/media/post.gif" alt="Opening the Post to list, choosing #eng-fun, confirming, and the meme landing in the channel"></a><br><b>Post to real channels.</b> Your Slack channels, your favorites, and a confirm step.</td>
+  </tr>
+  <tr>
+    <td width="50%"><a href="docs/media/gallery.mp4"><img src="docs/media/gallery.gif" alt="Pressing v opens the browser gallery; a draft is picked and approved, then the page switches from light to dark"></a><br><b>The browser gallery.</b> Press <code>v</code> for the same flow with bigger pictures.</td>
+    <td width="50%"><a href="docs/media/anywhere.mp4"><img src="docs/media/anywhere.gif" alt="Three terminals side by side: Ghostty with the meme in the panel, Terminal.app with a one-line note, and a narrow window with a six-row strip"></a><br><b>Fits wherever you work.</b> Pictures where the terminal can draw them, a compact strip in narrow windows.</td>
+  </tr>
+  <tr>
+    <td colspan="2"><a href="docs/media/safety.mp4"><img src="docs/media/safety.gif" alt="Claude tries to post the meme to LinkedIn in auto mode, and a Meme Factory prompt asks first; the post is declined" width="50%"></a><br><b>Nothing posts without you.</b> Ask-before-posting holds any post until you say so, even in auto mode.</td>
+  </tr>
+</table>
+
+## Posting
+
+After you approve, the **Post to** list shows where it can go:
+
+| Destination | What happens |
 |---|---|
-| Pick 3 templates out of 209 | Claude (Haiku by default) through the mod's own model call, or [Jev](https://typesafe.ai) if `TYPESAFE_API_KEY` is set |
-| Write 2 captions per template | Claude (Haiku by default) |
-| Judge and rank them | Claude, or Jev if `TYPESAFE_API_KEY` is set |
-| Render | [memegen.link](https://memegen.link) (free, URL-based) |
-| Post | Claude, using your connectors |
+| **Your Slack channels** | The mod uploads the image itself, so Slack shows the picture, signed *Fresh from the Meme Factory 🏭* with a link back here. You get the message link. |
+| **Favorites** ★ | Channels or places you saved (★ Save after a post, or Settings). The first three are keys `1` `2` `3`. |
+| **Through Claude** | Other connectors that can post (Gmail, for example), or anything you type ("my LinkedIn"). The mod hands those to Claude, which picks the connector and channel. |
+| **+ Add a connector** | Asks Claude to find one in the [connector directory](https://claude.ai/directory) and show you its Connect card. |
 
-The model calls go through your Claude Code session's own credentials, so you don't need an API key. They count toward your plan's usage like any other request.
+**Ask before posting** is on by default. Slack posts wait for your **Post it** in the panel or the gallery. Posts Claude makes for you are held when Claude calls the connector, with a **Post it / Don't post** question, in every permission mode.
 
-### Pictures
+The mod includes no posting integrations of its own: it uses the connectors you've added to Claude.
+
+## Pictures
 
 | Where | What you see |
 |---|---|
-| **Ghostty**, **kitty** 0.28+, or cmux | The real meme, in the panel. These terminals support the kitty graphics protocol, which Claude Code's `Image` element uses. |
-| **iTerm2** 3.7.3+ | Usually the real meme, if you start Claude with `CLAUDE_CODE_FORCE_TERMINAL_IMAGES=1 claude`. iTerm2 supports the protocol but fails Claude Code's detection ([anthropics/claude-code#95448](https://github.com/anthropics/claude-code/issues/95448)). Export the variable in your shell: setting it in `settings.json` doesn't work. |
-| **Terminal.app, VS Code, Cursor**, other terminals, and anything inside tmux | A one-line note instead of the picture. Press `v` to open the browser gallery. |
-| **Desktop app** | The meme, embedded as an image (SVG with an inline JPEG). |
+| **Ghostty**, **kitty** 0.28+, cmux | The real meme, in the panel (kitty graphics protocol). |
+| **iTerm2** 3.7.3+ | The real meme if you start Claude with `CLAUDE_CODE_FORCE_TERMINAL_IMAGES=1 claude` ([why](https://github.com/anthropics/claude-code/issues/95448)). Export it in your shell; `settings.json` doesn't work. |
+| **Terminal.app**, **VS Code**, **Cursor**, tmux | A one-line note. Press `v` for the browser gallery. |
+| **Desktop app** | The meme, as an image. |
 
-The mod decides at startup whether to draw pictures, using the same terminal check Claude Code does. A wide window (about 144+ columns) puts the panel beside the transcript. Narrower windows put it above the prompt, where it scrolls with Page Up and Page Down.
+In a wide window (about 144+ columns) the panel docks beside the transcript. In a narrower one it's a strip of up to six rows above the prompt.
 
-### Browser gallery
+## The browser gallery
 
-Press `v` in the panel, or run `/meme gallery`, and the Meme Factory opens a page in your browser. Everything you do there goes straight back to the Claude Code session:
+Press `v` in the panel, or run `/meme gallery`. Everything there goes straight back to your session:
 
-- **Drafts:** click a draft (or press `1`, `2`, `3`) to pick it, then **Approve** (`a`). **Remix all** is `r`, `c` copies the link, and `/` jumps to the chat box on the right, where you can remix, pick, approve or post in plain words, or start a new meme.
-- **Post it:** after you approve, pick a favorite, one of your Slack channels (with a search box), or a place Claude can post to for you, then **Post to #channel** (`p`). With ask-before-posting on you then confirm (**Post it** `y` / **Cancel** `n`). You see the posting state, then a link to the message, or the error with **Retry**.
-- **Settings** (`/meme settings`), saved as you change them:
-  - **Ask before posting** (on by default). Slack posts from the panel or the gallery wait for your **Post it**. Posts Claude makes for you (anything outside Slack) are held at the moment Claude calls the connector, with a **Post it / Don't post** question, in every permission mode.
-  - **Sign posts** (on by default): adds "Fresh from the Meme Factory 🏭", with "Meme Factory" linking to this repo.
-  - **Favorites:** your quick picks, in order. Each is a name plus one of your Slack channels, or a place described in words. In the panel, the first three are keys `1`, `2` and `3`.
-  - **Where you can post:** which connectors this session has, with **Add a connector** and **Check again**.
+- **Drafts:** pick with a click or `1` `2` `3`, **Approve** with `a`, **Remix all** with `r`, and `/` for the chat box.
+- **Post it:** favorites, a searchable list of your Slack channels, then **Post to #channel** (`p`), confirm (`y` / `n`), and the message link.
+- **Settings** (`/meme settings`), saved as you change them: ask before posting, signing posts, favorites (in order, reorderable), and which connectors this session can post through.
 
-The page is served by a small local server, `gallery/server.py`, which needs `python3` and nothing else. It listens on 127.0.0.1 only, answers only requests that carry the session's random token (passed on stdin, so other processes can't read it from `ps`), and refuses other origins and Host headers. It stops when the session ends.
+It's a small local server (`gallery/server.py`, standard library only) on `127.0.0.1`. It answers only requests that carry the session's random token, refuses other origins and hosts, and stops when the session ends.
 
-### Settings
+## Configuration
 
 | Environment variable | Effect |
 |---|---|
-| `MEME_FACTORY_MODEL` | Model for writing and judging. An alias like `haiku` or `sonnet`, or a full model id. Default `haiku`. |
-| `TYPESAFE_API_KEY` | Uses Jev for template picking and judging, at about $0.0003 per meme |
+| `MEME_FACTORY_MODEL` | Model for writing and judging: an alias like `haiku` or `sonnet`, or a full model id. Default `haiku`. |
+| `TYPESAFE_API_KEY` | Uses [Jev](https://typesafe.ai) to pick templates and judge drafts, at about $0.0003 per meme. |
 
-Posting settings and favorites live in the browser gallery's **Settings** tab and are kept in the mod's store.
+Posting settings and favorites live in the gallery's **Settings** tab.
 
-Images are cached in `~/.cache/meme-factory/`. Claude Code won't draw a terminal image from a path it considers a network location, such as macOS's `/home` automount. The last 50 approved memes are kept in the mod's store.
+## Privacy
+
+- **Model calls** go through your Claude Code session's own credentials. There's no API key to set, and they count toward your plan like any other request.
+- **Pictures** are rendered by [memegen.link](https://memegen.link) from the template and the caption text, and cached in `~/.cache/meme-factory/`.
+- **Posts** go only where you send them, through your connectors.
+- **Jev**, if you set `TYPESAFE_API_KEY`, receives the meme request and the draft captions.
+- The mod keeps your settings and your last 50 approved memes in its local store.
+
+## Troubleshooting
+
+- **The panel didn't open.** A panel the mod opens by itself waits for a window at least 144 columns wide. Run `/meme` to open it at any width.
+- **No picture in the terminal.** See [Pictures](#pictures). Press `v` to see it in the browser.
+- **"The gallery needs python3".** Install Python 3, or use the panel.
+- **No Slack channels listed.** Add the Slack connector at [claude.ai/directory](https://claude.ai/directory), then **Check again** in Settings.
 
 ## Develop
 
@@ -82,20 +124,25 @@ Images are cached in `~/.cache/meme-factory/`. Claude Code won't draw a terminal
 git clone https://github.com/CodyAMaughan/meme-factory
 cd meme-factory
 claude plugin validate --strict .
-claude plugin test
+claude plugin test .
 claude --plugin-dir .          # hot-reloads hooks/ on save
 ```
 
 In the Desktop app, set `CLAUDE_CODE_PLUGIN_DIRS` to the absolute path of your checkout (in your environment, or under `env` in `~/.claude/settings.json`), then start a new session.
 
-| File | Contents |
+| Path | Contents |
 |---|---|
-| `hooks/register.js` | Every mods API call: the `make_meme` tool, the `/meme` command, the pipeline, the chat box, Slack posting, the panel, the gallery bridge, and the ask-before-posting gate |
-| `hooks/lib.js` | Pure helpers: prompts, parsing, memegen URLs, Jev request bodies, PNG sizing, connector detection, Slack response parsing, and gallery state |
-| `gallery/` | The browser gallery: `server.py` (local server) and `index.html` (the page) |
+| `hooks/register.js` | Every mods API call: the `make_meme` tool, `/meme`, the drafting pipeline, chat, Slack posting, the panel, the gallery bridge, and the ask-before-posting gate |
+| `hooks/lib.js` | Pure helpers: prompts, parsing, memegen URLs, Jev requests, PNG sizing, connector detection, destinations |
 | `hooks/templates.js` | The memegen.link template catalog |
-| `tests/` | `claude plugin test` suites that stub the model, the shell, and the store |
+| `gallery/` | The browser gallery: `server.py` and `index.html` |
+| `tests/` | `claude plugin test` suites, with the model, shell and store stubbed |
+| `demo/` | The videos above, built with [HyperFrames](https://github.com/heygen-com/hyperframes). See [demo/README.md](demo/README.md) to re-render. |
+
+## Contributing
+
+Issues and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md). Every change is reviewed by the maintainer before it merges.
 
 ## License
 
-MIT
+[MIT](LICENSE). Meme templates are rendered by [memegen.link](https://memegen.link). Demo fonts are under the SIL Open Font License.

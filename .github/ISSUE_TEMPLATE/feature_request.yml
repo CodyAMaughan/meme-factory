@@ -1,0 +1,11 @@
+name: Idea or feature
+description: Suggest something new for Meme Factory
+labels: [enhancement]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: The idea
+      description: What you'd like to do, and why it would make the factory better.
+    validations:
+      required: true

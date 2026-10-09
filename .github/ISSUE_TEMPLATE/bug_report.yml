@@ -1,0 +1,34 @@
+name: Bug report
+description: Something in Meme Factory doesn't work the way it should
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected, and what you saw instead. Screenshots help.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Claude Code version
+      description: The output of `claude --version`
+    validations:
+      required: true
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where
+      options:
+        - Terminal that draws images (Ghostty, kitty, iTerm2)
+        - Terminal without images (Terminal.app, VS Code, tmux)
+        - Desktop app
+        - Browser gallery
+    validations:
+      required: true
+  - type: textarea
+    id: more
+    attributes:
+      label: Anything else
+      description: Connector (Slack, Gmail…), settings, or errors from `claude --debug`.

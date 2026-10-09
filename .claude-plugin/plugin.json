@@ -1,11 +1,22 @@
 {
   "name": "meme-factory",
   "displayName": "Meme Factory",
-  "version": "0.4.0",
-  "description": "Tell Claude to make a meme. Drafts cook in a side panel, you give feedback and approve, and Claude posts it through your connectors.",
-  "author": { "name": "Cody Maughan", "url": "https://github.com/CodyAMaughan" },
+  "version": "0.5.0",
+  "description": "Fresh from the factory. Ask Claude for a meme and three drafts cook in a side panel while you keep working. Pick one, remix it in plain words, approve it, and post it to Slack.",
+  "author": {
+    "name": "Cody Maughan",
+    "url": "https://github.com/CodyAMaughan"
+  },
   "homepage": "https://github.com/CodyAMaughan/meme-factory",
   "repository": "https://github.com/CodyAMaughan/meme-factory",
   "license": "MIT",
-  "keywords": ["meme", "fun", "social", "slack", "linkedin", "mod"]
+  "keywords": [
+    "meme",
+    "memes",
+    "fun",
+    "claude-code",
+    "mod",
+    "slack",
+    "social"
+  ]
 }
