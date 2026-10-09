@@ -330,7 +330,7 @@ function pickerBox() {
   const s = state
   const q = tplQuery.trim().toLowerCase()
   const list = (s.templates || []).filter((t) => !q || t.name.toLowerCase().includes(q) || t.shape.includes(q) || t.aliases.some((a) => a.includes(q)))
-  const search = el('input', { type: 'text', id: 'tpl-search', placeholder: 'Search 210 memes: drake, side eye, two buttons…', value: tplQuery,
+  const search = el('input', { type: 'text', id: 'tpl-search', placeholder: `Search ${(s.templates || []).length || 'the'} memes: drake, side eye, two buttons…`, value: tplQuery,
     oninput: (e) => { tplQuery = e.target.value; render() } })
   const choose = (t) => {
     showPicker = false

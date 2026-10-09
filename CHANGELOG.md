@@ -2,6 +2,26 @@
 
 All notable changes to Meme Factory. Versions follow [semantic versioning](https://semver.org).
 
+## 0.11.0 (2026-10-09)
+
+- **About 1,500 templates.** The Meme Factory's own server adds some 1,300 of Imgflip's most popular templates of all time to memegen.link's 210. Each was laid out by a model looking at the picture (boxes where people put the text) and given a card (what it means, each box's role, its popularity rank). Offensive, obscure and duplicate templates were left out.
+- **Search for the right meme.** A quick model (Haiku) turns the request into search words, a ranking scores every card (BM25 over name, aliases, shape, idea and box roles; popularity on a log scale as a tiebreak; a mix of joke shapes), and the writer chooses from the best 40 instead of the whole catalog. memegen.link's templates got Imgflip popularity ranks too.
+- **The Meme Factory server by default.** Without `MEMEGEN_URL`, pictures come from it: open to all, a "Meme Factory" watermark without a key, 60 requests a minute per address. If it's unreachable the mod falls back to memegen.link.
+- Same-named templates are merged, keeping the more popular; an Imgflip copy gives way once the server's version loads.
+
+Tested in the desktop app (2.1.293) against the server: 1,511 templates loaded; drafts drew on new templates (Surprised Pikachu, This Is Where I'd Put My Trophy, Boardroom Meeting Suggestion).
+
+## 0.10.0 (2026-10-09)
+
+- **More templates.** Besides the 210 built-in ones:
+  - **Imgflip's popular list**, checked once a day: top-and-bottom memes memegen doesn't have, such as Bernie "once again asking", Monkey Puppet and Absolute Cinema, rendered over Imgflip's picture. Set `MEME_FACTORY_IMGFLIP=0` to leave them out.
+  - **Your own memegen server's** (`MEMEGEN_URL`): any template it has that memegen.link doesn't, with its own text boxes.
+  - A model writes each new template's card once, 15 at a time, and the card is kept. It's told not to repeat words already printed on the picture ("i receive:"). A meme it doesn't know is skipped and asked about again after a month.
+  - Names that only differ in wording count as the same meme ("Roll Safe Think About It" is Roll Safe), so Imgflip doesn't add duplicates.
+  - The gallery's picker searches them too, and `meme_factory_debug` shows the count (`refresh` checks again).
+
+Tested in the desktop app (2.1.293): 28 new templates loaded from Imgflip and the self-hosted server; a Trade Offer meme (a template added to the server) drafted and rendered there.
+
 ## 0.9.1 (2026-10-09)
 
 - **Keys work after you've typed in the chat box.** After a message you sent, the next key typed into **Say** again, or went to Claude's prompt when the panel changed. A click on the panel didn't help either: in the terminal a click presses a button but leaves the keyboard in the box. Now a sent message hands the keys back to the panel, and so does a click on any of its buttons or on the header.

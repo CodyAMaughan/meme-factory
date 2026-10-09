@@ -30,6 +30,15 @@ import {
   topDrafts,
   writerPrompt,
   judgePrompt,
+  imgflipCandidates,
+  serverCandidates,
+  parseCards,
+  knownTemplate,
+  addTemplates,
+  removeTemplates,
+  rankTemplates,
+  shortlistFor,
+  popularity,
 } from '../hooks/lib.js'
 
 const TOOL = 'mcp__meme-factory__make_meme'
@@ -105,6 +114,11 @@ type Rig = {
   desktopShape?: boolean
   // A terminal under 144 columns
   narrow?: boolean
+  // Answer api.imgflip.com/get_memes (and MEMEGEN_URL's /templates/) with these
+  imgflip?: object
+  serverTemplates?: object[]
+  // The cards model's reply for new templates
+  cardsReply?: object
   // How long the chat box's model takes to answer, on the mocked clock
   chatDelay?: number
 }
@@ -112,11 +126,11 @@ type Rig = {
 // Stubs everything the mod reaches: the model, the shell, files, the store, and three
 // connectors: Slack (postable, uploads), Gmail (postable) and Microsoft 365 (Teams search only).
 function factory(on, rig: Rig = {}) {
-  const log = { stdins: [] as string[], ran: [] as string[][], submitted: [] as string[], copied: [] as string[], calls: [] as any[], asked: [] as string[], prompts: [] as string[], models: [] as Array<{ system: string; model: string }>, written: [] as Array<{ path: string; text: string }> }
+  const log = { stdins: [] as string[], ran: [] as string[][], submitted: [] as string[], copied: [] as string[], calls: [] as any[], asked: [] as string[], prompts: [] as string[], models: [] as Array<{ system: string; model: string }>, written: [] as Array<{ path: string; text: string }>, fetched: [] as string[] }
   const saved = new Map<string, unknown>(rig.settings ? [['settings', rig.settings]] : [])
   const clock = mock.clock(on)
   on('session.start', () => ({ cwd: '/work' }))
-  on('env.get', ($, e) => ({ value: ({ HOME: '/Users/test', TERM_PROGRAM: rig.termProgram ?? 'ghostty', ...rig.env } as Record<string, string>)[e.name] }))
+  on('env.get', ($, e) => ({ value: ({ HOME: '/Users/test', TERM_PROGRAM: rig.termProgram ?? 'ghostty', MEMEGEN_URL: 'https://api.memegen.link', ...rig.env } as Record<string, string>)[e.name] }))
   on('tool.register', () => ({ value: undefined }))
   on('command.register', () => ({ value: undefined }))
   // A narrow terminal holds back a pane the mod opens on its own; one you open is placed at any width.
@@ -136,11 +150,24 @@ function factory(on, rig: Rig = {}) {
   on('model.complete', async ($, e) => {
     log.prompts.push(e.prompt)
     log.models.push({ system: String(e.system), model: e.model })
+    if (String(e.prompt).includes('Write a catalog card')) return { value: { isAnswered: true, text: JSON.stringify(rig.cardsReply ?? { cards: [] }), usage: USAGE } }
     if (e.system.includes('judge')) return { value: { isAnswered: true, text: JUDGE_REPLY, usage: USAGE } }
     if (e.system.includes('chat box') && rig.chatDelay) await clock.sleep(rig.chatDelay)
     if (e.system.includes('chat box')) return { value: { isAnswered: true, text: JSON.stringify(rig.chatReply?.(e.prompt) ?? { reply: 'Hi!', action: { type: 'none' } }), usage: USAGE } }
     return { value: { isAnswered: true, text: WRITER_REPLY, usage: USAGE } }
   })
+  if (rig.imgflip || rig.serverTemplates) {
+    on('http.fetch', ($, e) => {
+      log.fetched.push(e.url)
+      if (String(e.url).endsWith('/templates/') && e.init?.headers?.['X-Meme-Factory'] !== 'mf-open-2026') return { value: { status: 403, ok: false, headers: {}, text: '' } }
+      const body =
+        e.url === 'https://api.imgflip.com/get_memes' ? rig.imgflip
+        : e.url === 'https://api.memegen.link/templates/' ? [{ id: 'drake', name: 'Drakeposting', lines: 2 }]
+        : String(e.url).endsWith('/templates/') ? rig.serverTemplates
+        : null
+      return { value: body ? { status: 200, ok: true, headers: {}, text: JSON.stringify(body) } : { status: 404, ok: false, headers: {}, text: '' } }
+    })
+  }
   on('process.run', ($, e) => {
     log.ran.push(e.argv)
     log.stdins.push(e.init?.stdin ?? '')
@@ -335,6 +362,7 @@ test('the browser gallery drives the same flow: chat, pick a channel, confirm', 
     return { value: { code: 0, signal: null } }
   })
   on('http.fetch', ($, e) => {
+    if (!String(e.url).startsWith('http://127.0.0.1')) return { value: { status: 404, ok: false, headers: {}, text: '' } }
     pushed.push({ url: e.url, token: e.init?.headers?.['X-Meme-Token'], body: JSON.parse(e.init?.body ?? '{}') })
     return { value: { status: 204, ok: true, headers: {}, text: '' } }
   })
@@ -853,7 +881,7 @@ test('MEMEGEN_URL and MEMEGEN_API_KEY: memes render on your own server, unwaterm
   expect((link as any)?.props.href ?? '').not.toContain('sekrit')
 })
 
-test('without memegen settings, memes come from api.memegen.link with no key or watermark parameter', async ($, on) => {
+test('with MEMEGEN_URL set to memegen.link, memes come from there with no key or watermark parameter', async ($, on) => {
   const { clock, log } = factory(on)
   await draftsReady($, clock)
   const downloads = log.ran.filter((argv) => argv[0] === 'curl' && argv.includes('-o'))
@@ -972,4 +1000,130 @@ test('desktop-shaped Slack replies (text wrapped as a JSON string) still give ch
   for (let i = 0; i < 5; i++) await clock.settle()
   expect(log.ran.find((argv) => argv.includes('--data-binary'))?.at(-1)).toBe('https://files.slack.com/upload/v1/ABC123')
   expect(await ui.find({ type: 'Text', text: 'Posted to #social' })).toBeDefined()
+})
+
+const IMGFLIP = {
+  success: true,
+  data: {
+    memes: [
+      { id: '2kbn1e', name: 'Surprised Pikachu Two', url: 'https://i.imgflip.com/2kbn1e.jpg', box_count: 2 },
+      { id: '1iruch', name: 'Drake Blank', url: 'https://i.imgflip.com/1iruch.jpg', box_count: 2 },
+      { id: '54hjww', name: 'Trade Offer', url: 'https://i.imgflip.com/54hjww.jpg', box_count: 3 },
+      { id: '65939r', name: 'Megamind no bitches', url: 'https://i.imgflip.com/65939r.jpg', box_count: 2 },
+      { id: 'evil1', name: 'Off-site picture', url: 'https://evil.example.com/x.jpg', box_count: 2 },
+      { id: '3oevdk', name: 'Bernie I Am Once Again Asking For Your Support', url: 'https://i.imgflip.com/3oevdk.jpg', box_count: 2 },
+      { id: '3pdf2w', name: 'Bernie Sanders Once Again Asking', url: 'https://i.imgflip.com/3pdf2w.png', box_count: 2 },
+    ],
+  },
+}
+
+test("Imgflip's popular list adds two-box memes the catalog lacks, once each, from Imgflip's own pictures", () => {
+  const got = imgflipCandidates(IMGFLIP)
+  expect(got.map((t) => t.name)).toEqual(['Surprised Pikachu Two', 'Bernie I Am Once Again Asking For Your Support'])
+  expect(got[0]).toMatchObject({ id: 'imgflip-2kbn1e', lines: 2, background: 'https://i.imgflip.com/2kbn1e.jpg', source: 'imgflip' })
+  // Known under another name, three boxes, crude, or a picture from elsewhere: left out.
+  expect(knownTemplate('Drake Blank')).toBe(true)
+  expect(knownTemplate('Roll Safe Think About It')).toBe(true)
+  expect(imgflipCandidates({ success: false })).toEqual([])
+})
+
+test("your memegen server's own templates join the catalog; the built-in ones aren't repeated", () => {
+  const list = [{ id: 'drake', name: 'Drakeposting', lines: 2 }, { id: 'tradeoffer', name: 'Trade Offer', lines: 3 }, { id: '../x', name: 'Bad', lines: 2 }, { id: 'leftout', name: 'An Upstream One We Skip', lines: 2 }]
+  const got = serverCandidates(list, undefined, [{ id: 'drake' }, { id: 'leftout' }])
+  expect(got).toEqual([{ id: 'tradeoffer', name: 'Trade Offer', lines: 3, source: 'server' }])
+})
+
+test("a card the model can't write is skipped, not guessed; the rest are filled box by box", () => {
+  const cands = [{ id: 'a', name: 'A', lines: 2, source: 'imgflip' }, { id: 'b', name: 'B', lines: 3, source: 'server' }]
+  const cards = parseCards(JSON.stringify({ cards: [{ id: 'a', skip: true }, { id: 'b', shape: 'labeling', core: 'Three labels.', slots: ['one', 'two'], face: 'top', aliases: ['bee'], example: ['x', 'y', 'z'] }] }), cands)
+  expect(cards).toHaveLength(1)
+  expect(cards[0]).toMatchObject({ id: 'b', lines: 3, core: 'Three labels.', slots: ['one', 'two', ''], face: 'top', example: ['x', 'y', 'z'] })
+  expect(parseCards('not json', cands)).toEqual([])
+})
+
+test('new templates reach the writer and render over their own picture; their cards are kept for next time', async ($, on) => {
+  const { clock, log, saved } = factory(on, {
+    imgflip: IMGFLIP,
+    cardsReply: { cards: [{ id: 'imgflip-2kbn1e', shape: 'reaction', core: 'Shock at an obvious outcome.', slots: ['the obvious cause', 'the shocked reaction'], aliases: ['shocked pikachu'], example: ['', ''] }] },
+  })
+  await draftsReady($, clock)
+  expect(log.fetched).toContain('https://api.imgflip.com/get_memes')
+  expect(log.prompts.some((p) => String(p).includes('imgflip-2kbn1e | Surprised Pikachu Two'))).toBe(true)
+  const kept = saved.get('moreTemplates')
+  expect(kept.cards.map((c) => c.id)).toEqual(['imgflip-2kbn1e'])
+  expect(Object.keys(kept.skipped)).toContain('imgflip-3oevdk')
+})
+
+test('an added template renders over its own picture and can be asked for by name', () => {
+  expect(addTemplates([{ id: 'imgflip-test1', name: 'Test Shocked Rodent', lines: 2, background: 'https://i.imgflip.com/test1.jpg', core: 'Shock.', slots: ['', ''], aliases: ['shocked rodent'], example: ['', ''], source: 'imgflip' }])).toBe(1)
+  expect(addTemplates([{ id: 'imgflip-test1', name: 'Again', core: 'x' }])).toBe(0)
+  expect(memeUrl('imgflip-test1', ['a', 'b'])).toBe('https://api.memegen.link/images/custom/a/b.png?background=https%3A%2F%2Fi.imgflip.com%2Ftest1.jpg')
+  expect(templatesNamed('a shocked rodent meme')).toContain('imgflip-test1')
+  expect(writerPrompt({ request: 'x' })[0].text).toContain('imgflip-test1 | Test Shocked Rodent')
+})
+
+test("templates you add to your own memegen server show up, with cards; memegen.link's own don't", async ($, on) => {
+  const { clock, log, saved } = factory(on, {
+    env: { MEMEGEN_URL: 'https://memes.example.com', MEME_FACTORY_IMGFLIP: '0' },
+    serverTemplates: [{ id: 'tradeoffer', name: 'Trade Offer', lines: 2 }, { id: 'drake', name: 'Drakeposting', lines: 2 }],
+    cardsReply: { cards: [{ id: 'tradeoffer', shape: 'binary-choice', core: 'A lopsided deal.', slots: ['what I get', 'what you get'], aliases: ['trade offer'], example: ['', ''] }] },
+  })
+  await draftsReady($, clock)
+  expect(log.fetched).not.toContain('https://api.imgflip.com/get_memes')
+  expect(log.fetched).toContain('https://memes.example.com/templates/')
+  expect(saved.get('moreTemplates').cards).toMatchObject([{ id: 'tradeoffer', source: 'server', origin: 'https://memes.example.com' }])
+  expect(log.prompts.some((p) => String(p).includes('tradeoffer | Trade Offer'))).toBe(true)
+})
+
+test('search: a rare matching word beats a common one, and popularity only decides between matches', () => {
+  addTemplates([
+    { id: 'rk-pika', name: 'Startled Rodent Zz', lines: 3, shape: 'reaction', core: 'Shock at an obvious outcome.', slots: ['', '', ''], aliases: ['zzshocked rodent'], example: ['', '', ''], rank: 900 },
+    { id: 'rk-pika2', name: 'Startled Rodent Zz Two', lines: 2, shape: 'reaction', core: 'Shock at an obvious outcome.', slots: ['', ''], aliases: ['zzshocked rodent'], example: ['', ''], rank: 9 },
+    { id: 'rk-famous', name: 'Extremely Famous Zz', lines: 2, shape: 'binary-choice', core: 'Choosing.', slots: ['', ''], aliases: [], example: ['', ''], rank: 1 },
+  ])
+  const got = rankTemplates('a zzshocked rodent meme', 5)
+  expect(got.slice(0, 2)).toEqual(['rk-pika2', 'rk-pika'])
+  // The most popular template of all, not a match, ranks below both matches.
+  expect(got.indexOf('rk-famous') === -1 || got.indexOf('rk-famous') > 1).toBe(true)
+  expect(popularity({ rank: 1 })).toBe(1)
+  expect(popularity({ rank: 1 })).toBeGreaterThan(popularity({ rank: 500 }))
+  expect(popularity({})).toBeGreaterThan(0)
+})
+
+test("the writer's shortlist: best matches, then the most popular all-rounders, and only those reach the prompt", () => {
+  const ids = shortlistFor('a zzshocked rodent meme', { matches: 5, popular: 3 })
+  expect(ids).toHaveLength(8)
+  expect(ids).toContain('rk-pika2')
+  expect(ids).toContain('rk-famous')
+  const [rules, task] = writerPrompt({ request: 'x', shortlist: ids })
+  expect(rules.cache).toBe(true)
+  expect(rules.text).not.toContain('rk-')
+  expect(task.text).toContain('rk-pika2 | Startled Rodent Zz Two')
+  expect(task.text.split('\n').filter((l) => l.includes(' | ')).length).toBe(8)
+})
+
+test('a template taken back out leaves the catalog, the search and the writer', () => {
+  addTemplates([{ id: 'rm-me', name: 'Zz Removable Meme', lines: 2, shape: 'reaction', core: 'x', slots: ['', ''], aliases: ['zzremovable'], example: ['', ''] }])
+  expect(rankTemplates('zzremovable', 3)[0]).toBe('rm-me')
+  expect(removeTemplates(['rm-me'])).toBe(1)
+  expect(rankTemplates('zzremovable', 3)).not.toContain('rm-me')
+  expect(writerPrompt({ request: 'x' })[0].text).not.toContain('rm-me')
+  // Its name is free again, so the server's own version can join.
+  expect(addTemplates([{ id: 'rm-me-2', name: 'Zz Removable Meme', lines: 2, shape: 'reaction', core: 'x', slots: ['', ''], aliases: [], example: ['', ''] }])).toBe(1)
+})
+
+test("with no MEMEGEN_URL, the Meme Factory's own server is used, asked with the client key", async ($, on) => {
+  const { clock, log } = factory(on, { env: { MEMEGEN_URL: '' }, serverTemplates: [], imgflip: { success: false } })
+  await draftsReady($, clock)
+  expect(log.fetched).toContain('https://memegen-production-ff31.up.railway.app/templates/')
+  const downloads = log.ran.filter((argv) => argv[0] === 'curl' && argv.includes('-o'))
+  expect(downloads.every((argv) => argv.at(-1)!.startsWith('https://memegen-production-ff31.up.railway.app/images/'))).toBe(true)
+})
+
+test("if the Meme Factory's server is down, memes come from memegen.link instead", async ($, on) => {
+  const { clock, log } = factory(on, { env: { MEMEGEN_URL: '' } })
+  await draftsReady($, clock)
+  const downloads = log.ran.filter((argv) => argv[0] === 'curl' && argv.includes('-o'))
+  expect(downloads.length > 0).toBe(true)
+  expect(downloads.every((argv) => argv.at(-1)!.startsWith('https://api.memegen.link/images/'))).toBe(true)
 })

@@ -21,6 +21,20 @@ import {
   configureMemegen,
   downloadParams,
   memegenOrigin,
+  FACTORY_SERVER,
+  FACTORY_CLIENT_KEY,
+  imgflipCandidates,
+  serverCandidates,
+  cardsPrompt,
+  parseCards,
+  addTemplates,
+  removeTemplates,
+  TEMPLATE_BY_ID,
+  sameMemeName,
+  MAX_FULL_CATALOG,
+  shortlistFor,
+  searchPrompt,
+  parseJson,
   jevJudgeBody,
   jevJudgeResult,
   jevPickBody,
@@ -176,12 +190,17 @@ export function register(on) {
       await $.process.run(['rm', '-f', note])
       $.prompt.submit({ text: `[Meme Factory reloaded] ${text}` }).catch(() => {})
     }
-    // Optional: render on your own memegen server, and/or remove the watermark with a key.
+    // The Meme Factory's own memegen server by default (its 1,500 templates, a "Meme Factory"
+    // watermark without a key); MEMEGEN_URL picks another, such as https://api.memegen.link.
+    const chosenServer = await $.env.get('MEMEGEN_URL')
+    usingFactoryServer = !chosenServer
     configureMemegen({
-      url: await $.env.get('MEMEGEN_URL'),
+      url: chosenServer || FACTORY_SERVER,
       key: await $.env.get('MEMEGEN_API_KEY'),
       watermark: await $.env.get('MEMEGEN_WATERMARK'),
     })
+    // After configureMemegen, so your server's templates are looked up too.
+    moreTemplates($).catch((err) => dlog($, `more templates: ${err?.message ?? err}`))
     await $.tool.register({
       name: 'make_meme',
       description:
@@ -277,7 +296,7 @@ export function register(on) {
 
   on('tool.call', { tool: 'mcp__meme-factory__meme_factory_debug' }, async ($, e) => {
     const action = String(e.action ?? 'status')
-    if (action === 'refresh') await refreshConnectors($, true)
+    if (action === 'refresh') await Promise.all([refreshConnectors($, true), moreTemplates($, true).catch((err) => dlog($, `more templates: ${err?.message ?? err}`))])
     let upload = undefined
     if (action === 'upload_check') upload = await uploadCheck($)
     if (action === 'approve' && job.status === 'review') await approve($, job.selected)
@@ -427,12 +446,14 @@ async function cook($, id, previous, latest = '') {
     let templateIds = lock ? [lock] : newFormat ? null : [...new Set([previous.template_id, ...job.drafts.map((d) => d.template_id)])].slice(0, 3)
     if (!lock && named.length && previous) templateIds = [...new Set([...named, ...(templateIds ?? job.drafts.map((d) => d.template_id))])].slice(0, 3)
     else if (!lock && named.length) templateIds = null
-    if (!templateIds && !named.length && jevKey) templateIds = await jevPick($, jevKey, job.request)
+    // A big catalog: the writer sees a shortlist for this joke instead of every template.
+    const shortlist = !templateIds && TEMPLATE_BY_ID.size > MAX_FULL_CATALOG ? await searchShortlist($, job) : null
+    if (!templateIds && !named.length && jevKey) templateIds = await jevPick($, jevKey, job.request, shortlist)
 
     const written = await complete(
       $,
       WRITER_SYSTEM,
-      writerPrompt({ request: job.request, context: job.context, feedback: job.feedback, previous, templateIds, mustUse: templateIds ? [] : named, exact, variations: Boolean(lock) }),
+      writerPrompt({ request: job.request, context: job.context, feedback: job.feedback, previous, templateIds, mustUse: templateIds ? [] : named, exact, variations: Boolean(lock), shortlist }),
       2000,
     )
     if (id !== seq) return
@@ -519,8 +540,8 @@ async function checkPictures($, id, exact) {
 // MEME_FACTORY_WRITER_MODEL / _JUDGE_MODEL / _CHAT_MODEL, or MEME_FACTORY_MODEL for all three,
 // override either preset. Every call runs on the session's own credentials.
 const MODELS = {
-  best: { writer: 'opus', judge: 'sonnet', chat: 'sonnet' },
-  fast: { writer: 'sonnet', judge: 'sonnet', chat: 'sonnet' },
+  best: { writer: 'opus', judge: 'sonnet', chat: 'sonnet', search: 'haiku' },
+  fast: { writer: 'sonnet', judge: 'sonnet', chat: 'sonnet', search: 'haiku' },
 }
 
 async function complete($, system, prompt, maxTokens, role = 'writer') {
@@ -539,9 +560,103 @@ async function complete($, system, prompt, maxTokens, role = 'writer') {
   throw new Error(`The model didn't answer${reply?.reason ? `: ${reply.reason}` : ''}`)
 }
 
-async function jevPick($, key, request) {
+// More templates than the built-in catalog:
+// - your own memegen server's (MEMEGEN_URL): every template it has that memegen.link doesn't,
+//   read each session, with the card it serves (card.json) when it has one;
+// - Imgflip's popular list, checked once a day: top-and-bottom memes the catalog lacks.
+// A template without a card gets one from the model, once, kept in the store; a meme the model
+// didn't know is asked about again after a month. MEME_FACTORY_IMGFLIP=0 leaves Imgflip out.
+const MORE_EVERY = 24 * 60 * 60 * 1000
+const RETRY_SKIPPED = 30 * MORE_EVERY
+const CARDS_VERSION = 2
+let usingFactoryServer = false
+let moreSummary = { served: 0, cards: 0, skipped: 0, checked: null }
+
+async function serverTemplates($) {
+  if (memegenOrigin() === 'https://api.memegen.link') return []
+  const get = (url) =>
+    $.http.fetch(url, { headers: { 'X-Meme-Factory': FACTORY_CLIENT_KEY } }).catch((err) => ({ ok: false, status: String(err?.message ?? err).slice(0, 160) }))
+  // A server that sleeps when idle (Railway) can take longer than a fetch allows to wake: ask twice.
+  const list = async () => {
+    const first = await get(`${memegenOrigin()}/templates/`)
+    return first.ok ? first : get(`${memegenOrigin()}/templates/`)
+  }
+  const [res, upstream] = await Promise.all([list(), get('https://api.memegen.link/templates/')])
+  if (!res?.ok || !upstream?.ok) {
+    dlog($, `more templates: couldn't list templates (${memegenOrigin()}: ${res?.status}; memegen.link: ${upstream?.status})`)
+    // The Meme Factory server is down: draw on memegen.link instead, with the built-in templates.
+    if (usingFactoryServer && !res?.ok) {
+      configureMemegen({ url: 'https://api.memegen.link', key: MEMEGEN.key, watermark: MEMEGEN.watermark })
+      dlog($, 'more templates: the Meme Factory server is unreachable; using memegen.link for now')
+    }
+    return []
+  }
+  return serverCandidates(JSON.parse(res.text), undefined, JSON.parse(upstream.text)).map((t) => ({ ...t, origin: memegenOrigin() }))
+}
+
+async function moreTemplates($, force = false) {
+  // A new CARDS version rewrites every card (when the prompt that writes them improves).
+  const stored = (await $.store.get('moreTemplates')) ?? {}
+  const kept = stored.version === CARDS_VERSION ? stored : {}
+  const cards = Array.isArray(kept.cards) ? kept.cards : []
+  const now = Date.now()
+  const skipped = Object.fromEntries(Object.entries(kept.skipped && !Array.isArray(kept.skipped) ? kept.skipped : {}).filter(([, at]) => now - at < RETRY_SKIPPED))
+  const imgflipOn = (await $.env.get('MEME_FACTORY_IMGFLIP')) !== '0'
+  const usable = (t) => (t.source === 'imgflip' ? imgflipOn : t.origin === memegenOrigin())
+
+  // Your server first, so an Imgflip template it also has (by name) gives way to its version.
+  const server = await serverTemplates($)
+  const ready = server.filter((t) => t.core)
+  const fromServer = (t) => t.source === 'imgflip' && ready.some((r) => sameMemeName(r.name, t.name))
+  // An Imgflip copy that loaded earlier (while the server was asleep) gives way now.
+  removeTemplates(cards.filter((t) => fromServer(t)).map((t) => t.id))
+  const served = addTemplates(ready)
+  addTemplates(cards.filter(usable).filter((t) => !fromServer(t)))
+
+  const due = force || !kept.checked || now - kept.checked >= MORE_EVERY || kept.origin !== memegenOrigin()
+  const fresh = server.filter((t) => !t.core)
+  if (due && imgflipOn) {
+    const res = await $.http.fetch('https://api.imgflip.com/get_memes').catch(() => null)
+    if (res?.ok) fresh.push(...imgflipCandidates(JSON.parse(res.text)).filter((t) => !fromServer(t)))
+  }
+  const ask = fresh.filter((t) => !skipped[t.id] && !cards.some((c) => c.id === t.id)).slice(0, 60)
+  // Fifteen at a time, so a long answer isn't cut off mid-card.
+  const made = []
+  for (let i = 0; i < ask.length; i += 15) {
+    const batch = ask.slice(i, i + 15)
+    try {
+      const got = parseCards(await complete($, 'You know how every popular meme template is used. Reply with JSON only.', cardsPrompt(batch), 6000, 'judge'), batch)
+      made.push(...got)
+      for (const t of batch) if (!got.some((m) => m.id === t.id)) skipped[t.id] = now
+    } catch (err) {
+      dlog($, `more templates: cards failed (${err?.message ?? err})`)
+    }
+  }
+  const all = [...cards, ...made]
+  if (due || made.length) await $.store.set('moreTemplates', { version: CARDS_VERSION, checked: due ? now : kept.checked, origin: memegenOrigin(), cards: all, skipped })
+  const added = addTemplates(made.filter(usable))
+  moreSummary = { served: ready.length, cards: all.length, skipped: Object.keys(skipped).length, checked: due ? now : kept.checked ?? null }
+  dlog($, `more templates: ${served} from your server, ${ask.length} asked, ${made.length} new cards, ${added} added (${TEMPLATE_BY_ID.size} in all)`)
+  if (added || served) changed($)
+}
+
+// Query understanding, then retrieval: a quick model says what kind of joke this is and what the
+// right picture would show, and those words join the request for the search.
+async function searchShortlist($, job) {
+  let extra = ''
   try {
-    const res = await $.http.fetch(JEV_URL, { method: 'POST', headers: jevHeaders(key), body: jevPickBody(request) })
+    const answer = await complete($, 'You match jokes to meme templates. Reply with JSON only.', searchPrompt(job.request, job.context), 300, 'search')
+    const q = parseJson(answer)
+    extra = [q?.shape, ...(Array.isArray(q?.words) ? q.words : [])].filter((w) => typeof w === 'string').join(' ').slice(0, 400)
+  } catch {}
+  const ids = shortlistFor(`${job.request} ${job.context ?? ''} ${extra}`)
+  debug($, 'search', { extra, shortlist: ids.slice(0, 12) })
+  return ids
+}
+
+async function jevPick($, key, request, shortlist = null) {
+  try {
+    const res = await $.http.fetch(JEV_URL, { method: 'POST', headers: jevHeaders(key), body: jevPickBody(request, shortlist) })
     return res.ok ? jevPickResult(res.text) : null
   } catch {
     return null
@@ -844,6 +959,7 @@ async function debugStatus($, upload) {
     inBand,
     poster: poster ? { agentId: poster.agentId } : null,
     memegen: memegenOrigin(),
+    templates: { total: TEMPLATE_BY_ID.size, ...moreSummary },
     ...(upload ? { upload } : {}),
     log: recentLines.slice(-30),
   }
@@ -996,7 +1112,7 @@ async function act($, action) {
   }
 }
 
-const TEMPLATE_IDS = new Set(TEMPLATES.map((t) => t.id))
+const TEMPLATE_IDS = { has: (id) => TEMPLATE_BY_ID.has(id) }
 
 // ---------- Browser gallery ----------
 
