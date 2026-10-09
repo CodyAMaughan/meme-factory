@@ -563,6 +563,18 @@ export function hash(s) {
 
 // ---------- Picture check ----------
 
+// A hook the picture-check agent carries: it approves the agent's reads inside the mod's own
+// cache folder, so nobody has to add a permission rule. Everything else goes through the
+// person's normal permissions.
+export function readCacheHook(dir) {
+  if (!/^[\w./ -]+$/.test(dir)) return undefined
+  const allow = JSON.stringify({
+    hookSpecificOutput: { hookEventName: 'PreToolUse', permissionDecision: 'allow', permissionDecisionReason: 'Meme Factory reads its own rendered memes' },
+  })
+  const command = `i=$(cat); case "$i" in *..*) ;; *'"file_path":"${dir}/'*) printf '%s' '${allow}' ;; esac`
+  return { PreToolUse: [{ matcher: 'Read', hooks: [{ type: 'command', command, timeout: 10 }] }] }
+}
+
 // The system prompt of the picture-check agent: it reads each rendered meme (the Read tool
 // shows images to the model) and flags text that hides something or can't be read.
 export const REVIEW_SYSTEM = `You check rendered memes before anyone sees them. Judge only the picture, never the joke. Imagine each one shown about 400 pixels wide in a chat app.

@@ -36,6 +36,7 @@ import {
   sizedUrl,
   makeDraft,
   REVIEW_SYSTEM,
+  readCacheHook,
   reviewPrompt,
   parseReview,
   applyReview,
@@ -88,7 +89,7 @@ function debug($, step, data = {}) {
 }
 // The browser gallery: a local server the mod spawns on demand, { token, port, ready }.
 let gallery = null
-let settings = { askBeforePost: true, signature: true, quality: 'best', checkPictures: false, favorites: [] }
+let settings = { askBeforePost: true, signature: true, quality: 'best', checkPictures: true, favorites: [] }
 
 function freshJob() {
   return {
@@ -151,6 +152,7 @@ export function register(on) {
         tools: ['Read'],
         model: 'sonnet',
         maxTurns: 8,
+        hooks: readCacheHook(cacheDir),
       })
       .catch(() => {})
     // Register commands last: a taken name throws and skips the rest of the hook.
@@ -819,7 +821,7 @@ function cleanSettings(stored) {
     askBeforePost: typeof s.askBeforePost === 'boolean' ? s.askBeforePost : true,
     signature: typeof s.signature === 'boolean' ? s.signature : true,
     quality: s.quality === 'fast' ? 'fast' : 'best',
-    checkPictures: s.checkPictures === true,
+    checkPictures: s.checkPictures !== false,
     favorites: (Array.isArray(s.favorites) ? s.favorites : [])
       .filter((f) => f && typeof f === 'object' && typeof f.label === 'string' && f.label.trim())
       .map((f) => ({
@@ -1026,7 +1028,7 @@ function checkNote(el) {
   const c = job.check
   if (!c) return []
   if (c.state === 'running') return [el.Text({ dimColor: true, wrap: 'truncate-end', children: ['Checking how the pictures read…'] })]
-  if (c.state === 'blocked') return [el.Text({ dimColor: true, wrap: 'truncate-end', children: ["Picture check couldn't read the images: allow Read on ~/.cache/meme-factory"] })]
+  if (c.state === 'blocked') return [el.Text({ dimColor: true, wrap: 'truncate-end', children: ["Picture check couldn't read the images, so the drafts are unchecked"] })]
   if (c.state === 'done' && c.fixed) return [el.Text({ color: 'success', wrap: 'truncate-end', children: [`✓ Adjusted ${c.fixed} ${c.fixed === 1 ? 'box' : 'boxes'} so ${c.fixed === 1 ? 'it reads' : 'they read'}`] })]
   return []
 }

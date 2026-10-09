@@ -13,6 +13,7 @@ import {
   quotedText,
   keepShort,
   parseReview,
+  readCacheHook,
   applyReview,
   makeDraft,
   fitsBudget,
@@ -554,4 +555,16 @@ test('the gallery picker: a meme picked first is used for the next one, and in r
   await clock.settle()
   const writer = String(log.prompts.filter((p) => String(p).includes('"shape"')).at(-1))
   expect(writer).toMatch(/Use only chloe \(Side-Eyeing Chloe/)
+})
+
+test("the picture check approves its own reads: only Read, only inside the cache, never with '..'", () => {
+  const hook = readCacheHook('/Users/me/.cache/meme-factory')
+  const [entry] = hook.PreToolUse
+  expect(entry.matcher).toBe('Read')
+  const { command } = entry.hooks[0]
+  expect(command).toContain(`*'"file_path":"/Users/me/.cache/meme-factory/'*`)
+  expect(command).toContain('*..*) ;;')
+  expect(command).toContain('"permissionDecision":"allow"')
+  // A folder name the shell pattern can't hold safely gets no hook at all.
+  expect(readCacheHook("/Users/o'brien/.cache/meme-factory")).toBeUndefined()
 })

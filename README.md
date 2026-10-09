@@ -54,17 +54,11 @@ Inside a session, `/plugin install meme-factory --marketplace CodyAMaughan/meme-
 
 Drafts are short on purpose: one-liners, at most six words a box, and four in the narrow label boxes of memes like Distracted Boyfriend. Every template carries a card that says what kind of joke it tells and what each box is for, and the writer picks the meme whose idea fits your joke before it writes a word.
 
-### The picture check (optional)
+### The picture check
 
-Turn on **Check the pictures** in the gallery's **Settings → Drafting** (or set `MEME_FACTORY_CHECK_PICTURES=1`). After the drafts land, a helper agent looks at each rendered meme and fixes text that covers a face or is too small to read: it shortens that box, or moves the text above the picture. It runs behind the drafts, so nothing waits on it, and it uses your plan like the rest.
+After the drafts land, a helper agent looks at each rendered meme and fixes text that covers a face or is too small to read: it shortens that box, or moves the text above the picture. It runs behind the drafts, so nothing waits on it, and it uses your plan like the rest. There's nothing to set up: the helper may read only the mod's own pictures in `~/.cache/meme-factory`, and it approves those reads itself.
 
-The helper needs to read the pictures in `~/.cache/meme-factory`. Allow that once in `~/.claude/settings.json`:
-
-```json
-{ "permissions": { "allow": ["Read(~/.cache/meme-factory/**)"] } }
-```
-
-Without the rule, the panel says the check couldn't read the images, and everything else works as before.
+To skip it, turn off **Check the pictures** in the gallery's **Settings → Drafting**.
 
 <table>
   <tr>
@@ -136,7 +130,7 @@ Drafts cook in the background, so the default spends the extra seconds on funnie
 | `MEME_FACTORY_CHAT_MODEL` | The chat box |
 | `MEME_FACTORY_MODEL` | All three |
 
-Two more switches: `MEME_FACTORY_CHECK_PICTURES=1` turns on the [picture check](#the-picture-check-optional), and `MEME_FACTORY_DEBUG=1` logs each step of the drafting pipeline (models, timings, the drafts kept, the picture check) to `~/.cache/meme-factory/debug.json`, which helps with bug reports.
+Two more switches: `MEME_FACTORY_CHECK_PICTURES=1` forces the [picture check](#the-picture-check) on, and `MEME_FACTORY_DEBUG=1` logs each step of the drafting pipeline (models, timings, the drafts kept, the picture check) to `~/.cache/meme-factory/debug.json`, which helps with bug reports.
 
 Posting settings, favorites and the drafting choice live in the gallery's **Settings** tab.
 
