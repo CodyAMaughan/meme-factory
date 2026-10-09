@@ -342,7 +342,7 @@ export const DESTINATIONS = [
   { key: 'linkedin', label: 'LinkedIn', match: /linkedin/ },
   { key: 'x', label: 'X', match: /twitter|tweet|\bx\.com\b|post_to_x/ },
   { key: 'discord', label: 'Discord', match: /discord/ },
-  { key: 'teams', label: 'Teams', match: /microsoft teams|\bteams\b/ },
+  { key: 'teams', label: 'Teams', match: /microsoft teams|\bms teams\b/ },
   { key: 'email', label: 'Email', match: /gmail|outlook|e-?mail/ },
 ]
 
@@ -357,7 +357,8 @@ export function postingConnectors(tools) {
   for (const t of tools ?? []) {
     if (!t?.mcp) continue
     const m = /^mcp__(.+?)__(.+)$/.exec(String(t.name))
-    if (!m || m[1] === 'meme-factory') continue
+    // The desktop app's own tools (ccd_*) and this mod's are never posting connectors.
+    if (!m || m[1] === 'meme-factory' || m[1].startsWith('ccd_')) continue
     const s = servers.get(m[1]) ?? { prefix: `mcp__${m[1]}__`, names: [], text: '' }
     s.names.push(m[2])
     s.text += ` ${m[2]} ${t.description ?? ''}`.toLowerCase()
@@ -380,10 +381,20 @@ export function postingConnectors(tools) {
 // { result }, { content: [{ text }] } or plain text depending on the host.
 export function resultText(value) {
   const out = []
-  const walk = (v) => {
-    if (typeof v === 'string') out.push(v)
-    else if (Array.isArray(v)) v.forEach(walk)
-    else if (v && typeof v === 'object') Object.values(v).forEach(walk)
+  const walk = (v, depth = 0) => {
+    // The desktop app wraps connector text one level deeper, as a JSON string ('{"result":"..."}'):
+    // unwrap it, so its line breaks are real and the same parsers work everywhere.
+    if (typeof v === 'string') {
+      const t = v.trim()
+      if (depth < 4 && (t.startsWith('{') || t.startsWith('['))) {
+        try {
+          return walk(JSON.parse(t), depth + 1)
+        } catch {}
+      }
+      out.push(v)
+    }
+    else if (Array.isArray(v)) v.forEach((x) => walk(x, depth))
+    else if (v && typeof v === 'object') Object.values(v).forEach((x) => walk(x, depth))
   }
   walk(value)
   return out.join('\n')
@@ -394,7 +405,8 @@ export function parseSlackChannels(text) {
   const channels = []
   const re = /###\s+#([^\s]+)\s*\n-\s+\*\*ID:\*\*\s+([CG][A-Z0-9]+)/g
   let m
-  while ((m = re.exec(text))) channels.push({ id: m[2], name: m[1] })
+  // The same reply can carry the list twice (the desktop app's wrapper): keep each channel once.
+  while ((m = re.exec(text))) if (!channels.some((c) => c.id === m[2])) channels.push({ id: m[2], name: m[1] })
   return channels
 }
 

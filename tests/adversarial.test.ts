@@ -105,7 +105,7 @@ function factory(on, rig: Rig = {}) {
     return { value: { exitCode: 0, stdout: isUpload ? 'OK - 323850' : '', stderr: '' } }
   })
   on('fs.read', ($, e) => ({ value: { base64: /\.png(\.part)?$/.test(e.path) ? pngHeader(...(rig.png ?? [600, 400])).toBase64() : 'SlBFRw==' } }))
-  on('fs.exists', () => ({ value: true }))
+  on('fs.exists', ($, e) => ({ value: !String(e.path).includes('.reload-note') }))
   on('fs.stat', () => ({ value: { kind: 'file', size: 323850, mtimeMs: 0, isLink: false } }))
   on('tool.list', () => ({
     value: [

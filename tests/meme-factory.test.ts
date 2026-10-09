@@ -81,6 +81,10 @@ type Rig = {
   env?: Record<string, string>
   // Leave Slack's tools out of $.tool.list, as the desktop app can for on-demand tools
   slackUnlisted?: boolean
+  // Answer the mod's own Slack calls with a refusal, as auto mode does in the desktop app
+  slackDenied?: boolean
+  // Wrap Slack's replies the way the desktop app does: [{ type: 'text', text: '{"result":"..."}' }]
+  desktopShape?: boolean
 }
 
 // Stubs everything the mod reaches: the model, the shell, files, the store, and three
@@ -95,6 +99,7 @@ function factory(on, rig: Rig = {}) {
   on('command.register', () => ({ value: undefined }))
   on('ui.open', () => ({ value: { isPlaced: true } }))
   on('ui.toast', () => ({ value: undefined }))
+  on('ui.log', () => ({ value: undefined }))
   on('ui.copy', ($, e) => {
     log.copied.push(e.text)
     return { value: { isCopied: true } }
@@ -114,7 +119,7 @@ function factory(on, rig: Rig = {}) {
     return { value: { exitCode: 0, stdout: isUpload ? 'OK - 323850' : '', stderr: '' } }
   })
   on('fs.read', ($, e) => ({ value: { base64: /\.png(\.part)?$/.test(e.path) ? pngHeader().toBase64() : 'SlBFRw==' } }))
-  on('fs.exists', () => ({ value: true }))
+  on('fs.exists', ($, e) => ({ value: !String(e.path).includes('.reload-note') }))
   on('fs.stat', () => ({ value: { kind: 'file', size: 323850, mtimeMs: 0, isLink: false } }))
   on('tool.list', () => ({
     value: [
@@ -133,9 +138,11 @@ function factory(on, rig: Rig = {}) {
       return { result: { answers: { [e.questions[0].question]: 'Post it' } } }
     }
     log.calls.push(e)
-    if (e.tool === `${SLACK}slack_list_user_channels`) return { result: CHANNELS_REPLY }
-    if (e.tool === `${SLACK}slack_get_file_upload_url`) return { result: TICKET_REPLY }
-    if (e.tool === `${SLACK}slack_complete_file_upload`) return { result: DONE_REPLY }
+    if (rig.slackDenied && String(e.tool).startsWith(SLACK)) return { deny: 'The server-side auto mode classifier gave no verdict for this action.' }
+    const wrap = (text) => (rig.desktopShape ? [{ type: 'text', text: JSON.stringify({ result: text }) }] : text)
+    if (e.tool === `${SLACK}slack_list_user_channels`) return { result: wrap(CHANNELS_REPLY) }
+    if (e.tool === `${SLACK}slack_get_file_upload_url`) return { result: wrap(TICKET_REPLY) }
+    if (e.tool === `${SLACK}slack_complete_file_upload`) return { result: wrap(DONE_REPLY) }
     return { result: 'sent' }
   })
   on('store.get', ($, e) => ({ value: saved.get(e.key) }))
@@ -650,4 +657,46 @@ test('compared and stacked memes ask for parallel boxes, and the judge rewards t
   const judged = judgePrompt('software factories vs meme factories', [makeDraft('drake', ['Software Factory', 'Meme Factory'], 0)!])
   expect(judged).toContain('Drakeposting (shape binary-choice.')
   expect(judged).toMatch(/one word swapped, earn the full 3/)
+})
+
+test('a refused Slack lookup shows why in the panel, with ways forward, instead of no Slack', async ($, on) => {
+  const { clock, log } = factory(on, { slackDenied: true })
+  await draftsReady($, clock)
+  const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
+  await ui.press({ key: 'approve' })
+  for (let i = 0; i < 5; i++) await clock.settle()
+  expect(await ui.find({ type: 'Text', text: /Slack is connected, but its channels didn't load: Claude Code blocked slack_list_user_channels: The server-side auto mode classifier/ })).toBeDefined()
+  expect(await ui.find({ key: 'slack-retry' })).toBeDefined()
+  await ui.press({ key: 'slack-claude' })
+  expect(log.submitted.at(-1)).toContain('wants it posted to: Slack')
+  const report = JSON.parse((await $.tool.call({ tool: 'mcp__meme-factory__meme_factory_debug', tool_use_id: 'd1', action: 'status' })).result)
+  expect(report.slack).toMatchObject({ via: 'tool list' })
+  expect(report.channels).toEqual([])
+  expect(report.slackProblem).toMatch(/auto mode classifier/)
+  expect(report.log.some((l) => l.includes('slack channels failed'))).toBe(true)
+})
+
+test("the mod approves only its own Slack calls: channels and upload URL always, the share only while posting", async ($, on) => {
+  const { clock } = factory(on)
+  on('tool.check', () => ({ decision: 'ask' }))
+  await draftsReady($, clock)
+  const own = (tool) => $.tool.check({ tool: `${SLACK}${tool}`, input: {} })
+  // Calls the test makes come from the test, not the mod: the mod leaves them alone.
+  expect((await own('slack_list_user_channels')).decision).toBe('ask')
+})
+
+test('desktop-shaped Slack replies (text wrapped as a JSON string) still give channels, an upload and a link', async ($, on) => {
+  const { clock, log } = factory(on, { desktopShape: true })
+  await draftsReady($, clock)
+  const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
+  await ui.press({ key: 'approve' })
+  for (let i = 0; i < 5; i++) await clock.settle()
+  expect(await ui.find({ key: 'ch-C0C5HB6PETU' })).toMatchObject({ props: { label: '#social' } })
+  expect(await ui.find({ type: 'Text', text: /channels didn't load/ })).toBeUndefined()
+  await ui.press({ key: 'ch-C0C5HB6PETU' })
+  await ui.press({ key: 'post' })
+  await ui.press({ key: 'confirm' })
+  for (let i = 0; i < 5; i++) await clock.settle()
+  expect(log.ran.find((argv) => argv.includes('--data-binary'))?.at(-1)).toBe('https://files.slack.com/upload/v1/ABC123')
+  expect(await ui.find({ type: 'Text', text: 'Posted to #social' })).toBeDefined()
 })
