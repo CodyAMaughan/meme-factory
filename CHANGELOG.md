@@ -2,6 +2,17 @@
 
 All notable changes to Meme Factory. Versions follow [semantic versioning](https://semver.org).
 
+## 0.8.2 (2026-10-09)
+
+- **Slack works in the desktop app, for real this time.** Two causes, both found by testing inside the desktop app:
+  - In auto mode, the mod's own Slack calls (the channel list and the upload steps) were refused, because auto mode's classifier had no request of yours to judge them against. The mod now approves exactly those calls of its own; the final share only after you press **Post it**.
+  - The desktop app wraps a connector's reply text as a JSON string, so the channel list parsed as empty. Replies are unwrapped now, and each channel is listed once.
+- When Slack's channels can't load, the panel says why, with **Try again** and **Ask Claude to post it**, instead of showing no Slack.
+- "Teams" no longer appears from the desktop app's own tools mentioning "agent teams".
+- **Troubleshooting:** a `meme_factory_debug` tool reports connectors, channels, the last problem and a short log, can re-check them, and can test Slack's upload steps without sharing anything. `MEME_FACTORY_DEBUG=1` also writes each step to the transcript.
+
+Tested in the Claude desktop app (auto mode), in Ghostty (auto mode) and in a default-mode terminal session.
+
 ## 0.8.1 (2026-10-09)
 
 - **Slack shows up in the desktop app.** The desktop app can leave on-demand connector tools out of the tool list a mod sees, so the panel offered no Slack channels. The mod now asks the Slack connector for your channels by name when it isn't listed. You may get a one-time permission prompt for Slack.
