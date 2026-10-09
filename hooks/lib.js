@@ -347,6 +347,7 @@ export function galleryState(job, connectors, settings) {
   const strip = (d) => d && { id: d.id, template_name: d.template_name, lines: d.lines, url: d.url, score: d.score }
   return {
     status: job.status,
+    stage: job.stage,
     note: job.note,
     error: job.error,
     request: job.request,
@@ -371,11 +372,26 @@ export function pngSize(bytes) {
   return { width: v.getUint32(16), height: v.getUint32(20) }
 }
 
-// Terminal cells are about twice as tall as they are wide.
-export function imageCells({ width, height }, maxColumns) {
-  const columns = Math.max(8, Math.min(255, maxColumns))
-  const rows = Math.max(4, Math.min(255, Math.round((columns * height) / width / 2)))
+// Terminal cells are about twice as tall as they are wide. A picture taller than maxRows
+// narrows to fit, so the actions and chat under it stay on screen.
+export function imageCells({ width, height }, maxColumns, maxRows = 255) {
+  const rowsFor = (c) => Math.round((c * height) / width / 2)
+  let columns = Math.max(8, Math.min(255, maxColumns))
+  if (rowsFor(columns) > maxRows) columns = Math.max(8, Math.floor((maxRows * 2 * width) / height))
+  const rows = Math.max(4, Math.min(255, maxRows, rowsFor(columns)))
   return { columns, rows }
+}
+
+// Template names short enough that three draft tabs fit on one 60-column line.
+export function shortName(name, max = 12) {
+  const s = String(name ?? '').trim()
+  if (s.length <= max) return s
+  let out = ''
+  for (const w of s.split(/\s+/)) {
+    if ((out ? out.length + 1 : 0) + w.length > max) break
+    out = out ? `${out} ${w}` : w
+  }
+  return out || `${s.slice(0, max - 1)}…`
 }
 
 export function svgForJpeg(base64, alt) {

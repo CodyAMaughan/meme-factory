@@ -6,6 +6,7 @@ import {
   memeUrl,
   parseJson,
   pngSize,
+  shortName,
   postingConnectors,
   resolveDestination,
   topDrafts,
@@ -144,12 +145,16 @@ test('Claude asks for a meme: the tool returns at once and the drafts cook in th
 
   const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
   expect(await ui.find({ type: 'Text', text: /Writing captions/ })).toBeDefined()
+  expect(await ui.find({ type: 'Text', text: '● Write' })).toBeDefined()
+  expect(await ui.find({ type: 'Text', text: '○ Render' })).toBeDefined()
   await ui.unmount()
   await clock.settle()
 
   const review = await $.ui.mount({ ...PANE, surface: 'terminal' })
-  expect(await review.find({ key: 'draft-0' })).toMatchObject({ props: { label: 'Drakeposting' } })
-  expect(await review.find({ key: 'draft-1' })).toMatchObject({ props: { label: 'This is Fine' } })
+  // The pick lives in the label (● / ○) with the judge's score, since a Button can't be bold
+  expect((await review.find({ key: 'draft-0' }))?.props.label).toMatch(/^● Drakeposting \d+$/)
+  expect((await review.find({ key: 'draft-1' }))?.props.label).toMatch(/^○ This is Fine/)
+  expect(await review.find({ type: 'Text', text: ' MEME FACTORY ' })).toMatchObject({ props: { inverse: true } })
   expect(await review.find({ type: 'Text', text: 'everyone reads their Jira tickets aloud' })).toBeDefined()
   // A real picture in the terminal: the Image element reads the cached PNG, keeping its 3:2 shape
   const image = await review.find({ type: 'Image' })
@@ -170,11 +175,14 @@ test('approve, pick a real Slack channel, confirm, and the mod uploads the image
   // Real destinations: the person's Slack channels, Gmail through Claude, no Teams (read-only search)
   expect(await ui.find({ key: 'ch-C0C524GFGCF' })).toMatchObject({ props: { label: '#all-maughanco' } })
   expect(await ui.find({ key: 'ch-C0C5HB6PETU' })).toMatchObject({ props: { label: '#social' } })
-  expect(await ui.find({ key: 'other-Email' })).toBeDefined()
-  expect(await ui.find({ key: 'other-Teams' })).toBeUndefined()
-  expect(await ui.find({ key: 'post-slack' })).toBeUndefined()
+  const values = ((await ui.find({ key: 'post-to' }))?.props.options ?? []).map((o: any) => o.value)
+  expect(values).toEqual(['slack:C0C524GFGCF', 'slack:C0C5HB6PETU', 'claude:Email', 'add'])
+  expect(await ui.find({ key: 'post' })).toMatchObject({ props: { label: 'Post to #all-maughanco' } })
 
+  // A quick pick chooses; p posts (after the confirm)
   await ui.press({ key: 'ch-C0C5HB6PETU' })
+  expect(log.calls.some((c) => c.tool === `${SLACK}slack_get_file_upload_url`)).toBe(false)
+  await ui.press({ key: 'post' })
   expect(await ui.find({ type: 'Text', text: 'Post to #social on Slack?' })).toBeDefined()
   expect(log.calls.some((c) => c.tool === `${SLACK}slack_complete_file_upload`)).toBe(false)
 
@@ -193,8 +201,10 @@ test('approve, pick a real Slack channel, confirm, and the mod uploads the image
   // The mod's own Slack calls skip the Claude-side gate: the panel's Post it was the approval
   expect(log.asked.length).toBe(0)
   expect(log.submitted.length).toBe(0)
-  expect(await ui.find({ type: 'Text', text: 'Posted to #social' })).toBeDefined()
-  expect(await ui.find({ type: 'Text', text: 'https://maughanco.slack.com/files/U0/F0TESTFILE1/drake-meme.png' })).toBeDefined()
+  expect(await ui.find({ type: 'Text', text: '✓ Posted to #social on Slack' })).toBeDefined()
+  // The terminal prints a Link's whole URL, so the message link is a button that opens the browser
+  await ui.press({ key: 'open-slack' })
+  expect(log.ran.some((argv) => argv[0] === 'open' && argv[1] === 'https://maughanco.slack.com/files/U0/F0TESTFILE1/drake-meme.png')).toBe(true)
 
   await ui.press({ key: 'favorite' })
   expect((saved.get('settings') as any).favorites).toEqual([{ label: '#social', target: '#social on Slack', channelId: 'C0C5HB6PETU', channelName: 'social' }])
@@ -205,12 +215,12 @@ test('with ask-before-posting off, picking a channel posts straight away', async
   await draftsReady($, clock)
   const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
   await ui.press({ key: 'approve' })
-  await ui.press({ key: 'ch-C0C524GFGCF' })
+  await ui.press({ key: 'post' })
   await clock.settle()
   const done = log.calls.find((c) => c.tool === `${SLACK}slack_complete_file_upload`)
   expect(done).toMatchObject({ channel_id: 'C0C524GFGCF' })
   expect(done.initial_comment).toBeUndefined()
-  expect(await ui.find({ type: 'Text', text: 'Posted to #all-maughanco' })).toBeDefined()
+  expect(await ui.find({ type: 'Text', text: '✓ Posted to #all-maughanco on Slack' })).toBeDefined()
 })
 
 test('the chat box understands "use 2 and post it to #social"', async ($, on) => {
@@ -224,9 +234,10 @@ test('the chat box understands "use 2 and post it to #social"', async ($, on) =>
   const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
   await ui.input({ key: 'chat', text: 'use 2 and post it to #social' })
   await clock.settle()
-  expect(await ui.find({ type: 'Text', text: 'you: use 2 and post it to #social' })).toBeDefined()
-  expect(await ui.find({ type: 'Text', text: 'factory: Draft 2 it is, headed for #social.' })).toBeDefined()
-  expect(await ui.find({ type: 'Text', text: 'Approved: This is Fine' })).toBeDefined()
+  expect(await ui.find({ type: 'Text', text: 'use 2 and post it to #social' })).toBeDefined()
+  expect(await ui.find({ type: 'Text', text: 'factory' })).toBeDefined()
+  expect(await ui.find({ type: 'Text', text: 'Draft 2 it is, headed for #social.' })).toBeDefined()
+  expect(await ui.find({ type: 'Text', text: '✓ Approved · This is Fine' })).toBeDefined()
   expect(await ui.find({ type: 'Text', text: 'Post to #social on Slack?' })).toBeDefined()
   expect(log.calls.some((c) => c.tool === `${SLACK}slack_complete_file_upload`)).toBe(false)
 })
@@ -283,7 +294,7 @@ test('the browser gallery drives the same flow: chat, pick a channel, confirm', 
   expect(log.calls.find((c) => c.tool === `${SLACK}slack_complete_file_upload`)).toMatchObject({ channel_id: 'C0C524GFGCF' })
   // The fake server ends after its script, so the mod stops pushing: read the outcome from the panel
   await clock.settle()
-  expect(await ui.find({ type: 'Text', text: 'Posted to #all-maughanco' })).toBeDefined()
+  expect(await ui.find({ type: 'Text', text: '✓ Posted to #all-maughanco on Slack' })).toBeDefined()
   const last = pushed.at(-1).body
   expect(last).toMatchObject({ status: 'approved', approved: { template_name: 'Change My Mind' } })
   expect(last.slackChannels.map((c) => c.name)).toEqual(['all-maughanco', 'social'])
@@ -320,8 +331,22 @@ test('a terminal without inline images gets a one-line note, not an empty image 
   await draftsReady($, clock)
   const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
   expect(await ui.find({ type: 'Image' })).toBeUndefined()
-  expect(await ui.find({ type: 'Text', text: /No inline images in this terminal/ })).toBeDefined()
+  expect(await ui.find({ type: 'Text', text: /^No preview in this terminal/ })).toBeDefined()
   expect(await ui.find({ key: 'approve' })).toBeDefined()
+})
+
+test('inline above the prompt: no picture, one caption line, the last reply only', async ($, on) => {
+  const { clock } = factory(on, { chatReply: () => ({ reply: 'Picked draft 2.', action: { type: 'select', draft: 2 } }) })
+  await draftsReady($, clock)
+  const INLINE = { ...PANE, props: { ...PANE.props, placement: 'inline', scroll: { offset: 0, bodyRows: 6 } } } as const
+  const ui = await $.ui.mount({ ...INLINE, surface: 'terminal' })
+  expect(await ui.find({ type: 'Image' })).toBeUndefined()
+  expect(await ui.find({ type: 'Text', text: 'async updates / everyone reads their Jira tickets aloud' })).toBeDefined()
+  await ui.input({ key: 'chat', text: 'use 2' })
+  await clock.settle()
+  expect(await ui.find({ type: 'Text', text: 'Picked draft 2.' })).toBeDefined()
+  // Inline shows the factory's last reply, not your own line
+  expect(await ui.find({ type: 'Text', text: 'use 2' })).toBeUndefined()
 })
 
 test('Desktop draws the meme as an SVG with a link to the full image', async ($, on) => {
@@ -357,6 +382,10 @@ test('helpers: memegen URLs, JSON in fences, ranking, PNG sizing, connectors, de
   expect(ranked.map((d) => d.id)).toEqual(['1', '3'])
   expect(pngSize(pngHeader(600, 400))).toEqual({ width: 600, height: 400 })
   expect(imageCells({ width: 600, height: 400 }, 56)).toEqual({ columns: 56, rows: 19 })
+  // Too tall for the room: it narrows so the rows fit, keeping its shape
+  expect(imageCells({ width: 600, height: 600 }, 56, 10)).toEqual({ columns: 20, rows: 10 })
+  expect(shortName('Distracted Boyfriend')).toBe('Distracted')
+  expect(shortName('Drakeposting')).toBe('Drakeposting')
 
   const found = postingConnectors([
     { name: 'mcp__s__slack_send_message', description: '', mcp: true },

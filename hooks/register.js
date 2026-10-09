@@ -28,6 +28,7 @@ import {
   postingConnectors,
   resolveDestination,
   resultText,
+  shortName,
   svgForJpeg,
   topDrafts,
   writerPrompt,
@@ -38,7 +39,13 @@ const TOOL = 'mcp__meme-factory__make_meme'
 const IMAGE_COLUMNS = 56
 const SVG_LIMIT = 120000
 const HISTORY_LIMIT = 50
-const CHAT_LINES = 3
+// Chat lines the docked panel shows; inline shows only the factory's last reply.
+const CHAT_LINES = 4
+const STAGES = [
+  ['write', 'Write'],
+  ['judge', 'Judge'],
+  ['render', 'Render'],
+]
 
 // The current job. Module state: it resets when the module reloads during development.
 let job = freshJob()
@@ -58,6 +65,8 @@ let settings = { askBeforePost: true, signature: true, favorites: [] }
 function freshJob() {
   return {
     status: 'idle',
+    // While working: 'write' | 'judge' | 'render'
+    stage: '',
     request: '',
     context: '',
     feedback: [],
@@ -66,7 +75,7 @@ function freshJob() {
     error: '',
     note: '',
     approved: null,
-    // Posting the approved meme: { stage: 'pick' | 'confirm' | 'posting' | 'done' | 'error', target, link, error }
+    // Posting the approved meme: { stage: 'pick' | 'confirm' | 'posting' | 'done' | 'error', choice, target, link, error }
     post: null,
     posted: [],
     chat: [],
@@ -170,7 +179,7 @@ function changed($) {
 
 function startJob($, request, context) {
   const id = ++seq
-  job = { ...freshJob(), status: 'working', request, context, note: 'Writing captions…', chat: job.chat }
+  job = { ...freshJob(), status: 'working', stage: 'write', request, context, note: 'Writing captions…', chat: job.chat }
   changed($)
   $.clock.after(0, () => cook($, id, null))
 }
@@ -180,7 +189,7 @@ function remix($, feedback) {
   const id = ++seq
   const previous = job.drafts[job.selected] ?? null
   if (feedback) job = { ...job, feedback: [...job.feedback, feedback] }
-  job = { ...job, status: 'working', note: feedback ? 'Reworking with your notes…' : 'Remixing…', error: '', approved: null, post: null }
+  job = { ...job, status: 'working', stage: 'write', note: feedback ? 'Reworking with your notes…' : 'Remixing…', error: '', approved: null, post: null }
   changed($)
   $.clock.after(0, () => cook($, id, previous))
 }
@@ -202,7 +211,7 @@ async function cook($, id, previous) {
     if (id !== seq) return
     let drafts = draftsFromWriter(written)
 
-    job = { ...job, note: 'Judging…' }
+    job = { ...job, stage: 'judge', note: 'Judging…' }
     changed($)
     drafts = jevKey
       ? await jevJudge($, jevKey, job.request, drafts)
@@ -210,15 +219,15 @@ async function cook($, id, previous) {
     if (id !== seq) return
 
     const best = topDrafts(drafts)
-    job = { ...job, note: 'Rendering…' }
+    job = { ...job, stage: 'render', note: 'Rendering…' }
     changed($)
     await renderArt($, best)
     if (id !== seq) return
-    job = { ...job, status: 'review', drafts: best, selected: 0, note: '' }
+    job = { ...job, status: 'review', stage: '', drafts: best, selected: 0, note: '' }
     changed($)
   } catch (err) {
     if (id !== seq) return
-    job = { ...job, status: 'error', error: err?.message ?? String(err), note: '' }
+    job = { ...job, status: 'error', stage: '', error: err?.message ?? String(err), note: '' }
     changed($)
   }
 }
@@ -322,11 +331,11 @@ async function approve($, index = job.selected) {
 }
 
 // Which connectors can post, and the Slack channels the person is in.
-async function refreshConnectors($) {
+async function refreshConnectors($, force = false) {
   try {
     const found = postingConnectors(await $.tool.list())
     let channels = connectors.channels
-    if (found.slack && (!connectors.slack || !channels.length)) {
+    if (found.slack && (force || !connectors.slack || !channels.length)) {
       try {
         const r = await $.tool.call({ tool: `${found.slack.prefix}slack_list_user_channels`, exclude_archived: true, limit: 200 })
         channels = parseSlackChannels(resultText(r))
@@ -362,7 +371,9 @@ function confirmPost($) {
 
 function cancelPost($) {
   if (!job.approved) return
-  job = { ...job, post: { stage: 'pick' } }
+  // Back to the picker with the last channel still chosen.
+  const t = job.post?.target
+  job = { ...job, post: { stage: 'pick', choice: t ? { kind: 'slack', id: t.id, name: t.name } : job.post?.choice } }
   changed($)
 }
 
@@ -560,6 +571,8 @@ async function onGalleryEvent($, ev) {
   if (ev.type === 'cancel') cancelPost($)
   if (ev.type === 'favorite') await saveFavorite($)
   if (ev.type === 'addConnector') addConnector($)
+  if (ev.type === 'refresh') await refreshConnectors($, true)
+  if (ev.type === 'reset') reset($)
   if (ev.type === 'settings' && ev.settings && typeof ev.settings === 'object') await saveSettings($, ev.settings)
 }
 
@@ -590,8 +603,9 @@ async function copyLink($, draft) {
 }
 
 async function openPane($, byUser) {
-  // rows: the height asked for when the pane sits above the prompt (narrow terminals)
-  const pane = { id: PANE, title: 'Meme Factory', rows: 24 }
+  // rows: the most the pane takes above the prompt in a narrow terminal. Every inline state
+  // fits in 6 rows, plus the frame.
+  const pane = { id: PANE, title: 'Meme Factory', rows: 8 }
   const placed = await $.ui.open(byUser ? { ...pane, focus: true } : pane)
   return placed?.isPlaced ?? true
 }
@@ -613,234 +627,374 @@ function backToDrafts($) {
 
 // ---------- Drawing ----------
 
+// State reads from glyphs (● ○ ✓ ✗) and words; theme colors only reinforce them, so the
+// panel reads in every terminal theme. No hex colors, and never 'claude' (Claude's orange).
+
 function drawPane($, e) {
   const el = $.ui.resolve(e)
   const { Box, Text, Button } = el
-  const children = [
-    Box({
-      flexDirection: 'row',
-      columnGap: 1,
-      children: [
-        Text({ bold: true, children: ['Meme Factory'] }),
-        Text({ dimColor: true, wrap: 'truncate-end', children: [job.request ? `· ${job.request}` : ''] }),
-      ],
-    }),
-  ]
+  const inline = e.props?.placement === 'inline'
+  const children = [header(el)]
 
   if (job.status === 'idle') {
-    children.push(
-      Text({ dimColor: true, children: ['Ask Claude for a meme, or type one in the chat below.'] }),
-      Button({ key: 'gallery', label: 'Gallery and settings in browser', hotkey: 'v', plain: true, onPress: () => openGallery($) }),
-    )
+    if (!inline) children.push(Text({ dimColor: true, children: ['Ask Claude for a meme, or describe one here.'] }))
   }
 
-  if (job.status === 'working') children.push(Text({ color: 'warning', children: [job.note || 'Working…'] }))
+  if (job.status === 'working') {
+    children.push(stageLine(el))
+    // Docked, the old drafts stay put (dimmed) so the panel doesn't jump while it remixes.
+    if (!inline && job.drafts.length) {
+      const old = job.drafts[job.selected] ?? job.drafts[0]
+      children.push(
+        Text({ dimColor: true, wrap: 'truncate-end', children: [job.drafts.map((d, i) => `${i + 1}: ○ ${tabLabel(d)}`).join('   ')] }),
+        ...caption(el, e, old, { dim: true }),
+        Text({ dimColor: true, children: ['These stay until the new drafts land.'] }),
+      )
+    }
+  }
 
   if (job.status === 'error') {
     children.push(
-      Text({ color: 'error', children: [`The factory jammed: ${job.error}`] }),
-      Box({
-        flexDirection: 'row',
-        columnGap: 2,
-        children: [
-          Button({ key: 'retry', label: 'Try again', hotkey: 'r', plain: true, onPress: () => remix($, '') }),
-          Button({ key: 'reset', label: 'New meme', hotkey: 'n', plain: true, onPress: () => reset($) }),
-        ],
-      }),
+      Text({ color: 'error', wrap: 'wrap', children: [`✗ The factory jammed: ${job.error}`] }),
+      row(el, [
+        Button({ key: 'retry', label: 'Try again', hotkey: 'r', plain: true, onPress: () => remix($, '') }),
+        Button({ key: 'reset', label: 'New meme', hotkey: 'n', plain: true, onPress: () => reset($) }),
+        Button({ key: 'view', label: 'Browser', hotkey: 'v', plain: true, onPress: () => openGallery($) }),
+      ]),
     )
   }
 
   if (job.status === 'review') {
     const draft = job.drafts[job.selected]
     children.push(
-      Box({
-        flexDirection: 'row',
-        columnGap: 2,
-        children: job.drafts.map((d, i) =>
-          Button({ key: `draft-${i}`, label: d.template_name, hotkey: String(i + 1), plain: true, dimColor: i !== job.selected, onPress: () => select($, i) }),
+      row(
+        el,
+        job.drafts.map((d, i) =>
+          Button({
+            key: `draft-${i}`,
+            // A Button can't be bold or colored, so the label carries the pick.
+            label: `${i === job.selected ? '●' : '○'} ${tabLabel(d)}`,
+            hotkey: String(i + 1),
+            plain: true,
+            dimColor: i !== job.selected,
+            onPress: () => select($, i),
+          }),
         ),
-      }),
+        3,
+      ),
       ...picture(el, e, draft),
       ...caption(el, e, draft),
-      Box({
-        flexDirection: 'row',
-        columnGap: 2,
-        children: [
-          Button({ key: 'approve', label: 'Approve', hotkey: 'a', plain: true, onPress: () => approve($) }),
-          Button({ key: 'remix', label: 'Remix', hotkey: 'r', plain: true, onPress: () => remix($, '') }),
-          Button({ key: 'view', label: 'View in browser', hotkey: 'v', plain: true, onPress: () => openGallery($) }),
-          Button({ key: 'copy', label: 'Copy link', hotkey: 'c', plain: true, onPress: () => copyLink($, draft) }),
-        ],
-      }),
+      ...noPreview(el, e),
+      row(el, [
+        Button({ key: 'approve', label: 'Approve', hotkey: 'a', plain: true, onPress: () => approve($) }),
+        Button({ key: 'remix', label: 'Remix', hotkey: 'r', plain: true, onPress: () => remix($, '') }),
+        Button({ key: 'copy', label: 'Copy', hotkey: 'c', plain: true, onPress: () => copyLink($, draft) }),
+        Button({ key: 'view', label: 'Browser', hotkey: 'v', plain: true, onPress: () => openGallery($) }),
+        talkButton($, el),
+      ]),
     )
   }
 
   if (job.status === 'approved') children.push(...postingView($, el, e))
 
-  children.push(...chatView($, el))
+  if (job.status === 'idle') {
+    children.push(chatInput($, el), Button({ key: 'gallery', label: 'Gallery and settings in your browser', hotkey: 'v', plain: true, onPress: () => openGallery($) }))
+  } else {
+    children.push(...chatView($, el, inline))
+  }
 
   // Above the prompt (a narrow terminal) every row counts, so drop the blank lines between sections.
-  return Box({ flexDirection: 'column', rowGap: e.props?.placement === 'inline' ? 0 : 1, children })
+  return Box({ flexDirection: 'column', rowGap: inline ? 0 : 1, children })
+}
+
+function row(el, children, columnGap = 2) {
+  return el.Box({ flexDirection: 'row', flexWrap: 'wrap', columnGap, children })
+}
+
+// " MEME FACTORY " as a sticker (inverse follows every theme), then where things stand.
+function header(el) {
+  const { Box, Text } = el
+  const post = job.post
+  let status = Text({ dimColor: true, wrap: 'truncate-end', children: [job.request || ''] })
+  if (job.status === 'approved' && job.approved) {
+    const name = shortName(job.approved.template_name, 20)
+    if (post?.stage === 'posting') status = Text({ color: 'warning', wrap: 'truncate-end', children: [`● Posting · ${name}`] })
+    else if (post?.stage === 'done') status = Text({ color: 'success', wrap: 'truncate-end', children: [`✓ Posted · ${name}`] })
+    else if (post?.stage === 'error') status = Text({ color: 'error', wrap: 'truncate-end', children: [`✗ Not posted · ${name}`] })
+    else status = Text({ color: 'success', wrap: 'truncate-end', children: [`✓ Approved · ${name}`] })
+  }
+  return Box({ flexDirection: 'row', columnGap: 2, children: [Text({ bold: true, inverse: true, children: [' MEME FACTORY '] }), status] })
+}
+
+function stageLine(el) {
+  const { Text } = el
+  const at = STAGES.findIndex(([key]) => key === job.stage)
+  return row(el, [
+    ...STAGES.map(([, label], i) =>
+      i < at
+        ? Text({ color: 'success', children: [`✓ ${label}`] })
+        : i === at
+          ? Text({ color: 'warning', children: [`● ${label}`] })
+          : Text({ dimColor: true, children: [`○ ${label}`] }),
+    ),
+    Text({ dimColor: true, wrap: 'truncate-end', children: [job.note || 'Working…'] }),
+  ], 3)
+}
+
+function tabLabel(d) {
+  return `${shortName(d.template_name)}${d.score == null ? '' : ` ${d.score}`}`
+}
+
+// t moves the keyboard to the chat box; Tab or Esc moves it back, so hotkeys keep working.
+function talkButton($, el) {
+  return el.Button({ key: 'talk', label: 'Talk', hotkey: 't', plain: true, onPress: () => $.ui.focus({ requestId: PANE, key: 'chat' }).catch(() => {}) })
+}
+
+// ---------- Posting ----------
+
+// What the Post-to picker holds: { kind: 'slack', id, name } or { kind: 'claude', target }.
+function defaultChoice() {
+  const fav = settings.favorites.find((f) => f.channelId)
+  if (fav) return { kind: 'slack', id: fav.channelId, name: fav.channelName ?? fav.label.replace(/^#/, '') }
+  const ch = connectors.channels[0]
+  return ch ? { kind: 'slack', id: ch.id, name: ch.name } : null
+}
+
+function choiceValue(c) {
+  return !c ? '' : c.kind === 'slack' ? `slack:${c.id}` : `claude:${c.target}`
+}
+
+function choiceLabel(c) {
+  return !c ? '' : c.kind === 'slack' ? `#${c.name}` : c.target
+}
+
+function setChoice($, choice) {
+  if (!job.approved || !choice) return
+  job = { ...job, post: { stage: 'pick', choice } }
+  changed($)
+}
+
+// Favorites first (★), then the person's Slack channels, then places only Claude can reach.
+function destinationOptions() {
+  const favIds = new Set(settings.favorites.map((f) => f.channelId).filter(Boolean))
+  const options = []
+  settings.favorites.forEach((f) => {
+    if (f.channelId) options.push({ value: `slack:${f.channelId}`, label: `★ #${f.channelName ?? f.label.replace(/^#/, '')}` })
+    else options.push({ value: `claude:${f.target}`, label: `★ ${f.label}` })
+  })
+  for (const c of connectors.channels) if (!favIds.has(c.id)) options.push({ value: `slack:${c.id}`, label: `#${c.name}` })
+  for (const label of connectors.others) options.push({ value: `claude:${label}`, label: `${label} (through Claude)` })
+  options.push({ value: 'add', label: '+ Add a connector…' })
+  // Values must be unique.
+  return options.filter((o, i) => options.findIndex((p) => p.value === o.value) === i)
+}
+
+function choiceFromValue(value) {
+  if (value.startsWith('slack:')) {
+    const id = value.slice(6)
+    const ch = connectors.channels.find((c) => c.id === id)
+    const fav = settings.favorites.find((f) => f.channelId === id)
+    return { kind: 'slack', id, name: ch?.name ?? fav?.channelName ?? id }
+  }
+  if (value.startsWith('claude:')) return { kind: 'claude', target: value.slice(7) }
+  return null
+}
+
+// Up to three one-key picks: favorite channels first, then the person's other channels.
+function quickPicks() {
+  const picks = []
+  for (const f of settings.favorites) if (f.channelId) picks.push({ kind: 'slack', id: f.channelId, name: f.channelName ?? f.label.replace(/^#/, ''), fav: true })
+  for (const c of connectors.channels) if (!picks.some((p) => p.id === c.id)) picks.push({ kind: 'slack', id: c.id, name: c.name })
+  return picks.slice(0, 3)
 }
 
 function postingView($, el, e) {
-  const { Box, Text, Button, Link } = el
+  const { Box, Text, Button, Link, Select } = el
+  const inline = e.props?.placement === 'inline'
   const draft = job.approved
   const post = job.post ?? { stage: 'pick' }
-  const rows = [Text({ color: 'success', children: [`Approved: ${draft.template_name}`] }), ...picture(el, e, draft)]
+  const rows = []
+  // After approval the picture shrinks to a thumbnail, so the destination fits.
+  if (post.stage === 'pick' || post.stage === 'confirm') rows.push(...picture(el, e, draft, { thumb: true }))
+  if (post.stage === 'pick') rows.push(...caption(el, e, draft), ...noPreview(el, e))
 
   if (post.stage === 'pick') {
-    const channels = connectors.channels.slice(0, 9)
-    const favorites = settings.favorites.filter((f) => !f.channelId || !channels.some((c) => c.id === f.channelId))
-    rows.push(Text({ bold: true, children: [connectors.slack ? 'Post to Slack:' : 'Post it:'] }))
-    if (channels.length) {
+    const choice = post.choice ?? defaultChoice()
+    const options = destinationOptions()
+    const picker = Select({
+      key: 'post-to',
+      label: 'Post to',
+      options,
+      ...(choice && options.some((o) => o.value === choiceValue(choice)) ? { value: choiceValue(choice) } : {}),
+      onSelect: (value) => (value === 'add' ? addConnector($) : setChoice($, choiceFromValue(value))),
+    })
+    const picks = quickPicks().map((p, i) =>
+      Button({
+        key: `ch-${p.id}`,
+        label: `${p.fav ? '★ ' : ''}#${p.name}`,
+        hotkey: String(i + 1),
+        plain: true,
+        dimColor: choice?.id !== p.id,
+        onPress: () => setChoice($, { kind: 'slack', id: p.id, name: p.name }),
+      }),
+    )
+    if (inline) rows.push(row(el, [picker, ...picks]))
+    else rows.push(picker, ...(picks.length ? [row(el, picks)] : []))
+    rows.push(
+      row(el, [
+        ...(choice ? [Button({ key: 'post', label: `Post to ${choiceLabel(choice)}`, hotkey: 'p', plain: true, onPress: () => choose($, choice) })] : []),
+        Button({ key: 'back', label: 'Back', hotkey: 'b', plain: true, onPress: () => backToDrafts($) }),
+        Button({ key: 'copy-approved', label: 'Copy', hotkey: 'c', plain: true, onPress: () => copyLink($, draft) }),
+        Button({ key: 'new', label: 'New', hotkey: 'n', plain: true, onPress: () => reset($) }),
+        Button({ key: 'view-approved', label: 'Browser', hotkey: 'v', plain: true, onPress: () => openGallery($) }),
+      ]),
+    )
+    if (!inline) {
       rows.push(
-        Box({
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-          columnGap: 2,
-          children: channels.map((c, i) =>
-            Button({ key: `ch-${c.id}`, label: `#${c.name}`, hotkey: String(i + 1), plain: true, onPress: () => choose($, { kind: 'slack', id: c.id, name: c.name }) }),
-          ),
+        Text({
+          dimColor: true,
+          children: [
+            !connectors.slack && !connectors.others.length
+              ? 'No posting connectors yet. Pick "+ Add a connector", or say where in the chat.'
+              : settings.askBeforePost
+                ? 'You confirm each post · change it in v → Settings'
+                : 'Ask-before-posting is off: p posts right away',
+          ],
         }),
       )
     }
-    const extra = [
-      ...favorites.map((f, i) =>
-        Button({ key: `fav-${i}`, label: `★ ${f.label}`, plain: true, onPress: () => choose($, resolveDestination(f.label, connectors.channels, settings.favorites)) }),
-      ),
-      ...connectors.others.map((label) => Button({ key: `other-${label}`, label, plain: true, onPress: () => handToClaude($, label) })),
-      Button({ key: 'add-connector', label: '+ Add a connector', plain: true, onPress: () => addConnector($) }),
-    ]
-    rows.push(Box({ flexDirection: 'row', flexWrap: 'wrap', columnGap: 2, children: extra }))
-    rows.push(
-      Box({
-        flexDirection: 'row',
-        columnGap: 2,
-        children: [
-          Button({ key: 'back', label: 'Back to drafts', hotkey: 'b', plain: true, onPress: () => backToDrafts($) }),
-          Button({ key: 'view-approved', label: 'View in browser', hotkey: 'v', plain: true, onPress: () => openGallery($) }),
-          Button({ key: 'copy-approved', label: 'Copy link', hotkey: 'c', plain: true, onPress: () => copyLink($, draft) }),
-        ],
-      }),
-    )
-    if (!connectors.slack) rows.push(Text({ dimColor: true, children: ['Or say where in the chat, and Claude routes it.'] }))
   }
 
   if (post.stage === 'confirm') {
-    rows.push(
-      Text({ bold: true, children: [`Post to #${post.target.name} on Slack?`] }),
-      Text({ dimColor: true, children: [settings.signature ? 'With: Fresh from the Meme Factory 🏭' : 'No message, just the meme.'] }),
-      Box({
-        flexDirection: 'row',
-        columnGap: 2,
-        children: [
-          Button({ key: 'confirm', label: 'Post it', hotkey: 'y', plain: true, autoFocus: true, onPress: () => confirmPost($) }),
-          Button({ key: 'cancel', label: 'Cancel', hotkey: 'x', plain: true, onPress: () => cancelPost($) }),
-        ],
-      }),
-    )
+    const ask = [
+      Text({ bold: true, color: 'permission', children: [`Post to #${post.target.name} on Slack?`] }),
+      row(el, [
+        Button({ key: 'confirm', label: 'Post it', hotkey: 'y', plain: true, autoFocus: true, onPress: () => confirmPost($) }),
+        Button({ key: 'cancel', label: 'Cancel', hotkey: 'n', plain: true, onPress: () => cancelPost($) }),
+      ]),
+    ]
+    if (inline) rows.push(row(el, ask, 3))
+    else {
+      rows.push(Box({ flexDirection: 'column', borderStyle: 'round', paddingX: 1, children: ask }))
+      rows.push(Text({ dimColor: true, children: [settings.signature ? 'Signed "Fresh from the Meme Factory" · Settings in v' : 'Just the meme, no message · Settings in v'] }))
+    }
   }
 
-  if (post.stage === 'posting') rows.push(Text({ color: 'warning', children: [`Uploading to #${post.target.name}…`] }))
+  if (post.stage === 'posting') {
+    rows.push(Text({ color: 'warning', children: [`● Posting to #${post.target.name} on Slack…`] }))
+    if (!inline) rows.push(Text({ dimColor: true, children: ['Uploading the image. Keep working.'] }))
+  }
 
   if (post.stage === 'done') {
+    rows.push(Text({ color: 'success', children: [`✓ Posted to #${post.target.name} on Slack`] }))
+    // The terminal prints a Link's whole URL, so it gets a button that opens the browser.
+    const open = post.link
+      ? e.surface === 'terminal'
+        ? [Button({ key: 'open-slack', label: 'Open in Slack', hotkey: 'o', plain: true, onPress: () => openInBrowser($, post.link) })]
+        : [Link({ href: post.link, label: 'Open in Slack' })]
+      : []
     rows.push(
-      Text({ color: 'success', children: [`Posted to #${post.target.name}`] }),
-      post.link && e.surface !== 'terminal' ? Link({ href: post.link, label: 'Open in Slack' }) : Text({ dimColor: true, children: [post.link ?? ''] }),
-      Box({
-        flexDirection: 'row',
-        columnGap: 2,
-        children: [
-          settings.favorites.some((f) => f.channelId === post.target.id)
-            ? Text({ dimColor: true, children: ['★ favorite'] })
-            : Button({ key: 'favorite', label: `★ Save #${post.target.name}`, hotkey: 's', plain: true, onPress: () => saveFavorite($) }),
-          Button({ key: 'again', label: 'Post somewhere else', hotkey: 'p', plain: true, onPress: () => cancelPost($) }),
-          Button({ key: 'new', label: 'New meme', hotkey: 'n', plain: true, onPress: () => reset($) }),
-        ],
-      }),
+      row(el, [
+        ...open,
+        settings.favorites.some((f) => f.channelId === post.target.id)
+          ? Text({ dimColor: true, children: ['★ favorite'] })
+          : Button({ key: 'favorite', label: `★ Save #${post.target.name}`, hotkey: 's', plain: true, onPress: () => saveFavorite($) }),
+        Button({ key: 'again', label: 'Post elsewhere', hotkey: 'p', plain: true, onPress: () => cancelPost($) }),
+        Button({ key: 'new', label: 'New meme', hotkey: 'n', plain: true, onPress: () => reset($) }),
+      ]),
     )
   }
 
   if (post.stage === 'error') {
     rows.push(
-      Text({ color: 'error', children: [`Couldn't post to #${post.target?.name ?? 'Slack'}: ${post.error}`] }),
-      Box({
-        flexDirection: 'row',
-        columnGap: 2,
-        children: [
-          Button({ key: 'retry-post', label: 'Try again', hotkey: 'y', plain: true, onPress: () => choose($, { kind: 'slack', id: post.target.id, name: post.target.name }) }),
-          Button({ key: 'claude-post', label: 'Ask Claude to post it', hotkey: 'k', plain: true, onPress: () => handToClaude($, `#${post.target?.name} on Slack`) }),
-          Button({ key: 'cancel', label: 'Back', hotkey: 'x', plain: true, onPress: () => cancelPost($) }),
-        ],
-      }),
+      Text({ color: 'error', wrap: 'wrap', children: [`✗ Couldn't post to #${post.target?.name ?? 'Slack'}: ${post.error}`] }),
+      row(el, [
+        Button({ key: 'retry-post', label: 'Retry', hotkey: 'r', plain: true, onPress: () => choose($, { kind: 'slack', id: post.target.id, name: post.target.name }) }),
+        Button({ key: 'cancel', label: 'Pick another', hotkey: 'p', plain: true, onPress: () => cancelPost($) }),
+        Button({ key: 'claude-post', label: 'Ask Claude', hotkey: 'k', plain: true, onPress: () => handToClaude($, `#${post.target?.name} on Slack`) }),
+      ]),
     )
   }
 
-  if (job.posted.length && post.stage !== 'done') rows.push(Text({ dimColor: true, children: [`Sent so far: ${job.posted.join(', ')}`] }))
+  if (!inline && job.posted.length && post.stage !== 'done') rows.push(Text({ dimColor: true, wrap: 'truncate-end', children: [`Sent so far: ${job.posted.join(', ')}`] }))
   return rows
 }
 
-function chatView($, el) {
-  const { Box, Text, Input } = el
-  const lines = job.chat.slice(-CHAT_LINES).map((m) =>
-    Text({ wrap: 'wrap', dimColor: m.role !== 'you', children: [`${m.role === 'you' ? 'you' : 'factory'}: ${m.text}`] }),
-  )
-  const placeholder =
-    job.status === 'idle'
-      ? 'a meme about Mondays'
-      : job.status === 'approved'
-        ? 'post it to #social · make it meaner · new meme about…'
-        : 'meaner · use 2 · approve · post to #social'
-  return [
-    Box({
-      flexDirection: 'column',
-      children: [
-        ...lines,
-        Input({
-          key: 'chat',
-          label: 'Chat',
-          placeholder,
-          value: '',
-          submitLabel: 'send',
-          // autoFocus takes only true: leave it out unless the panel is waiting for a request.
-          ...(job.status === 'idle' ? { autoFocus: true } : {}),
-          onSubmit: (value) => (job.status === 'idle' ? value.trim() && startJob($, value.trim(), '') : chat($, value)),
-        }),
-      ],
-    }),
-  ]
+// ---------- Chat ----------
+
+function chatInput($, el) {
+  const idle = job.status === 'idle'
+  const placeholder = idle
+    ? 'when the standup was supposed to be 15 minutes'
+    : job.status === 'approved'
+      ? 'post it to #social · meaner · new meme about…'
+      : 'meaner · use 2 · approve · post to #social'
+  return el.Input({
+    key: 'chat',
+    label: idle ? 'Meme' : 'Say',
+    placeholder,
+    value: '',
+    submitLabel: idle ? 'make' : 'send',
+    // autoFocus takes only true. Only the empty panel takes it: elsewhere a focused field
+    // would swallow the hotkeys.
+    ...(idle ? { autoFocus: true } : {}),
+    onSubmit: (value) => (idle ? value.trim() && startJob($, value.trim(), '') : chat($, value)),
+  })
 }
 
-function picture(el, e, draft) {
+function chatView($, el, inline) {
+  const { Box, Text } = el
+  const shown = inline ? job.chat.filter((m) => m.role !== 'you').slice(-1) : job.chat.slice(-CHAT_LINES)
+  const lines = shown.map((m) =>
+    Box({
+      flexDirection: 'row',
+      columnGap: 1,
+      children: [
+        m.role === 'you' ? Text({ dimColor: true, children: ['    you'] }) : Text({ color: 'suggestion', children: ['factory'] }),
+        Text({ wrap: inline ? 'truncate-end' : 'wrap', children: [m.text] }),
+      ],
+    }),
+  )
+  const rule = !inline && lines.length ? [Text({ dimColor: true, wrap: 'truncate-end', children: ['─'.repeat(120)] })] : []
+  return [...rule, ...lines, chatInput($, el)]
+}
+
+// ---------- Picture and caption ----------
+
+function picture(el, e, draft, { thumb = false } = {}) {
+  if (e.props?.placement === 'inline') return []
   const a = art.get(draft.id) ?? {}
   const alt = `${draft.template_name}: ${draft.lines.filter(Boolean).join(' / ')}`
-  if (e.surface === 'terminal' && !inlineImages) {
-    return [el.Text({ dimColor: true, children: ['No inline images in this terminal (Ghostty and kitty have them). Press v to see it in your browser.'] })]
-  }
-  if (e.surface === 'terminal' && a.png && el.Image) {
-    const maxColumns = Math.min(IMAGE_COLUMNS, (e.props?.bodyColumns ?? IMAGE_COLUMNS) - 2)
-    return [el.Image({ key: `meme-${hash(draft.id)}`, source: { file: a.png, format: 'png' }, alt, ...imageCells(a.size, maxColumns) })]
+  if (e.surface === 'terminal' && inlineImages && a.png && el.Image) {
+    const bodyColumns = e.props?.bodyColumns ?? IMAGE_COLUMNS + 2
+    const bodyRows = e.props?.scroll?.bodyRows ?? 40
+    const maxColumns = thumb ? Math.min(28, bodyColumns - 2) : Math.min(IMAGE_COLUMNS, bodyColumns - 2)
+    // Leave room under the picture for the caption, actions and chat.
+    const maxRows = thumb ? 8 : Math.max(8, bodyRows - 16)
+    return [el.Image({ key: `meme-${hash(draft.id)}`, source: { file: a.png, format: 'png' }, alt, ...imageCells(a.size, maxColumns, maxRows) })]
   }
   if (e.surface !== 'terminal' && a.svg && el.Svg) {
-    return [el.Svg({ source: a.svg, alt: draft.lines.filter(Boolean).join(' / '), width: 320, height: 320 })]
+    const size = thumb ? 160 : Math.min(480, Math.max(200, (e.props?.bodyColumns ?? 40) * 8))
+    return [el.Svg({ source: a.svg, alt: draft.lines.filter(Boolean).join(' / '), width: size, height: size })]
   }
   return []
 }
 
-function caption(el, e, draft) {
+// One line, after the caption, so the joke reads first.
+function noPreview(el, e) {
+  if (e.surface !== 'terminal' || inlineImages || e.props?.placement === 'inline') return []
+  return [el.Text({ dimColor: true, wrap: 'truncate-end', children: ['No preview in this terminal · v opens it in a browser'] })]
+}
+
+function caption(el, e, draft, { dim = false } = {}) {
   const { Box, Text, Link } = el
-  const score = Text({ dimColor: true, children: [draft.score == null ? '' : `judge ${draft.score}/10`] })
-  return [
-    Box({
-      flexDirection: 'column',
-      children: draft.lines.filter(Boolean).map((line) => Text({ children: [line] })),
-    }),
-    // The terminal prints a Link's whole URL after its label; there, View in browser covers it.
-    Box({
-      flexDirection: 'row',
-      columnGap: 2,
-      children: e.surface === 'terminal' ? [score] : [Link({ href: draft.url, label: 'Open full image' }), score],
-    }),
-  ]
+  const lines = draft.lines.filter(Boolean)
+  const bar = (children) => Box({ flexDirection: 'row', children: [Text({ dimColor: true, children: ['▎'] }), ...children] })
+  if (e.props?.placement === 'inline') {
+    return [bar([Text({ dimColor: dim, wrap: 'truncate-end', children: [lines.join(' / ')] })])]
+  }
+  const out = lines.map((line) => bar([Text({ dimColor: dim, wrap: 'wrap', children: [line] })]))
+  // The terminal prints a Link's whole URL after its label; there, v (Browser) covers it.
+  if (e.surface !== 'terminal' && !dim) out.push(Link({ href: draft.url, label: 'Open full image' }))
+  return out
 }

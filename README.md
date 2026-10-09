@@ -4,9 +4,9 @@ A [Claude Code mod](https://code.claude.com/docs/en/plugins/mods/create) for mak
 
 1. **Ask for one.** Tell Claude "make a meme about this flaky test", or type `/meme standups that run long`.
 2. **Keep working.** Drafts cook in a side panel. Claude's tool call returns right away, so nothing waits on the meme.
-3. **Review and chat.** The panel shows the 3 best drafts: a picture, the caption, and a judge score. Switch with `1` `2` `3` and approve with `a`, or just type in the **chat box**: "meaner", "make it about Mondays", "use 2", "approve it and post it to #social". Press `v` to do all of this in your browser instead: the [gallery](#browser-gallery) works from any terminal.
+3. **Review and chat.** The panel shows the 3 best drafts: a picture, the caption, and a judge score. Switch with `1` `2` `3` and approve with `a`, or just type in the **chat box** (`t` jumps to it): "meaner", "make it about Mondays", "use 2", "approve it and post it to #social". Press `v` to do all of this in your browser instead: the [gallery](#browser-gallery) works from any terminal.
 4. **Post.** After you approve, the panel lists your real destinations:
-   - **Slack:** your actual channels. Pick one, confirm **Post it**, and the mod uploads the image itself, so Slack shows the picture, signed "Fresh from the [Meme Factory](https://github.com/CodyAMaughan/meme-factory) 🏭". You get the message link in the panel.
+   - **Slack:** your actual channels. Pick one with `1` `2` `3` (favorites first) or from the **Post to** list, press `p`, confirm **Post it**, and the mod uploads the image itself, so Slack shows the picture, signed "Fresh from the [Meme Factory](https://github.com/CodyAMaughan/meme-factory) 🏭". You get the message link in the panel.
    - **Favorites:** channels or places you've saved (★ Save after a post, or edit them in Settings).
    - **Through Claude:** other connectors that can post (Gmail, for example), or anything you type ("my LinkedIn"). The mod hands those to Claude, which works out the connector and channel.
    - **+ Add a connector:** asks Claude to find one in the [connector directory](https://claude.ai/directory) and show you its Connect card.
@@ -55,12 +55,13 @@ The mod decides at startup whether to draw pictures, using the same terminal che
 
 Press `v` in the panel, or run `/meme gallery`, and the Meme Factory opens a page in your browser. Everything you do there goes straight back to the Claude Code session:
 
-- **Drafts:** click a draft to select it, double-click (or **Approve selected**) to approve, and use the chat box to remix or give commands. You can also start a new meme from the page.
-- **Post it:** after you approve, pick a Slack channel, a favorite, or a connector Claude can post through, or type where it should go. Slack posts get a **Post it / Cancel** step, then the message link.
-- **Settings** (`/meme settings`):
+- **Drafts:** click a draft (or press `1`, `2`, `3`) to pick it, then **Approve** (`a`). **Remix all** is `r`, `c` copies the link, and `/` jumps to the chat box on the right, where you can remix, pick, approve or post in plain words, or start a new meme.
+- **Post it:** after you approve, pick a favorite, one of your Slack channels (with a search box), or a place Claude can post to for you, then **Post to #channel** (`p`). With ask-before-posting on you then confirm (**Post it** `y` / **Cancel** `n`). You see the posting state, then a link to the message, or the error with **Retry**.
+- **Settings** (`/meme settings`), saved as you change them:
   - **Ask before posting** (on by default). Slack posts from the panel or the gallery wait for your **Post it**. Posts Claude makes for you (anything outside Slack) are held at the moment Claude calls the connector, with a **Post it / Don't post** question, in every permission mode.
   - **Sign posts** (on by default): adds "Fresh from the Meme Factory 🏭", with "Meme Factory" linking to this repo.
-  - **Favorite destinations:** each one is a label plus a description, in words, of where it goes.
+  - **Favorites:** your quick picks, in order. Each is a name plus one of your Slack channels, or a place described in words. In the panel, the first three are keys `1`, `2` and `3`.
+  - **Where you can post:** which connectors this session has, with **Add a connector** and **Check again**.
 
 The page is served by a small local server, `gallery/server.py`, which needs `python3` and nothing else. It listens on 127.0.0.1 only, answers only requests that carry the session's random token (passed on stdin, so other processes can't read it from `ps`), and refuses other origins and Host headers. It stops when the session ends.
 

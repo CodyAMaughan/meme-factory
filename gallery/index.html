@@ -5,85 +5,172 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Meme Factory</title>
 <style>
+  /* "Highlighter": paper and ink, a chartreuse sticker, a bubblegum pop. Dark mode is
+     eggplant, never black, and nothing is orange. Text on --hi is always --hi-ink. */
   :root {
-    --bg: #f6f4ef; --panel: #ffffff; --ink: #1b1a17; --muted: #6d685e; --line: #e3ded3;
-    --accent: #ff5a1f; --accent-ink: #ffffff; --chip: #f0ece3; --good: #1f8a4c; --warn: #b5530b;
+    --bg: #f4f4f1; --panel: #ffffff; --raised: #f0efeb; --ink: #19141f; --muted: #625c6b; --line: #e1dfe4; --field: #cfccd4;
+    --hi: #d9f24a; --hi-ink: #19141f; --pop: #ff6aae; --shadow: #19141f;
+    --good: #1d7f4e; --good-bg: #e3f3ea; --warn: #a65508; --bad: #c0254a; --act-bg: #eef7c4; --act-ink: #3d4a06;
   }
   @media (prefers-color-scheme: dark) {
-    :root { --bg: #141311; --panel: #1d1c19; --ink: #f1ede4; --muted: #9b958a; --line: #2f2d29;
-      --chip: #29271f; --good: #4cc27f; --warn: #f0954f; }
+    :root {
+      --bg: #18121f; --panel: #231a2c; --raised: #2c2336; --ink: #f3eff6; --muted: #afa5ba; --line: #3a3045; --field: #4a3f57;
+      --pop: #ff7ab8; --shadow: #ff7ab8;
+      --good: #5bd08f; --good-bg: #173a29; --warn: #f2a65a; --bad: #ff7a93; --act-bg: #3a4410; --act-ink: #e6f79a;
+    }
   }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--bg); color: var(--ink);
     font: 15px/1.45 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
-  header { display: flex; align-items: center; gap: 14px; padding: 16px 24px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
-  h1 { margin: 0; font-size: 20px; letter-spacing: -0.02em; }
-  h1 span { color: var(--accent); }
-  .request { color: var(--muted); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .pill { padding: 3px 10px; border-radius: 99px; background: var(--chip); color: var(--muted); font-size: 12px; white-space: nowrap; }
-  .pill.working { color: var(--warn); }
-  .pill.good { color: var(--good); }
-  nav { display: flex; gap: 4px; }
-  nav button { background: none; color: var(--muted); padding: 6px 12px; font-weight: 600; }
-  nav button.on { background: var(--chip); color: var(--ink); }
-  main { max-width: 1100px; margin: 0 auto; padding: 20px 24px 60px; }
-  @media (max-width: 700px) { main, header { padding-left: 16px; padding-right: 16px; } }
-  button { font: inherit; font-weight: 600; border: 0; border-radius: 10px; padding: 10px 16px; cursor: pointer;
-    background: var(--chip); color: var(--ink); }
-  button.primary { background: var(--accent); color: var(--accent-ink); }
-  button:disabled { opacity: .5; cursor: default; }
-  input[type=text] { font: inherit; color: var(--ink); background: var(--panel); border: 1px solid var(--line);
-    border-radius: 10px; padding: 10px 12px; outline: none; min-width: 0; }
-  input[type=text]:focus { border-color: var(--accent); }
-  .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-  .grow { flex: 1; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-bottom: 18px; }
-  .card { background: var(--panel); border: 2px solid var(--line); border-radius: 14px; overflow: hidden; cursor: pointer;
-    transition: border-color .15s, transform .15s; padding: 0; text-align: left; font-weight: 400; }
-  .card:hover { transform: translateY(-2px); }
-  .card.selected { border-color: var(--accent); }
-  .card img { display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: contain; background: #000; }
-  .card .info { padding: 10px 12px; display: flex; justify-content: space-between; gap: 8px; color: var(--muted); font-size: 13px; }
-  .card .info b { color: var(--ink); }
-  .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 380px); gap: 24px; align-items: start; }
-  @media (max-width: 800px) { .hero { grid-template-columns: 1fr; } }
-  .hero img { width: 100%; max-height: 70vh; object-fit: contain; border-radius: 14px; background: #000; display: block; }
-  a { color: var(--accent); }
-  .box .row input { flex: 1 1 100%; }
-  .box { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
-  .box h2 { margin: 0; font-size: 15px; }
-  .chips { display: flex; gap: 8px; flex-wrap: wrap; }
-  .chips button { padding: 7px 12px; font-size: 14px; }
-  .chips button .ok { color: var(--good); margin-left: 4px; }
+  a { color: var(--ink); font-weight: 600; }
+  .mono { font-family: ui-monospace, "SF Mono", Menlo, monospace; }
   .muted { color: var(--muted); font-size: 13px; }
-  .error { color: var(--warn); }
-  .empty { border: 2px dashed var(--line); border-radius: 14px; padding: 40px; text-align: center; color: var(--muted); }
-  .toggle { display: flex; gap: 12px; align-items: flex-start; }
-  .toggle input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--accent); }
-  .fav { display: grid; grid-template-columns: 1fr 1.6fr auto; gap: 8px; }
-  @media (max-width: 600px) { .fav { grid-template-columns: 1fr; } }
-  .chat { display: flex; flex-direction: column; gap: 6px; }
-  .chat .log { display: flex; flex-direction: column; gap: 6px; max-height: 220px; overflow-y: auto; }
-  .msg { padding: 7px 11px; border-radius: 12px; max-width: 85%; font-size: 14px; }
-  .msg.you { align-self: flex-end; background: var(--accent); color: var(--accent-ink); }
-  .msg.factory { align-self: flex-start; background: var(--chip); }
-  .confirm { border: 2px solid var(--accent); }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+  /* The wordmark: a meme caption on a sticker. */
+  .sticker { display: inline-block; transform: rotate(-2deg); background: var(--hi); border: 2px solid #19141f;
+    box-shadow: 3px 3px 0 var(--shadow); padding: 3px 10px 1px; flex: none; }
+  .caption { font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; color: #fff; letter-spacing: .02em;
+    -webkit-text-stroke: 3px #19141f; paint-order: stroke fill; line-height: 1.05; text-transform: uppercase; }
+  .sticker .caption { font-size: 22px; }
+
+  header { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; padding: 16px 32px; border-bottom: 1px solid var(--line); }
+  .request { flex: 1 1 220px; min-width: 0; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  ol.steps { display: flex; flex-wrap: wrap; gap: 14px; list-style: none; margin: 0; padding: 0; }
+  .step { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--muted); white-space: nowrap; }
+  .step .dot { width: 18px; height: 18px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
+    font-size: 11px; border: 2px solid var(--field); }
+  .step.done .dot { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+  .step.now { color: var(--ink); }
+  .step.now .dot { background: var(--hi); border-color: var(--ink); }
+  .step.jam { color: var(--bad); }
+  .step.jam .dot { border-color: var(--bad); }
+  nav { display: flex; gap: 4px; }
+  nav button { background: none; border: 0; color: var(--muted); padding: 8px 14px; font: inherit; font-weight: 600; font-size: 14px; border-radius: 8px; cursor: pointer; }
+  nav button.on { background: var(--ink); color: var(--bg); }
+  .saved { font: 600 13px ui-monospace, Menlo, monospace; color: var(--good); opacity: 0; transition: opacity .2s; }
+  .saved.show { opacity: 1; }
+
+  main { max-width: 1376px; margin: 0 auto; padding: 28px 32px 56px; display: flex; flex-wrap: wrap; gap: 28px; align-items: flex-start; }
+  .content { flex: 999 1 640px; min-width: 0; display: flex; flex-direction: column; gap: 18px; }
+  aside { flex: 1 1 320px; max-width: 400px; min-width: 0; }
+  @media (max-width: 700px) { main, header { padding-left: 16px; padding-right: 16px; } aside { max-width: none; } }
+
+  h1 { margin: 0; font-size: 28px; line-height: 1.1; font-weight: 800; letter-spacing: -.01em; }
+  h2 { margin: 0; font-size: 20px; font-weight: 800; }
+  .lbl { margin: 0; font: 600 11px ui-monospace, Menlo, monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .kbd { font: 600 12px/1 ui-monospace, Menlo, monospace; border: 1px solid var(--field); border-bottom-width: 2px; border-radius: 5px;
+    padding: 3px 6px; background: var(--panel); color: var(--ink); }
+  .hints { font-size: 14px; color: var(--muted); display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+  .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+
+  button.btn, a.btn { font: inherit; font-weight: 600; border-radius: 10px; padding: 10px 16px; border: 1px solid var(--field);
+    background: var(--panel); color: var(--ink); display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    cursor: pointer; min-height: 44px; text-decoration: none; }
+  .btn.primary { background: var(--hi); color: var(--hi-ink); border: 2px solid #19141f; box-shadow: 3px 3px 0 var(--shadow); }
+  .btn.primary .kbd { background: #fff; color: #19141f; border-color: #19141f; }
+  .btn:disabled { opacity: .5; cursor: default; }
+  .btn.small { min-height: 38px; padding: 7px 12px; font-size: 14px; }
+  input[type=text], select.in { font: inherit; color: var(--ink); background: var(--panel); border: 1px solid var(--field);
+    border-radius: 10px; padding: 10px 12px; min-width: 0; min-height: 44px; }
+  input[type=text]:focus, select.in:focus, .btn:focus-visible, .card:focus-visible, nav button:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+
+  .card-box { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+
+  /* Drafts */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+  .card { all: unset; position: relative; display: flex; flex-direction: column; background: var(--panel); border: 1px solid var(--line);
+    border-radius: 14px; cursor: pointer; transition: transform .15s; margin-top: 10px; }
+  .card:hover { transform: translateY(-2px); }
+  .card.picked { outline: 3px solid var(--ink); outline-offset: -1px; }
+  .card img { display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: contain; background: #19141f; border-radius: 13px 13px 0 0; }
+  .card .foot { display: flex; align-items: center; gap: 10px; padding: 12px 14px; }
+  .card .score { margin-left: auto; font: 600 13px ui-monospace, Menlo, monospace; color: var(--muted); }
+  /* Stickers sit on the card's top edge, clear of the meme's own caption. */
+  .tag { position: absolute; top: -12px; z-index: 1; border: 2px solid #19141f; font: 600 12px ui-monospace, Menlo, monospace; padding: 3px 8px; color: #19141f; }
+  .tag.picked { left: 12px; background: var(--hi); transform: rotate(-3deg); }
+  .tag.top { right: 12px; background: var(--pop); transform: rotate(3deg); }
+  .working .card { opacity: .45; pointer-events: none; }
+  .empty { border: 2px dashed var(--line); border-radius: 14px; padding: 48px 24px; text-align: center; color: var(--muted); display: flex; flex-direction: column; align-items: center; gap: 14px; }
+
+  /* Approved and posting */
+  .split { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; }
+  .split > * { flex: 1 1 340px; min-width: 0; }
+  .hero img { width: 100%; max-height: 70vh; object-fit: contain; border-radius: 14px; background: #19141f; display: block; }
+  .badge { font: 600 12px ui-monospace, Menlo, monospace; padding: 4px 9px; border-radius: 6px; }
+  .badge.good { background: var(--good); color: var(--bg); }
+  .conn { display: flex; align-items: center; gap: 10px; font-size: 14px; padding: 10px 12px; background: var(--raised); border-radius: 10px; }
+  .led { width: 8px; height: 8px; border-radius: 50%; flex: none; background: var(--good); }
+  .led.off { background: none; border: 2px solid var(--field); }
+  .chip { font: 600 14px ui-monospace, Menlo, monospace; border: 1px solid var(--field); border-radius: 99px; padding: 8px 14px;
+    background: var(--panel); color: var(--ink); cursor: pointer; min-height: 38px; }
+  .chip.on { background: var(--hi); color: var(--hi-ink); border-color: var(--hi); }
+  .chip.words { font-family: inherit; font-weight: 500; }
+  .search { display: flex; align-items: center; gap: 8px; border: 1px solid var(--field); border-radius: 10px; padding: 0 12px; background: var(--bg); }
+  .search input { border: 0 !important; background: transparent !important; flex: 1; padding-left: 0 !important; outline: none; }
+  .channels { display: flex; flex-direction: column; gap: 2px; max-height: 240px; overflow: auto; }
+  .ch { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 10px; cursor: pointer;
+    font: 15px ui-monospace, Menlo, monospace; }
+  .ch:hover { background: var(--raised); }
+  .ch.on { background: var(--raised); outline: 1px solid var(--ink); }
+  .ch input { accent-color: var(--ink); width: 18px; height: 18px; margin: 0; }
+  .ch .fav { margin-left: auto; font: 12px ui-sans-serif, system-ui, sans-serif; color: var(--muted); }
+  .linkish { all: unset; cursor: pointer; font-size: 14px; font-weight: 600; display: inline-flex; gap: 6px; align-items: center; padding: 6px 0; }
+  .linkish:focus-visible { outline: 3px solid var(--ink); }
+  .state { display: flex; flex-direction: column; gap: 12px; }
+  .state.confirm { border: 2px solid var(--ink); }
+  .state h2 { font-size: 18px; line-height: 1.3; }
+  .state .line { display: flex; gap: 10px; align-items: center; font-weight: 600; }
+  .good { color: var(--good); } .warn { color: var(--warn); } .bad { color: var(--bad); }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .spin { animation: spin 1s linear infinite; }
+  @media (prefers-reduced-motion: reduce) { .spin { animation: none; } .card { transition: none; } }
+
+  /* Chat */
+  .chat .log { display: flex; flex-direction: column; gap: 14px; border-top: 1px solid var(--line); padding-top: 14px; max-height: 360px; overflow-y: auto; }
+  .msg { display: flex; flex-direction: column; gap: 4px; font-size: 14px; line-height: 1.45; }
+  .who { font: 600 11px ui-monospace, Menlo, monospace; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+  .msg.factory .who { color: var(--ink); }
+  .chat form { display: flex; gap: 8px; }
+  .chat form input { flex: 1; }
+  .chat .send { background: var(--ink); color: var(--bg); border-color: var(--ink); padding: 0 16px; }
+
+  /* Settings */
+  .settings { max-width: 820px; margin: 0 auto; width: 100%; display: flex; flex-direction: column; gap: 24px; }
+  .switch-row { display: flex; gap: 16px; align-items: flex-start; cursor: pointer; }
+  .switch-row > span:first-child { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+  .switch { flex: none; width: 52px; height: 30px; border-radius: 99px; background: var(--field); position: relative; margin-top: 2px; transition: background .15s; }
+  .switch::after { content: ""; position: absolute; top: 3px; left: 3px; width: 24px; height: 24px; border-radius: 50%; background: var(--panel); transition: left .15s; }
+  .switch-row input:checked + .switch { background: var(--ink); }
+  .switch-row input:checked + .switch::after { left: 25px; background: var(--hi); }
+  .switch-row input:focus-visible + .switch { outline: 3px solid var(--ink); outline-offset: 2px; }
+  .fav-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 10px 0; border-top: 1px solid var(--line); }
+  .fav-row .n { font: 600 13px ui-monospace, Menlo, monospace; width: 20px; color: var(--muted); }
+  .icon { all: unset; cursor: pointer; width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; color: var(--muted); }
+  .icon:hover { background: var(--raised); color: var(--ink); }
+  .icon:focus-visible { outline: 3px solid var(--ink); }
+  .icon:disabled { opacity: .3; cursor: default; }
+  .conn-row { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); }
+  .pill { margin-left: auto; font: 600 12px ui-monospace, Menlo, monospace; padding: 3px 8px; border-radius: 6px; background: var(--raised); color: var(--muted); }
+  .pill.good { background: var(--good-bg); color: var(--good); }
+
   .gone { position: fixed; inset: auto 16px 16px 16px; max-width: 520px; margin: 0 auto; background: var(--panel);
-    border: 1px solid var(--warn); border-radius: 12px; padding: 12px 16px; display: none; }
+    border: 2px solid var(--bad); border-radius: 12px; padding: 12px 16px; display: none; }
 </style>
 </head>
 <body>
 <header>
-  <h1>Meme <span>Factory</span></h1>
+  <span class="sticker" aria-label="Meme Factory"><span class="caption" aria-hidden="true">Meme Factory</span></span>
   <div class="request" id="request"></div>
-  <span class="pill" id="status">connecting…</span>
+  <ol class="steps" id="steps" aria-label="Progress"></ol>
+  <span class="saved" id="saved" aria-live="polite">✓ Saved</span>
   <nav>
     <button id="tab-drafts" class="on">Drafts</button>
     <button id="tab-settings">Settings</button>
   </nav>
 </header>
 <main id="main"></main>
-<div class="gone" id="gone">Lost the connection to Claude Code. The page works while the session that opened it is running.</div>
+<div class="gone" id="gone" role="alert">Lost the connection to Claude Code. The page works while the session that opened it is running.</div>
 <script>
 const params = new URLSearchParams(location.hash.slice(1))
 const token = params.get('t') || ''
@@ -91,19 +178,36 @@ history.replaceState(null, '', location.pathname)
 let state = null
 let version = -1
 let tab = params.get('tab') === 'settings' ? 'settings' : 'drafts'
-let favDraft = null // the favorites being edited, before Save
+let favDraft = null // the favorites being edited on the Settings tab
+let channelFilter = ''
+let choice = null // the channel picked in the Post card: { channelId } or { target }
+let chatDraft = ''
 
 const $ = (id) => document.getElementById(id)
 function el(tag, props = {}, ...children) {
   const n = document.createElement(tag)
   for (const [k, v] of Object.entries(props)) {
+    if (v == null || v === false) continue
     if (k === 'class') n.className = v
     else if (k.startsWith('on')) n.addEventListener(k.slice(2), v)
     else if (k === 'checked' || k === 'disabled' || k === 'value') n[k] = v
-    else n.setAttribute(k, v)
+    else n.setAttribute(k, v === true ? '' : v)
   }
   for (const c of children.flat()) if (c != null && c !== false) n.append(c.nodeType ? c : document.createTextNode(String(c)))
   return n
+}
+const svg = (paths, size = 18, width = 2.2) => {
+  const s = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+  s.setAttribute('width', size); s.setAttribute('height', size); s.setAttribute('viewBox', '0 0 24 24')
+  s.setAttribute('fill', 'none'); s.setAttribute('stroke', 'currentColor'); s.setAttribute('stroke-width', width)
+  s.setAttribute('stroke-linecap', 'round'); s.setAttribute('stroke-linejoin', 'round'); s.setAttribute('aria-hidden', 'true')
+  s.innerHTML = paths
+  return s
+}
+const ICON = {
+  check: '<path d="M5 12l5 5 9-10"/>', x: '<path d="M6 6l12 12M18 6L6 18"/>', plus: '<path d="M12 5v14M5 12h14"/>',
+  send: '<path d="M5 12h14"/><path d="M13 6l6 6-6 6"/>', search: '<circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>',
+  spin: '<path d="M21 12a9 9 0 1 1-9-9"/>', up: '<path d="M12 19V5M6 11l6-6 6 6"/>', down: '<path d="M12 5v14M6 13l6 6 6-6"/>',
 }
 
 async function send(event) {
@@ -132,142 +236,366 @@ async function poll() {
 }
 
 const img = (url, width = 600) => `${url}?width=${width}`
+// One <img> per picture, reused across redraws, so state pushes don't make it flicker.
+const pictures = new Map()
+function picture(url, width, altText) {
+  const src = img(url, width)
+  if (!pictures.has(src)) pictures.set(src, el('img', { src, alt: altText, loading: 'eager' }))
+  return pictures.get(src)
+}
+const alt = (d) => d.lines.filter(Boolean).join(' / ')
 
 function render() {
   if (!state) return
-  $('request').textContent = state.request ? `· ${state.request}` : ''
-  const pill = $('status')
-  const labels = { idle: 'ready', working: state.note || 'working…', review: 'pick one', approved: 'approved', error: 'jammed' }
-  pill.textContent = labels[state.status] || state.status
-  pill.className = 'pill' + (state.status === 'working' ? ' working' : state.status === 'approved' ? ' good' : '')
+  $('request').textContent = state.request || ''
+  renderSteps()
   $('tab-drafts').className = tab === 'drafts' ? 'on' : ''
   $('tab-settings').className = tab === 'settings' ? 'on' : ''
-  const main = $('main')
-  main.replaceChildren(tab === 'settings' ? settingsView() : draftsView())
-}
-
-function newMemeForm(placeholder = 'when the standup was supposed to be 15 minutes') {
-  const input = el('input', { type: 'text', class: 'grow', placeholder, maxlength: '300' })
-  const go = () => input.value.trim() && send({ type: 'new', request: input.value.trim() })
-  input.addEventListener('keydown', (e) => e.key === 'Enter' && go())
-  return el('div', { class: 'row' }, input, el('button', { class: 'primary', onclick: go }, 'Make memes'))
-}
-
-function chatBox(placeholder) {
-  const input = el('input', { type: 'text', class: 'grow', placeholder, maxlength: '300' })
-  const go = () => {
-    const text = input.value.trim()
-    if (!text) return
-    input.value = ''
-    if (state.status === 'idle') send({ type: 'new', request: text })
-    else send({ type: 'chat', text })
+  $('tab-drafts').setAttribute('aria-current', tab === 'drafts' ? 'page' : 'false')
+  $('tab-settings').setAttribute('aria-current', tab === 'settings' ? 'page' : 'false')
+  // Redraws come from every state push: keep the focused field, its text and caret.
+  const active = document.activeElement
+  const keep = active?.id && $('main').contains(active) ? { id: active.id, start: active.selectionStart, end: active.selectionEnd } : null
+  $('main').replaceChildren(...(tab === 'settings' ? [settingsView()] : draftsPage()))
+  if (keep) {
+    const again = $(keep.id)
+    if (again) {
+      again.focus()
+      try { again.setSelectionRange(keep.start, keep.end) } catch {}
+    }
   }
-  input.addEventListener('keydown', (e) => e.key === 'Enter' && go())
-  const log = el('div', { class: 'log' }, (state.chat || []).map((m) => el('div', { class: `msg ${m.role === 'you' ? 'you' : 'factory'}` }, m.text)))
-  setTimeout(() => (log.scrollTop = log.scrollHeight))
-  return el('div', { class: 'box chat' }, el('h2', {}, 'Chat with the factory'), (state.chat || []).length ? log : null,
-    el('div', { class: 'row' }, input, el('button', { class: 'primary', onclick: go }, 'Send')))
+}
+
+function renderSteps() {
+  const s = state
+  const names = ['Write', 'Judge', 'Render', 'Pick', 'Post']
+  let done = -1
+  let now = -1
+  if (s.status === 'working') { now = Math.max(0, ['write', 'judge', 'render'].indexOf(s.stage)); done = now - 1 }
+  if (s.status === 'review') { done = 2; now = 3 }
+  if (s.status === 'approved') { done = s.post?.stage === 'done' ? 4 : 3; now = s.post?.stage === 'done' ? -1 : 4 }
+  if (s.status === 'error') { now = Math.max(0, ['write', 'judge', 'render'].indexOf(s.stage)); done = now - 1 }
+  $('steps').replaceChildren(...names.map((name, i) => {
+    const jam = s.status === 'error' && i === now
+    const cls = 'step' + (i <= done ? ' done' : jam ? ' jam' : i === now ? ' now' : '')
+    return el('li', { class: cls, 'aria-current': i === now ? 'step' : null }, el('span', { class: 'dot' }, i <= done ? '✓' : jam ? '✗' : ''), name)
+  }))
+}
+
+// ---------- Drafts ----------
+
+function draftsPage() {
+  return [el('section', { class: 'content' }, draftsView()), el('aside', {}, chatBox())]
 }
 
 function draftsView() {
   const s = state
-  if (s.status === 'idle') return el('div', {}, el('div', { class: 'empty' }, 'Ask Claude for a meme, or start one here.'), el('p'), chatBox('a meme about Mondays'))
+  if (s.status === 'idle') {
+    return el('div', { class: 'empty' },
+      el('h1', {}, 'What should the meme be about?'),
+      el('div', {}, 'Ask Claude for a meme, or type one in the box on the right.'))
+  }
   if (s.status === 'error') {
-    return el('div', { class: 'box' }, el('div', { class: 'error' }, `The factory jammed: ${s.error}`),
-      el('div', { class: 'row' }, el('button', { class: 'primary', onclick: () => send({ type: 'remix' }) }, 'Try again')), newMemeForm())
+    return el('div', { class: 'card-box' },
+      el('h2', { class: 'bad' }, '✗ The factory jammed'),
+      el('div', {}, s.error),
+      el('div', { class: 'row' }, el('button', { class: 'btn primary', onclick: () => send({ type: 'remix' }) }, 'Try again'), el('span', { class: 'muted' }, 'or describe a new meme in the chat.')))
   }
   if (s.status === 'approved' && s.approved) return approvedView()
   const drafts = s.drafts || []
-  if (!drafts.length) return el('div', { class: 'empty' }, s.note || 'Cooking drafts…')
-  return el('div', {},
-    s.status === 'working' ? el('p', { class: 'muted' }, `${s.note || 'Working…'} The drafts below stay until the new ones are ready.`) : null,
+  if (!drafts.length) return el('div', { class: 'empty' }, el('h1', {}, s.note || 'Cooking drafts…'), el('div', {}, 'They land here in a few seconds.'))
+  const working = s.status === 'working'
+  const top = Math.max(...drafts.map((d) => d.score ?? -1))
+  const picked = drafts[s.selected] || drafts[0]
+  return el('div', { class: working ? 'content working' : 'content' },
+    el('div', { class: 'row', style: 'align-items:baseline;gap:8px 16px' },
+      el('h1', {}, working ? (s.note || 'Working…') : 'Pick one'),
+      working
+        ? el('span', { class: 'muted' }, 'These stay until the new drafts land.')
+        : el('span', { class: 'hints' }, el('span', { class: 'kbd' }, '1'), el('span', { class: 'kbd' }, '2'), el('span', { class: 'kbd' }, '3'), 'pick ·',
+          el('span', { class: 'kbd' }, 'A'), 'approve ·', el('span', { class: 'kbd' }, 'R'), 'remix ·', el('span', { class: 'kbd' }, '/'), 'talk')),
     el('div', { class: 'grid' }, drafts.map((d, i) =>
-      el('button', { class: 'card' + (i === s.selected ? ' selected' : ''), onclick: () => { s.selected = i; render(); send({ type: 'select', index: i }) }, ondblclick: () => send({ type: 'approve', index: i }) },
-        el('img', { src: img(d.url), alt: d.lines.filter(Boolean).join(' / '), loading: 'eager' }),
-        el('div', { class: 'info' }, el('b', {}, d.template_name), el('span', {}, d.score == null ? '' : `judge ${d.score}/10`))))),
+      el('button', { class: 'card' + (i === s.selected ? ' picked' : ''), 'aria-pressed': String(i === s.selected), onclick: () => pick(i) },
+        i === s.selected ? el('span', { class: 'tag picked' }, 'PICKED') : null,
+        d.score != null && d.score === top && drafts.length > 1 ? el('span', { class: 'tag top' }, 'TOP SCORE') : null,
+        picture(d.url, 600, alt(d)),
+        el('div', { class: 'foot' }, el('span', { class: 'kbd' }, String(i + 1)), el('b', {}, d.template_name),
+          el('span', { class: 'score' }, d.score == null ? '' : `${d.score}/10`))))),
     el('div', { class: 'row' },
-      el('button', { class: 'primary', disabled: s.status === 'working', onclick: () => send({ type: 'approve', index: s.selected }) }, 'Approve selected'),
-      el('button', { disabled: s.status === 'working', onclick: () => send({ type: 'remix' }) }, 'Remix'),
-      el('span', { class: 'muted' }, 'Click to select, double-click to approve.')),
-    el('p'),
-    chatBox('meaner · use 2 · approve · post it to #social'))
+      el('button', { class: 'btn primary', disabled: working, onclick: approve }, `Approve ${picked.template_name}`, el('span', { class: 'kbd' }, 'A')),
+      el('button', { class: 'btn', disabled: working, onclick: () => send({ type: 'remix' }) }, 'Remix all', el('span', { class: 'kbd' }, 'R')),
+      el('button', { class: 'btn', onclick: () => copy(picked.url) }, 'Copy link', el('span', { class: 'kbd' }, 'C')),
+      el('a', { href: picked.url, target: '_blank', rel: 'noreferrer' }, 'Open full image ↗')))
 }
+
+function pick(i) {
+  if (state.status !== 'review') return
+  state.selected = i
+  render()
+  send({ type: 'select', index: i })
+}
+function approve() {
+  if (state.status === 'review') send({ type: 'approve', index: state.selected })
+}
+function copy(url) {
+  navigator.clipboard?.writeText(url)
+}
+
+// ---------- Approved: post it ----------
 
 function approvedView() {
   const s = state
   const d = s.approved
-  const post = s.post || { stage: 'pick' }
-  const channels = s.slackChannels || []
-  const favs = (s.settings?.favorites || []).filter((f) => f.label && (f.target || f.channelId))
-  let panel
-  if (post.stage === 'confirm') {
-    panel = el('div', { class: 'box confirm' },
-      el('h2', {}, `Post to #${post.target.name} on Slack?`),
-      el('div', { class: 'muted' }, s.settings?.signature ? 'With: Fresh from the Meme Factory 🏭' : 'No message, just the meme.'),
+  return el('div', { class: 'split' },
+    el('section', { class: 'hero', style: 'display:flex;flex-direction:column;gap:12px' },
+      el('div', { class: 'row' }, el('span', { class: 'badge good' }, '✓ APPROVED'), el('b', {}, d.template_name),
+        el('span', { class: 'muted mono' }, d.score == null ? '' : `${d.score}/10`)),
+      picture(d.url, 900, alt(d)),
       el('div', { class: 'row' },
-        el('button', { class: 'primary', onclick: () => send({ type: 'confirm' }) }, 'Post it'),
-        el('button', { onclick: () => send({ type: 'cancel' }) }, 'Cancel')))
-  } else if (post.stage === 'posting') {
-    panel = el('div', { class: 'box' }, el('h2', {}, `Uploading to #${post.target.name}…`))
-  } else if (post.stage === 'done') {
-    const isFav = favs.some((f) => f.channelId === post.target.id)
-    panel = el('div', { class: 'box' },
-      el('h2', {}, `Posted to #${post.target.name} ✓`),
-      post.link ? el('a', { href: post.link, target: '_blank', rel: 'noreferrer' }, 'Open in Slack') : null,
+        el('button', { class: 'btn', onclick: () => send({ type: 'back' }) }, 'Back to drafts', el('span', { class: 'kbd' }, 'B')),
+        el('button', { class: 'btn', onclick: () => copy(d.url) }, 'Copy link', el('span', { class: 'kbd' }, 'C')),
+        el('a', { href: d.url, target: '_blank', rel: 'noreferrer' }, 'Full image ↗'))),
+    postCard())
+}
+
+function favorites() {
+  return (state.settings?.favorites || []).filter((f) => f.label && (f.target || f.channelId))
+}
+
+// What the Post button will do: a channel (by id) or a place described in words.
+function currentChoice() {
+  const channels = state.slackChannels || []
+  if (choice?.channelId && channels.some((c) => c.id === choice.channelId)) return choice
+  if (choice?.target) return choice
+  const fav = favorites().find((f) => f.channelId && channels.some((c) => c.id === f.channelId))
+  if (fav) return { channelId: fav.channelId }
+  return channels[0] ? { channelId: channels[0].id } : null
+}
+function choiceName(c) {
+  if (!c) return ''
+  if (c.target) return c.target
+  return '#' + ((state.slackChannels || []).find((x) => x.id === c.channelId)?.name ?? '')
+}
+function post() {
+  const c = currentChoice()
+  if (!c) return
+  send(c.channelId ? { type: 'post', channelId: c.channelId } : { type: 'post', target: c.target })
+}
+
+function postCard() {
+  const s = state
+  const p = s.post || { stage: 'pick' }
+  const name = p.target ? `#${p.target.name}` : ''
+  if (p.stage === 'confirm') {
+    return el('section', { class: 'card-box state confirm', role: 'dialog', 'aria-label': 'Confirm post' },
+      el('p', { class: 'lbl' }, 'Confirm'),
+      el('h2', {}, `Post to ${name} on Slack?`),
+      el('div', { class: 'muted' }, s.settings?.signature ? 'Signed “Fresh from the Meme Factory”.' : 'Just the meme, no message.'),
       el('div', { class: 'row' },
-        isFav ? el('span', { class: 'muted' }, '★ favorite') : el('button', { onclick: () => send({ type: 'favorite' }) }, `★ Save #${post.target.name}`),
-        el('button', { onclick: () => send({ type: 'cancel' }) }, 'Post somewhere else')))
-  } else {
-    const where = el('input', { type: 'text', class: 'grow', placeholder: 'or say where: my LinkedIn, the #random channel…', maxlength: '300' })
-    const sendWhere = () => where.value.trim() && send({ type: 'post', target: where.value.trim() })
-    where.addEventListener('keydown', (e) => e.key === 'Enter' && sendWhere())
-    panel = el('div', { class: 'box' },
-      el('h2', {}, 'Post it'),
-      post.stage === 'error' ? el('div', { class: 'error' }, `Couldn't post to #${post.target?.name}: ${post.error}`) : null,
-      channels.length ? el('div', {}, el('div', { class: 'muted' }, 'Slack'),
-        el('div', { class: 'chips' }, channels.map((c) => el('button', { onclick: () => send({ type: 'post', channelId: c.id }) }, `#${c.name}`)))) : null,
-      favs.length ? el('div', {}, el('div', { class: 'muted' }, 'Favorites'),
-        el('div', { class: 'chips' }, favs.map((f) => el('button', { title: f.target, onclick: () => send(f.channelId ? { type: 'post', channelId: f.channelId } : { type: 'post', target: f.target }) }, `★ ${f.label}`)))) : null,
-      (s.others || []).length ? el('div', {}, el('div', { class: 'muted' }, 'Through Claude'),
-        el('div', { class: 'chips' }, s.others.map((label) => el('button', { onclick: () => send({ type: 'post', target: label }) }, label)))) : null,
-      el('div', { class: 'row' }, where, el('button', { onclick: sendWhere }, 'Send')),
-      el('div', { class: 'row' },
-        el('button', { onclick: () => send({ type: 'addConnector' }) }, '+ Add a connector'),
-        el('button', { onclick: () => navigator.clipboard?.writeText(d.url) }, 'Copy link'),
-        el('button', { onclick: () => send({ type: 'back' }) }, 'Back to drafts')),
-      el('div', { class: 'muted' }, s.settings?.askBeforePost ? 'You confirm each post before it goes out.' : 'Ask-before-posting is off: picking a channel posts right away.'))
+        el('button', { class: 'btn primary', style: 'flex:1', id: 'confirm', onclick: () => send({ type: 'confirm' }) }, 'Post it', el('span', { class: 'kbd' }, 'Y')),
+        el('button', { class: 'btn', style: 'flex:1', onclick: () => send({ type: 'cancel' }) }, 'Cancel', el('span', { class: 'kbd' }, 'N'))))
   }
-  return el('div', { class: 'hero' },
-    el('div', {},
-      el('img', { src: img(d.url, 900), alt: d.lines.filter(Boolean).join(' / ') }),
-      el('p', { class: 'muted' }, `${d.template_name}${d.score == null ? '' : ` · judge ${d.score}/10`} · `, el('a', { href: d.url, target: '_blank', rel: 'noreferrer' }, 'full image'))),
-    el('div', { style: 'display:flex;flex-direction:column;gap:16px' }, panel, chatBox('post it to #social · make it meaner · new meme about…')))
+  if (p.stage === 'posting') {
+    return el('section', { class: 'card-box state' },
+      el('p', { class: 'lbl' }, 'Posting'),
+      el('div', { class: 'line warn' }, el('span', { class: 'spin', style: 'display:inline-flex' }, svg(ICON.spin, 20, 2.4)), `Posting to ${name} on Slack…`),
+      el('div', { class: 'muted' }, 'Uploading the image. You can close this tab.'))
+  }
+  if (p.stage === 'done') {
+    const isFav = favorites().some((f) => f.channelId === p.target.id)
+    return el('section', { class: 'card-box state' },
+      el('p', { class: 'lbl' }, 'Posted'),
+      el('div', { class: 'line good' }, svg(ICON.check, 20, 2.6), `Posted to ${name} on Slack`),
+      p.link ? el('a', { href: p.link, target: '_blank', rel: 'noreferrer' }, 'View message in Slack ↗') : null,
+      el('div', { class: 'row' },
+        isFav ? el('span', { class: 'muted' }, '★ favorite') : el('button', { class: 'btn small', onclick: () => send({ type: 'favorite' }) }, `★ Save ${name}`),
+        el('button', { class: 'btn small', onclick: () => send({ type: 'cancel' }) }, 'Post elsewhere'),
+        el('button', { class: 'btn small', onclick: () => send({ type: 'reset' }) }, 'New meme')))
+  }
+
+  const channels = s.slackChannels || []
+  const favs = favorites()
+  const favIds = new Set(favs.map((f) => f.channelId).filter(Boolean))
+  const c = currentChoice()
+  const shown = channels
+    .filter((ch) => !channelFilter || ch.name.toLowerCase().includes(channelFilter.toLowerCase().replace(/^#/, '')))
+    .sort((a, b) => Number(favIds.has(b.id)) - Number(favIds.has(a.id)))
+  const filter = el('input', { type: 'text', id: 'find-channel', placeholder: 'Find a channel', value: channelFilter,
+    oninput: (e) => { channelFilter = e.target.value; render() } })
+  return el('section', { class: 'card-box' },
+    el('h2', { style: 'font-size:22px' }, 'Post it'),
+    p.stage === 'error' ? el('div', { class: 'card-box state', style: 'padding:14px;border-color:var(--bad)' },
+      el('div', { class: 'line bad' }, svg(ICON.x, 20, 2.6), `Not posted to ${name}`),
+      el('div', { class: 'muted' }, p.error),
+      el('div', { class: 'row' },
+        p.target?.id ? el('button', { class: 'btn small', onclick: () => send({ type: 'post', channelId: p.target.id }) }, 'Retry') : null,
+        el('span', { class: 'muted' }, 'or pick another below.'))) : null,
+    s.connectors?.slack || channels.length
+      ? el('div', { class: 'conn' }, el('span', { class: 'led' }), el('b', {}, 'Slack'), el('span', { class: 'muted' }, 'connected'))
+      : el('div', { class: 'conn' }, el('span', { class: 'led off' }), el('span', {}, 'No Slack connector here. Add one, or say where in the chat.')),
+    favs.length ? el('div', { style: 'display:flex;flex-direction:column;gap:8px' },
+      el('p', { class: 'lbl' }, 'Favorites'),
+      el('div', { class: 'row', style: 'gap:8px' },
+        favs.map((f) => {
+          const on = f.channelId ? c?.channelId === f.channelId : c?.target === f.target
+          return el('button', { class: 'chip' + (on ? ' on' : ''), 'aria-pressed': String(on), title: f.target || '',
+            onclick: () => { choice = f.channelId ? { channelId: f.channelId } : { target: f.target }; render() } }, `★ ${f.label}`)
+        }),
+        el('button', { class: 'linkish', onclick: () => { tab = 'settings'; favDraft = null; render() } }, 'Edit'))) : null,
+    channels.length ? el('div', { style: 'display:flex;flex-direction:column;gap:8px' },
+      el('label', { class: 'lbl', for: 'find-channel' }, favs.length ? 'Or pick a channel' : 'Pick a channel'),
+      el('div', { class: 'search' }, svg(ICON.search, 16, 2), filter),
+      el('div', { class: 'channels', role: 'radiogroup', 'aria-label': 'Slack channels' },
+        shown.length ? shown.map((ch) => {
+          const on = c?.channelId === ch.id
+          return el('label', { class: 'ch' + (on ? ' on' : '') },
+            el('input', { type: 'radio', name: 'channel', checked: on, onchange: () => { choice = { channelId: ch.id }; render() } }),
+            `#${ch.name}`, favIds.has(ch.id) ? el('span', { class: 'fav' }, 'favorite') : null)
+        }) : el('div', { class: 'muted', style: 'padding:10px 12px' }, 'No channel matches.'))) : null,
+    (s.others || []).length ? el('div', { style: 'display:flex;flex-direction:column;gap:8px' },
+      el('p', { class: 'lbl' }, 'Through Claude'),
+      el('div', { class: 'row', style: 'gap:8px' }, s.others.map((label) =>
+        el('button', { class: 'chip words' + (c?.target === label ? ' on' : ''), onclick: () => { choice = { target: label }; render() } }, label)))) : null,
+    el('button', { class: 'linkish', onclick: () => send({ type: 'addConnector' }) }, svg(ICON.plus, 16), 'Add a connector'),
+    el('button', { class: 'btn primary', style: 'width:100%', disabled: !c, onclick: post }, c ? `Post to ${choiceName(c)}` : 'Pick where to post', el('span', { class: 'kbd' }, 'P')),
+    el('div', { class: 'muted' }, s.settings?.askBeforePost ? 'You confirm first. ' : 'Ask-before-posting is off: this posts right away. ',
+      el('button', { class: 'linkish', style: 'font-size:13px;padding:0', onclick: () => { tab = 'settings'; render() } }, 'Settings')),
+    s.posted?.length ? el('div', { class: 'muted' }, `Sent so far: ${s.posted.join(', ')}`) : null)
+}
+
+// ---------- Chat ----------
+
+function chatBox() {
+  const s = state
+  const idle = s.status === 'idle'
+  const input = el('input', { type: 'text', id: 'chat', maxlength: '300', value: chatDraft,
+    placeholder: idle ? 'when the standup was supposed to be 15 minutes' : s.status === 'approved' ? 'post it to #social' : 'meaner · use 2 · approve',
+    oninput: (e) => (chatDraft = e.target.value) })
+  const say = (text) => {
+    text = text.trim()
+    if (!text) return
+    chatDraft = ''
+    send(state.status === 'idle' ? { type: 'new', request: text } : { type: 'chat', text })
+    render()
+  }
+  const chips = idle ? [] : s.status === 'approved'
+    ? (s.post?.stage === 'done' ? ['post it to another channel too', 'new meme about…'] : ['post it to #social', 'back to drafts'])
+    : ['meaner', 'different format', 'use 2', 'approve it']
+  const log = el('div', { class: 'log', 'aria-live': 'polite' }, (s.chat || []).map((m) =>
+    el('div', { class: `msg ${m.role === 'you' ? 'you' : 'factory'}` }, el('span', { class: 'who' }, m.role === 'you' ? 'You' : 'Factory'), m.text)))
+  setTimeout(() => (log.scrollTop = log.scrollHeight))
+  return el('section', { class: 'card-box chat' },
+    el('h2', { style: 'font-size:18px' }, idle ? 'Start a meme' : 'Talk to the factory'),
+    (s.chat || []).length ? log : null,
+    chips.length ? el('div', { class: 'row', style: 'gap:8px' }, chips.map((t) =>
+      el('button', { class: 'chip words', onclick: () => (t.endsWith('…') ? (chatDraft = t.slice(0, -1), render(), $('chat')?.focus()) : say(t)) }, t))) : null,
+    el('form', { onsubmit: (e) => { e.preventDefault(); say(input.value) } },
+      el('label', { class: 'sr', for: 'chat' }, idle ? 'What the meme is about' : 'Message the factory'),
+      input,
+      el('button', { class: 'btn send', 'aria-label': idle ? 'Make memes' : 'Send' }, svg(ICON.send))),
+    el('div', { class: 'muted' }, idle
+      ? 'Three drafts appear here and in the Claude Code panel.'
+      : 'A small model answers. It can remix, pick, approve and post, and posts still ask you first when that setting is on.'))
+}
+
+// ---------- Settings ----------
+
+let savedTimer = 0
+function saveSettings(patch) {
+  send({ type: 'settings', settings: patch })
+  $('saved').classList.add('show')
+  clearTimeout(savedTimer)
+  savedTimer = setTimeout(() => $('saved').classList.remove('show'), 1600)
+}
+function saveFavorites() {
+  saveSettings({ favorites: favDraft.filter((f) => f.label.trim() && (f.target?.trim() || f.channelId)) })
 }
 
 function settingsView() {
   const s = state.settings || {}
+  const channels = state.slackChannels || []
   if (!favDraft) favDraft = (s.favorites || []).map((f) => ({ ...f }))
-  const rows = favDraft.map((f, i) => el('div', { class: 'fav' },
-    el('input', { type: 'text', placeholder: 'Label (Team memes)', value: f.label || '', oninput: (e) => (favDraft[i].label = e.target.value) }),
-    el('input', { type: 'text', placeholder: 'Where (the #memes channel on Slack)', value: f.target || '', oninput: (e) => (favDraft[i].target = e.target.value) }),
-    el('button', { onclick: () => { favDraft.splice(i, 1); render() } }, 'Remove')))
-  return el('div', { class: 'box', style: 'max-width: 760px' },
-    el('h2', {}, 'Posting'),
-    el('label', { class: 'toggle' },
-      el('input', { type: 'checkbox', checked: s.askBeforePost !== false, onchange: (e) => send({ type: 'settings', settings: { askBeforePost: e.target.checked } }) }),
-      el('div', {}, el('b', {}, 'Ask me before Claude posts a meme'),
-        el('div', { class: 'muted' }, 'Slack posts get a Post it / Cancel step here and in the panel. Posts Claude makes for you (LinkedIn, email…) always ask first, even in auto mode.'))),
-    el('label', { class: 'toggle' },
-      el('input', { type: 'checkbox', checked: s.signature !== false, onchange: (e) => send({ type: 'settings', settings: { signature: e.target.checked } }) }),
-      el('div', {}, el('b', {}, 'Sign posts “Fresh from the Meme Factory 🏭”'),
-        el('div', { class: 'muted' }, 'Adds the line, with “Meme Factory” linking to the mod on GitHub.'))),
-    el('h2', {}, 'Favorite destinations'),
-    el('div', { class: 'muted' }, 'Describe each one in words; Claude picks the right connector and channel from it.'),
-    ...rows,
-    el('div', { class: 'row' },
-      el('button', { onclick: () => { favDraft.push({ label: '', target: '' }); render() } }, 'Add favorite'),
-      el('button', { class: 'primary', onclick: () => { send({ type: 'settings', settings: { favorites: favDraft.filter((f) => f.label.trim() && f.target.trim()) } }); favDraft = null } }, 'Save favorites')))
+  const toggle = (id, title, body, checked, key) =>
+    el('label', { class: 'switch-row' },
+      el('span', {}, el('b', { style: 'font-size:16px' }, title), el('span', { class: 'muted', style: 'font-size:14px' }, body)),
+      el('input', { type: 'checkbox', role: 'switch', class: 'sr', id, checked, onchange: (e) => saveSettings({ [key]: e.target.checked }) }),
+      el('span', { class: 'switch', 'aria-hidden': 'true' }))
+  const move = (i, by) => { const [f] = favDraft.splice(i, 1); favDraft.splice(i + by, 0, f); saveFavorites(); render() }
+  const rows = favDraft.map((f, i) => {
+    const where = channels.length
+      ? el('select', { class: 'in mono', id: `fav-where-${i}`, style: 'flex:1 1 200px', 'aria-label': `Where favorite ${i + 1} posts`,
+          onchange: (e) => {
+            const ch = channels.find((c) => c.id === e.target.value)
+            favDraft[i] = ch ? { ...f, channelId: ch.id, channelName: ch.name, target: `#${ch.name} on Slack` } : { ...f, channelId: undefined, channelName: undefined, target: f.target && !f.channelId ? f.target : '' }
+            saveFavorites(); render()
+          } },
+          el('option', { value: '' }, f.channelId ? 'Somewhere else (in words)' : 'Pick a channel…'),
+          channels.map((c) => el('option', { value: c.id, selected: c.id === f.channelId }, `#${c.name} · Slack`)))
+      : null
+    const words = !f.channelId
+      ? el('input', { type: 'text', id: `fav-target-${i}`, style: 'flex:1 1 200px', placeholder: 'or in words: my LinkedIn', value: f.target || '', 'aria-label': `Where favorite ${i + 1} posts, in words`,
+          oninput: (e) => (favDraft[i].target = e.target.value), onchange: saveFavorites })
+      : null
+    return el('div', { class: 'fav-row' },
+      el('span', { class: 'n' }, String(i + 1)),
+      el('input', { type: 'text', id: `fav-label-${i}`, style: 'flex:1 1 160px', placeholder: 'Name', value: f.label || '', 'aria-label': `Favorite ${i + 1} name`,
+        oninput: (e) => (favDraft[i].label = e.target.value), onchange: saveFavorites }),
+      where, words,
+      el('button', { class: 'icon', 'aria-label': `Move ${f.label || 'favorite'} up`, disabled: i === 0, onclick: () => move(i, -1) }, svg(ICON.up)),
+      el('button', { class: 'icon', 'aria-label': `Move ${f.label || 'favorite'} down`, disabled: i === favDraft.length - 1, onclick: () => move(i, 1) }, svg(ICON.down)),
+      el('button', { class: 'icon', 'aria-label': `Remove ${f.label || 'favorite'}`, onclick: () => { favDraft.splice(i, 1); saveFavorites(); render() } }, svg(ICON.x)))
+  })
+  const slack = channels.length > 0
+  return el('div', { class: 'settings' },
+    el('div', {}, el('h1', { style: 'margin-bottom:6px' }, 'Settings'), el('div', { class: 'muted', style: 'font-size:14px' }, 'Changes save as you make them, for every session on this machine.')),
+    el('section', { class: 'card-box' },
+      el('h2', {}, 'Posting'),
+      toggle('ask', 'Ask before posting', 'You confirm every post (“Post to #social on Slack?”) in the panel or here. Posts Claude makes for you elsewhere ask first too, even in auto mode.', s.askBeforePost !== false, 'askBeforePost'),
+      toggle('sign', 'Sign posts “Fresh from the Meme Factory”', 'Adds the line to Slack posts, with “Meme Factory” linking to the mod on GitHub.', s.signature !== false, 'signature')),
+    el('section', { class: 'card-box' },
+      el('div', {}, el('h2', {}, 'Favorites'), el('div', { class: 'muted', style: 'font-size:14px' }, 'Your quick picks after you approve, in this order. In the panel, the first three are keys 1, 2 and 3.')),
+      el('div', {}, rows,
+        el('div', { class: 'fav-row' },
+          el('button', { class: 'btn', onclick: () => { favDraft.push({ label: '', target: '' }); render(); $(`fav-label-${favDraft.length - 1}`)?.focus() } }, svg(ICON.plus, 16), 'Add favorite')))),
+    el('section', { class: 'card-box' },
+      el('div', {}, el('h2', {}, 'Where you can post'), el('div', { class: 'muted', style: 'font-size:14px' }, 'Read from this session’s connectors.')),
+      el('div', {},
+        el('div', { class: 'conn-row' }, el('span', { class: slack ? 'led' : 'led off' }), el('b', {}, 'Slack'),
+          el('span', { class: 'muted' }, slack ? `${channels.length} channel${channels.length === 1 ? '' : 's'} you're in` : 'not connected'),
+          el('span', { class: slack ? 'pill good' : 'pill' }, slack ? 'CONNECTED' : 'NOT CONNECTED')),
+        (state.others || []).map((label) => el('div', { class: 'conn-row' }, el('span', { class: 'led' }), el('b', {}, label),
+          el('span', { class: 'muted' }, 'Claude posts for you'), el('span', { class: 'pill good' }, 'CONNECTED')))),
+      el('div', { class: 'row' },
+        el('button', { class: 'btn primary', onclick: () => send({ type: 'addConnector' }) }, svg(ICON.plus, 16), 'Add a connector'),
+        el('button', { class: 'btn', onclick: () => send({ type: 'refresh' }) }, 'Check again'))))
 }
+
+// ---------- Keys: the same ones the panel teaches ----------
+
+document.addEventListener('keydown', (e) => {
+  if (!state || e.metaKey || e.ctrlKey || e.altKey) return
+  const t = e.target
+  if (t instanceof HTMLInputElement || t instanceof HTMLTextAreaElement || t instanceof HTMLSelectElement) return
+  if (tab !== 'drafts') return
+  const k = e.key.toLowerCase()
+  const s = state
+  const go = (fn) => { e.preventDefault(); fn() }
+  if (k === '/') return go(() => $('chat')?.focus())
+  if (s.status === 'review') {
+    if (['1', '2', '3'].includes(k) && Number(k) <= (s.drafts || []).length) return go(() => pick(Number(k) - 1))
+    if (k === 'a') return go(approve)
+    if (k === 'r') return go(() => send({ type: 'remix' }))
+    if (k === 'c') return go(() => copy(s.drafts[s.selected]?.url))
+  }
+  if (s.status === 'approved') {
+    const stage = s.post?.stage || 'pick'
+    if (stage === 'confirm' && k === 'y') return go(() => send({ type: 'confirm' }))
+    if (stage === 'confirm' && (k === 'n' || k === 'escape')) return go(() => send({ type: 'cancel' }))
+    if ((stage === 'pick' || stage === 'error') && k === 'p') return go(post)
+    if (stage !== 'confirm' && k === 'b') return go(() => send({ type: 'back' }))
+    if (k === 'c') return go(() => copy(s.approved.url))
+  }
+})
 
 $('tab-drafts').onclick = () => { tab = 'drafts'; render() }
 $('tab-settings').onclick = () => { tab = 'settings'; favDraft = null; render() }
