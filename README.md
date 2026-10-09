@@ -44,6 +44,8 @@ Inside a session, `/plugin install meme-factory --marketplace CodyAMaughan/meme-
 3. **Remix in plain words.** Type in the chat box (`t` jumps to it): "meaner", "make it about the PM", "use 2", "different format", "approve it and post it to #social".
 4. **Approve and post.** `a` approves. Pick a channel (favorites first) and press `p`, or say where in the chat box ("post it to #social"). Confirm in the panel, and it posts while you keep working. You get the message link.
 
+Each screen shows its own actions first, then the same keys in the same place: `c` Copy, `n` New (a fresh start, chat included), `v` Browser and `t` Talk. After you send a message in the chat box, or click the panel's header, the keys work again.
+
 ### Steer it
 
 - **Name the meme.** "a side eye meme about…", "use Drake", "the woman yelling at a cat". A meme you name is always drafted.

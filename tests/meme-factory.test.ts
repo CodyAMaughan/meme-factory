@@ -547,6 +547,57 @@ test("the chat box knows Slack is there when a helper posts to it, so it doesn't
   expect(chatPrompt(job, [], [], 'post it to #team')).toContain('Slack channels: (Slack not connected)')
 })
 
+test("the header is something to click in the terminal: a button that does nothing but take the keyboard", async ($, on) => {
+  // Where the ring goes (out of Say after a click or a send) is verified in a real session: the test
+  // kit has no focus ring, and $.ui.focus reaches no hook here.
+  const { clock } = factory(on)
+  await draftsReady($, clock)
+  const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
+  const header = await ui.find({ key: 'header' })
+  expect(header).toMatchObject({ type: 'Button', props: { plain: true } })
+  expect(header?.props).not.toHaveProperty('hotkey')
+  expect(await ui.find({ type: 'Text', text: 'standups that run long' })).toBeDefined()
+  await ui.press({ key: 'header' })
+  expect(await ui.find({ key: 'approve' })).toBeDefined()
+  // Desktop draws the wordmark as an image, which no Button can hold: no header button there.
+  const desktop = await $.ui.mount({ ...PANE, surface: 'desktop' })
+  expect(await desktop.find({ key: 'header' })).toBeUndefined()
+})
+
+test('a new meme starts a new chat: New, a meme from Claude, and "new meme about…" in the chat box', async ($, on) => {
+  let next: object = { reply: 'Meaner coming up.', action: { type: 'none' } }
+  const { clock } = factory(on, { chatReply: () => next })
+  await draftsReady($, clock)
+  const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
+  await ui.input({ key: 'chat', text: 'meaner please' })
+  await clock.settle()
+  expect(await ui.find({ type: 'Text', text: 'Meaner coming up.' })).toBeDefined()
+  // New, then the next meme's drafts: the old chat doesn't come back.
+  await ui.press({ key: 'new' })
+  await ui.input({ key: 'chat', text: 'standups that run long' })
+  await clock.settle()
+  expect(await ui.find({ key: 'approve' })).toBeDefined()
+  expect(await ui.find({ type: 'Text', text: 'meaner please' })).toBeUndefined()
+  expect(await ui.find({ type: 'Text', text: 'Meaner coming up.' })).toBeUndefined()
+
+  // A meme Claude asks for starts a fresh chat too.
+  await ui.input({ key: 'chat', text: 'meaner please' })
+  await clock.settle()
+  await $.tool.call({ tool: TOOL, tool_use_id: 't2', request: 'flaky tests' })
+  await clock.settle()
+  expect(await ui.find({ type: 'Text', text: 'Meaner coming up.' })).toBeUndefined()
+
+  // Asked for in the chat box, the new meme's chat opens with the exchange that asked for it.
+  await ui.input({ key: 'chat', text: 'meaner please' })
+  await clock.settle()
+  next = { reply: 'Starting a meme about cats.', action: { type: 'new', request: 'cats' } }
+  await ui.input({ key: 'chat', text: 'new meme about cats' })
+  await clock.settle()
+  expect(await ui.find({ type: 'Text', text: 'Starting a meme about cats.' })).toBeDefined()
+  expect(await ui.find({ type: 'Text', text: 'new meme about cats' })).toBeDefined()
+  expect(await ui.find({ type: 'Text', text: 'Meaner coming up.' })).toBeUndefined()
+})
+
 test('Desktop draws the meme as an SVG with a link to the full image', async ($, on) => {
   const { clock } = factory(on)
   await draftsReady($, clock, 'desktop')
