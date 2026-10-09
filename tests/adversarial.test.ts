@@ -810,6 +810,35 @@ for (const state of STATES) {
   })
 }
 
+// The keys every screen has, in the same order (Copy only with a meme on screen; New steps out while
+// a yes/no question keeps n for No).
+const SHARED: Record<string, string[]> = {
+  working: ['new', 'view', 'talk'],
+  review: ['copy', 'new', 'view', 'talk'],
+  error: ['new', 'view', 'talk'],
+  pick: ['copy', 'new', 'view', 'talk'],
+  confirm: ['copy', 'view', 'talk'],
+  posting: ['copy', 'new', 'view', 'talk'],
+  done: ['copy', 'new', 'view', 'talk'],
+  'post-error': ['copy', 'new', 'view', 'talk'],
+}
+const HOTKEY = { copy: 'c', new: 'n', view: 'v', talk: 't' }
+
+for (const [state, expected] of Object.entries(SHARED)) {
+  for (const [layout, target] of [['inline', INLINE], ['docked', PANE]] as const) {
+    test(`${layout}, state ${state}: the shared keys, in their place`, async ($, on) => {
+      await reach($, on, state)
+      const ui = await $.ui.mount({ ...target, surface: 'terminal' })
+      const buttons = await ui.findAll({ type: 'Button' })
+      const shared = buttons.filter((b) => b.props.key in HOTKEY)
+      expect(shared.map((b) => b.props.key)).toEqual(expected)
+      for (const b of shared) expect(b.props.hotkey).toBe(HOTKEY[b.props.key])
+      // They come last among the screen's buttons: its own actions first.
+      expect(buttons.slice(-expected.length).map((b) => b.props.key)).toEqual(expected)
+    })
+  }
+}
+
 test('a degenerate 0x0 PNG does not break the picture', async ($, on) => {
   await reach($, on, 'review', { png: [0, 0] })
   const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })

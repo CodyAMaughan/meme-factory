@@ -44,6 +44,8 @@ Inside a session, `/plugin install meme-factory --marketplace CodyAMaughan/meme-
 3. **Remix in plain words.** Type in the chat box (`t` jumps to it): "meaner", "make it about the PM", "use 2", "different format", "approve it and post it to #social".
 4. **Approve and post.** `a` approves. Pick a channel (favorites first) and press `p`, or say where in the chat box ("post it to #social"). Confirm in the panel, and it posts while you keep working. You get the message link.
 
+Each screen shows its own actions first, then the same keys in the same place: `c` Copy, `n` New (a fresh start, chat included), `v` Browser and `t` Talk. After you send a message in the chat box, or click the panel's header, the keys work again.
+
 ### Steer it
 
 - **Name the meme.** "a side eye meme about…", "use Drake", "the woman yelling at a cat". A meme you name is always drafted.
@@ -192,6 +194,7 @@ Previews in the browser gallery and posted links use the plain URL, so on memege
 - **No picture in the terminal.** See [Pictures](#pictures). Press `v` to see it in the browser.
 - **"The gallery needs python3".** Install Python 3, or use the panel.
 - **No Slack channels listed.** Listing them needs a Slack connection with the channel list ([Pictures or links](#pictures-or-links)). Without one, say where in the chat box ("post it to #social on Slack") and the posting helper finds it.
+- **"Auto mode blocked the mod's Slack call."** Some Claude Code builds (the desktop app's 2.1.293, for one) put the mod's own Slack calls to auto mode's check, which refuses a call you didn't ask Claude for in the chat, such as a press of **Post it**. The mod then tries Slack's tools, and if those are refused too, the panel names the three tools to allow. Add them to `"permissions": { "allow": [...] }` in `~/.claude/settings.json`, spelled as the panel shows them (the desktop app's Slack names carry an ID). Other permission modes don't need them.
 - **Added the Slack connector, but nothing changed.** If Slack's Claude Code plugin is enabled too, Claude Code loads only the plugin, since they're the same Slack server. Keep one: `claude plugin disable slack@claude-plugins-official` lets the connector load.
 
 ## Develop

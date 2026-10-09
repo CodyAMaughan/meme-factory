@@ -99,6 +99,8 @@ type Rig = {
   slackDenied?: boolean
   // Answer the mod's own Slack calls with this error
   slackError?: string
+  // Refuse the mod's $.mcp.call Slack calls, as the desktop app's 2.1.293 auto mode does
+  mcpRefused?: boolean
   // Wrap Slack's replies the way the desktop app does: [{ type: 'text', text: '{"result":"..."}' }]
   desktopShape?: boolean
   // A terminal under 144 columns
@@ -170,10 +172,13 @@ function factory(on, rig: Rig = {}) {
     }
     log.calls.push(e)
     if (rig.slackDenied && String(e.tool).startsWith(SLACK)) return { deny: 'The server-side auto mode classifier gave no verdict for this action.' }
+    const slackReply = { slack_list_user_channels: CHANNELS_REPLY, slack_get_file_upload_url: TICKET_REPLY, slack_complete_file_upload: DONE_REPLY }[String(e.tool).slice(SLACK.length)]
+    if (String(e.tool).startsWith(SLACK) && slackReply) return { result: { content: [{ type: 'text', text: slackReply }] } }
     return { result: 'sent' }
   })
   // The mod's own Slack calls go straight to the server; logged under the tool's full name.
   on('mcp.call', ($, e) => {
+    if (rig.mcpRefused) return { deny: `The server-side auto mode classifier gave no verdict for mcp__${e.server}__${e.tool}.` }
     log.calls.push({ server: e.server, tool: `mcp__${e.server}__${e.tool}`, ...e.args })
     const reply = { slack_list_user_channels: CHANNELS_REPLY, slack_get_file_upload_url: TICKET_REPLY, slack_complete_file_upload: DONE_REPLY }[e.tool] ?? 'sent'
     const text = rig.slackError ?? reply
@@ -547,6 +552,57 @@ test("the chat box knows Slack is there when a helper posts to it, so it doesn't
   expect(chatPrompt(job, [], [], 'post it to #team')).toContain('Slack channels: (Slack not connected)')
 })
 
+test("the header is something to click in the terminal: a button that does nothing but take the keyboard", async ($, on) => {
+  // Where the ring goes (out of Say after a click or a send) is verified in a real session: the test
+  // kit has no focus ring, and $.ui.focus reaches no hook here.
+  const { clock } = factory(on)
+  await draftsReady($, clock)
+  const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
+  const header = await ui.find({ key: 'header' })
+  expect(header).toMatchObject({ type: 'Button', props: { plain: true } })
+  expect(header?.props).not.toHaveProperty('hotkey')
+  expect(await ui.find({ type: 'Text', text: 'standups that run long' })).toBeDefined()
+  await ui.press({ key: 'header' })
+  expect(await ui.find({ key: 'approve' })).toBeDefined()
+  // Desktop draws the wordmark as an image, which no Button can hold: no header button there.
+  const desktop = await $.ui.mount({ ...PANE, surface: 'desktop' })
+  expect(await desktop.find({ key: 'header' })).toBeUndefined()
+})
+
+test('a new meme starts a new chat: New, a meme from Claude, and "new meme about…" in the chat box', async ($, on) => {
+  let next: object = { reply: 'Meaner coming up.', action: { type: 'none' } }
+  const { clock } = factory(on, { chatReply: () => next })
+  await draftsReady($, clock)
+  const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
+  await ui.input({ key: 'chat', text: 'meaner please' })
+  await clock.settle()
+  expect(await ui.find({ type: 'Text', text: 'Meaner coming up.' })).toBeDefined()
+  // New, then the next meme's drafts: the old chat doesn't come back.
+  await ui.press({ key: 'new' })
+  await ui.input({ key: 'chat', text: 'standups that run long' })
+  await clock.settle()
+  expect(await ui.find({ key: 'approve' })).toBeDefined()
+  expect(await ui.find({ type: 'Text', text: 'meaner please' })).toBeUndefined()
+  expect(await ui.find({ type: 'Text', text: 'Meaner coming up.' })).toBeUndefined()
+
+  // A meme Claude asks for starts a fresh chat too.
+  await ui.input({ key: 'chat', text: 'meaner please' })
+  await clock.settle()
+  await $.tool.call({ tool: TOOL, tool_use_id: 't2', request: 'flaky tests' })
+  await clock.settle()
+  expect(await ui.find({ type: 'Text', text: 'Meaner coming up.' })).toBeUndefined()
+
+  // Asked for in the chat box, the new meme's chat opens with the exchange that asked for it.
+  await ui.input({ key: 'chat', text: 'meaner please' })
+  await clock.settle()
+  next = { reply: 'Starting a meme about cats.', action: { type: 'new', request: 'cats' } }
+  await ui.input({ key: 'chat', text: 'new meme about cats' })
+  await clock.settle()
+  expect(await ui.find({ type: 'Text', text: 'Starting a meme about cats.' })).toBeDefined()
+  expect(await ui.find({ type: 'Text', text: 'new meme about cats' })).toBeDefined()
+  expect(await ui.find({ type: 'Text', text: 'Meaner coming up.' })).toBeUndefined()
+})
+
 test('Desktop draws the meme as an SVG with a link to the full image', async ($, on) => {
   const { clock } = factory(on)
   await draftsReady($, clock, 'desktop')
@@ -865,6 +921,41 @@ test("auto mode can't block the mod's own Slack calls: they go to the server, no
   expect(await ui.find({ type: 'Text', text: 'Posted to #social' })).toBeDefined()
   expect(log.calls.filter((c) => c.server === 'sl4ck').map((c) => c.tool.split('__').pop())).toEqual(['slack_list_user_channels', 'slack_get_file_upload_url', 'slack_complete_file_upload'])
   expect(log.calls.some((c) => !c.server && String(c.tool).startsWith(SLACK))).toBe(false)
+})
+
+test("when auto mode refuses the mod's direct Slack calls, they go through Slack's tools instead", async ($, on) => {
+  const { clock, log } = factory(on, { mcpRefused: true })
+  await draftsReady($, clock)
+  const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
+  await ui.press({ key: 'approve' })
+  for (let i = 0; i < 5; i++) await clock.settle()
+  expect(await ui.find({ key: 'ch-C0C5HB6PETU' })).toMatchObject({ props: { label: '#social' } })
+  await ui.press({ key: 'ch-C0C5HB6PETU' })
+  await ui.press({ key: 'post' })
+  await ui.press({ key: 'confirm' })
+  for (let i = 0; i < 5; i++) await clock.settle()
+  expect(await ui.find({ type: 'Text', text: 'Posted to #social' })).toBeDefined()
+  expect(log.calls.filter((c) => String(c.tool).startsWith(SLACK)).map((c) => c.tool.slice(SLACK.length))).toEqual(['slack_list_user_channels', 'slack_get_file_upload_url', 'slack_complete_file_upload'])
+})
+
+test('when both routes are refused, the panel names the permission rule that lets the mod through', async ($, on) => {
+  const { clock } = factory(on, { mcpRefused: true, slackDenied: true })
+  await draftsReady($, clock)
+  const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
+  await ui.press({ key: 'approve' })
+  for (let i = 0; i < 5; i++) await clock.settle()
+  const note = await ui.find({ type: 'Text', text: /channels didn't load/ })
+  expect(note).toBeDefined()
+  const text = JSON.stringify(note)
+  expect(text).toContain('permissions')
+  for (const t of ['slack_list_user_channels', 'slack_get_file_upload_url', 'slack_complete_file_upload']) expect(text).toContain(`${SLACK}${t}`)
+})
+
+test('the self-approval hook leaves calls it did not make alone', async ($, on) => {
+  const { clock } = factory(on)
+  on('tool.check', () => ({ decision: 'ask' }))
+  await draftsReady($, clock)
+  expect((await $.tool.check({ tool: `${SLACK}slack_list_user_channels`, input: {} })).decision).toBe('ask')
 })
 
 test('desktop-shaped Slack replies (text wrapped as a JSON string) still give channels, an upload and a link', async ($, on) => {

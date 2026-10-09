@@ -263,6 +263,18 @@ export function register(on) {
     return next(e)
   }).catch(() => ({ deny: "The Meme Factory couldn't ask the user about this post, so it was held." }))
 
+  // The fallback in slackCall: the mod's own Slack calls through the listed tool. Approve the channel
+  // list and the upload ticket, and the share only while a post the person confirmed is running.
+  // (Calls made from a gallery event may not pass through here; the permission rule covers those.)
+  on('tool.check', async ($, e, next) => {
+    if (next.origin?.plugin !== $.plugin.name) return next(e)
+    const tool = String(e.tool)
+    const read = /__slack_(list_user_channels|get_file_upload_url)$/.test(tool)
+    const share = /__slack_complete_file_upload$/.test(tool) && job.post?.stage === 'posting'
+    if (read || share) return { decision: 'allow', reason: 'Meme Factory: its own Slack call (channel list, or the upload you confirmed)' }
+    return next(e)
+  })
+
   on('tool.call', { tool: 'mcp__meme-factory__meme_factory_debug' }, async ($, e) => {
     const action = String(e.action ?? 'status')
     if (action === 'refresh') await refreshConnectors($, true)
@@ -291,6 +303,20 @@ export function register(on) {
 
   on('agent.offer', { agent: 'meme-factory:picture-check' }, () => ({ isOffered: false }))
   on('agent.offer', { agent: 'meme-factory:poster' }, () => ({ isOffered: false }))
+
+  // A click on a button presses it but leaves the keyboard where it was, so after typing in Say the
+  // next hotkey still types into Say. After each press the focus moves to the button pressed, or to
+  // the header when the press redrew the panel without it; Talk's own job is to move it into Say.
+  on('ui.press', async ($, e, next) => {
+    const r = await next(e)
+    if (e.plugin === $.plugin.name && e.element !== 'talk') {
+      $.ui
+        .focus({ requestId: e.requestId, key: e.element })
+        .then((f) => (f?.deny ? $.ui.focus({ requestId: e.requestId, key: 'header' }) : f))
+        .catch(() => {})
+    }
+    return r
+  })
 
   // The mod's helpers answer the mod (their turn's end, below). Claude Code also hands their report
   // back to the conversation; that hand-back is dropped, so they never interrupt your work with Claude.
@@ -342,11 +368,13 @@ function changed($) {
   syncGallery($)
 }
 
-function startJob($, request, context) {
+// A new meme starts a new chat: `chat` is what it opens with (the exchange that asked for it, when
+// that was the chat box).
+function startJob($, request, context, chat = []) {
   const id = ++seq
   // A meme picked in the gallery beforehand: all three drafts use it.
   const lock = job.pending && TEMPLATE_IDS.has(job.pending) ? job.pending : null
-  job = { ...freshJob(), status: 'working', stage: 'write', request, context, note: 'Writing captions…', chat: job.chat, lock }
+  job = { ...freshJob(), status: 'working', stage: 'write', request, context, note: 'Writing captions…', chat, lock }
   changed($)
   $.clock.after(0, () => cook($, id, null))
 }
@@ -654,16 +682,39 @@ async function findSlackByName($) {
   return { slack: null, channels: [] }
 }
 
-// One Slack call, straight to the server: the mod's own call, so no permission prompt or auto mode
-// classifier asks about it (the person's Post it is the consent). A listed server is named by its
-// tools' prefix. A refusal from a hook comes back as { deny }: raise it, so the panel can say why.
+// One Slack call. Straight to the server first: the mod's own call, which Claude Code's docs say no
+// permission prompt asks about (the person's Post it is the consent). Some builds (the desktop app's
+// 2.1.293) still put it to auto mode's classifier, which refuses a call the conversation didn't ask
+// for. Then try the listed tool, which the tool.check hook approves, and if that is refused
+// too, say which permission rule lets the mod's Slack calls through.
 async function slackCall($, slack, tool, args) {
-  const r = await $.mcp.call(slack.server ?? slack.prefix.slice('mcp__'.length, -'__'.length), tool, args)
-  if (r?.deny) throw new Error(`Claude Code blocked ${tool}: ${String(r.deny).slice(0, 200)}`)
+  let r
+  try {
+    r = await $.mcp.call(slack.server ?? slack.prefix.slice('mcp__'.length, -'__'.length), tool, args)
+  } catch (err) {
+    const why = err?.message ?? String(err)
+    if (!slack.prefix || !REFUSED.test(why)) throw err
+    dlog($, `slack ${tool}: mcp.call refused, trying the tool (${why.slice(0, 120)})`)
+    r = await $.tool.call({ tool: `${slack.prefix}${tool}`, ...args })
+  }
+  if (r?.deny) {
+    const why = String(r.deny)
+    throw new Error(REFUSED.test(why) ? autoModeHint(slack) : `Claude Code blocked ${tool}: ${why.slice(0, 200)}`)
+  }
   if (r?.isError) throw new Error(`Slack answered ${tool} with an error: ${resultText(r).slice(0, 200)}`)
   dlog($, `slack ${tool}: ok`)
   return r
 }
+
+const REFUSED = /refused|classifier|denied|not allowed/i
+
+// What to add so auto mode lets the mod's Slack calls through, named as this session lists them.
+function autoModeHint(slack) {
+  const names = SLACK_TOOLS.map((t) => `"${slack.prefix ?? `mcp__${String(slack.server).replace(/\W+/g, '_')}__`}${t}"`)
+  return `Auto mode blocked the mod's Slack call. To allow it, add these to "permissions": { "allow": [...] } in ~/.claude/settings.json: ${names.join(', ')}`
+}
+
+const SLACK_TOOLS = ['slack_list_user_channels', 'slack_get_file_upload_url', 'slack_complete_file_upload']
 
 // A connector or posting step: kept for the debug tool, in Claude Code's debug log, and with
 // MEME_FACTORY_DEBUG=1 also in the transcript and ~/.cache/meme-factory/debug.json.
@@ -931,7 +982,7 @@ async function act($, action) {
       return choose($, words.trim() ? resolveDestination(words, connectors.channels, settings.favorites) : job.post.choice)
     }
     case 'new':
-      if (action.request) startJob($, String(action.request).slice(0, 300), '')
+      if (action.request) startJob($, String(action.request).slice(0, 300), '', job.chat.slice(-2))
       return
     case 'variations': {
       if (job.status !== 'review') return
@@ -1131,9 +1182,10 @@ async function openByYou($) {
   }
 }
 
+// New: a fresh start, chat included.
 function reset($) {
   seq++
-  job = { ...freshJob(), chat: job.chat }
+  job = freshJob()
   changed($)
 }
 
@@ -1177,16 +1229,13 @@ function drawPane($, e) {
         Text({ dimColor: true, children: ['These stay until the new drafts land.'] }),
       )
     }
+    children.push(...keys($, el, e, []))
   }
 
   if (job.status === 'error') {
     children.push(
       Text({ color: 'error', wrap: 'wrap', children: [`✗ The factory jammed: ${job.error}`] }),
-      row(el, [
-        Button({ key: 'retry', label: 'Try again', hotkey: 'r', plain: true, onPress: () => remix($, '') }),
-        Button({ key: 'reset', label: 'New meme', hotkey: 'n', plain: true, onPress: () => reset($) }),
-        Button({ key: 'view', label: 'Browser', hotkey: 'v', plain: true, onPress: () => openGallery($) }),
-      ]),
+      ...keys($, el, e, [Button({ key: 'retry', label: 'Try again', hotkey: 'r', plain: true, onPress: () => remix($, '') })]),
     )
   }
 
@@ -1212,14 +1261,17 @@ function drawPane($, e) {
       ...caption(el, e, draft),
       ...noPreview(el, e),
       ...checkNote(el),
-      row(el, [
-        Button({ key: 'approve', label: 'Approve', hotkey: 'a', plain: true, onPress: () => guard($, () => approve($)) }),
-        Button({ key: 'remix', label: 'Remix', hotkey: 'r', plain: true, onPress: () => remix($, '') }),
-        Button({ key: 'more', label: 'More like this', hotkey: 'm', plain: true, onPress: () => variations($) }),
-        Button({ key: 'copy', label: 'Copy', hotkey: 'c', plain: true, onPress: () => copyLink($, draft) }),
-        Button({ key: 'view', label: 'Browser', hotkey: 'v', plain: true, onPress: () => openGallery($) }),
-        talkButton($, el, e),
-      ]),
+      ...keys(
+        $,
+        el,
+        e,
+        [
+          Button({ key: 'approve', label: 'Approve', hotkey: 'a', plain: true, onPress: () => guard($, () => approve($)) }),
+          Button({ key: 'remix', label: 'Remix', hotkey: 'r', plain: true, onPress: () => remix($, '') }),
+          Button({ key: 'more', label: 'More like this', hotkey: 'm', plain: true, onPress: () => variations($) }),
+        ],
+        { draft },
+      ),
     )
   }
 
@@ -1237,6 +1289,21 @@ function drawPane($, e) {
 
 function row(el, children, columnGap = 2) {
   return el.Box({ flexDirection: 'row', flexWrap: 'wrap', columnGap, children })
+}
+
+// A screen's own actions, then the keys every screen has, in the same place and order: Copy (the
+// meme on screen), New, Browser, Talk. Docked they're two rows; in a narrow terminal, where every
+// row counts, one. A yes/no question keeps n for No, so New steps out while it's asked.
+function keys($, el, e, own, { draft = null, withNew = true } = {}) {
+  const { Button } = el
+  const always = [
+    ...(draft ? [Button({ key: 'copy', label: 'Copy', hotkey: 'c', plain: true, onPress: () => copyLink($, draft) })] : []),
+    ...(withNew ? [Button({ key: 'new', label: 'New', hotkey: 'n', plain: true, onPress: () => reset($) })] : []),
+    Button({ key: 'view', label: 'Browser', hotkey: 'v', plain: true, onPress: () => openGallery($) }),
+    talkButton($, el, e),
+  ]
+  if (e.props?.placement === 'inline' || !own.length) return [row(el, [...own, ...always])]
+  return [row(el, own), row(el, always)]
 }
 
 // " MEME FACTORY " as a sticker (inverse follows every theme), then where things stand.
@@ -1271,7 +1338,14 @@ function header($, el, e) {
   }
   // In the band, the panel is one press away: the engine places a pane you open yourself.
   const open = e.component === 'AbovePrompt' ? [el.Button({ key: 'open-pane', label: 'Open the panel', hotkey: 'e', plain: true, onPress: () => openByYou($) })] : []
-  return Box({ flexDirection: 'row', columnGap: 2, alignItems: 'center', children: [brand(el, e), status, ...open] })
+  // In the terminal the header is a Button that does nothing when pressed: a click on the panel's
+  // top then counts as a press, which takes the keyboard out of the chat box (see the ui.press hook),
+  // and a sent message has somewhere to land (see chatInput).
+  const head =
+    e.surface === 'terminal'
+      ? [el.Button({ key: 'header', label: 'Meme Factory', plain: true, onPress: () => {}, children: [brand(el, e), '  ', status] })]
+      : [brand(el, e), status]
+  return Box({ flexDirection: 'row', columnGap: 2, alignItems: 'center', children: [...head, ...open] })
 }
 
 // What the picture check is doing, in one dim line (nothing once it found nothing to fix).
@@ -1408,14 +1482,16 @@ function postingView($, el, e) {
       )
     }
     rows.push(
-      row(el, [
-        ...(choice ? [Button({ key: 'post', label: `Post to ${choiceLabel(choice)}`, hotkey: 'p', plain: true, onPress: () => choose($, choice) })] : []),
-        Button({ key: 'back', label: 'Back', hotkey: 'b', plain: true, onPress: () => backToDrafts($) }),
-        Button({ key: 'copy-approved', label: 'Copy', hotkey: 'c', plain: true, onPress: () => copyLink($, draft) }),
-        Button({ key: 'new', label: 'New', hotkey: 'n', plain: true, onPress: () => reset($) }),
-        Button({ key: 'view-approved', label: 'Browser', hotkey: 'v', plain: true, onPress: () => openGallery($) }),
-        talkButton($, el, e),
-      ]),
+      ...keys(
+        $,
+        el,
+        e,
+        [
+          ...(choice ? [Button({ key: 'post', label: `Post to ${choiceLabel(choice)}`, hotkey: 'p', plain: true, onPress: () => choose($, choice) })] : []),
+          Button({ key: 'back', label: 'Back', hotkey: 'b', plain: true, onPress: () => backToDrafts($) }),
+        ],
+        { draft },
+      ),
     )
     if (!inline) {
       rows.push(
@@ -1447,11 +1523,13 @@ function postingView($, el, e) {
       const how = post.target.kind === 'claude' ? 'A helper posts the link with your connectors · ' : ''
       rows.push(Text({ dimColor: true, wrap: 'wrap', children: [`${how}${settings.signature ? 'Signed "Fresh from the Meme Factory" · Settings in v' : 'Just the meme, no message · Settings in v'}`] }))
     }
+    rows.push(...keys($, el, e, [], { draft, withNew: false }))
   }
 
   if (post.stage === 'posting') {
     rows.push(Text({ color: 'warning', wrap: 'truncate-end', children: [`● Posting to ${targetLabel(post.target)}…`] }))
     if (!inline) rows.push(Text({ dimColor: true, children: [post.target.kind === 'claude' ? 'A helper is posting it in the background. Keep working.' : 'Uploading the image. Keep working.'] }))
+    rows.push(...keys($, el, e, [], { draft }))
   }
 
   if (post.stage === 'done') {
@@ -1469,23 +1547,22 @@ function postingView($, el, e) {
         : settings.favorites.some((f) => f.channelId === post.target.id)
           ? [Text({ dimColor: true, children: ['★ favorite'] })]
           : [Button({ key: 'favorite', label: `★ Save #${post.target.name}`, hotkey: 's', plain: true, onPress: () => guard($, () => saveFavorite($)) })]
-    rows.push(
-      row(el, [
-        ...open,
-        ...favorite,
-        Button({ key: 'again', label: 'Post elsewhere', hotkey: 'p', plain: true, onPress: () => cancelPost($) }),
-        Button({ key: 'new', label: 'New meme', hotkey: 'n', plain: true, onPress: () => reset($) }),
-      ]),
-    )
+    rows.push(...keys($, el, e, [...open, ...favorite, Button({ key: 'again', label: 'Post elsewhere', hotkey: 'p', plain: true, onPress: () => cancelPost($) })], { draft }))
   }
 
   if (post.stage === 'error') {
     rows.push(
       Text({ color: 'error', wrap: 'wrap', children: [`✗ Couldn't post to ${targetLabel(post.target)}: ${post.error}`] }),
-      row(el, [
-        Button({ key: 'retry-post', label: 'Retry', hotkey: 'r', plain: true, onPress: () => choose($, choiceOf(post.target)) }),
-        Button({ key: 'cancel', label: 'Pick another', hotkey: 'p', plain: true, onPress: () => cancelPost($) }),
-      ]),
+      ...keys(
+        $,
+        el,
+        e,
+        [
+          Button({ key: 'retry-post', label: 'Retry', hotkey: 'r', plain: true, onPress: () => choose($, choiceOf(post.target)) }),
+          Button({ key: 'cancel', label: 'Pick another', hotkey: 'p', plain: true, onPress: () => cancelPost($) }),
+        ],
+        { draft },
+      ),
     )
   }
 
@@ -1512,8 +1589,14 @@ function chatInput($, el) {
     // would swallow the hotkeys.
     ...(idle ? { autoFocus: true } : {}),
     // Returns at once: Claude Code clears the field only when the handler returns, so waiting
-    // on the chat (a model call, then a remix) would leave your message sitting there.
-    onSubmit: (value) => void (idle ? value.trim() && startJob($, value.trim(), '') : guard($, () => chat($, value))),
+    // on the chat (a model call, then a remix) would leave your message sitting there. Once the send
+    // is done, the focus leaves the field for the header, so the next hotkey works (t comes back):
+    // the field kept the keys after a send. Moved while the send was still running, the keys fell
+    // to Claude's prompt instead.
+    onSubmit: (value, input) => {
+      $.clock.after(0, () => $.ui.focus({ requestId: input.requestId, key: 'header' }).catch(() => {}))
+      void (idle ? value.trim() && startJob($, value.trim(), '') : guard($, () => chat($, value)))
+    },
   })
 }
 

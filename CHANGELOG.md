@@ -2,6 +2,15 @@
 
 All notable changes to Meme Factory. Versions follow [semantic versioning](https://semver.org).
 
+## 0.9.1 (2026-10-09)
+
+- **Keys work after you've typed in the chat box.** After a message you sent, the next key typed into **Say** again, or went to Claude's prompt when the panel changed. A click on the panel didn't help either: in the terminal a click presses a button but leaves the keyboard in the box. Now a sent message hands the keys back to the panel, and so does a click on any of its buttons or on the header.
+- **The same keys on every screen.** Each screen shows its own actions first (Approve, Remix and More like this; Post and Back; Open, Save and Post elsewhere; Retry), then `c` Copy, `n` New, `v` Browser and `t` Talk, always in that place and order. **New** used to appear on only two screens, and **Talk** and **Browser** came and went. While the panel asks "Post to …?", `n` stays No, so **New** steps out for that one question.
+- **A new meme starts a new chat.** New, a meme Claude asks for, `/meme` and the gallery all start with an empty chat; one you ask for in the chat box keeps the line that asked for it.
+- **Slack in the desktop app's auto mode again.** Its Claude Code (2.1.293) puts the mod's direct Slack calls to auto mode's check after all, so channels didn't load and uploads were refused. When that happens the mod now goes through Slack's tools, approving its own channel list and upload (the share only while a post you confirmed is running), and if that's refused too, the panel names the permission rule to add.
+
+Tested in the terminal (Claude Code 2.1.296, docked and narrow): typing in Say then clicking the header or a button, sending a message (with and without the screen changing), then using hotkeys; New from every screen; the old chat staying gone. In the desktop app (2.1.293, auto mode, no permission rules): channels and the upload check. Auto mode refused the direct calls in one session and allowed them in the next, so the fallback is covered by tests rather than seen live.
+
 ## 0.9.0 (2026-10-09)
 
 - **Post from the panel, to anywhere.** Places the mod can't upload to itself (Gmail, LinkedIn, a Slack connection without upload tools) used to be handed to Claude as a message in your conversation, which waited until Claude was free and then asked **Post it?** in the chat. Now you confirm in the panel, and the mod's own posting helper, a background agent, posts there with your connectors. Its answer and the message link come back to the panel; your conversation with Claude never sees it.
