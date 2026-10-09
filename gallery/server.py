@@ -13,6 +13,7 @@ when the session or the mod unloads. Standard library only.
 
 import hmac
 import json
+import re
 import os
 import sys
 import threading
@@ -23,6 +24,9 @@ from urllib.parse import parse_qs, urlparse
 TOKEN = sys.stdin.readline().strip()
 # The second line lists the event types the mod handles; nothing else is passed on.
 EVENT_TYPES = set(filter(None, sys.stdin.readline().strip().split(',')))
+# The third line is the memegen origin the page may load images from (MEMEGEN_URL).
+_origin = sys.stdin.readline().strip()
+IMAGE_ORIGIN = _origin if re.fullmatch(r'https?://[A-Za-z0-9.-]+(:[0-9]{1,5})?', _origin) else 'https://api.memegen.link'
 HERE = os.path.dirname(os.path.abspath(__file__))
 PAGE = open(os.path.join(HERE, 'index.html'), 'rb').read()
 # The sticker wordmark, the same image the repo and the panel use.
@@ -63,7 +67,7 @@ class Handler(BaseHTTPRequestHandler):
         if kind.startswith('text/html'):
             self.send_header(
                 'Content-Security-Policy',
-                "default-src 'self'; img-src 'self' https://api.memegen.link data:; "
+                "default-src 'self'; img-src 'self' " + IMAGE_ORIGIN + " data:; "
                 "style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'; "
                 "frame-ancestors 'none'; base-uri 'none'; form-action 'none'; object-src 'none'",
             )

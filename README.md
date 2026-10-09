@@ -142,10 +142,29 @@ Meme Factory works without any extra keys. If you have a [Jev](https://typesafe.
 
 If Jev can't be reached, the mod falls back to Claude for that step. With a key set, Jev receives the meme request and the draft captions.
 
+## Optional: your own memegen, no watermark
+
+By default, pictures come from the public [memegen.link](https://memegen.link) API, which adds a small "Memegen.link" watermark. Three optional settings change that:
+
+| Variable | Effect |
+|---|---|
+| `MEMEGEN_URL` | Render on another memegen server instead, such as one you host (`https://memes.example.com`). |
+| `MEMEGEN_API_KEY` | Sent when the mod downloads images (in a header, read from stdin, so it never appears in a URL, a posted link, or the process list). With a valid key, downloads ask for `watermark=none`. |
+| `MEMEGEN_WATERMARK` | With a key: your own watermark text instead of none, such as `example.com`. |
+
+Set them like the Jev key (shell profile or `env` in `~/.claude/settings.json`) and restart Claude Code.
+
+Two ways to get there:
+
+- **memegen.link's own key.** memegen.link issues API keys to [GitHub sponsors](https://github.com/sponsors/jacebrowning) ($10/month and up) and on request. Set `MEMEGEN_API_KEY` only.
+- **Host memegen yourself.** It's MIT-licensed and small. Stock memegen always watermarks unless it can reach memegen.link's private key service, so self-hosting needs two settings on the server: `DEFAULT_WATERMARK` (empty for none) and `API_KEYS` (comma-separated keys it accepts). They're a 10-line patch, on the `self-host` branch of a memegen clone. A small container is plenty (about 512 MB); it renders a meme in a fraction of a second and caches the results. Point the mod at it with `MEMEGEN_URL`, and hand out keys from `API_KEYS` to people you want to allow custom or no watermarks.
+
+Previews in the browser gallery and posted links use the plain URL, so on memegen.link they still show the watermark. Images the mod downloads, shows in the panel, and uploads to Slack use the key.
+
 ## Privacy
 
 - **Model calls** go through your Claude Code session's own credentials (see [Models and your plan](#models-and-your-plan)).
-- **Pictures** are rendered by [memegen.link](https://memegen.link) from the template and the caption text, and cached in `~/.cache/meme-factory/`.
+- **Pictures** are rendered by [memegen.link](https://memegen.link), or the server in `MEMEGEN_URL`, from the template and the caption text, and cached in `~/.cache/meme-factory/`. memegen.link says requests without a key may be used as training data.
 - **Posts** go only where you send them, through your connectors.
 - **Jev**, if you set `TYPESAFE_API_KEY`, receives the meme request and the draft captions.
 - The mod keeps your settings and your last 50 approved memes in its local store.

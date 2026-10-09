@@ -69,16 +69,17 @@ type Rig = {
   chatReply?: (prompt: string) => object
   termProgram?: string
   settings?: object
+  env?: Record<string, string>
 }
 
 // Stubs everything the mod reaches: the model, the shell, files, the store, and three
 // connectors: Slack (postable, uploads), Gmail (postable) and Microsoft 365 (Teams search only).
 function factory(on, rig: Rig = {}) {
-  const log = { ran: [] as string[][], submitted: [] as string[], copied: [] as string[], calls: [] as any[], asked: [] as string[], prompts: [] as string[], models: [] as Array<{ system: string; model: string }> }
+  const log = { stdins: [] as string[], ran: [] as string[][], submitted: [] as string[], copied: [] as string[], calls: [] as any[], asked: [] as string[], prompts: [] as string[], models: [] as Array<{ system: string; model: string }> }
   const saved = new Map<string, unknown>(rig.settings ? [['settings', rig.settings]] : [])
   const clock = mock.clock(on)
   on('session.start', () => ({ cwd: '/work' }))
-  on('env.get', ($, e) => ({ value: ({ HOME: '/Users/test', TERM_PROGRAM: rig.termProgram ?? 'ghostty' } as Record<string, string>)[e.name] }))
+  on('env.get', ($, e) => ({ value: ({ HOME: '/Users/test', TERM_PROGRAM: rig.termProgram ?? 'ghostty', ...rig.env } as Record<string, string>)[e.name] }))
   on('tool.register', () => ({ value: undefined }))
   on('command.register', () => ({ value: undefined }))
   on('ui.open', () => ({ value: { isPlaced: true } }))
@@ -97,6 +98,7 @@ function factory(on, rig: Rig = {}) {
   })
   on('process.run', ($, e) => {
     log.ran.push(e.argv)
+    log.stdins.push(e.init?.stdin ?? '')
     const isUpload = e.argv[0] === 'curl' && e.argv.includes('--data-binary')
     return { value: { exitCode: 0, stdout: isUpload ? 'OK - 323850' : '', stderr: '' } }
   })
@@ -293,7 +295,7 @@ test('the browser gallery drives the same flow: chat, pick a channel, confirm', 
   expect(opened?.[1]).toMatch(/^http:\/\/127\.0\.0\.1:5555\/#t=[0-9a-f]{48}&tab=drafts$/)
   const token = opened![1].split('#t=')[1].split('&')[0]
   expect(spawned[0].argv.join(' ')).not.toContain(token)
-  expect(spawned[0].input).toBe(`${token}\n${GALLERY_EVENTS.join(',')}\n`)
+  expect(spawned[0].input).toBe(`${token}\n${GALLERY_EVENTS.join(",")}\nhttps://api.memegen.link\n`)
   expect(pushed.every((p) => p.url === 'http://127.0.0.1:5555/api/state' && p.token === token)).toBe(true)
   expect(JSON.stringify(pushed)).not.toContain('/Users/test')
 
@@ -497,4 +499,36 @@ test('models: the Fast setting drafts with Sonnet', async ($, on) => {
   const { clock, log } = factory(on, { settings: { askBeforePost: true, signature: true, quality: 'fast', favorites: [] } })
   await draftsReady($, clock)
   expect(log.models.find((m) => m.system.includes('writer'))?.model).toBe('sonnet')
+})
+
+test('MEMEGEN_URL and MEMEGEN_API_KEY: memes render on your own server, unwatermarked, and the key stays private', async ($, on) => {
+  const { clock, log } = factory(on, { env: { MEMEGEN_URL: 'https://memes.maughanco.com/', MEMEGEN_API_KEY: 'sekrit-key' } })
+  await draftsReady($, clock)
+  const downloads = log.ran.map((argv, i) => ({ argv, stdin: log.stdins[i] })).filter((r) => r.argv[0] === 'curl' && r.argv.includes('-o'))
+  expect(downloads.length > 0).toBe(true)
+  for (const { argv, stdin } of downloads) {
+    const url = argv.at(-1)!
+    expect(url.startsWith('https://memes.maughanco.com/images/')).toBe(true)
+    expect(url).toContain('watermark=none')
+    // The key goes in a header read from stdin: never in the URL or the argument list
+    expect(argv.join(' ')).not.toContain('sekrit-key')
+    expect(argv).toContain('@-')
+    expect(stdin).toBe('X-API-KEY: sekrit-key\n')
+  }
+  // The drafts' public URLs (what gets posted) point at your server and carry no key
+  const ui = await $.ui.mount({ ...PANE, surface: 'desktop' })
+  const link = await ui.find({ type: 'Link' })
+  expect((link as any)?.props.href ?? '').not.toContain('sekrit')
+})
+
+test('without memegen settings, memes come from api.memegen.link with no key or watermark parameter', async ($, on) => {
+  const { clock, log } = factory(on)
+  await draftsReady($, clock)
+  const downloads = log.ran.filter((argv) => argv[0] === 'curl' && argv.includes('-o'))
+  expect(downloads.length > 0).toBe(true)
+  for (const argv of downloads) {
+    expect(argv.at(-1)!.startsWith('https://api.memegen.link/images/')).toBe(true)
+    expect(argv.at(-1)).not.toContain('watermark=')
+    expect(argv).not.toContain('@-')
+  }
 })
