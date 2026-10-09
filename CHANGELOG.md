@@ -2,6 +2,19 @@
 
 All notable changes to Meme Factory. Versions follow [semantic versioning](https://semver.org).
 
+## 0.7.0 (2026-10-09)
+
+### Pictures that read
+- Narrow label boxes (Distracted Boyfriend, Left Exit, Two Buttons and 25 more, measured from memegen's template config) hold at most four words, so text never shrinks to a speck.
+- A meme you name is never dropped by the one-liner filter: its shortest draft stays.
+- **The picture check** (optional, Settings → Drafting): a helper agent looks at each rendered meme and fixes text that covers a face or can't be read, by shortening that box or moving the text above the picture. It runs behind the drafts.
+
+### Choosing the meme
+- **Choose the meme** in the gallery: search all 210 templates and draft three takes on the one you click, or pick it before your next meme.
+
+### Also
+- `MEME_FACTORY_DEBUG=1` logs the drafting pipeline to `~/.cache/meme-factory/debug.json`.
+
 ## 0.6.0 (2026-10-09)
 
 ### Funnier, and the right meme for the joke

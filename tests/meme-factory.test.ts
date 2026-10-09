@@ -11,6 +11,10 @@ import {
   shortName,
   templatesNamed,
   quotedText,
+  keepShort,
+  parseReview,
+  applyReview,
+  makeDraft,
   fitsBudget,
   postingConnectors,
   resolveDestination,
@@ -497,4 +501,57 @@ test('models: the Fast setting drafts with Sonnet', async ($, on) => {
   const { clock, log } = factory(on, { settings: { askBeforePost: true, signature: true, quality: 'fast', favorites: [] } })
   await draftsReady($, clock)
   expect(log.models.find((m) => m.system.includes('writer'))?.model).toBe('sonnet')
+})
+
+test('the picture check is spawned on the rendered drafts, and its fixes apply', async ($, on) => {
+  const spawned: any[] = []
+  on('agent.register', () => ({ value: { agent: 'meme-factory:picture-check' } }))
+  on('agent.spawn', ($, e) => {
+    spawned.push(e)
+    return { model: 'sonnet' }
+  })
+  const { clock } = factory(on, { settings: { askBeforePost: true, signature: true, checkPictures: true, favorites: [] } })
+  await draftsReady($, clock)
+  // The helper is spawned with the cached pictures to look at.
+  expect(spawned[0]?.subagent_type).toBe('meme-factory:picture-check')
+  expect(String(spawned[0]?.prompt)).toMatch(/\/Users\/test\/\.cache\/meme-factory\/.*\.png/)
+  // Its answer: shorten box 2 of draft 0, move draft 1's text above the picture, and junk.
+  const fixes = parseReview(JSON.stringify({ checks: [
+    { i: 0, problems: [{ box: 2, kind: 'tiny', fix: 'shorten', shorter: 'jira, aloud' }] },
+    { i: 1, problems: [{ box: 1, kind: 'covers', fix: 'top' }] },
+    { i: 2, problems: [{ box: 9, fix: 'shorten' }, 'junk'] },
+  ] }))
+  expect([...fixes.keys()]).toEqual([0, 1])
+  const d0 = applyReview(makeDraft('drake', ['async updates', 'everyone reads their Jira tickets aloud'], 7)!, fixes.get(0)!)
+  expect(d0?.lines).toEqual(['async updates', 'jira, aloud'])
+  const d1 = applyReview(makeDraft('fine', ['', 'this is fine'], 6)!, fixes.get(1)!)
+  expect(d1?.url).toContain('layout=top')
+  // The person's own words are never shortened.
+  expect(applyReview(makeDraft('drake', ['a', 'my exact long words here'], 5)!, [{ box: 1, kind: 'tiny', fix: 'shorten', shorter: 'short' }], ['my exact long words here'])).toBeNull()
+})
+
+test('a named meme survives the one-liner filter: its shortest draft is kept', async () => {
+  const long = makeDraft('db', ['writing Claude Code mods at night', 'me', 'my actual job'], 5)!
+  const longer = makeDraft('db', ['writing Claude Code mods every single night', 'me', 'my actual job'], 6)!
+  const drake = makeDraft('drake', ['my job', 'mods'], 4)!
+  expect(keepShort([long, longer, drake], [], []).map((d) => d.template_id)).toEqual(['drake'])
+  expect(keepShort([long, longer, drake], [], ['db']).map((d) => d.id)).toEqual([drake.id, long.id])
+})
+
+test('the gallery picker: a meme picked first is used for the next one, and in review it drafts three takes', async ($, on) => {
+  const { clock, log } = factory(on)
+  on('process.spawn', async function* () {
+    yield { stream: 'stdout', text: 'READY 5555\nEVENT {"type":"useTemplate","id":"chloe"}\nEVENT {"type":"useTemplate","id":"not-a-meme"}\n' }
+    return { value: { code: 0, signal: null } }
+  })
+  on('http.fetch', () => ({ value: { status: 204, ok: true, headers: {}, text: '' } }))
+  await $.session.start({ surface: 'terminal', isInteractive: true, cwd: '/work' })
+  await $.command.run({ command: 'meme', args: 'gallery' })
+  for (let i = 0; i < 20; i++) await clock.settle()
+  const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
+  expect(await ui.find({ type: 'Text', text: 'Next meme uses Side-Eyeing Chloe' })).toBeDefined()
+  await ui.input({ key: 'chat', text: 'my wife watching me build mods' })
+  await clock.settle()
+  const writer = String(log.prompts.filter((p) => String(p).includes('"shape"')).at(-1))
+  expect(writer).toMatch(/Use only chloe \(Side-Eyeing Chloe/)
 })

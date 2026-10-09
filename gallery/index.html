@@ -94,6 +94,16 @@
   .working .card { opacity: .45; pointer-events: none; }
   .empty { border: 2px dashed var(--line); border-radius: 14px; padding: 48px 24px; text-align: center; color: var(--muted); display: flex; flex-direction: column; align-items: center; gap: 14px; }
 
+  /* Meme picker */
+  .picker { display: flex; flex-direction: column; gap: 12px; }
+  .picker-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); grid-auto-rows: max-content; align-content: start; gap: 12px; max-height: 520px; overflow: auto; padding: 4px; }
+  .tpl { all: unset; cursor: pointer; display: flex; flex-direction: column; gap: 6px; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+  .tpl:hover { border-color: var(--ink); }
+  .tpl:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+  .tpl.on { outline: 3px solid var(--ink); }
+  .tpl img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; background: #19141f; }
+  .tpl span { padding: 0 10px 10px; font-size: 13px; font-weight: 600; line-height: 1.3; }
+
   /* Approved and posting */
   .split { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; }
   .split > * { flex: 1 1 340px; min-width: 0; }
@@ -192,6 +202,8 @@ let favDraft = null // the favorites being edited on the Settings tab
 let channelFilter = ''
 let choice = null // the channel picked in the Post card: { channelId } or { target }
 let chatDraft = ''
+let showPicker = false // the meme picker is open
+let tplQuery = ''
 
 const $ = (id) => document.getElementById(id)
 function el(tag, props = {}, ...children) {
@@ -313,12 +325,46 @@ function draftsPage() {
   return [el('section', { class: 'content' }, draftsView()), el('aside', {}, chatBox())]
 }
 
+// Every template, searchable; picking one drafts three takes on it (or on the next meme).
+function pickerBox() {
+  const s = state
+  const q = tplQuery.trim().toLowerCase()
+  const list = (s.templates || []).filter((t) => !q || t.name.toLowerCase().includes(q) || t.shape.includes(q) || t.aliases.some((a) => a.includes(q)))
+  const search = el('input', { type: 'text', id: 'tpl-search', placeholder: 'Search 210 memes: drake, side eye, two buttons…', value: tplQuery,
+    oninput: (e) => { tplQuery = e.target.value; render() } })
+  const choose = (t) => {
+    showPicker = false
+    tplQuery = ''
+    send({ type: 'useTemplate', id: t.id })
+    render()
+  }
+  return el('section', { class: 'card-box picker' },
+    el('div', { class: 'row', style: 'justify-content:space-between' },
+      el('h2', {}, s.status === 'review' ? 'Choose the meme' : 'Pick a meme to start from'),
+      el('button', { class: 'btn small', onclick: () => { showPicker = false; render() } }, 'Close')),
+    el('label', { class: 'sr', for: 'tpl-search' }, 'Search memes'),
+    el('div', { class: 'search' }, svg(ICON.search, 16, 2), search),
+    el('div', { class: 'picker-grid' }, list.slice(0, 120).map((t) =>
+      el('button', { class: 'tpl' + (t.id === (s.pending || s.lock) ? ' on' : ''), title: t.name, onclick: () => choose(t) },
+        el('img', { src: t.thumb, alt: '', loading: 'lazy' }), el('span', {}, t.name)))),
+    list.length > 120 ? el('div', { class: 'muted' }, `Showing 120 of ${list.length}. Search to narrow it down.`) : null,
+    !list.length ? el('div', { class: 'muted' }, 'No meme matches. Try a word from its name.') : null)
+}
+
+function pendingName() {
+  const t = (state.templates || []).find((x) => x.id === state.pending)
+  return t ? t.name : ''
+}
+
 function draftsView() {
   const s = state
   if (s.status === 'idle') {
-    return el('div', { class: 'empty' },
-      el('h1', {}, 'What should the meme be about?'),
-      el('div', {}, 'Ask Claude for a meme, or type one in the box on the right.'))
+    return el('div', { style: 'display:flex;flex-direction:column;gap:18px' },
+      el('div', { class: 'empty' },
+        el('h1', {}, 'What should the meme be about?'),
+        el('div', {}, s.pending ? `Your next meme uses ${pendingName()}. Type what it's about on the right.` : 'Ask Claude for a meme, or type one in the box on the right.'),
+        el('button', { class: 'btn', onclick: () => { showPicker = !showPicker; render() } }, s.pending ? 'Choose a different meme' : 'Or pick the meme first')),
+      showPicker ? pickerBox() : null)
   }
   if (s.status === 'error') {
     return el('div', { class: 'card-box' },
@@ -337,6 +383,12 @@ function draftsView() {
       el('h1', {}, working ? (s.note || 'Working…') : 'Pick one'),
       working
         ? el('span', { class: 'muted' }, 'These stay until the new drafts land.')
+        : s.check?.state === 'blocked'
+        ? el('span', { class: 'muted' }, "Picture check couldn't read the images. See the README to allow it.")
+        : s.check?.state === 'running'
+        ? el('span', { class: 'muted' }, 'Checking how the pictures read…')
+        : s.check?.fixed
+        ? el('span', { class: 'muted good' }, `✓ Adjusted ${s.check.fixed} ${s.check.fixed === 1 ? 'box' : 'boxes'} so ${s.check.fixed === 1 ? 'it reads' : 'they read'}`)
         : el('span', { class: 'hints' }, el('span', { class: 'kbd' }, '1'), el('span', { class: 'kbd' }, '2'), el('span', { class: 'kbd' }, '3'), 'pick ·',
           el('span', { class: 'kbd' }, 'A'), 'approve ·', el('span', { class: 'kbd' }, 'R'), 'remix ·', el('span', { class: 'kbd' }, '/'), 'talk')),
     el('div', { class: 'grid' }, drafts.map((d, i) =>
@@ -350,8 +402,10 @@ function draftsView() {
       el('button', { class: 'btn primary', disabled: working, onclick: approve }, `Approve ${picked.template_name}`, el('span', { class: 'kbd' }, 'A')),
       el('button', { class: 'btn', disabled: working, onclick: () => send({ type: 'remix' }) }, 'Remix all', el('span', { class: 'kbd' }, 'R')),
       el('button', { class: 'btn', disabled: working, onclick: () => send({ type: 'variations', index: s.selected }) }, `More like ${picked.template_name}`, el('span', { class: 'kbd' }, 'M')),
+      el('button', { class: 'btn', disabled: working, onclick: () => { showPicker = !showPicker; render() } }, 'Choose the meme'),
       el('button', { class: 'btn', onclick: () => copy(picked.url) }, 'Copy link', el('span', { class: 'kbd' }, 'C')),
-      el('a', { href: picked.url, target: '_blank', rel: 'noreferrer' }, 'Open full image ↗')))
+      el('a', { href: picked.url, target: '_blank', rel: 'noreferrer' }, 'Open full image ↗')),
+    showPicker ? pickerBox() : null)
 }
 
 function pick(i) {
@@ -584,6 +638,11 @@ function settingsView() {
         el('span', {}, el('b', { style: 'font-size:16px' }, 'Best drafts'),
           el('span', { class: 'muted', style: 'font-size:14px' }, 'Opus writes the captions: the funniest, about 15 seconds a batch. Off: Sonnet, about 5 seconds and lighter on your plan.')),
         el('input', { type: 'checkbox', role: 'switch', class: 'sr', id: 'quality', checked: s.quality !== 'fast', onchange: (e) => saveSettings({ quality: e.target.checked ? 'best' : 'fast' }) }),
+        el('span', { class: 'switch', 'aria-hidden': 'true' })),
+      el('label', { class: 'switch-row' },
+        el('span', {}, el('b', { style: 'font-size:16px' }, 'Check the pictures'),
+          el('span', { class: 'muted', style: 'font-size:14px' }, 'A helper looks at each rendered meme and fixes text that covers a face or is too small to read. It needs Claude Code to allow reading ~/.cache/meme-factory: see the README.')),
+        el('input', { type: 'checkbox', role: 'switch', class: 'sr', id: 'check-pictures', checked: s.checkPictures === true, onchange: (e) => saveSettings({ checkPictures: e.target.checked }) }),
         el('span', { class: 'switch', 'aria-hidden': 'true' }))),
     el('section', { class: 'card-box' },
       el('div', {}, el('h2', {}, 'Favorites'), el('div', { class: 'muted', style: 'font-size:14px' }, 'Your quick picks after you approve, in this order. In the panel, the first three are keys 1, 2 and 3.')),

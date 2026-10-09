@@ -40,24 +40,27 @@ export function memeUrl(templateId, lines, ext = 'png', params = {}) {
 
 // The same meme at a given size and format, for downloads and previews.
 export function sizedUrl(draft, width, ext = 'png') {
-  return memeUrl(draft.template_id, draft.lines, ext, { width })
+  return memeUrl(draft.template_id, draft.lines, ext, { ...(draft.layout ? { layout: draft.layout } : {}), width })
 }
 
 // A caption line longer than this doesn't fit a meme anyway.
 const MAX_LINE = 120
 
-export function makeDraft(templateId, lines, score) {
+// layout 'top' puts every line in a band above the picture (the picture check's fix for
+// text that covers something).
+export function makeDraft(templateId, lines, score, layout = null) {
   const t = TEMPLATE_BY_ID.get(templateId)
   if (!t) return null
   const fixed = (Array.isArray(lines) ? lines : []).slice(0, t.lines).map((l) => String(l ?? '').slice(0, MAX_LINE))
   while (fixed.length < t.lines) fixed.push('')
   if (!fixed.some((l) => l.trim())) return null
   return {
-    id: `${t.id}-${hash(fixed.join('|')).toString(36)}`,
+    id: `${t.id}-${hash(fixed.join('|') + (layout ?? '')).toString(36)}`,
     template_id: t.id,
     template_name: t.name,
     lines: fixed,
-    url: memeUrl(t.id, fixed),
+    ...(layout ? { layout } : {}),
+    url: memeUrl(t.id, fixed, 'png', layout ? { layout } : {}),
     score: typeof score === 'number' ? score : null,
   }
 }
@@ -74,6 +77,7 @@ const CATALOG = TEMPLATES.map((t) =>
     t.core,
     (t.slots ?? []).map((r, i) => `${i + 1}) ${r}`).join(' '),
     t.face ? `face:${t.face}` : '',
+    t.small?.length ? `small:${t.small.map((i) => i + 1).join(',')}` : '',
     t.avoid ? `not for: ${t.avoid}` : '',
   ].join(' | '),
 ).join('\n')
@@ -87,10 +91,10 @@ const WRITER_RULES = `How to write a meme, in order:
 2. Fill each box with its role, in order. Use "" for a box that works better blank.
 3. One-liners. Each box at most 6 words, the whole meme at most 12. If it needs more, it is the wrong joke or the wrong meme.
 4. Funny, not "fun": think of the obvious joke and don't use it. Use one concrete detail from the request. The last box is the punchline; never explain it. Avoid "nobody:", "me trying to", "when you" and puns on the topic word.
-5. A box marked face covers the main face: keep it to 3 words, or blank.
+5. A box marked face covers the main face, and a box listed under small is a narrow label: keep those to 4 words at most, or blank.
 6. Words the user gave exactly are final: put them in the box they fit, unchanged, and write only the other boxes.
 
-Catalog (id | name | boxes | shape | core idea | box roles | face box | not for):
+Catalog (id | name | boxes | shape | core idea | box roles | face box | small boxes | not for):
 ${CATALOG}`
 
 // Text the person put in double quotes is theirs, word for word.
@@ -98,15 +102,30 @@ export function quotedText(text) {
   return [...String(text ?? '').matchAll(/["“]([^"”]{2,120})["”]/g)].map((m) => m[1].trim()).filter(Boolean)
 }
 
-// One-liners: no box over 8 words, no meme over 14, and a face box kept short. Lines that
+// One-liners: no box over 8 words, no meme over 14, and face and small boxes kept short. Lines that
 // hold the person's own words don't count against them.
+// The one-liner filter, except that a template the person named always keeps its shortest
+// draft: they asked for that meme.
+export function keepShort(drafts, exact = [], named = []) {
+  const words = (d) => d.lines.join(' ').split(/\s+/).filter(Boolean).length
+  const short = drafts.filter((d) => fitsBudget(d, exact))
+  for (const id of named) {
+    if (short.some((d) => d.template_id === id)) continue
+    const best = drafts.filter((d) => d.template_id === id).sort((a, b) => words(a) - words(b))[0]
+    if (best) short.push(best)
+  }
+  return short.length ? short : drafts
+}
+
 export function fitsBudget(draft, exact = []) {
   const t = TEMPLATE_BY_ID.get(draft.template_id)
   const count = (l) => (exact.some((x) => l.toLowerCase().includes(x.toLowerCase())) ? 0 : l.split(/\s+/).filter(Boolean).length)
   const words = draft.lines.map(count)
   if (words.some((n) => n > 8) || words.reduce((a, b) => a + b, 0) > 14) return false
   const faceBox = t?.face === 'top' ? 0 : t?.face === 'bottom' ? draft.lines.length - 1 : -1
-  return faceBox < 0 || words[faceBox] <= 4
+  if (faceBox >= 0 && words[faceBox] > 4) return false
+  // Narrow label boxes shrink long text to a speck.
+  return (t?.small ?? []).every((i) => (words[i] ?? 0) <= 4)
 }
 
 // Templates the person named in plain words: "kombucha girl", "the woman yelling at a cat",
@@ -294,7 +313,7 @@ export const SIGNATURE = `Fresh from the <${REPO_URL}|Meme Factory> :factory:`
 // Connectors Claude can post through, other than Slack (which the mod posts to itself).
 // Everything the browser gallery can ask for. The mod hands this list to the gallery
 // server, which rejects any other event, so the page, the server and onGalleryEvent agree.
-export const GALLERY_EVENTS = ['select', 'approve', 'chat', 'remix', 'variations', 'new', 'post', 'confirm', 'cancel', 'favorite', 'addConnector', 'settings', 'back', 'reset', 'refresh']
+export const GALLERY_EVENTS = ['select', 'approve', 'chat', 'remix', 'variations', 'useTemplate', 'new', 'post', 'confirm', 'cancel', 'favorite', 'addConnector', 'settings', 'back', 'reset', 'refresh']
 
 export const DESTINATIONS = [
   { key: 'linkedin', label: 'LinkedIn', match: /linkedin/ },
@@ -461,11 +480,24 @@ export function isMemePost(e) {
 }
 
 // What the browser gallery shows: plain data, no local file paths.
+// The gallery's meme picker: every template with a blank thumbnail to choose from.
+const PICKER = TEMPLATES.map((t) => ({
+  id: t.id,
+  name: t.name,
+  shape: t.shape ?? '',
+  aliases: t.aliases ?? [],
+  thumb: memeUrl(t.id, Array(t.lines).fill(''), 'jpg', { width: 240 }),
+}))
+
 export function galleryState(job, connectors, settings) {
   const strip = (d) => d && { id: d.id, template_name: d.template_name, lines: d.lines, url: d.url, score: d.score }
   return {
     status: job.status,
     stage: job.stage,
+    templates: PICKER,
+    pending: job.pending ?? null,
+    lock: job.lock ?? null,
+    check: job.check ?? null,
     note: job.note,
     error: job.error,
     request: job.request,
@@ -527,4 +559,69 @@ export function hash(s) {
   let h = 2166136261
   for (const ch of String(s)) h = Math.imul(h ^ ch.charCodeAt(0), 16777619)
   return h >>> 0
+}
+
+// ---------- Picture check ----------
+
+// The system prompt of the picture-check agent: it reads each rendered meme (the Read tool
+// shows images to the model) and flags text that hides something or can't be read.
+export const REVIEW_SYSTEM = `You check rendered memes before anyone sees them. Judge only the picture, never the joke. Imagine each one shown about 400 pixels wide in a chat app.
+Use the Read tool to look at every image file you are given, then reply with JSON only, no prose and no code fences.`
+
+export function reviewPrompt(items) {
+  const list = items
+    .map(({ i, path, lines, template }) => `${i}: ${path}  (${template})  boxes: ${JSON.stringify(lines)}`)
+    .join('\n')
+  return `Flag a box when:
+- "covers": its text hides something the joke needs to show: a face, a key gesture, or a sign or object the meme depends on. Text over hair, clothes, background or empty space is fine.
+- "tiny": its text is so small or cramped you'd have to zoom in to read it.
+
+Fixes: "shorten" (give that box in at most 3 words that keep the joke, in "shorter"), or "top" (move all the text to a band above the picture).
+
+Images:
+${list}
+
+Reply: {"checks":[{"i":0,"problems":[{"box":1,"kind":"covers|tiny","fix":"shorten|top","shorter":"..."}]}]}
+Use "problems": [] for a picture that is fine. Boxes count from 1.`
+}
+
+// The fixes the check asked for, per draft index. Anything malformed is dropped.
+export function parseReview(text) {
+  let checks = []
+  try {
+    checks = parseJson(text).checks ?? []
+  } catch {
+    return new Map()
+  }
+  const out = new Map()
+  for (const c of Array.isArray(checks) ? checks : []) {
+    const i = Number(c?.i)
+    const problems = (Array.isArray(c?.problems) ? c.problems : [])
+      .map((p) => ({ box: Number(p?.box) - 1, kind: String(p?.kind ?? ''), fix: String(p?.fix ?? ''), shorter: typeof p?.shorter === 'string' ? p.shorter.trim().slice(0, 60) : '' }))
+      .filter((p) => Number.isInteger(p.box) && p.box >= 0 && (p.fix === 'top' || (p.fix === 'shorten' && p.shorter)))
+    if (Number.isInteger(i) && problems.length) out.set(i, problems)
+  }
+  return out
+}
+
+// A draft with the check's fixes applied, or null when nothing changes. The person's own
+// words are never shortened.
+export function applyReview(draft, problems, exact = []) {
+  const lines = [...draft.lines]
+  let layout = draft.layout ?? null
+  let changed = 0
+  for (const p of problems) {
+    if (p.box >= lines.length) continue
+    if (exact.some((x) => lines[p.box].toLowerCase().includes(x.toLowerCase()))) continue
+    if (p.fix === 'shorten' && p.shorter && p.shorter.split(/\s+/).length <= 4 && p.shorter !== lines[p.box]) {
+      lines[p.box] = p.shorter
+      changed++
+    } else if (p.fix === 'top' && layout !== 'top') {
+      layout = 'top'
+      changed++
+    }
+  }
+  if (!changed) return null
+  const next = makeDraft(draft.template_id, lines, draft.score, layout)
+  return next && { ...next, fixed: changed }
 }

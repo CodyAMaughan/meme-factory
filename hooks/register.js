@@ -32,9 +32,13 @@ import {
   shortName,
   templatesNamed,
   quotedText,
-  fitsBudget,
+  keepShort,
   sizedUrl,
   makeDraft,
+  REVIEW_SYSTEM,
+  reviewPrompt,
+  parseReview,
+  applyReview,
   DRAFTS,
   keepNamed,
   svgForJpeg,
@@ -70,9 +74,21 @@ let cacheDir = ''
 let inlineImages = false
 // The sticker wordmark (assets/wordmark.png) as an SVG, for surfaces that draw images.
 let wordmark = ''
+// Picture checks in flight: the helper agent's id, and what to do with its answer.
+const checks = new Map()
+// MEME_FACTORY_DEBUG=1 keeps a log of the drafting pipeline in ~/.cache/meme-factory/debug.json.
+let debugOn = false
+// MEME_FACTORY_CHECK_PICTURES=1 turns the picture check on, as the Settings switch does.
+let checkByEnv = false
+const debugLines = []
+function debug($, step, data = {}) {
+  if (!debugOn) return
+  debugLines.push({ at: Date.now(), step, ...data })
+  $.fs.write(`${cacheDir}/debug.json`, JSON.stringify(debugLines.slice(-200), null, 1)).catch(() => {})
+}
 // The browser gallery: a local server the mod spawns on demand, { token, port, ready }.
 let gallery = null
-let settings = { askBeforePost: true, signature: true, quality: 'best', favorites: [] }
+let settings = { askBeforePost: true, signature: true, quality: 'best', checkPictures: false, favorites: [] }
 
 function freshJob() {
   return {
@@ -91,6 +107,10 @@ function freshJob() {
     lock: null,
     // The person's own words, used verbatim.
     exact: [],
+    // A template picked in the gallery before there was a request: the next meme uses it.
+    pending: null,
+    // The picture check: { state: 'running' | 'done' | 'skipped', fixed }
+    check: null,
     // Posting the approved meme: { stage: 'pick' | 'confirm' | 'posting' | 'done' | 'error', choice, target, link, error }
     post: null,
     posted: [],
@@ -104,6 +124,8 @@ export function register(on) {
     cacheDir = `${home || '/tmp'}/.cache/meme-factory`
     inlineImages = await detectInlineImages($)
     wordmark = await loadWordmark($)
+    debugOn = (await $.env.get('MEME_FACTORY_DEBUG')) === '1'
+    checkByEnv = (await $.env.get('MEME_FACTORY_CHECK_PICTURES')) === '1'
     settings = cleanSettings(await $.store.get('settings'))
     await $.tool.register({
       name: 'make_meme',
@@ -119,6 +141,18 @@ export function register(on) {
       },
       isDeferred: false,
     })
+    // The picture check: a helper agent that looks at the rendered memes (the mod's own model
+    // calls can't see images). Hidden from Claude; only this mod spawns it.
+    await $.agent
+      .register({
+        name: 'picture-check',
+        description: 'Meme Factory only: checks rendered meme pictures for caption text that is too small or covers a face.',
+        prompt: REVIEW_SYSTEM,
+        tools: ['Read'],
+        model: 'sonnet',
+        maxTurns: 8,
+      })
+      .catch(() => {})
     // Register commands last: a taken name throws and skips the rest of the hook.
     await $.command.register({
       name: 'meme',
@@ -170,6 +204,18 @@ export function register(on) {
     return {}
   })
 
+  on('agent.offer', { agent: 'meme-factory:picture-check' }, () => ({ isOffered: false }))
+
+  // A picture check's answer arrives as its turn's end.
+  on('turn.complete', async ($, e, next) => {
+    const done = e.agentId && checks.get(e.agentId)
+    if (done) {
+      checks.delete(e.agentId)
+      done(String(e.answer ?? ''))
+    }
+    return next(e)
+  })
+
   on('ui.render', { component: 'Pane' }, async ($, e, next) => {
     if (e.requestId !== PANE) return next(e)
     return drawPane($, e)
@@ -196,7 +242,9 @@ function changed($) {
 
 function startJob($, request, context) {
   const id = ++seq
-  job = { ...freshJob(), status: 'working', stage: 'write', request, context, note: 'Writing captions…', chat: job.chat }
+  // A meme picked in the gallery beforehand: all three drafts use it.
+  const lock = job.pending && TEMPLATE_IDS.has(job.pending) ? job.pending : null
+  job = { ...freshJob(), status: 'working', stage: 'write', request, context, note: 'Writing captions…', chat: job.chat, lock }
   changed($)
   $.clock.after(0, () => cook($, id, null))
 }
@@ -259,9 +307,8 @@ async function cook($, id, previous, latest = '') {
     )
     if (id !== seq) return
     let drafts = draftsFromWriter(written)
-    // One-liners only, unless nothing short came back.
-    const short = drafts.filter((d) => fitsBudget(d, exact))
-    if (short.length) drafts = short
+    // One-liners only, but a meme the person named always survives, and so does the locked one.
+    drafts = keepShort(drafts, exact, [...named, ...(lock ? [lock] : [])])
 
     job = { ...job, stage: 'judge', note: 'Judging…' }
     changed($)
@@ -272,18 +319,67 @@ async function cook($, id, previous, latest = '') {
       : applyScores(drafts, await complete($, JUDGE_SYSTEM, judgePrompt(job.request, drafts, { exact, named, order }), 900, 'judge').catch(() => ''))
     if (id !== seq) return
 
+    debug($, 'drafts', { kept: drafts.map((d) => `${d.score ?? '-'} ${d.template_id}: ${d.lines.join(' / ')}`) })
     const best = lock ? topDrafts(drafts, DRAFTS, { distinct: false }) : keepNamed(topDrafts(drafts), drafts, named)
     job = { ...job, stage: 'render', note: 'Rendering…' }
     changed($)
     await renderArt($, best)
     if (id !== seq) return
-    job = { ...job, status: 'review', stage: '', drafts: best, selected: 0, note: '', approved: null, post: null }
+    job = { ...job, status: 'review', stage: '', drafts: best, selected: 0, note: '', approved: null, post: null, check: null }
     changed($)
+    // The drafts are on screen; the picture check runs behind them and swaps in fixes.
+    if (settings.checkPictures || checkByEnv) checkPictures($, id, exact).catch(() => {})
   } catch (err) {
     if (id !== seq) return
     job = { ...job, status: 'error', stage: '', error: err?.message ?? String(err), note: '' }
     changed($)
   }
+}
+
+// Asks the picture-check agent to look at the drafts on screen, then swaps in any fixes:
+// a shorter box, or the text moved above the picture. Never blocks the panel.
+async function checkPictures($, id, exact) {
+  const items = job.drafts
+    .map((d, i) => ({ i, path: art.get(d.id)?.png, lines: d.lines, template: d.template_name }))
+    .filter((x) => x.path && art.get(job.drafts[x.i].id)?.size)
+  if (!items.length) return
+  job = { ...job, check: { state: 'running' } }
+  changed($)
+  let answer = ''
+  try {
+    // The helper reads the rendered pictures from the mod's cache; Claude Code's own permission
+    // rules decide that read (see README: one allow rule for ~/.cache/meme-factory).
+    const spawned = await $.agent.spawn({ subagentType: 'meme-factory:picture-check', prompt: reviewPrompt(items), description: 'Checking meme pictures', cwd: cacheDir })
+    debug($, 'check spawned', { agentId: spawned?.agentId ?? null, deny: spawned?.deny ?? null, pictures: items.length })
+    if (!spawned?.agentId) throw new Error(spawned?.deny ?? 'no agent')
+    answer = await Promise.race([
+      new Promise((resolve) => checks.set(spawned.agentId, resolve)),
+      $.clock.sleep(120000).then(() => {
+        checks.delete(spawned.agentId)
+        return ''
+      }),
+    ])
+  } catch {
+    answer = ''
+  }
+  debug($, 'check answered', { chars: answer.length, answer: answer.slice(0, 600) })
+  if (id !== seq || job.status !== 'review') return
+  const fixes = parseReview(answer)
+  const updated = []
+  for (const [i, problems] of fixes) {
+    const d = job.drafts[i]
+    const next = d && applyReview(d, problems, exact)
+    if (next) updated.push([i, next])
+  }
+  if (updated.length) await renderArt($, updated.map(([, d]) => d))
+  if (id !== seq || job.status !== 'review') return
+  const drafts = [...job.drafts]
+  for (const [i, d] of updated) drafts[i] = d
+  const fixed = updated.reduce((n, [, d]) => n + d.fixed, 0)
+  // No verdicts at all usually means the helper couldn't read the pictures.
+  const blocked = Boolean(answer) && !/"checks"\s*:/.test(answer)
+  job = { ...job, drafts, check: { state: blocked ? 'blocked' : answer ? 'done' : 'skipped', fixed } }
+  changed($)
 }
 
 // $.model.complete resolves to the text on older builds and to { isAnswered, text } on newer ones.
@@ -304,7 +400,9 @@ async function complete($, system, prompt, maxTokens, role = 'writer') {
     chat: await $.env.get('MEME_FACTORY_CHAT_MODEL'),
   }
   const model = byRole[role] || (await $.env.get('MEME_FACTORY_MODEL')) || (MODELS[settings.quality] ?? MODELS.best)[role]
+  const started = Date.now()
   const reply = await $.model.complete({ model, system, prompt, maxTokens })
+  debug($, 'model', { role, model, ms: Date.now() - started, answered: typeof reply === 'string' || Boolean(reply?.isAnswered) })
   if (typeof reply === 'string') return reply
   if (reply?.isAnswered) return reply.text
   throw new Error(`The model didn't answer${reply?.reason ? `: ${reply.reason}` : ''}`)
@@ -690,6 +788,14 @@ async function onGalleryEvent($, ev) {
   if (ev.type === 'chat') chat($, text(ev.text)).catch(() => {})
   if (ev.type === 'remix') remix($, text(ev.text))
   if (ev.type === 'variations' && job.status === 'review') variations($, validIndex ? job.drafts[index].template_id : undefined)
+  // A meme chosen from the gallery's picker: three takes on it now, or on the next meme.
+  if (ev.type === 'useTemplate' && TEMPLATE_IDS.has(String(ev.id))) {
+    if (job.status === 'review') variations($, String(ev.id))
+    else if (job.status === 'idle' || job.status === 'error') {
+      job = { ...job, pending: String(ev.id) }
+      changed($)
+    }
+  }
   if (ev.type === 'new' && text(ev.request)) startJob($, text(ev.request), '')
   if (ev.type === 'back' && job.status === 'approved' && job.post?.stage !== 'posting') backToDrafts($)
   if (ev.type === 'post' && job.approved) {
@@ -713,6 +819,7 @@ function cleanSettings(stored) {
     askBeforePost: typeof s.askBeforePost === 'boolean' ? s.askBeforePost : true,
     signature: typeof s.signature === 'boolean' ? s.signature : true,
     quality: s.quality === 'fast' ? 'fast' : 'best',
+    checkPictures: s.checkPictures === true,
     favorites: (Array.isArray(s.favorites) ? s.favorites : [])
       .filter((f) => f && typeof f === 'object' && typeof f.label === 'string' && f.label.trim())
       .map((f) => ({
@@ -730,6 +837,7 @@ async function saveSettings($, patch) {
   if (typeof patch.askBeforePost === 'boolean') next.askBeforePost = patch.askBeforePost
   if (typeof patch.signature === 'boolean') next.signature = patch.signature
   if (patch.quality === 'best' || patch.quality === 'fast') next.quality = patch.quality
+  if (typeof patch.checkPictures === 'boolean') next.checkPictures = patch.checkPictures
   if (Array.isArray(patch.favorites)) {
     next.favorites = patch.favorites
       .map((f) => {
@@ -802,7 +910,9 @@ function drawPane($, e) {
   const children = [header(el, e)]
 
   if (job.status === 'idle') {
-    if (!inline) children.push(Text({ dimColor: true, children: ['Ask Claude for a meme, or describe one here.'] }))
+    const picked = job.pending && TEMPLATES.find((t) => t.id === job.pending)
+    if (picked) children.push(Text({ color: 'suggestion', wrap: 'truncate-end', children: [`Next meme uses ${picked.name}`] }))
+    else if (!inline) children.push(Text({ dimColor: true, children: ['Ask Claude for a meme, or describe one here.'] }))
   }
 
   if (job.status === 'working') {
@@ -850,6 +960,7 @@ function drawPane($, e) {
       ...picture(el, e, draft),
       ...caption(el, e, draft),
       ...noPreview(el, e),
+      ...checkNote(el),
       row(el, [
         Button({ key: 'approve', label: 'Approve', hotkey: 'a', plain: true, onPress: () => guard($, () => approve($)) }),
         Button({ key: 'remix', label: 'Remix', hotkey: 'r', plain: true, onPress: () => remix($, '') }),
@@ -908,6 +1019,16 @@ function header(el, e) {
     else status = Text({ color: 'success', wrap: 'truncate-end', children: [`✓ Approved · ${name}`] })
   }
   return Box({ flexDirection: 'row', columnGap: 2, alignItems: 'center', children: [brand(el, e), status] })
+}
+
+// What the picture check is doing, in one dim line (nothing once it found nothing to fix).
+function checkNote(el) {
+  const c = job.check
+  if (!c) return []
+  if (c.state === 'running') return [el.Text({ dimColor: true, wrap: 'truncate-end', children: ['Checking how the pictures read…'] })]
+  if (c.state === 'blocked') return [el.Text({ dimColor: true, wrap: 'truncate-end', children: ["Picture check couldn't read the images: allow Read on ~/.cache/meme-factory"] })]
+  if (c.state === 'done' && c.fixed) return [el.Text({ color: 'success', wrap: 'truncate-end', children: [`✓ Adjusted ${c.fixed} ${c.fixed === 1 ? 'box' : 'boxes'} so ${c.fixed === 1 ? 'it reads' : 'they read'}`] })]
+  return []
 }
 
 function stageLine(el) {
