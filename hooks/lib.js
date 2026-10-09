@@ -752,7 +752,7 @@ const stem = (w) => w.replace(/(ings|ing|ers|er|ies|es|s|ed)$/, '') || w
 const terms = (text) => words(text).split(' ').filter((w) => w.length >= 2 && !STOP.has(w)).map(stem)
 let INDEX = null
 function searchIndex() {
-  if (INDEX && INDEX.size === TEMPLATES.length) return INDEX
+  if (INDEX) return INDEX
   const docs = TEMPLATES.map((t) => {
     const tf = new Map()
     let len = 0
@@ -829,6 +829,25 @@ export function shortlistFor(query, { matches = 30, popular = 10 } = {}) {
   return ids
 }
 
+// Takes templates back out (an Imgflip copy once your server's own version has arrived).
+export function removeTemplates(ids) {
+  const out = new Set(ids)
+  const before = TEMPLATES.length
+  for (let i = TEMPLATES.length - 1; i >= 0; i--) {
+    if (!out.has(TEMPLATES[i].id)) continue
+    NAMES.delete(nameOf(TEMPLATES[i]))
+    TEMPLATE_BY_ID.delete(TEMPLATES[i].id)
+    TEMPLATES.splice(i, 1)
+  }
+  if (TEMPLATES.length !== before) {
+    INDEX = null
+    CATALOG = TEMPLATES.map(catalogLine).join('\n')
+    WRITER_RULES = RULES_HEAD + CATALOG
+    PICKER = [...TEMPLATES].sort((a, b) => popularity(b) - popularity(a)).map(pickerEntry)
+  }
+  return before - TEMPLATES.length
+}
+
 // Adds templates to the catalog, the writer's prompt and the gallery's picker. Returns how many.
 // Two templates with the same name (once case, punctuation and "blank" are ignored) are one meme:
 // the more popular one is kept.
@@ -848,6 +867,7 @@ export function addTemplates(extra) {
     added++
   }
   if (added) {
+    INDEX = null
     CATALOG = TEMPLATES.map(catalogLine).join('\n')
     WRITER_RULES = RULES_HEAD + CATALOG
     PICKER = [...TEMPLATES].sort((a, b) => popularity(b) - popularity(a)).map(pickerEntry)

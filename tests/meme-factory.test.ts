@@ -35,6 +35,7 @@ import {
   parseCards,
   knownTemplate,
   addTemplates,
+  removeTemplates,
   rankTemplates,
   shortlistFor,
   popularity,
@@ -1098,4 +1099,14 @@ test("the writer's shortlist: best matches, then the most popular all-rounders, 
   expect(rules.text).not.toContain('rk-')
   expect(task.text).toContain('rk-pika2 | Startled Rodent Zz Two')
   expect(task.text.split('\n').filter((l) => l.includes(' | ')).length).toBe(8)
+})
+
+test('a template taken back out leaves the catalog, the search and the writer', () => {
+  addTemplates([{ id: 'rm-me', name: 'Zz Removable Meme', lines: 2, shape: 'reaction', core: 'x', slots: ['', ''], aliases: ['zzremovable'], example: ['', ''] }])
+  expect(rankTemplates('zzremovable', 3)[0]).toBe('rm-me')
+  expect(removeTemplates(['rm-me'])).toBe(1)
+  expect(rankTemplates('zzremovable', 3)).not.toContain('rm-me')
+  expect(writerPrompt({ request: 'x' })[0].text).not.toContain('rm-me')
+  // Its name is free again, so the server's own version can join.
+  expect(addTemplates([{ id: 'rm-me-2', name: 'Zz Removable Meme', lines: 2, shape: 'reaction', core: 'x', slots: ['', ''], aliases: [], example: ['', ''] }])).toBe(1)
 })

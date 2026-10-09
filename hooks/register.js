@@ -26,6 +26,7 @@ import {
   cardsPrompt,
   parseCards,
   addTemplates,
+  removeTemplates,
   TEMPLATE_BY_ID,
   sameMemeName,
   MAX_FULL_CATALOG,
@@ -595,6 +596,8 @@ async function moreTemplates($, force = false) {
   const server = await serverTemplates($)
   const ready = server.filter((t) => t.core)
   const fromServer = (t) => t.source === 'imgflip' && ready.some((r) => sameMemeName(r.name, t.name))
+  // An Imgflip copy that loaded earlier (while the server was asleep) gives way now.
+  removeTemplates(cards.filter((t) => fromServer(t)).map((t) => t.id))
   const served = addTemplates(ready)
   addTemplates(cards.filter(usable).filter((t) => !fromServer(t)))
 
