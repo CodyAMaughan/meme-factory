@@ -9,6 +9,9 @@ import {
   parseJson,
   pngSize,
   shortName,
+  templatesNamed,
+  quotedText,
+  fitsBudget,
   postingConnectors,
   resolveDestination,
   topDrafts,
@@ -71,7 +74,7 @@ type Rig = {
 // Stubs everything the mod reaches: the model, the shell, files, the store, and three
 // connectors: Slack (postable, uploads), Gmail (postable) and Microsoft 365 (Teams search only).
 function factory(on, rig: Rig = {}) {
-  const log = { ran: [] as string[][], submitted: [] as string[], copied: [] as string[], calls: [] as any[], asked: [] as string[], prompts: [] as string[] }
+  const log = { ran: [] as string[][], submitted: [] as string[], copied: [] as string[], calls: [] as any[], asked: [] as string[], prompts: [] as string[], models: [] as Array<{ system: string; model: string }> }
   const saved = new Map<string, unknown>(rig.settings ? [['settings', rig.settings]] : [])
   const clock = mock.clock(on)
   on('session.start', () => ({ cwd: '/work' }))
@@ -87,6 +90,7 @@ function factory(on, rig: Rig = {}) {
   on('session.surfaces', () => ({ value: ['terminal', 'desktop'] }))
   on('model.complete', ($, e) => {
     log.prompts.push(e.prompt)
+    log.models.push({ system: String(e.system), model: e.model })
     if (e.system.includes('judge')) return { value: { isAnswered: true, text: JUDGE_REPLY, usage: USAGE } }
     if (e.system.includes('chat box')) return { value: { isAnswered: true, text: JSON.stringify(rig.chatReply?.(e.prompt) ?? { reply: 'Hi!', action: { type: 'none' } }), usage: USAGE } }
     return { value: { isAnswered: true, text: WRITER_REPLY, usage: USAGE } }
@@ -156,7 +160,7 @@ test('Claude asks for a meme: the tool returns at once and the drafts cook in th
   // The pick lives in the label (● / ○) with the judge's score, since a Button can't be bold
   expect((await review.find({ key: 'draft-0' }))?.props.label).toMatch(/^● Drakeposting \d+$/)
   expect((await review.find({ key: 'draft-1' }))?.props.label).toMatch(/^○ This is Fine/)
-  expect(await review.find({ type: 'Text', text: ' MEME FACTORY ' })).toMatchObject({ props: { inverse: true } })
+  expect(await review.find({ type: 'Text', text: ' MEME FACTORY ' })).toMatchObject({ props: { color: '#19141F', backgroundColor: '#D9F24A' } })
   expect(await review.find({ type: 'Text', text: 'everyone reads their Jira tickets aloud' })).toBeDefined()
   // A real picture in the terminal: the Image element reads the cached PNG, keeping its 3:2 shape
   const image = await review.find({ type: 'Image' })
@@ -355,7 +359,8 @@ test('Desktop draws the meme as an SVG with a link to the full image', async ($,
   const { clock } = factory(on)
   await draftsReady($, clock, 'desktop')
   const ui = await $.ui.mount({ ...PANE, surface: 'desktop' })
-  expect(await ui.find({ type: 'Svg' })).toBeDefined()
+  // The first Svg is the brand mark, the same wordmark the repo and gallery use.
+  expect((await ui.find({ type: 'Svg' }))?.props.alt).toBe('Meme Factory')
   expect(await ui.find({ type: 'Image' })).toBeUndefined()
   expect(await ui.find({ type: 'Link' })).toMatchObject({ props: { label: 'Open full image' } })
 })
@@ -419,4 +424,77 @@ test('helpers hold up against odd input: dot-only lines, junk scores, look-alike
   expect(resolveDestination('#dev please', channels, favorites)).toEqual({ kind: 'slack', id: 'C9', name: 'dev' })
   // Images that are too tall narrow to fit the rows they have.
   expect(imageCells({ width: 600, height: 600 }, 56, 10)).toEqual({ columns: 20, rows: 10 })
+})
+
+test('naming a template in plain words gets it drafted, from the request or the chat box', async ($, on) => {
+  expect(templatesNamed('use kombucha girl')).toEqual(['kombucha'])
+  expect(templatesNamed('the woman yelling at a cat')).toEqual(['woman-cat'])
+  expect(templatesNamed('make it a drake meme')).toEqual(['drake'])
+  // Ordinary words that happen to be template ids don't count.
+  expect(templatesNamed('success! tests pass, money well spent')).toEqual([])
+  expect(templatesNamed('my wife thinks I am weird')).toEqual([])
+
+  let next: object = { reply: 'Kombucha Girl it is.', action: { type: 'remix', feedback: 'use kombucha girl' } }
+  const { clock, log } = factory(on, { chatReply: () => next })
+  await draftsReady($, clock)
+  const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
+  await ui.input({ key: 'chat', text: 'use kombucha girl' })
+  await clock.settle()
+  expect(log.prompts.some((p) => /Use exactly these templates: kombucha \(Kombucha Girl/.test(p))).toBe(true)
+})
+
+test('"More like this" drafts three takes on the one meme shown', async ($, on) => {
+  const { clock, log } = factory(on)
+  await draftsReady($, clock)
+  const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
+  await ui.press({ key: 'more' })
+  await clock.settle()
+  const last = String(log.prompts.filter((p) => String(p).includes('"shape"')).at(-1))
+  expect(last).toMatch(/Use only drake \(Drakeposting/)
+  expect(last).toContain('Write 6 candidates')
+})
+
+test('the chat box can set a caption word for word, with nothing rewritten', async ($, on) => {
+  const { clock } = factory(on, { chatReply: () => ({ reply: 'Done.', action: { type: 'edit', draft: 1, lines: ['me: one more mod', 'my wife:'] } }) })
+  await draftsReady($, clock)
+  const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
+  await ui.input({ key: 'chat', text: 'make it say "me: one more mod" and "my wife:"' })
+  await clock.settle()
+  expect(await ui.find({ type: 'Text', text: 'me: one more mod' })).toBeDefined()
+  expect(await ui.find({ type: 'Text', text: 'my wife:' })).toBeDefined()
+})
+
+test('quoted words reach the writer and the judge verbatim', async ($, on) => {
+  const { clock, log } = factory(on)
+  await $.session.start({ surface: 'terminal', isInteractive: true, cwd: '/work' })
+  await $.tool.call({ tool: TOOL, tool_use_id: 't9', request: 'my wife watching me make memes, bottom line "it\'s for work"' })
+  await clock.settle()
+  const all = log.prompts.map(String)
+  expect(all.some((p) => p.includes('The user\'s exact words (use verbatim): "it\'s for work"'))).toBe(true)
+  expect(all.some((p) => p.includes('must appear unchanged: "it\'s for work"'))).toBe(true)
+})
+
+test('one-liners: long captions are filtered, a face box stays short, and custom templates render', async () => {
+  expect(quotedText('say "this is fine" and “ok”')).toEqual(['this is fine', 'ok'])
+  expect(fitsBudget({ template_id: 'drake', lines: ['tests', 'vibes'] } as any)).toBe(true)
+  expect(fitsBudget({ template_id: 'drake', lines: ['one two three four five six seven eight nine', 'x'] } as any)).toBe(false)
+  // The top box of Interesting Man covers his face: keep it to a few words.
+  expect(fitsBudget({ template_id: 'interesting', lines: ['when the build finally passes after all', 'i ship'] } as any)).toBe(false)
+  // The person's own words never count against the budget.
+  expect(fitsBudget({ template_id: 'drake', lines: ['one two three four five six seven eight nine', 'x'] } as any, ['one two three four five six seven eight nine'])).toBe(true)
+  expect(memeUrl('chloe', ['me: hi', 'her:'])).toMatch(/^https:\/\/api\.memegen\.link\/images\/custom\/me%3A_hi\/her%3A\.png\?background=https%3A%2F%2Fraw\.githubusercontent\.com/)
+  expect(templatesNamed('the little girl side eye')).toEqual(['chloe'])
+})
+
+test('models: Opus writes and Sonnet judges by default', async ($, on) => {
+  const { clock, log } = factory(on)
+  await draftsReady($, clock)
+  expect(log.models.find((m) => m.system.includes('writer'))?.model).toBe('opus')
+  expect(log.models.find((m) => m.system.includes('judge'))?.model).toBe('sonnet')
+})
+
+test('models: the Fast setting drafts with Sonnet', async ($, on) => {
+  const { clock, log } = factory(on, { settings: { askBeforePost: true, signature: true, quality: 'fast', favorites: [] } })
+  await draftsReady($, clock)
+  expect(log.models.find((m) => m.system.includes('writer'))?.model).toBe('sonnet')
 })

@@ -30,8 +30,17 @@ export function encodeLine(text) {
   return encodeURIComponent(escaped).replace(/%7E/gi, '~').replace(/%2C/gi, ',').replace(/'/g, '%27')
 }
 
-export function memeUrl(templateId, lines, ext = 'png') {
-  return `https://api.memegen.link/images/${templateId}/${lines.map(encodeLine).join('/')}.${ext}`
+export function memeUrl(templateId, lines, ext = 'png', params = {}) {
+  const t = TEMPLATE_BY_ID.get(templateId)
+  // A template with its own picture renders through memegen's custom route.
+  const path = t?.background ? 'custom' : templateId
+  const query = new URLSearchParams({ ...(t?.background ? { background: t.background } : {}), ...params }).toString()
+  return `https://api.memegen.link/images/${path}/${lines.map(encodeLine).join('/')}.${ext}${query ? `?${query}` : ''}`
+}
+
+// The same meme at a given size and format, for downloads and previews.
+export function sizedUrl(draft, width, ext = 'png') {
+  return memeUrl(draft.template_id, draft.lines, ext, { width })
 }
 
 // A caption line longer than this doesn't fit a meme anyway.
@@ -55,44 +64,131 @@ export function makeDraft(templateId, lines, score) {
 
 // ---------- Prompts ----------
 
-const CATALOG = TEMPLATES.map((t) => `${t.id}|${t.name}|${t.lines}`).join('\n')
+// One line per template: id | name | boxes | shape | core idea | role of each box | face box | not for.
+const CATALOG = TEMPLATES.map((t) =>
+  [
+    t.id,
+    t.name,
+    t.lines,
+    t.shape,
+    t.core,
+    (t.slots ?? []).map((r, i) => `${i + 1}) ${r}`).join(' '),
+    t.face ? `face:${t.face}` : '',
+    t.avoid ? `not for: ${t.avoid}` : '',
+  ].join(' | '),
+).join('\n')
 
-export const WRITER_SYSTEM = `You are the writer at a meme factory. You know classic image-macro meme templates and their joke structures well.
+export const WRITER_SYSTEM = `You are the writer at a meme factory: a terse comedy writer who knows how every classic meme template is actually used.
 Reply with JSON only, no prose and no code fences.`
 
-export function writerPrompt({ request, context, feedback, previous, templateIds }) {
-  const pick = templateIds?.length
-    ? `Use exactly these templates: ${templateIds
-        .map((id) => {
-          const t = TEMPLATE_BY_ID.get(id)
-          return `${id} (${t.name}, ${t.lines} lines, example ${JSON.stringify(t.example)})`
-        })
-        .join('; ')}.`
-    : `Pick the 3 templates from the catalog whose joke structure best fits, then write for them.
-Catalog (id|name|text lines):
+// The rules and the catalog are the same on every call, so they are cached.
+const WRITER_RULES = `How to write a meme, in order:
+1. Fit first. Work out the joke's shape: who is speaking, how many beats, and whether it is a reaction, a choice, a dialogue, an escalation, a label, and so on. Pick templates whose shape and core idea match that joke. A good line on the wrong meme is a bad meme: never force a caption onto a template whose box roles don't fit.
+2. Fill each box with its role, in order. Use "" for a box that works better blank.
+3. One-liners. Each box at most 6 words, the whole meme at most 12. If it needs more, it is the wrong joke or the wrong meme.
+4. Funny, not "fun": think of the obvious joke and don't use it. Use one concrete detail from the request. The last box is the punchline; never explain it. Avoid "nobody:", "me trying to", "when you" and puns on the topic word.
+5. A box marked face covers the main face: keep it to 3 words, or blank.
+6. Words the user gave exactly are final: put them in the box they fit, unchanged, and write only the other boxes.
+
+Catalog (id | name | boxes | shape | core idea | box roles | face box | not for):
 ${CATALOG}`
-  return `Meme request: ${request}
-${context ? `Context from the user's work: ${context}\n` : ''}${previous ? `Previous draft: ${previous.template_name} ${JSON.stringify(previous.lines)}\n` : ''}${feedback?.length ? `User feedback so far (most recent last): ${feedback.map((f) => JSON.stringify(f)).join(', ')}\n` : ''}
-${pick}
-Write 2 candidates per template, each with a different comedic angle. Give each template exactly its number of text lines, in order ("" for an intentionally blank line). Keep lines short and punchy, under 60 characters.
-Return: {"candidates":[{"template_id":"...","lines":["..."]}]}`
+
+// Text the person put in double quotes is theirs, word for word.
+export function quotedText(text) {
+  return [...String(text ?? '').matchAll(/["“]([^"”]{2,120})["”]/g)].map((m) => m[1].trim()).filter(Boolean)
 }
 
-export const JUDGE_SYSTEM = `You are the quality judge at a meme factory: a tough, funny editor.
+// One-liners: no box over 8 words, no meme over 14, and a face box kept short. Lines that
+// hold the person's own words don't count against them.
+export function fitsBudget(draft, exact = []) {
+  const t = TEMPLATE_BY_ID.get(draft.template_id)
+  const count = (l) => (exact.some((x) => l.toLowerCase().includes(x.toLowerCase())) ? 0 : l.split(/\s+/).filter(Boolean).length)
+  const words = draft.lines.map(count)
+  if (words.some((n) => n > 8) || words.reduce((a, b) => a + b, 0) > 14) return false
+  const faceBox = t?.face === 'top' ? 0 : t?.face === 'bottom' ? draft.lines.length - 1 : -1
+  return faceBox < 0 || words[faceBox] <= 4
+}
+
+// Templates the person named in plain words: "kombucha girl", "the woman yelling at a cat",
+// "use drake", "side eye". A name matches when its distinctive words all appear, an alias
+// matches as a phrase, and a bare id counts only as a request ("use drake", "a drake meme").
+const STOP = new Set(['the', 'and', 'with', 'for', 'you', 'are', 'meme', 'guy', 'man', 'girl', 'woman', 'kid', 'dog', 'cat'])
+const words = (s) => String(s ?? '').toLowerCase().replace(/[’']/g, '').replace(/[^a-z0-9]+/g, ' ').trim()
+export function templatesNamed(text, max = 3) {
+  const t = ` ${words(text)} `
+  if (!t.trim()) return []
+  const hits = []
+  for (const tpl of TEMPLATES) {
+    const name = words(tpl.name)
+    const all = name.split(' ').filter((w) => w.length >= 3)
+    const key = all.filter((w) => !STOP.has(w))
+    const byName = t.includes(` ${name} `) || (key.length > 0 && all.every((w) => t.includes(` ${w} `)))
+    const byAlias = (tpl.aliases ?? []).some((a) => words(a).length >= 5 && t.includes(` ${words(a)} `))
+    const id = words(tpl.id).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    const byId = tpl.id.length >= 4 && new RegExp(` (use|try|with|as|do|switch to|go with) ${id} | ${id} (meme|template|format|one) `).test(t)
+    if (byName || byAlias || byId) hits.push({ id: tpl.id, weight: name.length })
+  }
+  return hits.sort((a, b) => b.weight - a.weight).slice(0, max).map((h) => h.id)
+}
+
+// Keeps any template the person asked for by name among the drafts shown, even when the
+// judge ranked it lower: they asked for it.
+export function keepNamed(best, all, named) {
+  const out = [...best]
+  for (const id of named ?? []) {
+    if (out.some((d) => d.template_id === id)) continue
+    const pick = all.filter((d) => d.template_id === id).sort((a, b) => (b.score ?? -1) - (a.score ?? -1))[0]
+    if (!pick) continue
+    const i = out.findLastIndex((d) => !(named ?? []).includes(d.template_id))
+    if (i >= 0) out[i] = pick
+    else out.push(pick)
+  }
+  return out
+}
+
+export function writerPrompt({ request, context, feedback, previous, templateIds, mustUse = [], exact = [], variations = false }) {
+  const card = (id) => {
+    const t = TEMPLATE_BY_ID.get(id)
+    return `${id} (${t.name}, ${t.lines} boxes${t.slots ? `: ${t.slots.map((r, i) => `${i + 1}) ${r}`).join(' ')}` : ''})`
+  }
+  const pick =
+    variations && templateIds?.length
+      ? `Use only ${card(templateIds[0])}. Write 6 candidates for it, each a clearly different angle on the request.`
+      : templateIds?.length
+        ? `Use exactly these templates: ${templateIds.map(card).join('; ')}. Write 2 candidates per template, each a different angle.`
+        : mustUse.length
+          ? `The user asked for ${mustUse.map(card).join(' and ')} by name: use ${mustUse.length > 1 ? 'them' : 'it'}${mustUse.length < 3 ? `, and pick ${3 - mustUse.length} more from the catalog whose shape fits` : ''}. Write 2 candidates per template, each a different angle.`
+          : 'Pick the 3 templates from the catalog whose shape and core idea best fit this joke. Write 2 candidates per template, each a different angle.'
+  const task = `Meme request: ${request}
+${context ? `Context from the user's work: ${context}\n` : ''}${previous ? `Previous draft: ${previous.template_name} ${JSON.stringify(previous.lines)}\n` : ''}${feedback?.length ? `User feedback so far (most recent last): ${feedback.map((f) => JSON.stringify(f)).join(', ')}\n` : ''}${exact.length ? `The user's exact words (use verbatim): ${exact.map((x) => JSON.stringify(x)).join(', ')}\n` : ''}
+${pick}
+Return: {"shape":"the joke's shape in a few words","candidates":[{"template_id":"...","lines":["..."]}]}`
+  return [{ text: WRITER_RULES, cache: true }, { text: task }]
+}
+
+export const JUDGE_SYSTEM = `You are the judge at a meme factory: a tough editor who has seen every meme. Most candidates are mediocre.
 Reply with JSON only, no prose and no code fences.`
 
-export function judgePrompt(request, drafts) {
-  const list = drafts
-    .map((d, i) => `${i}: ${d.template_name} (usually ${JSON.stringify(TEMPLATE_BY_ID.get(d.template_id).example)}) -> ${JSON.stringify(d.lines)}`)
+// order: the candidates' indices in the order shown, shuffled so position doesn't sway the judge.
+export function judgePrompt(request, drafts, { exact = [], named = [], order = drafts.map((_, i) => i) } = {}) {
+  const list = order
+    .map((i) => {
+      const d = drafts[i]
+      const t = TEMPLATE_BY_ID.get(d.template_id)
+      return `${i}: ${d.template_name} (${t?.core ?? ''} Boxes: ${(t?.slots ?? []).join(' / ')}) -> ${JSON.stringify(d.lines)}`
+    })
     .join('\n')
   return `Meme request: ${request}
-Candidates:
+${exact.length ? `The user's exact words, which must appear unchanged: ${exact.map((x) => JSON.stringify(x)).join(', ')}\n` : ''}${named.length ? `The user asked for these templates by name: ${named.join(', ')}\n` : ''}Candidates:
 ${list}
-Score each 0-10 for how funny and shareable it is, how well it delivers the request, and whether it uses the template's joke structure correctly. Be harsh: generic or confusing captions score low.
-Return: {"scores":[{"i":0,"score":7}]}`
+
+Compare them side by side. For each, first write in a few words what kills the joke (or "nothing"), then score it 0-10.
+Score 0-2 if any of these: the caption doesn't fit how this template is used (wrong shape, box roles ignored); the user's exact words were changed or left out; it explains the joke; a box runs past 8 words.
+Otherwise add up: template fit 0-3 (it makes the template's own move), surprise 0-3 (you wouldn't predict the punchline), specificity 0-2 (a concrete detail from the request), brevity 0-2 (8 words or fewer: 2; 9-12: 1).
+When two are close, the shorter one wins. Only one candidate per angle can score above 5. 7 or more means you would post it; most should land 3-6.
+Return: {"scores":[{"i":0,"kills":"...","score":5}]}`
 }
 
-// Models sometimes wrap JSON in fences or add a sentence; take the outermost object.
 export function parseJson(text) {
   const s = String(text ?? '')
   const start = s.indexOf('{')
@@ -127,10 +223,10 @@ export function applyScores(drafts, text) {
 }
 
 // Best first, preferring distinct templates before repeating one.
-export function topDrafts(drafts, n = DRAFTS) {
+export function topDrafts(drafts, n = DRAFTS, { distinct = true } = {}) {
   const sorted = [...drafts].sort((a, b) => (b.score ?? -1) - (a.score ?? -1))
   const out = []
-  for (const d of sorted) if (out.length < n && !out.some((o) => o.template_id === d.template_id)) out.push(d)
+  if (distinct) for (const d of sorted) if (out.length < n && !out.some((o) => o.template_id === d.template_id)) out.push(d)
   for (const d of sorted) if (out.length < n && !out.includes(d)) out.push(d)
   return out
 }
@@ -198,7 +294,7 @@ export const SIGNATURE = `Fresh from the <${REPO_URL}|Meme Factory> :factory:`
 // Connectors Claude can post through, other than Slack (which the mod posts to itself).
 // Everything the browser gallery can ask for. The mod hands this list to the gallery
 // server, which rejects any other event, so the page, the server and onGalleryEvent agree.
-export const GALLERY_EVENTS = ['select', 'approve', 'chat', 'remix', 'new', 'post', 'confirm', 'cancel', 'favorite', 'addConnector', 'settings', 'back', 'reset', 'refresh']
+export const GALLERY_EVENTS = ['select', 'approve', 'chat', 'remix', 'variations', 'new', 'post', 'confirm', 'cancel', 'favorite', 'addConnector', 'settings', 'back', 'reset', 'refresh']
 
 export const DESTINATIONS = [
   { key: 'linkedin', label: 'LinkedIn', match: /linkedin/ },
@@ -301,7 +397,10 @@ export const CHAT_SYSTEM = `You are the Meme Factory's editor, talking to the us
 Read their message and choose one action. Reply with JSON only, no prose and no code fences:
 {"reply":"one short, friendly sentence","action":{"type":"..."}}
 Actions:
-- {"type":"remix","feedback":"what to change"}: new captions, same request (e.g. "meaner", "about Mondays", "different format")
+- {"type":"remix","feedback":"what to change"}: new captions, same request (e.g. "meaner", "about Mondays", "different format"). Keep any words the user put in quotes, in quotes, unchanged.
+- {"type":"edit","draft":2,"lines":["top text","bottom text"]}: the user dictated the exact caption for a draft (e.g. "make the bottom say 'her:'"). Copy their words exactly; keep the other boxes as they are.
+- {"type":"variations","draft":2}: more drafts on that one meme only ("more like this", "more of the Drake one")
+- {"type":"variations","template":"side eye"}: more drafts on a meme the user named
 - {"type":"select","draft":2}: show draft 1, 2 or 3
 - {"type":"approve","draft":2}: approve a draft (draft optional: the selected one)
 - {"type":"post","destination":"#social"}: post the approved meme; destination in the user's words. If nothing is approved yet, approve the selected draft first by also giving "draft".

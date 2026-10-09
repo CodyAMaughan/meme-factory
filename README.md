@@ -44,6 +44,15 @@ Inside a session, `/plugin install meme-factory --marketplace CodyAMaughan/meme-
 3. **Remix in plain words.** Type in the chat box (`t` jumps to it): "meaner", "make it about the PM", "use 2", "different format", "approve it and post it to #social".
 4. **Approve and post.** `a` approves. Pick a channel (favorites first), press `p`, confirm, and the mod uploads the image to Slack. You get the message link.
 
+### Steer it
+
+- **Name the meme.** "a side eye meme about…", "use Drake", "the woman yelling at a cat". A meme you name is always drafted.
+- **More like this** (`m`): three fresh takes on the meme you're looking at, instead of new formats.
+- **Your own words.** Put them in quotes: `/meme my wife watching me work, top "me: I built a meme factory"`. Quoted words are used exactly as written. To set a caption outright, say it in the chat box: *make the bottom say "my wife:"*.
+- **Different format** when the meme itself is wrong for the joke.
+
+Drafts are short on purpose: one-liners, at most six words a box. Every template carries a card that says what kind of joke it tells and what each box is for, and the writer picks the meme whose idea fits your joke before it writes a word.
+
 <table>
   <tr>
     <td width="50%"><a href="docs/media/remix.mp4"><img src="docs/media/remix.gif" alt="Typing meaner, use 2 and different format in the chat box, and the drafts changing each time"></a><br><b>Remix in plain words.</b> A small model turns what you type into actions.</td>
@@ -94,18 +103,48 @@ Press `v` in the panel, or run `/meme gallery`. Everything there goes straight b
 
 It's a small local server (`gallery/server.py`, standard library only) on `127.0.0.1`. It answers only requests that carry the session's random token, refuses other origins and hosts, and stops when the session ends.
 
-## Configuration
+## Models and your plan
 
-| Environment variable | Effect |
+The mod's model calls run through **your Claude Code session's own credentials**: your subscription or your own account, with no API key and nothing to configure. They count toward your plan like any other request.
+
+| Job | **Best drafts** (default) | **Fast** |
+|---|---|---|
+| Write the captions | Opus | Sonnet |
+| Judge and rank them | Sonnet | Sonnet |
+| Chat box | Sonnet | Sonnet |
+| Typical batch | about 15 seconds | about 5 seconds |
+
+Drafts cook in the background, so the default spends the extra seconds on funnier captions. Switch to **Fast** in the gallery's **Settings → Drafting** if you'd rather go easy on your plan. To pick models yourself, set any of these (an alias like `opus`, `sonnet` or `haiku`, or a full model id):
+
+| Environment variable | Overrides |
 |---|---|
-| `MEME_FACTORY_MODEL` | Model for writing and judging: an alias like `haiku` or `sonnet`, or a full model id. Default `haiku`. |
-| `TYPESAFE_API_KEY` | Uses [Jev](https://typesafe.ai) to pick templates and judge drafts, at about $0.0003 per meme. |
+| `MEME_FACTORY_WRITER_MODEL` | The writer |
+| `MEME_FACTORY_JUDGE_MODEL` | The judge |
+| `MEME_FACTORY_CHAT_MODEL` | The chat box |
+| `MEME_FACTORY_MODEL` | All three |
 
-Posting settings and favorites live in the gallery's **Settings** tab.
+Posting settings, favorites and the drafting choice live in the gallery's **Settings** tab.
+
+## Optional: Jev
+
+Meme Factory works without any extra keys. If you have a [Jev](https://typesafe.ai) API key, the mod can hand two decisions to Jev instead of Claude: **picking the templates** and **judging the drafts**. Jev is a fast, low-cost decision API: about $0.0003 per meme, billed by Jev. The writing always stays with Claude.
+
+1. Get an API key at [typesafe.ai](https://typesafe.ai).
+2. Make it visible to Claude Code, in your shell profile:
+   ```bash
+   export TYPESAFE_API_KEY=your-key
+   ```
+   or under `env` in `~/.claude/settings.json`:
+   ```json
+   { "env": { "TYPESAFE_API_KEY": "your-key" } }
+   ```
+3. Restart Claude Code. Remove the key to go back to Claude for everything.
+
+If Jev can't be reached, the mod falls back to Claude for that step. With a key set, Jev receives the meme request and the draft captions.
 
 ## Privacy
 
-- **Model calls** go through your Claude Code session's own credentials. There's no API key to set, and they count toward your plan like any other request.
+- **Model calls** go through your Claude Code session's own credentials (see [Models and your plan](#models-and-your-plan)).
 - **Pictures** are rendered by [memegen.link](https://memegen.link) from the template and the caption text, and cached in `~/.cache/meme-factory/`.
 - **Posts** go only where you send them, through your connectors.
 - **Jev**, if you set `TYPESAFE_API_KEY`, receives the meme request and the draft captions.

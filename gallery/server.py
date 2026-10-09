@@ -23,7 +23,13 @@ from urllib.parse import parse_qs, urlparse
 TOKEN = sys.stdin.readline().strip()
 # The second line lists the event types the mod handles; nothing else is passed on.
 EVENT_TYPES = set(filter(None, sys.stdin.readline().strip().split(',')))
-PAGE = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'index.html'), 'rb').read()
+HERE = os.path.dirname(os.path.abspath(__file__))
+PAGE = open(os.path.join(HERE, 'index.html'), 'rb').read()
+# The sticker wordmark, the same image the repo and the panel use.
+try:
+    WORDMARK = open(os.path.join(HERE, '..', 'assets', 'wordmark.png'), 'rb').read()
+except OSError:
+    WORDMARK = b''
 MAX_BODY = 256 * 1024
 
 state = {'version': 0, 'body': {}}
@@ -89,6 +95,11 @@ class Handler(BaseHTTPRequestHandler):
             if self.headers.get('Host') not in (f'127.0.0.1:{port}', f'localhost:{port}'):
                 return self._send(403)
             return self._send(200, PAGE, 'text/html; charset=utf-8')
+        if url.path == '/wordmark.png' and WORDMARK:
+            port = self.server.server_address[1]
+            if self.headers.get('Host') not in (f'127.0.0.1:{port}', f'localhost:{port}'):
+                return self._send(403)
+            return self._send(200, WORDMARK, 'image/png')
         if url.path == '/api/state':
             if not self._trusted():
                 return self._send(403)

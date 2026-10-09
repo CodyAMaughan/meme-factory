@@ -34,6 +34,7 @@
     -webkit-text-stroke: 3px #19141f; paint-order: stroke fill; line-height: 1.05; text-transform: uppercase; }
   .sticker .caption { font-size: 22px; }
 
+  .wordmark { display: block; height: 38px; width: auto; flex: none; }
   header { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; padding: 16px 32px; border-bottom: 1px solid var(--line); }
   .request { flex: 1 1 220px; min-width: 0; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   ol.steps { display: flex; flex-wrap: wrap; gap: 14px; list-style: none; margin: 0; padding: 0; }
@@ -162,7 +163,7 @@
 </head>
 <body>
 <header>
-  <span class="sticker" aria-label="Meme Factory"><span class="caption" aria-hidden="true">Meme Factory</span></span>
+  <img class="wordmark" src="/wordmark.png" alt="Meme Factory" width="170" height="38">
   <div class="request" id="request"></div>
   <ol class="steps" id="steps" aria-label="Progress"></ol>
   <span class="saved" id="saved" aria-live="polite">✓ Saved</span>
@@ -259,7 +260,7 @@ async function poll() {
   }
 }
 
-const img = (url, width = 600) => `${url}?width=${width}`
+const img = (url, width = 600) => `${url}${url.includes('?') ? '&' : '?'}width=${width}`
 // One <img> per picture, reused across redraws, so state pushes don't make it flicker.
 const pictures = new Map()
 function picture(url, width, altText) {
@@ -348,6 +349,7 @@ function draftsView() {
     el('div', { class: 'row' },
       el('button', { class: 'btn primary', disabled: working, onclick: approve }, `Approve ${picked.template_name}`, el('span', { class: 'kbd' }, 'A')),
       el('button', { class: 'btn', disabled: working, onclick: () => send({ type: 'remix' }) }, 'Remix all', el('span', { class: 'kbd' }, 'R')),
+      el('button', { class: 'btn', disabled: working, onclick: () => send({ type: 'variations', index: s.selected }) }, `More like ${picked.template_name}`, el('span', { class: 'kbd' }, 'M')),
       el('button', { class: 'btn', onclick: () => copy(picked.url) }, 'Copy link', el('span', { class: 'kbd' }, 'C')),
       el('a', { href: picked.url, target: '_blank', rel: 'noreferrer' }, 'Open full image ↗')))
 }
@@ -577,6 +579,13 @@ function settingsView() {
       toggle('ask', 'Ask before posting', 'You confirm every post (“Post to #social on Slack?”) in the panel or here. Posts Claude makes for you elsewhere ask first too, even in auto mode.', s.askBeforePost !== false, 'askBeforePost'),
       toggle('sign', 'Sign posts “Fresh from the Meme Factory”', 'Adds the line to Slack posts, with “Meme Factory” linking to the mod on GitHub.', s.signature !== false, 'signature')),
     el('section', { class: 'card-box' },
+      el('h2', {}, 'Drafting'),
+      el('label', { class: 'switch-row' },
+        el('span', {}, el('b', { style: 'font-size:16px' }, 'Best drafts'),
+          el('span', { class: 'muted', style: 'font-size:14px' }, 'Opus writes the captions: the funniest, about 15 seconds a batch. Off: Sonnet, about 5 seconds and lighter on your plan.')),
+        el('input', { type: 'checkbox', role: 'switch', class: 'sr', id: 'quality', checked: s.quality !== 'fast', onchange: (e) => saveSettings({ quality: e.target.checked ? 'best' : 'fast' }) }),
+        el('span', { class: 'switch', 'aria-hidden': 'true' }))),
+    el('section', { class: 'card-box' },
       el('div', {}, el('h2', {}, 'Favorites'), el('div', { class: 'muted', style: 'font-size:14px' }, 'Your quick picks after you approve, in this order. In the panel, the first three are keys 1, 2 and 3.')),
       el('div', {}, rows,
         el('div', { class: 'fav-row' },
@@ -609,6 +618,7 @@ document.addEventListener('keydown', (e) => {
     if (['1', '2', '3'].includes(k) && Number(k) <= (s.drafts || []).length) return go(() => pick(Number(k) - 1))
     if (k === 'a') return go(approve)
     if (k === 'r') return go(() => send({ type: 'remix' }))
+    if (k === 'm') return go(() => send({ type: 'variations', index: s.selected }))
     if (k === 'c') return go(() => copy(s.drafts[s.selected]?.url))
   }
   if (s.status === 'approved') {

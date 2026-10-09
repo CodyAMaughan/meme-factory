@@ -30,10 +30,18 @@ import {
   resolveDestination,
   resultText,
   shortName,
+  templatesNamed,
+  quotedText,
+  fitsBudget,
+  sizedUrl,
+  makeDraft,
+  DRAFTS,
+  keepNamed,
   svgForJpeg,
   topDrafts,
   writerPrompt,
 } from './lib.js'
+import { TEMPLATES } from './templates.js'
 
 const PANE = 'meme-factory'
 const TOOL = 'mcp__meme-factory__make_meme'
@@ -60,9 +68,11 @@ let cacheDir = ''
 // Whether this terminal draws Image pixels (kitty graphics with placeholders). Elsewhere an
 // Image still takes its whole box to print its alt text, so we draw a one-line note instead.
 let inlineImages = false
+// The sticker wordmark (assets/wordmark.png) as an SVG, for surfaces that draw images.
+let wordmark = ''
 // The browser gallery: a local server the mod spawns on demand, { token, port, ready }.
 let gallery = null
-let settings = { askBeforePost: true, signature: true, favorites: [] }
+let settings = { askBeforePost: true, signature: true, quality: 'best', favorites: [] }
 
 function freshJob() {
   return {
@@ -77,6 +87,10 @@ function freshJob() {
     error: '',
     note: '',
     approved: null,
+    // "More like this": the one template every draft uses, until a different format.
+    lock: null,
+    // The person's own words, used verbatim.
+    exact: [],
     // Posting the approved meme: { stage: 'pick' | 'confirm' | 'posting' | 'done' | 'error', choice, target, link, error }
     post: null,
     posted: [],
@@ -89,6 +103,7 @@ export function register(on) {
     const home = await $.env.get('HOME')
     cacheDir = `${home || '/tmp'}/.cache/meme-factory`
     inlineImages = await detectInlineImages($)
+    wordmark = await loadWordmark($)
     settings = cleanSettings(await $.store.get('settings'))
     await $.tool.register({
       name: 'make_meme',
@@ -196,30 +211,68 @@ function remix($, feedback) {
   $.clock.after(0, () => cook($, id, previous, feedback))
 }
 
+// "More like this": three fresh drafts on one template (the shown draft's, or one named).
+function variations($, templateId = job.drafts[job.selected]?.template_id) {
+  if (!job.request || !templateId || job.post?.stage === 'posting') return
+  job = { ...job, lock: templateId }
+  remix($, '')
+  job = { ...job, note: 'Writing variations…' }
+  changed($)
+}
+
+// Sets a draft's caption to exactly these words: nothing is rewritten.
+async function editDraft($, index, lines) {
+  const d = job.drafts[index]
+  if (!d || job.status !== 'review' || !Array.isArray(lines)) return
+  const next = makeDraft(d.template_id, lines.map((l) => String(l ?? '').slice(0, 120)), d.score)
+  if (!next) return
+  const id = seq
+  await renderArt($, [next])
+  if (id !== seq || job.status !== 'review') return
+  job = { ...job, drafts: job.drafts.map((x, i) => (i === index ? next : x)), selected: index }
+  changed($)
+}
+
 async function cook($, id, previous, latest = '') {
   try {
     const jevKey = await $.env.get('TYPESAFE_API_KEY')
     const newFormat = !previous || /different|another|new (format|template)|other (format|template)|switch/i.test(latest)
-    let templateIds = newFormat ? null : [...new Set([previous.template_id, ...job.drafts.map((d) => d.template_id)])].slice(0, 3)
-    if (!templateIds && jevKey) templateIds = await jevPick($, jevKey, job.request)
+    // Words in quotes are the person's own: they stay, unchanged, until new quotes replace them.
+    const quoted = quotedText(latest || (previous ? '' : job.request))
+    if (quoted.length) job = { ...job, exact: quoted }
+    const exact = job.exact ?? []
+    // A template named in the request or the latest note ("use kombucha girl") always gets drafted.
+    const named = templatesNamed(latest || (previous ? '' : `${job.request} ${job.context}`))
+    // "More like this" holds one template until a different format or another meme is asked for.
+    if ((latest && newFormat) || (named.length && !named.includes(job.lock))) job = { ...job, lock: null }
+    const lock = job.lock
+    let templateIds = lock ? [lock] : newFormat ? null : [...new Set([previous.template_id, ...job.drafts.map((d) => d.template_id)])].slice(0, 3)
+    if (!lock && named.length && previous) templateIds = [...new Set([...named, ...(templateIds ?? job.drafts.map((d) => d.template_id))])].slice(0, 3)
+    else if (!lock && named.length) templateIds = null
+    if (!templateIds && !named.length && jevKey) templateIds = await jevPick($, jevKey, job.request)
 
     const written = await complete(
       $,
       WRITER_SYSTEM,
-      writerPrompt({ request: job.request, context: job.context, feedback: job.feedback, previous, templateIds }),
+      writerPrompt({ request: job.request, context: job.context, feedback: job.feedback, previous, templateIds, mustUse: templateIds ? [] : named, exact, variations: Boolean(lock) }),
       2000,
     )
     if (id !== seq) return
     let drafts = draftsFromWriter(written)
+    // One-liners only, unless nothing short came back.
+    const short = drafts.filter((d) => fitsBudget(d, exact))
+    if (short.length) drafts = short
 
     job = { ...job, stage: 'judge', note: 'Judging…' }
     changed($)
+    // Shown in a shuffled order, so a candidate's position doesn't sway its score.
+    const order = drafts.map((_, i) => i).sort(() => Math.random() - 0.5)
     drafts = jevKey
       ? await jevJudge($, jevKey, job.request, drafts)
-      : applyScores(drafts, await complete($, JUDGE_SYSTEM, judgePrompt(job.request, drafts), 600).catch(() => ''))
+      : applyScores(drafts, await complete($, JUDGE_SYSTEM, judgePrompt(job.request, drafts, { exact, named, order }), 900, 'judge').catch(() => ''))
     if (id !== seq) return
 
-    const best = topDrafts(drafts)
+    const best = lock ? topDrafts(drafts, DRAFTS, { distinct: false }) : keepNamed(topDrafts(drafts), drafts, named)
     job = { ...job, stage: 'render', note: 'Rendering…' }
     changed($)
     await renderArt($, best)
@@ -234,8 +287,23 @@ async function cook($, id, previous, latest = '') {
 }
 
 // $.model.complete resolves to the text on older builds and to { isAnswered, text } on newer ones.
-async function complete($, system, prompt, maxTokens) {
-  const model = (await $.env.get('MEME_FACTORY_MODEL')) || 'haiku'
+// Which model does each job. "best" (the default) has Opus write, since drafts cook in the
+// background and the writing is what makes them funny; "fast" uses Sonnet throughout.
+// MEME_FACTORY_WRITER_MODEL / _JUDGE_MODEL / _CHAT_MODEL, or MEME_FACTORY_MODEL for all three,
+// override either preset. Every call runs on the session's own credentials.
+const MODELS = {
+  best: { writer: 'opus', judge: 'sonnet', chat: 'sonnet' },
+  fast: { writer: 'sonnet', judge: 'sonnet', chat: 'sonnet' },
+}
+
+async function complete($, system, prompt, maxTokens, role = 'writer') {
+  // Each name is spelled out, so the environment variables the mod reads can be listed.
+  const byRole = {
+    writer: await $.env.get('MEME_FACTORY_WRITER_MODEL'),
+    judge: await $.env.get('MEME_FACTORY_JUDGE_MODEL'),
+    chat: await $.env.get('MEME_FACTORY_CHAT_MODEL'),
+  }
+  const model = byRole[role] || (await $.env.get('MEME_FACTORY_MODEL')) || (MODELS[settings.quality] ?? MODELS.best)[role]
   const reply = await $.model.complete({ model, system, prompt, maxTokens })
   if (typeof reply === 'string') return reply
   if (reply?.isAnswered) return reply.text
@@ -256,7 +324,7 @@ async function jevJudge($, key, request, drafts) {
     const res = await $.http.fetch(JEV_URL, { method: 'POST', headers: jevHeaders(key), body: jevJudgeBody(request, drafts) })
     if (res.ok) return jevJudgeResult(res.text, drafts)
   } catch {}
-  return applyScores(drafts, await complete($, JUDGE_SYSTEM, judgePrompt(request, drafts), 600))
+  return applyScores(drafts, await complete($, JUDGE_SYSTEM, judgePrompt(request, drafts), 600, 'judge'))
 }
 
 function jevHeaders(key) {
@@ -292,7 +360,7 @@ async function renderArt($, drafts) {
 async function fetchPng($, d) {
   const png = `${cacheDir}/${d.id}.png`
   const part = `${png}.part`
-  await download($, `${d.url}?width=600`, part)
+  await download($, sizedUrl(d, 600), part)
   const { base64 } = await $.fs.read(part, { as: 'bytes' })
   const size = pngSize(Uint8Array.fromBase64(base64.slice(0, 64)))
   const mv = await $.process.run(['mv', '-f', part, png])
@@ -307,10 +375,9 @@ async function download($, url, path) {
 
 // Desktop draws an Svg as an image, so a JPEG embedded as a data URI shows the meme.
 async function svgOf($, d) {
-  const jpgUrl = d.url.replace(/\.png$/, '.jpg')
   for (const width of [360, 300]) {
     const jpg = `${cacheDir}/${d.id}-${width}.jpg`
-    await download($, `${jpgUrl}?width=${width}`, jpg)
+    await download($, sizedUrl(d, width, 'jpg'), jpg)
     const { base64 } = await $.fs.read(jpg, { as: 'bytes' })
     if (base64.length <= SVG_LIMIT) return svgForJpeg(base64, d.lines.filter(Boolean).join(' / '))
   }
@@ -485,7 +552,7 @@ async function chat($, message) {
   let reply = ''
   let action = { type: 'none' }
   try {
-    ;({ reply, action } = parseChatAction(await complete($, CHAT_SYSTEM, chatPrompt(job, connectors.channels, settings.favorites, text), 400)))
+    ;({ reply, action } = parseChatAction(await complete($, CHAT_SYSTEM, chatPrompt(job, connectors.channels, settings.favorites, text), 400, 'chat')))
   } catch {
     reply = "Sorry, I didn't catch that. Try “meaner”, “use 2”, “approve” or “post to #social”."
   }
@@ -526,8 +593,19 @@ async function act($, action) {
     case 'new':
       if (action.request) startJob($, String(action.request).slice(0, 300), '')
       return
+    case 'variations': {
+      if (job.status !== 'review') return
+      const named = action.template ? templatesNamed(`use ${action.template}`)[0] ?? (TEMPLATE_IDS.has(action.template) ? action.template : null) : null
+      if (action.template && !named) return
+      return variations($, named ?? (hasDraft ? job.drafts[draftIndex].template_id : undefined))
+    }
+    case 'edit':
+      if (Array.isArray(action.lines)) return editDraft($, hasDraft ? draftIndex : job.selected, action.lines)
+      return
   }
 }
+
+const TEMPLATE_IDS = new Set(TEMPLATES.map((t) => t.id))
 
 // ---------- Browser gallery ----------
 
@@ -611,6 +689,7 @@ async function onGalleryEvent($, ev) {
   // Not awaited: a model call shouldn't hold up the clicks queued behind it.
   if (ev.type === 'chat') chat($, text(ev.text)).catch(() => {})
   if (ev.type === 'remix') remix($, text(ev.text))
+  if (ev.type === 'variations' && job.status === 'review') variations($, validIndex ? job.drafts[index].template_id : undefined)
   if (ev.type === 'new' && text(ev.request)) startJob($, text(ev.request), '')
   if (ev.type === 'back' && job.status === 'approved' && job.post?.stage !== 'posting') backToDrafts($)
   if (ev.type === 'post' && job.approved) {
@@ -633,6 +712,7 @@ function cleanSettings(stored) {
   return {
     askBeforePost: typeof s.askBeforePost === 'boolean' ? s.askBeforePost : true,
     signature: typeof s.signature === 'boolean' ? s.signature : true,
+    quality: s.quality === 'fast' ? 'fast' : 'best',
     favorites: (Array.isArray(s.favorites) ? s.favorites : [])
       .filter((f) => f && typeof f === 'object' && typeof f.label === 'string' && f.label.trim())
       .map((f) => ({
@@ -649,6 +729,7 @@ async function saveSettings($, patch) {
   const next = { ...settings }
   if (typeof patch.askBeforePost === 'boolean') next.askBeforePost = patch.askBeforePost
   if (typeof patch.signature === 'boolean') next.signature = patch.signature
+  if (patch.quality === 'best' || patch.quality === 'fast') next.quality = patch.quality
   if (Array.isArray(patch.favorites)) {
     next.favorites = patch.favorites
       .map((f) => {
@@ -718,7 +799,7 @@ function drawPane($, e) {
   const el = $.ui.resolve(e)
   const { Box, Text, Button } = el
   const inline = e.props?.placement === 'inline'
-  const children = [header(el)]
+  const children = [header(el, e)]
 
   if (job.status === 'idle') {
     if (!inline) children.push(Text({ dimColor: true, children: ['Ask Claude for a meme, or describe one here.'] }))
@@ -772,6 +853,7 @@ function drawPane($, e) {
       row(el, [
         Button({ key: 'approve', label: 'Approve', hotkey: 'a', plain: true, onPress: () => guard($, () => approve($)) }),
         Button({ key: 'remix', label: 'Remix', hotkey: 'r', plain: true, onPress: () => remix($, '') }),
+        Button({ key: 'more', label: 'More like this', hotkey: 'm', plain: true, onPress: () => variations($) }),
         Button({ key: 'copy', label: 'Copy', hotkey: 'c', plain: true, onPress: () => copyLink($, draft) }),
         Button({ key: 'view', label: 'Browser', hotkey: 'v', plain: true, onPress: () => openGallery($) }),
         talkButton($, el),
@@ -796,7 +878,25 @@ function row(el, children, columnGap = 2) {
 }
 
 // " MEME FACTORY " as a sticker (inverse follows every theme), then where things stand.
-function header(el) {
+// The wordmark the repo, the gallery and the videos use, at 2x for sharp edges.
+async function loadWordmark($) {
+  try {
+    const { base64 } = await $.fs.read(`${$.plugin.root}/assets/wordmark.png`, { as: 'bytes' })
+    const { width, height } = pngSize(Uint8Array.fromBase64(base64.slice(0, 64)))
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width / 2}" height="${height / 2}"><title>Meme Factory</title><image href="data:image/png;base64,${base64}" width="${width}" height="${height}"/></svg>`
+  } catch {
+    return ''
+  }
+}
+
+// The brand mark: the sticker where images draw (Desktop), and the sticker's colors as a
+// text block in the terminal, the same in every theme.
+function brand(el, e) {
+  if (e.surface !== 'terminal' && wordmark && el.Svg) return el.Svg({ source: wordmark, alt: 'Meme Factory', width: 150, height: 34 })
+  return el.Text({ bold: true, color: '#19141F', backgroundColor: '#D9F24A', children: [' MEME FACTORY '] })
+}
+
+function header(el, e) {
   const { Box, Text } = el
   const post = job.post
   let status = Text({ dimColor: true, wrap: 'truncate-end', children: [job.request || ''] })
@@ -807,7 +907,7 @@ function header(el) {
     else if (post?.stage === 'error') status = Text({ color: 'error', wrap: 'truncate-end', children: [`✗ Not posted · ${name}`] })
     else status = Text({ color: 'success', wrap: 'truncate-end', children: [`✓ Approved · ${name}`] })
   }
-  return Box({ flexDirection: 'row', columnGap: 2, children: [Text({ bold: true, inverse: true, children: [' MEME FACTORY '] }), status] })
+  return Box({ flexDirection: 'row', columnGap: 2, alignItems: 'center', children: [brand(el, e), status] })
 }
 
 function stageLine(el) {
