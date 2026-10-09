@@ -1,7 +1,7 @@
 {
   "name": "meme-factory",
   "displayName": "Meme Factory",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Tell Claude to make a meme. Drafts cook in a side panel, you give feedback and approve, and Claude posts it through your connectors.",
   "author": { "name": "Cody Maughan", "url": "https://github.com/CodyAMaughan" },
   "homepage": "https://github.com/CodyAMaughan/meme-factory",

@@ -42,11 +42,11 @@ function pngHeader(width = 600, height = 400): Uint8Array {
   return bytes
 }
 
-function factory(on, { feedbackSeen = [] as string[], submitted = [] as string[], copied = [] as string[], ran = [] as string[][] } = {}) {
+function factory(on, { feedbackSeen = [] as string[], submitted = [] as string[], copied = [] as string[], ran = [] as string[][], termProgram = 'ghostty' } = {}) {
   const saved = new Map<string, unknown>()
   const clock = mock.clock(on)
   on('session.start', () => ({ cwd: '/work' }))
-  on('env.get', ($, e) => ({ value: e.name === 'HOME' ? '/Users/test' : undefined }))
+  on('env.get', ($, e) => ({ value: ({ HOME: '/Users/test', TERM_PROGRAM: termProgram } as Record<string, string>)[e.name] }))
   on('tool.register', () => ({ value: undefined }))
   on('command.register', () => ({ value: undefined }))
   on('ui.open', () => ({ value: { isPlaced: true } }))
@@ -102,14 +102,14 @@ test('Claude asks for a meme: the tool returns at once and the drafts cook in th
   // Best-scored draft first, one per template: drake 9, fine 8, cmm 7
   expect(await review.find({ key: 'draft-0' })).toMatchObject({ props: { label: 'Drakeposting' } })
   expect(await review.find({ key: 'draft-1' })).toMatchObject({ props: { label: 'This is Fine' } })
-  expect(await review.find({ type: 'Text', text: '“everyone reads their Jira tickets aloud”' })).toBeDefined()
+  expect(await review.find({ type: 'Text', text: 'everyone reads their Jira tickets aloud' })).toBeDefined()
   // A real picture in the terminal: the Image element reads the cached PNG, keeping its 3:2 shape
   const image = await review.find({ type: 'Image' })
   expect(image).toMatchObject({ props: { source: { file: '/Users/test/.cache/meme-factory/' + (image as any).props.source.file.split('/').pop(), format: 'png' }, columns: 56, rows: 19 } })
-  expect((image as any).props.alt).toMatch(/press v to view/)
+  expect((image as any).props.alt).toMatch(/^Expectation|^Drakeposting/)
 
   await review.press({ key: 'draft-1' })
-  expect(await review.find({ type: 'Text', text: '“standup is at minute 40, this is fine”' })).toBeDefined()
+  expect(await review.find({ type: 'Text', text: 'standup is at minute 40, this is fine' })).toBeDefined()
 
   await review.press({ key: 'approve' })
   expect(await review.find({ key: 'post-slack' })).toMatchObject({ props: { label: 'Slack ✓' } })
@@ -153,9 +153,24 @@ test('View opens the cached PNG in Quick Look', async ($, on) => {
   await clock.settle()
   const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
   await ui.press({ key: 'view' })
+  // The terminal swaps the long Link for an Open in browser button
+  expect(await ui.find({ type: 'Link' })).toBeUndefined()
+  await ui.press({ key: 'open' })
+  expect(ran.some((argv) => argv[0] === 'open' && argv[1].startsWith('https://api.memegen.link/images/drake/'))).toBe(true)
   const ql = ran.find((argv) => argv[0] === 'qlmanage')
   expect(ql?.[1]).toBe('-p')
   expect(ql?.[2]).toMatch(/^\/Users\/test\/\.cache\/meme-factory\/drake-.*\.png$/)
+})
+
+test('a terminal without inline images gets a one-line note, not an empty image box', async ($, on) => {
+  const { clock } = factory(on, { termProgram: 'Apple_Terminal' })
+  await $.session.start({ surface: 'terminal', isInteractive: true, cwd: '/work' })
+  await $.command.run({ command: 'meme', args: 'standups that run long' })
+  await clock.settle()
+  const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
+  expect(await ui.find({ type: 'Image' })).toBeUndefined()
+  expect(await ui.find({ type: 'Text', text: /No inline images in this terminal/ })).toBeDefined()
+  expect(await ui.find({ key: 'approve' })).toBeDefined()
 })
 
 test('the panel opens empty and takes a request', async ($, on) => {

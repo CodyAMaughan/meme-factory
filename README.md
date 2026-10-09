@@ -42,10 +42,10 @@ The model calls go through your Claude Code session's own credentials, so you do
 |---|---|
 | **Ghostty**, **kitty** 0.28+, or cmux | The real meme, in the panel. These terminals support the kitty graphics protocol, which Claude Code's `Image` element uses. |
 | **iTerm2** 3.7.3+ | Usually the real meme, if you start Claude with `CLAUDE_CODE_FORCE_TERMINAL_IMAGES=1 claude`. iTerm2 supports the protocol but fails Claude Code's detection ([anthropics/claude-code#95448](https://github.com/anthropics/claude-code/issues/95448)). Export the variable in your shell: setting it in `settings.json` doesn't work. |
-| **Terminal.app, VS Code, Cursor**, other terminals, and anything inside tmux | A one-line note instead of the picture. Press `v` (**View**) to open the meme in a macOS Quick Look window, then Esc to close it, or click **Open full image**. |
+| **Terminal.app, VS Code, Cursor**, other terminals, and anything inside tmux | A one-line note instead of the picture. Press `v` (**View**) to open the meme in a macOS Quick Look window (Esc closes it), or `o` to open it in your browser. |
 | **Desktop app** | The meme, embedded as an image (SVG with an inline JPEG). |
 
-Every view has **View** (`v`) and **Open full image**.
+The mod decides at startup whether to draw pictures, using the same terminal check Claude Code does. A wide window (about 144+ columns) puts the panel beside the transcript. Narrower windows put it above the prompt, where it scrolls with Page Up and Page Down.
 
 ### Settings
 

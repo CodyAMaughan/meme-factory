@@ -37,6 +37,9 @@ let seq = 0
 const art = new Map()
 let connected = new Set()
 let cacheDir = ''
+// Whether this terminal draws Image pixels (kitty graphics with placeholders). Elsewhere an
+// Image still takes its whole box to print its alt text, so we draw a one-line note instead.
+let inlineImages = false
 
 function freshJob() {
   return { status: 'idle', request: '', context: '', feedback: [], drafts: [], selected: 0, error: '', note: '', approved: null, posted: [] }
@@ -46,6 +49,7 @@ export function register(on) {
   on('session.start', async ($, e, next) => {
     const home = await $.env.get('HOME')
     cacheDir = `${home || '/tmp'}/.cache/meme-factory`
+    inlineImages = await detectInlineImages($)
     await $.tool.register({
       name: 'make_meme',
       description:
@@ -95,6 +99,16 @@ export function register(on) {
     if (e.requestId !== PANE) return next(e)
     return drawPane($, e)
   })
+}
+
+// Mirrors Claude Code's own check: it draws images in kitty and Ghostty (and Ghostty-based
+// cmux), never inside tmux or screen, unless CLAUDE_CODE_FORCE_TERMINAL_IMAGES=1.
+async function detectInlineImages($) {
+  if ((await $.env.get('CLAUDE_CODE_FORCE_TERMINAL_IMAGES')) === '1') return true
+  if ((await $.env.get('TMUX')) || (await $.env.get('STY'))) return false
+  if (await $.env.get('KITTY_WINDOW_ID')) return true
+  const term = `${(await $.env.get('TERM_PROGRAM')) ?? ''} ${(await $.env.get('TERM')) ?? ''}`.toLowerCase()
+  return /ghostty|kitty|cmux/.test(term)
 }
 
 // ---------- The factory line ----------
@@ -228,6 +242,16 @@ async function svgOf($, d) {
   return null
 }
 
+async function openInBrowser($, url) {
+  for (const opener of ['open', 'xdg-open']) {
+    try {
+      const r = await $.process.run([opener, url])
+      if (r.exitCode === 0) return
+    } catch {}
+  }
+  $.ui.toast('Could not open a browser. Use Copy link instead.')
+}
+
 // A full-size look from any terminal: macOS Quick Look, else the default image viewer.
 async function view($, draft) {
   const png = art.get(draft.id)?.png
@@ -283,7 +307,8 @@ async function copyLink($, draft) {
 }
 
 async function openPane($, byUser) {
-  const pane = { id: PANE, title: 'Meme Factory' }
+  // rows: the height asked for when the pane sits above the prompt (narrow terminals)
+  const pane = { id: PANE, title: 'Meme Factory', rows: 24 }
   const placed = await $.ui.open(byUser ? { ...pane, focus: true } : pane)
   return placed?.isPlaced ?? true
 }
@@ -370,7 +395,7 @@ function drawPane($, e) {
         ),
       }),
       ...picture(el, e, draft),
-      ...caption(el, draft),
+      ...caption($, el, e, draft),
       Box({
         flexDirection: 'row',
         columnGap: 2,
@@ -397,7 +422,7 @@ function drawPane($, e) {
     children.push(
       Text({ color: 'success', children: [`Approved: ${draft.template_name}`] }),
       ...picture(el, e, draft),
-      ...caption(el, draft),
+      ...caption($, el, e, draft),
       Text({ bold: true, children: ['Post it through your connectors:'] }),
       Box({
         flexDirection: 'row',
@@ -437,12 +462,16 @@ function drawPane($, e) {
     if (job.posted.length) children.push(Text({ dimColor: true, children: [`Handed to Claude: ${job.posted.join(', ')}`] }))
   }
 
-  return Box({ flexDirection: 'column', rowGap: 1, children })
+  // Above the prompt (a narrow terminal) every row counts, so drop the blank lines between sections.
+  return Box({ flexDirection: 'column', rowGap: e.props?.placement === 'inline' ? 0 : 1, children })
 }
 
 function picture(el, e, draft) {
   const a = art.get(draft.id) ?? {}
-  const alt = `[picture: ${draft.template_name}. Inline images need Ghostty or kitty; press v to view it]`
+  const alt = `${draft.template_name}: ${draft.lines.filter(Boolean).join(' / ')}`
+  if (e.surface === 'terminal' && !inlineImages) {
+    return [el.Text({ dimColor: true, children: ['No inline images in this terminal (Ghostty and kitty have them). v to view.'] })]
+  }
   if (e.surface === 'terminal' && a.png && el.Image) {
     const maxColumns = Math.min(IMAGE_COLUMNS, (e.props?.bodyColumns ?? IMAGE_COLUMNS) - 2)
     return [el.Image({ key: `meme-${hash(draft.id)}`, source: { file: a.png, format: 'png' }, alt, ...imageCells(a.size, maxColumns) })]
@@ -453,20 +482,22 @@ function picture(el, e, draft) {
   return []
 }
 
-function caption(el, draft) {
-  const { Box, Text, Link } = el
+function caption($, el, e, draft) {
+  const { Box, Text, Link, Button } = el
+  // The terminal prints a Link's whole URL after its label, so it gets a button there instead.
+  const open =
+    e.surface === 'terminal'
+      ? Button({ key: 'open', label: 'Open in browser', hotkey: 'o', plain: true, onPress: () => openInBrowser($, draft.url) })
+      : Link({ href: draft.url, label: 'Open full image' })
   return [
     Box({
       flexDirection: 'column',
-      children: draft.lines.filter(Boolean).map((line) => Text({ children: [`“${line}”`] })),
+      children: draft.lines.filter(Boolean).map((line) => Text({ children: [line] })),
     }),
     Box({
       flexDirection: 'row',
       columnGap: 2,
-      children: [
-        Link({ href: draft.url, label: 'Open full image' }),
-        Text({ dimColor: true, children: [draft.score == null ? '' : `judge ${draft.score}/10`] }),
-      ],
+      children: [open, Text({ dimColor: true, children: [draft.score == null ? '' : `judge ${draft.score}/10`] })],
     }),
   ]
 }
