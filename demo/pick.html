@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920, height=1080" />
+<title>Meme Factory: choose the meme</title>
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/mf.js"></script>
+<link rel="stylesheet" href="assets/mf.css" />
+<style>
+  @font-face { font-family: 'Anton'; font-weight: 400; font-display: block; src: url('assets/fonts/Anton-400.woff2') format('woff2'); }
+  @font-face { font-family: 'Archivo'; font-weight: 400; font-display: block; src: url('assets/fonts/Archivo-400.woff2') format('woff2'); }
+  @font-face { font-family: 'Archivo'; font-weight: 600; font-display: block; src: url('assets/fonts/Archivo-600.woff2') format('woff2'); }
+  @font-face { font-family: 'Archivo'; font-weight: 800; font-display: block; src: url('assets/fonts/Archivo-800.woff2') format('woff2'); }
+  @font-face { font-family: 'JetBrains Mono'; font-weight: 400; font-display: block; src: url('assets/fonts/JetBrainsMono-400.woff2') format('woff2'); }
+  @font-face { font-family: 'JetBrains Mono'; font-weight: 700; font-display: block; src: url('assets/fonts/JetBrainsMono-700.woff2') format('woff2'); }
+  .gal-content { position: relative; height: 640px; }
+  .layer { position: absolute; inset: 0; }
+  .gal-card .img { height: 250px; }
+  .row-btns { display: flex; gap: 16px; }
+  .gal-btn.plain { background: #fff; }
+  .gal-btn .kbd { margin-left: 4px; }
+  .picker { background: #fff; border: 1px solid #e1dfe4; border-radius: 18px; padding: 24px; }
+  .picker h2 { margin-bottom: 14px; }
+  .search { display: flex; align-items: center; gap: 12px; height: 54px; padding: 0 18px; border: 2px solid #19141f; border-radius: 12px; font: 400 22px var(--ui); color: #19141f; }
+  .search svg { width: 22px; height: 22px; flex: none; }
+  .search .ph { color: #9a94a3; }
+  .search .caret { width: 2px; height: 28px; background: #19141f; }
+  .grid-wrap { position: relative; height: 380px; margin-top: 18px; }
+  .grid { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(4, 220px); grid-auto-rows: max-content; gap: 16px; }
+  .tpl { display: flex; flex-direction: column; gap: 6px; background: #fff; border: 1px solid #e1dfe4; border-radius: 12px; overflow: hidden; }
+  .tpl img { width: 100%; height: 120px; object-fit: cover; display: block; background: #19141f; }
+  .tpl span { padding: 0 12px 10px; font: 600 16px var(--ui); }
+  .tpl.on { outline: 4px solid #19141f; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="pick" data-start="0" data-duration="8" data-width="1920" data-height="1080">
+
+  <div id="bcam" class="cam">
+    <div class="browser" id="browser">
+      <div class="browser-bar"><i></i><i></i><i></i><div class="url">127.0.0.1:52817</div></div>
+      <div class="gal">
+        <div class="gal-head">
+          <div class="gal-sticker"><span>MEME FACTORY</span></div>
+          <div class="gal-req">when the standup was supposed to be 15 minutes</div>
+        </div>
+        <div class="gal-main">
+          <div class="gal-content">
+
+            <!-- The drafts as they were. -->
+            <div class="layer" id="before">
+              <h2>Pick one</h2>
+              <div class="gal-cards">
+                <div class="gal-card"><div class="ring"></div><div class="img"><img src="assets/memes/drake-meaner.jpg" alt="" /></div><div class="foot"><span class="kbd">1</span><span>Drake</span><span>9/10</span></div></div>
+                <div class="gal-card"><div class="img"><img src="assets/memes/fine.jpg" alt="" /></div><div class="foot"><span class="kbd">2</span><span>This is Fine</span><span>7/10</span></div></div>
+                <div class="gal-card"><div class="img"><img src="assets/memes/db.jpg" alt="" /></div><div class="foot"><span class="kbd">3</span><span>Distracted</span><span>8/10</span></div></div>
+              </div>
+              <div class="row-btns">
+                <div class="gal-btn">Approve Drake <span class="kbd">A</span></div>
+                <div class="gal-btn plain">More like Drake <span class="kbd">M</span></div>
+                <div class="gal-btn plain" id="choose">Choose the meme</div>
+              </div>
+            </div>
+
+            <!-- The picker. -->
+            <div class="layer" id="picker">
+              <div class="picker">
+                <h2>Choose the meme</h2>
+                <div class="search">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#19141f" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+                  <span class="stack" style="height: 30px; flex: 1">
+                    <span id="ph" class="ph">Search 210 memes: drake, side eye, two buttons…</span>
+                    <span id="typed"></span>
+                  </span>
+                </div>
+                <div class="grid-wrap">
+                  <div class="grid" id="all">
+                    <div class="tpl"><img src="assets/memes/thumb-drake.jpg" alt="" /><span>Drakeposting</span></div>
+                    <div class="tpl"><img src="assets/memes/thumb-fine.jpg" alt="" /><span>This is Fine</span></div>
+                    <div class="tpl"><img src="assets/memes/thumb-db.jpg" alt="" /><span>Distracted Boyfriend</span></div>
+                    <div class="tpl"><img src="assets/memes/thumb-cmm.jpg" alt="" /><span>Change My Mind</span></div>
+                    <div class="tpl"><img src="assets/memes/thumb-harold.jpg" alt="" /><span>Hide the Pain Harold</span></div>
+                    <div class="tpl"><img src="assets/memes/thumb-ds.jpg" alt="" /><span>Daily Struggle</span></div>
+                    <div class="tpl"><img src="assets/memes/thumb-gb.jpg" alt="" /><span>Galaxy Brain</span></div>
+                    <div class="tpl"><img src="assets/memes/thumb-chloe.jpg" alt="" /><span>Side-Eyeing Chloe</span></div>
+                  </div>
+                  <div class="grid" id="found">
+                    <div class="tpl" id="chloe-tile"><img src="assets/memes/thumb-chloe.jpg" alt="" /><span>Side-Eyeing Chloe</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Three takes on the chosen meme. -->
+            <div class="layer" id="after">
+              <h2>Pick one</h2>
+              <div class="gal-cards">
+                <div class="gal-card take"><div class="ring"></div><div class="img"><img src="assets/memes/chloe-1.jpg" alt="" /></div><div class="foot"><span class="kbd">1</span><span>Chloe</span><span>9/10</span></div></div>
+                <div class="gal-card take"><div class="img"><img src="assets/memes/chloe-2.jpg" alt="" /></div><div class="foot"><span class="kbd">2</span><span>Chloe</span><span>8/10</span></div></div>
+                <div class="gal-card take"><div class="img"><img src="assets/memes/chloe-3.jpg" alt="" /></div><div class="foot"><span class="kbd">3</span><span>Chloe</span><span>8/10</span></div></div>
+              </div>
+              <div class="row-btns">
+                <div class="gal-btn">Approve Chloe <span class="kbd">A</span></div>
+                <div class="gal-btn plain">More like Chloe <span class="kbd">M</span></div>
+                <div class="gal-btn plain">Choose the meme</div>
+              </div>
+            </div>
+
+          </div>
+          <div class="gal-chat">
+            <h3>Talk to the factory</h3>
+            <div class="who">FACTORY</div>
+            <div id="say1">Three drafts. Drake scored highest.</div>
+            <div class="who" id="who2">FACTORY</div>
+            <div id="say2">Three takes on Side-Eyeing Chloe.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cursor" id="cursor"><svg viewBox="0 0 28 36"><path d="M3 2 L3 29 L9.5 23 L14 33.5 L18.5 31.5 L14 21.5 L23 21.5 Z" fill="#fff" stroke="#19141f" stroke-width="2" stroke-linejoin="round"/></svg></div>
+
+  <div class="cap-rail">
+    <div class="cap" id="cap1">Choose the meme yourself</div>
+    <div class="cap" id="cap2">Three takes on the one you pick</div>
+  </div>
+</div>
+<script>
+  // The layers stack on purpose: one shows at a time.
+  document.querySelectorAll('.layer, .layer *, .grid, .grid *, .stack > *').forEach((n) => {
+    n.setAttribute('data-layout-allow-occlusion', '');
+    n.setAttribute('data-layout-allow-overlap', '');
+  });
+  // Click targets in frame pixels, measured before any tween moves things.
+  const at = (sel) => {
+    const r = document.querySelector(sel).getBoundingClientRect();
+    return [r.left + r.width * 0.5, r.top + r.height * 0.55];
+  };
+  const chooseAt = at('#choose');
+  document.getElementById('picker').style.visibility = 'hidden';
+  const tileAt = (() => { const p = document.getElementById('picker'); p.style.visibility = ''; return at('#chloe-tile'); })();
+
+  const tl = gsap.timeline({ paused: true });
+  const m = mf(tl);
+  m.hide('#picker', 0);
+  m.hide('#after', 0);
+  m.hide('#found', 0);
+  m.hide('#who2', 0);
+  m.hide('#say2', 0);
+  tl.set('#cursor', { x: 2000, y: 1200 }, 0);
+  tl.fromTo('#bcam', { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out' }, 0);
+
+  // Choose the meme: the picker opens over the drafts.
+  m.caption('#cap1', 0.3, 3.6);
+  m.cursorTo('#cursor', chooseAt[0], chooseAt[1], 1.3, 0.7);
+  m.hide('#before', 1.35);
+  m.pop('#picker', 1.35, 0.97);
+
+  // "side eye" narrows 210 memes to the one.
+  m.hide('#ph', 1.8);
+  const typed = m.type('#typed', 'side eye', 1.8, 0.06);
+  tl.to('#all', { opacity: 0, duration: 0.15 }, typed + 0.05);
+  m.pop('#found', typed + 0.1, 0.94);
+
+  // Click Chloe: three takes on it land.
+  m.cursorTo('#cursor', tileAt[0], tileAt[1], 3.2, 0.6);
+  tl.set('#chloe-tile', { outline: '4px solid #19141f' }, 3.2);
+  m.hide('#picker', 3.5);
+  m.show('#after', 3.5);
+  gsap.utils.toArray('.take').forEach((card, i) => m.pop(card, 3.6 + i * 0.18, 0.85));
+  m.show('#who2', 3.9);
+  m.show('#say2', 3.9);
+  m.caption('#cap2', 4.0, 7.6);
+  tl.to('#cursor', { x: 2000, y: 1200, duration: 0.7, ease: 'power3.in' }, 4.3);
+
+  window.__timelines['pick'] = tl;
+</script>
+</body>
+</html>

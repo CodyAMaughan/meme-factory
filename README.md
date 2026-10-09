@@ -62,15 +62,16 @@ To skip it, turn off **Check the pictures** in the gallery's **Settings → Draf
 
 <table>
   <tr>
-    <td width="50%"><a href="docs/media/remix.mp4"><img src="docs/media/remix.gif" alt="Typing meaner, use 2 and different format in the chat box, and the drafts changing each time"></a><br><b>Remix in plain words.</b> A small model turns what you type into actions.</td>
+    <td width="50%"><a href="docs/media/remix.mp4"><img src="docs/media/remix.gif" alt="Typing meaner, use 2 and different format in the chat box, and the drafts changing each time"></a><br><b>Remix in plain words.</b> Claude turns what you type into actions.</td>
+    <td width="50%"><a href="docs/media/pick.mp4"><img src="docs/media/pick.gif" alt="In the gallery, Choose the meme opens a picker; typing side eye finds Side-Eyeing Chloe, and clicking it drafts three takes on Chloe"></a><br><b>Choose the meme.</b> Search all 210, or press <code>m</code> for more like the one you're on.</td>
+  </tr>
+  <tr>
     <td width="50%"><a href="docs/media/post.mp4"><img src="docs/media/post.gif" alt="Opening the Post to list, choosing #eng-fun, confirming, and the meme landing in the channel"></a><br><b>Post to real channels.</b> Your Slack channels, your favorites, and a confirm step.</td>
-  </tr>
-  <tr>
     <td width="50%"><a href="docs/media/gallery.mp4"><img src="docs/media/gallery.gif" alt="Pressing v opens the browser gallery; a draft is picked and approved, then the page switches from light to dark"></a><br><b>The browser gallery.</b> Press <code>v</code> for the same flow with bigger pictures.</td>
-    <td width="50%"><a href="docs/media/anywhere.mp4"><img src="docs/media/anywhere.gif" alt="Three terminals side by side: Ghostty with the meme in the panel, Terminal.app with a one-line note, and a narrow window with a six-row strip"></a><br><b>Fits wherever you work.</b> Pictures where the terminal can draw them, a compact strip in narrow windows.</td>
   </tr>
   <tr>
-    <td colspan="2"><a href="docs/media/safety.mp4"><img src="docs/media/safety.gif" alt="Claude tries to post the meme to LinkedIn in auto mode, and a Meme Factory prompt asks first; the post is declined" width="50%"></a><br><b>Nothing posts without you.</b> Ask-before-posting holds any post until you say so, even in auto mode.</td>
+    <td width="50%"><a href="docs/media/anywhere.mp4"><img src="docs/media/anywhere.gif" alt="Three terminals side by side: Ghostty with the meme in the panel, Terminal.app with a one-line note, and a narrow window with a six-row strip"></a><br><b>Fits wherever you work.</b> Pictures where the terminal can draw them, a compact strip in narrow windows.</td>
+    <td width="50%"><a href="docs/media/safety.mp4"><img src="docs/media/safety.gif" alt="Claude tries to post the meme to LinkedIn in auto mode, and a Meme Factory prompt asks first; the post is declined"></a><br><b>Nothing posts without you.</b> Ask-before-posting holds any post until you say so, even in auto mode or from a subagent.</td>
   </tr>
 </table>
 

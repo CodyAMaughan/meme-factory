@@ -5,7 +5,7 @@ set -e
 cd "$(dirname "$0")/.."
 out=../docs/media
 mkdir -p renders "$out"
-names=${*:-"hero remix post gallery anywhere safety"}
+names=${*:-"hero remix pick post gallery anywhere safety"}
 for name in $names; do
   src=$name.html
   [ "$name" = hero ] && src=index.html

@@ -54,7 +54,7 @@ html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--
 .transcript { position: absolute; top: 26px; left: 34px; width: 760px; }
 .l { white-space: pre; min-height: 34px; }
 .d { color: var(--t-dim); } .s { color: var(--t-sugg); } .ok { color: var(--t-ok); } .w { color: var(--t-warn); } .e { color: var(--t-err); } .b { font-weight: 700; }
-.inv { background: var(--t-text); color: var(--term); font-weight: 700; }
+.inv { background: var(--hi); color: #19141f; font-weight: 700; }
 .prompt-box { position: absolute; left: 34px; width: 760px; bottom: 26px; border: 1px solid #555; border-radius: 8px; padding: 6px 14px; }
 /* Untyped characters take no room, so the caret follows the text. */
 .ch { display: none; }
