@@ -204,20 +204,54 @@ export function connectedDestinations(tools) {
   return new Set(DESTINATIONS.filter((d) => d.match.test(haystack)).map((d) => d.key))
 }
 
-export function postPrompt(draft, where, isConnected) {
-  return `The user approved this meme in the Meme Factory panel and wants it posted to ${where}.
+// isConnected: true or false for a quick pick, null when the person described the place in words.
+export function postPrompt(draft, where, isConnected, askFirst = true) {
+  const connector =
+    isConnected === false
+      ? `It looks like no ${where} connector is connected. If you can't find one, tell the user and help them connect it: search the connector directory if you have a tool for that, or point them to https://claude.ai/directory.\n`
+      : isConnected === null
+        ? `The user described the destination in their own words. Work out which connector and which channel, account, or person they mean. If none of their connectors fits, help them find one in the connector directory (https://claude.ai/directory).\n`
+        : ''
+  const confirm = askFirst
+    ? 'The Meme Factory will ask the user to approve the actual post call, so just make the call once you know the exact destination; ask the user only if the destination is unclear.'
+    : 'The user turned off ask-before-posting, so post once the destination is clear; still ask if it is ambiguous.'
+  return `The user approved this meme in the Meme Factory and wants it posted to: ${where}
 
 Meme image URL: ${draft.url}
 Template: ${draft.template_name}
 Caption: ${draft.lines.filter(Boolean).join(' / ')}
 
-Post it to ${where} through the user's connected connectors (MCP tools). The image URL renders as the picture in most apps, so posting the URL (with a short caption if it suits the destination) is usually enough.
-${isConnected ? '' : `It looks like no ${where} connector is connected. If you can't find one, tell the user, and help them connect it: search the connector directory if you have a tool for that, or point them to https://claude.ai/directory.\n`}Before posting, confirm the exact destination (channel, account, or recipient) and the final text with the user, since this is public. Don't interrupt any work in progress to do this; handle it when you're free.`
+Post it through the user's connected connectors (MCP tools). The image URL renders as the picture in most apps, so posting the URL, with a short caption if it suits the destination, is usually enough.
+${connector}${confirm} Don't interrupt work in progress for this; handle it when you're free.`
 }
 
-export function findConnectorPrompt(site, draft) {
-  return `The user wants to post an approved meme to "${site}" (meme image URL: ${draft.url}).
-Check whether a connector for ${site} is already connected. If it is, confirm the destination and text with the user, then post. If not, help them find and connect one: search the connector directory if you have a tool for that, otherwise point them to https://claude.ai/directory.`
+// A connector call that carries a meme link: what ask-before-posting holds for approval.
+export function isMemePost(e) {
+  const tool = String(e?.tool ?? '')
+  if (!tool.startsWith('mcp__') || tool.startsWith('mcp__meme-factory__')) return false
+  try {
+    return JSON.stringify(e).includes('api.memegen.link/images/')
+  } catch {
+    return false
+  }
+}
+
+// What the browser gallery shows: plain data, no local file paths.
+export function galleryState(job, connected, settings) {
+  const strip = (d) => d && { id: d.id, template_name: d.template_name, lines: d.lines, url: d.url, score: d.score }
+  return {
+    status: job.status,
+    note: job.note,
+    error: job.error,
+    request: job.request,
+    drafts: job.drafts.map(strip),
+    selected: job.selected,
+    approved: strip(job.approved),
+    posted: job.posted,
+    connected: [...connected],
+    destinations: DESTINATIONS.map((d) => ({ key: d.key, label: d.label })),
+    settings,
+  }
 }
 
 // ---------- Pictures ----------

@@ -117,9 +117,9 @@ test('Claude asks for a meme: the tool returns at once and the drafts cook in th
 
   await review.press({ key: 'post-slack' })
   expect(submitted.length).toBe(1)
-  expect(submitted[0]).toContain('posted to Slack')
+  expect(submitted[0]).toContain('wants it posted to: Slack')
   expect(submitted[0]).toContain('https://api.memegen.link/images/fine/_/standup_is_at_minute_40,_this_is_fine.png')
-  expect(submitted[0]).toMatch(/confirm the exact destination/)
+  expect(submitted[0]).toMatch(/will ask the user to approve the actual post call/)
   expect((saved.get('history') as unknown[]).length).toBe(1)
 })
 
@@ -145,21 +145,93 @@ test('Desktop draws the meme as an SVG, and feedback remixes with the notes', as
   expect(feedbackSeen[0]).toContain('Use exactly these templates: drake')
 })
 
-test('View opens the cached PNG in Quick Look', async ($, on) => {
+const tick = () => new Promise((r) => setTimeout(r, 30))
+
+test('View opens the browser gallery, and choices made there come back to the mod', async ($, on) => {
   const ran: string[][] = []
-  const { clock } = factory(on, { ran })
+  const submitted: string[] = []
+  const pushed: any[] = []
+  const { clock, saved } = factory(on, { ran, submitted })
+  // The gallery server: ready on port 5555, then the person picks draft 3, saves a favorite, and posts there
+  const spawned: any[] = []
+  on('process.spawn', async function* ($, e) {
+    spawned.push(e)
+    yield { stream: 'stdout', text: 'READY 5555\nEVENT {"type":"select","index":2}\n' }
+    yield { stream: 'stdout', text: 'EVENT {"type":"approve","index":2}\nEVENT {"type":"settings","settings":{"favorites":[{"label":"Team","target":"the #memes channel on Slack"}]}}\n' }
+    yield { stream: 'stdout', text: 'EVENT {"type":"post","target":"the #memes channel on Slack","label":"Team"}\nEVENT {"type":"approve","index":99}\n' }
+    return { value: { code: 0, signal: null } }
+  })
+  on('http.fetch', ($, e) => {
+    pushed.push({ url: e.url, token: e.init?.headers?.['X-Meme-Token'], body: JSON.parse(e.init?.body ?? '{}') })
+    return { value: { status: 204, ok: true, headers: {}, text: '' } }
+  })
   await $.session.start({ surface: 'terminal', isInteractive: true, cwd: '/work' })
   await $.command.run({ command: 'meme', args: 'standups that run long' })
   await clock.settle()
+
   const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
-  await ui.press({ key: 'view' })
-  // The terminal swaps the long Link for an Open in browser button
+  // The terminal has no Link row (it would print the whole URL); View in browser covers it
   expect(await ui.find({ type: 'Link' })).toBeUndefined()
-  await ui.press({ key: 'open' })
-  expect(ran.some((argv) => argv[0] === 'open' && argv[1].startsWith('https://api.memegen.link/images/drake/'))).toBe(true)
-  const ql = ran.find((argv) => argv[0] === 'qlmanage')
-  expect(ql?.[1]).toBe('-p')
-  expect(ql?.[2]).toMatch(/^\/Users\/test\/\.cache\/meme-factory\/drake-.*\.png$/)
+  await ui.press({ key: 'view' })
+  for (let i = 0; i < 20 && !submitted.length; i++) await tick()
+
+  const opened = ran.find((argv) => argv[0] === 'open')
+  expect(opened?.[1]).toMatch(/^http:\/\/127\.0\.0\.1:5555\/#t=[0-9a-f]{48}&tab=drafts$/)
+  const token = opened![1].split('#t=')[1].split('&')[0]
+  // The token reaches the server on stdin, never on its command line
+  expect(spawned[0].argv.join(' ')).not.toContain(token)
+  expect(spawned[0].input).toBe(token + '\n')
+  expect(pushed.every((p) => p.url === 'http://127.0.0.1:5555/api/state' && p.token === token)).toBe(true)
+  // No local file paths reach the page
+  expect(JSON.stringify(pushed)).not.toContain('/Users/test')
+
+  const last = pushed.at(-1).body
+  expect(last).toMatchObject({ status: 'approved', approved: { template_name: 'Change My Mind' } })
+  expect(last.settings.favorites).toEqual([{ label: 'Team', target: 'the #memes channel on Slack' }])
+  expect(saved.get('settings')).toMatchObject({ askBeforePost: true, favorites: [{ label: 'Team' }] })
+  expect(submitted.length).toBe(1)
+  expect(submitted[0]).toContain('wants it posted to: the #memes channel on Slack')
+  expect(submitted[0]).toContain('Work out which connector')
+})
+
+test('/meme settings opens the gallery on its Settings tab', async ($, on) => {
+  const ran: string[][] = []
+  factory(on, { ran })
+  on('process.spawn', async function* () {
+    yield { stream: 'stdout', text: 'READY 6000\n' }
+    return { value: { code: 0, signal: null } }
+  })
+  on('http.fetch', () => ({ value: { status: 204, ok: true, headers: {}, text: '' } }))
+  await $.session.start({ surface: 'terminal', isInteractive: true, cwd: '/work' })
+  const answer = await $.command.run({ command: 'meme', args: 'settings' })
+  expect(answer.text).toMatch(/gallery/)
+  expect(ran.find((argv) => argv[0] === 'open')?.[1]).toMatch(/:6000\/#t=[0-9a-f]+&tab=settings$/)
+})
+
+test('ask-before-posting holds a connector call that carries a meme link', async ($, on) => {
+  const { saved } = factory(on)
+  const asked: string[] = []
+  let answer = 'Post it'
+  on('tool.call', ($, e) => {
+    if (e.tool === 'AskUserQuestion') {
+      asked.push(e.questions[0].question)
+      return { result: { answers: { [e.questions[0].question]: answer } } }
+    }
+    return { result: 'sent' }
+  })
+  await $.session.start({ surface: 'terminal', isInteractive: true, cwd: '/work' })
+  const meme = { tool: 'mcp__a1b2__slack_send_message', tool_use_id: 't2', channel: '#memes', text: 'lol https://api.memegen.link/images/fine/_/this_is_fine.png' }
+
+  expect(await $.tool.call(meme)).toEqual({ result: 'sent' })
+  expect(asked[0]).toMatch(/let Claude post this meme with slack_send_message/)
+
+  answer = "Don't post"
+  expect(await $.tool.call({ ...meme, tool_use_id: 't3' })).toEqual({ deny: 'The user declined posting this meme.' })
+  // Ordinary connector calls and Claude's own tools are never held
+  expect(await $.tool.call({ tool: 'mcp__a1b2__slack_send_message', tool_use_id: 't4', text: 'hello' })).toEqual({ result: 'sent' })
+  expect(await $.tool.call({ tool: 'Bash', tool_use_id: 't5', command: 'echo https://api.memegen.link/images/x.png' })).toEqual({ result: 'sent' })
+  expect(asked.length).toBe(2)
+  expect(saved.get('settings')).toBeUndefined()
 })
 
 test('a terminal without inline images gets a one-line note, not an empty image box', async ($, on) => {

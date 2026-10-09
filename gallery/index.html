@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meme Factory</title>
+<style>
+  :root {
+    --bg: #f6f4ef; --panel: #ffffff; --ink: #1b1a17; --muted: #6d685e; --line: #e3ded3;
+    --accent: #ff5a1f; --accent-ink: #ffffff; --chip: #f0ece3; --good: #1f8a4c; --warn: #b5530b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #141311; --panel: #1d1c19; --ink: #f1ede4; --muted: #9b958a; --line: #2f2d29;
+      --chip: #29271f; --good: #4cc27f; --warn: #f0954f; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+    font: 15px/1.45 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+  header { display: flex; align-items: center; gap: 14px; padding: 16px 24px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+  h1 { margin: 0; font-size: 20px; letter-spacing: -0.02em; }
+  h1 span { color: var(--accent); }
+  .request { color: var(--muted); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .pill { padding: 3px 10px; border-radius: 99px; background: var(--chip); color: var(--muted); font-size: 12px; white-space: nowrap; }
+  .pill.working { color: var(--warn); }
+  .pill.good { color: var(--good); }
+  nav { display: flex; gap: 4px; }
+  nav button { background: none; color: var(--muted); padding: 6px 12px; font-weight: 600; }
+  nav button.on { background: var(--chip); color: var(--ink); }
+  main { max-width: 1100px; margin: 0 auto; padding: 20px 24px 60px; }
+  @media (max-width: 700px) { main, header { padding-left: 16px; padding-right: 16px; } }
+  button { font: inherit; font-weight: 600; border: 0; border-radius: 10px; padding: 10px 16px; cursor: pointer;
+    background: var(--chip); color: var(--ink); }
+  button.primary { background: var(--accent); color: var(--accent-ink); }
+  button:disabled { opacity: .5; cursor: default; }
+  input[type=text] { font: inherit; color: var(--ink); background: var(--panel); border: 1px solid var(--line);
+    border-radius: 10px; padding: 10px 12px; outline: none; min-width: 0; }
+  input[type=text]:focus { border-color: var(--accent); }
+  .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .grow { flex: 1; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-bottom: 18px; }
+  .card { background: var(--panel); border: 2px solid var(--line); border-radius: 14px; overflow: hidden; cursor: pointer;
+    transition: border-color .15s, transform .15s; padding: 0; text-align: left; font-weight: 400; }
+  .card:hover { transform: translateY(-2px); }
+  .card.selected { border-color: var(--accent); }
+  .card img { display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: contain; background: #000; }
+  .card .info { padding: 10px 12px; display: flex; justify-content: space-between; gap: 8px; color: var(--muted); font-size: 13px; }
+  .card .info b { color: var(--ink); }
+  .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 380px); gap: 24px; align-items: start; }
+  @media (max-width: 800px) { .hero { grid-template-columns: 1fr; } }
+  .hero img { width: 100%; max-height: 70vh; object-fit: contain; border-radius: 14px; background: #000; display: block; }
+  a { color: var(--accent); }
+  .box .row input { flex: 1 1 100%; }
+  .box { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+  .box h2 { margin: 0; font-size: 15px; }
+  .chips { display: flex; gap: 8px; flex-wrap: wrap; }
+  .chips button { padding: 7px 12px; font-size: 14px; }
+  .chips button .ok { color: var(--good); margin-left: 4px; }
+  .muted { color: var(--muted); font-size: 13px; }
+  .error { color: var(--warn); }
+  .empty { border: 2px dashed var(--line); border-radius: 14px; padding: 40px; text-align: center; color: var(--muted); }
+  .toggle { display: flex; gap: 12px; align-items: flex-start; }
+  .toggle input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--accent); }
+  .fav { display: grid; grid-template-columns: 1fr 1.6fr auto; gap: 8px; }
+  @media (max-width: 600px) { .fav { grid-template-columns: 1fr; } }
+  .gone { position: fixed; inset: auto 16px 16px 16px; max-width: 520px; margin: 0 auto; background: var(--panel);
+    border: 1px solid var(--warn); border-radius: 12px; padding: 12px 16px; display: none; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Meme <span>Factory</span></h1>
+  <div class="request" id="request"></div>
+  <span class="pill" id="status">connecting…</span>
+  <nav>
+    <button id="tab-drafts" class="on">Drafts</button>
+    <button id="tab-settings">Settings</button>
+  </nav>
+</header>
+<main id="main"></main>
+<div class="gone" id="gone">Lost the connection to Claude Code. The page works while the session that opened it is running.</div>
+<script>
+const params = new URLSearchParams(location.hash.slice(1))
+const token = params.get('t') || ''
+history.replaceState(null, '', location.pathname)
+let state = null
+let version = -1
+let tab = params.get('tab') === 'settings' ? 'settings' : 'drafts'
+let favDraft = null // the favorites being edited, before Save
+
+const $ = (id) => document.getElementById(id)
+function el(tag, props = {}, ...children) {
+  const n = document.createElement(tag)
+  for (const [k, v] of Object.entries(props)) {
+    if (k === 'class') n.className = v
+    else if (k.startsWith('on')) n.addEventListener(k.slice(2), v)
+    else if (k === 'checked' || k === 'disabled' || k === 'value') n[k] = v
+    else n.setAttribute(k, v)
+  }
+  for (const c of children.flat()) if (c != null && c !== false) n.append(c.nodeType ? c : document.createTextNode(String(c)))
+  return n
+}
+
+async function send(event) {
+  try {
+    await fetch('/api/event', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Meme-Token': token }, body: JSON.stringify(event) })
+  } catch { $('gone').style.display = 'block' }
+}
+
+async function poll() {
+  for (;;) {
+    try {
+      const res = await fetch(`/api/state?since=${version}`, { headers: { 'X-Meme-Token': token } })
+      if (!res.ok) throw new Error(res.status)
+      const next = await res.json()
+      $('gone').style.display = 'none'
+      if (next.version !== version) {
+        version = next.version
+        state = next
+        render()
+      }
+    } catch {
+      $('gone').style.display = 'block'
+      await new Promise((r) => setTimeout(r, 2000))
+    }
+  }
+}
+
+const img = (url, width = 600) => `${url}?width=${width}`
+
+function render() {
+  if (!state) return
+  $('request').textContent = state.request ? `· ${state.request}` : ''
+  const pill = $('status')
+  const labels = { idle: 'ready', working: state.note || 'working…', review: 'pick one', approved: 'approved', error: 'jammed' }
+  pill.textContent = labels[state.status] || state.status
+  pill.className = 'pill' + (state.status === 'working' ? ' working' : state.status === 'approved' ? ' good' : '')
+  $('tab-drafts').className = tab === 'drafts' ? 'on' : ''
+  $('tab-settings').className = tab === 'settings' ? 'on' : ''
+  const main = $('main')
+  main.replaceChildren(tab === 'settings' ? settingsView() : draftsView())
+}
+
+function newMemeForm(placeholder = 'when the standup was supposed to be 15 minutes') {
+  const input = el('input', { type: 'text', class: 'grow', placeholder, maxlength: '300' })
+  const go = () => input.value.trim() && send({ type: 'new', request: input.value.trim() })
+  input.addEventListener('keydown', (e) => e.key === 'Enter' && go())
+  return el('div', { class: 'row' }, input, el('button', { class: 'primary', onclick: go }, 'Make memes'))
+}
+
+function feedbackForm() {
+  const input = el('input', { type: 'text', class: 'grow', placeholder: 'Feedback: meaner, about Mondays, a different format…', maxlength: '300' })
+  const go = () => input.value.trim() && send({ type: 'feedback', text: input.value.trim() })
+  input.addEventListener('keydown', (e) => e.key === 'Enter' && go())
+  return el('div', { class: 'row' }, input, el('button', { onclick: go }, 'Remix with feedback'))
+}
+
+function draftsView() {
+  const s = state
+  if (s.status === 'idle') return el('div', {}, el('div', { class: 'empty' }, 'Ask Claude for a meme, or start one here.'), el('p'), newMemeForm())
+  if (s.status === 'error') {
+    return el('div', { class: 'box' }, el('div', { class: 'error' }, `The factory jammed: ${s.error}`),
+      el('div', { class: 'row' }, el('button', { class: 'primary', onclick: () => send({ type: 'remix' }) }, 'Try again')), newMemeForm())
+  }
+  if (s.status === 'approved' && s.approved) return approvedView()
+  const drafts = s.drafts || []
+  if (!drafts.length) return el('div', { class: 'empty' }, s.note || 'Cooking drafts…')
+  return el('div', {},
+    s.status === 'working' ? el('p', { class: 'muted' }, `${s.note || 'Working…'} The drafts below stay until the new ones are ready.`) : null,
+    el('div', { class: 'grid' }, drafts.map((d, i) =>
+      el('button', { class: 'card' + (i === s.selected ? ' selected' : ''), onclick: () => { s.selected = i; render(); send({ type: 'select', index: i }) }, ondblclick: () => send({ type: 'approve', index: i }) },
+        el('img', { src: img(d.url), alt: d.lines.filter(Boolean).join(' / '), loading: 'eager' }),
+        el('div', { class: 'info' }, el('b', {}, d.template_name), el('span', {}, d.score == null ? '' : `judge ${d.score}/10`))))),
+    el('div', { class: 'row' },
+      el('button', { class: 'primary', disabled: s.status === 'working', onclick: () => send({ type: 'approve', index: s.selected }) }, 'Approve selected'),
+      el('button', { disabled: s.status === 'working', onclick: () => send({ type: 'remix' }) }, 'Remix'),
+      el('span', { class: 'muted' }, 'Click to select, double-click to approve.')),
+    el('p'),
+    feedbackForm())
+}
+
+function approvedView() {
+  const s = state
+  const d = s.approved
+  const where = el('input', { type: 'text', class: 'grow', placeholder: 'e.g. the #random channel on Slack, my LinkedIn', maxlength: '300' })
+  const sendWhere = () => where.value.trim() && send({ type: 'post', target: where.value.trim() })
+  where.addEventListener('keydown', (e) => e.key === 'Enter' && sendWhere())
+  const favs = (s.settings?.favorites || []).filter((f) => f.label && f.target)
+  const connected = new Set(s.connected || [])
+  return el('div', { class: 'hero' },
+    el('div', {},
+      el('img', { src: img(d.url, 900), alt: d.lines.filter(Boolean).join(' / ') }),
+      el('p', { class: 'muted' }, `${d.template_name}${d.score == null ? '' : ` · judge ${d.score}/10`} · `, el('a', { href: d.url, target: '_blank', rel: 'noreferrer' }, 'full image'))),
+    el('div', { class: 'box' },
+      el('h2', {}, 'Post it'),
+      favs.length ? el('div', {}, el('div', { class: 'muted' }, 'Favorites'),
+        el('div', { class: 'chips' }, favs.map((f) => el('button', { title: f.target, onclick: () => send({ type: 'post', target: f.target, label: f.label }) }, f.label)))) : null,
+      el('div', {}, el('div', { class: 'muted' }, 'Quick picks (✓ looks connected)'),
+        el('div', { class: 'chips' }, (s.destinations || []).map((x) =>
+          el('button', { onclick: () => send({ type: 'post', target: x.label, label: x.label }) }, x.label, connected.has(x.key) ? el('span', { class: 'ok' }, '✓') : null)))),
+      el('div', {}, el('div', { class: 'muted' }, 'Or say where, and Claude routes it'), el('div', { class: 'row' }, where, el('button', { class: 'primary', onclick: sendWhere }, 'Send to Claude'))),
+      el('div', { class: 'muted' }, s.settings?.askBeforePost
+        ? 'Claude will ask you before anything is posted. Change this in Settings.'
+        : 'Ask-before-posting is off: Claude may post without asking. Change this in Settings.'),
+      s.posted?.length ? el('div', { class: 'muted' }, `Handed to Claude: ${s.posted.join(', ')}`) : null,
+      el('div', { class: 'row' },
+        el('button', { onclick: () => navigator.clipboard?.writeText(d.url) }, 'Copy link'),
+        el('button', { onclick: () => send({ type: 'back' }) }, 'Back to drafts')),
+      el('p', { class: 'muted' }, 'Start another:'), newMemeForm('another meme…')))
+}
+
+function settingsView() {
+  const s = state.settings || {}
+  if (!favDraft) favDraft = (s.favorites || []).map((f) => ({ ...f }))
+  const rows = favDraft.map((f, i) => el('div', { class: 'fav' },
+    el('input', { type: 'text', placeholder: 'Label (Team memes)', value: f.label || '', oninput: (e) => (favDraft[i].label = e.target.value) }),
+    el('input', { type: 'text', placeholder: 'Where (the #memes channel on Slack)', value: f.target || '', oninput: (e) => (favDraft[i].target = e.target.value) }),
+    el('button', { onclick: () => { favDraft.splice(i, 1); render() } }, 'Remove')))
+  return el('div', { class: 'box', style: 'max-width: 760px' },
+    el('h2', {}, 'Posting'),
+    el('label', { class: 'toggle' },
+      el('input', { type: 'checkbox', checked: s.askBeforePost !== false, onchange: (e) => send({ type: 'settings', settings: { askBeforePost: e.target.checked } }) }),
+      el('div', {}, el('b', {}, 'Ask me before Claude posts a meme'),
+        el('div', { class: 'muted' }, 'When on, the mod makes Claude Code show a permission prompt for any connector call that contains a meme link, even in auto mode.'))),
+    el('h2', {}, 'Favorite destinations'),
+    el('div', { class: 'muted' }, 'Describe each one in words; Claude picks the right connector and channel from it.'),
+    ...rows,
+    el('div', { class: 'row' },
+      el('button', { onclick: () => { favDraft.push({ label: '', target: '' }); render() } }, 'Add favorite'),
+      el('button', { class: 'primary', onclick: () => { send({ type: 'settings', settings: { favorites: favDraft.filter((f) => f.label.trim() && f.target.trim()) } }); favDraft = null } }, 'Save favorites')))
+}
+
+$('tab-drafts').onclick = () => { tab = 'drafts'; render() }
+$('tab-settings').onclick = () => { tab = 'settings'; favDraft = null; render() }
+poll()
+</script>
+</body>
+</html>

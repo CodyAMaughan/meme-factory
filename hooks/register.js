@@ -8,8 +8,9 @@ import {
   WRITER_SYSTEM,
   applyScores,
   connectedDestinations,
+  galleryState,
+  isMemePost,
   draftsFromWriter,
-  findConnectorPrompt,
   hash,
   jevJudgeBody,
   jevJudgeResult,
@@ -33,13 +34,16 @@ const HISTORY_LIMIT = 50
 // The current job. Module state: it resets when the module reloads during development.
 let job = freshJob()
 let seq = 0
-// Pictures per draft id: { png, size } (terminal Image and Quick Look), { svg } for Desktop.
+// Pictures per draft id: { png, size } for the terminal Image, { svg } for Desktop.
 const art = new Map()
 let connected = new Set()
 let cacheDir = ''
 // Whether this terminal draws Image pixels (kitty graphics with placeholders). Elsewhere an
 // Image still takes its whole box to print its alt text, so we draw a one-line note instead.
 let inlineImages = false
+// The browser gallery: a local server the mod spawns on demand, { token, port, ready }.
+let gallery = null
+let settings = { askBeforePost: true, favorites: [] }
 
 function freshJob() {
   return { status: 'idle', request: '', context: '', feedback: [], drafts: [], selected: 0, error: '', note: '', approved: null, posted: [] }
@@ -50,6 +54,7 @@ export function register(on) {
     const home = await $.env.get('HOME')
     cacheDir = `${home || '/tmp'}/.cache/meme-factory`
     inlineImages = await detectInlineImages($)
+    settings = { ...settings, ...((await $.store.get('settings')) ?? {}) }
     await $.tool.register({
       name: 'make_meme',
       description:
@@ -67,8 +72,8 @@ export function register(on) {
     // Register commands last: a taken name throws and skips the rest of the hook.
     await $.command.register({
       name: 'meme',
-      description: 'Open the Meme Factory panel, or start a meme: /meme <what it is about>',
-      argumentHint: '[what the meme is about]',
+      description: 'Open the Meme Factory panel, start a meme (/meme <what it is about>), or open /meme gallery or /meme settings in your browser',
+      argumentHint: '[what the meme is about | gallery | settings]',
       immediate: true,
     })
     return next(e)
@@ -87,9 +92,28 @@ export function register(on) {
     }
   }).catch(($, e, next) => ({ result: `The Meme Factory couldn't start: ${next.error?.message ?? 'unknown error'}` }))
 
+  // Ask before posting: hold any connector call that carries a meme link until the person says so.
+  // $.ui.ask always reaches the person, whatever the permission mode (auto mode included).
+  on('tool.call', async ($, e, next) => {
+    if (!settings.askBeforePost || !isMemePost(e)) return next(e)
+    const tool = String(e.tool).split('__').pop()
+    let answer = ''
+    try {
+      answer = await $.ui.ask(`Meme Factory: let Claude post this meme with ${tool}?`, ['Post it', "Don't post"])
+    } catch {
+      return { deny: 'The user did not approve posting this meme (no answer).' }
+    }
+    if (answer !== 'Post it') return { deny: `The user declined posting this meme${answer && answer !== "Don't post" ? `: ${answer}` : ''}.` }
+    return next(e)
+  })
+
   // You ask for a meme, or just open the panel.
   on('command.run', { command: 'meme' }, async ($, e) => {
     const request = String(e.args ?? '').trim()
+    if (request === 'gallery' || request === 'settings') {
+      await openGallery($, request === 'settings' ? 'settings' : 'drafts')
+      return { text: 'Opened the Meme Factory gallery in your browser.' }
+    }
     if (request) startJob($, request, '')
     await openPane($, true)
     return {}
@@ -113,10 +137,16 @@ async function detectInlineImages($) {
 
 // ---------- The factory line ----------
 
+// Every job change redraws the panel and refreshes the browser gallery, if it's open.
+function changed($) {
+  $.ui.invalidate('ui.render')
+  syncGallery($)
+}
+
 function startJob($, request, context) {
   const id = ++seq
   job = { ...freshJob(), status: 'working', request, context, note: 'Writing captions…' }
-  $.ui.invalidate('ui.render')
+  changed($)
   $.clock.after(0, () => cook($, id, null))
 }
 
@@ -125,7 +155,7 @@ function remix($, feedback) {
   const previous = job.drafts[job.selected] ?? null
   if (feedback) job = { ...job, feedback: [...job.feedback, feedback] }
   job = { ...job, status: 'working', note: feedback ? 'Reworking with your feedback…' : 'Remixing…', error: '' }
-  $.ui.invalidate('ui.render')
+  changed($)
   $.clock.after(0, () => cook($, id, previous))
 }
 
@@ -147,7 +177,7 @@ async function cook($, id, previous) {
     let drafts = draftsFromWriter(written)
 
     job = { ...job, note: 'Judging…' }
-    $.ui.invalidate('ui.render')
+    changed($)
     drafts = jevKey
       ? await jevJudge($, jevKey, job.request, drafts)
       : applyScores(drafts, await complete($, JUDGE_SYSTEM, judgePrompt(job.request, drafts), 600))
@@ -155,15 +185,15 @@ async function cook($, id, previous) {
 
     const best = topDrafts(drafts)
     job = { ...job, note: 'Rendering…' }
-    $.ui.invalidate('ui.render')
+    changed($)
     await renderArt($, best)
     if (id !== seq) return
     job = { ...job, status: 'review', drafts: best, selected: 0, note: '' }
-    $.ui.invalidate('ui.render')
+    changed($)
   } catch (err) {
     if (id !== seq) return
     job = { ...job, status: 'error', error: err?.message ?? String(err), note: '' }
-    $.ui.invalidate('ui.render')
+    changed($)
   }
 }
 
@@ -246,33 +276,118 @@ async function openInBrowser($, url) {
   for (const opener of ['open', 'xdg-open']) {
     try {
       const r = await $.process.run([opener, url])
-      if (r.exitCode === 0) return
+      if (r.exitCode === 0) return true
     } catch {}
   }
-  $.ui.toast('Could not open a browser. Use Copy link instead.')
+  return false
 }
 
-// A full-size look from any terminal: macOS Quick Look, else the default image viewer.
-async function view($, draft) {
-  const png = art.get(draft.id)?.png
-  if (!png) {
-    $.ui.toast('No local copy yet. Use "Open full image" instead.')
+// ---------- Browser gallery ----------
+
+// Starts the local gallery server once per session. It prints READY <port>, then one
+// EVENT <json> line per action on the page; the child dies with the session or the mod.
+function startGallery($) {
+  if (gallery) return gallery.ready
+  const bytes = new Uint8Array(24)
+  crypto.getRandomValues(bytes)
+  const token = Array.from(bytes, (b) => b.toString(16).padStart(2, '0')).join('')
+  let resolveReady
+  let rejectReady
+  const ready = new Promise((resolve, reject) => {
+    resolveReady = resolve
+    rejectReady = reject
+  })
+  gallery = { token, port: 0, ready }
+  const mine = gallery
+  void (async () => {
+    let buffered = ''
+    try {
+      const child = $.process.spawn({ argv: ['python3', `${$.plugin.root}/gallery/server.py`], input: `${token}\n` })
+      for await (const { stream, text } of child) {
+        if (stream !== 'stdout') continue
+        buffered += text
+        let nl
+        while ((nl = buffered.indexOf('\n')) >= 0) {
+          const line = buffered.slice(0, nl).trim()
+          buffered = buffered.slice(nl + 1)
+          if (line.startsWith('READY ')) {
+            mine.port = Number(line.slice(6))
+            resolveReady()
+            syncGallery($)
+          } else if (line.startsWith('EVENT ')) {
+            try {
+              await onGalleryEvent($, JSON.parse(line.slice(6)))
+            } catch {}
+          }
+        }
+      }
+    } catch (err) {
+      rejectReady(err)
+    }
+    if (gallery === mine) gallery = null
+    rejectReady(new Error('the gallery server stopped'))
+  })()
+  return ready
+}
+
+async function openGallery($, tab = 'drafts') {
+  try {
+    await startGallery($)
+  } catch {
+    $.ui.toast('The browser gallery needs python3. Copy the link instead.')
     return
   }
-  try {
-    // qlmanage returns when the Quick Look window closes (Esc), so cap it at ten minutes.
-    const r = await $.process.run(['qlmanage', '-p', png], { timeoutMs: 600000 })
-    if (r.exitCode === 0) return
-  } catch {}
-  try {
-    const r = await $.process.run(['open', png])
-    if (r.exitCode === 0) return
-  } catch {}
-  try {
-    await $.process.run(['xdg-open', png])
-  } catch {
-    $.ui.toast('Could not open an image viewer. Use "Open full image" instead.')
+  syncGallery($)
+  const ok = await openInBrowser($, `http://127.0.0.1:${gallery.port}/#t=${gallery.token}&tab=${tab}`)
+  if (!ok) $.ui.toast(`Open http://127.0.0.1:${gallery.port} in your browser`)
+}
+
+function syncGallery($) {
+  if (!gallery?.port) return
+  const body = JSON.stringify(galleryState(job, connected, settings))
+  $.http
+    .fetch(`http://127.0.0.1:${gallery.port}/api/state`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-Meme-Token': gallery.token },
+      body,
+    })
+    .catch(() => {})
+}
+
+// What the page asks for. Its values are untrusted input: check each one.
+async function onGalleryEvent($, ev) {
+  const text = (v) => String(v ?? '').trim().slice(0, 300)
+  const index = Number(ev.index)
+  const validIndex = Number.isInteger(index) && index >= 0 && index < job.drafts.length
+  if (ev.type === 'select' && validIndex) select($, index)
+  if (ev.type === 'approve' && validIndex && job.status === 'review') {
+    select($, index)
+    await approve($)
   }
+  if (ev.type === 'feedback' && text(ev.text) && job.drafts.length) remix($, text(ev.text))
+  if (ev.type === 'remix' && job.request) remix($, '')
+  if (ev.type === 'new' && text(ev.request)) startJob($, text(ev.request), '')
+  if (ev.type === 'back' && job.drafts.length) backToDrafts($)
+  if (ev.type === 'post' && job.approved && text(ev.target)) {
+    const target = text(ev.target)
+    const quick = DESTINATIONS.find((d) => d.label === target)
+    sendToClaude($, postPrompt(job.approved, target, quick ? connected.has(quick.key) : null, settings.askBeforePost), text(ev.label) || target)
+  }
+  if (ev.type === 'settings' && ev.settings && typeof ev.settings === 'object') await saveSettings($, ev.settings)
+}
+
+async function saveSettings($, patch) {
+  const next = { ...settings }
+  if (typeof patch.askBeforePost === 'boolean') next.askBeforePost = patch.askBeforePost
+  if (Array.isArray(patch.favorites)) {
+    next.favorites = patch.favorites
+      .map((f) => ({ label: String(f?.label ?? '').trim().slice(0, 60), target: String(f?.target ?? '').trim().slice(0, 300) }))
+      .filter((f) => f.label && f.target)
+      .slice(0, 20)
+  }
+  settings = next
+  await $.store.set('settings', settings)
+  changed($)
 }
 
 // ---------- Approve and post ----------
@@ -281,13 +396,13 @@ async function approve($) {
   const draft = job.drafts[job.selected]
   if (!draft) return
   job = { ...job, status: 'approved', approved: draft }
-  $.ui.invalidate('ui.render')
+  changed($)
   try {
     connected = connectedDestinations(await $.tool.list())
   } catch {
     connected = new Set()
   }
-  $.ui.invalidate('ui.render')
+  changed($)
   const history = (await $.store.get('history')) ?? []
   const entry = { url: draft.url, template: draft.template_name, lines: draft.lines, request: job.request, at: await $.clock.now() }
   await $.store.set('history', [entry, ...history].slice(0, HISTORY_LIMIT))
@@ -295,7 +410,7 @@ async function approve($) {
 
 function sendToClaude($, text, label) {
   job = { ...job, posted: [...job.posted, label] }
-  $.ui.invalidate('ui.render')
+  changed($)
   $.ui.toast(`Queued for Claude: ${label}. It will pick this up when it's free.`)
   // Resolves when the turn starts, which waits for the session to be idle: don't block on it.
   $.prompt.submit({ text }).catch((err) => $.ui.toast(`Couldn't hand off to Claude: ${err?.message ?? err}`))
@@ -315,17 +430,17 @@ async function openPane($, byUser) {
 
 function reset($) {
   job = freshJob()
-  $.ui.invalidate('ui.render')
+  changed($)
 }
 
 function select($, i) {
   job = { ...job, selected: i }
-  $.ui.invalidate('ui.render')
+  changed($)
 }
 
 function backToDrafts($) {
   job = { ...job, status: 'review' }
-  $.ui.invalidate('ui.render')
+  changed($)
 }
 
 // ---------- Drawing ----------
@@ -356,6 +471,7 @@ function drawPane($, e) {
         autoFocus: true,
         onSubmit: (value) => value.trim() && startJob($, value.trim(), ''),
       }),
+      Button({ key: 'gallery', label: 'Open gallery and settings in browser', hotkey: 'v', plain: true, onPress: () => openGallery($) }),
     )
   }
 
@@ -402,7 +518,7 @@ function drawPane($, e) {
         children: [
           Button({ key: 'approve', label: 'Approve', hotkey: 'a', plain: true, onPress: () => approve($) }),
           Button({ key: 'remix', label: 'Remix', hotkey: 'r', plain: true, onPress: () => remix($, '') }),
-          Button({ key: 'view', label: 'View', hotkey: 'v', plain: true, onPress: () => view($, draft) }),
+          Button({ key: 'view', label: 'View in browser', hotkey: 'v', plain: true, onPress: () => openGallery($) }),
           Button({ key: 'copy', label: 'Copy link', hotkey: 'c', plain: true, onPress: () => copyLink($, draft) }),
         ],
       }),
@@ -434,30 +550,37 @@ function drawPane($, e) {
             label: connected.has(d.key) ? `${d.label} ✓` : d.label,
             hotkey: d.hotkey,
             plain: true,
-            onPress: () => sendToClaude($, postPrompt(draft, d.label, connected.has(d.key)), d.label),
+            onPress: () => sendToClaude($, postPrompt(draft, d.label, connected.has(d.key), settings.askBeforePost), d.label),
           }),
         ),
       }),
       Input({
         key: 'elsewhere',
         label: 'Somewhere else',
-        placeholder: 'Bluesky, Reddit, a Discord server…',
+        placeholder: 'the #memes channel on Slack, Bluesky…',
         value: '',
-        submitLabel: 'find connector',
-        onSubmit: (value) => value.trim() && sendToClaude($, findConnectorPrompt(value.trim(), draft), value.trim()),
+        submitLabel: 'send to Claude',
+        onSubmit: (value) => value.trim() && sendToClaude($, postPrompt(draft, value.trim(), null, settings.askBeforePost), value.trim()),
       }),
       Box({
         flexDirection: 'row',
         columnGap: 2,
         children: [
           Link({ href: 'https://claude.ai/directory', label: 'Browse connectors' }),
-          Button({ key: 'view-approved', label: 'View', hotkey: 'v', plain: true, onPress: () => view($, draft) }),
+          Button({ key: 'view-approved', label: 'View in browser', hotkey: 'v', plain: true, onPress: () => openGallery($) }),
           Button({ key: 'copy-approved', label: 'Copy link', hotkey: 'c', plain: true, onPress: () => copyLink($, draft) }),
           Button({ key: 'back', label: 'Back to drafts', hotkey: 'b', plain: true, onPress: () => backToDrafts($) }),
           Button({ key: 'new', label: 'New meme', hotkey: 'n', plain: true, onPress: () => reset($) }),
         ],
       }),
-      Text({ dimColor: true, children: ['✓ = looks connected in this session. Claude confirms the destination with you before posting.'] }),
+      Text({
+        dimColor: true,
+        children: [
+          settings.askBeforePost
+            ? '✓ = looks connected. You approve every post before it goes out (change it in the browser gallery).'
+            : '✓ = looks connected. Ask-before-posting is off.',
+        ],
+      }),
     )
     if (job.posted.length) children.push(Text({ dimColor: true, children: [`Handed to Claude: ${job.posted.join(', ')}`] }))
   }
@@ -470,7 +593,7 @@ function picture(el, e, draft) {
   const a = art.get(draft.id) ?? {}
   const alt = `${draft.template_name}: ${draft.lines.filter(Boolean).join(' / ')}`
   if (e.surface === 'terminal' && !inlineImages) {
-    return [el.Text({ dimColor: true, children: ['No inline images in this terminal (Ghostty and kitty have them). v to view.'] })]
+    return [el.Text({ dimColor: true, children: ['No inline images in this terminal (Ghostty and kitty have them). Press v to see it in your browser.'] })]
   }
   if (e.surface === 'terminal' && a.png && el.Image) {
     const maxColumns = Math.min(IMAGE_COLUMNS, (e.props?.bodyColumns ?? IMAGE_COLUMNS) - 2)
@@ -483,21 +606,18 @@ function picture(el, e, draft) {
 }
 
 function caption($, el, e, draft) {
-  const { Box, Text, Link, Button } = el
-  // The terminal prints a Link's whole URL after its label, so it gets a button there instead.
-  const open =
-    e.surface === 'terminal'
-      ? Button({ key: 'open', label: 'Open in browser', hotkey: 'o', plain: true, onPress: () => openInBrowser($, draft.url) })
-      : Link({ href: draft.url, label: 'Open full image' })
+  const { Box, Text, Link } = el
+  const score = Text({ dimColor: true, children: [draft.score == null ? '' : `judge ${draft.score}/10`] })
   return [
     Box({
       flexDirection: 'column',
       children: draft.lines.filter(Boolean).map((line) => Text({ children: [line] })),
     }),
+    // The terminal prints a Link's whole URL after its label; there, View in browser covers it.
     Box({
       flexDirection: 'row',
       columnGap: 2,
-      children: [open, Text({ dimColor: true, children: [draft.score == null ? '' : `judge ${draft.score}/10`] })],
+      children: e.surface === 'terminal' ? [score] : [Link({ href: draft.url, label: 'Open full image' }), score],
     }),
   ]
 }
