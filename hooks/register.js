@@ -567,11 +567,17 @@ let moreSummary = { served: 0, cards: 0, skipped: 0, checked: null }
 
 async function serverTemplates($) {
   if (memegenOrigin() === 'https://api.memegen.link') return []
-  const [res, upstream] = await Promise.all([
-    $.http.fetch(`${memegenOrigin()}/templates/`).catch(() => null),
-    $.http.fetch('https://api.memegen.link/templates/').catch(() => null),
-  ])
-  if (!res?.ok || !upstream?.ok) return []
+  const get = (url) => $.http.fetch(url).catch((err) => ({ ok: false, status: String(err?.message ?? err).slice(0, 160) }))
+  // A server that sleeps when idle (Railway) can take longer than a fetch allows to wake: ask twice.
+  const list = async () => {
+    const first = await get(`${memegenOrigin()}/templates/`)
+    return first.ok ? first : get(`${memegenOrigin()}/templates/`)
+  }
+  const [res, upstream] = await Promise.all([list(), get('https://api.memegen.link/templates/')])
+  if (!res?.ok || !upstream?.ok) {
+    dlog($, `more templates: couldn't list templates (${memegenOrigin()}: ${res?.status}; memegen.link: ${upstream?.status})`)
+    return []
+  }
   return serverCandidates(JSON.parse(res.text), undefined, JSON.parse(upstream.text)).map((t) => ({ ...t, origin: memegenOrigin() }))
 }
 
