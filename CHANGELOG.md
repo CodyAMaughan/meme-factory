@@ -2,6 +2,11 @@
 
 All notable changes to Meme Factory. Versions follow [semantic versioning](https://semver.org).
 
+## 0.8.1 (2026-10-09)
+
+- **Slack shows up in the desktop app.** The desktop app can leave on-demand connector tools out of the tool list a mod sees, so the panel offered no Slack channels. The mod now asks the Slack connector for your channels by name when it isn't listed. You may get a one-time permission prompt for Slack.
+- **Parallel captions.** On memes that compare or stack things (Drake, before/after, Galaxy Brain, dilemmas), the writer prefers boxes that echo each other, ideally one word swapped: "Software Factory" / "Meme Factory". The judge rewards it. It's a preference, not a rule.
+
 ## 0.8.0 (2026-10-09)
 
 - **Your own memegen server, no watermark.** Three optional settings: `MEMEGEN_URL` renders memes on another memegen server (such as one you host), `MEMEGEN_API_KEY` removes the watermark (or `MEMEGEN_WATERMARK` sets your own), and the browser gallery loads pictures from that server. The key is sent only when the mod downloads a picture, as a header curl reads from stdin, so it never appears in a URL, a posted link, or the process list. Without these settings nothing changes.
