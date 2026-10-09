@@ -535,20 +535,41 @@ async function approve($, index = job.selected) {
 async function refreshConnectors($, force = false) {
   try {
     const found = postingConnectors(await $.tool.list())
+    let slack = found.slack
     let channels = connectors.channels
-    if (found.slack && (force || !connectors.slack || !channels.length)) {
+    if (slack && (force || !connectors.slack || !channels.length)) {
       try {
-        const r = await $.tool.call({ tool: `${found.slack.prefix}slack_list_user_channels`, exclude_archived: true, limit: 200 })
-        channels = parseSlackChannels(resultText(r))
+        channels = parseSlackChannels(resultText(await slackCall($, slack, 'slack_list_user_channels', { exclude_archived: true, limit: 200 })))
       } catch {
         channels = []
       }
     }
-    connectors = { slack: found.slack, channels: found.slack ? channels : [], others: found.others }
+    // The desktop app can leave on-demand connector tools out of the tool list, so when Slack
+    // isn't listed, ask the Slack connector for channels by its server name.
+    if (!slack) ({ slack, channels } = await findSlackByName($))
+    connectors = { slack, channels: slack ? channels : [], others: found.others }
   } catch {
     connectors = { slack: null, channels: [], others: [] }
   }
   changed($)
+}
+
+const SLACK_SERVERS = ['claude.ai Slack', 'claude_ai_Slack', 'Slack']
+
+async function findSlackByName($) {
+  for (const server of SLACK_SERVERS) {
+    try {
+      const r = await $.mcp.call(server, 'slack_list_user_channels', { exclude_archived: true, limit: 200 })
+      if (r?.isError) continue
+      return { slack: { server, canUpload: true }, channels: parseSlackChannels(resultText(r)) }
+    } catch {}
+  }
+  return { slack: null, channels: [] }
+}
+
+// One Slack call, through the listed tool when there is one, else straight to the server.
+function slackCall($, slack, tool, args) {
+  return slack.prefix ? $.tool.call({ tool: `${slack.prefix}${tool}`, ...args }) : $.mcp.call(slack.server, tool, args)
 }
 
 // Where to post, from a button, a favorite, or words in the chat box.
@@ -604,12 +625,11 @@ async function postToSlack($) {
     const { size } = await $.fs.stat(png)
     const caption = draft.lines.filter(Boolean).join(' / ')
     const ticket = parseUploadTicket(
-      resultText(await $.tool.call({ tool: `${slack.prefix}slack_get_file_upload_url`, filename: `${draft.template_id}-meme.png`, content_length: size, alt_txt: caption.slice(0, 1000) })),
+      resultText(await slackCall($, slack, 'slack_get_file_upload_url', { filename: `${draft.template_id}-meme.png`, content_length: size, alt_txt: caption.slice(0, 1000) })),
     )
     const sent = await $.process.run(['curl', '-sS', '-X', 'POST', '-H', 'Content-Type: image/png', '--data-binary', `@${png}`, ticket.url], { timeoutMs: 60000 })
     if (sent.exitCode !== 0 || !sent.stdout.startsWith('OK')) throw new Error(`the upload failed: ${(sent.stdout || sent.stderr).slice(0, 120)}`)
-    const done = await $.tool.call({
-      tool: `${slack.prefix}slack_complete_file_upload`,
+    const done = await slackCall($, slack, 'slack_complete_file_upload', {
       file_id: ticket.fileId,
       channel_id: target.id,
       title: caption.slice(0, 100),

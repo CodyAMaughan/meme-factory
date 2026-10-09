@@ -22,6 +22,8 @@ import {
   postingConnectors,
   resolveDestination,
   topDrafts,
+  writerPrompt,
+  judgePrompt,
 } from '../hooks/lib.js'
 
 const TOOL = 'mcp__meme-factory__make_meme'
@@ -77,6 +79,8 @@ type Rig = {
   termProgram?: string
   settings?: object
   env?: Record<string, string>
+  // Leave Slack's tools out of $.tool.list, as the desktop app can for on-demand tools
+  slackUnlisted?: boolean
 }
 
 // Stubs everything the mod reaches: the model, the shell, files, the store, and three
@@ -121,7 +125,7 @@ function factory(on, rig: Rig = {}) {
       { name: 'mcp__gm41l__send_message', description: 'Send a Gmail email', mcp: true },
       { name: 'mcp__m365__chat_message_search', description: 'Search Microsoft Teams chats', mcp: true },
       { name: 'Bash', description: 'Run a shell command', mcp: false },
-    ],
+    ].filter((t) => !(rig.slackUnlisted && t.name.startsWith(SLACK))),
   }))
   on('tool.call', ($, e) => {
     if (e.tool === 'AskUserQuestion') {
@@ -614,4 +618,36 @@ test('without memegen settings, memes come from api.memegen.link with no key or 
     expect(argv.at(-1)).not.toContain('watermark=')
     expect(argv).not.toContain('@-')
   }
+})
+
+test('Slack still shows up when the desktop app leaves its tools out of the tool list', async ($, on) => {
+  const mcp: any[] = []
+  const { clock } = factory(on, { slackUnlisted: true })
+  on('mcp.call', ($, e) => {
+    mcp.push(e)
+    const text = e.tool === 'slack_list_user_channels' ? CHANNELS_REPLY : e.tool === 'slack_get_file_upload_url' ? TICKET_REPLY : DONE_REPLY
+    return { value: { content: [{ type: 'text', text }], isError: false } }
+  })
+  await draftsReady($, clock)
+  const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
+  await ui.press({ key: 'approve' })
+  for (let i = 0; i < 5; i++) await clock.settle()
+  expect(await ui.find({ key: 'ch-C0C5HB6PETU' })).toMatchObject({ props: { label: '#social' } })
+  expect(mcp[0]).toMatchObject({ server: 'claude.ai Slack', tool: 'slack_list_user_channels' })
+  await ui.press({ key: 'ch-C0C5HB6PETU' })
+  await ui.press({ key: 'post' })
+  await ui.press({ key: 'confirm' })
+  for (let i = 0; i < 5; i++) await clock.settle()
+  expect(mcp.map((c) => c.tool)).toEqual(['slack_list_user_channels', 'slack_get_file_upload_url', 'slack_complete_file_upload'])
+  expect(mcp.at(-1)).toMatchObject({ args: { channel_id: 'C0C5HB6PETU' } })
+  expect(await ui.find({ type: 'Text', text: 'Posted to #social' })).toBeDefined()
+})
+
+test('compared and stacked memes ask for parallel boxes, and the judge rewards them', async () => {
+  const rules = writerPrompt({ request: 'software factories vs meme factories' })[0].text
+  expect(rules).toMatch(/7\. Parallel boxes/)
+  expect(rules).toContain('"Software Factory" / "Meme Factory"')
+  const judged = judgePrompt('software factories vs meme factories', [makeDraft('drake', ['Software Factory', 'Meme Factory'], 0)!])
+  expect(judged).toContain('Drakeposting (shape binary-choice.')
+  expect(judged).toMatch(/one word swapped, earn the full 3/)
 })
