@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920, height=1080" />
+<title>Meme Factory: fits wherever you work</title>
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/mf.js"></script>
+<link rel="stylesheet" href="assets/mf.css" />
+<style>
+  @font-face { font-family: 'Anton'; font-weight: 400; font-display: block; src: url('assets/fonts/Anton-400.woff2') format('woff2'); }
+  @font-face { font-family: 'Archivo'; font-weight: 400; font-display: block; src: url('assets/fonts/Archivo-400.woff2') format('woff2'); }
+  @font-face { font-family: 'Archivo'; font-weight: 600; font-display: block; src: url('assets/fonts/Archivo-600.woff2') format('woff2'); }
+  @font-face { font-family: 'Archivo'; font-weight: 800; font-display: block; src: url('assets/fonts/Archivo-800.woff2') format('woff2'); }
+  @font-face { font-family: 'JetBrains Mono'; font-weight: 400; font-display: block; src: url('assets/fonts/JetBrainsMono-400.woff2') format('woff2'); }
+  @font-face { font-family: 'JetBrains Mono'; font-weight: 700; font-display: block; src: url('assets/fonts/JetBrainsMono-700.woff2') format('woff2'); }
+  .mini .state { top: 40px; left: 10px; right: 10px; }
+  .mini .chatbox { left: 10px; right: 10px; bottom: 6px; }
+  .narrow { padding: 14px 16px; }
+  .strip { position: absolute; left: 14px; right: 14px; bottom: 48px; border: 1px solid var(--term-line); border-radius: 6px; padding: 4px 10px; }
+  .prompt { position: absolute; left: 16px; right: 16px; bottom: 12px; }
+  .ab { position: relative; }
+  .ab > * { position: absolute; left: 0; right: 0; top: 0; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="anywhere" data-start="0" data-duration="8" data-width="1920" data-height="1080">
+  <div class="cam">
+    <div class="trio">
+
+      <!-- A: a terminal that draws images. -->
+      <div class="surface" id="sa">
+        <h4>Ghostty, kitty</h4>
+        <p>The meme, right in the panel</p>
+        <div class="mini">
+          <div class="pane">
+            <div class="l"><span class="inv"> MEME FACTORY </span>  <span class="d">standups that run long</span></div>
+            <div class="state ab">
+              <div class="d1">
+                <div class="l"><span class="s b">1: ● Drake 9</span>  <span class="d">2: ○ This is Fine 7  3: ○ Distracted 8</span></div>
+                <div class="meme-box"><img src="assets/memes/drake-meaner.jpg" alt="" /></div>
+                <div class="l quote">A 15-minute standup</div>
+                <div class="l quote">The PM's 45-minute "quick sync"</div>
+                <div class="l">a: Approve  r: Remix  c: Copy  v: Browser  t: Talk</div>
+              </div>
+              <div class="d2">
+                <div class="l"><span class="d">1: ○ Drake 9</span>  <span class="s b">2: ● This is Fine 7</span>  <span class="d">3: ○ Distracted 8</span></div>
+                <div class="meme-box"><img src="assets/memes/fine.jpg" alt="" /></div>
+                <div class="l quote">Minute 38 of the 15-minute standup</div>
+                <div class="l"> </div>
+                <div class="l">a: Approve  r: Remix  c: Copy  v: Browser  t: Talk</div>
+              </div>
+              <div class="d3">
+                <div class="l"><span class="ok">✓ Approved · This is Fine</span></div>
+                <div class="thumb"><img src="assets/memes/fine.jpg" alt="" /></div>
+                <div class="l">Post to: <span class="b">★ #social</span> <span class="d">▾</span></div>
+                <div class="l"><span class="s">1: ★ #social</span>  <span class="d">2: ★ #eng-fun  3: #random</span></div>
+                <div class="l">p: Post to #social  b: Back  c: Copy</div>
+              </div>
+            </div>
+            <div class="chatbox"><div class="l">Say: <span class="d">meaner · use 2 · approve · post to #social</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- B: a terminal without images. -->
+      <div class="surface" id="sb">
+        <h4>Terminal.app, VS Code</h4>
+        <p>A one-line note. Press v for the browser.</p>
+        <div class="mini">
+          <div class="pane">
+            <div class="l"><span class="inv"> MEME FACTORY </span>  <span class="d">standups that run long</span></div>
+            <div class="state ab">
+              <div class="d1">
+                <div class="l"><span class="s b">1: ● Drake 9</span>  <span class="d">2: ○ This is Fine 7  3: ○ Distracted 8</span></div>
+                <div class="l quote">A 15-minute standup</div>
+                <div class="l quote">The PM's 45-minute "quick sync"</div>
+                <div class="l d">No preview in this terminal · v opens a browser</div>
+                <div class="l">a: Approve  r: Remix  c: Copy  v: Browser  t: Talk</div>
+              </div>
+              <div class="d2">
+                <div class="l"><span class="d">1: ○ Drake 9</span>  <span class="s b">2: ● This is Fine 7</span>  <span class="d">3: ○ Distracted 8</span></div>
+                <div class="l quote">Minute 38 of the 15-minute standup</div>
+                <div class="l d">No preview in this terminal · v opens a browser</div>
+                <div class="l">a: Approve  r: Remix  c: Copy  v: Browser  t: Talk</div>
+              </div>
+              <div class="d3">
+                <div class="l"><span class="ok">✓ Approved · This is Fine</span></div>
+                <div class="l quote">Minute 38 of the 15-minute standup</div>
+                <div class="l">Post to: <span class="b">★ #social</span> <span class="d">▾</span></div>
+                <div class="l"><span class="s">1: ★ #social</span>  <span class="d">2: ★ #eng-fun  3: #random</span></div>
+                <div class="l">p: Post to #social  b: Back  c: Copy</div>
+              </div>
+            </div>
+            <div class="chatbox">
+              <div class="l"><span class="d">    you</span> meaner, make it about the PM</div>
+              <div class="l"><span class="s">factory</span> Remixed all three. Sharper PM angle.</div>
+              <div class="l">Say: <span class="d">meaner · use 2 · approve · post to #social</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- C: a narrow window, where the panel sits above the prompt. -->
+      <div class="surface" id="sc">
+        <h4>A narrow window</h4>
+        <p>A 6-row strip above the prompt</p>
+        <div class="mini narrow">
+          <div class="l d">✻ Claude Code</div>
+          <div class="l"><span class="ok">⏺</span> Update(queue.spec.ts)</div>
+          <div class="l d">  ⎿  +4 −2</div>
+          <div class="l"><span class="ok">⏺</span> Bash(npm test)</div>
+          <div class="l">  ⎿  <span class="ok">38 passed</span></div>
+          <div class="strip">
+            <div class="ab" style="height: 138px">
+              <div class="d1">
+                <div class="l"><span class="inv"> MEME FACTORY </span>  <span class="ok">✓ 3 drafts</span></div>
+                <div class="l"><span class="s b">1: ● Drake 9</span>  <span class="d">2: ○ Fine 7  3: ○ Distracted 8</span></div>
+                <div class="l"><span class="d">▎</span>A 15-minute standup / The PM's 45-minute…</div>
+                <div class="l">a: Approve  r: Remix  c: Copy  v: Browser</div>
+                <div class="l"><span class="s">factory</span> Remixed all three.</div>
+                <div class="l">Say: <span class="d">meaner · use 2 · post to #social</span></div>
+              </div>
+              <div class="d2">
+                <div class="l"><span class="inv"> MEME FACTORY </span>  <span class="ok">✓ 3 drafts</span></div>
+                <div class="l"><span class="d">1: ○ Drake 9</span>  <span class="s b">2: ● Fine 7</span>  <span class="d">3: ○ Distracted 8</span></div>
+                <div class="l"><span class="d">▎</span>Minute 38 of the 15-minute standup</div>
+                <div class="l">a: Approve  r: Remix  c: Copy  v: Browser</div>
+                <div class="l"><span class="s">factory</span> Remixed all three.</div>
+                <div class="l">Say: <span class="d">meaner · use 2 · post to #social</span></div>
+              </div>
+              <div class="d3">
+                <div class="l"><span class="inv"> MEME FACTORY </span>  <span class="ok">✓ Approved · This is Fine</span></div>
+                <div class="l"><span class="d">▎</span>Minute 38 of the 15-minute standup</div>
+                <div class="l">Post to: <span class="b">★ #social</span> <span class="d">▾</span>  1: ★ #social  2: ★ #eng-fun</div>
+                <div class="l">p: Post   b: Back   c: Copy   n: New</div>
+                <div class="l"><span class="s">factory</span> Approved. Where should it go?</div>
+                <div class="l">Say: <span class="d">post it to #social</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="prompt l"><span class="d">&gt;</span> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cap-rail">
+    <div class="cap" id="cap1">Fits wherever you work</div>
+    <div class="cap" id="cap2">Same keys everywhere</div>
+  </div>
+  <div class="keys">
+    <div class="key" id="k2"><b>2</b></div>
+    <div class="key" id="ka"><b>a</b></div>
+  </div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const m = mf(tl);
+  const states = ['.d1', '.d2', '.d3'];
+  m.only(states, '.d1', 0);
+
+  // The three surfaces deal in from the right, one after another.
+  ['#sa', '#sb', '#sc'].forEach((s, i) => {
+    tl.fromTo(s, { x: 1500, opacity: 0 }, { x: 0, opacity: 1, duration: 0.65, ease: 'power4.out' }, 0.15 + i * 0.15);
+  });
+  m.caption('#cap1', 0.5, 3.9);
+
+  // One key, three panels.
+  const press = (k, state, at) => {
+    m.key(k, at);
+    m.only(states, state, at);
+    tl.fromTo(state, { y: 8 }, { y: 0, duration: 0.25, ease: 'power3.out' }, at);
+  };
+  press('#k2', '.d2', 2.4);
+  m.caption('#cap2', 4.1, 7.7);
+  press('#ka', '.d3', 4.6);
+
+  window.__timelines['anywhere'] = tl;
+</script>
+</body>
+</html>

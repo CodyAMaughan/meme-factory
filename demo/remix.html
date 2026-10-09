@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920, height=1080" />
+<title>Meme Factory: remix in plain words</title>
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/mf.js"></script>
+<link rel="stylesheet" href="assets/mf.css" />
+<style>
+  @font-face { font-family: 'Anton'; font-weight: 400; font-display: block; src: url('assets/fonts/Anton-400.woff2') format('woff2'); }
+  @font-face { font-family: 'Archivo'; font-weight: 400; font-display: block; src: url('assets/fonts/Archivo-400.woff2') format('woff2'); }
+  @font-face { font-family: 'Archivo'; font-weight: 600; font-display: block; src: url('assets/fonts/Archivo-600.woff2') format('woff2'); }
+  @font-face { font-family: 'Archivo'; font-weight: 800; font-display: block; src: url('assets/fonts/Archivo-800.woff2') format('woff2'); }
+  @font-face { font-family: 'JetBrains Mono'; font-weight: 400; font-display: block; src: url('assets/fonts/JetBrainsMono-400.woff2') format('woff2'); }
+  @font-face { font-family: 'JetBrains Mono'; font-weight: 700; font-display: block; src: url('assets/fonts/JetBrainsMono-700.woff2') format('woff2'); }
+  .solo .meme-box { height: 340px; }
+  .chat-lines { height: 102px; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="remix" data-start="0" data-duration="8" data-width="1920" data-height="1080">
+  <div id="cam" class="cam">
+    <div class="solo">
+      <div class="pane">
+        <span class="pane-x">✕</span>
+        <div class="pane-head"><div class="l"><span class="inv"> MEME FACTORY </span>  <span class="d">standups that run long</span></div></div>
+        <div class="state">
+          <div class="stack">
+            <div class="l" id="tab1"><span class="s b">1: ● Drake 8</span>   <span class="d">2: ○ This is Fine 7   3: ○ Distracted 7</span></div>
+            <div class="l" id="tab2"><span class="s b">1: ● Drake 9</span>   <span class="d">2: ○ This is Fine 7   3: ○ Distracted 8</span></div>
+            <div class="l" id="tab3"><span class="d">1: ○ Drake 9</span>   <span class="s b">2: ● This is Fine 7</span>   <span class="d">3: ○ Distracted 8</span></div>
+            <div class="l" id="tab4"><span class="d">○ ○ ○</span>   <span class="w">● Write</span>   <span class="d">new formats…</span></div>
+            <div class="l" id="tab5"><span class="s b">1: ● Change Mind 9</span>   <span class="d">2: ○ Drake 9   3: ○ Fine 7</span></div>
+          </div>
+          <div class="meme-box">
+            <img id="m1" src="assets/memes/drake.jpg" alt="Drake: keeping standup to 15 minutes / debating the sprint name for 40" />
+            <img id="m2" src="assets/memes/drake-meaner.jpg" alt="Drake: a 15-minute standup / the PM's 45-minute quick sync" />
+            <img id="m3" src="assets/memes/fine.jpg" alt="This is fine: minute 38 of the 15-minute standup" />
+            <img id="m5" src="assets/memes/cmm.jpg" alt="Change my mind: standups should be an email" />
+          </div>
+          <div class="stack" style="height: 68px">
+            <div id="c1"><div class="l quote">Keeping standup to 15 minutes</div><div class="l quote">Debating the sprint name for 40</div></div>
+            <div id="c2"><div class="l quote">A 15-minute standup</div><div class="l quote">The PM's 45-minute "quick sync"</div></div>
+            <div id="c3"><div class="l quote">Minute 38 of the 15-minute standup</div></div>
+            <div id="c5"><div class="l quote">Standups should be an email</div></div>
+          </div>
+          <div class="l" style="margin-top: 10px">a: Approve  r: Remix  c: Copy  v: Browser  t: Talk</div>
+        </div>
+        <div class="chatbox">
+          <div class="l d">─────────────────────────────────────────────────────────────</div>
+          <div class="stack chat-lines">
+            <div id="ch1"><div class="l"><span class="d">    you</span> meaner, make it about the PM</div><div class="l"><span class="s">factory</span> Remixed all three. Sharper PM angle.</div></div>
+            <div id="ch2"><div class="l"><span class="d">    you</span> use 2</div><div class="l"><span class="s">factory</span> Showing This is Fine.</div></div>
+            <div id="ch3"><div class="l"><span class="d">    you</span> different format</div><div class="l"><span class="s">factory</span> New templates, coming up.</div></div>
+          </div>
+          <div class="l">Say: <span id="ph" class="d">meaner · use 2 · approve · post to #social</span><span id="s1"></span><span id="s2"></span><span id="s3"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cap-rail">
+    <div class="cap" id="cap1">Tell it what would be funnier</div>
+    <div class="cap" id="cap2">Or which one you want</div>
+    <div class="cap" id="cap3">Or try other formats</div>
+  </div>
+  <div class="keys">
+    <div class="key" id="k1"><b class="wide">⏎</b></div>
+    <div class="key" id="k2"><b class="wide">⏎</b></div>
+    <div class="key" id="k3"><b class="wide">⏎</b></div>
+  </div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const m = mf(tl);
+  const tabs = ['#tab1', '#tab2', '#tab3', '#tab4', '#tab5'];
+  const memes = ['#m1', '#m2', '#m3', '#m5'];
+  const caps = ['#c1', '#c2', '#c3', '#c5'];
+  const chats = ['#ch1', '#ch2', '#ch3'];
+  m.only(tabs, '#tab1', 0);
+  m.only(memes, '#m1', 0);
+  m.only(caps, '#c1', 0);
+  chats.forEach((c) => m.hide(c, 0));
+  tl.fromTo('#cam', { scale: 1.18 }, { scale: 1.18, duration: 0.01 }, 0);
+
+  // Each message: the placeholder goes, the words type, Enter sends, the reply lands, the drafts change.
+  function say(id, text, at, keySel, chatSel, after) {
+    tl.set('#ph', { display: 'none' }, at);
+    const end = m.type(id, text, at + 0.05, 0.035);
+    m.key(keySel, end + 0.15);
+    tl.set(id, { display: 'none' }, end + 0.15);
+    tl.set('#ph', { display: 'inline' }, end + 0.15);
+    m.only(chats, chatSel, end + 0.3);
+    tl.fromTo(chatSel, { y: 12 }, { y: 0, duration: 0.25, ease: 'power2.out' }, end + 0.3);
+    after(end + 0.75);
+  }
+  const punch = (sel, at) => tl.fromTo(sel, { scale: 1.08 }, { scale: 1, duration: 0.35, ease: 'power3.out' }, at);
+
+  m.caption('#cap1', 0.2, 2.9);
+  say('#s1', 'meaner, make it about the PM', 0.4, '#k1', '#ch1', (t) => {
+    m.only(tabs, '#tab2', t);
+    m.only(memes, '#m2', t);
+    m.only(caps, '#c2', t);
+    punch('#m2', t);
+  });
+
+  m.caption('#cap2', 3.1, 4.8);
+  say('#s2', 'use 2', 3.2, '#k2', '#ch2', (t) => {
+    m.only(tabs, '#tab3', t);
+    m.only(memes, '#m3', t);
+    m.only(caps, '#c3', t);
+    punch('#m3', t);
+  });
+
+  m.caption('#cap3', 5.0, 7.7);
+  say('#s3', 'different format', 5.1, '#k3', '#ch3', (t) => {
+    m.only(tabs, '#tab4', t);
+    tl.to('#m3', { opacity: 0.2, duration: 0.2 }, t);
+    m.only(tabs, '#tab5', t + 0.8);
+    m.only(memes, '#m5', t + 0.8);
+    m.only(caps, '#c5', t + 0.8);
+    tl.set('#m5', { opacity: 1 }, t + 0.8);
+    punch('#m5', t + 0.8);
+  });
+
+  window.__timelines['remix'] = tl;
+</script>
+</body>
+</html>

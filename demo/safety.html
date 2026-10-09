@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920, height=1080" />
+<title>Meme Factory: nothing posts without you</title>
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/mf.js"></script>
+<link rel="stylesheet" href="assets/mf.css" />
+<style>
+  @font-face { font-family: 'Anton'; font-weight: 400; font-display: block; src: url('assets/fonts/Anton-400.woff2') format('woff2'); }
+  @font-face { font-family: 'Archivo'; font-weight: 400; font-display: block; src: url('assets/fonts/Archivo-400.woff2') format('woff2'); }
+  @font-face { font-family: 'Archivo'; font-weight: 600; font-display: block; src: url('assets/fonts/Archivo-600.woff2') format('woff2'); }
+  @font-face { font-family: 'Archivo'; font-weight: 800; font-display: block; src: url('assets/fonts/Archivo-800.woff2') format('woff2'); }
+  @font-face { font-family: 'JetBrains Mono'; font-weight: 400; font-display: block; src: url('assets/fonts/JetBrainsMono-400.woff2') format('woff2'); }
+  @font-face { font-family: 'JetBrains Mono'; font-weight: 700; font-display: block; src: url('assets/fonts/JetBrainsMono-700.woff2') format('woff2'); }
+  .transcript { width: 1100px; }
+  .ask { width: 1000px; }
+  .opts { position: relative; height: 68px; }
+  .opts > * { position: absolute; left: 0; top: 0; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="safety" data-start="0" data-duration="7" data-width="1920" data-height="1080">
+  <div id="cam" class="cam">
+    <div class="term">
+      <div class="term-bar"><i></i><i></i><i></i><span>claude · ~/work/api · auto mode</span></div>
+      <div class="term-body">
+        <div class="transcript">
+          <div class="l d">✻ Claude Code</div>
+          <div class="l"><span class="ok">⏺</span> Posted to #social. Anywhere else?</div>
+          <div class="l"> </div>
+          <div class="l"><span class="d">&gt; </span><span id="typed"></span></div>
+          <div class="l" id="call"><span class="ok">⏺</span> linkedin · create_post <span class="d">(MCP)</span></div>
+          <div class="l d" id="args">  text: "Standups, accurately. https://api.memegen.link/images/drake/…"</div>
+          <div class="ask" id="ask">
+            <div class="l b">Meme Factory: let Claude post this meme with create_post?</div>
+            <div class="opts">
+              <div id="o1"><div class="l"><span class="s">❯ 1. Post it</span></div><div class="l">  2. Don't post</div></div>
+              <div id="o2"><div class="l">  1. Post it</div><div class="l"><span class="s">❯ 2. Don't post</span></div></div>
+            </div>
+          </div>
+          <div class="l" id="res1"><span class="d">  ⎿  </span><span class="e">Declined: the user didn't approve posting this meme.</span></div>
+          <div class="l" id="res2"><span class="ok">⏺</span> Got it. I won't post it to LinkedIn.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cap-rail">
+    <div class="cap" id="cap1">Nothing posts without you</div>
+    <div class="cap" id="cap2">Even in auto mode</div>
+  </div>
+  <div class="keys">
+    <div class="key" id="k1"><b class="wide">⏎</b></div>
+    <div class="key" id="k2"><b>↓</b></div>
+    <div class="key" id="k3"><b class="wide">⏎</b></div>
+  </div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const m = mf(tl);
+  ['#call', '#args', '#ask', '#res1', '#res2'].forEach((s) => m.hide(s, 0));
+  m.only(['#o1', '#o2'], '#o1', 0);
+  tl.set('#cam', { scale: 1.45, x: 440, y: 240 }, 0);
+
+  m.caption('#cap1', 0.3, 4.2);
+  const end = m.type('#typed', 'post it to my LinkedIn too', 0.4, 0.04);
+  m.key('#k1', end + 0.2);
+  m.show('#call', end + 0.45);
+  m.show('#args', end + 0.65);
+  // Claude Code's own prompt holds the call.
+  m.pop('#ask', end + 1.0, 0.94);
+  m.key('#k2', 3.3);
+  m.only(['#o1', '#o2'], '#o2', 3.3);
+  m.key('#k3', 4.0);
+  // The prompt closes and the result takes its place.
+  tl.set('#ask', { display: 'none' }, 4.1);
+  m.show('#res1', 4.15);
+  m.show('#res2', 4.6);
+  m.caption('#cap2', 4.4, 6.7);
+
+  window.__timelines['safety'] = tl;
+</script>
+</body>
+</html>

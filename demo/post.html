@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920, height=1080" />
+<title>Meme Factory: post to a real channel</title>
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/mf.js"></script>
+<link rel="stylesheet" href="assets/mf.css" />
+<style>
+  @font-face { font-family: 'Anton'; font-weight: 400; font-display: block; src: url('assets/fonts/Anton-400.woff2') format('woff2'); }
+  @font-face { font-family: 'Archivo'; font-weight: 400; font-display: block; src: url('assets/fonts/Archivo-400.woff2') format('woff2'); }
+  @font-face { font-family: 'Archivo'; font-weight: 600; font-display: block; src: url('assets/fonts/Archivo-600.woff2') format('woff2'); }
+  @font-face { font-family: 'Archivo'; font-weight: 800; font-display: block; src: url('assets/fonts/Archivo-800.woff2') format('woff2'); }
+  @font-face { font-family: 'JetBrains Mono'; font-weight: 400; font-display: block; src: url('assets/fonts/JetBrainsMono-400.woff2') format('woff2'); }
+  @font-face { font-family: 'JetBrains Mono'; font-weight: 700; font-display: block; src: url('assets/fonts/JetBrainsMono-700.woff2') format('woff2'); }
+  .dropdown { position: absolute; left: 0; right: 0; top: 34px; z-index: 5; transform-origin: 108px 0; }
+  .postto { position: relative; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="post" data-start="0" data-duration="9" data-width="1920" data-height="1080">
+  <div id="cam" class="cam">
+    <div class="solo">
+      <div class="pane">
+        <span class="pane-x">✕</span>
+        <div class="pane-head stack">
+          <div class="l" id="h1"><span class="inv"> MEME FACTORY </span>  <span class="ok">✓ Approved · Drake</span></div>
+          <div class="l" id="h2"><span class="inv"> MEME FACTORY </span>  <span class="w">● Posting · Drake</span></div>
+          <div class="l" id="h3"><span class="inv"> MEME FACTORY </span>  <span class="ok">✓ Posted · Drake</span></div>
+        </div>
+
+        <div class="state" id="st-pick">
+          <div class="thumb"><img src="assets/memes/drake-meaner.jpg" alt="Drake: a 15-minute standup / the PM's 45-minute quick sync" /></div>
+          <div class="l quote">A 15-minute standup</div>
+          <div class="l quote">The PM's 45-minute "quick sync"</div>
+          <div class="postto" style="margin-top: 12px">
+            <div class="stack">
+              <div class="l" id="pt1">Post to: <span class="b">★ #social</span> <span class="d">▾</span></div>
+              <div class="l" id="pt2">Post to: <span class="b">★ #eng-fun</span> <span class="d">▾</span></div>
+            </div>
+            <div class="dropdown" id="dd">
+              <div class="stack" style="height: 250px">
+                <div class="menu" id="menu1">
+                  <div class="l on"><span>★ #social</span><span>Slack</span></div>
+                  <div class="l"><span>★ #eng-fun</span><span class="d">Slack</span></div>
+                  <div class="l"><span>#random</span><span class="d">Slack</span></div>
+                  <div class="l"><span>#general</span><span class="d">Slack</span></div>
+                  <div class="l"><span>LinkedIn</span><span class="d">through Claude</span></div>
+                  <div class="l d"><span>+ Add a connector…</span></div>
+                </div>
+                <div class="menu" id="menu2">
+                  <div class="l"><span>★ #social</span><span class="d">Slack</span></div>
+                  <div class="l on"><span>★ #eng-fun</span><span>Slack</span></div>
+                  <div class="l"><span>#random</span><span class="d">Slack</span></div>
+                  <div class="l"><span>#general</span><span class="d">Slack</span></div>
+                  <div class="l"><span>LinkedIn</span><span class="d">through Claude</span></div>
+                  <div class="l d"><span>+ Add a connector…</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="under">
+          <div class="stack">
+            <div class="l" id="qp1"><span class="s">1: ★ #social</span>   <span class="d">2: ★ #eng-fun   3: #random</span></div>
+            <div class="l" id="qp2"><span class="d">1: ★ #social</span>   <span class="s">2: ★ #eng-fun</span>   <span class="d">3: #random</span></div>
+          </div>
+          <div class="stack">
+            <div class="l" id="ac1">p: Post to #social   b: Back   c: Copy   n: New</div>
+            <div class="l" id="ac2">p: Post to #eng-fun   b: Back   c: Copy   n: New</div>
+          </div>
+          <div class="l d">You confirm each post · change it in v → Settings</div>
+          </div>
+        </div>
+
+        <div class="state" id="st-confirm">
+          <div class="thumb"><img src="assets/memes/drake-meaner.jpg" alt="" /></div>
+          <div class="confirm-box" id="cbox">
+            <div class="l s b">Post to #eng-fun on Slack?</div>
+            <div class="l">y: Post it   n: Cancel</div>
+          </div>
+          <div class="l d">Signed "Fresh from the Meme Factory" · Settings in v</div>
+        </div>
+        <div class="state" id="st-posting">
+          <div class="l w">● Posting to #eng-fun on Slack…</div>
+          <div class="l d">Uploading the image. Keep working.</div>
+        </div>
+        <div class="state" id="st-posted">
+          <div class="l ok">✓ Posted to #eng-fun on Slack</div>
+          <div class="l">o: Open in Slack   s: ★ Save   p: Post elsewhere</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="landed" class="cam">
+    <div class="chat-card" id="card">
+      <div class="chat-head"># eng-fun <small>34 members</small></div>
+      <div class="chat-msg">
+        <div class="avatar">Y</div>
+        <div>
+          <div class="who">You <small>10:44 AM</small></div>
+          <div class="text">Fresh from the <u>Meme Factory</u></div>
+          <div class="pic"><img src="assets/memes/drake-meaner.jpg" alt="" /></div>
+          <div class="reacts"><span class="react" id="re1">😂 6</span><span class="react" id="re2">💯 3</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cap-rail">
+    <div class="cap" id="cap1">Pick a real channel</div>
+    <div class="cap" id="cap2">You confirm first</div>
+    <div class="cap" id="cap3">Posted, with the picture</div>
+  </div>
+  <div class="keys">
+    <div class="key" id="k1"><b class="wide">⏎</b></div>
+    <div class="key" id="k2"><b>↓</b></div>
+    <div class="key" id="k3"><b class="wide">⏎</b></div>
+    <div class="key" id="k4"><b>p</b></div>
+    <div class="key" id="k5"><b>y</b></div>
+  </div>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const m = mf(tl);
+  const heads = ['#h1', '#h2', '#h3'];
+  const states = ['#st-pick', '#st-confirm', '#st-posting', '#st-posted'];
+  m.only(heads, '#h1', 0);
+  m.only(states, '#st-pick', 0);
+  m.only(['#pt1', '#pt2'], '#pt1', 0);
+  m.only(['#qp1', '#qp2'], '#qp1', 0);
+  m.only(['#ac1', '#ac2'], '#ac1', 0);
+  m.only(['#menu1', '#menu2'], '#menu1', 0);
+  m.hide('#dd', 0);
+  m.hide('#landed', 0);
+  tl.set('#cam', { scale: 1.18 }, 0);
+
+  // Open the list, move down, choose.
+  m.caption('#cap1', 0.2, 2.8);
+  m.key('#k1', 0.8);
+  // The open list covers the lines under it, as the terminal draws it.
+  m.hide('#under', 0.8);
+  m.show('#under', 2.2);
+  tl.fromTo('#dd', { opacity: 0, scaleY: 0.6 }, { opacity: 1, scaleY: 1, duration: 0.22, ease: 'power3.out' }, 0.8);
+  m.key('#k2', 1.5);
+  m.only(['#menu1', '#menu2'], '#menu2', 1.5);
+  m.key('#k3', 2.2);
+  tl.to('#dd', { opacity: 0, duration: 0.15 }, 2.2);
+  m.only(['#pt1', '#pt2'], '#pt2', 2.2);
+  m.only(['#qp1', '#qp2'], '#qp2', 2.2);
+  m.only(['#ac1', '#ac2'], '#ac2', 2.2);
+
+  // Post, confirm.
+  m.key('#k4', 2.95);
+  m.only(states, '#st-confirm', 2.95);
+  m.pop('#cbox', 2.95, 0.94);
+  m.caption('#cap2', 3.0, 4.6);
+  m.key('#k5', 3.9);
+  m.only(heads, '#h2', 3.9);
+  m.only(states, '#st-posting', 3.9);
+  m.only(heads, '#h3', 4.5);
+  m.only(states, '#st-posted', 4.5);
+
+  // It lands.
+  m.caption('#cap3', 4.8, 8.7);
+  tl.to('#cam', { x: -2100, duration: 0.5, ease: 'power4.in' }, 5.0);
+  m.show('#landed', 5.4);
+  tl.fromTo('#card', { x: 1100 }, { x: 0, duration: 0.6, ease: 'power4.out' }, 5.4);
+  tl.fromTo('#re1', { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: 'back.out(2)' }, 6.4);
+  tl.fromTo('#re2', { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: 'back.out(2)' }, 6.8);
+
+  window.__timelines['post'] = tl;
+</script>
+</body>
+</html>

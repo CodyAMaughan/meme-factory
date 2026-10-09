@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920, height=1080" />
+<title>Meme Factory: the browser gallery</title>
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/mf.js"></script>
+<link rel="stylesheet" href="assets/mf.css" />
+<style>
+  @font-face { font-family: 'Anton'; font-weight: 400; font-display: block; src: url('assets/fonts/Anton-400.woff2') format('woff2'); }
+  @font-face { font-family: 'Archivo'; font-weight: 400; font-display: block; src: url('assets/fonts/Archivo-400.woff2') format('woff2'); }
+  @font-face { font-family: 'Archivo'; font-weight: 600; font-display: block; src: url('assets/fonts/Archivo-600.woff2') format('woff2'); }
+  @font-face { font-family: 'Archivo'; font-weight: 800; font-display: block; src: url('assets/fonts/Archivo-800.woff2') format('woff2'); }
+  @font-face { font-family: 'JetBrains Mono'; font-weight: 400; font-display: block; src: url('assets/fonts/JetBrainsMono-400.woff2') format('woff2'); }
+  @font-face { font-family: 'JetBrains Mono'; font-weight: 700; font-display: block; src: url('assets/fonts/JetBrainsMono-700.woff2') format('woff2'); }
+  .solo .meme-box { height: 340px; }
+  .steps .stack { height: 22px; width: 520px; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="gallery" data-start="0" data-duration="8" data-width="1920" data-height="1080">
+
+  <!-- The panel, where v opens the browser. -->
+  <div id="cam" class="cam">
+    <div class="solo">
+      <div class="pane">
+        <span class="pane-x">✕</span>
+        <div class="pane-head"><div class="l"><span class="inv"> MEME FACTORY </span>  <span class="d">standups that run long</span></div></div>
+        <div class="state">
+          <div class="l"><span class="s b">1: ● Drake 9</span>   <span class="d">2: ○ This is Fine 7   3: ○ Distracted 8</span></div>
+          <div class="meme-box"><img src="assets/memes/drake-meaner.jpg" alt="" /></div>
+          <div class="l quote">A 15-minute standup</div>
+          <div class="l quote">The PM's 45-minute "quick sync"</div>
+          <div class="l" style="margin-top: 10px">a: Approve  r: Remix  c: Copy  <span class="s b">v: Browser</span>  t: Talk</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- The browser gallery. The dark copy is cloned from the light one at build time. -->
+  <div id="bcam" class="cam">
+    <div class="browser" id="browser">
+      <div class="browser-bar"><i></i><i></i><i></i><div class="url">127.0.0.1:52817</div></div>
+      <div class="gal" id="gal-light">
+        <div class="gal-head">
+          <div class="gal-sticker"><span>MEME FACTORY</span></div>
+          <div class="gal-req">when the standup was supposed to be 15 minutes</div>
+          <div class="steps">
+            <div class="stack">
+              <div class="st-a"><span><b>✓</b>Write</span>  <span><b>✓</b>Judge</span>  <span><b>✓</b>Render</span>  <span class="now"><b></b>Pick</span>  <span><b style="background: none; border: 2px solid #cfccd4"></b>Post</span></div>
+              <div class="st-b"><span><b>✓</b>Write</span>  <span><b>✓</b>Judge</span>  <span><b>✓</b>Render</span>  <span><b>✓</b>Pick</span>  <span class="now"><b></b>Post</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="gal-main">
+          <div class="gal-content">
+            <h2>Pick one</h2>
+            <div class="gal-cards">
+              <div class="gal-card">
+                <div class="ring pk1"></div>
+                <span class="tag picked pk1">PICKED</span>
+                <span class="tag top">TOP SCORE</span>
+                <div class="img"><img src="assets/memes/drake-meaner.jpg" alt="" /></div>
+                <div class="foot"><span class="kbd">1</span><span>Drake</span><span>9/10</span></div>
+              </div>
+              <div class="gal-card">
+                <div class="ring pk2"></div>
+                <span class="tag picked pk2">PICKED</span>
+                <div class="img"><img src="assets/memes/fine.jpg" alt="" /></div>
+                <div class="foot"><span class="kbd">2</span><span>This is Fine</span><span>7/10</span></div>
+                <div class="approved-stamp"><span class="stamp">✓ APPROVED</span></div>
+              </div>
+              <div class="gal-card">
+                <div class="img"><img src="assets/memes/db.jpg" alt="" /></div>
+                <div class="foot"><span class="kbd">3</span><span>Distracted</span><span>8/10</span></div>
+              </div>
+            </div>
+            <div class="gal-btn btn"><span class="stack"><span class="lb1">Approve Drake</span><span class="lb2">Approve This is Fine</span></span><span class="kbd">A</span></div>
+          </div>
+          <div class="gal-chat">
+            <h3>Talk to the factory</h3>
+            <div class="who">YOU</div>
+            <div>meaner, make it about the PM</div>
+            <div class="who">FACTORY</div>
+            <div>Remixed all three. Sharper PM angle.</div>
+            <div class="chips"><span>meaner</span><span>different format</span><span>use 2</span><span>approve it</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cursor" id="cursor"><svg viewBox="0 0 28 36"><path d="M3 2 L3 29 L9.5 23 L14 33.5 L18.5 31.5 L14 21.5 L23 21.5 Z" fill="#fff" stroke="#19141f" stroke-width="2" stroke-linejoin="round"/></svg></div>
+
+  <div class="cap-rail">
+    <div class="cap" id="cap1">Press v for the browser gallery</div>
+    <div class="cap" id="cap2">Same flow, bigger pictures</div>
+    <div class="cap" id="cap3">Light or dark, it follows your system</div>
+  </div>
+  <div class="keys"><div class="key" id="kv"><b>v</b></div></div>
+</div>
+<script>
+  // The dark copy: same markup, dark palette, revealed by a wipe.
+  const light = document.getElementById('gal-light');
+  const dark = light.cloneNode(true);
+  dark.id = 'gal-dark';
+  dark.classList.add('dark');
+  // During the wipe the light copy sits under the dark one on purpose.
+  [light, dark].forEach((g) =>
+    g.querySelectorAll('*').forEach((n) => {
+      n.setAttribute('data-layout-allow-occlusion', '');
+      n.setAttribute('data-layout-allow-overlap', '');
+    }),
+  );
+  light.after(dark);
+
+  const tl = gsap.timeline({ paused: true });
+  const m = mf(tl);
+  m.only(['.pk1', '.pk2'], '.pk1', 0);
+  m.only(['.lb1', '.lb2'], '.lb1', 0);
+  m.only(['.st-a', '.st-b'], '.st-a', 0);
+  m.hide('.approved-stamp', 0);
+  tl.set('#gal-dark', { clipPath: 'circle(0px at 650px 440px)' }, 0);
+  tl.set('#cam', { scale: 1.18 }, 0);
+  tl.set('#bcam', { x: 2000, scale: 1.12 }, 0);
+  tl.set('#cursor', { x: 2000, y: 1200 }, 0);
+
+  // v: the panel leaves left, the browser arrives from the right.
+  m.caption('#cap1', 0.2, 1.8);
+  m.key('#kv', 1.0);
+  tl.to('#cam', { x: -2100, duration: 0.45, ease: 'power4.in' }, 1.1);
+  tl.fromTo('#bcam', { x: 2000 }, { x: 0, duration: 0.6, ease: 'power4.out' }, 1.5);
+
+  // The cursor picks draft 2, then approves it.
+  m.caption('#cap2', 2.0, 5.0);
+  m.cursorTo('#cursor', 602, 425, 2.9, 0.7);
+  m.only(['.pk1', '.pk2'], '.pk2', 2.9);
+  m.only(['.lb1', '.lb2'], '.lb2', 2.9);
+  tl.fromTo('.pk2.tag', { y: -10 }, { y: 0, duration: 0.25, ease: 'back.out(2)' }, 2.9);
+  m.cursorTo('#cursor', 262, 740, 3.9, 0.6);
+  m.only(['.st-a', '.st-b'], '.st-b', 3.9);
+  tl.fromTo('.approved-stamp', { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: 'power4.out' }, 3.95);
+
+  // Light to dark: a wipe from where the cursor clicked.
+  m.caption('#cap3', 5.1, 7.7);
+  tl.to('#cursor', { x: 1500, y: 300, duration: 0.6, ease: 'power3.inOut' }, 4.5);
+  tl.fromTo('#gal-dark', { clipPath: 'circle(0px at 650px 440px)' }, { clipPath: 'circle(1900px at 650px 440px)', duration: 0.9, ease: 'power3.inOut' }, 5.2);
+  tl.to('#cursor', { x: 2000, y: 1200, duration: 0.6, ease: 'power3.in' }, 6.6);
+  m.hide('#gal-light', 6.15);
+
+  window.__timelines['gallery'] = tl;
+</script>
+</body>
+</html>

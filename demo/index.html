@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920, height=1080" />
+<title>Meme Factory: the whole flow</title>
+<script src="assets/vendor/gsap.min.js"></script>
+<link rel="stylesheet" href="assets/mf.css" />
+<style>
+  @font-face { font-family: 'Anton'; font-weight: 400; font-display: block; src: url('assets/fonts/Anton-400.woff2') format('woff2'); }
+  @font-face { font-family: 'Archivo'; font-weight: 400; font-display: block; src: url('assets/fonts/Archivo-400.woff2') format('woff2'); }
+  @font-face { font-family: 'Archivo'; font-weight: 600; font-display: block; src: url('assets/fonts/Archivo-600.woff2') format('woff2'); }
+  @font-face { font-family: 'Archivo'; font-weight: 800; font-display: block; src: url('assets/fonts/Archivo-800.woff2') format('woff2'); }
+  @font-face { font-family: 'JetBrains Mono'; font-weight: 400; font-display: block; src: url('assets/fonts/JetBrainsMono-400.woff2') format('woff2'); }
+  @font-face { font-family: 'JetBrains Mono'; font-weight: 700; font-display: block; src: url('assets/fonts/JetBrainsMono-700.woff2') format('woff2'); }
+  .stack { position: relative; height: 34px; }
+  .stack > * { position: absolute; left: 0; top: 0; }
+  #lockup { flex-direction: column; gap: 46px; }
+  #lockup .sub { font: 600 40px var(--ui); color: var(--paper); }
+  #lockup .url { all: unset; font: 400 30px var(--mono); color: var(--hi); }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="20" data-width="1920" data-height="1080">
+
+  <!-- Scenes 1-5: the terminal, with the pane docking in. -->
+  <div id="cam" class="cam" data-layout-allow-overflow>
+    <div id="term" class="term">
+      <div class="term-bar"><i></i><i></i><i></i><span>claude · ~/work/api</span></div>
+      <div class="term-body">
+        <div class="transcript">
+          <div class="l d">✻ Claude Code</div>
+          <div class="l"> </div>
+          <div class="l" id="t-p1"><span class="d">&gt; </span>make a meme about standups that run long</div>
+          <div class="l" id="t-call"><span class="ok">⏺</span> make_meme(<span class="s">standups that run long</span>)</div>
+          <div class="l d" id="t-res">  ⎿  Drafting in the Meme Factory panel.</div>
+          <div class="l"> </div>
+          <div class="l" id="t-p2"><span class="d">&gt; </span>fix the flaky retry test</div>
+          <div class="l" id="t-r1"><span class="ok">⏺</span> Read(queue.spec.ts)</div>
+          <div class="l d" id="t-r2">  ⎿  Read 212 lines</div>
+          <div class="l" id="t-r3"><span class="ok">⏺</span> The retry waits on a real timer.</div>
+          <div class="l" id="t-r4">  Faking the clock instead.</div>
+          <div class="l" id="t-r5"><span class="ok">⏺</span> Update(queue.spec.ts)</div>
+          <div class="l d" id="t-r6">  ⎿  <span class="ok">+4</span> <span class="e">−2</span></div>
+          <div class="l" id="t-r7"><span class="ok">⏺</span> Bash(npm test)</div>
+          <div class="l" id="t-r8">  ⎿  <span class="ok">38 passed</span></div>
+        </div>
+        <div class="prompt-box"><div class="l"><span class="d" data-layout-allow-occlusion>&gt; </span><span id="typing1"></span><span id="typing2"></span><span class="caret" id="caret" data-layout-allow-occlusion></span></div></div>
+
+        <div class="pane" id="pane">
+          <span class="pane-x">✕</span>
+          <div class="pane-head stack">
+            <div class="l" id="h-req"><span class="inv"> MEME FACTORY </span>  <span class="d">standups that run long</span></div>
+            <div class="l" id="h-ok"><span class="inv"> MEME FACTORY </span>  <span class="ok">✓ Approved · Drake</span></div>
+            <div class="l" id="h-posting"><span class="inv"> MEME FACTORY </span>  <span class="w">● Posting · Drake</span></div>
+            <div class="l" id="h-posted"><span class="inv"> MEME FACTORY </span>  <span class="ok">✓ Posted · Drake</span></div>
+          </div>
+
+          <!-- Working: write, judge, render -->
+          <div class="state" id="st-work">
+            <div class="stack">
+              <div class="l" id="sg1"><span class="w">● Write</span>   <span class="d">○ Judge</span>   <span class="d">○ Render</span>   <span class="d">Writing captions…</span></div>
+              <div class="l" id="sg2"><span class="ok">✓ Write</span>   <span class="w">● Judge</span>   <span class="d">○ Render</span>   <span class="d">Judging…</span></div>
+              <div class="l" id="sg3"><span class="ok">✓ Write</span>   <span class="ok">✓ Judge</span>   <span class="w">● Render</span>   <span class="d">Rendering…</span></div>
+            </div>
+          </div>
+
+          <!-- Review -->
+          <div class="state" id="st-review">
+            <div class="stack">
+              <div class="l" id="tab1"><span class="s b">1: ● Drake 8</span>   <span class="d">2: ○ This is Fine 7   3: ○ Distracted 7</span></div>
+              <div class="l" id="tab2"><span class="d">1: ○ Drake 8</span>   <span class="s b">2: ● This is Fine 7</span>   <span class="d">3: ○ Distracted 7</span></div>
+              <div class="l" id="tab3"><span class="d">1: ○ Drake 8   2: ○ This is Fine 7</span>   <span class="s b">3: ● Distracted 7</span></div>
+              <div class="l" id="tab4"><span class="s b">1: ● Drake 9</span>   <span class="d">2: ○ This is Fine 7   3: ○ Distracted 8</span></div>
+            </div>
+            <div class="meme-box" id="memebox">
+              <img id="m-drake" src="assets/memes/drake.jpg" alt="Drake: keeping standup to 15 minutes / debating the sprint name for 40" />
+              <img id="m-fine" src="assets/memes/fine.jpg" alt="This is fine: minute 38 of the 15-minute standup" />
+              <img id="m-db" src="assets/memes/db.jpg" alt="Distracted boyfriend: me, the agenda, a quick tangent" />
+              <img id="m-mean" src="assets/memes/drake-meaner.jpg" alt="Drake: a 15-minute standup / the PM's 45-minute quick sync" />
+            </div>
+            <div class="stack" style="height: 68px">
+              <div id="c1"><div class="l quote">Keeping standup to 15 minutes</div><div class="l quote">Debating the sprint name for 40</div></div>
+              <div id="c2"><div class="l quote">Minute 38 of the 15-minute standup</div></div>
+              <div id="c3"><div class="l quote">A quick tangent / Me / The agenda</div></div>
+              <div id="c4"><div class="l quote">A 15-minute standup</div><div class="l quote">The PM's 45-minute "quick sync"</div></div>
+            </div>
+            <div class="l" style="margin-top: 10px">a: Approve  r: Remix  c: Copy  v: Browser  t: Talk</div>
+          </div>
+
+          <!-- Approved: choose where -->
+          <div class="state" id="st-approved">
+            <div class="thumb"><img src="assets/memes/drake-meaner.jpg" alt="" /></div>
+            <div class="l quote">A 15-minute standup</div>
+            <div class="l quote">The PM's 45-minute "quick sync"</div>
+            <div class="l" style="margin-top: 12px">Post to: <span class="b">★ #social</span> <span class="d">▾</span></div>
+            <div class="l"><span class="s">1: ★ #social</span>   <span class="d">2: ★ #eng-fun   3: #random</span></div>
+            <div class="l">p: Post to #social   b: Back   c: Copy   n: New</div>
+            <div class="l d">You confirm each post · change it in v → Settings</div>
+          </div>
+
+          <!-- Confirm, posting, posted -->
+          <div class="state" id="st-confirm">
+            <div class="thumb"><img src="assets/memes/drake-meaner.jpg" alt="" /></div>
+            <div class="confirm-box">
+              <div class="l s b">Post to #social on Slack?</div>
+              <div class="l">y: Post it   n: Cancel</div>
+            </div>
+          </div>
+          <div class="state" id="st-posting">
+            <div class="l w">● Posting to #social on Slack…</div>
+            <div class="l d">Uploading the image. Keep working.</div>
+          </div>
+          <div class="state" id="st-posted">
+            <div class="l ok">✓ Posted to #social on Slack</div>
+            <div class="l">o: Open in Slack   s: ★ Save   n: New meme</div>
+          </div>
+
+          <!-- Chat -->
+          <div class="chatbox">
+            <div class="l d">────────────────────────────────────────────────────────────</div>
+            <div class="stack" style="height: 68px">
+              <div id="chat1"><div class="l"><span class="d">    you</span> meaner, make it about the PM</div><div class="l"><span class="s">factory</span> Remixed all three. Sharper PM angle.</div></div>
+            </div>
+            <div class="l">Say: <span id="say-ph" class="d">meaner · use 2 · approve · post to #social</span><span id="say"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scene 6: it lands in the channel. -->
+  <div id="landed" class="cam">
+    <div class="chat-card" id="card">
+      <div class="chat-head"># social <small>12 members</small></div>
+      <div class="chat-msg">
+        <div class="avatar">Y</div>
+        <div>
+          <div class="who">You <small>10:42 AM</small></div>
+          <div class="text">Fresh from the <u>Meme Factory</u></div>
+          <div class="pic"><img src="assets/memes/drake-meaner.jpg" alt="" /></div>
+          <div class="reacts"><span class="react" id="re1">😂 4</span><span class="react" id="re2">💀 2</span><span class="react" id="re3">🔥 3</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scene 7: the lockup. -->
+  <div id="lockup" class="cam">
+    <div id="lock-pop"><div class="sticker-tilt"><div class="sticker"><span class="caption-type" style="font-size: 150px">Meme Factory</span></div></div></div>
+    <div class="sub" id="lock-sub">A Claude Code mod. Ask for a meme, keep working.</div>
+    <div class="url" id="lock-url">github.com/CodyAMaughan/meme-factory</div>
+  </div>
+
+  <div class="cap-rail">
+    <div class="cap" id="cap1">Ask Claude for a meme</div>
+    <div class="cap" id="cap2">It drafts on the side while you work</div>
+    <div class="cap" id="cap3">Pick one</div>
+    <div class="cap" id="cap4">Remix it in plain words</div>
+    <div class="cap" id="cap5">Approve. Post.</div>
+    <div class="cap" id="cap6">Lands in #social</div>
+  </div>
+
+  <div class="keys">
+    <div class="key" id="k-enter1"><b class="wide">⏎</b></div>
+    <div class="key" id="k-enter2"><b class="wide">⏎</b></div>
+    <div class="key" id="k-2"><b>2</b></div>
+    <div class="key" id="k-3"><b>3</b></div>
+    <div class="key" id="k-1"><b>1</b></div>
+    <div class="key" id="k-t"><b>t</b></div>
+    <div class="key" id="k-enter3"><b class="wide">⏎</b></div>
+    <div class="key" id="k-a"><b>a</b></div>
+    <div class="key" id="k-p"><b>p</b></div>
+    <div class="key" id="k-y"><b>y</b></div>
+  </div>
+</div>
+
+<script>
+  const tl = gsap.timeline({ paused: true });
+  const $ = (s) => document.querySelector(s);
+  const INK = '#19141f';
+
+  // Typing: one span per character, each shown at its own time (seek-safe).
+  function type(el, text, at, step = 0.045) {
+    el.textContent = '';
+    [...text].forEach((c, i) => {
+      const span = document.createElement('span');
+      span.className = 'ch';
+      span.textContent = c;
+      el.appendChild(span);
+      tl.set(span, { display: 'inline' }, at + i * step);
+    });
+    return at + text.length * step;
+  }
+  // A line or block that appears at a time.
+  const show = (sel, at) => tl.set(sel, { opacity: 1 }, at);
+  const hide = (sel, at) => tl.set(sel, { opacity: 0 }, at);
+  // Swap between members of a stack: everything off, one on.
+  function only(group, sel, at) {
+    group.forEach((g) => tl.set(g, { opacity: g === sel ? 1 : 0 }, at));
+  }
+  // A keycap pops, presses, and leaves; its press is the cause of what follows.
+  function key(sel, at) {
+    const cap = $(sel + ' b');
+    tl.fromTo(sel, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.18, ease: 'back.out(1.7)' }, at - 0.25);
+    tl.to(cap, { y: 8, boxShadow: `0 2px 0 ${INK}`, duration: 0.07, ease: 'power2.in' }, at - 0.07);
+    tl.to(cap, { y: 0, boxShadow: `0 10px 0 ${INK}`, duration: 0.14, ease: 'power2.out' }, at);
+    tl.to(sel, { opacity: 0, scale: 0.9, duration: 0.2, ease: 'power2.in' }, at + 0.45);
+  }
+  function caption(sel, inAt, outAt) {
+    tl.fromTo(sel, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power3.out' }, inAt);
+    tl.to(sel, { opacity: 0, y: -16, duration: 0.22, ease: 'power2.in' }, outAt);
+  }
+
+  // Initial state: hidden lines and states.
+  const lines = ['#t-p1', '#t-call', '#t-res', '#t-p2', '#t-r1', '#t-r2', '#t-r3', '#t-r4', '#t-r5', '#t-r6', '#t-r7', '#t-r8'];
+  lines.forEach((l) => tl.set(l, { opacity: 0 }, 0));
+  const heads = ['#h-req', '#h-ok', '#h-posting', '#h-posted'];
+  const states = ['#st-work', '#st-review', '#st-approved', '#st-confirm', '#st-posting', '#st-posted'];
+  const stages = ['#sg1', '#sg2', '#sg3'];
+  const tabs = ['#tab1', '#tab2', '#tab3', '#tab4'];
+  const memes = ['#m-drake', '#m-fine', '#m-db', '#m-mean'];
+  const caps = ['#c1', '#c2', '#c3', '#c4'];
+  only(heads, '#h-req', 0);
+  only(states, '#st-work', 0);
+  only(stages, '#sg1', 0);
+  only(tabs, '#tab1', 0);
+  only(memes, '#m-drake', 0);
+  only(caps, '#c1', 0);
+  hide('#chat1', 0);
+  hide('#landed', 0);
+  hide('#lockup', 0);
+
+  // 1 · Ask (0–3s). The camera starts close on the prompt.
+  const ON_PROMPT = { scale: 1.5, x: 609, y: -480 };
+  const ON_PANE = { scale: 1.25, x: -492, y: -20 };
+  tl.set('#cam', ON_PROMPT, 0);
+  caption('#cap1', 0.3, 2.7);
+  let t = type($('#typing1'), 'make a meme about standups that run long', 0.5);
+  key('#k-enter1', t + 0.25);
+  tl.set('#typing1', { display: 'none' }, t + 0.25);
+  show('#t-p1', t + 0.25);
+  show('#t-call', t + 0.55);
+  show('#t-res', t + 0.8);
+
+  // 2 · The pane docks while Claude keeps working (3–5.6s): pull back = arrival.
+  const dock = 3.0;
+  tl.fromTo('#cam', ON_PROMPT, { scale: 1, x: 0, y: 0, duration: 1.0, ease: 'power3.inOut' }, dock - 0.3);
+  tl.fromTo('#pane', { x: 880 }, { x: 0, duration: 0.8, ease: 'power3.out' }, dock + 0.15);
+  caption('#cap2', dock + 0.4, 5.5);
+  only(stages, '#sg2', 4.3);
+  only(stages, '#sg3', 5.0);
+  t = type($('#typing2'), 'fix the flaky retry test', 3.6, 0.04);
+  key('#k-enter2', t + 0.2);
+  tl.set('#typing2', { display: 'none' }, t + 0.2);
+  show('#t-p2', t + 0.2);
+  show('#t-r1', t + 0.5);
+  show('#t-r2', t + 0.75);
+  show('#t-r3', 7.2);
+  show('#t-r4', 7.4);
+  show('#t-r5', 9.0);
+  show('#t-r6', 9.3);
+  show('#t-r7', 11.3);
+  show('#t-r8', 12.1);
+
+  // 3 · Drafts land; pick one (5.6–9.4s).
+  const land = 5.6;
+  // Push into the pane: from here on it is the subject.
+  tl.to('#cam', { ...ON_PANE, duration: 0.7, ease: 'power3.inOut' }, land - 0.3);
+  only(states, '#st-review', land);
+  tl.fromTo('#memebox', { opacity: 0, y: 30, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: 'back.out(1.5)' }, land);
+  caption('#cap3', land + 0.3, 9.2);
+  const pick = (k, at, tab, meme, cap) => {
+    key(k, at);
+    only(tabs, tab, at);
+    only(caps, cap, at);
+    only(memes, meme, at);
+    tl.fromTo(meme, { scale: 0.96 }, { scale: 1, duration: 0.3, ease: 'back.out(1.6)' }, at);
+  };
+  pick('#k-2', 6.7, '#tab2', '#m-fine', '#c2');
+  pick('#k-3', 7.6, '#tab3', '#m-db', '#c3');
+  pick('#k-1', 8.5, '#tab1', '#m-drake', '#c1');
+
+  // 4 · Remix in plain words (9.4–12s).
+  caption('#cap4', 9.4, 11.9);
+  key('#k-t', 9.5);
+  tl.set('#say-ph', { display: 'none' }, 9.6);
+  t = type($('#say'), 'meaner, make it about the PM', 9.7, 0.035);
+  key('#k-enter3', t + 0.2);
+  tl.set('#say', { display: 'none' }, t + 0.2);
+  tl.set('#say-ph', { display: 'inline' }, t + 0.2);
+  tl.fromTo('#chat1', { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.25, ease: 'power2.out' }, t + 0.3);
+  // The stillness before the payoff, then the punch.
+  const remixed = t + 0.9;
+  only(memes, '#m-mean', remixed);
+  only(caps, '#c4', remixed);
+  only(tabs, '#tab4', remixed);
+  tl.fromTo('#m-mean', { scale: 1.08 }, { scale: 1, duration: 0.35, ease: 'power3.out' }, remixed);
+
+  // 5 · Approve, post, confirm (12–14.6s).
+  caption('#cap5', 12.1, 14.4);
+  key('#k-a', 12.3);
+  only(heads, '#h-ok', 12.3);
+  only(states, '#st-approved', 12.3);
+  key('#k-p', 13.1);
+  only(states, '#st-confirm', 13.1);
+  tl.fromTo('#st-confirm .confirm-box', { scale: 0.95, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: 'back.out(1.6)' }, 13.1);
+  key('#k-y', 14.0);
+  only(heads, '#h-posting', 14.0);
+  only(states, '#st-posting', 14.0);
+  only(heads, '#h-posted', 14.4);
+  only(states, '#st-posted', 14.4);
+
+  // 6 · It lands (14.8–17.4s). The terminal leaves left; the message arrives from the right.
+  tl.to('#cam', { x: -2100, duration: 0.5, ease: 'power4.in' }, 14.6);
+  show('#landed', 15.0);
+  tl.fromTo('#card', { x: 1100 }, { x: 0, duration: 0.6, ease: 'power4.out' }, 15.0);
+  caption('#cap6', 15.3, 17.3);
+  tl.fromTo('#re1', { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: 'back.out(2)' }, 16.0);
+  tl.fromTo('#re2', { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: 'back.out(2)' }, 16.35);
+  tl.fromTo('#re3', { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: 'back.out(2)' }, 16.7);
+
+  // 7 · Lockup (17.4–20s).
+  tl.to('#card', { x: -1500, duration: 0.45, ease: 'power4.in' }, 17.3);
+  show('#lockup', 17.7);
+  tl.fromTo('#lock-pop', { x: 900, rotation: 8 }, { x: 0, rotation: 0, duration: 0.55, ease: 'power4.out' }, 17.7);
+  tl.fromTo('#lock-sub', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out' }, 18.25);
+  tl.fromTo('#lock-url', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out' }, 18.5);
+
+  window.__timelines['main'] = tl;
+</script>
+</body>
+</html>
