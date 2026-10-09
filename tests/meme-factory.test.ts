@@ -130,7 +130,7 @@ function factory(on, rig: Rig = {}) {
   const saved = new Map<string, unknown>(rig.settings ? [['settings', rig.settings]] : [])
   const clock = mock.clock(on)
   on('session.start', () => ({ cwd: '/work' }))
-  on('env.get', ($, e) => ({ value: ({ HOME: '/Users/test', TERM_PROGRAM: rig.termProgram ?? 'ghostty', ...rig.env } as Record<string, string>)[e.name] }))
+  on('env.get', ($, e) => ({ value: ({ HOME: '/Users/test', TERM_PROGRAM: rig.termProgram ?? 'ghostty', MEMEGEN_URL: 'https://api.memegen.link', ...rig.env } as Record<string, string>)[e.name] }))
   on('tool.register', () => ({ value: undefined }))
   on('command.register', () => ({ value: undefined }))
   // A narrow terminal holds back a pane the mod opens on its own; one you open is placed at any width.
@@ -159,6 +159,7 @@ function factory(on, rig: Rig = {}) {
   if (rig.imgflip || rig.serverTemplates) {
     on('http.fetch', ($, e) => {
       log.fetched.push(e.url)
+      if (String(e.url).endsWith('/templates/') && e.init?.headers?.['X-Meme-Factory'] !== 'mf-open-2026') return { value: { status: 403, ok: false, headers: {}, text: '' } }
       const body =
         e.url === 'https://api.imgflip.com/get_memes' ? rig.imgflip
         : e.url === 'https://api.memegen.link/templates/' ? [{ id: 'drake', name: 'Drakeposting', lines: 2 }]
@@ -880,7 +881,7 @@ test('MEMEGEN_URL and MEMEGEN_API_KEY: memes render on your own server, unwaterm
   expect((link as any)?.props.href ?? '').not.toContain('sekrit')
 })
 
-test('without memegen settings, memes come from api.memegen.link with no key or watermark parameter', async ($, on) => {
+test('with MEMEGEN_URL set to memegen.link, memes come from there with no key or watermark parameter', async ($, on) => {
   const { clock, log } = factory(on)
   await draftsReady($, clock)
   const downloads = log.ran.filter((argv) => argv[0] === 'curl' && argv.includes('-o'))
@@ -1109,4 +1110,20 @@ test('a template taken back out leaves the catalog, the search and the writer', 
   expect(writerPrompt({ request: 'x' })[0].text).not.toContain('rm-me')
   // Its name is free again, so the server's own version can join.
   expect(addTemplates([{ id: 'rm-me-2', name: 'Zz Removable Meme', lines: 2, shape: 'reaction', core: 'x', slots: ['', ''], aliases: [], example: ['', ''] }])).toBe(1)
+})
+
+test("with no MEMEGEN_URL, the Meme Factory's own server is used, asked with the client key", async ($, on) => {
+  const { clock, log } = factory(on, { env: { MEMEGEN_URL: '' }, serverTemplates: [], imgflip: { success: false } })
+  await draftsReady($, clock)
+  expect(log.fetched).toContain('https://memegen-production-ff31.up.railway.app/templates/')
+  const downloads = log.ran.filter((argv) => argv[0] === 'curl' && argv.includes('-o'))
+  expect(downloads.every((argv) => argv.at(-1)!.startsWith('https://memegen-production-ff31.up.railway.app/images/'))).toBe(true)
+})
+
+test("if the Meme Factory's server is down, memes come from memegen.link instead", async ($, on) => {
+  const { clock, log } = factory(on, { env: { MEMEGEN_URL: '' } })
+  await draftsReady($, clock)
+  const downloads = log.ran.filter((argv) => argv[0] === 'curl' && argv.includes('-o'))
+  expect(downloads.length > 0).toBe(true)
+  expect(downloads.every((argv) => argv.at(-1)!.startsWith('https://api.memegen.link/images/'))).toBe(true)
 })

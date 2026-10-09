@@ -21,6 +21,8 @@ import {
   configureMemegen,
   downloadParams,
   memegenOrigin,
+  FACTORY_SERVER,
+  FACTORY_CLIENT_KEY,
   imgflipCandidates,
   serverCandidates,
   cardsPrompt,
@@ -188,9 +190,12 @@ export function register(on) {
       await $.process.run(['rm', '-f', note])
       $.prompt.submit({ text: `[Meme Factory reloaded] ${text}` }).catch(() => {})
     }
-    // Optional: render on your own memegen server, and/or remove the watermark with a key.
+    // The Meme Factory's own memegen server by default (its 1,500 templates, a "Meme Factory"
+    // watermark without a key); MEMEGEN_URL picks another, such as https://api.memegen.link.
+    const chosenServer = await $.env.get('MEMEGEN_URL')
+    usingFactoryServer = !chosenServer
     configureMemegen({
-      url: await $.env.get('MEMEGEN_URL'),
+      url: chosenServer || FACTORY_SERVER,
       key: await $.env.get('MEMEGEN_API_KEY'),
       watermark: await $.env.get('MEMEGEN_WATERMARK'),
     })
@@ -564,11 +569,13 @@ async function complete($, system, prompt, maxTokens, role = 'writer') {
 const MORE_EVERY = 24 * 60 * 60 * 1000
 const RETRY_SKIPPED = 30 * MORE_EVERY
 const CARDS_VERSION = 2
+let usingFactoryServer = false
 let moreSummary = { served: 0, cards: 0, skipped: 0, checked: null }
 
 async function serverTemplates($) {
   if (memegenOrigin() === 'https://api.memegen.link') return []
-  const get = (url) => $.http.fetch(url).catch((err) => ({ ok: false, status: String(err?.message ?? err).slice(0, 160) }))
+  const get = (url) =>
+    $.http.fetch(url, { headers: { 'X-Meme-Factory': FACTORY_CLIENT_KEY } }).catch((err) => ({ ok: false, status: String(err?.message ?? err).slice(0, 160) }))
   // A server that sleeps when idle (Railway) can take longer than a fetch allows to wake: ask twice.
   const list = async () => {
     const first = await get(`${memegenOrigin()}/templates/`)
@@ -577,6 +584,11 @@ async function serverTemplates($) {
   const [res, upstream] = await Promise.all([list(), get('https://api.memegen.link/templates/')])
   if (!res?.ok || !upstream?.ok) {
     dlog($, `more templates: couldn't list templates (${memegenOrigin()}: ${res?.status}; memegen.link: ${upstream?.status})`)
+    // The Meme Factory server is down: draw on memegen.link instead, with the built-in templates.
+    if (usingFactoryServer && !res?.ok) {
+      configureMemegen({ url: 'https://api.memegen.link', key: MEMEGEN.key, watermark: MEMEGEN.watermark })
+      dlog($, 'more templates: the Meme Factory server is unreachable; using memegen.link for now')
+    }
     return []
   }
   return serverCandidates(JSON.parse(res.text), undefined, JSON.parse(upstream.text)).map((t) => ({ ...t, origin: memegenOrigin() }))

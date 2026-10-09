@@ -34,6 +34,11 @@ export function encodeLine(text) {
 // (MEMEGEN_URL). The API key is never put in a URL: these URLs get posted publicly.
 export const MEMEGEN = { base: 'https://api.memegen.link', key: '', watermark: '' }
 
+// The Meme Factory's own memegen server, the mod's default. The client key isn't a secret (it's
+// right here); it only keeps scanners off the server's template list.
+export const FACTORY_SERVER = 'https://memegen-production-ff31.up.railway.app'
+export const FACTORY_CLIENT_KEY = 'mf-open-2026'
+
 export function configureMemegen({ url, key, watermark } = {}) {
   const base = String(url ?? '').trim().replace(/\/+$/, '')
   MEMEGEN.base = /^https?:\/\/[^\s/?#]+(\/[^\s?#]*)?$/.test(base) ? base : 'https://api.memegen.link'
