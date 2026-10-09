@@ -33,7 +33,13 @@ import {
   sameMemeName,
   MAX_FULL_CATALOG,
   shortlistFor,
-  searchPrompt,
+  hydePrompt,
+  hydeQuery,
+  rerankPrompt,
+  catalogSystem,
+  catalogPrompt,
+  mergeShortlist,
+  rankTemplates,
   parseJson,
   jevJudgeBody,
   jevJudgeResult,
@@ -200,7 +206,7 @@ export function register(on) {
       watermark: await $.env.get('MEMEGEN_WATERMARK'),
     })
     // After configureMemegen, so your server's templates are looked up too.
-    moreTemplates($).catch((err) => dlog($, `more templates: ${err?.message ?? err}`))
+    templatesReady = moreTemplates($).catch((err) => dlog($, `more templates: ${err?.message ?? err}`))
     await $.tool.register({
       name: 'make_meme',
       description:
@@ -432,6 +438,7 @@ async function editDraft($, index, lines) {
 
 async function cook($, id, previous, latest = '') {
   try {
+    await Promise.race([templatesReady, new Promise((resolve) => $.clock.after(5000, resolve))])
     const jevKey = await $.env.get('TYPESAFE_API_KEY')
     const newFormat = !previous || /different|another|new (format|template)|other (format|template)|switch/i.test(latest)
     // Words in quotes are the person's own: they stay, unchanged, until new quotes replace them.
@@ -570,6 +577,8 @@ const MORE_EVERY = 24 * 60 * 60 * 1000
 const RETRY_SKIPPED = 30 * MORE_EVERY
 const CARDS_VERSION = 2
 let usingFactoryServer = false
+// The server's templates, loading at session start: a meme asked for right away waits for them (briefly).
+let templatesReady = Promise.resolve()
 let moreSummary = { served: 0, cards: 0, skipped: 0, checked: null }
 
 async function serverTemplates($) {
@@ -640,17 +649,22 @@ async function moreTemplates($, force = false) {
   if (added || served) changed($)
 }
 
-// Query understanding, then retrieval: a quick model says what kind of joke this is and what the
-// right picture would show, and those words join the request for the search.
+// Finding the template (bench/ measured these): Haiku writes the ideal template's card (HyDE)
+// and, at the same time, names 15 candidates from the whole catalog; then it reranks the search's
+// best 200 for that card, with their pictures. The writer chooses from the 40 that come out.
+// Any step that fails falls back to the search alone.
 async function searchShortlist($, job) {
-  let extra = ''
-  try {
-    const answer = await complete($, 'You match jokes to meme templates. Reply with JSON only.', searchPrompt(job.request, job.context), 300, 'search')
-    const q = parseJson(answer)
-    extra = [q?.shape, ...(Array.isArray(q?.words) ? q.words : [])].filter((w) => typeof w === 'string').join(' ').slice(0, 400)
-  } catch {}
-  const ids = shortlistFor(`${job.request} ${job.context ?? ''} ${extra}`)
-  debug($, 'search', { extra, shortlist: ids.slice(0, 12) })
+  const request = `${job.request}${job.context ? ` (${job.context})` : ''}`
+  const ask = (system, prompt, tokens) => complete($, system, prompt, tokens, 'search').then(parseJson).catch(() => null)
+  const [card, named] = await Promise.all([
+    ask('You know every popular meme template. Reply with JSON only.', hydePrompt(job.request, job.context), 400),
+    ask(catalogSystem(), catalogPrompt(request), 400),
+  ])
+  const query = hydeQuery(`${job.request} ${job.context ?? ''}`, card)
+  const pool = rankTemplates(query, 200)
+  const reranked = await ask('You match jokes to meme templates. Reply with JSON only.', rerankPrompt(request, pool), 600)
+  const ids = mergeShortlist({ reranked, named, searched: shortlistFor(query) })
+  debug($, 'search', { card: card?.name ?? null, named: named?.ids?.slice?.(0, 5) ?? null, shortlist: ids.slice(0, 12) })
   return ids
 }
 

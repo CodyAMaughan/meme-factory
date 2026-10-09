@@ -133,6 +133,17 @@ export const EXPERIMENTS = {
   'e11-rerank-visual': { expand: expandCurrent, search: V, shortlistAsync: rerankVisual(100, 25), pick: writerPick('sonnet') },
   'e12-rerank-200': { expand: expandCurrent, search: V, shortlistAsync: rerankVisual(200, 25), pick: writerPick('sonnet') },
   'e13-rerank-sonnet': { expand: expandCurrent, search: V, shortlistAsync: rerankVisual(200, 25, 'sonnet'), pick: writerPick('sonnet') },
+  // Exactly what the mod runs (hooks/lib.js), to check the benchmark and the mod agree.
+  'e15-production': {
+    expand: async (request, llm, lib) => lib.hydeQuery(request, parse(lib, await llm('haiku', 'You know every popular meme template. Reply with JSON only.', lib.hydePrompt(request)))),
+    search: V,
+    shortlistAsync: async (query, lib, request, llm) => {
+      const named = parse(lib, await llm('haiku', lib.catalogSystem(), lib.catalogPrompt(request)))
+      const reranked = parse(lib, await llm('haiku', 'You match jokes to meme templates. Reply with JSON only.', lib.rerankPrompt(request, lib.rankTemplates(query, 200))))
+      return lib.mergeShortlist({ reranked, named, searched: lib.shortlistFor(query) })
+    },
+    pick: writerPick('sonnet'),
+  },
   // Everything that might help together.
   'e8-combined': { expand: expandHyde, search: V, shortlistAsync: async (q, lib, r, llm) => { const a = await catalogShortlist(q, lib, r, llm); const b = await rerankVisual(200, 25)(q, lib, r, llm); return [...new Set([...b.slice(0, 25), ...a.slice(0, 15), ...b])].slice(0, 40) }, pick: writerPick('sonnet') },
   'e14-hyde-rerank': { expand: expandHyde, search: V, shortlistAsync: rerankVisual(200, 25), pick: writerPick('sonnet') },

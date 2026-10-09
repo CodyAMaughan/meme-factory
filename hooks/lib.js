@@ -837,6 +837,52 @@ What kind of joke is this, and which meme templates would fit? Reply {"shape":".
 - words: 12 to 20 search words: the names of 3 to 5 templates that would fit, and words for what their pictures show and the feeling (shocked, smug, waiting, choosing, broke…)`
 }
 
+// ---------- Finding the right template with a quick model's help ----------
+// Measured on a benchmark of ~2,400 requests (bench/): a quick model that writes the ideal
+// template's card (HyDE), a second pass that reranks the search's best 200 with their pictures,
+// and the quick model naming candidates from the whole catalog, together put the right template
+// in the writer's shortlist far more often than search words alone.
+
+// HyDE: the card of the ideal template, in the catalog's own words, becomes the query.
+export function hydePrompt(request, context) {
+  return `Meme request: ${request}${context ? `\nContext: ${context}` : ''}
+
+Describe the ideal meme template for this joke as a catalog card. Reply {"name":"...","shape":"...","core":"...","slots":["..."],"picture":"..."}:
+- name: the popular template's usual name, if you know one that fits
+- shape: reaction, binary-choice, labeling, escalation, before-after, dialogue, exaggeration, comparison, irony, warning, rejection, approval, self-own or plan-backfires
+- core: one sentence, what that meme means and when people use it
+- slots: one short role per text box
+- picture: 10 to 20 words on what the picture shows`
+}
+export function hydeQuery(request, q) {
+  const parts = [q?.name, q?.name, q?.shape, q?.core, ...(Array.isArray(q?.slots) ? q.slots : []), q?.picture].filter((w) => typeof w === 'string')
+  return `${request} ${parts.join(' ')}`.slice(0, 2000)
+}
+
+// Rerank: the quick model reads the search's best 200 (name, idea, picture) and orders 25.
+export function rerankPrompt(request, ids) {
+  const lines = ids.map((id) => { const t = TEMPLATE_BY_ID.get(id); return `${t.id} | ${t.name} | ${t.core} | ${t.visual ?? ''}` }).join('\n')
+  return `Meme request: ${request}
+
+Templates (id | name | what it means | what the picture shows):
+${lines}
+
+Which 25 of these could make this joke best? Judge the joke's structure and what the person describes or names. Reply {"ids":[...]}, best first.`
+}
+
+// Whole catalog: every template's name and shape in one (cacheable) system prompt; the quick
+// model names the 15 that fit.
+export function catalogSystem() {
+  return `You match jokes to meme templates. Reply with JSON only.\n\nTemplates (id | name | shape):\n${TEMPLATES.map((t) => `${t.id} | ${t.name} | ${t.shape}`).join('\n')}`
+}
+export const catalogPrompt = (request) => `Meme request: ${request}\n\nWhich 15 templates above could make this joke best? Reply {"ids":[...]}, best first.`
+
+const idsFrom = (q, n) => (Array.isArray(q?.ids) ? q.ids : []).filter((id) => TEMPLATE_BY_ID.has(id)).slice(0, n)
+// The shortlist: the reranked 25, then the catalog model's 15, then the search's own order.
+export function mergeShortlist({ reranked, named, searched, size = 40 }) {
+  return [...new Set([...idsFrom(reranked, 25), ...idsFrom(named, 15), ...searched])].slice(0, size)
+}
+
 // The writer's shortlist: the best matches, plus the most popular all-rounders it can fall back on.
 export function shortlistFor(query, { matches = 30, popular = 10 } = {}) {
   const ids = rankTemplates(query, matches)
