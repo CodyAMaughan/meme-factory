@@ -90,7 +90,7 @@ export function makeDraft(templateId, lines, score, layout = null) {
 // ---------- Prompts ----------
 
 // One line per template: id | name | boxes | shape | core idea | role of each box | face box | not for.
-const CATALOG = TEMPLATES.map((t) =>
+const catalogLine = (t) =>
   [
     t.id,
     t.name,
@@ -101,14 +101,14 @@ const CATALOG = TEMPLATES.map((t) =>
     t.face ? `face:${t.face}` : '',
     t.small?.length ? `small:${t.small.map((i) => i + 1).join(',')}` : '',
     t.avoid ? `not for: ${t.avoid}` : '',
-  ].join(' | '),
-).join('\n')
+  ].join(' | ')
+let CATALOG = TEMPLATES.map(catalogLine).join('\n')
 
 export const WRITER_SYSTEM = `You are the writer at a meme factory: a terse comedy writer who knows how every classic meme template is actually used.
 Reply with JSON only, no prose and no code fences.`
 
 // The rules and the catalog are the same on every call, so they are cached.
-const WRITER_RULES = `How to write a meme, in order:
+let WRITER_RULES = `How to write a meme, in order:
 1. Fit first. Work out the joke's shape: who is speaking, how many beats, and whether it is a reaction, a choice, a dialogue, an escalation, a label, and so on. Pick templates whose shape and core idea match that joke. A good line on the wrong meme is a bad meme: never force a caption onto a template whose box roles don't fit.
 2. Fill each box with its role, in order. Use "" for a box that works better blank.
 3. One-liners. Each box at most 6 words, the whole meme at most 12. If it needs more, it is the wrong joke or the wrong meme.
@@ -119,6 +119,7 @@ const WRITER_RULES = `How to write a meme, in order:
 
 Catalog (id | name | boxes | shape | core idea | box roles | face box | small boxes | not for):
 ${CATALOG}`
+const RULES_HEAD = WRITER_RULES.slice(0, WRITER_RULES.length - CATALOG.length)
 
 // Text the person put in double quotes is theirs, word for word.
 export function quotedText(text) {
@@ -595,13 +596,134 @@ export function isMemePost(e, paths = []) {
 
 // What the browser gallery shows: plain data, no local file paths.
 // The gallery's meme picker: every template with a blank thumbnail to choose from.
-const PICKER = TEMPLATES.map((t) => ({
+const pickerEntry = (t) => ({
   id: t.id,
   name: t.name,
   shape: t.shape ?? '',
   aliases: t.aliases ?? [],
   thumb: memeUrl(t.id, Array(t.lines).fill(''), 'jpg', { width: 240 }),
-}))
+})
+let PICKER = TEMPLATES.map(pickerEntry)
+
+// ---------- More templates: Imgflip's popular list, and your own memegen server's ----------
+
+// Two names are the same meme when one's distinctive words all appear in the other
+// ("Roll Safe" and "Roll Safe Think About It"; "Spider-Man Pointing" and "spiderman pointing").
+// Shared words count too: three, or most of the shorter name ("Bernie I Am Once Again Asking For
+// Your Support" and "Bernie Sanders Once Again Asking"). "Blank" and "template" don't count.
+const NAME_STOP = new Set([...STOP, 'blank', 'template', 'your', 'from'])
+const nameKey = (s) => [...new Set(words(String(s).replace(/-/g, '')).split(' ').filter((w) => w.length >= 3 && !NAME_STOP.has(w)))]
+function sameMeme(a, b) {
+  const x = nameKey(a)
+  const y = new Set(nameKey(b))
+  if (!x.length || !y.size) return false
+  const shared = x.filter((w) => y.has(w)).length
+  return shared === Math.min(x.length, y.size) || shared >= 3 || shared / Math.min(x.length, y.size) >= 0.6
+}
+export function knownTemplate(name, list = TEMPLATES) {
+  return list.some((t) => sameMeme(name, t.name) || (t.aliases ?? []).some((a) => sameMeme(name, a)))
+}
+
+// Names a work Slack shouldn't see in its template list.
+const CRUDE = /bitch|fuck|shit|dick|porn|sex|nsfw|9\/11/i
+
+// Imgflip's top 100 (api.imgflip.com/get_memes), kept to two-box memes the catalog lacks: they
+// render over Imgflip's picture through memegen's custom route, which places top and bottom text.
+export function imgflipCandidates(reply, have = TEMPLATES) {
+  const memes = reply?.data?.memes
+  if (!reply?.success || !Array.isArray(memes)) return []
+  const out = []
+  for (const m of memes) {
+    const url = String(m?.url ?? '')
+    if (m?.box_count !== 2 || !/^https:\/\/i\.imgflip\.com\/[\w]+\.(jpg|png)$/.test(url)) continue
+    const name = String(m.name ?? '').slice(0, 80)
+    if (!name || CRUDE.test(name) || knownTemplate(name, have) || out.some((o) => sameMeme(name, o.name))) continue
+    out.push({ id: `imgflip-${String(m.id).replace(/\W/g, '')}`, name, lines: 2, background: url, source: 'imgflip' })
+  }
+  return out
+}
+
+// Templates on your own memegen server (MEMEGEN_URL) that aren't in the catalog: ones you added.
+// memegen.link's own (the upstream list) are left out, since the catalog leaves some out on purpose.
+export function serverCandidates(list, have = TEMPLATES, upstream = []) {
+  if (!Array.isArray(list)) return []
+  const theirs = new Set((Array.isArray(upstream) ? upstream : []).map((t) => t?.id))
+  const out = []
+  for (const t of list) {
+    const id = String(t?.id ?? '')
+    const lines = Number(t?.lines)
+    if (!/^[\w-]{1,40}$/.test(id) || !(lines >= 1 && lines <= 8) || theirs.has(id) || have.some((x) => x.id === id)) continue
+    // No name matching here: a template you added is one you want, even if it shares a word
+    // with a built-in one ("Buff Doge vs. Cheems" and "Doge").
+    const sample = Array.isArray(t.example?.text) ? t.example.text.map((x) => String(x).slice(0, 60)) : []
+    out.push({ id, name: String(t.name ?? id).slice(0, 80), lines, source: 'server', ...(sample.some(Boolean) ? { sample } : {}) })
+  }
+  return out
+}
+
+// One model call writes the cards for new templates, the same fields the catalog's have. A meme
+// the model doesn't recognise is skipped rather than guessed at.
+export function cardsPrompt(cands) {
+  return `Write a catalog card for each meme template below, the way it is actually used online.
+${cands.map((c) => `- ${c.id}: "${c.name}", ${c.lines} text boxes${c.background ? ' (top and bottom text)' : ''}${c.sample ? `, e.g. ${JSON.stringify(c.sample)}` : ''}`).join('\n')}
+
+For each one, return {"id","shape","core","slots","face","avoid","aliases","example"}:
+- shape: the kind of joke in a few words (reaction, binary-choice, labeling, escalation, before-after, dialogue, exaggeration...)
+- core: one sentence, what the meme means
+- slots: one short role per text box, in order (top first). If the picture already has words printed on it (a label like "i receive:"), say the box comes after them and must not repeat them.
+- face: "top" or "bottom" if long text there would cover the main face, else null
+- avoid: one short line, what it is not for
+- aliases: 2 to 4 names people call it
+- example: a short example caption per box
+If you don't know a meme well enough to say how it's used, return {"id","skip":true} for it.
+Reply with JSON only: {"cards":[...]}`
+}
+
+export function parseCards(text, cands) {
+  let cards
+  try {
+    cards = JSON.parse(String(text).replace(/^```(?:json)?\s*|\s*```$/g, '')).cards
+  } catch {
+    return []
+  }
+  if (!Array.isArray(cards)) return []
+  const str = (v, n) => (typeof v === 'string' ? v.slice(0, n) : '')
+  const out = []
+  for (const c of cands) {
+    const card = cards.find((x) => x?.id === c.id)
+    if (!card || card.skip || !str(card.core, 300)) continue
+    const fill = (a, n) => Array.from({ length: c.lines }, (_, i) => str(a?.[i], n))
+    const { sample, ...rest } = c
+    out.push({
+      ...rest,
+      example: fill(card.example, 60),
+      shape: str(card.shape, 40) || 'reaction',
+      core: str(card.core, 300),
+      slots: fill(card.slots, 120),
+      face: card.face === 'top' || card.face === 'bottom' ? card.face : null,
+      avoid: str(card.avoid, 200),
+      aliases: (Array.isArray(card.aliases) ? card.aliases : []).map((a) => str(a, 60)).filter(Boolean).slice(0, 4),
+    })
+  }
+  return out
+}
+
+// Adds templates to the catalog, the writer's prompt and the gallery's picker. Returns how many.
+export function addTemplates(extra) {
+  let added = 0
+  for (const t of Array.isArray(extra) ? extra : []) {
+    if (!t?.id || TEMPLATE_BY_ID.has(t.id) || !t.core) continue
+    TEMPLATES.push(t)
+    TEMPLATE_BY_ID.set(t.id, t)
+    added++
+  }
+  if (added) {
+    CATALOG = TEMPLATES.map(catalogLine).join('\n')
+    WRITER_RULES = RULES_HEAD + CATALOG
+    PICKER = TEMPLATES.map(pickerEntry)
+  }
+  return added
+}
 
 export function galleryState(job, connectors, settings) {
   const strip = (d) => d && { id: d.id, template_name: d.template_name, lines: d.lines, url: d.url, score: d.score }

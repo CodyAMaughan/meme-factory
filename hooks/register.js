@@ -21,6 +21,12 @@ import {
   configureMemegen,
   downloadParams,
   memegenOrigin,
+  imgflipCandidates,
+  serverCandidates,
+  cardsPrompt,
+  parseCards,
+  addTemplates,
+  TEMPLATE_BY_ID,
   jevJudgeBody,
   jevJudgeResult,
   jevPickBody,
@@ -182,6 +188,8 @@ export function register(on) {
       key: await $.env.get('MEMEGEN_API_KEY'),
       watermark: await $.env.get('MEMEGEN_WATERMARK'),
     })
+    // After configureMemegen, so your server's templates are looked up too.
+    moreTemplates($).catch((err) => dlog($, `more templates: ${err?.message ?? err}`))
     await $.tool.register({
       name: 'make_meme',
       description:
@@ -277,7 +285,7 @@ export function register(on) {
 
   on('tool.call', { tool: 'mcp__meme-factory__meme_factory_debug' }, async ($, e) => {
     const action = String(e.action ?? 'status')
-    if (action === 'refresh') await refreshConnectors($, true)
+    if (action === 'refresh') await Promise.all([refreshConnectors($, true), moreTemplates($, true).catch((err) => dlog($, `more templates: ${err?.message ?? err}`))])
     let upload = undefined
     if (action === 'upload_check') upload = await uploadCheck($)
     if (action === 'approve' && job.status === 'review') await approve($, job.selected)
@@ -537,6 +545,60 @@ async function complete($, system, prompt, maxTokens, role = 'writer') {
   if (typeof reply === 'string') return reply
   if (reply?.isAnswered) return reply.text
   throw new Error(`The model didn't answer${reply?.reason ? `: ${reply.reason}` : ''}`)
+}
+
+// More templates than the built-in catalog: Imgflip's popular list (top-and-bottom memes the
+// catalog lacks) and any your own memegen server (MEMEGEN_URL) has that memegen.link doesn't.
+// Checked once a day; a card is written once per new template and kept. A meme the model didn't
+// know is asked about again after a month. MEME_FACTORY_IMGFLIP=0 leaves Imgflip out.
+const MORE_EVERY = 24 * 60 * 60 * 1000
+const RETRY_SKIPPED = 30 * MORE_EVERY
+const CARDS_VERSION = 2
+let moreSummary = { cards: 0, skipped: 0, checked: null }
+
+async function moreTemplates($, force = false) {
+  // A new CARDS version rewrites every card (when the prompt that writes them improves).
+  const stored = (await $.store.get('moreTemplates')) ?? {}
+  const kept = stored.version === CARDS_VERSION ? stored : {}
+  const cards = Array.isArray(kept.cards) ? kept.cards : []
+  const now = Date.now()
+  const skipped = Object.fromEntries(Object.entries(kept.skipped && !Array.isArray(kept.skipped) ? kept.skipped : {}).filter(([, at]) => now - at < RETRY_SKIPPED))
+  const imgflipOn = (await $.env.get('MEME_FACTORY_IMGFLIP')) !== '0'
+  const usable = (t) => (t.source === 'imgflip' ? imgflipOn : t.source !== 'server' || t.origin === memegenOrigin())
+  addTemplates(cards.filter(usable))
+  moreSummary = { cards: cards.length, skipped: Object.keys(skipped).length, checked: kept.checked ?? null }
+  if (!force && kept.checked && now - kept.checked < MORE_EVERY && kept.origin === memegenOrigin()) return
+  const fresh = []
+  if (imgflipOn) {
+    const res = await $.http.fetch('https://api.imgflip.com/get_memes').catch(() => null)
+    if (res?.ok) fresh.push(...imgflipCandidates(JSON.parse(res.text)))
+  }
+  if (memegenOrigin() !== 'https://api.memegen.link') {
+    const [res, upstream] = await Promise.all([
+      $.http.fetch(`${memegenOrigin()}/templates/`).catch(() => null),
+      $.http.fetch('https://api.memegen.link/templates/').catch(() => null),
+    ])
+    if (res?.ok && upstream?.ok) fresh.push(...serverCandidates(JSON.parse(res.text), undefined, JSON.parse(upstream.text)).map((t) => ({ ...t, origin: memegenOrigin() })))
+  }
+  const ask = fresh.filter((t) => !skipped[t.id] && !cards.some((c) => c.id === t.id)).slice(0, 60)
+  // Fifteen at a time, so a long answer isn't cut off mid-card.
+  const made = []
+  for (let i = 0; i < ask.length; i += 15) {
+    const batch = ask.slice(i, i + 15)
+    try {
+      const got = parseCards(await complete($, 'You know how every popular meme template is used. Reply with JSON only.', cardsPrompt(batch), 6000, 'judge'), batch)
+      made.push(...got)
+      for (const t of batch) if (!got.some((m) => m.id === t.id)) skipped[t.id] = now
+    } catch (err) {
+      dlog($, `more templates: cards failed (${err?.message ?? err})`)
+    }
+  }
+  const all = [...cards, ...made]
+  await $.store.set('moreTemplates', { version: CARDS_VERSION, checked: now, origin: memegenOrigin(), cards: all, skipped })
+  const added = addTemplates(made.filter(usable))
+  moreSummary = { cards: all.length, skipped: Object.keys(skipped).length, checked: now }
+  dlog($, `more templates: ${fresh.length} found, ${ask.length} asked, ${made.length} new cards, ${added} added (${TEMPLATE_BY_ID.size} in all)`)
+  if (added) changed($)
 }
 
 async function jevPick($, key, request) {
@@ -844,6 +906,7 @@ async function debugStatus($, upload) {
     inBand,
     poster: poster ? { agentId: poster.agentId } : null,
     memegen: memegenOrigin(),
+    templates: { total: TEMPLATE_BY_ID.size, ...moreSummary },
     ...(upload ? { upload } : {}),
     log: recentLines.slice(-30),
   }
@@ -996,7 +1059,7 @@ async function act($, action) {
   }
 }
 
-const TEMPLATE_IDS = new Set(TEMPLATES.map((t) => t.id))
+const TEMPLATE_IDS = { has: (id) => TEMPLATE_BY_ID.has(id) }
 
 // ---------- Browser gallery ----------
 

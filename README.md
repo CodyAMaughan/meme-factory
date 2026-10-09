@@ -52,7 +52,16 @@ Each screen shows its own actions first, then the same keys in the same place: `
 - **More like this** (`m`): three fresh takes on the meme you're looking at, instead of new formats.
 - **Your own words.** Put them in quotes: `/meme my wife watching me work, top "me: I built a meme factory"`. Quoted words are used exactly as written. To set a caption outright, say it in the chat box: *make the bottom say "my wife:"*.
 - **Different format** when the meme itself is wrong for the joke.
-- **Pick from the list.** In the browser gallery, **Choose the meme** searches all 210 templates ("side eye", "two buttons") and drafts three takes on the one you click. Pick one before you've asked for a meme, and your next meme uses it.
+- **Pick from the list.** In the browser gallery, **Choose the meme** searches every template ([210 built in, and more](#more-templates)) ("side eye", "two buttons") and drafts three takes on the one you click. Pick one before you've asked for a meme, and your next meme uses it.
+
+### More templates
+
+The 210 built-in templates are memegen.link's. Two sources add more, checked once a day:
+
+- **Imgflip's popular list.** The [100 most-used templates on Imgflip](https://imgflip.com/memetemplates) include memes memegen doesn't have (Bernie "once again asking", Monkey Puppet, Absolute Cinema). The mod adds the top-and-bottom ones and renders them over Imgflip's picture. A model writes each one's card once, the same kind of card the built-in ones have, and skips a meme it doesn't know. Set `MEME_FACTORY_IMGFLIP=0` to leave them out.
+- **Your own memegen server.** With `MEMEGEN_URL` set, templates on your server that memegen.link doesn't have join the list, with their text boxes where your server's config puts them. To add one, put a folder in your server's `templates/` with the picture (`default.jpg`) and a `config.yml` that places each box (see memegen's own templates for examples), then redeploy.
+
+`meme_factory_debug` shows how many templates there are and when they were last checked.
 
 Drafts are short on purpose: one-liners, at most six words a box, and four in the narrow label boxes of memes like Distracted Boyfriend. Every template carries a card that says what kind of joke it tells and what each box is for, and the writer picks the meme whose idea fits your joke before it writes a word.
 
@@ -65,7 +74,7 @@ To skip it, turn off **Check the pictures** in the gallery's **Settings → Draf
 <table>
   <tr>
     <td width="50%"><a href="docs/media/remix.mp4"><img src="docs/media/remix.gif" alt="Typing meaner, use 2 and different format in the chat box, and the drafts changing each time"></a><br><b>Remix in plain words.</b> Claude turns what you type into actions.</td>
-    <td width="50%"><a href="docs/media/pick.mp4"><img src="docs/media/pick.gif" alt="In the gallery, Choose the meme opens a picker; typing side eye finds Side-Eyeing Chloe, and clicking it drafts three takes on Chloe"></a><br><b>Choose the meme.</b> Search all 210, or press <code>m</code> for more like the one you're on.</td>
+    <td width="50%"><a href="docs/media/pick.mp4"><img src="docs/media/pick.gif" alt="In the gallery, Choose the meme opens a picker; typing side eye finds Side-Eyeing Chloe, and clicking it drafts three takes on Chloe"></a><br><b>Choose the meme.</b> Search every template, or press <code>m</code> for more like the one you're on.</td>
   </tr>
   <tr>
     <td width="50%"><a href="docs/media/post.mp4"><img src="docs/media/post.gif" alt="Opening the Post to list, choosing #eng-fun, confirming, and the meme landing in the channel"></a><br><b>Post to real channels.</b> Your Slack channels, your favorites, and a confirm step.</td>
@@ -170,6 +179,7 @@ By default, pictures come from the public [memegen.link](https://memegen.link) A
 | `MEMEGEN_URL` | Render on another memegen server instead, such as one you host (`https://memes.example.com`). |
 | `MEMEGEN_API_KEY` | Sent when the mod downloads images (in a header, read from stdin, so it never appears in a URL, a posted link, or the process list). With a valid key, downloads ask for `watermark=none`. |
 | `MEMEGEN_WATERMARK` | With a key: your own watermark text instead of none, such as `example.com`. |
+| `MEME_FACTORY_IMGFLIP` | `0` leaves out [Imgflip's popular templates](#more-templates). |
 
 Set them like the Jev key (shell profile or `env` in `~/.claude/settings.json`) and restart Claude Code.
 
@@ -185,6 +195,7 @@ Previews in the browser gallery and posted links use the plain URL, so on memege
 - **Model calls** go through your Claude Code session's own credentials (see [Models and your plan](#models-and-your-plan)).
 - **Pictures** are rendered by [memegen.link](https://memegen.link), or the server in `MEMEGEN_URL`, from the template and the caption text, and cached in `~/.cache/meme-factory/`. memegen.link says requests without a key may be used as training data.
 - **Posts** go only where you send them, through your connectors. The posting helper can use only your connectors, and post only the meme you approved, once.
+- **Templates:** once a day the mod reads Imgflip's public template list (and your server's, with `MEMEGEN_URL`). Nothing about you or your memes is sent.
 - **Jev**, if you set `TYPESAFE_API_KEY`, receives the meme request and the draft captions.
 - The mod keeps your settings and your last 50 approved memes in its local store.
 
