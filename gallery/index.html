@@ -465,11 +465,12 @@ function post() {
 function postCard() {
   const s = state
   const p = s.post || { stage: 'pick' }
-  const name = p.target ? `#${p.target.name}` : ''
+  // A Slack channel, or the place in your words that the mod's poster posts to.
+  const name = !p.target ? '' : p.target.kind === 'claude' ? p.target.name : `#${p.target.name} on Slack`
   if (p.stage === 'confirm') {
     return el('section', { class: 'card-box state confirm', role: 'dialog', 'aria-label': 'Confirm post' },
       el('p', { class: 'lbl' }, 'Confirm'),
-      el('h2', {}, `Post to ${name} on Slack?`),
+      el('h2', {}, `Post to ${name}?`),
       el('div', { class: 'muted' }, s.settings?.signature ? 'Signed “Fresh from the Meme Factory”.' : 'Just the meme, no message.'),
       el('div', { class: 'row' },
         el('button', { class: 'btn primary', style: 'flex:1', id: 'confirm', onclick: () => send({ type: 'confirm' }) }, 'Post it', el('span', { class: 'kbd' }, 'Y')),
@@ -478,17 +479,17 @@ function postCard() {
   if (p.stage === 'posting') {
     return el('section', { class: 'card-box state' },
       el('p', { class: 'lbl' }, 'Posting'),
-      el('div', { class: 'line warn' }, el('span', { class: 'spin', style: 'display:inline-flex' }, svg(ICON.spin, 20, 2.4)), `Posting to ${name} on Slack…`),
+      el('div', { class: 'line warn' }, el('span', { class: 'spin', style: 'display:inline-flex' }, svg(ICON.spin, 20, 2.4)), `Posting to ${name}…`),
       el('div', { class: 'muted' }, 'Uploading the image. You can close this tab.'))
   }
   if (p.stage === 'done') {
     const isFav = favorites().some((f) => f.channelId === p.target.id)
     return el('section', { class: 'card-box state' },
       el('p', { class: 'lbl' }, 'Posted'),
-      el('div', { class: 'line good' }, svg(ICON.check, 20, 2.6), `Posted to ${name} on Slack`),
-      p.link ? el('a', { href: p.link, target: '_blank', rel: 'noreferrer' }, 'View message in Slack ↗') : null,
+      el('div', { class: 'line good' }, svg(ICON.check, 20, 2.6), `Posted to ${name}`),
+      p.link ? el('a', { href: p.link, target: '_blank', rel: 'noreferrer' }, p.target.kind === 'claude' ? 'View the post ↗' : 'View message in Slack ↗') : null,
       el('div', { class: 'row' },
-        isFav ? el('span', { class: 'muted' }, '★ favorite') : el('button', { class: 'btn small', onclick: () => send({ type: 'favorite' }) }, `★ Save ${name}`),
+        p.target.kind === 'claude' ? null : isFav ? el('span', { class: 'muted' }, '★ favorite') : el('button', { class: 'btn small', onclick: () => send({ type: 'favorite' }) }, `★ Save ${name}`),
         el('button', { class: 'btn small', onclick: () => send({ type: 'cancel' }) }, 'Post elsewhere'),
         el('button', { class: 'btn small', onclick: () => send({ type: 'reset' }) }, 'New meme')))
   }

@@ -19,6 +19,12 @@ import {
   applyReview,
   makeDraft,
   fitsBudget,
+  chatPrompt,
+  ownHandback,
+  parsePosted,
+  posterOutcome,
+  posterHooks,
+  posterPrompt,
   postingConnectors,
   resolveDestination,
   topDrafts,
@@ -44,7 +50,15 @@ const PANE = {
   },
 } as const
 
-const USAGE = { input_tokens: 10, output_tokens: 5, cache_read_input_tokens: 0, cache_creation_input_tokens: 0 }
+const BAND = {
+  plugin: 'meme-factory',
+  component: 'AbovePrompt',
+  requestId: 'above-prompt',
+  viewport: { columns: 100, rows: 40 },
+  props: { hasSurvey: false, isWorking: true, maxRows: 12, bodyColumns: 95, scroll: { offset: 0, bodyRows: 11 }, view: {} },
+} as const
+
+const USAGE ={ input_tokens: 10, output_tokens: 5, cache_read_input_tokens: 0, cache_creation_input_tokens: 0 }
 
 const WRITER_REPLY = JSON.stringify({
   candidates: [
@@ -81,23 +95,35 @@ type Rig = {
   env?: Record<string, string>
   // Leave Slack's tools out of $.tool.list, as the desktop app can for on-demand tools
   slackUnlisted?: boolean
-  // Answer the mod's own Slack calls with a refusal, as auto mode does in the desktop app
+  // Refuse Slack calls on Claude's tool path, as auto mode does for calls no request of the person's asked for
   slackDenied?: boolean
+  // Answer the mod's own Slack calls with this error
+  slackError?: string
   // Wrap Slack's replies the way the desktop app does: [{ type: 'text', text: '{"result":"..."}' }]
   desktopShape?: boolean
+  // A terminal under 144 columns
+  narrow?: boolean
+  // How long the chat box's model takes to answer, on the mocked clock
+  chatDelay?: number
 }
 
 // Stubs everything the mod reaches: the model, the shell, files, the store, and three
 // connectors: Slack (postable, uploads), Gmail (postable) and Microsoft 365 (Teams search only).
 function factory(on, rig: Rig = {}) {
-  const log = { stdins: [] as string[], ran: [] as string[][], submitted: [] as string[], copied: [] as string[], calls: [] as any[], asked: [] as string[], prompts: [] as string[], models: [] as Array<{ system: string; model: string }> }
+  const log = { stdins: [] as string[], ran: [] as string[][], submitted: [] as string[], copied: [] as string[], calls: [] as any[], asked: [] as string[], prompts: [] as string[], models: [] as Array<{ system: string; model: string }>, written: [] as Array<{ path: string; text: string }> }
   const saved = new Map<string, unknown>(rig.settings ? [['settings', rig.settings]] : [])
   const clock = mock.clock(on)
   on('session.start', () => ({ cwd: '/work' }))
   on('env.get', ($, e) => ({ value: ({ HOME: '/Users/test', TERM_PROGRAM: rig.termProgram ?? 'ghostty', ...rig.env } as Record<string, string>)[e.name] }))
   on('tool.register', () => ({ value: undefined }))
   on('command.register', () => ({ value: undefined }))
-  on('ui.open', () => ({ value: { isPlaced: true } }))
+  // A narrow terminal holds back a pane the mod opens on its own; one you open is placed at any width.
+  let placed = false
+  on('ui.open', ($, e) => {
+    placed = !rig.narrow || Boolean(e.focus)
+    return { value: placed ? { isPlaced: true } : { isPlaced: false, reason: 'opened unasked under 144 columns (100 now)' } }
+  })
+  on('ui.panes', () => ({ value: [{ id: 'meme-factory', title: 'Meme Factory', isShown: placed, isFocused: false, isPlaced: placed }] }))
   on('ui.toast', () => ({ value: undefined }))
   on('ui.log', () => ({ value: undefined }))
   on('ui.copy', ($, e) => {
@@ -105,10 +131,11 @@ function factory(on, rig: Rig = {}) {
     return { value: { isCopied: true } }
   })
   on('session.surfaces', () => ({ value: ['terminal', 'desktop'] }))
-  on('model.complete', ($, e) => {
+  on('model.complete', async ($, e) => {
     log.prompts.push(e.prompt)
     log.models.push({ system: String(e.system), model: e.model })
     if (e.system.includes('judge')) return { value: { isAnswered: true, text: JUDGE_REPLY, usage: USAGE } }
+    if (e.system.includes('chat box') && rig.chatDelay) await clock.sleep(rig.chatDelay)
     if (e.system.includes('chat box')) return { value: { isAnswered: true, text: JSON.stringify(rig.chatReply?.(e.prompt) ?? { reply: 'Hi!', action: { type: 'none' } }), usage: USAGE } }
     return { value: { isAnswered: true, text: WRITER_REPLY, usage: USAGE } }
   })
@@ -119,6 +146,10 @@ function factory(on, rig: Rig = {}) {
     return { value: { exitCode: 0, stdout: isUpload ? 'OK - 323850' : '', stderr: '' } }
   })
   on('fs.read', ($, e) => ({ value: { base64: /\.png(\.part)?$/.test(e.path) ? pngHeader().toBase64() : 'SlBFRw==' } }))
+  on('fs.write', ($, e) => {
+    log.written.push({ path: e.path, text: e.text })
+    return { value: undefined }
+  })
   on('fs.exists', ($, e) => ({ value: !String(e.path).includes('.reload-note') }))
   on('fs.stat', () => ({ value: { kind: 'file', size: 323850, mtimeMs: 0, isLink: false } }))
   on('tool.list', () => ({
@@ -139,11 +170,14 @@ function factory(on, rig: Rig = {}) {
     }
     log.calls.push(e)
     if (rig.slackDenied && String(e.tool).startsWith(SLACK)) return { deny: 'The server-side auto mode classifier gave no verdict for this action.' }
-    const wrap = (text) => (rig.desktopShape ? [{ type: 'text', text: JSON.stringify({ result: text }) }] : text)
-    if (e.tool === `${SLACK}slack_list_user_channels`) return { result: wrap(CHANNELS_REPLY) }
-    if (e.tool === `${SLACK}slack_get_file_upload_url`) return { result: wrap(TICKET_REPLY) }
-    if (e.tool === `${SLACK}slack_complete_file_upload`) return { result: wrap(DONE_REPLY) }
     return { result: 'sent' }
+  })
+  // The mod's own Slack calls go straight to the server; logged under the tool's full name.
+  on('mcp.call', ($, e) => {
+    log.calls.push({ server: e.server, tool: `mcp__${e.server}__${e.tool}`, ...e.args })
+    const reply = { slack_list_user_channels: CHANNELS_REPLY, slack_get_file_upload_url: TICKET_REPLY, slack_complete_file_upload: DONE_REPLY }[e.tool] ?? 'sent'
+    const text = rig.slackError ?? reply
+    return { value: { content: [{ type: 'text', text: rig.desktopShape ? JSON.stringify({ result: text }) : text }], isError: Boolean(rig.slackError) } }
   })
   on('store.get', ($, e) => ({ value: saved.get(e.key) }))
   on('store.set', ($, e) => {
@@ -268,7 +302,7 @@ test('the chat box understands "use 2 and post it to #social"', async ($, on) =>
   expect(log.calls.some((c) => c.tool === `${SLACK}slack_complete_file_upload`)).toBe(false)
 })
 
-test('the chat box remixes, and hands places the mod cannot reach to Claude', async ($, on) => {
+test('the chat box remixes, and a place the mod cannot reach itself is confirmed in the panel, not handed to Claude', async ($, on) => {
   let next: object = { reply: 'Meaner coming up.', action: { type: 'remix', feedback: 'make it meaner' } }
   const { clock, log } = factory(on, { chatReply: () => next })
   await draftsReady($, clock)
@@ -280,9 +314,8 @@ test('the chat box remixes, and hands places the mod cannot reach to Claude', as
   next = { reply: 'Sending it to LinkedIn.', action: { type: 'post', destination: 'my LinkedIn' } }
   await ui.input({ key: 'chat', text: 'approve it and put it on my LinkedIn' })
   await clock.settle()
-  expect(log.submitted.length).toBe(1)
-  expect(log.submitted[0]).toContain('wants it posted to: my LinkedIn')
-  expect(log.submitted[0]).toContain('Work out which connector')
+  expect(await ui.find({ type: 'Text', text: 'Post to my LinkedIn?' })).toBeDefined()
+  expect(log.submitted).toEqual([])
 })
 
 test('the browser gallery drives the same flow: chat, pick a channel, confirm', async ($, on) => {
@@ -375,6 +408,145 @@ test('inline above the prompt: no picture, one caption line, the last reply only
   expect(await ui.find({ type: 'Text', text: 'use 2' })).toBeUndefined()
 })
 
+test("Claude's meme in a narrow terminal shows above the prompt, until you open the panel", async ($, on) => {
+  const { clock } = factory(on, { narrow: true })
+  on('ui.render', { component: 'AbovePrompt' }, ($, e) => $.ui.resolve(e).Text({ children: ['the engine band'] }))
+  await $.session.start({ surface: 'terminal', isInteractive: true, cwd: '/work' })
+  // Before any meme, the band is left to the engine.
+  const band = await $.ui.mount({ ...BAND, surface: 'terminal' })
+  expect(await band.find({ type: 'Text', text: 'the engine band' })).toBeDefined()
+  await $.tool.call({ tool: TOOL, tool_use_id: 't1', request: 'standups that run long' })
+  expect(await band.find({ type: 'Text', text: /Writing captions/ })).toBeDefined()
+  await clock.settle()
+  expect(await band.find({ key: 'approve' })).toBeDefined()
+  expect(await band.find({ type: 'Image' })).toBeUndefined()
+  const report = JSON.parse((await $.tool.call({ tool: 'mcp__meme-factory__meme_factory_debug', tool_use_id: 'd1', action: 'status' })).result)
+  expect(report).toMatchObject({ pane: { isPlaced: false }, inBand: true })
+  // You open it, with /meme or the band's button: the pane is placed at any width, and the band steps aside.
+  await $.command.run({ command: 'meme', args: '' })
+  expect(await band.find({ key: 'approve' })).toBeUndefined()
+  expect(await band.find({ type: 'Text', text: 'the engine band' })).toBeDefined()
+})
+
+test("the band's Open the panel button opens the pane as yours, so it's placed", async ($, on) => {
+  const { clock } = factory(on, { narrow: true })
+  on('ui.render', { component: 'AbovePrompt' }, ($, e) => $.ui.resolve(e).Text({ children: ['the engine band'] }))
+  await $.session.start({ surface: 'terminal', isInteractive: true, cwd: '/work' })
+  await $.tool.call({ tool: TOOL, tool_use_id: 't1', request: 'standups that run long' })
+  await clock.settle()
+  const band = await $.ui.mount({ ...BAND, surface: 'terminal' })
+  await band.press({ key: 'open-pane' })
+  expect(await band.find({ type: 'Text', text: 'the engine band' })).toBeDefined()
+  const pane = await $.ui.mount({ ...PANE, surface: 'terminal' })
+  expect(await pane.find({ key: 'approve' })).toBeDefined()
+  // The docked pane has no such button: it is already open.
+  expect(await pane.find({ key: 'open-pane' })).toBeUndefined()
+})
+
+test('sending in the chat box returns at once, so Claude Code clears the field', async ($, on) => {
+  // A slow chat reply: Claude Code empties the field only once the send returns.
+  const { clock } = factory(on, { chatDelay: 5000 })
+  await draftsReady($, clock)
+  const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
+  const sent = ui.input({ key: 'chat', text: 'meaner please' }).then(() => 'returned')
+  expect(await Promise.race([sent, new Promise((r) => setTimeout(r, 300, 'held'))])).toBe('returned')
+  await clock.advance(5000)
+  await clock.settle()
+})
+
+test("a place the mod can't post to itself is confirmed in the panel, then its poster starts in the background; nothing reaches the conversation", async ($, on) => {
+  const spawned: any[] = []
+  on('agent.spawn', ($, e) => {
+    spawned.push(e)
+    return { model: 'sonnet' }
+  })
+  const { clock, log } = factory(on, { chatReply: () => ({ reply: 'Posting it.', action: { type: 'post', destination: '#trustai-platform-team on Slack' } }) })
+  await draftsReady($, clock)
+  const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
+  await ui.input({ key: 'chat', text: 'approve it and post it to #trustai-platform-team on Slack' })
+  await clock.settle()
+  expect(await ui.find({ type: 'Text', text: 'Post to #trustai-platform-team on Slack?' })).toBeDefined()
+  expect(spawned.some((s) => s.subagent_type === 'meme-factory:poster')).toBe(false)
+  await ui.press({ key: 'confirm' })
+  await clock.settle()
+  const job = spawned.find((s) => s.subagent_type === 'meme-factory:poster')
+  expect(job?.prompt).toContain('"#trustai-platform-team on Slack"')
+  // Its hooks read which meme it may post, and the post it makes, from these two files.
+  const url = String(job?.prompt).match(/Meme image URL: (\S+)/)![1]
+  expect(log.written.find((w) => w.path.endsWith('-path'))?.text).toBe(memePath(url))
+  expect(log.written.find((w) => w.path.endsWith('-posted'))?.text).toBe('')
+  expect(job?.prompt).toMatch(/Meme image URL: https:\/\/api\.memegen\.link\/images\//)
+  expect(log.submitted).toEqual([])
+  // No agent runs in the test kit (it sets no agentId), so the panel says the helper didn't start.
+  expect(await ui.find({ type: 'Text', text: /Couldn't post to #trustai-platform-team on Slack: the posting helper didn't start/ })).toBeDefined()
+  expect(await ui.find({ key: 'retry-post' })).toBeDefined()
+})
+
+test("the poster's own hooks: connectors only, one post, only this meme, recorded for the mod; and its word is checked against what it did", () => {
+  const hooks = posterHooks('/Users/me/.cache/meme-factory/poster-s1')!
+  const [pre] = hooks.PreToolUse
+  const [post] = hooks.PostToolUse
+  // Every call the poster makes is decided here (a mod's tool.call hooks never see a subagent's calls).
+  expect(pre.matcher).toBe('*')
+  const before = pre.hooks[0].command
+  expect(before).toContain('ToolSearch) printf')
+  expect(before).toContain('mcp__meme-factory__*) printf')
+  expect(before).toContain('"permissionDecision":"deny","permissionDecisionReason":"The Meme Factory poster only uses connectors."')
+  expect(before).toContain("p=$(cat '/Users/me/.cache/meme-factory/poster-s1-path' 2>/dev/null)")
+  expect(before).toContain("grep -qF -- \"$p\"")
+  expect(before).toContain("if [ -s '/Users/me/.cache/meme-factory/poster-s1-posted' ]")
+  expect(before).toContain('*_send_*|*_post_*|*_create_*')
+  // A post that went through is written down for the mod.
+  expect(post.matcher).toBe('mcp__.*')
+  expect(post.hooks[0].command).toContain("printf '%s' \"$i\" > '/Users/me/.cache/meme-factory/poster-s1-posted'")
+  // A folder name the shell can't hold safely gets no hooks, and the mod won't post unguarded.
+  expect(posterHooks("/Users/o'brien/.cache/meme-factory/poster-s1")).toBeUndefined()
+
+  const said = JSON.stringify({ posted: true, where: '#x on Slack', link: 'https://provar.slack.com/archives/C1/p1' })
+  expect(posterOutcome(said, true)).toEqual({ posted: true, where: '#x on Slack', link: 'https://provar.slack.com/archives/C1/p1' })
+  expect(posterOutcome(said, false).reason).toMatch(/said it posted, but it didn't/)
+  expect(posterOutcome('not json at all', true)).toEqual({ posted: true, where: '', link: null })
+  expect(posterOutcome(JSON.stringify({ posted: false, reason: 'No channel by that name' }), false)).toEqual({ posted: false, reason: 'No channel by that name' })
+  expect(parsePosted(JSON.stringify({ posted: true, link: 'javascript:alert(1)' })).link).toBeNull()
+
+  const prompt = posterPrompt(makeDraft('db', ['Meme Factory', 'Me', 'Real work'], 5)!, '#x on Slack', true)
+  expect(prompt).toContain('Where (the person\'s words): "#x on Slack"')
+  expect(prompt).toContain('Fresh from the [Meme Factory](https://github.com/CodyAMaughan/meme-factory) 🏭')
+})
+
+test("the mod's own helpers don't hand back into the conversation: their reports are dropped, and nothing else", () => {
+  // The shape Claude Code 2.1.295 used for the picture check's hand-back.
+  const id = 'ac66173620b500af8'
+  const handback = {
+    origin: { kind: 'peer', from: id, senderTaskId: id, name: 'meme-factory:picture-check', handback: true },
+    text: `Another Claude session sent a message:\n<agent-message from="${id}">\n[Subagent hand-back] The report follows:\n  {"checks":[]}\n</agent-message>`,
+  }
+  expect(ownHandback(handback, new Set([id]))).toBe(id)
+  expect(ownHandback({ ...handback, origin: { kind: 'peer' } }, new Set([id]))).toBe(id)
+  expect(ownHandback(handback, new Set(['another-agent']))).toBe('')
+  // What you type, and other sessions' messages, always go through.
+  expect(ownHandback({ origin: { kind: 'composer' }, text: `look at from="${id}"` }, new Set([id]))).toBe('')
+  expect(ownHandback({ origin: { kind: 'peer', from: 'someone' }, text: 'hi' }, new Set([id]))).toBe('')
+})
+
+test('after approving, t still reaches the chat box (the post view says "Say: post it to…")', async ($, on) => {
+  const { clock } = factory(on)
+  await draftsReady($, clock)
+  const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
+  await ui.press({ key: 'approve' })
+  await clock.settle()
+  expect(await ui.find({ type: 'Text', text: /Approved/ })).toBeDefined()
+  expect(await ui.find({ key: 'talk' })).toMatchObject({ props: { hotkey: 't' } })
+})
+
+test("the chat box knows Slack is there when a helper posts to it, so it doesn't say Slack isn't connected", () => {
+  const job = { request: 'r', status: 'approved', approved: { template_name: 'X' }, drafts: [], selected: 0, chat: [] }
+  const withHelper = chatPrompt(job, [], [], 'post it to #team', ['Slack', 'Email'])
+  expect(withHelper).toContain('Slack channels: (Slack is connected: a #channel the person names is found when posting)')
+  expect(withHelper).toContain('Other places a helper can post to: Slack, Email')
+  expect(chatPrompt(job, [], [], 'post it to #team')).toContain('Slack channels: (Slack not connected)')
+})
+
 test('Desktop draws the meme as an SVG with a link to the full image', async ($, on) => {
   const { clock } = factory(on)
   await draftsReady($, clock, 'desktop')
@@ -420,6 +592,16 @@ test('helpers: memegen URLs, JSON in fences, ranking, PNG sizing, connectors, de
     { name: 'mcp__m__chat_message_search', description: 'Search Microsoft Teams chats', mcp: true },
   ])
   expect(found).toEqual({ slack: { prefix: 'mcp__s__', canUpload: false }, others: [] })
+  // Slack's own plugin can't list channels or upload, so Claude posts there; it mentions email but is Slack.
+  const pluginSlack = [
+    { name: 'mcp__plugin_slack_slack__slack_send_message', description: 'Sends a message to a Slack channel or user.', mcp: true },
+    { name: 'mcp__plugin_slack_slack__slack_search_channels', description: 'Search for Slack channels.', mcp: true },
+    { name: 'mcp__plugin_slack_slack__slack_search_users', description: 'Search for Slack users by name, email, or profile attributes.', mcp: true },
+  ]
+  expect(postingConnectors([...pluginSlack, { name: 'mcp__gm41l__send_message', description: 'Send a Gmail email', mcp: true }])).toEqual({ slack: null, others: ['Slack', 'Email'] })
+  expect(postingConnectors(pluginSlack)).toEqual({ slack: null, others: ['Slack'] })
+  // With a Slack the mod posts to itself, the other isn't offered twice.
+  expect(postingConnectors([...pluginSlack, { name: 'mcp__s__slack_send_message', mcp: true }, { name: 'mcp__s__slack_list_user_channels', mcp: true }]).others).toEqual([])
 
   const channels = [{ id: 'C1', name: 'all-maughanco' }, { id: 'C2', name: 'social' }]
   expect(resolveDestination('post it to #social', channels, [])).toEqual({ kind: 'slack', id: 'C2', name: 'social' })
@@ -628,25 +810,20 @@ test('without memegen settings, memes come from api.memegen.link with no key or 
 })
 
 test('Slack still shows up when the desktop app leaves its tools out of the tool list', async ($, on) => {
-  const mcp: any[] = []
-  const { clock } = factory(on, { slackUnlisted: true })
-  on('mcp.call', ($, e) => {
-    mcp.push(e)
-    const text = e.tool === 'slack_list_user_channels' ? CHANNELS_REPLY : e.tool === 'slack_get_file_upload_url' ? TICKET_REPLY : DONE_REPLY
-    return { value: { content: [{ type: 'text', text }], isError: false } }
-  })
+  const { clock, log } = factory(on, { slackUnlisted: true })
   await draftsReady($, clock)
   const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
   await ui.press({ key: 'approve' })
   for (let i = 0; i < 5; i++) await clock.settle()
   expect(await ui.find({ key: 'ch-C0C5HB6PETU' })).toMatchObject({ props: { label: '#social' } })
-  expect(mcp[0]).toMatchObject({ server: 'claude.ai Slack', tool: 'slack_list_user_channels' })
+  const slack = () => log.calls.filter((c) => c.server === 'claude.ai Slack')
+  expect(slack()[0]).toMatchObject({ tool: 'mcp__claude.ai Slack__slack_list_user_channels' })
   await ui.press({ key: 'ch-C0C5HB6PETU' })
   await ui.press({ key: 'post' })
   await ui.press({ key: 'confirm' })
   for (let i = 0; i < 5; i++) await clock.settle()
-  expect(mcp.map((c) => c.tool)).toEqual(['slack_list_user_channels', 'slack_get_file_upload_url', 'slack_complete_file_upload'])
-  expect(mcp.at(-1)).toMatchObject({ args: { channel_id: 'C0C5HB6PETU' } })
+  expect(slack().map((c) => c.tool.split('__').pop())).toEqual(['slack_list_user_channels', 'slack_get_file_upload_url', 'slack_complete_file_upload'])
+  expect(slack().at(-1)).toMatchObject({ channel_id: 'C0C5HB6PETU' })
   expect(await ui.find({ type: 'Text', text: 'Posted to #social' })).toBeDefined()
 })
 
@@ -659,30 +836,35 @@ test('compared and stacked memes ask for parallel boxes, and the judge rewards t
   expect(judged).toMatch(/one word swapped, earn the full 3/)
 })
 
-test('a refused Slack lookup shows why in the panel, with ways forward, instead of no Slack', async ($, on) => {
+test('a failed Slack lookup shows why in the panel, with ways forward, instead of no Slack', async ($, on) => {
+  const { clock } = factory(on, { slackError: 'missing_scope' })
+  await draftsReady($, clock)
+  const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
+  await ui.press({ key: 'approve' })
+  for (let i = 0; i < 5; i++) await clock.settle()
+  expect(await ui.find({ type: 'Text', text: /Slack is connected, but its channels didn't load: Slack answered slack_list_user_channels with an error: missing_scope/ })).toBeDefined()
+  expect(await ui.find({ key: 'slack-retry' })).toBeDefined()
+  expect(await ui.find({ type: 'Text', text: /say "post it to #channel" in the chat/ })).toBeDefined()
+  const report = JSON.parse((await $.tool.call({ tool: 'mcp__meme-factory__meme_factory_debug', tool_use_id: 'd1', action: 'status' })).result)
+  expect(report.slack).toMatchObject({ via: 'tool list' })
+  expect(report.channels).toEqual([])
+  expect(report.slackProblem).toMatch(/missing_scope/)
+  expect(report.log.some((l) => l.includes('slack channels failed'))).toBe(true)
+})
+
+test("auto mode can't block the mod's own Slack calls: they go to the server, not through Claude's tools", async ($, on) => {
   const { clock, log } = factory(on, { slackDenied: true })
   await draftsReady($, clock)
   const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
   await ui.press({ key: 'approve' })
   for (let i = 0; i < 5; i++) await clock.settle()
-  expect(await ui.find({ type: 'Text', text: /Slack is connected, but its channels didn't load: Claude Code blocked slack_list_user_channels: The server-side auto mode classifier/ })).toBeDefined()
-  expect(await ui.find({ key: 'slack-retry' })).toBeDefined()
-  await ui.press({ key: 'slack-claude' })
-  expect(log.submitted.at(-1)).toContain('wants it posted to: Slack')
-  const report = JSON.parse((await $.tool.call({ tool: 'mcp__meme-factory__meme_factory_debug', tool_use_id: 'd1', action: 'status' })).result)
-  expect(report.slack).toMatchObject({ via: 'tool list' })
-  expect(report.channels).toEqual([])
-  expect(report.slackProblem).toMatch(/auto mode classifier/)
-  expect(report.log.some((l) => l.includes('slack channels failed'))).toBe(true)
-})
-
-test("the mod approves only its own Slack calls: channels and upload URL always, the share only while posting", async ($, on) => {
-  const { clock } = factory(on)
-  on('tool.check', () => ({ decision: 'ask' }))
-  await draftsReady($, clock)
-  const own = (tool) => $.tool.check({ tool: `${SLACK}${tool}`, input: {} })
-  // Calls the test makes come from the test, not the mod: the mod leaves them alone.
-  expect((await own('slack_list_user_channels')).decision).toBe('ask')
+  await ui.press({ key: 'ch-C0C5HB6PETU' })
+  await ui.press({ key: 'post' })
+  await ui.press({ key: 'confirm' })
+  for (let i = 0; i < 5; i++) await clock.settle()
+  expect(await ui.find({ type: 'Text', text: 'Posted to #social' })).toBeDefined()
+  expect(log.calls.filter((c) => c.server === 'sl4ck').map((c) => c.tool.split('__').pop())).toEqual(['slack_list_user_channels', 'slack_get_file_upload_url', 'slack_complete_file_upload'])
+  expect(log.calls.some((c) => !c.server && String(c.tool).startsWith(SLACK))).toBe(false)
 })
 
 test('desktop-shaped Slack replies (text wrapped as a JSON string) still give channels, an upload and a link', async ($, on) => {

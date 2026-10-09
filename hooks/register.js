@@ -30,7 +30,11 @@ import {
   parseSlackChannels,
   parseUploadTicket,
   pngSize,
-  postPrompt,
+  POSTER_SYSTEM,
+  ownHandback,
+  posterOutcome,
+  posterHooks,
+  posterPrompt,
   postingConnectors,
   resolveDestination,
   resultText,
@@ -70,6 +74,14 @@ const STAGES = [
 // The current job. Module state: it resets when the module reloads during development.
 let job = freshJob()
 let seq = 0
+// True while the panel Claude opened waits undrawn (a narrow terminal): the band above the prompt draws it.
+let inBand = false
+// The poster agent posting right now ({ agentId }), and its two files: `-path` (the meme it may
+// post) and `-posted` (its post, once one went through), named for this session.
+let poster = null
+let posterFiles = ''
+// The helpers this mod started (picture checks, posters): their hand-backs never reach the conversation.
+const ownAgents = new Set()
 // Pictures per draft id: { png, size } for the terminal Image and uploads, { svg } for Desktop.
 const art = new Map()
 // What the session can post to: { slack: { prefix, canUpload } | null, channels, others }.
@@ -139,6 +151,7 @@ export function register(on) {
   on('session.start', async ($, e, next) => {
     const home = await $.env.get('HOME')
     cacheDir = `${home || '/tmp'}/.cache/meme-factory`
+    posterFiles = `${cacheDir}/poster-${String(await $.session.id().catch(() => 'session')).replace(/[^\w-]/g, '')}`
     inlineImages = await detectInlineImages($)
     wordmark = await loadWordmark($)
     debugOn = (await $.env.get('MEME_FACTORY_DEBUG')) === '1'
@@ -196,6 +209,19 @@ export function register(on) {
         hooks: readCacheHook(cacheDir),
       })
       .catch(() => {})
+    // The poster: posts an approved meme where the mod can't post itself, with your connectors, in
+    // the background. Hidden from Claude; only this mod spawns it, after you confirm in the panel.
+    await $.agent
+      .register({
+        name: 'poster',
+        description: 'Meme Factory only: posts a meme the person approved and confirmed in the panel.',
+        prompt: POSTER_SYSTEM,
+        model: 'sonnet',
+        maxTurns: 10,
+        omitClaudeMd: true,
+        hooks: posterHooks(posterFiles),
+      })
+      .catch(() => {})
     // Register commands last: a taken name throws and skips the rest of the hook.
     await $.command.register({
       name: 'meme',
@@ -211,8 +237,9 @@ export function register(on) {
     const request = String(e.request ?? '').trim()
     if (!request) return { result: 'Give make_meme a request describing the meme.' }
     startJob($, request, String(e.context ?? ''))
-    const placed = await openPane($, false)
-    if (!placed) $.ui.toast('Meme drafts are cooking. Run /meme to open the panel.')
+    // Claude's call opens the pane unasked, which the engine holds back below 144 columns.
+    inBand = !(await openPane($, false))
+    if (inBand) changed($)
     return {
       result:
         'The Meme Factory is drafting this meme in a side panel. The user will review, refine, approve and post it there. Carry on with anything else; do not wait.',
@@ -221,7 +248,8 @@ export function register(on) {
 
   // Ask before posting, for posts Claude makes: hold any connector call that carries a meme
   // link until the person says so. $.ui.ask reaches them in every permission mode. The mod's
-  // own Slack uploads are confirmed in the panel instead, so its calls pass straight through.
+  // own posts are confirmed in the panel: its Slack calls go straight to the server, and its
+  // poster's calls never reach a mod's hooks (the poster's own hooks hold it to its job).
   on('tool.call', async ($, e, next) => {
     if (!settings.askBeforePost || next.origin?.plugin === $.plugin.name || !isMemePost(e, memePaths())) return next(e)
     const tool = String(e.tool).split('__').pop()
@@ -234,19 +262,6 @@ export function register(on) {
     if (answer !== 'Post it') return { deny: `The user declined posting this meme${answer && answer !== "Don't post" ? `: ${answer}` : ''}.` }
     return next(e)
   }).catch(() => ({ deny: "The Meme Factory couldn't ask the user about this post, so it was held." }))
-
-  // The mod's own Slack calls: the channel list and the upload steps. When they come from the mod
-  // there is no request of the person's for auto mode's classifier to judge them against, so it
-  // refuses them. Listing is read-only, and the upload is shared only after the person pressed
-  // Post it, so the mod approves exactly these calls of its own, and nothing else.
-  on('tool.check', async ($, e, next) => {
-    if (next.origin?.plugin !== $.plugin.name) return next(e)
-    const tool = String(e.tool)
-    const read = /__slack_(list_user_channels|get_file_upload_url)$/.test(tool)
-    const share = /__slack_complete_file_upload$/.test(tool) && job.post?.stage === 'posting'
-    if (read || share) return { decision: 'allow', reason: 'Meme Factory: its own Slack call (channel list, or the upload you confirmed)' }
-    return next(e)
-  })
 
   on('tool.call', { tool: 'mcp__meme-factory__meme_factory_debug' }, async ($, e) => {
     const action = String(e.action ?? 'status')
@@ -270,11 +285,21 @@ export function register(on) {
       return { text: 'Opened the Meme Factory gallery in your browser.' }
     }
     if (request) startJob($, request, '')
-    await openPane($, true)
+    await openByYou($)
     return {}
   })
 
   on('agent.offer', { agent: 'meme-factory:picture-check' }, () => ({ isOffered: false }))
+  on('agent.offer', { agent: 'meme-factory:poster' }, () => ({ isOffered: false }))
+
+  // The mod's helpers answer the mod (their turn's end, below). Claude Code also hands their report
+  // back to the conversation; that hand-back is dropped, so they never interrupt your work with Claude.
+  on('prompt.submit', async ($, e, next) => {
+    const id = ownHandback(e, ownAgents)
+    if (!id) return next(e)
+    ownAgents.delete(id)
+    return { drop: 'Meme Factory: its own helper finished; the panel has the answer' }
+  })
 
   // A picture check's answer arrives as its turn's end.
   on('turn.complete', async ($, e, next) => {
@@ -289,6 +314,13 @@ export function register(on) {
   on('ui.render', { component: 'Pane' }, async ($, e, next) => {
     if (e.requestId !== PANE) return next(e)
     return drawPane($, e)
+  })
+
+  // The panel's narrow strip, above the prompt, while the pane Claude opened waits undrawn.
+  on('ui.render', { component: 'AbovePrompt' }, async ($, e, next) => {
+    if (!inBand || job.status === 'idle' || e.props?.hasSurvey) return next(e)
+    if ((await $.ui.panes()).some((p) => p.id === PANE && p.isPlaced)) return next(e)
+    return drawPane($, { ...e, props: { ...e.props, placement: 'inline' } })
   })
 }
 
@@ -422,6 +454,7 @@ async function checkPictures($, id, exact) {
     const spawned = await $.agent.spawn({ subagentType: 'meme-factory:picture-check', prompt: reviewPrompt(items), description: 'Checking meme pictures', cwd: cacheDir })
     debug($, 'check spawned', { agentId: spawned?.agentId ?? null, deny: spawned?.deny ?? null, pictures: items.length })
     if (!spawned?.agentId) throw new Error(spawned?.deny ?? 'no agent')
+    ownAgents.add(spawned.agentId)
     answer = await Promise.race([
       new Promise((resolve) => checks.set(spawned.agentId, resolve)),
       $.clock.sleep(120000).then(() => {
@@ -621,11 +654,11 @@ async function findSlackByName($) {
   return { slack: null, channels: [] }
 }
 
-// One Slack call, through the listed tool when there is one, else straight to the server. A refusal
-// (a permission rule, or auto mode's classifier) comes back as { deny }, not an error: raise it, so
-// the panel can say what happened instead of showing no channels.
+// One Slack call, straight to the server: the mod's own call, so no permission prompt or auto mode
+// classifier asks about it (the person's Post it is the consent). A listed server is named by its
+// tools' prefix. A refusal from a hook comes back as { deny }: raise it, so the panel can say why.
 async function slackCall($, slack, tool, args) {
-  const r = slack.prefix ? await $.tool.call({ tool: `${slack.prefix}${tool}`, ...args }) : await $.mcp.call(slack.server, tool, args)
+  const r = await $.mcp.call(slack.server ?? slack.prefix.slice('mcp__'.length, -'__'.length), tool, args)
   if (r?.deny) throw new Error(`Claude Code blocked ${tool}: ${String(r.deny).slice(0, 200)}`)
   if (r?.isError) throw new Error(`Slack answered ${tool} with an error: ${resultText(r).slice(0, 200)}`)
   dlog($, `slack ${tool}: ok`)
@@ -642,7 +675,9 @@ function dlog($, line) {
   debug($, 'connectors', { line })
 }
 
-// Where to post, from a button, a favorite, or words in the chat box.
+// Where to post, from a button, a favorite, or words in the chat box. Every place is confirmed
+// here in the panel (unless ask-before-posting is off): a Slack channel the mod uploads to itself,
+// or anywhere else, which the mod's poster agent posts to in the background.
 function choose($, dest) {
   if (!job.approved) return
   // One post at a time: a second request while uploading would post the meme twice.
@@ -651,27 +686,38 @@ function choose($, dest) {
     return
   }
   if (!dest) return
-  if (dest.kind === 'claude') {
-    handToClaude($, dest.target)
-    return
-  }
-  job = { ...job, post: { stage: settings.askBeforePost ? 'confirm' : 'posting', target: { id: dest.id, name: dest.name } } }
+  const target = dest.kind === 'claude' ? { kind: 'claude', where: dest.target, name: dest.target } : { kind: 'slack', id: dest.id, name: dest.name }
+  job = { ...job, post: { stage: settings.askBeforePost ? 'confirm' : 'posting', target } }
   changed($)
-  if (!settings.askBeforePost) $.clock.after(0, () => postToSlack($))
+  if (!settings.askBeforePost) $.clock.after(0, () => postNow($))
 }
 
 function confirmPost($) {
   if (job.post?.stage !== 'confirm') return
   job = { ...job, post: { ...job.post, stage: 'posting' } }
   changed($)
-  $.clock.after(0, () => postToSlack($))
+  $.clock.after(0, () => postNow($))
+}
+
+function postNow($) {
+  return job.post?.target?.kind === 'claude' ? postByAgent($) : postToSlack($)
+}
+
+// A post's target back as a Post-to choice.
+function choiceOf(t) {
+  return t.kind === 'claude' ? { kind: 'claude', target: t.where } : { kind: 'slack', id: t.id, name: t.name }
+}
+
+// "#social on Slack", or the place in your words.
+function targetLabel(t) {
+  return t?.kind === 'claude' ? t.name : `#${t?.name ?? 'Slack'} on Slack`
 }
 
 function cancelPost($) {
   if (!job.approved || job.post?.stage === 'posting') return
-  // Back to the picker with the last channel still chosen.
+  // Back to the picker with the last place still chosen.
   const t = job.post?.target
-  job = { ...job, post: { stage: 'pick', choice: t ? { kind: 'slack', id: t.id, name: t.name } : job.post?.choice } }
+  job = { ...job, post: { stage: 'pick', choice: t ? choiceOf(t) : job.post?.choice } }
   changed($)
 }
 
@@ -742,6 +788,10 @@ async function debugStatus($, upload) {
     slackProblem,
     others: connectors.others,
     job: { status: job.status, post: job.post?.stage ?? null, choice: job.post?.choice ? `#${job.post.choice.name ?? job.post.choice.target ?? ''}` : null },
+    // Where the panel is on screen: placed, or waiting (a narrow terminal) with the band above the prompt.
+    pane: await $.ui.panes().then((ps) => ps.find((p) => p.id === PANE) ?? null, () => null),
+    inBand,
+    poster: poster ? { agentId: poster.agentId } : null,
     memegen: memegenOrigin(),
     ...(upload ? { upload } : {}),
     log: recentLines.slice(-30),
@@ -764,14 +814,51 @@ async function uploadCheck($) {
   }
 }
 
-// Destinations the mod can't post to itself go to Claude, with its connectors.
-function handToClaude($, where) {
-  if (!job.approved) return
-  job = { ...job, posted: [...job.posted, `${where} (asked Claude)`], post: { stage: 'pick' } }
+// Anywhere the mod can't post itself: its poster agent posts there in the background, with your
+// connectors, and its answer comes back to the panel. Nothing reaches your conversation with Claude.
+async function postByAgent($) {
+  const draft = job.approved
+  const target = job.post?.target
+  const id = seq
+  const current = () => id === seq && job.approved?.id === draft.id
+  let result
+  try {
+    // Without its hooks (a cache path the shell can't hold) it would post unguarded, and ask in the chat.
+    if (!posterHooks(posterFiles)) throw new Error("the posting helper can't run safely here: the cache folder's path has unusual characters")
+    await $.fs.write(`${posterFiles}-path`, memePath(draft.url))
+    await $.fs.write(`${posterFiles}-posted`, '')
+    const spawned = await $.agent.spawn({ subagentType: 'meme-factory:poster', prompt: posterPrompt(draft, target.where, settings.signature), description: 'Posting a meme' })
+    if (!spawned?.agentId) throw new Error(spawned?.deny ?? "the posting helper didn't start")
+    ownAgents.add(spawned.agentId)
+    poster = { agentId: spawned.agentId }
+    dlog($, `poster ${spawned.agentId}: posting to ${target.where}`)
+    const answer = await Promise.race([
+      new Promise((resolve) => checks.set(spawned.agentId, resolve)),
+      $.clock.sleep(180000).then(() => {
+        checks.delete(spawned.agentId)
+        return ''
+      }),
+    ])
+    const posted = await $.fs.read(`${posterFiles}-posted`).then((text) => String(text).trim() !== '', () => false)
+    result = posterOutcome(answer, posted)
+  } catch (err) {
+    result = { posted: false, reason: err?.message ?? String(err) }
+  } finally {
+    poster = null
+    await $.fs.write(`${posterFiles}-path`, '').catch(() => {})
+    await $.fs.write(`${posterFiles}-posted`, '').catch(() => {})
+  }
+  const where = (result.posted && result.where) || target.where
+  dlog($, result.posted ? `poster posted to ${where}: ${result.link ?? 'no link'}` : `poster didn't post: ${result.reason}`)
+  if (!current()) {
+    $.ui.toast(result.posted ? `Posted to ${where}` : `Couldn't post to ${target.where}: ${result.reason}`)
+    return
+  }
+  job = result.posted
+    ? { ...job, post: { stage: 'done', target: { ...target, name: where }, link: result.link }, posted: [...job.posted, where] }
+    : { ...job, post: { stage: 'error', target, error: result.reason } }
   changed($)
-  $.ui.toast(`Asked Claude to post it to ${where}. It picks this up when it's free.`)
-  // Resolves when the turn starts, which waits for the session to be idle: don't block on it.
-  $.prompt.submit({ text: postPrompt(job.approved, where, null, settings.askBeforePost) }).catch((err) => $.ui.toast(`Couldn't hand off to Claude: ${err?.message ?? err}`))
+  if (result.posted) $.ui.toast(`Posted to ${where}`)
 }
 
 function addConnector($) {
@@ -805,7 +892,7 @@ async function chat($, message) {
   let reply = ''
   let action = { type: 'none' }
   try {
-    ;({ reply, action } = parseChatAction(await complete($, CHAT_SYSTEM, chatPrompt(job, connectors.channels, settings.favorites, text), 400, 'chat')))
+    ;({ reply, action } = parseChatAction(await complete($, CHAT_SYSTEM, chatPrompt(job, connectors.channels, settings.favorites, text, connectors.others), 400, 'chat')))
   } catch {
     reply = "Sorry, I didn't catch that. Try “meaner”, “use 2”, “approve” or “post to #social”."
   }
@@ -1035,6 +1122,15 @@ async function openPane($, byUser) {
   return placed?.isPlaced ?? true
 }
 
+// Opened by you (/meme, or the band's button), the pane is placed at any width (docked beside the
+// transcript from 110 columns, and from then on when Claude opens it too), so the band steps aside.
+async function openByYou($) {
+  if ((await openPane($, true)) && inBand) {
+    inBand = false
+    changed($)
+  }
+}
+
 function reset($) {
   seq++
   job = { ...freshJob(), chat: job.chat }
@@ -1062,7 +1158,7 @@ function drawPane($, e) {
   const el = $.ui.resolve(e)
   const { Box, Text, Button } = el
   const inline = e.props?.placement === 'inline'
-  const children = [header(el, e)]
+  const children = [header($, el, e)]
 
   if (job.status === 'idle') {
     const picked = job.pending && TEMPLATES.find((t) => t.id === job.pending)
@@ -1122,7 +1218,7 @@ function drawPane($, e) {
         Button({ key: 'more', label: 'More like this', hotkey: 'm', plain: true, onPress: () => variations($) }),
         Button({ key: 'copy', label: 'Copy', hotkey: 'c', plain: true, onPress: () => copyLink($, draft) }),
         Button({ key: 'view', label: 'Browser', hotkey: 'v', plain: true, onPress: () => openGallery($) }),
-        talkButton($, el),
+        talkButton($, el, e),
       ]),
     )
   }
@@ -1162,7 +1258,7 @@ function brand(el, e) {
   return el.Text({ bold: true, color: '#19141F', backgroundColor: '#D9F24A', children: [' MEME FACTORY '] })
 }
 
-function header(el, e) {
+function header($, el, e) {
   const { Box, Text } = el
   const post = job.post
   let status = Text({ dimColor: true, wrap: 'truncate-end', children: [job.request || ''] })
@@ -1173,7 +1269,9 @@ function header(el, e) {
     else if (post?.stage === 'error') status = Text({ color: 'error', wrap: 'truncate-end', children: [`✗ Not posted · ${name}`] })
     else status = Text({ color: 'success', wrap: 'truncate-end', children: [`✓ Approved · ${name}`] })
   }
-  return Box({ flexDirection: 'row', columnGap: 2, alignItems: 'center', children: [brand(el, e), status] })
+  // In the band, the panel is one press away: the engine places a pane you open yourself.
+  const open = e.component === 'AbovePrompt' ? [el.Button({ key: 'open-pane', label: 'Open the panel', hotkey: 'e', plain: true, onPress: () => openByYou($) })] : []
+  return Box({ flexDirection: 'row', columnGap: 2, alignItems: 'center', children: [brand(el, e), status, ...open] })
 }
 
 // What the picture check is doing, in one dim line (nothing once it found nothing to fix).
@@ -1206,8 +1304,9 @@ function tabLabel(d) {
 }
 
 // t moves the keyboard to the chat box; Tab or Esc moves it back, so hotkeys keep working.
-function talkButton($, el) {
-  return el.Button({ key: 'talk', label: 'Talk', hotkey: 't', plain: true, onPress: () => $.ui.focus({ requestId: PANE, key: 'chat' }).catch(() => {}) })
+// The pane's or the band's chat box, whichever this draw is in.
+function talkButton($, el, e) {
+  return el.Button({ key: 'talk', label: 'Talk', hotkey: 't', plain: true, onPress: () => $.ui.focus({ requestId: e.requestId, key: 'chat' }).catch(() => {}) })
 }
 
 // ---------- Posting ----------
@@ -1304,11 +1403,8 @@ function postingView($, el, e) {
     else rows.push(picker, ...(picks.length ? [row(el, picks)] : []))
     if (connectors.slack && !connectors.channels.length) {
       rows.push(
-        Text({ color: 'warning', wrap: 'wrap', children: [`Slack is connected, but its channels didn't load: ${slackProblem || 'still looking'}`] }),
-        row(el, [
-          Button({ key: 'slack-retry', label: 'Try again', hotkey: 'r', plain: true, onPress: () => refreshConnectors($, true) }),
-          Button({ key: 'slack-claude', label: 'Ask Claude to post it', hotkey: 'k', plain: true, onPress: () => handToClaude($, 'Slack') }),
-        ]),
+        Text({ color: 'warning', wrap: 'wrap', children: [`Slack is connected, but its channels didn't load: ${slackProblem || 'still looking'}. Or say "post it to #channel" in the chat.`] }),
+        row(el, [Button({ key: 'slack-retry', label: 'Try again', hotkey: 'r', plain: true, onPress: () => refreshConnectors($, true) })]),
       )
     }
     rows.push(
@@ -1318,6 +1414,7 @@ function postingView($, el, e) {
         Button({ key: 'copy-approved', label: 'Copy', hotkey: 'c', plain: true, onPress: () => copyLink($, draft) }),
         Button({ key: 'new', label: 'New', hotkey: 'n', plain: true, onPress: () => reset($) }),
         Button({ key: 'view-approved', label: 'Browser', hotkey: 'v', plain: true, onPress: () => openGallery($) }),
+        talkButton($, el, e),
       ]),
     )
     if (!inline) {
@@ -1338,7 +1435,7 @@ function postingView($, el, e) {
 
   if (post.stage === 'confirm') {
     const ask = [
-      Text({ bold: true, color: 'permission', children: [`Post to #${post.target.name} on Slack?`] }),
+      Text({ bold: true, color: 'permission', wrap: 'wrap', children: [`Post to ${targetLabel(post.target)}?`] }),
       row(el, [
         Button({ key: 'confirm', label: 'Post it', hotkey: 'y', plain: true, autoFocus: true, onPress: () => confirmPost($) }),
         Button({ key: 'cancel', label: 'Cancel', hotkey: 'n', plain: true, onPress: () => cancelPost($) }),
@@ -1347,29 +1444,35 @@ function postingView($, el, e) {
     if (inline) rows.push(row(el, ask, 3))
     else {
       rows.push(Box({ flexDirection: 'column', borderStyle: 'round', paddingX: 1, children: ask }))
-      rows.push(Text({ dimColor: true, children: [settings.signature ? 'Signed "Fresh from the Meme Factory" · Settings in v' : 'Just the meme, no message · Settings in v'] }))
+      const how = post.target.kind === 'claude' ? 'A helper posts the link with your connectors · ' : ''
+      rows.push(Text({ dimColor: true, wrap: 'wrap', children: [`${how}${settings.signature ? 'Signed "Fresh from the Meme Factory" · Settings in v' : 'Just the meme, no message · Settings in v'}`] }))
     }
   }
 
   if (post.stage === 'posting') {
-    rows.push(Text({ color: 'warning', children: [`● Posting to #${post.target.name} on Slack…`] }))
-    if (!inline) rows.push(Text({ dimColor: true, children: ['Uploading the image. Keep working.'] }))
+    rows.push(Text({ color: 'warning', wrap: 'truncate-end', children: [`● Posting to ${targetLabel(post.target)}…`] }))
+    if (!inline) rows.push(Text({ dimColor: true, children: [post.target.kind === 'claude' ? 'A helper is posting it in the background. Keep working.' : 'Uploading the image. Keep working.'] }))
   }
 
   if (post.stage === 'done') {
-    rows.push(Text({ color: 'success', children: [`✓ Posted to #${post.target.name} on Slack`] }))
+    rows.push(Text({ color: 'success', wrap: 'truncate-end', children: [`✓ Posted to ${targetLabel(post.target)}`] }))
     // The terminal prints a Link's whole URL, so it gets a button that opens the browser.
+    const openLabel = post.target.kind === 'claude' ? 'Open the post' : 'Open in Slack'
     const open = post.link
       ? e.surface === 'terminal'
-        ? [Button({ key: 'open-slack', label: 'Open in Slack', hotkey: 'o', plain: true, onPress: () => openInBrowser($, post.link) })]
-        : [Link({ href: post.link, label: 'Open in Slack' })]
+        ? [Button({ key: 'open-slack', label: openLabel, hotkey: 'o', plain: true, onPress: () => openInBrowser($, post.link) })]
+        : [Link({ href: post.link, label: openLabel })]
       : []
+    const favorite =
+      post.target.kind === 'claude'
+        ? []
+        : settings.favorites.some((f) => f.channelId === post.target.id)
+          ? [Text({ dimColor: true, children: ['★ favorite'] })]
+          : [Button({ key: 'favorite', label: `★ Save #${post.target.name}`, hotkey: 's', plain: true, onPress: () => guard($, () => saveFavorite($)) })]
     rows.push(
       row(el, [
         ...open,
-        settings.favorites.some((f) => f.channelId === post.target.id)
-          ? Text({ dimColor: true, children: ['★ favorite'] })
-          : Button({ key: 'favorite', label: `★ Save #${post.target.name}`, hotkey: 's', plain: true, onPress: () => guard($, () => saveFavorite($)) }),
+        ...favorite,
         Button({ key: 'again', label: 'Post elsewhere', hotkey: 'p', plain: true, onPress: () => cancelPost($) }),
         Button({ key: 'new', label: 'New meme', hotkey: 'n', plain: true, onPress: () => reset($) }),
       ]),
@@ -1378,11 +1481,10 @@ function postingView($, el, e) {
 
   if (post.stage === 'error') {
     rows.push(
-      Text({ color: 'error', wrap: 'wrap', children: [`✗ Couldn't post to #${post.target?.name ?? 'Slack'}: ${post.error}`] }),
+      Text({ color: 'error', wrap: 'wrap', children: [`✗ Couldn't post to ${targetLabel(post.target)}: ${post.error}`] }),
       row(el, [
-        Button({ key: 'retry-post', label: 'Retry', hotkey: 'r', plain: true, onPress: () => choose($, { kind: 'slack', id: post.target.id, name: post.target.name }) }),
+        Button({ key: 'retry-post', label: 'Retry', hotkey: 'r', plain: true, onPress: () => choose($, choiceOf(post.target)) }),
         Button({ key: 'cancel', label: 'Pick another', hotkey: 'p', plain: true, onPress: () => cancelPost($) }),
-        Button({ key: 'claude-post', label: 'Ask Claude', hotkey: 'k', plain: true, onPress: () => handToClaude($, `#${post.target?.name} on Slack`) }),
       ]),
     )
   }
@@ -1409,7 +1511,9 @@ function chatInput($, el) {
     // autoFocus takes only true. Only the empty panel takes it: elsewhere a focused field
     // would swallow the hotkeys.
     ...(idle ? { autoFocus: true } : {}),
-    onSubmit: (value) => (idle ? value.trim() && startJob($, value.trim(), '') : chat($, value)),
+    // Returns at once: Claude Code clears the field only when the handler returns, so waiting
+    // on the chat (a model call, then a remix) would leave your message sitting there.
+    onSubmit: (value) => void (idle ? value.trim() && startJob($, value.trim(), '') : guard($, () => chat($, value))),
   })
 }
 
