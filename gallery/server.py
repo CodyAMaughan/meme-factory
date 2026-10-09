@@ -11,6 +11,7 @@ when the session or the mod unloads. Standard library only.
   POST /api/event                  the page reports an action
 """
 
+import hmac
 import json
 import os
 import sys
@@ -20,13 +21,18 @@ from urllib.parse import parse_qs, urlparse
 
 # The token arrives on stdin, not argv, so other local processes can't read it from ps.
 TOKEN = sys.stdin.readline().strip()
+# The second line lists the event types the mod handles; nothing else is passed on.
+EVENT_TYPES = set(filter(None, sys.stdin.readline().strip().split(',')))
 PAGE = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'index.html'), 'rb').read()
 MAX_BODY = 256 * 1024
-EVENT_TYPES = {'select', 'approve', 'chat', 'remix', 'new', 'post', 'confirm', 'cancel', 'favorite', 'addConnector', 'settings', 'back'}
 
 state = {'version': 0, 'body': {}}
 changed = threading.Condition()
 out_lock = threading.Lock()
+
+
+def _reject(constant):
+    raise ValueError(constant)
 
 
 def emit(line):
@@ -52,7 +58,8 @@ class Handler(BaseHTTPRequestHandler):
             self.send_header(
                 'Content-Security-Policy',
                 "default-src 'self'; img-src 'self' https://api.memegen.link data:; "
-                "style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'",
+                "style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'; "
+                "frame-ancestors 'none'; base-uri 'none'; form-action 'none'; object-src 'none'",
             )
         self.end_headers()
         if body:
@@ -66,13 +73,14 @@ class Handler(BaseHTTPRequestHandler):
         origin = self.headers.get('Origin')
         if origin and origin not in (f'http://127.0.0.1:{port}', f'http://localhost:{port}'):
             return False
-        return bool(TOKEN) and self.headers.get('X-Meme-Token') == TOKEN
+        return bool(TOKEN) and hmac.compare_digest(self.headers.get('X-Meme-Token', ''), TOKEN)
 
     def _json_body(self):
         length = int(self.headers.get('Content-Length') or 0)
         if length <= 0 or length > MAX_BODY:
             raise ValueError('bad length')
-        return json.loads(self.rfile.read(length))
+        # NaN and Infinity aren't JSON: the mod's JSON.parse would drop the event.
+        return json.loads(self.rfile.read(length), parse_constant=_reject)
 
     def do_GET(self):
         url = urlparse(self.path)
@@ -84,7 +92,10 @@ class Handler(BaseHTTPRequestHandler):
         if url.path == '/api/state':
             if not self._trusted():
                 return self._send(403)
-            since = int((parse_qs(url.query).get('since') or ['-1'])[0])
+            try:
+                since = int((parse_qs(url.query).get('since') or ['-1'])[0])
+            except ValueError:
+                return self._send(400)
             with changed:
                 changed.wait_for(lambda: state['version'] != since, timeout=25)
                 payload = json.dumps({'version': state['version'], **state['body']}).encode()

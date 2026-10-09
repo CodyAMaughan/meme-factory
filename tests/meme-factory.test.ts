@@ -1,6 +1,8 @@
 import { expect, mock, test } from 'claude-code/testing'
 import {
+  GALLERY_EVENTS,
   SIGNATURE,
+  applyScores,
   encodeLine,
   imageCells,
   memeUrl,
@@ -94,7 +96,7 @@ function factory(on, rig: Rig = {}) {
     const isUpload = e.argv[0] === 'curl' && e.argv.includes('--data-binary')
     return { value: { exitCode: 0, stdout: isUpload ? 'OK - 323850' : '', stderr: '' } }
   })
-  on('fs.read', ($, e) => ({ value: { base64: e.path.endsWith('.png') ? pngHeader().toBase64() : 'SlBFRw==' } }))
+  on('fs.read', ($, e) => ({ value: { base64: /\.png(\.part)?$/.test(e.path) ? pngHeader().toBase64() : 'SlBFRw==' } }))
   on('fs.exists', () => ({ value: true }))
   on('fs.stat', () => ({ value: { kind: 'file', size: 323850, mtimeMs: 0, isLink: false } }))
   on('tool.list', () => ({
@@ -287,7 +289,7 @@ test('the browser gallery drives the same flow: chat, pick a channel, confirm', 
   expect(opened?.[1]).toMatch(/^http:\/\/127\.0\.0\.1:5555\/#t=[0-9a-f]{48}&tab=drafts$/)
   const token = opened![1].split('#t=')[1].split('&')[0]
   expect(spawned[0].argv.join(' ')).not.toContain(token)
-  expect(spawned[0].input).toBe(token + '\n')
+  expect(spawned[0].input).toBe(`${token}\n${GALLERY_EVENTS.join(',')}\n`)
   expect(pushed.every((p) => p.url === 'http://127.0.0.1:5555/api/state' && p.token === token)).toBe(true)
   expect(JSON.stringify(pushed)).not.toContain('/Users/test')
 
@@ -398,4 +400,23 @@ test('helpers: memegen URLs, JSON in fences, ranking, PNG sizing, connectors, de
   expect(resolveDestination('post it to #social', channels, [])).toEqual({ kind: 'slack', id: 'C2', name: 'social' })
   expect(resolveDestination('socialize it on LinkedIn', channels, [])).toEqual({ kind: 'claude', target: 'socialize it on LinkedIn' })
   expect(resolveDestination('team memes', channels, [{ label: 'Team memes', target: '#all-maughanco', channelId: 'C1', channelName: 'all-maughanco' }])).toEqual({ kind: 'slack', id: 'C1', name: 'all-maughanco' })
+})
+
+
+test('helpers hold up against odd input: dot-only lines, junk scores, look-alike destinations', async () => {
+  // A dot-only line can't become a "." or ".." path segment.
+  expect(encodeLine('..')).not.toMatch(/^\.+$/)
+  expect(memeUrl('drake', ['.', 'b'])).not.toContain('/./')
+  // A score the judge didn't give as a number keeps the old one.
+  const [d] = applyScores([{ id: 'x', score: 5 }] as any, JSON.stringify({ scores: [{ i: 0, score: 'high' }] }))
+  expect(d.score).toBe(5)
+  // Names match as whole words, and an explicit #channel beats a favorite.
+  const channels = [{ id: 'C1', name: 'social' }, { id: 'C2', name: 'devops' }]
+  const favorites = [{ label: '#dev', target: '#dev on Slack', channelId: 'C9', channelName: 'dev' }, { label: 'X', target: 'my X account' }]
+  expect(resolveDestination('post to #devops', channels, favorites)).toEqual({ kind: 'slack', id: 'C2', name: 'devops' })
+  expect(resolveDestination('post it to #exec-team', channels, favorites)).toEqual({ kind: 'claude', target: 'post it to #exec-team' })
+  expect(resolveDestination('post on x', channels, favorites)).toEqual({ kind: 'claude', target: 'my X account' })
+  expect(resolveDestination('#dev please', channels, favorites)).toEqual({ kind: 'slack', id: 'C9', name: 'dev' })
+  // Images that are too tall narrow to fit the rows they have.
+  expect(imageCells({ width: 600, height: 600 }, 56, 10)).toEqual({ columns: 20, rows: 10 })
 })

@@ -96,6 +96,8 @@
   /* Approved and posting */
   .split { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; }
   .split > * { flex: 1 1 340px; min-width: 0; }
+  /* Narrow: the post card comes first and the picture stays short, so a confirm is never below the fold. */
+  @media (max-width: 760px) { .split > .hero { order: 2; } .hero img { max-height: 45vh; } }
   .hero img { width: 100%; max-height: 70vh; object-fit: contain; border-radius: 14px; background: #19141f; display: block; }
   .badge { font: 600 12px ui-monospace, Menlo, monospace; padding: 4px 9px; border-radius: 6px; }
   .badge.good { background: var(--good); color: var(--bg); }
@@ -170,10 +172,17 @@
   </nav>
 </header>
 <main id="main"></main>
+<div class="gone" id="flash" role="status"></div>
 <div class="gone" id="gone" role="alert">Lost the connection to Claude Code. The page works while the session that opened it is running.</div>
 <script>
 const params = new URLSearchParams(location.hash.slice(1))
-const token = params.get('t') || ''
+// The token arrives once in the link's #fragment and leaves the address bar right away.
+// sessionStorage keeps it for this tab only, so a reload still works.
+let token = params.get('t') || ''
+try {
+  if (token) sessionStorage.setItem('meme-factory-token', token)
+  else token = sessionStorage.getItem('meme-factory-token') || ''
+} catch {}
 history.replaceState(null, '', location.pathname)
 let state = null
 let version = -1
@@ -212,14 +221,29 @@ const ICON = {
 
 async function send(event) {
   try {
-    await fetch('/api/event', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Meme-Token': token }, body: JSON.stringify(event) })
+    const res = await fetch('/api/event', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Meme-Token': token }, body: JSON.stringify(event) })
+    if (!res.ok) flash("That didn't go through. Try again, or use the panel in Claude Code.")
   } catch { $('gone').style.display = 'block' }
+}
+// A short note for an action the session refused.
+let flashTimer = 0
+function flash(text) {
+  $('flash').textContent = text
+  $('flash').style.display = 'block'
+  clearTimeout(flashTimer)
+  flashTimer = setTimeout(() => ($('flash').style.display = 'none'), 4000)
 }
 
 async function poll() {
   for (;;) {
     try {
       const res = await fetch(`/api/state?since=${version}`, { headers: { 'X-Meme-Token': token } })
+      if (res.status === 403) {
+        // A link from an earlier session: this server never knew its token.
+        $('gone').textContent = 'This page belongs to an earlier session. Press v in the Meme Factory panel to open a fresh one.'
+        $('gone').style.display = 'block'
+        return
+      }
       if (!res.ok) throw new Error(res.status)
       const next = await res.json()
       $('gone').style.display = 'none'

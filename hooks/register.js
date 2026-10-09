@@ -3,6 +3,7 @@
 // mod posts it to Slack itself (or hands other destinations to Claude's connectors).
 import {
   CHAT_SYSTEM,
+  GALLERY_EVENTS,
   JEV_URL,
   JUDGE_SYSTEM,
   SIGNATURE,
@@ -41,6 +42,7 @@ const SVG_LIMIT = 120000
 const HISTORY_LIMIT = 50
 // Chat lines the docked panel shows; inline shows only the factory's last reply.
 const CHAT_LINES = 4
+const MAX_FAVORITES = 20
 const STAGES = [
   ['write', 'Write'],
   ['judge', 'Judge'],
@@ -87,7 +89,7 @@ export function register(on) {
     const home = await $.env.get('HOME')
     cacheDir = `${home || '/tmp'}/.cache/meme-factory`
     inlineImages = await detectInlineImages($)
-    settings = { ...settings, ...((await $.store.get('settings')) ?? {}) }
+    settings = cleanSettings(await $.store.get('settings'))
     await $.tool.register({
       name: 'make_meme',
       description:
@@ -139,7 +141,7 @@ export function register(on) {
     }
     if (answer !== 'Post it') return { deny: `The user declined posting this meme${answer && answer !== "Don't post" ? `: ${answer}` : ''}.` }
     return next(e)
-  })
+  }).catch(() => ({ deny: "The Meme Factory couldn't ask the user about this post, so it was held." }))
 
   // You ask for a meme, or just open the panel.
   on('command.run', { command: 'meme' }, async ($, e) => {
@@ -191,13 +193,12 @@ function remix($, feedback) {
   if (feedback) job = { ...job, feedback: [...job.feedback, feedback] }
   job = { ...job, status: 'working', stage: 'write', note: feedback ? 'Reworking with your notes…' : 'Remixing…', error: '', approved: null, post: null }
   changed($)
-  $.clock.after(0, () => cook($, id, previous))
+  $.clock.after(0, () => cook($, id, previous, feedback))
 }
 
-async function cook($, id, previous) {
+async function cook($, id, previous, latest = '') {
   try {
     const jevKey = await $.env.get('TYPESAFE_API_KEY')
-    const latest = job.feedback.at(-1) ?? ''
     const newFormat = !previous || /different|another|new (format|template)|other (format|template)|switch/i.test(latest)
     let templateIds = newFormat ? null : [...new Set([previous.template_id, ...job.drafts.map((d) => d.template_id)])].slice(0, 3)
     if (!templateIds && jevKey) templateIds = await jevPick($, jevKey, job.request)
@@ -215,7 +216,7 @@ async function cook($, id, previous) {
     changed($)
     drafts = jevKey
       ? await jevJudge($, jevKey, job.request, drafts)
-      : applyScores(drafts, await complete($, JUDGE_SYSTEM, judgePrompt(job.request, drafts), 600))
+      : applyScores(drafts, await complete($, JUDGE_SYSTEM, judgePrompt(job.request, drafts), 600).catch(() => ''))
     if (id !== seq) return
 
     const best = topDrafts(drafts)
@@ -223,7 +224,7 @@ async function cook($, id, previous) {
     changed($)
     await renderArt($, best)
     if (id !== seq) return
-    job = { ...job, status: 'review', stage: '', drafts: best, selected: 0, note: '' }
+    job = { ...job, status: 'review', stage: '', drafts: best, selected: 0, note: '', approved: null, post: null }
     changed($)
   } catch (err) {
     if (id !== seq) return
@@ -269,25 +270,34 @@ async function renderArt($, drafts) {
   const wantsDesktop = surfaces.some((s) => s !== 'terminal')
   await $.process.run(['mkdir', '-p', cacheDir])
   for (const d of drafts) {
-    if (art.has(d.id)) continue
+    if (art.get(d.id)?.size) continue
     const entry = {}
     try {
       // The PNG serves the terminal's Image element and the Slack upload.
-      const png = `${cacheDir}/${d.id}.png`
-      await download($, `${d.url}?width=600`, png)
-      const { base64 } = await $.fs.read(png, { as: 'bytes' })
-      entry.png = png
-      entry.size = pngSize(Uint8Array.fromBase64(base64.slice(0, 64)))
+      Object.assign(entry, await fetchPng($, d))
     } catch {
-      // No picture: the panel still shows the caption.
+      // No picture: the panel still shows the caption, and the next render tries again.
     }
     if (wantsDesktop) {
       try {
         entry.svg = await svgOf($, d)
       } catch {}
     }
-    art.set(d.id, entry)
+    if (entry.size || entry.svg) art.set(d.id, entry)
   }
+}
+
+// Downloads the meme's PNG to a temp file and moves it into place only when it is a whole
+// PNG, so a timed-out or empty download is never drawn or uploaded.
+async function fetchPng($, d) {
+  const png = `${cacheDir}/${d.id}.png`
+  const part = `${png}.part`
+  await download($, `${d.url}?width=600`, part)
+  const { base64 } = await $.fs.read(part, { as: 'bytes' })
+  const size = pngSize(Uint8Array.fromBase64(base64.slice(0, 64)))
+  const mv = await $.process.run(['mv', '-f', part, png])
+  if (mv.exitCode !== 0) throw new Error('could not save the picture')
+  return { png, size }
 }
 
 async function download($, url, path) {
@@ -325,7 +335,8 @@ async function approve($, index = job.selected) {
   job = { ...job, status: 'approved', selected: index, approved: draft, post: { stage: 'pick' } }
   changed($)
   await refreshConnectors($)
-  const history = (await $.store.get('history')) ?? []
+  const stored = await $.store.get('history')
+  const history = Array.isArray(stored) ? stored : []
   const entry = { url: draft.url, template: draft.template_name, lines: draft.lines, request: job.request, at: await $.clock.now() }
   await $.store.set('history', [entry, ...history].slice(0, HISTORY_LIMIT))
 }
@@ -352,7 +363,13 @@ async function refreshConnectors($, force = false) {
 
 // Where to post, from a button, a favorite, or words in the chat box.
 function choose($, dest) {
-  if (!job.approved || !dest) return
+  if (!job.approved) return
+  // One post at a time: a second request while uploading would post the meme twice.
+  if (job.post?.stage === 'posting') {
+    $.ui.toast('Still posting the last one. Try again in a moment.')
+    return
+  }
+  if (!dest) return
   if (dest.kind === 'claude') {
     handToClaude($, dest.target)
     return
@@ -370,7 +387,7 @@ function confirmPost($) {
 }
 
 function cancelPost($) {
-  if (!job.approved) return
+  if (!job.approved || job.post?.stage === 'posting') return
   // Back to the picker with the last channel still chosen.
   const t = job.post?.target
   job = { ...job, post: { stage: 'pick', choice: t ? { kind: 'slack', id: t.id, name: t.name } : job.post?.choice } }
@@ -382,10 +399,18 @@ async function postToSlack($) {
   const draft = job.approved
   const target = job.post?.target
   const slack = connectors.slack
+  // The job can move on while the upload runs (a new meme, back to drafts): then the
+  // result belongs to nothing on screen.
+  const id = seq
+  const current = () => id === seq && job.approved?.id === draft.id
   try {
     if (!slack?.canUpload) throw new Error('the Slack connector here cannot upload files')
-    const png = art.get(draft.id)?.png ?? `${cacheDir}/${draft.id}.png`
-    if (!(await $.fs.exists(png))) await download($, `${draft.url}?width=600`, png)
+    let picture = art.get(draft.id)
+    if (!picture?.size) {
+      picture = { ...picture, ...(await fetchPng($, draft)) }
+      art.set(draft.id, picture)
+    }
+    const png = picture.png
     const { size } = await $.fs.stat(png)
     const caption = draft.lines.filter(Boolean).join(' / ')
     const ticket = parseUploadTicket(
@@ -400,11 +425,20 @@ async function postToSlack($) {
       title: caption.slice(0, 100),
       ...(settings.signature ? { initial_comment: SIGNATURE } : {}),
     })
+    if (done?.isError || done?.deny) throw new Error(String(done.deny ?? resultText(done) ?? 'Slack refused the post').slice(0, 160))
     const link = firstSlackLink(resultText(done))
+    if (!current()) {
+      $.ui.toast(`Posted to #${target.name}`)
+      return
+    }
     job = { ...job, post: { stage: 'done', target, link }, posted: [...job.posted, `#${target.name}`] }
     changed($)
     $.ui.toast(`Posted to #${target.name}`)
   } catch (err) {
+    if (!current()) {
+      $.ui.toast(`Couldn't post to #${target?.name}: ${err?.message ?? err}`)
+      return
+    }
     job = { ...job, post: { stage: 'error', target, error: err?.message ?? String(err) } }
     changed($)
   }
@@ -413,7 +447,7 @@ async function postToSlack($) {
 // Destinations the mod can't post to itself go to Claude, with its connectors.
 function handToClaude($, where) {
   if (!job.approved) return
-  job = { ...job, posted: [...job.posted, where], post: { stage: 'pick' } }
+  job = { ...job, posted: [...job.posted, `${where} (asked Claude)`], post: { stage: 'pick' } }
   changed($)
   $.ui.toast(`Asked Claude to post it to ${where}. It picks this up when it's free.`)
   // Resolves when the turn starts, which waits for the session to be idle: don't block on it.
@@ -433,6 +467,10 @@ async function saveFavorite($) {
   const t = job.post?.target
   if (!t) return
   if (settings.favorites.some((f) => f.channelId === t.id)) return
+  if (settings.favorites.length >= MAX_FAVORITES) {
+    $.ui.toast(`You have ${MAX_FAVORITES} favorites. Remove one in Settings (v) to add #${t.name}.`)
+    return
+  }
   await saveSettings($, { favorites: [...settings.favorites, { label: `#${t.name}`, target: `#${t.name} on Slack`, channelId: t.id, channelName: t.name }] })
   $.ui.toast(`Saved #${t.name} as a favorite`)
 }
@@ -466,12 +504,24 @@ async function act($, action) {
       if (hasDraft && job.status === 'review') select($, draftIndex)
       return
     case 'approve':
+      if (action.draft != null && !hasDraft) return
       return approve($, hasDraft ? draftIndex : job.selected)
     case 'post': {
+      if (job.post?.stage === 'posting') return choose($, null)
+      if (action.draft != null && !hasDraft) return
+      const words = String(action.destination ?? '').slice(0, 100)
+      // No place named: only a channel the person already picked counts.
+      if (!words.trim() && !job.post?.choice) {
+        job = { ...job, chat: [...job.chat, { role: 'factory', text: 'Where should it go? Pick a channel, or say "post to #channel".' }] }
+        changed($)
+        return
+      }
+      // "post 2" when another draft is approved: switch to that one first.
+      if (job.approved && hasDraft && job.drafts[draftIndex]?.id !== job.approved.id) backToDrafts($)
       if (!job.approved) await approve($, hasDraft ? draftIndex : job.selected)
       if (!job.approved) return
       if (!connectors.slack && !connectors.others.length) await refreshConnectors($)
-      return choose($, resolveDestination(String(action.destination ?? ''), connectors.channels, settings.favorites))
+      return choose($, words.trim() ? resolveDestination(words, connectors.channels, settings.favorites) : job.post.choice)
     }
     case 'new':
       if (action.request) startJob($, String(action.request).slice(0, 300), '')
@@ -499,7 +549,7 @@ function startGallery($) {
   void (async () => {
     let buffered = ''
     try {
-      const child = $.process.spawn({ argv: ['python3', `${$.plugin.root}/gallery/server.py`], input: `${token}\n` })
+      const child = $.process.spawn({ argv: ['python3', `${$.plugin.root}/gallery/server.py`], input: `${token}\n${GALLERY_EVENTS.join(',')}\n` })
       for await (const { stream, text } of child) {
         if (stream !== 'stdout') continue
         buffered += text
@@ -558,10 +608,11 @@ async function onGalleryEvent($, ev) {
   const validIndex = Number.isInteger(index) && index >= 0 && index < job.drafts.length
   if (ev.type === 'select' && validIndex && job.status === 'review') select($, index)
   if (ev.type === 'approve' && validIndex) await approve($, index)
-  if (ev.type === 'chat') await chat($, text(ev.text))
+  // Not awaited: a model call shouldn't hold up the clicks queued behind it.
+  if (ev.type === 'chat') chat($, text(ev.text)).catch(() => {})
   if (ev.type === 'remix') remix($, text(ev.text))
   if (ev.type === 'new' && text(ev.request)) startJob($, text(ev.request), '')
-  if (ev.type === 'back' && job.drafts.length) backToDrafts($)
+  if (ev.type === 'back' && job.status === 'approved' && job.post?.stage !== 'posting') backToDrafts($)
   if (ev.type === 'post' && job.approved) {
     const channel = connectors.channels.find((c) => c.id === ev.channelId)
     if (channel) choose($, { kind: 'slack', id: channel.id, name: channel.name })
@@ -576,6 +627,24 @@ async function onGalleryEvent($, ev) {
   if (ev.type === 'settings' && ev.settings && typeof ev.settings === 'object') await saveSettings($, ev.settings)
 }
 
+// Settings as stored can be anything (an older version, a hand edit): keep what's valid.
+function cleanSettings(stored) {
+  const s = stored && typeof stored === 'object' ? stored : {}
+  return {
+    askBeforePost: typeof s.askBeforePost === 'boolean' ? s.askBeforePost : true,
+    signature: typeof s.signature === 'boolean' ? s.signature : true,
+    favorites: (Array.isArray(s.favorites) ? s.favorites : [])
+      .filter((f) => f && typeof f === 'object' && typeof f.label === 'string' && f.label.trim())
+      .map((f) => ({
+        label: f.label.trim().slice(0, 60),
+        target: String(f.target ?? '').slice(0, 300),
+        ...(typeof f.channelId === 'string' && /^[CG][A-Z0-9]+$/.test(f.channelId) ? { channelId: f.channelId, channelName: String(f.channelName || f.channelId).slice(0, 80) } : {}),
+      }))
+      .filter((f) => f.target || f.channelId)
+      .slice(0, MAX_FAVORITES),
+  }
+}
+
 async function saveSettings($, patch) {
   const next = { ...settings }
   if (typeof patch.askBeforePost === 'boolean') next.askBeforePost = patch.askBeforePost
@@ -584,11 +653,12 @@ async function saveSettings($, patch) {
     next.favorites = patch.favorites
       .map((f) => {
         const fav = { label: String(f?.label ?? '').trim().slice(0, 60), target: String(f?.target ?? '').trim().slice(0, 300) }
-        const channel = connectors.channels.find((c) => c.id === f?.channelId) ?? (f?.channelId ? { id: String(f.channelId), name: String(f.channelName ?? '') } : null)
+        const channel = connectors.channels.find((c) => c.id === f?.channelId) ?? (f?.channelId ? { id: String(f.channelId), name: String(f.channelName || f.channelId).slice(0, 80) } : null)
         return channel && /^[CG][A-Z0-9]+$/.test(channel.id) ? { ...fav, channelId: channel.id, channelName: channel.name } : fav
       })
       .filter((f) => f.label && (f.target || f.channelId))
-      .slice(0, 20)
+      .filter((f, i, all) => !f.channelId || all.findIndex((g) => g.channelId === f.channelId) === i)
+      .slice(0, MAX_FAVORITES)
   }
   settings = next
   await $.store.set('settings', settings)
@@ -598,8 +668,19 @@ async function saveSettings($, patch) {
 // ---------- Small transitions ----------
 
 async function copyLink($, draft) {
-  await $.ui.copy({ text: draft.url })
-  $.ui.toast('Meme link copied')
+  try {
+    await $.ui.copy({ text: draft.url })
+    $.ui.toast('Meme link copied')
+  } catch {
+    $.ui.toast(`Couldn't copy. The link: ${draft.url}`)
+  }
+}
+
+// For presses that start async work: report a failure instead of dropping it.
+function guard($, work) {
+  Promise.resolve()
+    .then(work)
+    .catch((err) => $.ui.toast(`Meme Factory: ${err?.message ?? err}`))
 }
 
 async function openPane($, byUser) {
@@ -611,6 +692,7 @@ async function openPane($, byUser) {
 }
 
 function reset($) {
+  seq++
   job = { ...freshJob(), chat: job.chat }
   changed($)
 }
@@ -621,6 +703,8 @@ function select($, i) {
 }
 
 function backToDrafts($) {
+  if (job.post?.stage === 'posting') return
+  seq++
   job = { ...job, status: 'review', approved: null, post: null }
   changed($)
 }
@@ -686,7 +770,7 @@ function drawPane($, e) {
       ...caption(el, e, draft),
       ...noPreview(el, e),
       row(el, [
-        Button({ key: 'approve', label: 'Approve', hotkey: 'a', plain: true, onPress: () => approve($) }),
+        Button({ key: 'approve', label: 'Approve', hotkey: 'a', plain: true, onPress: () => guard($, () => approve($)) }),
         Button({ key: 'remix', label: 'Remix', hotkey: 'r', plain: true, onPress: () => remix($, '') }),
         Button({ key: 'copy', label: 'Copy', hotkey: 'c', plain: true, onPress: () => copyLink($, draft) }),
         Button({ key: 'view', label: 'Browser', hotkey: 'v', plain: true, onPress: () => openGallery($) }),
@@ -803,7 +887,9 @@ function choiceFromValue(value) {
 // Up to three one-key picks: favorite channels first, then the person's other channels.
 function quickPicks() {
   const picks = []
-  for (const f of settings.favorites) if (f.channelId) picks.push({ kind: 'slack', id: f.channelId, name: f.channelName ?? f.label.replace(/^#/, ''), fav: true })
+  for (const f of settings.favorites) {
+    if (f.channelId && !picks.some((p) => p.id === f.channelId)) picks.push({ kind: 'slack', id: f.channelId, name: f.channelName || f.label.replace(/^#/, ''), fav: true })
+  }
   for (const c of connectors.channels) if (!picks.some((p) => p.id === c.id)) picks.push({ kind: 'slack', id: c.id, name: c.name })
   return picks.slice(0, 3)
 }
@@ -898,7 +984,7 @@ function postingView($, el, e) {
         ...open,
         settings.favorites.some((f) => f.channelId === post.target.id)
           ? Text({ dimColor: true, children: ['★ favorite'] })
-          : Button({ key: 'favorite', label: `★ Save #${post.target.name}`, hotkey: 's', plain: true, onPress: () => saveFavorite($) }),
+          : Button({ key: 'favorite', label: `★ Save #${post.target.name}`, hotkey: 's', plain: true, onPress: () => guard($, () => saveFavorite($)) }),
         Button({ key: 'again', label: 'Post elsewhere', hotkey: 'p', plain: true, onPress: () => cancelPost($) }),
         Button({ key: 'new', label: 'New meme', hotkey: 'n', plain: true, onPress: () => reset($) }),
       ]),
@@ -965,10 +1051,12 @@ function picture(el, e, draft, { thumb = false } = {}) {
   if (e.props?.placement === 'inline') return []
   const a = art.get(draft.id) ?? {}
   const alt = `${draft.template_name}: ${draft.lines.filter(Boolean).join(' / ')}`
-  if (e.surface === 'terminal' && inlineImages && a.png && el.Image) {
+  if (e.surface === 'terminal' && inlineImages && a.png && a.size && el.Image) {
     const bodyColumns = e.props?.bodyColumns ?? IMAGE_COLUMNS + 2
     const bodyRows = e.props?.scroll?.bodyRows ?? 40
     const maxColumns = thumb ? Math.min(28, bodyColumns - 2) : Math.min(IMAGE_COLUMNS, bodyColumns - 2)
+    // Narrower than this, a picture is unreadable: the caption carries it.
+    if (maxColumns < 12) return []
     // Leave room under the picture for the caption, actions and chat.
     const maxRows = thumb ? 8 : Math.max(8, bodyRows - 16)
     return [el.Image({ key: `meme-${hash(draft.id)}`, source: { file: a.png, format: 'png' }, alt, ...imageCells(a.size, maxColumns, maxRows) })]
