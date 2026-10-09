@@ -2,6 +2,10 @@
 
 All notable changes to Meme Factory. Versions follow [semantic versioning](https://semver.org).
 
+## 0.8.0 (2026-10-09)
+
+- **Your own memegen server, no watermark.** Three optional settings: `MEMEGEN_URL` renders memes on another memegen server (such as one you host), `MEMEGEN_API_KEY` removes the watermark (or `MEMEGEN_WATERMARK` sets your own), and the browser gallery loads pictures from that server. The key is sent only when the mod downloads a picture, as a header curl reads from stdin, so it never appears in a URL, a posted link, or the process list. Without these settings nothing changes.
+
 ## 0.7.1 (2026-10-09)
 
 - Ask-before-posting recognizes your memes on any memegen server, by their image path, so a self-hosted server is covered too. Tested: posts Claude makes directly, and through a subagent, both wait for your OK.

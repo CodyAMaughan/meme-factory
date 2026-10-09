@@ -30,17 +30,39 @@ export function encodeLine(text) {
   return encodeURIComponent(escaped).replace(/%7E/gi, '~').replace(/%2C/gi, ',').replace(/'/g, '%27')
 }
 
+// Where memes render: api.memegen.link by default, or a self-hosted memegen
+// (MEMEGEN_URL). The API key is never put in a URL: these URLs get posted publicly.
+export const MEMEGEN = { base: 'https://api.memegen.link', key: '', watermark: '' }
+
+export function configureMemegen({ url, key, watermark } = {}) {
+  const base = String(url ?? '').trim().replace(/\/+$/, '')
+  MEMEGEN.base = /^https?:\/\/[^\s/?#]+(\/[^\s?#]*)?$/.test(base) ? base : 'https://api.memegen.link'
+  MEMEGEN.key = String(key ?? '').trim()
+  MEMEGEN.watermark = String(watermark ?? '').trim().slice(0, 40)
+  return MEMEGEN
+}
+
+// The page origin the browser gallery may load meme images from.
+export function memegenOrigin() {
+  return new URL(MEMEGEN.base).origin
+}
+
+// What a download adds when there's a key: no watermark, or the custom one.
+export function downloadParams() {
+  return MEMEGEN.key ? { watermark: MEMEGEN.watermark || 'none' } : {}
+}
+
 export function memeUrl(templateId, lines, ext = 'png', params = {}) {
   const t = TEMPLATE_BY_ID.get(templateId)
   // A template with its own picture renders through memegen's custom route.
   const path = t?.background ? 'custom' : templateId
   const query = new URLSearchParams({ ...(t?.background ? { background: t.background } : {}), ...params }).toString()
-  return `https://api.memegen.link/images/${path}/${lines.map(encodeLine).join('/')}.${ext}${query ? `?${query}` : ''}`
+  return `${MEMEGEN.base}/images/${path}/${lines.map(encodeLine).join('/')}.${ext}${query ? `?${query}` : ''}`
 }
 
 // The same meme at a given size and format, for downloads and previews.
-export function sizedUrl(draft, width, ext = 'png') {
-  return memeUrl(draft.template_id, draft.lines, ext, { ...(draft.layout ? { layout: draft.layout } : {}), width })
+export function sizedUrl(draft, width, ext = 'png', params = {}) {
+  return memeUrl(draft.template_id, draft.lines, ext, { ...(draft.layout ? { layout: draft.layout } : {}), width, ...params })
 }
 
 // A caption line longer than this doesn't fit a meme anyway.
@@ -487,7 +509,7 @@ export function isMemePost(e, paths = []) {
   } catch {
     return false
   }
-  return text.includes('api.memegen.link/images/') || paths.some((p) => p && text.includes(p))
+  return text.includes('api.memegen.link/images/') || text.includes(`${MEMEGEN.base}/images/`) || paths.some((p) => p && text.includes(p))
 }
 
 // What the browser gallery shows: plain data, no local file paths.

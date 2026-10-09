@@ -17,6 +17,10 @@ import {
   imageCells,
   isMemePost,
   memePath,
+  MEMEGEN,
+  configureMemegen,
+  downloadParams,
+  memegenOrigin,
   jevJudgeBody,
   jevJudgeResult,
   jevPickBody,
@@ -136,6 +140,12 @@ export function register(on) {
     debugOn = (await $.env.get('MEME_FACTORY_DEBUG')) === '1'
     checkByEnv = (await $.env.get('MEME_FACTORY_CHECK_PICTURES')) === '1'
     settings = cleanSettings(await $.store.get('settings'))
+    // Optional: render on your own memegen server, and/or remove the watermark with a key.
+    configureMemegen({
+      url: await $.env.get('MEMEGEN_URL'),
+      key: await $.env.get('MEMEGEN_API_KEY'),
+      watermark: await $.env.get('MEMEGEN_WATERMARK'),
+    })
     await $.tool.register({
       name: 'make_meme',
       description:
@@ -468,7 +478,7 @@ async function renderArt($, drafts) {
 async function fetchPng($, d) {
   const png = `${cacheDir}/${d.id}.png`
   const part = `${png}.part`
-  await download($, sizedUrl(d, 600), part)
+  await download($, sizedUrl(d, 600, 'png', downloadParams()), part)
   const { base64 } = await $.fs.read(part, { as: 'bytes' })
   const size = pngSize(Uint8Array.fromBase64(base64.slice(0, 64)))
   const mv = await $.process.run(['mv', '-f', part, png])
@@ -476,8 +486,12 @@ async function fetchPng($, d) {
   return { png, size }
 }
 
+// With MEMEGEN_API_KEY, curl reads the key header from stdin (-H @-), so it never shows
+// in a URL or in the process list.
 async function download($, url, path) {
-  const r = await $.process.run(['curl', '-sfL', '--max-time', '20', '-o', path, url], { timeoutMs: 25000 })
+  const keyed = Boolean(MEMEGEN.key)
+  const argv = ['curl', '-sfL', '--max-time', '20', ...(keyed ? ['-H', '@-'] : []), '-o', path, url]
+  const r = await $.process.run(argv, { timeoutMs: 25000, ...(keyed ? { stdin: `X-API-KEY: ${MEMEGEN.key}\n` } : {}) })
   if (r.exitCode !== 0) throw new Error(`download failed (${r.exitCode})`)
 }
 
@@ -485,7 +499,7 @@ async function download($, url, path) {
 async function svgOf($, d) {
   for (const width of [360, 300]) {
     const jpg = `${cacheDir}/${d.id}-${width}.jpg`
-    await download($, sizedUrl(d, width, 'jpg'), jpg)
+    await download($, sizedUrl(d, width, 'jpg', downloadParams()), jpg)
     const { base64 } = await $.fs.read(jpg, { as: 'bytes' })
     if (base64.length <= SVG_LIMIT) return svgForJpeg(base64, d.lines.filter(Boolean).join(' / '))
   }
@@ -736,7 +750,7 @@ function startGallery($) {
   void (async () => {
     let buffered = ''
     try {
-      const child = $.process.spawn({ argv: ['python3', `${$.plugin.root}/gallery/server.py`], input: `${token}\n${GALLERY_EVENTS.join(',')}\n` })
+      const child = $.process.spawn({ argv: ['python3', `${$.plugin.root}/gallery/server.py`], input: `${token}\n${GALLERY_EVENTS.join(',')}\n${memegenOrigin()}\n` })
       for await (const { stream, text } of child) {
         if (stream !== 'stdout') continue
         buffered += text
