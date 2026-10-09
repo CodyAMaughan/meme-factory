@@ -8,7 +8,6 @@ import {
   WRITER_SYSTEM,
   applyScores,
   connectedDestinations,
-  decodeBmp,
   draftsFromWriter,
   findConnectorPrompt,
   hash,
@@ -17,8 +16,9 @@ import {
   jevPickBody,
   jevPickResult,
   judgePrompt,
+  imageCells,
+  pngSize,
   postPrompt,
-  rasterFromImage,
   svgForJpeg,
   topDrafts,
   writerPrompt,
@@ -26,14 +26,14 @@ import {
 
 const PANE = 'meme-factory'
 const TOOL = 'mcp__meme-factory__make_meme'
-const THUMB_COLUMNS = 44
+const IMAGE_COLUMNS = 56
 const SVG_LIMIT = 120000
 const HISTORY_LIMIT = 50
 
 // The current job. Module state: it resets when the module reloads during development.
 let job = freshJob()
 let seq = 0
-// Rendered pictures per draft id: { raster } for the terminal, { svg } for Desktop.
+// Pictures per draft id: { png, size } (terminal Image and Quick Look), { svg } for Desktop.
 const art = new Map()
 let connected = new Set()
 let cacheDir = ''
@@ -187,19 +187,25 @@ function jevHeaders(key) {
 
 async function renderArt($, drafts) {
   const surfaces = await $.session.surfaces()
-  const wantsTerminal = surfaces.includes('terminal')
   const wantsDesktop = surfaces.some((s) => s !== 'terminal')
   await $.process.run(['mkdir', '-p', cacheDir])
   for (const d of drafts) {
     if (art.has(d.id)) continue
     const entry = {}
     try {
-      const jpg = `${cacheDir}/${d.id}.jpg`
-      await download($, `${d.url.replace(/\.png$/, '.jpg')}?width=360`, jpg)
-      if (wantsDesktop) entry.svg = await svgOf($, d, jpg)
-      if (wantsTerminal) entry.raster = await rasterOf($, jpg)
+      // The PNG serves the terminal's Image element and the Quick Look viewer.
+      const png = `${cacheDir}/${d.id}.png`
+      await download($, `${d.url}?width=600`, png)
+      const { base64 } = await $.fs.read(png, { as: 'bytes' })
+      entry.png = png
+      entry.size = pngSize(Uint8Array.fromBase64(base64.slice(0, 64)))
     } catch {
       // No picture: the panel still shows the caption and a link.
+    }
+    if (wantsDesktop) {
+      try {
+        entry.svg = await svgOf($, d)
+      } catch {}
     }
     art.set(d.id, entry)
   }
@@ -210,24 +216,39 @@ async function download($, url, path) {
   if (r.exitCode !== 0) throw new Error(`download failed (${r.exitCode})`)
 }
 
-async function svgOf($, d, jpg) {
-  let { base64 } = await $.fs.read(jpg, { as: 'bytes' })
-  if (base64.length > SVG_LIMIT) {
-    const small = jpg.replace(/\.jpg$/, '-s.jpg')
-    await download($, `${d.url.replace(/\.png$/, '.jpg')}?width=300`, small)
-    base64 = (await $.fs.read(small, { as: 'bytes' })).base64
-    if (base64.length > SVG_LIMIT) return null
+// Desktop draws an Svg as an image, so a JPEG embedded as a data URI shows the meme.
+async function svgOf($, d) {
+  const jpgUrl = d.url.replace(/\.png$/, '.jpg')
+  for (const width of [360, 300]) {
+    const jpg = `${cacheDir}/${d.id}-${width}.jpg`
+    await download($, `${jpgUrl}?width=${width}`, jpg)
+    const { base64 } = await $.fs.read(jpg, { as: 'bytes' })
+    if (base64.length <= SVG_LIMIT) return svgForJpeg(base64, d.lines.filter(Boolean).join(' / '))
   }
-  return svgForJpeg(base64, d.lines.filter(Boolean).join(' / '))
+  return null
 }
 
-// macOS sips shrinks the picture to a BMP we can decode; elsewhere we skip the thumbnail.
-async function rasterOf($, jpg) {
-  const bmp = jpg.replace(/\.jpg$/, '.bmp')
-  const r = await $.process.run(['sips', '--resampleWidth', String(THUMB_COLUMNS), '-s', 'format', 'bmp', jpg, '--out', bmp])
-  if (r.exitCode !== 0) return null
-  const { base64 } = await $.fs.read(bmp, { as: 'bytes' })
-  return rasterFromImage(decodeBmp(Uint8Array.fromBase64(base64)))
+// A full-size look from any terminal: macOS Quick Look, else the default image viewer.
+async function view($, draft) {
+  const png = art.get(draft.id)?.png
+  if (!png) {
+    $.ui.toast('No local copy yet. Use "Open full image" instead.')
+    return
+  }
+  try {
+    // qlmanage returns when the Quick Look window closes (Esc), so cap it at ten minutes.
+    const r = await $.process.run(['qlmanage', '-p', png], { timeoutMs: 600000 })
+    if (r.exitCode === 0) return
+  } catch {}
+  try {
+    const r = await $.process.run(['open', png])
+    if (r.exitCode === 0) return
+  } catch {}
+  try {
+    await $.process.run(['xdg-open', png])
+  } catch {
+    $.ui.toast('Could not open an image viewer. Use "Open full image" instead.')
+  }
 }
 
 // ---------- Approve and post ----------
@@ -356,6 +377,7 @@ function drawPane($, e) {
         children: [
           Button({ key: 'approve', label: 'Approve', hotkey: 'a', plain: true, onPress: () => approve($) }),
           Button({ key: 'remix', label: 'Remix', hotkey: 'r', plain: true, onPress: () => remix($, '') }),
+          Button({ key: 'view', label: 'View', hotkey: 'v', plain: true, onPress: () => view($, draft) }),
           Button({ key: 'copy', label: 'Copy link', hotkey: 'c', plain: true, onPress: () => copyLink($, draft) }),
         ],
       }),
@@ -404,6 +426,7 @@ function drawPane($, e) {
         columnGap: 2,
         children: [
           Link({ href: 'https://claude.ai/directory', label: 'Browse connectors' }),
+          Button({ key: 'view-approved', label: 'View', hotkey: 'v', plain: true, onPress: () => view($, draft) }),
           Button({ key: 'copy-approved', label: 'Copy link', hotkey: 'c', plain: true, onPress: () => copyLink($, draft) }),
           Button({ key: 'back', label: 'Back to drafts', hotkey: 'b', plain: true, onPress: () => backToDrafts($) }),
           Button({ key: 'new', label: 'New meme', hotkey: 'n', plain: true, onPress: () => reset($) }),
@@ -419,12 +442,13 @@ function drawPane($, e) {
 
 function picture(el, e, draft) {
   const a = art.get(draft.id) ?? {}
-  const alt = draft.lines.filter(Boolean).join(' / ')
-  if (e.surface === 'terminal' && a.raster && el.Raster) {
-    return [el.Raster({ key: `thumb-${hash(draft.id)}`, ...a.raster })]
+  const alt = `[picture: ${draft.template_name}. Inline images need Ghostty or kitty; press v to view it]`
+  if (e.surface === 'terminal' && a.png && el.Image) {
+    const maxColumns = Math.min(IMAGE_COLUMNS, (e.props?.bodyColumns ?? IMAGE_COLUMNS) - 2)
+    return [el.Image({ key: `meme-${hash(draft.id)}`, source: { file: a.png, format: 'png' }, alt, ...imageCells(a.size, maxColumns) })]
   }
   if (e.surface !== 'terminal' && a.svg && el.Svg) {
-    return [el.Svg({ source: a.svg, alt, width: 320, height: 320 })]
+    return [el.Svg({ source: a.svg, alt: draft.lines.filter(Boolean).join(' / '), width: 320, height: 320 })]
   }
   return []
 }

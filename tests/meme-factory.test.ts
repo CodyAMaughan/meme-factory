@@ -1,5 +1,5 @@
 import { expect, mock, test } from 'claude-code/testing'
-import { decodeBmp, encodeLine, memeUrl, parseJson, rasterFromImage, topDrafts } from '../hooks/lib.js'
+import { encodeLine, imageCells, memeUrl, parseJson, pngSize, topDrafts } from '../hooks/lib.js'
 
 const TOOL = 'mcp__meme-factory__make_meme'
 
@@ -32,32 +32,21 @@ const WRITER_REPLY = JSON.stringify({
 })
 const JUDGE_REPLY = '```json\n{"scores":[{"i":0,"score":6},{"i":1,"score":9},{"i":2,"score":8},{"i":3,"score":2},{"i":4,"score":7},{"i":5,"score":3}]}\n```'
 
-// A 2x2 24-bit bottom-up BMP: red, green on top; blue, white below.
-function tinyBmp(): Uint8Array {
-  const stride = 8
-  const bytes = new Uint8Array(54 + stride * 2)
+// The first bytes of a 600x400 PNG: signature, then the IHDR chunk.
+function pngHeader(width = 600, height = 400): Uint8Array {
+  const bytes = new Uint8Array(33)
+  bytes.set([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a, 0, 0, 0, 13, 0x49, 0x48, 0x44, 0x52])
   const v = new DataView(bytes.buffer)
-  v.setUint16(0, 0x424d, false)
-  v.setUint32(2, bytes.length, true)
-  v.setUint32(10, 54, true)
-  v.setUint32(14, 40, true)
-  v.setInt32(18, 2, true)
-  v.setInt32(22, 2, true)
-  v.setUint16(26, 1, true)
-  v.setUint16(28, 24, true)
-  const px = (row: number, x: number, [r, g, b]: number[]) => bytes.set([b, g, r], 54 + row * stride + x * 3)
-  px(1, 0, [255, 0, 0])
-  px(1, 1, [0, 255, 0])
-  px(0, 0, [0, 0, 255])
-  px(0, 1, [255, 255, 255])
+  v.setUint32(16, width)
+  v.setUint32(20, height)
   return bytes
 }
 
-function factory(on, { feedbackSeen = [] as string[], submitted = [] as string[], copied = [] as string[] } = {}) {
+function factory(on, { feedbackSeen = [] as string[], submitted = [] as string[], copied = [] as string[], ran = [] as string[][] } = {}) {
   const saved = new Map<string, unknown>()
   const clock = mock.clock(on)
   on('session.start', () => ({ cwd: '/work' }))
-  on('env.get', ($, e) => ({ value: e.name === 'HOME' ? '/home/test' : undefined }))
+  on('env.get', ($, e) => ({ value: e.name === 'HOME' ? '/Users/test' : undefined }))
   on('tool.register', () => ({ value: undefined }))
   on('command.register', () => ({ value: undefined }))
   on('ui.open', () => ({ value: { isPlaced: true } }))
@@ -72,8 +61,11 @@ function factory(on, { feedbackSeen = [] as string[], submitted = [] as string[]
     if (e.prompt.includes('User feedback')) feedbackSeen.push(e.prompt)
     return { value: { isAnswered: true, text: WRITER_REPLY, usage: USAGE } }
   })
-  on('process.run', () => ({ value: { exitCode: 0, stdout: '', stderr: '' } }))
-  on('fs.read', ($, e) => ({ value: { base64: e.path.endsWith('.bmp') ? tinyBmp().toBase64() : 'SlBFRw==' } }))
+  on('process.run', ($, e) => {
+    ran.push(e.argv)
+    return { value: { exitCode: 0, stdout: '', stderr: '' } }
+  })
+  on('fs.read', ($, e) => ({ value: { base64: e.path.endsWith('.png') ? pngHeader().toBase64() : 'SlBFRw==' } }))
   on('tool.list', () => ({
     value: [
       { name: 'mcp__a1b2__slack_send_message', description: 'Send a message to a Slack channel', mcp: true },
@@ -111,7 +103,10 @@ test('Claude asks for a meme: the tool returns at once and the drafts cook in th
   expect(await review.find({ key: 'draft-0' })).toMatchObject({ props: { label: 'Drakeposting' } })
   expect(await review.find({ key: 'draft-1' })).toMatchObject({ props: { label: 'This is Fine' } })
   expect(await review.find({ type: 'Text', text: '“everyone reads their Jira tickets aloud”' })).toBeDefined()
-  expect(await review.find({ type: 'Raster' })).toBeDefined()
+  // A real picture in the terminal: the Image element reads the cached PNG, keeping its 3:2 shape
+  const image = await review.find({ type: 'Image' })
+  expect(image).toMatchObject({ props: { source: { file: '/Users/test/.cache/meme-factory/' + (image as any).props.source.file.split('/').pop(), format: 'png' }, columns: 56, rows: 19 } })
+  expect((image as any).props.alt).toMatch(/press v to view/)
 
   await review.press({ key: 'draft-1' })
   expect(await review.find({ type: 'Text', text: '“standup is at minute 40, this is fine”' })).toBeDefined()
@@ -138,7 +133,7 @@ test('Desktop draws the meme as an SVG, and feedback remixes with the notes', as
 
   const ui = await $.ui.mount({ ...PANE, surface: 'desktop' })
   expect(await ui.find({ type: 'Svg' })).toBeDefined()
-  expect(await ui.find({ type: 'Raster' })).toBeUndefined()
+  expect(await ui.find({ type: 'Image' })).toBeUndefined()
 
   await ui.press({ key: 'copy' })
   expect(copied[0]).toMatch(/^https:\/\/api\.memegen\.link\/images\/drake\//)
@@ -148,6 +143,19 @@ test('Desktop draws the meme as an SVG, and feedback remixes with the notes', as
   expect(feedbackSeen.length).toBe(1)
   expect(feedbackSeen[0]).toContain('"make it meaner"')
   expect(feedbackSeen[0]).toContain('Use exactly these templates: drake')
+})
+
+test('View opens the cached PNG in Quick Look', async ($, on) => {
+  const ran: string[][] = []
+  const { clock } = factory(on, { ran })
+  await $.session.start({ surface: 'terminal', isInteractive: true, cwd: '/work' })
+  await $.command.run({ command: 'meme', args: 'standups that run long' })
+  await clock.settle()
+  const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
+  await ui.press({ key: 'view' })
+  const ql = ran.find((argv) => argv[0] === 'qlmanage')
+  expect(ql?.[1]).toBe('-p')
+  expect(ql?.[2]).toMatch(/^\/Users\/test\/\.cache\/meme-factory\/drake-.*\.png$/)
 })
 
 test('the panel opens empty and takes a request', async ($, on) => {
@@ -161,7 +169,7 @@ test('the panel opens empty and takes a request', async ($, on) => {
   expect(await ui.find({ key: 'approve' })).toBeDefined()
 })
 
-test('helpers: memegen escaping, JSON in fences, ranking, BMP to half-blocks', async () => {
+test('helpers: memegen escaping, JSON in fences, ranking, PNG sizing', async () => {
   expect(encodeLine('why not both?')).toBe('why_not_both~q')
   expect(encodeLine('50% off & free-ish')).toBe('50~p_off_~a_free--ish')
   expect(encodeLine('')).toBe('_')
@@ -175,11 +183,7 @@ test('helpers: memegen escaping, JSON in fences, ranking, BMP to half-blocks', a
   ] as any, 2)
   expect(ranked.map((d) => d.id)).toEqual(['1', '3'])
 
-  const img = decodeBmp(tinyBmp())
-  expect(img).toMatchObject({ width: 2, height: 2 })
-  expect(Array.from(img.rgb)).toEqual([0xff0000, 0x00ff00, 0x0000ff, 0xffffff])
-  const raster = rasterFromImage(img)
-  expect(raster).toMatchObject({ columns: 2, rows: 1 })
-  const cells = Array.from(new Uint32Array(Uint8Array.fromBase64(raster.cells).buffer))
-  expect(cells).toEqual([0x2580, 0xff0000, 0x0000ff, 0x2580, 0x00ff00, 0xffffff])
+  expect(pngSize(pngHeader(600, 400))).toEqual({ width: 600, height: 400 })
+  expect(imageCells({ width: 600, height: 400 }, 56)).toEqual({ columns: 56, rows: 19 })
+  expect(imageCells({ width: 600, height: 600 }, 300)).toEqual({ columns: 255, rows: 128 })
 })

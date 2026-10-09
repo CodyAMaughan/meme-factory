@@ -220,50 +220,20 @@ export function findConnectorPrompt(site, draft) {
 Check whether a connector for ${site} is already connected. If it is, confirm the destination and text with the user, then post. If not, help them find and connect one: search the connector directory if you have a tool for that, otherwise point them to https://claude.ai/directory.`
 }
 
-// ---------- Terminal thumbnail: a BMP (from macOS sips) to Raster half-blocks ----------
+// ---------- Pictures ----------
 
-const DEFAULT_COLOR = 0x01000000
-const UPPER_HALF = 0x2580 // ▀: foreground is the top pixel, background the bottom
-
-export function decodeBmp(bytes) {
+// Width and height from a PNG's IHDR chunk, so the terminal Image keeps its shape.
+export function pngSize(bytes) {
   const v = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength)
-  if (v.getUint16(0, false) !== 0x424d) throw new Error('not a BMP')
-  const offset = v.getUint32(10, true)
-  const width = v.getInt32(18, true)
-  const rawHeight = v.getInt32(22, true)
-  const bpp = v.getUint16(28, true)
-  const compression = v.getUint32(30, true)
-  if (bpp !== 24 && bpp !== 32) throw new Error(`unsupported BMP depth ${bpp}`)
-  if (compression !== 0 && compression !== 3) throw new Error('compressed BMP')
-  const height = Math.abs(rawHeight)
-  const bottomUp = rawHeight > 0
-  const stride = Math.ceil((width * bpp) / 32) * 4
-  const step = bpp / 8
-  const rgb = new Uint32Array(width * height)
-  for (let y = 0; y < height; y++) {
-    const row = offset + (bottomUp ? height - 1 - y : y) * stride
-    for (let x = 0; x < width; x++) {
-      const p = row + x * step
-      rgb[y * width + x] = (bytes[p + 2] << 16) | (bytes[p + 1] << 8) | bytes[p]
-    }
-  }
-  return { width, height, rgb }
+  if (bytes.length < 24 || v.getUint32(0) !== 0x89504e47 || v.getUint32(12) !== 0x49484452) throw new Error('not a PNG')
+  return { width: v.getUint32(16), height: v.getUint32(20) }
 }
 
-export function rasterFromImage({ width, height, rgb }) {
-  const rows = Math.ceil(height / 2)
-  const cells = new Uint32Array(width * rows * 3)
-  for (let r = 0; r < rows; r++) {
-    for (let x = 0; x < width; x++) {
-      const top = rgb[2 * r * width + x]
-      const bottom = 2 * r + 1 < height ? rgb[(2 * r + 1) * width + x] : DEFAULT_COLOR
-      const c = (r * width + x) * 3
-      cells[c] = UPPER_HALF
-      cells[c + 1] = top
-      cells[c + 2] = bottom
-    }
-  }
-  return { columns: width, rows, cells: new Uint8Array(cells.buffer).toBase64() }
+// Terminal cells are about twice as tall as they are wide.
+export function imageCells({ width, height }, maxColumns) {
+  const columns = Math.max(8, Math.min(255, maxColumns))
+  const rows = Math.max(4, Math.min(255, Math.round((columns * height) / width / 2)))
+  return { columns, rows }
 }
 
 export function svgForJpeg(base64, alt) {

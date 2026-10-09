@@ -38,9 +38,14 @@ The model calls go through your Claude Code session's own credentials, so you do
 
 ### Pictures
 
-- **Terminal:** a color thumbnail drawn with half-block characters. On macOS it uses the built-in `sips` to shrink the image. Elsewhere you get the caption and a link to the full image.
-- **Desktop app:** the meme is embedded as an image (SVG with an inline JPEG).
-- **Both:** "Open full image" links to the full-size PNG.
+| Where | What you see |
+|---|---|
+| **Ghostty**, **kitty** 0.28+, or cmux | The real meme, in the panel. These terminals support the kitty graphics protocol, which Claude Code's `Image` element uses. |
+| **iTerm2** 3.7.3+ | Usually the real meme, if you start Claude with `CLAUDE_CODE_FORCE_TERMINAL_IMAGES=1 claude`. iTerm2 supports the protocol but fails Claude Code's detection ([anthropics/claude-code#95448](https://github.com/anthropics/claude-code/issues/95448)). Export the variable in your shell: setting it in `settings.json` doesn't work. |
+| **Terminal.app, VS Code, Cursor**, other terminals, and anything inside tmux | A one-line note instead of the picture. Press `v` (**View**) to open the meme in a macOS Quick Look window, then Esc to close it, or click **Open full image**. |
+| **Desktop app** | The meme, embedded as an image (SVG with an inline JPEG). |
+
+Every view has **View** (`v`) and **Open full image**.
 
 ### Settings
 
@@ -49,7 +54,7 @@ The model calls go through your Claude Code session's own credentials, so you do
 | `MEME_FACTORY_MODEL` | Model for writing and judging. An alias like `haiku` or `sonnet`, or a full model id. Default `haiku`. |
 | `TYPESAFE_API_KEY` | Uses Jev for template picking and judging, at about $0.0003 per meme |
 
-Images are cached in `~/.cache/meme-factory/`. The last 50 approved memes are kept in the mod's store.
+Images are cached in `~/.cache/meme-factory/`. Claude Code won't draw a terminal image from a path it considers a network location, such as macOS's `/home` automount. The last 50 approved memes are kept in the mod's store.
 
 ## Develop
 
@@ -65,8 +70,8 @@ In the Desktop app, set `CLAUDE_CODE_PLUGIN_DIRS` to the absolute path of your c
 
 | File | Contents |
 |---|---|
-| `hooks/register.js` | Every mods API call: the `make_meme` tool, the `/meme` command, the pipeline, and the panel |
-| `hooks/lib.js` | Pure helpers: prompts, parsing, memegen URLs, Jev request bodies, and BMP-to-half-block decoding |
+| `hooks/register.js` | Every mods API call: the `make_meme` tool, the `/meme` command, the pipeline, the panel, and the Quick Look viewer |
+| `hooks/lib.js` | Pure helpers: prompts, parsing, memegen URLs, Jev request bodies, and PNG sizing |
 | `hooks/templates.js` | The memegen.link template catalog |
 | `tests/` | `claude plugin test` suites that stub the model, the shell, and the store |
 
