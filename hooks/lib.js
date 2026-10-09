@@ -830,10 +830,19 @@ export function shortlistFor(query, { matches = 30, popular = 10 } = {}) {
 }
 
 // Adds templates to the catalog, the writer's prompt and the gallery's picker. Returns how many.
+// Two templates with the same name (once case, punctuation and "blank" are ignored) are one meme:
+// the more popular one is kept.
+const NAMES = new Set()
+const nameOf = (t) => nameKey(t.name).sort().join(' ')
 export function addTemplates(extra) {
   let added = 0
-  for (const t of Array.isArray(extra) ? extra : []) {
+  if (!NAMES.size) for (const t of TEMPLATES) NAMES.add(nameOf(t))
+  const list = (Array.isArray(extra) ? extra : []).slice().sort((a, b) => (a?.rank ?? 1e9) - (b?.rank ?? 1e9))
+  for (const t of list) {
     if (!t?.id || TEMPLATE_BY_ID.has(t.id) || !t.core) continue
+    const name = nameOf(t)
+    if (name && NAMES.has(name)) continue
+    NAMES.add(name)
     TEMPLATES.push(t)
     TEMPLATE_BY_ID.set(t.id, t)
     added++
