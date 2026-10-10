@@ -466,18 +466,17 @@ export function resolveDestination(text, channels, favorites) {
   return { kind: 'claude', target: raw }
 }
 
-// Words that ask for different memes, not different captions (a backstop for the chat model's flag).
-export const wantsNewPictures = (text) =>
-  /\b(different|another|other|new|change|swap|switch|replace)\b[^.!?]{0,25}\b(format|template|meme|image|picture|pic|photo|one)s?\b|\b(different|another|switch)\b|none of these|something else/i.test(String(text ?? ''))
-
 // ---------- The chat box ----------
 
 export const CHAT_SYSTEM = `You are the Meme Factory's editor, talking to the user in a small chat box beside their meme drafts.
 Read their message and choose one action. Reply with JSON only, no prose and no code fences:
 {"reply":"one short, friendly sentence","action":{"type":"..."}}
 Actions:
-- {"type":"remix","feedback":"what to change"}: new captions on the same pictures, same request (e.g. "meaner", "about Mondays"). Keep any words the user put in quotes, in quotes, unchanged.
-- {"type":"remix","feedback":"what to change","newPictures":true}: the user wants different memes, not just different words: "change the images", "different pictures", "other memes", "new templates", "different format", "none of these work", "try something else". The drafts will use templates they haven't seen yet.
+- {"type":"remix","feedback":"what to change","pictures":"same"}: rework the drafts. You decide what happens to the pictures (the meme templates), from what the user means:
+  - "pictures":"same": they want different words on these memes ("meaner", "shorter", "make it about Mondays").
+  - "pictures":"new": they want different memes ("change the images", "none of these work", "other memes", "try a different format", "these don't fit the joke"). The new drafts use templates they haven't been shown yet.
+  - "pictures":"new","keep":[2]: different memes, except the drafts they said they like, by number ("keep the Drake one, swap the others").
+  Put what they want changed in "feedback", in their words. Keep any words the user put in quotes, in quotes, unchanged.
 - {"type":"edit","draft":2,"lines":["top text","bottom text"]}: the user dictated the exact caption for a draft (e.g. "make the bottom say 'her:'"). Copy their words exactly; keep the other boxes as they are.
 - {"type":"variations","draft":2}: more drafts on that one meme only ("more like this", "more of the Drake one")
 - {"type":"variations","template":"side eye"}: more drafts on a meme the user named

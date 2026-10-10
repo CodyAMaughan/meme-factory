@@ -31,7 +31,6 @@ import {
   removeTemplates,
   TEMPLATE_BY_ID,
   sameMemeName,
-  wantsNewPictures,
   MAX_FULL_CATALOG,
   shortlistFor,
   hydePrompt,
@@ -405,8 +404,9 @@ function startJob($, request, context, chat = []) {
   $.clock.after(0, () => cook($, id, null))
 }
 
-// fresh: the person asked for different pictures, so the drafts leave the templates shown so far.
-function remix($, feedback, fresh = false) {
+// fresh: the person asked for different pictures, so the drafts leave the templates shown so far,
+// except the ones they asked to keep. Whether they did is the chat model's call, never a word list.
+function remix($, feedback, { fresh = false, keep = [] } = {}) {
   if (!job.request) return
   const id = ++seq
   const previous = job.drafts[job.selected] ?? null
@@ -414,8 +414,8 @@ function remix($, feedback, fresh = false) {
   job = { ...job, status: 'working', stage: 'write', note: feedback ? 'Reworking with your notes…' : 'Remixing…', error: '', approved: null, post: null }
   changed($)
   // Every template shown for this request, so "different pictures" twice doesn't circle back.
-  if (fresh || wantsNewPictures(feedback)) job = { ...job, seen: [...new Set([...(job.seen ?? []), ...job.drafts.map((d) => d.template_id)])] }
-  $.clock.after(0, () => cook($, id, previous, feedback, fresh))
+  if (fresh) job = { ...job, seen: [...new Set([...(job.seen ?? []), ...job.drafts.map((d) => d.template_id)])].filter((t) => !keep.includes(t)) }
+  $.clock.after(0, () => cook($, id, previous, feedback, fresh, keep))
 }
 
 // "More like this": three fresh drafts on one template (the shown draft's, or one named).
@@ -440,23 +440,23 @@ async function editDraft($, index, lines) {
   changed($)
 }
 
-async function cook($, id, previous, latest = '', fresh = false) {
+async function cook($, id, previous, latest = '', fresh = false, keep = []) {
   try {
     await Promise.race([templatesReady, new Promise((resolve) => $.clock.after(5000, resolve))])
     const jevKey = await $.env.get('TYPESAFE_API_KEY')
-    const newFormat = !previous || fresh || wantsNewPictures(latest)
+    const newFormat = !previous || fresh
     const avoid = previous && newFormat ? (job.seen ?? []) : []
     // Words in quotes are the person's own: they stay, unchanged, until new quotes replace them.
     const quoted = quotedText(latest || (previous ? '' : job.request))
     if (quoted.length) job = { ...job, exact: quoted }
     const exact = job.exact ?? []
     // A template named in the request or the latest note ("use kombucha girl") always gets drafted.
-    const named = templatesNamed(latest || (previous ? '' : `${job.request} ${job.context}`))
+    const named = [...new Set([...keep, ...templatesNamed(latest || (previous ? '' : `${job.request} ${job.context}`))])].slice(0, 3)
     // "More like this" holds one template until a different format or another meme is asked for.
-    if ((latest && newFormat) || (named.length && !named.includes(job.lock))) job = { ...job, lock: null }
+    if (fresh || (latest && newFormat) || (named.length && !named.includes(job.lock))) job = { ...job, lock: null }
     const lock = job.lock
     let templateIds = lock ? [lock] : newFormat ? null : [...new Set([previous.template_id, ...job.drafts.map((d) => d.template_id)])].slice(0, 3)
-    if (!lock && named.length && previous) templateIds = [...new Set([...named, ...(templateIds ?? job.drafts.map((d) => d.template_id))])].slice(0, 3)
+    if (!lock && named.length && previous && !fresh) templateIds = [...new Set([...named, ...(templateIds ?? job.drafts.map((d) => d.template_id))])].slice(0, 3)
     else if (!lock && named.length) templateIds = null
     // A big catalog: the writer sees a shortlist for this joke instead of every template.
     const shortlist = !templateIds && TEMPLATE_BY_ID.size > MAX_FULL_CATALOG ? await searchShortlist($, job) : null
@@ -1092,7 +1092,11 @@ async function act($, action) {
   const hasDraft = Number.isInteger(draftIndex) && draftIndex >= 0 && draftIndex < job.drafts.length
   switch (action?.type) {
     case 'remix':
-      return remix($, String(action.feedback ?? '').slice(0, 300), action.newPictures === true)
+      // The chat model decides whether the pictures change, and which drafts' memes stay.
+      return remix($, String(action.feedback ?? '').slice(0, 300), {
+        fresh: action.pictures === 'new',
+        keep: (Array.isArray(action.keep) ? action.keep : []).map((n) => job.drafts[Number(n) - 1]?.template_id).filter(Boolean),
+      })
     case 'select':
       if (hasDraft && job.status === 'review') select($, draftIndex)
       return

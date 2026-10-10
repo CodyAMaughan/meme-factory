@@ -39,7 +39,6 @@ import {
   rankTemplates,
   shortlistFor,
   popularity,
-  wantsNewPictures,
 } from '../hooks/lib.js'
 
 const TOOL = 'mcp__meme-factory__make_meme'
@@ -1148,30 +1147,35 @@ test('with a big catalog, a quick model finds the template: its rerank and catal
   expect(lines.length).toBe(40)
 })
 
-test('"change the images" means different memes: the drafts leave the templates already shown, and stay away from them', async ($, on) => {
-  let next: object = { reply: 'New pictures coming.', action: { type: 'remix', feedback: 'change the images', newPictures: true } }
+test('the chat model decides about the pictures: "new" leaves the templates already shown, "same" keeps them, and "keep" holds the ones you like', async ($, on) => {
+  // The words don't matter ("hmm, not feeling these" has none of the old trigger words): the model's call does.
+  let next: object = { reply: 'New pictures coming.', action: { type: 'remix', feedback: 'hmm, not feeling these', pictures: 'new' } }
   const { clock, log } = factory(on, { chatReply: () => next })
   await draftsReady($, clock)
   const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
-  const before = log.prompts.length
-  await ui.input({ key: 'chat', text: 'change the images' })
+  const writerSince = (n: number, note: string) => log.prompts.slice(n).map(String).find((p) => p.includes(JSON.stringify(note)))!
+  let n = log.prompts.length
+  await ui.input({ key: 'chat', text: 'hmm, not feeling these' })
   await clock.settle()
-  const writer = log.prompts.slice(before).map(String).find((p) => p.includes('"change the images"'))!
+  let writer = writerSince(n, 'hmm, not feeling these')
   expect(writer).not.toContain('Use exactly these templates')
   expect(writer).toMatch(/do not use [^\n]*drake/)
   expect(writer).toMatch(/do not use [^\n]*fine/)
 
-  // A plain note keeps the pictures and changes the words.
-  next = { reply: 'Meaner.', action: { type: 'remix', feedback: 'meaner' } }
-  const mid = log.prompts.length
-  await ui.input({ key: 'chat', text: 'meaner' })
+  // "same": a note with the old trigger word "different" in it still keeps the pictures, because the model said so.
+  next = { reply: 'On it.', action: { type: 'remix', feedback: 'a different tone, meaner', pictures: 'same' } }
+  n = log.prompts.length
+  await ui.input({ key: 'chat', text: 'a different tone, meaner' })
   await clock.settle()
-  expect(log.prompts.slice(mid).map(String).some((p) => p.includes('Use exactly these templates'))).toBe(true)
-})
+  expect(writerSince(n, 'a different tone, meaner')).toContain('Use exactly these templates')
 
-test('the words that ask for new pictures, with or without the chat model\'s flag', () => {
-  for (const yes of ['change the images', 'different pictures please', 'use other memes', 'new templates', 'swap the picture', 'different format', 'try something else', 'none of these work', 'another one'])
-    expect(wantsNewPictures(yes)).toBe(true)
-  for (const no of ['meaner', 'make it about the PM', 'shorter', 'change the bottom text', 'new joke about mondays'])
-    expect(wantsNewPictures(no)).toBe(false)
+  // "keep": new memes, except draft 1's.
+  next = { reply: 'Keeping the first.', action: { type: 'remix', feedback: 'keep the first, swap the rest', pictures: 'new', keep: [1] } }
+  n = log.prompts.length
+  await ui.input({ key: 'chat', text: 'keep the first, swap the rest' })
+  await clock.settle()
+  writer = writerSince(n, 'keep the first, swap the rest')
+  expect(writer).toMatch(/The user asked for [^\n]*drake[^\n]* by name/i)
+  expect(writer).not.toMatch(/do not use [^\n]*drake/)
+  expect(writer).toMatch(/do not use [^\n]*fine/)
 })

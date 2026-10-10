@@ -4,7 +4,7 @@ All notable changes to Meme Factory. Versions follow [semantic versioning](https
 
 ## 0.12.1 (2026-10-10)
 
-- **"Change the images" changes the images.** Asking for different pictures in the chat box only worked if you used one of a few words ("different", "another", "switch"); anything else rewrote the captions on the same three memes. The chat model now says when you want new memes, a wider word check backs it up, and the new drafts stay away from every template already shown for that request.
+- **The chat box decides when you want new memes.** Asking for different pictures only worked if you used one of a few words ("different", "another", "switch"); anything else rewrote the captions on the same three memes. That word list is gone. The chat model now reads what you mean and chooses: the same pictures with new words, new pictures (staying away from every template already shown for that request), or new pictures except the drafts you said you like.
 
 ## 0.12.0 (2026-10-10)
 
