@@ -34,6 +34,8 @@ import {
   parseCards,
   knownTemplate,
   addTemplates,
+  galleryState,
+  pickerTemplates,
   removeTemplates,
   rankTemplates,
   shortlistFor,
@@ -382,17 +384,75 @@ test('the browser gallery drives the same flow: chat, pick a channel, confirm', 
   const token = opened![1].split('#t=')[1].split('&')[0]
   expect(spawned[0].argv.join(' ')).not.toContain(token)
   expect(spawned[0].input).toBe(`${token}\n${GALLERY_EVENTS.join(",")}\nhttps://api.memegen.link\n`)
-  expect(pushed.every((p) => p.url === 'http://127.0.0.1:5555/api/state' && p.token === token)).toBe(true)
+  const states = pushed.filter((p) => p.url === 'http://127.0.0.1:5555/api/state')
+  const pickers = pushed.filter((p) => p.url === 'http://127.0.0.1:5555/api/templates')
+  expect(states.length + pickers.length).toBe(pushed.length)
+  expect(pushed.every((p) => p.token === token)).toBe(true)
   expect(JSON.stringify(pushed)).not.toContain('/Users/test')
+  // The meme picker goes once, on its own; the state the page polls for never carries it.
+  expect(pickers).toHaveLength(1)
+  expect(pickers[0].body.templates.some((t) => t.id === 'drake')).toBe(true)
+  expect(states.every((p) => !('templates' in p.body) && p.body.templatesVersion === pickers[0].body.version)).toBe(true)
 
   expect(log.calls.find((c) => c.tool === `${SLACK}slack_complete_file_upload`)).toMatchObject({ channel_id: 'C0C524GFGCF' })
   // The fake server ends after its script, so the mod stops pushing: read the outcome from the panel
   await clock.settle()
   expect(await ui.find({ type: 'Text', text: '✓ Posted to #all-maughanco on Slack' })).toBeDefined()
-  const last = pushed.at(-1).body
+  const last = states.at(-1).body
   expect(last).toMatchObject({ status: 'approved', approved: { template_name: 'Change My Mind' } })
   expect(last.slackChannels.map((c) => c.name)).toEqual(['all-maughanco', 'social'])
   expect(pushed.some((p) => p.body.settings?.signature === false)).toBe(true)
+})
+
+test('the gallery gets the meme picker once, apart from the state it polls for, and a refused push is logged', async ($, on) => {
+  const pushed: any[] = []
+  const { clock } = factory(on)
+  let refuse = false
+  // The page's actions change the settings, so the mod pushes the state again; the last push goes
+  // to a server that refuses it.
+  on('process.spawn', async function* () {
+    yield { stream: 'stdout', text: 'READY 5555\n' }
+    yield { stream: 'stdout', text: 'EVENT {"type":"settings","settings":{"signature":false}}\n' }
+    yield { stream: 'stdout', text: 'EVENT {"type":"settings","settings":{"signature":true}}\n' }
+    refuse = true
+    yield { stream: 'stdout', text: 'EVENT {"type":"settings","settings":{"signature":false}}\n' }
+    return { value: { code: 0, signal: null } }
+  })
+  on('http.fetch', ($, e) => {
+    if (!String(e.url).startsWith('http://127.0.0.1')) return { value: { status: 404, ok: false, headers: {}, text: '' } }
+    pushed.push({ url: String(e.url), body: JSON.parse(e.init?.body ?? '{}') })
+    return refuse && String(e.url).endsWith('/api/state') ? { value: { status: 400, ok: false, headers: {}, text: '' } } : { value: { status: 204, ok: true, headers: {}, text: '' } }
+  })
+  await $.session.start({ surface: 'terminal', isInteractive: true, cwd: '/work' })
+  await $.command.run({ command: 'meme', args: 'gallery' })
+  for (let i = 0; i < 20; i++) await clock.settle()
+  const pickers = pushed.filter((p) => p.url.endsWith('/api/templates'))
+  const states = pushed.filter((p) => p.url.endsWith('/api/state'))
+  expect(pickers).toHaveLength(1)
+  expect(pickers[0].body.templates.some((t) => t.id === 'drake')).toBe(true)
+  expect(states.length).toBeGreaterThan(2)
+  expect(states.every((p) => !('templates' in p.body) && p.body.templatesVersion === pickers[0].body.version)).toBe(true)
+  const report = JSON.parse((await $.tool.call({ tool: 'mcp__meme-factory__meme_factory_debug', tool_use_id: 'd1', action: 'status' })).result)
+  expect(report.log.some((l) => l.includes('gallery: /api/state refused (400)'))).toBe(true)
+})
+
+test("with the whole catalog the gallery's state stays small, and the picker's version changes with the catalog", () => {
+  // A few more templates than the server adds. The picker alone is then far over the
+  // gallery server's 256 KB limit for a state, which used to refuse every push.
+  const bulk = Array.from({ length: 1400 }, (_, i) => ({ id: `bulk-${i}`, name: `Bulk ${i.toString(36)} ${(i * 7919).toString(36)} meme`, lines: 2, shape: 'reaction', core: 'x', slots: ['', ''], aliases: [`bulk ${i}`], example: ['', ''], rank: 500 + i }))
+  const before = pickerTemplates().version
+  expect(addTemplates(bulk)).toBe(1400)
+  const picker = pickerTemplates()
+  expect(picker.version).not.toBe(before)
+  expect(picker.templates.length).toBeGreaterThan(1400)
+  expect(JSON.stringify(picker).length).toBeGreaterThan(256 * 1024)
+  const job = { status: 'review', stage: '', drafts: [], selected: 0, approved: null, chat: [], note: '', error: '', request: '' }
+  const state = galleryState(job, { slack: null, channels: [], others: [] }, {})
+  expect('templates' in state).toBe(false)
+  expect(state.templatesVersion).toBe(picker.version)
+  expect(JSON.stringify(state).length).toBeLessThan(16 * 1024)
+  removeTemplates(bulk.map((t) => t.id))
+  expect(pickerTemplates().version).not.toBe(picker.version)
 })
 
 test('/meme settings opens the gallery on its Settings tab', async ($, on) => {
