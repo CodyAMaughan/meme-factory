@@ -1,0 +1,1074 @@
+[
+{
+"id": "aputakesbullet",
+"name": "Apu Takes Bullet",
+"lines": 3,
+"shape": "labeling",
+"core": "Apu dives in front of a gunshot to protect someone, used for someone heroically taking the hit for something or someone else.",
+"slots": [
+"the protector taking the hit",
+"what's being protected",
+"the attacker"
+],
+"aliases": [
+"apu takes bullet",
+"apu dives",
+"simpsons take the bullet",
+"taking a bullet"
+],
+"avoid": "Not for real violence or shootings."
+},
+{
+"id": "heman",
+"name": "He-Man",
+"lines": 2,
+"shape": "dialogue",
+"core": "He-Man delivers a line straight to camera and then rides off, used for a confident statement followed by an abrupt exit.",
+"slots": [
+"what He-Man says",
+"him leaving"
+],
+"aliases": [
+"he-man",
+"heman",
+"he man rides away",
+"masters of the universe"
+],
+"avoid": "Not for situations where nobody leaves."
+},
+{
+"id": "spongebobwannaseemedoitagain",
+"name": "Wanna See Me Do It Again",
+"lines": 2,
+"shape": "self-own",
+"core": "SpongeBob proudly asking if you want to see him do it again, used for someone eager to repeat a dumb or embarrassing feat.",
+"slots": [
+"the dumb thing I just did",
+"wanna see me do it again?"
+],
+"aliases": [
+"wanna see me do it again",
+"spongebob do it again",
+"spongebob proud",
+"do it again"
+],
+"avoid": "Not for genuine accomplishments."
+},
+{
+"id": "spongebobhappyandsad",
+"name": "SpongeBob Happy And Sad",
+"lines": 2,
+"shape": "before-after",
+"core": "SpongeBob grinning with excitement then bawling, used for expectations versus the crushing reality.",
+"slots": [
+"the happy expectation",
+"the sad reality"
+],
+"aliases": [
+"spongebob happy sad",
+"spongebob crying",
+"happy then sad spongebob",
+"expectation vs reality spongebob"
+],
+"avoid": "Not for situations that end well."
+},
+{
+"id": "whatsonyourmind",
+"name": "What's On Your Mind",
+"lines": 1,
+"shape": "irony",
+"core": "Someone asks why you're so quiet and the sketched head reveals the one absurd thought occupying your mind.",
+"slots": [
+"what's actually on my mind"
+],
+"aliases": [
+"what's on your mind",
+"why you so quiet",
+"head drawing meme",
+"thinking about"
+],
+"avoid": "Not for deep or serious thoughts."
+},
+{
+"id": "scumbagboss",
+"name": "Scumbag Boss",
+"lines": 2,
+"shape": "irony",
+"core": "A smug cigar-smoking boss, used for a manager's hypocritical or exploitative behaviour in a setup-then-twist format.",
+"slots": [
+"the reasonable-sounding setup",
+"the scumbag twist"
+],
+"aliases": [
+"scumbag boss",
+"bad boss",
+"cigar boss",
+"evil boss"
+],
+"avoid": "Not for good managers doing good things."
+},
+{
+"id": "calvinpeeing",
+"name": "Calvin Peeing",
+"lines": 1,
+"shape": "rejection",
+"core": "The bootleg Calvin decal peeing on something, used to show contempt for whatever is named as the target.",
+"slots": [
+"the thing he pees on"
+],
+"aliases": [
+"calvin peeing",
+"calvin pee sticker",
+"piss on",
+"calvin decal"
+],
+"avoid": "Not for things you like or respect."
+},
+{
+"id": "ednamodenocapes",
+"name": "Edna Mode No Capes",
+"lines": 2,
+"shape": "rejection",
+"core": "Edna Mode flatly refusing something, used to firmly ban a feature, habit or idea with disdain.",
+"slots": [
+"the request",
+"the flat refusal"
+],
+"aliases": [
+"No Capes",
+"Edna Mode",
+"Incredibles No Capes",
+"Edna No"
+],
+"avoid": "Not for gentle or polite disagreement."
+},
+{
+"id": "randyortonundertaker",
+"name": "Randy Orton Undertaker",
+"lines": 2,
+"shape": "reaction",
+"core": "Randy Orton's shocked face as the Undertaker walks out, used when something you thought was gone returns unexpectedly.",
+"slots": [
+"the thing that returns",
+"the person shocked by it"
+],
+"aliases": [
+"Undertaker Entrance",
+"Randy Orton Shocked",
+"Undertaker Returns",
+"Orton Scared"
+],
+"avoid": "Not for pleasant surprises."
+},
+{
+"id": "allmyhomieslove",
+"name": "All My Homies Love",
+"lines": 2,
+"shape": "approval",
+"core": "A group proudly declaring what they all love, often after rejecting a rival option.",
+"slots": [
+"the rejected thing",
+"all my homies love X"
+],
+"aliases": [
+"All My Homies",
+"All My Homies Love",
+"Homies Love",
+"My Homies"
+],
+"avoid": "Not for individual opinions or sad moments."
+},
+{
+"id": "seriouslyface",
+"name": "Seriously Face",
+"lines": 2,
+"shape": "reaction",
+"core": "Rage comic face of disbelief, used when someone says or does something absurd.",
+"slots": [
+"the absurd thing",
+"seriously?"
+],
+"aliases": [
+"Are You Serious Face",
+"Seriously Rage Face",
+"Are You Kidding Me",
+"Seriously Guy"
+],
+"avoid": "Not for genuine anger or happy news."
+},
+{
+"id": "maurypovich",
+"name": "Maury Povich",
+"lines": 2,
+"shape": "irony",
+"core": "Maury reading results from a card, used to reveal that someone's claim is a lie.",
+"slots": [
+"the claim",
+"the verdict"
+],
+"aliases": [
+"Maury Lie Detector",
+"That Was A Lie",
+"You Are Not The Father",
+"Maury"
+],
+"avoid": "Not for actual paternity or real family drama."
+},
+{
+"id": "mybodyismachine",
+"name": "My Body Is A Machine",
+"lines": 2,
+"shape": "exaggeration",
+"core": "A lifting skeleton declaring its body is a machine that turns one thing into another, used for absurd personal input-output habits.",
+"slots": [
+"the input",
+"the output"
+],
+"aliases": [
+"My Body Is A Machine",
+"Skeleton Machine",
+"Machine That Turns X Into Y",
+"Skeleton Lifting"
+],
+"avoid": "Not for real fitness advice."
+},
+{
+"id": "fatguyeatingburger",
+"name": "Fat Guy Eating Burger",
+"lines": 2,
+"shape": "reaction",
+"core": "A man eagerly biting a huge burger, used for greedily devouring something you love.",
+"slots": [
+"the situation",
+"me devouring it"
+],
+"aliases": [
+"Guy Eating Big Burger",
+"Huge Burger",
+"Eating Burger",
+"Burger Guy"
+],
+"avoid": "Not for mocking someone's body or weight."
+},
+{
+"id": "babybossrelaxedsmugcontent",
+"name": "Baby Boss Relaxed Smug Content",
+"lines": 2,
+"shape": "reaction",
+"core": "A baby leaning back with hands behind head, smugly content, used when everything is going your way.",
+"slots": [
+"the situation",
+"my smug reaction"
+],
+"aliases": [
+"Smug Baby",
+"Relaxed Baby",
+"Baby Hands Behind Head",
+"Content Baby"
+],
+"avoid": "Not for stress or failure."
+},
+{
+"id": "capitalistandcommunist",
+"name": "Capitalist And Communist",
+"lines": 2,
+"shape": "comparison",
+"core": "Bugs Bunny with a US flag then a Soviet flag, contrasting a 'my' version with an 'our' version of something.",
+"slots": [
+"my version",
+"our version"
+],
+"aliases": [
+"Bugs Bunny Communist",
+"My vs Our",
+"Capitalist Communist Bugs",
+"Our Bugs Bunny"
+],
+"avoid": "Not for serious political arguments."
+},
+{
+"id": "pepeholdingsign",
+"name": "Pepe Holding Sign",
+"lines": 1,
+"shape": "other",
+"core": "Pepe the Frog holding up a blank sign, used to display any short message or opinion.",
+"slots": [
+"the sign message"
+],
+"aliases": [
+"Pepe Sign",
+"Frog Holding Sign",
+"Pepe Blank Sign",
+"Pepe Protest"
+],
+"avoid": "Not for long multi-part jokes."
+},
+{
+"id": "tinypieceofpaper",
+"name": "Tiny Piece Of Paper",
+"lines": 1,
+"shape": "exaggeration",
+"core": "Ken Jeong squinting at a tiny scrap of paper, used for a list that is extremely short.",
+"slots": [
+"the very short list"
+],
+"aliases": [
+"Small List",
+"Ken Jeong Tiny Paper",
+"Short List",
+"Squinting At Paper"
+],
+"avoid": "Not for long or impressive lists."
+},
+{
+"id": "happythensad",
+"name": "Happy Then Sad",
+"lines": 2,
+"shape": "plan-backfires",
+"core": "A man smiling then instantly disappointed, used when good news is followed by a crushing catch.",
+"slots": [
+"the good news",
+"the catch"
+],
+"aliases": [
+"Disappointed Black Guy",
+"Happy Then Disappointed",
+"Smile Then Sad",
+"Excited Then Disappointed"
+],
+"avoid": "Not for news that stays good."
+},
+{
+"id": "angryface",
+"name": "Angry NPC Wojak",
+"lines": 2,
+"shape": "dialogue",
+"core": "An NPC states an opinion, gets a simple counterpoint, goes blank, then turns angry; used for people who can't handle being contradicted.",
+"slots": [
+"NPC's claim",
+"the counterpoint"
+],
+"aliases": [
+"NPC Angry",
+"Angry Wojak",
+"NPC Meme",
+"Angry NPC Face"
+],
+"avoid": "Not for genuine debates where both sides are reasonable."
+},
+{
+"id": "refusestoelaborateanyfurther",
+"name": "Refuses To Elaborate Any Further",
+"lines": 1,
+"shape": "irony",
+"core": "A buff man posing over a bold one-line claim, used for confident statements made with zero explanation.",
+"slots": [
+"the bold unexplained claim"
+],
+"aliases": [
+"Refuses To Elaborate",
+"Refuses To Elaborate Further",
+"Leaves",
+"No Elaboration"
+],
+"avoid": "Not for nuanced or detailed explanations."
+},
+{
+"id": "travelonshark",
+"name": "Seal On Shark",
+"lines": 2,
+"shape": "labeling",
+"core": "A seal riding on top of a leaping shark's mouth, used for someone casually surviving on top of the danger about to eat them.",
+"slots": [
+"the one riding",
+"the danger beneath"
+],
+"aliases": [
+"Travel On Shark",
+"Seal Riding Shark",
+"Shark Jumping Seal",
+"Seal On Shark"
+],
+"avoid": "Not for situations with no danger involved."
+},
+{
+"id": "comprehendingjoey",
+"name": "Comprehending Joey",
+"lines": 2,
+"shape": "before-after",
+"core": "Joey smiling then suddenly wide-eyed, used when the real meaning of something finally sinks in.",
+"slots": [
+"the statement",
+"the realization"
+],
+"aliases": [
+"Joey Realization",
+"Joey Friends Realizing",
+"Comprehending Joey",
+"Joey Wide Eyes"
+],
+"avoid": "Not for things that are obvious from the start."
+},
+{
+"id": "ayeicoulddothatblank",
+"name": "Aye I Could Do That",
+"lines": 3,
+"shape": "dialogue",
+"core": "Gimli dreads one fate, Legolas offers a nicer framing, Gimli accepts it; used for a reluctant change of heart.",
+"slots": [
+"Gimli's dread",
+"Legolas's reframing",
+"Gimli agreeing"
+],
+"aliases": [
+"Side By Side With A Friend",
+"Gimli Legolas",
+"Aye I Could Do That",
+"Never Thought I'd Die"
+],
+"avoid": "Not for flat refusals."
+},
+{
+"id": "blankcerealguy",
+"name": "Cereal Guy",
+"lines": 2,
+"shape": "reaction",
+"core": "Rage comic guy calmly eating cereal then spitting it out in shock, used for reading something outrageous.",
+"slots": [
+"the normal setup",
+"the shocking part"
+],
+"aliases": [
+"Cereal Guy",
+"Cereal Guy Spitting",
+"Spit Take Rage Comic",
+"Blank Cereal Guy"
+],
+"avoid": "Not for unsurprising news."
+},
+{
+"id": "brokebackmountain",
+"name": "Brokeback Mountain",
+"lines": 2,
+"shape": "labeling",
+"core": "Two cowboys in a tender embrace, used to label two things that are inseparably close.",
+"slots": [
+"first thing",
+"second thing"
+],
+"aliases": [
+"Brokeback Hug",
+"Cowboys Hugging",
+"Brokeback",
+"Cowboy Embrace"
+],
+"avoid": "Not for mocking people's sexuality."
+},
+{
+"id": "whowantschange",
+"name": "Who Wants Change",
+"lines": 2,
+"shape": "plan-backfires",
+"core": "A crowd eagerly raises hands for an idea, then goes silent when asked to do the work it takes.",
+"slots": [
+"who wants the outcome?",
+"who wants to do the work?"
+],
+"aliases": [
+"Who Wants Change",
+"Who Wants To Change",
+"Raise Hands Then Silence",
+"Speaker Crowd Hands"
+],
+"avoid": "Not for cases where people actually follow through."
+},
+{
+"id": "couldyounotfor5minutes",
+"name": "Could You Not For 5 Minutes",
+"lines": 2,
+"shape": "dialogue",
+"core": "Shrek begging Donkey to stop doing one annoying thing for just five minutes, used for relentless habits.",
+"slots": [
+"could you not X for 5 minutes",
+"who keeps doing it"
+],
+"aliases": [
+"Shrek For Five Minutes",
+"Could You Not",
+"Shrek Donkey 5 Minutes",
+"For Five Minutes"
+],
+"avoid": "Not for one-off annoyances."
+},
+{
+"id": "wediditpatrickwesavedthecity",
+"name": "We Did It Patrick We Saved The City",
+"lines": 2,
+"shape": "irony",
+"core": "SpongeBob celebrating in front of a burning city, used for declaring victory while causing obvious disaster.",
+"slots": [
+"the 'fix'",
+"we did it, we saved it"
+],
+"aliases": [
+"We Saved The City",
+"Spongebob Burning City",
+"We Did It Patrick",
+"Saved The City"
+],
+"avoid": "Not for genuine successes."
+},
+{
+"id": "floodingthumbsup",
+"name": "Flooding Thumbs Up",
+"lines": 2,
+"shape": "irony",
+"core": "Two thumbs up sticking out of floodwater, used for insisting things are fine while completely sunk.",
+"slots": [
+"the overwhelming situation",
+"I'm fine"
+],
+"aliases": [
+"Drowning Thumbs Up",
+"Thumbs Up Underwater",
+"Sinking Thumbs Up",
+"Everything Is Fine Flood"
+],
+"avoid": "Not for real flood disasters."
+},
+{
+"id": "kylorenmore",
+"name": "Kylo Ren More",
+"lines": 1,
+"shape": "exaggeration",
+"core": "Kylo Ren screaming 'MORE', used for insatiably demanding more of something.",
+"slots": [
+"what I want more of"
+],
+"aliases": [
+"Kylo Ren More",
+"MORE",
+"Kylo Ren Screaming",
+"More Meme"
+],
+"avoid": "Not for being satisfied or wanting less."
+},
+{
+"id": "knightprotectingprincess",
+"name": "Knight Protecting Princess",
+"lines": 3,
+"shape": "labeling",
+"core": "A knight shielding a princess from a hostile crowd, used for someone defending something they love from critics.",
+"slots": [
+"the protector",
+"the attackers",
+"the thing protected"
+],
+"aliases": [
+"Knight Shield Princess",
+"Knight Protecting",
+"Shielding Princess",
+"Protect At All Costs"
+],
+"avoid": "Not for situations without an attacker."
+},
+{
+"id": "terminatorarnoldschwarzenegg",
+"name": "Terminator",
+"lines": 2,
+"shape": "warning",
+"core": "The Terminator in sunglasses, used for cold, unstoppable determination or a promise to return.",
+"slots": [
+"the setup",
+"the cold vow"
+],
+"aliases": [
+"I'll Be Back",
+"Terminator Arnold",
+"Arnold Schwarzenegger Terminator",
+"T-800"
+],
+"avoid": "Not for soft or emotional moments."
+},
+{
+"id": "mewheniminacompetitionandmyo",
+"name": "Me When I'm In A Competition And My Opponent Is",
+"lines": 2,
+"shape": "reaction",
+"core": "Squidward's eyes spinning in panic, used when you face an opponent who is unbeatable at that specific contest.",
+"slots": [
+"the competition",
+"the opponent"
+],
+"aliases": [
+"When I'm In A Competition",
+"Competition And My Opponent Is",
+"Squidward Clock Eyes",
+"My Opponent Is"
+],
+"avoid": "Not for easy wins."
+},
+{
+"id": "cryingbecauseofcute",
+"name": "Crying Because Of Cute",
+"lines": 2,
+"shape": "reaction",
+"core": "Rage comic face crying tears of joy, used when something is so sweet or wholesome it's overwhelming.",
+"slots": [
+"the wholesome thing",
+"my reaction"
+],
+"aliases": [
+"So Cute Face",
+"Tears Of Joy Rage Face",
+"Too Cute",
+"Cute Crying Face"
+],
+"avoid": "Not for genuine sadness."
+},
+{
+"id": "blankforpresident",
+"name": "Blank For President",
+"lines": 1,
+"shape": "approval",
+"core": "A blank campaign button, used to nominate someone or something as the obvious best choice.",
+"slots": [
+"X for president"
+],
+"aliases": [
+"For President Button",
+"Campaign Button",
+"Vote For",
+"X For President"
+],
+"avoid": "Not for real election endorsements."
+},
+{
+"id": "barneystinsonwin",
+"name": "Barney Stinson Win",
+"lines": 2,
+"shape": "approval",
+"core": "Barney Stinson giving double thumbs up, used to celebrate a small, smug victory.",
+"slots": [
+"the win",
+"the celebration"
+],
+"aliases": [
+"Barney Thumbs Up",
+"Barney Stinson",
+"Nailed It Barney",
+"Legendary Win"
+],
+"avoid": "Not for losses or failures."
+},
+{
+"id": "omnimanblockspunch",
+"name": "Omni Man Blocks Punch",
+"lines": 2,
+"shape": "rejection",
+"core": "Omni-Man effortlessly catching a punch without looking, used for something easily shutting down an attack.",
+"slots": [
+"the attack",
+"what blocks it"
+],
+"aliases": [
+"Omni Man Block",
+"Invincible Punch Block",
+"Omni Man Catches Punch",
+"Blocked Punch"
+],
+"avoid": "Not for attacks that actually land."
+},
+{
+"id": "mybrotherinchrist",
+"name": "My Brother In Christ",
+"lines": 1,
+"shape": "reaction",
+"core": "Kermit pointing at a startled Muppet with 'my brother in christ', used to exasperatedly call out someone's obvious mistake.",
+"slots": [
+"the obvious mistake"
+],
+"aliases": [
+"My Brother In Christ",
+"Kermit Brother In Christ",
+"Brother In Christ",
+"My Brother"
+],
+"avoid": "Not for serious religious discussion."
+},
+{
+"id": "beingworkingasxxxxxxisnotstr",
+"name": "Working As X Is Not Stressful At All",
+"lines": 2,
+"shape": "self-own",
+"core": "A very old-looking man claiming a job isn't stressful and that he's young, used for jobs that clearly age you.",
+"slots": [
+"X is not stressful at all",
+"my surprisingly young age"
+],
+"aliases": [
+"Not Stressful At All",
+"Being X Is Not Stressful",
+"I'm 25 Old Man",
+"Stress Aged Me"
+],
+"avoid": "Not for mocking real elderly people."
+},
+{
+"id": "lookhowtheymassacredmyboy",
+"name": "Look How They Massacred My Boy",
+"lines": 1,
+"shape": "reaction",
+"core": "A grieving Vito Corleone lamenting how something he loved was ruined, used for botched remakes, redesigns or edits.",
+"slots": [
+"the ruined beloved thing"
+],
+"aliases": [
+"Look How They Massacred My Boy",
+"Godfather Massacred",
+"Vito Corleone Sad",
+"Massacred My Boy"
+],
+"avoid": "Not for real deaths or tragedies."
+},
+{
+"id": "whatifyoubutgodsaid",
+"name": "What If You But God Said",
+"lines": 2,
+"shape": "plan-backfires",
+"core": "Someone dreams up a nice outcome, then fate (god) hands them a cruel twist instead; used for hopes crushed by reality.",
+"slots": [
+"the hopeful wish",
+"the cruel twist"
+],
+"aliases": [
+"what if you",
+"but god said",
+"god said no",
+"what if you but god said"
+],
+"avoid": "Not for genuine religious commentary."
+},
+{
+"id": "psyhorsedance",
+"name": "Psy Horse Dance",
+"lines": 2,
+"shape": "reaction",
+"core": "Psy doing the Gangnam Style horse dance; used to show over-the-top celebration or swagger.",
+"slots": [
+"the situation",
+"the celebration"
+],
+"aliases": [
+"gangnam style",
+"psy",
+"horse dance",
+"oppa gangnam style"
+],
+"avoid": "Not for sad or serious moments."
+},
+{
+"id": "confusedlebowski",
+"name": "Confused Lebowski",
+"lines": 2,
+"shape": "reaction",
+"core": "The Dude squints in bewildered confusion; used when something makes no sense.",
+"slots": [
+"the confusing thing",
+"the baffled reaction"
+],
+"aliases": [
+"the dude confused",
+"big lebowski",
+"confused dude",
+"lebowski"
+],
+"avoid": "Not for real anger or approval."
+},
+{
+"id": "itdbealotcoolerifyoudid",
+"name": "It'd Be A Lot Cooler If You Did",
+"lines": 2,
+"shape": "dialogue",
+"core": "Wooderson from Dazed and Confused smugly pressures someone to do something; used for nudging people toward a choice.",
+"slots": [
+"you don't have to X",
+"it'd be a lot cooler if you did"
+],
+"aliases": [
+"wooderson",
+"dazed and confused",
+"a lot cooler if you did",
+"matthew mcconaughey car"
+],
+"avoid": "Not for serious coercion."
+},
+{
+"id": "wasanybodygoingtotellme",
+"name": "Was Anybody Going To Tell Me",
+"lines": 2,
+"shape": "irony",
+"core": "Exasperated rant: was anybody going to tell me X, or was I supposed to Y myself; used when nobody shared crucial information.",
+"slots": [
+"the thing nobody told you",
+"what you were supposed to do yourself"
+],
+"aliases": [
+"was anybody going to tell me",
+"or was i just supposed to",
+"figure it out myself"
+],
+"avoid": "Not for things you were clearly told."
+},
+{
+"id": "iloveyouraccent",
+"name": "I Love Your Accent",
+"lines": 2,
+"shape": "dialogue",
+"core": "Girls swoon over Dexter's accent and ask him to say a word, and he says something nerdy or niche; used for jargon that sounds impressive.",
+"slots": [
+"I love your accent, say X",
+"Dexter's reply"
+],
+"aliases": [
+"dexter accent",
+"i love your accent say",
+"dexter's lab girls",
+"say it again"
+],
+"avoid": "Not for mocking real people's accents."
+},
+{
+"id": "doomguy",
+"name": "Doomguy",
+"lines": 2,
+"shape": "exaggeration",
+"core": "The Doom Slayer storms into a horde of demons; used for charging fearlessly into an overwhelming situation.",
+"slots": [
+"the overwhelming situation",
+"me charging in"
+],
+"aliases": [
+"doom slayer",
+"doom guy",
+"doom eternal",
+"rip and tear"
+],
+"avoid": "Not for timid or defeated moments."
+},
+{
+"id": "spongebobbox",
+"name": "Spongebob Box",
+"lines": 2,
+"shape": "labeling",
+"core": "SpongeBob reverently opens a glowing box to reveal a treasured item; used for showing off something you're absurdly proud of.",
+"slots": [
+"the setup",
+"what's in the box"
+],
+"aliases": [
+"spongebob opening box",
+"spongebob treasure box",
+"glowing box spongebob",
+"behold"
+],
+"avoid": "Not for things that are disappointing."
+},
+{
+"id": "picardrikerlisteningtoapun",
+"name": "Picard Riker Listening To A Pun",
+"lines": 2,
+"shape": "reaction",
+"core": "Picard and Riker listen stone-faced, then Riker facepalms; used for groan-worthy puns and bad jokes.",
+"slots": [
+"the pun",
+"the groan"
+],
+"aliases": [
+"riker facepalm",
+"picard riker pun",
+"star trek facepalm",
+"bad pun"
+],
+"avoid": "Not for jokes that land well."
+},
+{
+"id": "confuciussays",
+"name": "Confucius Says",
+"lines": 2,
+"shape": "irony",
+"core": "Mock ancient wisdom in the style 'Confucius say...'; used for silly pseudo-profound proverbs.",
+"slots": [
+"Confucius say",
+"the fake proverb"
+],
+"aliases": [
+"confucius say",
+"confucius",
+"ancient wisdom",
+"wise proverb"
+],
+"avoid": "Not for mocking Chinese people or accents."
+},
+{
+"id": "youmerelyadoptedxiwasbornini",
+"name": "You Merely Adopted The Dark",
+"lines": 2,
+"shape": "comparison",
+"core": "Bane tells Batman he merely adopted something Bane was born into; used to claim veteran status over a newcomer.",
+"slots": [
+"you merely adopted X",
+"I was born in it"
+],
+"aliases": [
+"bane",
+"you merely adopted the dark",
+"born in it molded by it",
+"dark knight rises"
+],
+"avoid": "Not for situations where you're the newcomer."
+},
+{
+"id": "blakhomelesssign",
+"name": "Homeless Man Blank Sign",
+"lines": 1,
+"shape": "labeling",
+"core": "A man holds up a blank cardboard sign; used to write a pleading or ironic request on the sign.",
+"slots": [
+"the sign"
+],
+"aliases": [
+"blank sign",
+"homeless sign",
+"cardboard sign",
+"will work for"
+],
+"avoid": "Not for mocking homelessness or poverty."
+},
+{
+"id": "whataweekhuh",
+"name": "What A Week Huh",
+"lines": 2,
+"shape": "dialogue",
+"core": "Captain Haddock sighs 'What a week, huh?' and Tintin replies 'Captain, it's Wednesday'; used when things feel worse than they've had time to be.",
+"slots": [
+"Haddock's weary remark",
+"Tintin's deflating reply"
+],
+"aliases": [
+"what a week huh",
+"captain it's wednesday",
+"tintin haddock",
+"it's only wednesday"
+],
+"avoid": "Not for genuinely long ordeals."
+},
+{
+"id": "sergeanthartmann",
+"name": "Sergeant Hartman",
+"lines": 2,
+"shape": "warning",
+"core": "The Full Metal Jacket drill sergeant points and barks at you; used for harsh, shouty demands or call-outs.",
+"slots": [
+"the accusation",
+"the barked order"
+],
+"aliases": [
+"gunnery sergeant hartman",
+"full metal jacket",
+"drill sergeant",
+"r lee ermey"
+],
+"avoid": "Not for gentle encouragement."
+},
+{
+"id": "areyawinningson",
+"name": "Are Ya Winning Son",
+"lines": 1,
+"shape": "irony",
+"core": "Dad pops into the doorway asking 'Are ya winning, son?' while the kid is doing something embarrassing or hopeless; used for being caught mid-failure.",
+"slots": [
+"what the son is doing"
+],
+"aliases": [
+"are ya winning son",
+"are you winning son",
+"dad doorway",
+"winning son"
+],
+"avoid": "Not for actual wins."
+},
+{
+"id": "theytookourjobsstancesouthpa",
+"name": "They Took Our Jobs",
+"lines": 2,
+"shape": "rejection",
+"core": "An outraged South Park redneck at a podium yells 'They took our jobs!'; used for exaggerated outrage at being replaced.",
+"slots": [
+"the replacer",
+"the outraged cry"
+],
+"aliases": [
+"they took our jobs",
+"south park dey took er jerbs",
+"dey terk er jerbs",
+"darryl weathers"
+],
+"avoid": "Not for real attacks on immigrants."
+},
+{
+"id": "23wolveslaugh",
+"name": "Two Of Three Wolves Laughing",
+"lines": 4,
+"shape": "labeling",
+"core": "Two wolves laugh at a joke while the third looks away, not getting it; used for the one person who missed the joke.",
+"slots": [
+"the joke",
+"laughing wolf",
+"smirking wolf",
+"the one who doesn't get it"
+],
+"aliases": [
+"laughing wolves",
+"wolves laughing",
+"2 3 wolves",
+"the one who doesn't get it"
+],
+"avoid": "Not for situations where everyone agrees."
+},
+{
+"id": "pepepunch",
+"name": "Pepe Punch",
+"lines": 1,
+"shape": "reaction",
+"core": "A buff Pepe throws a mighty punch; used for aggressively shutting something down.",
+"slots": [
+"what gets punched"
+],
+"aliases": [
+"pepe punch",
+"buff pepe",
+"pepe punching",
+"strong pepe"
+],
+"avoid": "Not for hate-group Pepe imagery."
+},
+{
+"id": "mypreciousgollum",
+"name": "My Precious",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Gollum obsessively clutches the ring; used for unhealthy attachment to something.",
+"slots": [
+"the setup",
+"my precious X"
+],
+"aliases": [
+"gollum",
+"my precious",
+"lord of the rings gollum",
+"precious"
+],
+"avoid": "Not for things you don't care about."
+}
+]

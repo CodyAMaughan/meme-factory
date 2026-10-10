@@ -1,0 +1,1023 @@
+[
+{
+"id": "midwit",
+"name": "Midwit",
+"lines": 3,
+"shape": "escalation",
+"core": "Low and high IQ reach the same simple conclusion; the middle overcomplicates it.",
+"slots": [
+"simple take, held by the dumb/low end",
+"overwrought, overcomplicated take of the midwit middle",
+"same simple take again, held by the genius end"
+],
+"aliases": [
+"iq bell curve",
+"bell curve meme",
+"dumb smart dumb"
+],
+"avoid": "jokes without a simple-vs-overthinking contrast; plain escalating tiers"
+},
+{
+"id": "millers",
+"name": "You Guys Are Getting Paid?",
+"lines": 4,
+"shape": "dialogue",
+"core": "Someone discovers others earn far more than them, reacting in shocked realization.",
+"slots": [
+"often blank",
+"first person's inflated pay or benefit, stated incredulously",
+"second person's smaller but still surprising amount",
+"the shocked punchline: you guys are getting paid?"
+],
+"aliases": [
+"you guys are getting paid",
+"millers getting paid",
+"you guys are getting paid?"
+],
+"avoid": "generic surprise without unequal compensation or hidden perks"
+},
+{
+"id": "mini-keanu",
+"name": "Mini Keanu Reeves",
+"lines": 2,
+"shape": "reaction",
+"core": "Tiny wholesome Keanu Reeves patiently waiting with a gentle, hopeful expression.",
+"slots": [
+"situation of waiting or wanting attention",
+"the small sweet thing you want to share or do"
+],
+"aliases": [
+"tiny keanu",
+"mini keanu reeves",
+"small keanu"
+],
+"avoid": "angry, aggressive, or cynical jokes; Keanu as tough action hero"
+},
+{
+"id": "mmm",
+"name": "Minor Mistake Marvin",
+"lines": 2,
+"shape": "other",
+"core": "A tiny mistake done with calm confidence, then the absurd consequence is revealed.",
+"slots": [
+"innocent action done by the careless person",
+"wrong place or twist that reveals the mistake"
+],
+"aliases": [
+"minor mistake marvin",
+"minor mistake",
+"marvin"
+],
+"avoid": "deliberate evil or big disasters; jokes without a small blunder"
+},
+{
+"id": "money",
+"name": "Shut Up and Take My Money!",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Instantly sold on a product or idea; eager to hand over cash.",
+"slots": [
+"shut up and (setup or lead-in)",
+"take my money! (the desirable thing)"
+],
+"aliases": [
+"shut up and take my money",
+"fry take my money",
+"take my money"
+],
+"avoid": "disliking or rejecting a product; unwilling consumers"
+},
+{
+"id": "mordor",
+"name": "One Does Not Simply Walk into Mordor",
+"lines": 2,
+"shape": "advice",
+"core": "Boromir warns that some task is far harder than people assume.",
+"slots": [
+"one does not simply",
+"an task that sounds easy but is actually hard"
+],
+"aliases": [
+"one does not simply",
+"boromir",
+"walk into mordor"
+],
+"avoid": "things that are genuinely easy; unrelated reactions or complaints"
+},
+{
+"id": "morpheus",
+"name": "Matrix Morpheus",
+"lines": 2,
+"shape": "hot-take",
+"core": "Morpheus offers a mind-blowing reframing of something you thought you knew.",
+"slots": [
+"what if I told you (setup)",
+"surprising revelation or reframing"
+],
+"aliases": [
+"what if i told you",
+"matrix morpheus",
+"morpheus"
+],
+"avoid": "plain jokes with no revelation; mundane complaints"
+},
+{
+"id": "mouth",
+"name": "Woman Holding Dog's Mouth",
+"lines": 3,
+"shape": "labeling",
+"core": "One party excitedly pitches while another covers the mouth of the one who knows it won't work.",
+"slots": [
+"the person speaking or pitching the idea",
+"the excited audience, receiving the pitch",
+"the person silenced who knows the truth"
+],
+"aliases": [
+"woman holding dog's mouth",
+"woman holding dogs mouth",
+"woman covering dog mouth"
+],
+"avoid": "consensual agreements; scenes without suppressed knowledge or inconvenient truth"
+},
+{
+"id": "mw",
+"name": "I Guarantee It",
+"lines": 2,
+"shape": "advice",
+"core": "Salesman confidently promises a result and guarantees it.",
+"slots": [
+"i'm going to promise you a pleasing outcome",
+"i guarantee it"
+],
+"aliases": [
+"i guarantee it",
+"george zimmer",
+"you're gonna like the way you look"
+],
+"avoid": "doubtful or uncertain statements; non-promise punchlines"
+},
+{
+"id": "nails",
+"name": "Guy Hammering Nails Into Sand",
+"lines": 3,
+"shape": "labeling",
+"core": "Someone futilely hammers nails into sand, trying to build with inadequate material.",
+"slots": [
+"the hammerer: person or tool attempting the task",
+"the nails or the tool being used",
+"the sand: the thing too fluid or formless to work with"
+],
+"aliases": [
+"hammering nails into sand",
+"nails in sand",
+"hammering nails"
+],
+"avoid": "tasks that succeed; jokes with no futility or mismatch"
+},
+{
+"id": "nice",
+"name": "So I Got That Goin' For Me, Which is Nice",
+"lines": 2,
+"shape": "ironic-denial",
+"core": "Resigned silver lining after listing misfortunes: at least one thing goes right.",
+"slots": [
+"often blank",
+"so I got that goin' for me, which is nice"
+],
+"aliases": [
+"so i got that goin for me",
+"caddyshack gopher",
+"which is nice"
+],
+"avoid": "genuine boasting; big wins without sarcastic undertone"
+},
+{
+"id": "noah",
+"name": "What the Hell is This?",
+"lines": 4,
+"shape": "labeling",
+"core": "Two things combine into an ugly hybrid, then someone asks what this is.",
+"slots": [
+"first thing being combined",
+"second thing being combined",
+"the awkward hybrid of both",
+"what the hell is this?"
+],
+"aliases": [
+"what the hell is this",
+"stroad",
+"what the hell is this?"
+],
+"avoid": "single objects; hybrids that are good or desirable"
+},
+{
+"id": "noidea",
+"name": "I Have No Idea What I'm Doing",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Dog confesses to total cluelessness while doing something anyway.",
+"slots": [
+"i have no idea (lead-in)",
+"what i'm doing (confession)"
+],
+"aliases": [
+"i have no idea what i'm doing",
+"dog no idea",
+"clueless dog"
+],
+"avoid": "expertise, confidence, or competence jokes"
+},
+{
+"id": "ntot",
+"name": "No Take, Only Throw",
+"lines": 3,
+"shape": "dialogue",
+"core": "Someone is happy to receive but refuses to give back.",
+"slots": [
+"request or plea for them to give",
+"the refusal to give or return",
+"the rule: only taking is allowed"
+],
+"aliases": [
+"no take only throw",
+"no take, only throw",
+"only throw"
+],
+"avoid": "generosity or fair exchange; jokes with no one-sided taking"
+},
+{
+"id": "oag",
+"name": "Overly Attached Girlfriend",
+"lines": 2,
+"shape": "hot-take",
+"core": "Clingy girlfriend reveals creepy obsessive behavior with a cheerful, wide-eyed smile.",
+"slots": [
+"something seemingly innocent she knows or did",
+"the creepy way she knows it"
+],
+"aliases": [
+"overly attached girlfriend",
+"crazy girlfriend",
+"stalker girlfriend"
+],
+"avoid": "healthy romance or wholesome affection; generic jokes"
+},
+{
+"id": "officespace",
+"name": "That Would Be Great",
+"lines": 2,
+"shape": "advice",
+"core": "Passive-aggressive boss casually dumps extra work with fake politeness.",
+"slots": [
+"yeah... (opener, setup of the unreasonable request)",
+"that'd be great (the ask or demand)"
+],
+"aliases": [
+"that would be great",
+"bill lumbergh",
+"lumbergh"
+],
+"avoid": "actual friendly requests; non-workplace or non-demanding situations"
+},
+{
+"id": "older",
+"name": "An Older Code Sir, But It Checks Out",
+"lines": 2,
+"shape": "hot-take",
+"core": "Acknowledging something is old or outdated, but still valid or working.",
+"slots": [
+"it's an older [thing], sir",
+"but it checks out"
+],
+"aliases": [
+"it's an older meme sir",
+"but it checks out",
+"older code sir"
+],
+"avoid": "new things; items that are old and worthless"
+},
+{
+"id": "oprah",
+"name": "Oprah You Get a Car",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Oprah excitedly gives everyone the same thing, you get X, you get X.",
+"slots": [
+"you get a (thing)",
+"you get a (thing), everyone gets one"
+],
+"aliases": [
+"you get a car",
+"oprah you get a car",
+"everybody gets a car"
+],
+"avoid": "scarcity, withholding, or exclusive prizes"
+},
+{
+"id": "panik-kalm-panik",
+"name": "Panik Kalm Panik",
+"lines": 3,
+"shape": "escalation",
+"core": "Panic, then false reassurance, then even worse panic.",
+"slots": [
+"alarming thing, panic",
+"reassuring explanation, calm",
+"reveal that makes it worse, panic"
+],
+"aliases": [
+"panik kalm",
+"panik kalm panik",
+"panic calm panic"
+],
+"avoid": "simple reactions with no reversal; things that stay calm"
+},
+{
+"id": "patrick",
+"name": "Push it somewhere else Patrick",
+"lines": 2,
+"shape": "dialogue",
+"core": "SpongeBob suggests an idea; Patrick says to push it somewhere else.",
+"slots": [
+"the suggestion or proposal",
+"the rejection or deflection of the problem to somewhere else"
+],
+"aliases": [
+"push it somewhere else",
+"push it somewhere else patrick",
+"spongebob patrick"
+],
+"avoid": "agreeable or accepted proposals"
+},
+{
+"id": "perfection",
+"name": "Perfection",
+"lines": 6,
+"shape": "escalation",
+"core": "Repeatedly offered wrong versions until the right one finally arrives and is declared perfect.",
+"slots": [
+"first wrong option",
+"the demand, preferring the real one",
+"second wrong option",
+"the demand again, insisting",
+"the final correct option",
+"perfection."
+],
+"aliases": [
+"darth vader perfection",
+"i prefer the real",
+"perfection"
+],
+"avoid": "single-step reveals; jokes with no wrong then right options"
+},
+{
+"id": "persian",
+"name": "Persian Cat Room Guardian",
+"lines": 2,
+"shape": "reaction",
+"core": "Persian cat guards the room, glaring at anyone disturbing its peace.",
+"slots": [
+"situation that causes an annoyed or angry reaction",
+"what is disturbing or angering you"
+],
+"aliases": [
+"persian cat room guardian",
+"cat guarding room",
+"angry cat"
+],
+"avoid": "cute pleasant moments; excited or happy reactions"
+},
+{
+"id": "philosoraptor",
+"name": "Philosoraptor",
+"lines": 2,
+"shape": "question",
+"core": "A pseudo-deep shower thought or logical paradox posed as a rhetorical question.",
+"slots": [
+"premise or setup of the thought",
+"the paradoxical question or conclusion"
+],
+"aliases": [
+"philosoraptor",
+"shower thought",
+"deep thinker"
+],
+"avoid": "jokes without a logical twist or contradiction"
+},
+{
+"id": "pigeon",
+"name": "Is This a Pigeon?",
+"lines": 3,
+"shape": "labeling",
+"core": "Someone mistakes one thing for another, asking if it is that.",
+"slots": [
+"the person misidentifying",
+"the thing being looked at",
+"is this [wrong label]?"
+],
+"aliases": [
+"is this a pigeon",
+"anime butterfly",
+"is this a butterfly"
+],
+"avoid": "correct identification; non-mistaken, obvious comparisons"
+},
+{
+"id": "pooh",
+"name": "Tuxedo Winnie the Pooh",
+"lines": 2,
+"shape": "binary-choice",
+"core": "Plain version of something versus a fancy, pretentious rewording of the same thing.",
+"slots": [
+"the plain, ordinary phrasing",
+"the fancy, sophisticated phrasing of the same thing"
+],
+"aliases": [
+"fancy pooh",
+"tuxedo pooh",
+"classy pooh"
+],
+"avoid": "Genuine rejection of a bad option for a different good one"
+},
+{
+"id": "pool",
+"name": "Mother Ignoring Kid Drowning In A Pool",
+"lines": 3,
+"shape": "labeling",
+"core": "Caretaker ignores a real crisis while attending to a trivial, more visible concern.",
+"slots": [
+"the ignored crisis (drowning kid)",
+"the thing getting attention (the other kid)",
+"the negligent party who ignores the crisis"
+],
+"aliases": [
+"mother ignoring kid drowning",
+"drowning kid"
+],
+"avoid": "Jokes without a neglected problem versus a favored one"
+},
+{
+"id": "prop3",
+"name": "Too Confusing, Too Extreme",
+"lines": 1,
+"shape": "exaggeration",
+"core": "Mocks a mundane thing as 'too confusing, too extreme' in a political-slogan style.",
+"slots": [
+"the mundane thing being called too confusing and extreme"
+],
+"aliases": [
+"too confusing too extreme",
+"prop 3 meme"
+],
+"avoid": "Serious complaints, dialogue, or multi-part setups"
+},
+{
+"id": "ptj",
+"name": "Phoebe Teaching Joey",
+"lines": 8,
+"shape": "dialogue",
+"core": "Phoebe slowly repeats words to an uncomprehending Joey, who finally gets it wrong.",
+"slots": [
+"Phoebe's first phrase fragment",
+"Joey repeats the first fragment",
+"Phoebe's second phrase fragment",
+"Joey repeats the second fragment",
+"Phoebe's third phrase fragment",
+"Joey repeats the third fragment",
+"Phoebe's full sentence put together",
+"Joey's absurd or wrong takeaway"
+],
+"aliases": [
+"phoebe teaching joey",
+"teaching joey"
+],
+"avoid": "Anything without a slow explanation and a misunderstanding payoff"
+},
+{
+"id": "puffin",
+"name": "Unpopular opinion puffin",
+"lines": 2,
+"shape": "hot-take",
+"core": "Admits a mildly contrarian opinion about something widely loved.",
+"slots": [
+"setup of the unpopular opinion",
+"punchline completing the contrarian take"
+],
+"aliases": [
+"unpopular opinion puffin"
+],
+"avoid": "Popular opinions, outrage, or non-opinion observations"
+},
+{
+"id": "red",
+"name": "Oh, Is That What We're Going to Do Today?",
+"lines": 2,
+"shape": "dialogue",
+"core": "A calm character sarcastically asks if today's plan is to start a fight.",
+"slots": [
+"sarcastic 'oh, is that what we're going to do today?'",
+"the confrontational thing being implied or proposed"
+],
+"aliases": [
+"oh is that what we're going to do today",
+"red from that 70s show"
+],
+"avoid": "Non-confrontational jokes or genuine questions"
+},
+{
+"id": "regret",
+"name": "I Immediately Regret This Decision!",
+"lines": 2,
+"shape": "reaction",
+"core": "Instantly regretting a decision right after making it.",
+"slots": [
+"often blank",
+"the regret line or the bad decision"
+],
+"aliases": [
+"immediately regret",
+"i immediately regret this decision"
+],
+"avoid": "Long-term regrets or decisions that turn out fine"
+},
+{
+"id": "remembers",
+"name": "Pepperidge Farm Remembers",
+"lines": 2,
+"shape": "other",
+"core": "Old-timey nostalgia: Pepperidge Farm 'remembers' something from the past, asked of the audience.",
+"slots": [
+"the nostalgic thing or question about the past",
+"'pepperidge farm remembers' or a tweak of it"
+],
+"aliases": [
+"pepperidge farm remembers",
+"pepperidge farm"
+],
+"avoid": "Current events or things with no past reference"
+},
+{
+"id": "reveal",
+"name": "Scooby Doo Reveal",
+"lines": 4,
+"shape": "dialogue",
+"core": "Unmasking a villain reveals it's the protagonist, who's been the problem all along.",
+"slots": [
+"the masked villain or apparent culprit",
+"the line about unmasking",
+"the real culprit revealed underneath",
+"the smug 'I knew it' reaction"
+],
+"aliases": [
+"scooby doo mask reveal",
+"scooby doo unmasking",
+"let's see who this really is"
+],
+"avoid": "Jokes where the culprit isn't surprising or self-inflicted"
+},
+{
+"id": "right",
+"name": "Anakin and Padme Change the World For the Better",
+"lines": 5,
+"shape": "dialogue",
+"core": "One naive character proposes a plan; the other's 'right?' hides dread and doubt.",
+"slots": [
+"the optimistic speaker's role",
+"the doubtful listener's role",
+"the optimistic, well-meaning statement",
+"the hopeful follow-up 'right?'",
+"the same hopeful follow-up repeated, unanswered"
+],
+"aliases": [
+"anakin and padme",
+"for the better right",
+"padme right"
+],
+"avoid": "Genuine agreement or plans that actually work out"
+},
+{
+"id": "rollsafe",
+"name": "Roll Safe",
+"lines": 2,
+"shape": "other",
+"core": "Smug 'can't have a problem if you avoid it' pseudo-genius logic.",
+"slots": [
+"the premise or setup",
+"the flawed 'smart' loophole conclusion"
+],
+"aliases": [
+"roll safe",
+"thinking black guy",
+"you can't if you don't"
+],
+"avoid": "Sincere intelligence or logic that actually holds up"
+},
+{
+"id": "sad-biden",
+"name": "Sad Joe Biden",
+"lines": 2,
+"shape": "other",
+"core": "Sad politician who doesn't think you'll vote; label him and add a jab.",
+"slots": [
+"name of the sad figure",
+"'doesn't think you'll...' with a thing you'll fail to do"
+],
+"aliases": [
+"sad joe biden"
+],
+"avoid": "Cheerful or non-expectation jokes"
+},
+{
+"id": "sad-boehner",
+"name": "Sad John Boehner",
+"lines": 2,
+"shape": "other",
+"core": "Sad politician who doesn't think you'll vote; label him and add a jab.",
+"slots": [
+"name of the sad figure",
+"'doesn't think you'll...' with a thing you'll fail to do"
+],
+"aliases": [
+"sad john boehner"
+],
+"avoid": "Cheerful or non-expectation jokes"
+},
+{
+"id": "sad-bush",
+"name": "Sad George Bush",
+"lines": 2,
+"shape": "other",
+"core": "Sad politician who doesn't think you'll vote; label him and add a jab.",
+"slots": [
+"name of the sad figure",
+"'doesn't think you'll...' with a thing you'll fail to do"
+],
+"aliases": [
+"sad george bush"
+],
+"avoid": "Cheerful or non-expectation jokes"
+},
+{
+"id": "sad-clinton",
+"name": "Sad Bill Clinton",
+"lines": 2,
+"shape": "other",
+"core": "Sad politician who doesn't think you'll vote; label him and add a jab.",
+"slots": [
+"name of the sad figure",
+"'doesn't think you'll...' with a thing you'll fail to do"
+],
+"aliases": [
+"sad bill clinton"
+],
+"avoid": "Cheerful or non-expectation jokes"
+},
+{
+"id": "sad-obama",
+"name": "Sad Barack Obama",
+"lines": 2,
+"shape": "other",
+"core": "Sad politician who doesn't think you'll vote; label him and add a jab.",
+"slots": [
+"name of the sad figure",
+"'doesn't think you'll...' with a thing you'll fail to do"
+],
+"aliases": [
+"sad barack obama"
+],
+"avoid": "Cheerful or non-expectation jokes"
+},
+{
+"id": "sadfrog",
+"name": "Feels Bad Man",
+"lines": 2,
+"shape": "reaction",
+"core": "Pepe the frog expressing melancholy, defeat, or 'feels bad man'.",
+"slots": [
+"often blank",
+"the sad situation, ending in 'feels bad man'"
+],
+"aliases": [
+"feels bad man",
+"sad pepe",
+"sad frog"
+],
+"avoid": "Happy moments or angry rants"
+},
+{
+"id": "saltbae",
+"name": "Salt Bae",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Flamboyantly adding a finishing touch to something with excessive flair.",
+"slots": [
+"often blank",
+"the thing being garnished or flourished"
+],
+"aliases": [
+"salt bae",
+"sprinkling salt"
+],
+"avoid": "Jokes lacking an added flourish or finishing touch"
+},
+{
+"id": "same",
+"name": "They're The Same Picture",
+"lines": 3,
+"shape": "labeling",
+"core": "Pointing at two things claiming they're identical, while a third labels the sameness.",
+"slots": [
+"first thing claimed to be the same",
+"second thing claimed to be the same",
+"the shared label that makes them equivalent"
+],
+"aliases": [
+"they're the same picture",
+"same picture"
+],
+"avoid": "Contrasts or differences between things"
+},
+{
+"id": "sarcasticbear",
+"name": "Sarcastic Bear",
+"lines": 2,
+"shape": "mocking-echo",
+"core": "Sarcastic mock apology for not knowing or doing something obvious.",
+"slots": [
+"the sarcastic 'I'm so sorry' opener",
+"the snarky reason behind the apology"
+],
+"aliases": [
+"sarcastic bear",
+"sorry bear"
+],
+"avoid": "Sincere apologies or friendly advice"
+},
+{
+"id": "say",
+"name": "Say the Line, Bart!",
+"lines": 2,
+"shape": "dialogue",
+"core": "A character is goaded into saying a signature catchphrase they're known for.",
+"slots": [
+"the prompt urging someone to say their catchphrase",
+"the signature line or clich\u00e9 response"
+],
+"aliases": [
+"say the line bart",
+"say it bart"
+],
+"avoid": "Generic dialogue without a catchphrase payoff"
+},
+{
+"id": "sb",
+"name": "Scumbag Brain",
+"lines": 2,
+"shape": "other",
+"core": "Brain betrays you by remembering useless things and forgetting what matters.",
+"slots": [
+"the unhelpful thing the brain does",
+"the betraying twist or what it forgets"
+],
+"aliases": [
+"scumbag brain"
+],
+"avoid": "Complaints about other people or events"
+},
+{
+"id": "scc",
+"name": "Sudden Clarity Clarence",
+"lines": 2,
+"shape": "other",
+"core": "Stoned sudden realization that recontextualizes a past event.",
+"slots": [
+"the 'oh my god' realization opener",
+"the revelation recontextualizing a past experience"
+],
+"aliases": [
+"sudden clarity clarence"
+],
+"avoid": "Planned logic or obvious conclusions"
+},
+{
+"id": "seagull",
+"name": "Inhaling Seagull",
+"lines": 2,
+"shape": "other",
+"core": "Seagull inhales dramatically; lyrics get screamed out, split by the inhale.",
+"slots": [
+"the first part of a word or lyric",
+"the screamed, extended remainder"
+],
+"aliases": [
+"inhaling seagull"
+],
+"avoid": "Quiet jokes or non-screaming, non-lyric punchlines"
+},
+{
+"id": "sf",
+"name": "Sealed Fate",
+"lines": 2,
+"shape": "plan-backfire",
+"core": "Something minor goes wrong and you realize doom is certain and imminent.",
+"slots": [
+"the minor mishap or action that sets things off",
+"the grim realization that consequences are unavoidable"
+],
+"aliases": [
+"impending doom seal",
+"seal of doom",
+"sealed fate seal"
+],
+"avoid": "Positive outcomes, long-term problems, or situations with no looming consequence."
+},
+{
+"id": "sk",
+"name": "Skeptical Third World Kid",
+"lines": 2,
+"shape": "question",
+"core": "Skeptical kid doubts a claim, answering a statement with a sarcastic, incredulous question.",
+"slots": [
+"the claim or statement being doubted",
+"the sarcastic, skeptical rhetorical question"
+],
+"aliases": [
+"skeptical african kid",
+"third world skeptical kid",
+"third world success kid"
+],
+"avoid": "Genuine praise, earnest excitement, or jokes without a doubted claim."
+},
+{
+"id": "ski",
+"name": "Super Cool Ski Instructor",
+"lines": 2,
+"shape": "advice",
+"core": "Cool ski instructor delivers an ominous, ironic warning: 'you're gonna have a bad time'.",
+"slots": [
+"often blank",
+"the warning about a bad outcome, usually ending 'you're gonna have a bad time'"
+],
+"aliases": [
+"south park ski instructor",
+"bad time",
+"you're gonna have a bad time"
+],
+"avoid": "Genuinely good outcomes or serious, non-ironic warnings."
+},
+{
+"id": "slap",
+"name": "Will Smith Slapping Chris Rock",
+"lines": 2,
+"shape": "labeling",
+"core": "One thing violently smacks down another; label the aggressor and the victim.",
+"slots": [
+"the victim, usually the relatable person or happy state",
+"the aggressor that ruins it, label for the slapper"
+],
+"aliases": [
+"will smith slap",
+"oscars slap",
+"chris rock slap"
+],
+"avoid": "Gentle conflicts or non-violent, mutual disagreements."
+},
+{
+"id": "snek",
+"name": "Skeptical Snake",
+"lines": 2,
+"shape": "reaction",
+"core": "Snake recoils with suspicion when something previously safe turns suspicious or alarming.",
+"slots": [
+"the setup that seemed safe or checked",
+"the suspicious or alarming twist"
+],
+"aliases": [
+"skeptical snake",
+"suspicious snake",
+"snake meme"
+],
+"avoid": "Confident wins or enthusiastic approval without a twist of suspicion."
+},
+{
+"id": "soa",
+"name": "Seal of Approval",
+"lines": 2,
+"shape": "before-after",
+"core": "Seal gives approval or delight at a small satisfying success or clean result.",
+"slots": [
+"the action or setup step",
+"the satisfying, approved outcome"
+],
+"aliases": [
+"seal of approval",
+"approving seal",
+"clean seal"
+],
+"avoid": "Failures, disappointment, or negative outcomes."
+},
+{
+"id": "sohappy",
+"name": "I Would Be So Happy",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Wishful statement: 'if I could X, I would be so happy', absurdly emotional.",
+"slots": [
+"the wished-for thing, 'if I could...'",
+"the 'I would be so happy' payoff, often meta"
+],
+"aliases": [
+"i would be so happy",
+"so happy",
+"if i could"
+],
+"avoid": "Sarcasm, anger, or wishes that aren't heartfelt."
+},
+{
+"id": "sohot",
+"name": "So Hot Right Now",
+"lines": 2,
+"shape": "hot-take",
+"core": "Mugatu's deadpan declaration that something is 'so hot right now', mocking fads.",
+"slots": [
+"the trendy thing, 'X is'",
+"'so hot right now' punchline"
+],
+"aliases": [
+"mugatu so hot right now",
+"so hot right now",
+"mugatu"
+],
+"avoid": "Things that are unpopular, ignored, or genuinely timeless."
+},
+{
+"id": "soup-nazi",
+"name": "No Soup for You",
+"lines": 2,
+"shape": "other",
+"core": "Denying someone something they want, shouted with 'No soup for you!'",
+"slots": [
+"the denial, 'no X for you!'",
+"often blank"
+],
+"aliases": [
+"no soup for you",
+"soup nazi",
+"seinfeld soup nazi"
+],
+"avoid": "Generous offers or gentle refusals."
+},
+{
+"id": "sparta",
+"name": "This is Sparta!",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Leonidas screams a declaration, then kicks someone into a pit, in an over-the-top manner.",
+"slots": [
+"the opening shout, 'this is/this isn't...'",
+"the dramatic punchline, usually the thing being proclaimed"
+],
+"aliases": [
+"this is sparta",
+"300 sparta",
+"leonidas"
+],
+"avoid": "Quiet, understated, or low-energy jokes."
+},
+{
+"id": "spiderman",
+"name": "Spider-Man Pointing at Spider-Man",
+"lines": 2,
+"shape": "labeling",
+"core": "Two identical Spider-Men point at each other, showing mutual resemblance or accusation.",
+"slots": [
+"one party doing or being the thing",
+"the other party doing or being the same thing"
+],
+"aliases": [
+"spider-man pointing",
+"spiderman pointing",
+"pointing spiderman"
+],
+"avoid": "Jokes about differences, solitary subjects, or more than two parties."
+},
+{
+"id": "spirit",
+"name": "Fake Spirit Halloween Costume",
+"lines": 5,
+"shape": "labeling",
+"core": "Parody costume package: a label for a person plus a list of absurdly minimal 'Includes' items.",
+"slots": [
+"the costume subject or title",
+"'Includes:' header",
+"first included item, often a letdown",
+"second included item",
+"third included item"
+],
+"aliases": [
+"fake halloween costume",
+"spirit halloween",
+"fake costume"
+],
+"avoid": "Real costume ideas or jokes without a list of items."
+}
+]

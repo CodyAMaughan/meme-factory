@@ -58,7 +58,7 @@ Each screen shows its own actions first, then the same keys in the same place: `
 
 The mod draws on about 1,500 templates: memegen.link's 210, plus some 1,300 from [Imgflip's most popular of all time](https://imgflip.com/memetemplates?sort=top-all-time) that run on the Meme Factory's own server. Each one has a card saying what the meme means and what each box is for, and its popularity rank.
 
-- **Finding the right one.** With this many, the writer doesn't read them all. A quick model turns your request into search words ("broke", "empty wallet", "Surprised Pikachu"), a search ranks the cards the way search engines do (matching words first, rarer words counting more; popularity breaks near ties; a mix of joke types), and the writer chooses from the best 40.
+- **Finding the right one.** With this many, the writer doesn't read them all. A quick model (Haiku) writes the card of the ideal template for your joke and, at the same time, names candidates from the whole catalog; then it reranks the search's best 200 for that card, with a description of each picture. The writer chooses from the 40 that come out. On a benchmark of about 2,400 requests ([bench/](bench/)), this puts the right template in the top three for 90% of requests written by people who only saw the picture, up from 76%.
 - **Imgflip's daily top 100.** Top-and-bottom memes from Imgflip's current list that the catalog lacks are added too, over Imgflip's picture. Set `MEME_FACTORY_IMGFLIP=0` to leave them out.
 - **Your own memegen server.** With `MEMEGEN_URL`, templates on your server that memegen.link doesn't have join the list. Add a folder to the server's `templates/` with the picture (`default.jpg`), a `config.yml` that places each box, and optionally a `card.json`, then redeploy.
 

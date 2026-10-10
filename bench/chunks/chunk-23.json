@@ -1,0 +1,1073 @@
+[
+{
+"id": "confusedmelgibson",
+"name": "Confused Mel Gibson",
+"lines": 2,
+"shape": "reaction",
+"core": "Mel Gibson staring blankly at an awards dinner, used for stunned, wide-eyed confusion at what was just said.",
+"slots": [
+"baffling statement",
+"stunned reaction"
+],
+"aliases": [
+"Mel Gibson",
+"Shocked Mel Gibson",
+"Mel Gibson Stare"
+],
+"avoid": "Not for happy or excited reactions."
+},
+{
+"id": "macklemorethriftstore",
+"name": "Macklemore Thrift Store",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Macklemore in a giant fur coat from Thrift Shop, used for bragging about cheap, secondhand or bargain finds.",
+"slots": [
+"cheap thing",
+"bragging"
+],
+"aliases": [
+"Thrift Shop",
+"Macklemore Fur Coat",
+"Twenty Dollars In My Pocket"
+],
+"avoid": "Not for expensive luxury flexes."
+},
+{
+"id": "techimpairedduck",
+"name": "Tech Impaired Duck",
+"lines": 2,
+"shape": "self-own",
+"core": "An advice-animal duck who hilariously misunderstands technology and does everything wrong with computers.",
+"slots": [
+"tech task",
+"clueless attempt"
+],
+"aliases": [
+"Technologically Impaired Duck",
+"Tech Duck",
+"Computer Illiterate Duck"
+],
+"avoid": "Not for tech-savvy wins."
+},
+{
+"id": "babycry",
+"name": "Baby Cry",
+"lines": 2,
+"shape": "before-after",
+"core": "A toddler looks puzzled in the top panel then bursts into tears in the bottom, used for the moment a realisation sinks in and ruins you.",
+"slots": [
+"puzzled realisation",
+"crying aftermath"
+],
+"aliases": [
+"Crying Toddler",
+"Harvest Festival Baby",
+"Baby About To Cry"
+],
+"avoid": "Not for genuinely sad or tragic news."
+},
+{
+"id": "grumpytoad",
+"name": "Grumpy Toad",
+"lines": 2,
+"shape": "reaction",
+"core": "A round desert rain frog with a furious scowl, used for grumpy, irritable reactions to minor annoyances.",
+"slots": [
+"annoyance",
+"grumpy reaction"
+],
+"aliases": [
+"Angry Frog",
+"Grumpy Frog",
+"Rain Frog"
+],
+"avoid": "Not for cheerful moments."
+},
+{
+"id": "killyoucat",
+"name": "Kill You Cat",
+"lines": 2,
+"shape": "warning",
+"core": "A soaking-wet kitten glaring murderously after a bath, used for silent vows of revenge against whoever wronged it.",
+"slots": [
+"what happened",
+"revenge vow"
+],
+"aliases": [
+"Wet Cat",
+"Angry Wet Kitten",
+"Revenge Cat"
+],
+"avoid": "Not for real threats."
+},
+{
+"id": "angrydumbledore",
+"name": "Angry Dumbledore",
+"lines": 2,
+"shape": "dialogue",
+"core": "Dumbledore aggressively grilling Harry ('Did you put your name in the Goblet of Fire?') \u2014 used for asking a question with far too much intensity.",
+"slots": [
+"setup",
+"intense question"
+],
+"aliases": [
+"Dumbledore Asked Calmly",
+"Did You Put Your Name In The Goblet Of Fire",
+"Dumbledore Grabbing Harry"
+],
+"avoid": "Not for calm, polite questions."
+},
+{
+"id": "deadpoolpickuplines",
+"name": "Deadpool Pick Up Lines",
+"lines": 2,
+"shape": "dialogue",
+"core": "Deadpool tugging his straps suavely, used to deliver cheesy, nerdy or inappropriate-sounding pick-up lines.",
+"slots": [
+"pick-up line setup",
+"cheesy payoff"
+],
+"aliases": [
+"Deadpool",
+"Deadpool Pickup Line",
+"Suave Deadpool"
+],
+"avoid": "Not for explicit or sexual content."
+},
+{
+"id": "tearsofjoy",
+"name": "Tears Of Joy",
+"lines": 2,
+"shape": "reaction",
+"core": "A rage-comic face crying tears of happiness, used when something is so good or so relieving it makes you emotional.",
+"slots": [
+"good news",
+"emotional reaction"
+],
+"aliases": [
+"Happy Crying Rage Face",
+"Tears Of Joy Rage Comic",
+"So Happy I Cried"
+],
+"avoid": "Not for genuine sadness."
+},
+{
+"id": "mrt",
+"name": "Mr T",
+"lines": 2,
+"shape": "rejection",
+"core": "Mr T flexing and pointing, used for tough-talking 'I pity the fool' put-downs.",
+"slots": [
+"the fool's action",
+"pity the fool"
+],
+"aliases": [
+"I Pity The Fool",
+"Mr. T",
+"Mr T Pity"
+],
+"avoid": "Not for gentle or sympathetic replies."
+},
+{
+"id": "chavez",
+"name": "Chavez",
+"lines": 2,
+"shape": "reaction",
+"core": "Hugo Chavez grinning and pointing at the viewer, used for a sly 'I see what you did' or 'you're next' callout.",
+"slots": [
+"setup",
+"pointed callout"
+],
+"aliases": [
+"Hugo Chavez",
+"Chavez Pointing",
+"Smiling Chavez"
+],
+"avoid": "Not for serious political debate."
+},
+{
+"id": "mrtroc9",
+"name": "Mr T",
+"lines": 2,
+"shape": "rejection",
+"core": "Mr T flexing and pointing, used to call out and pity someone doing something foolish, usually ending in \"I pity the fool\".",
+"slots": [
+"setup",
+"I pity the fool who..."
+],
+"aliases": [
+"I Pity The Fool",
+"Mr T Pity",
+"B.A. Baracus",
+"Mr T Pointing"
+],
+"avoid": "Not for sincere sympathy or sad news."
+},
+{
+"id": "bigbirdandsnuffy",
+"name": "Big Bird And Snuffy",
+"lines": 2,
+"shape": "irony",
+"core": "Big Bird with Snuffleupagus, the friend nobody believed existed, used for things that are real but no one believes you about.",
+"slots": [
+"setup",
+"nobody believes it"
+],
+"aliases": [
+"Snuffleupagus",
+"Big Bird Snuffy",
+"Imaginary Friend",
+"Nobody Believes Me"
+],
+"avoid": "Not for things that are genuinely imaginary or fake."
+},
+{
+"id": "darthmaul",
+"name": "Darth Maul",
+"lines": 2,
+"shape": "warning",
+"core": "Darth Maul's menacing stare, used for quiet, intense threats or a villainous plan.",
+"slots": [
+"setup",
+"menacing punchline"
+],
+"aliases": [
+"Darth Maul Stare",
+"Sith Lord",
+"Star Wars Maul",
+"Menacing Maul"
+],
+"avoid": "Not for cheerful or wholesome messages."
+},
+{
+"id": "annoyingchildhoodfriend",
+"name": "Annoying Childhood Friend",
+"lines": 2,
+"shape": "self-own",
+"core": "A grinning kid looking up, used to describe the annoying things that one friend always did as a child.",
+"slots": [
+"annoying action",
+"the twist"
+],
+"aliases": [
+"Annoying Kid",
+"Childhood Friend",
+"Annoying Friend",
+"Smug Kid"
+],
+"avoid": "Not for describing adults' serious behaviour."
+},
+{
+"id": "lilwayne",
+"name": "Lil Wayne",
+"lines": 2,
+"shape": "irony",
+"core": "Lil Wayne looking up thoughtfully, used for nonsensical or pun-filled rap-style lines he might say.",
+"slots": [
+"setup",
+"pun punchline"
+],
+"aliases": [
+"Lil Wayne Pun",
+"Weezy",
+"Lil Wayne Looking Up",
+"Wayne Lyrics"
+],
+"avoid": "Not for serious commentary about the rapper."
+},
+{
+"id": "littleromney",
+"name": "Little Romney",
+"lines": 2,
+"shape": "reaction",
+"core": "Mitt Romney with a pouty, disappointed face, used for petulant sulking when things don't go your way.",
+"slots": [
+"what happened",
+"sulky reaction"
+],
+"aliases": [
+"Pouting Romney",
+"Sad Romney",
+"Romney Pout",
+"Disappointed Romney"
+],
+"avoid": "Not for heavy political attacks."
+},
+{
+"id": "woahkitty",
+"name": "Woah Kitty",
+"lines": 2,
+"shape": "reaction",
+"core": "A wide-eyed black cat staring in shock, used for being startled or disturbed by something.",
+"slots": [
+"what you saw",
+"shocked reaction"
+],
+"aliases": [
+"Shocked Cat",
+"Wide Eyed Cat",
+"Black Cat Stare",
+"Surprised Kitty"
+],
+"avoid": "Not for calm or happy news."
+},
+{
+"id": "yukowithgun",
+"name": "Yuko With Gun",
+"lines": 2,
+"shape": "warning",
+"core": "A grinning cheerleader cheerfully pointing a toy gun at the viewer, used for playful demands and threats.",
+"slots": [
+"demand",
+"or else"
+],
+"aliases": [
+"Cheerleader With Gun",
+"Yuko Oshima Gun",
+"Happy Girl Gun",
+"Smiling Threat"
+],
+"avoid": "Not for real violence or threats."
+},
+{
+"id": "gandhi",
+"name": "Gandhi",
+"lines": 2,
+"shape": "irony",
+"core": "Gandhi on an old telephone, used for ironic calls or advice that clashes with his peaceful image.",
+"slots": [
+"phone setup",
+"ironic punchline"
+],
+"aliases": [
+"Gandhi Phone",
+"Gandhi Telephone",
+"Mahatma Gandhi",
+"Peaceful Gandhi"
+],
+"avoid": "Not for mocking religion or real tragedies."
+},
+{
+"id": "familyguypeter",
+"name": "Family Guy Peter",
+"lines": 2,
+"shape": "reaction",
+"core": "Peter Griffin with his mouth open, used for dumb remarks or clueless reactions.",
+"slots": [
+"setup",
+"Peter's dumb take"
+],
+"aliases": [
+"Peter Griffin",
+"Family Guy",
+"Peter Talking",
+"Surprised Peter"
+],
+"avoid": "Not for smart or thoughtful points."
+},
+{
+"id": "larrythecableguy",
+"name": "Larry The Cable Guy",
+"lines": 2,
+"shape": "approval",
+"core": "Larry the Cable Guy grinning, used for getting a job done in a crude, no-nonsense way, often with \"Git-R-Done\".",
+"slots": [
+"the task",
+"Git-R-Done"
+],
+"aliases": [
+"Git R Done",
+"Larry Cable Guy",
+"Redneck",
+"Get Er Done"
+],
+"avoid": "Not for careful, polished work."
+},
+{
+"id": "unhappybaby",
+"name": "Unhappy Baby",
+"lines": 2,
+"shape": "reaction",
+"core": "A baby wailing, used for overreacting to small, first-world problems.",
+"slots": [
+"minor problem",
+"dramatic wail"
+],
+"aliases": [
+"Crying Baby",
+"Sad Baby",
+"Baby Crying",
+"Wailing Baby"
+],
+"avoid": "Not for real suffering."
+},
+{
+"id": "happyminaj",
+"name": "Happy Minaj",
+"lines": 2,
+"shape": "reaction",
+"core": "Nicki Minaj wide-eyed and screaming with excitement, used for over-the-top joy at good news.",
+"slots": [
+"good news",
+"excited reaction"
+],
+"aliases": [
+"Excited Nicki Minaj",
+"Nicki Minaj Shocked",
+"Screaming Nicki",
+"Happy Nicki"
+],
+"avoid": "Not for bad or sad news."
+},
+{
+"id": "obamaromneypointing",
+"name": "Obama Romney Pointing",
+"lines": 2,
+"shape": "labeling",
+"core": "Romney and Obama pointing at each other during a debate, used when two parties blame each other or are the same thing.",
+"slots": [
+"left pointer",
+"right pointer"
+],
+"aliases": [
+"Debate Pointing",
+"Obama Romney Debate",
+"Politicians Pointing",
+"Pointing At Each Other"
+],
+"avoid": "Not for heavy partisan attacks."
+},
+{
+"id": "netnoob",
+"name": "Net Noob",
+"lines": 2,
+"shape": "self-own",
+"core": "An excited man cheering at his laptop, used for internet newbies proudly doing something naive online.",
+"slots": [
+"naive action",
+"proud result"
+],
+"aliases": [
+"Internet Noob",
+"Excited Computer Guy",
+"Laptop Guy Cheering",
+"Newbie"
+],
+"avoid": "Not for real tech expertise."
+},
+{
+"id": "smugbear",
+"name": "Smug Bear",
+"lines": 2,
+"shape": "irony",
+"core": "A bear with its nose in the air, used for smugly getting away with something or feeling superior.",
+"slots": [
+"smug setup",
+"smug payoff"
+],
+"aliases": [
+"Smug Grizzly",
+"Proud Bear",
+"Arrogant Bear",
+"Nose Up Bear"
+],
+"avoid": "Not for humble or sincere moments."
+},
+{
+"id": "bubbaandbarack",
+"name": "Bubba And Barack",
+"lines": 2,
+"shape": "dialogue",
+"core": "Bill Clinton strutting in to take the podium while Obama walks off, used for someone confidently taking over or upstaging.",
+"slots": [
+"Clinton's line",
+"the upstaging"
+],
+"aliases": [
+"Clinton Obama Press Room",
+"Bill Clinton Strut",
+"Clinton Takes Over",
+"Bubba Barack"
+],
+"avoid": "Not for heavy partisan attacks."
+},
+{
+"id": "sogodmadeafarmer",
+"name": "So God Made A Farmer",
+"lines": 2,
+"shape": "exaggeration",
+"core": "A weathered farmer from the Paul Harvey ad, used to parody \"so God made a ___\" with mock-epic praise of a role.",
+"slots": [
+"God needed someone who...",
+"so God made a..."
+],
+"aliases": [
+"God Made A Farmer",
+"Paul Harvey Farmer",
+"Old Cowboy",
+"Weathered Farmer"
+],
+"avoid": "Not for mocking actual farmers or faith."
+},
+{
+"id": "frango",
+"name": "Frango",
+"lines": 2,
+"shape": "rejection",
+"core": "Lou Ferrigno grinning and pointing, the Brazilian gym meme calling someone weak a \"frango\" (chicken).",
+"slots": [
+"what you did",
+"FRANGO"
+],
+"aliases": [
+"Lou Ferrigno Pointing",
+"Frango Meme",
+"Gym Chicken",
+"Bodybuilder Pointing"
+],
+"avoid": "Not for genuine body shaming."
+},
+{
+"id": "southparkcraig",
+"name": "South Park Craig",
+"lines": 2,
+"shape": "reaction",
+"core": "Craig from South Park staring blankly, used for total deadpan indifference to drama.",
+"slots": [
+"the drama",
+"deadpan reply"
+],
+"aliases": [
+"Craig Tucker",
+"South Park Deadpan",
+"Craig Doesn't Care",
+"Unimpressed Craig"
+],
+"avoid": "Not for excited or emotional reactions."
+},
+{
+"id": "thebobs",
+"name": "The Bobs",
+"lines": 2,
+"shape": "dialogue",
+"core": "The two consultants from Office Space, used to interrogate what someone actually does or to question pointless work.",
+"slots": [
+"the question",
+"the follow-up"
+],
+"aliases": [
+"Office Space Bobs",
+"What Would You Say You Do Here",
+"The Two Bobs",
+"Consultants"
+],
+"avoid": "Not for real layoff announcements."
+},
+{
+"id": "bahhumbug",
+"name": "Bah Humbug",
+"lines": 2,
+"shape": "rejection",
+"core": "A plump, grumpy-looking robin on Christmas lights, used for Scrooge-like grumbling about holidays or cheer.",
+"slots": [
+"festive thing",
+"grumpy verdict"
+],
+"aliases": [
+"Grumpy Robin",
+"Angry Bird Christmas",
+"Scrooge Bird",
+"Grumpy Christmas Bird"
+],
+"avoid": "Not for genuinely cheerful holiday greetings."
+},
+{
+"id": "fastfuriousjohnnytran",
+"name": "Fast Furious Johnny Tran",
+"lines": 2,
+"shape": "irony",
+"core": "Johnny Tran grinning smugly in his car, used for gloating after beating or outsmarting someone.",
+"slots": [
+"setup",
+"smug gloat"
+],
+"aliases": [
+"Johnny Tran",
+"Fast And Furious Smile",
+"Smug Racer",
+"Rick Yune Grin"
+],
+"avoid": "Not for humble or apologetic moments."
+},
+{
+"id": "professoroak",
+"name": "Professor Oak",
+"lines": 2,
+"shape": "warning",
+"core": "Professor Oak glaring sternly, used for scolding someone with \"there's a time and place for everything, but not now\".",
+"slots": [
+"what you tried",
+"not now"
+],
+"aliases": [
+"Time And Place",
+"Not Now Oak",
+"Pokemon Professor",
+"Angry Professor Oak"
+],
+"avoid": "Not for encouraging someone."
+},
+{
+"id": "kyonfacepalm",
+"name": "Kyon Face Palm",
+"lines": 2,
+"shape": "reaction",
+"core": "Kyon from Haruhi Suzumiya facepalming, used for exasperation at something dumb.",
+"slots": [
+"the dumb thing",
+"sigh"
+],
+"aliases": [
+"Anime Facepalm",
+"Kyon Facepalm",
+"Haruhi Facepalm",
+"Facepalm"
+],
+"avoid": "Not for genuine praise."
+},
+{
+"id": "slickfry",
+"name": "Slick Fry",
+"lines": 2,
+"shape": "irony",
+"core": "Fry grinning slyly at an unimpressed Leela, used for cheesy pick-up lines or smug clever-sounding moves.",
+"slots": [
+"smooth setup",
+"cheesy line"
+],
+"aliases": [
+"Smooth Fry",
+"Futurama Fry Leela",
+"Sly Fry",
+"Pickup Line Fry"
+],
+"avoid": "Not for sincere romantic messages."
+},
+{
+"id": "sassyiguana",
+"name": "Sassy Iguana",
+"lines": 2,
+"shape": "irony",
+"core": "An iguana lounging on a tiny sofa, used for sassy, diva-like self-indulgence or attitude.",
+"slots": [
+"sassy setup",
+"diva punchline"
+],
+"aliases": [
+"Lounging Iguana",
+"Iguana On Couch",
+"Diva Lizard",
+"Relaxed Iguana"
+],
+"avoid": "Not for humble or serious moments."
+},
+{
+"id": "guyfawkes",
+"name": "Guy Fawkes",
+"lines": 2,
+"shape": "exaggeration",
+"core": "V from V for Vendetta with arms spread, used for dramatic calls to rebel or for grand, theatrical announcements.",
+"slots": [
+"dramatic setup",
+"rebellion"
+],
+"aliases": [
+"V For Vendetta",
+"Remember Remember",
+"Anonymous Mask",
+"Guy Fawkes Mask"
+],
+"avoid": "Not for real violence or extremism."
+},
+{
+"id": "badadvicecat",
+"name": "Bad Advice Cat",
+"lines": 2,
+"shape": "plan-backfires",
+"core": "A wild-eyed kitten on a sunburst background giving terrible advice with total confidence.",
+"slots": [
+"problem",
+"terrible advice"
+],
+"aliases": [
+"Bad Advice Kitten",
+"Terrible Advice Cat",
+"Crazy Kitten",
+"Advice Cat"
+],
+"avoid": "Not for genuinely helpful tips."
+},
+{
+"id": "angrybirdspig",
+"name": "Angry Birds Pig",
+"lines": 2,
+"shape": "irony",
+"core": "The smug green pig from Angry Birds, used for gloating about getting away with something or surviving against the odds.",
+"slots": [
+"setup",
+"smug punchline"
+],
+"aliases": [
+"angry birds pig",
+"green pig",
+"bad piggies",
+"smug pig"
+],
+"avoid": "Not for genuine sadness or sincere messages."
+},
+{
+"id": "reallyevilcollegeteacher",
+"name": "Really Evil College Teacher",
+"lines": 2,
+"shape": "plan-backfires",
+"core": "A smiling professor who sets cruel, sneaky traps for students; used for authority figures who torment people with a grin.",
+"slots": [
+"innocent-sounding setup",
+"cruel twist"
+],
+"aliases": [
+"evil college teacher",
+"evil professor",
+"scumbag professor",
+"evil teacher"
+],
+"avoid": "Not for kind or genuinely helpful teachers."
+},
+{
+"id": "suddendisgustdanny",
+"name": "Sudden Disgust Danny",
+"lines": 2,
+"shape": "reaction",
+"core": "A guy frozen in sudden horrified disgust, used for the moment you realise something gross or awful.",
+"slots": [
+"what happened",
+"disgusted realisation"
+],
+"aliases": [
+"sudden disgust",
+"disgusted danny",
+"disgust guy",
+"sudden realization disgust"
+],
+"avoid": "Not for happy surprises."
+},
+{
+"id": "crosseyedgoku",
+"name": "Crosseyed Goku",
+"lines": 2,
+"shape": "reaction",
+"core": "Goku with a derpy crossed-eyed grin, used for proudly doing something dumb or being overly hyped.",
+"slots": [
+"setup",
+"dumb excited reaction"
+],
+"aliases": [
+"derp goku",
+"goku face",
+"crosseyed goku",
+"dumb goku"
+],
+"avoid": "Not for serious or calm moments."
+},
+{
+"id": "arrogantrichman",
+"name": "Arrogant Rich Man",
+"lines": 2,
+"shape": "irony",
+"core": "A smug businessman on the phone flaunting wealth, used for out-of-touch rich people solving problems with money.",
+"slots": [
+"problem",
+"obnoxiously rich solution"
+],
+"aliases": [
+"rich guy on phone",
+"arrogant rich guy",
+"rich businessman",
+"smug rich man"
+],
+"avoid": "Not for genuine financial hardship."
+},
+{
+"id": "citybear",
+"name": "City Bear",
+"lines": 2,
+"shape": "irony",
+"core": "A bear casually leaning on a city railing among commuters, used for someone blending in where they obviously don't belong.",
+"slots": [
+"setup",
+"out-of-place punchline"
+],
+"aliases": [
+"city bear",
+"russian bear",
+"bear in city",
+"bear at bus stop"
+],
+"avoid": "Not for real wildlife attacks or danger."
+},
+{
+"id": "grumpycatdoesnotbelieve",
+"name": "Grumpy Cat Does Not Believe",
+"lines": 2,
+"shape": "rejection",
+"core": "Peter Pan begs everyone to believe while Grumpy Cat flatly refuses; used for deadpan disbelief at optimistic claims.",
+"slots": [
+"hopeful plea",
+"grumpy refusal"
+],
+"aliases": [
+"grumpy cat peter pan",
+"i do not believe",
+"grumpy cat believe",
+"clap if you believe"
+],
+"avoid": "Not for sincere encouragement."
+},
+{
+"id": "niceguyloki",
+"name": "Nice Guy Loki",
+"lines": 2,
+"shape": "irony",
+"core": "Loki, the god of mischief, unexpectedly doing something kind; used for villains or troublemakers being decent.",
+"slots": [
+"mischievous setup",
+"surprisingly nice twist"
+],
+"aliases": [
+"nice guy loki",
+"good guy loki",
+"loki",
+"tom hiddleston loki"
+],
+"avoid": "Not for genuine villainy or betrayal."
+},
+{
+"id": "awyeahrageface",
+"name": "Aw Yeah Rage Face",
+"lines": 2,
+"shape": "approval",
+"core": "The rage-comic face leaning back in triumph, used when something goes perfectly your way.",
+"slots": [
+"small victory",
+"aw yeah"
+],
+"aliases": [
+"aw yeah",
+"aww yeah guy",
+"yeah rage face",
+"rage comic aw yeah"
+],
+"avoid": "Not for losses or disappointments."
+},
+{
+"id": "questionablestrategykobe",
+"name": "Questionable Strategy Kobe",
+"lines": 2,
+"shape": "reaction",
+"core": "Kobe Bryant staring in disbelief, used to question someone's baffling decision or strategy.",
+"slots": [
+"questionable decision",
+"skeptical reaction"
+],
+"aliases": [
+"kobe stare",
+"questionable strategy",
+"kobe what",
+"kobe face"
+],
+"avoid": "Not for approving of a good plan."
+},
+{
+"id": "depressiondog",
+"name": "Depression Dog",
+"lines": 2,
+"shape": "self-own",
+"core": "A sad dog head on a gloomy backdrop, used for bleak, deflating thoughts about one's own life.",
+"slots": [
+"setup",
+"depressing punchline"
+],
+"aliases": [
+"depression dog",
+"sad dog",
+"depressed dog",
+"advice dog depression"
+],
+"avoid": "Not for upbeat news or serious mental health crises."
+},
+{
+"id": "photogeniccollegefootballpla",
+"name": "Photogenic College Football Player",
+"lines": 2,
+"shape": "irony",
+"core": "A football player calmly posing for the camera mid-tackle, used for staying composed and photo-ready while chaos happens around you.",
+"slots": [
+"chaotic situation",
+"calm, posed reaction"
+],
+"aliases": [
+"photogenic football player",
+"posing football player",
+"notre dame player smile",
+"photogenic guy"
+],
+"avoid": "Not for real injuries or losing composure."
+},
+{
+"id": "pickupmaster",
+"name": "Pickup Master",
+"lines": 3,
+"shape": "plan-backfires",
+"core": "A guy delivers a pickup line, smugly waits, then dives away in triumph; used for overconfident one-liners that may or may not land.",
+"slots": [
+"the line",
+"smug wait or reply",
+"victory dive"
+],
+"aliases": [
+"pickup master",
+"pick up line guy",
+"pickup master dive",
+"smooth pickup line"
+],
+"avoid": "Not for sincere romance or harassment jokes."
+},
+{
+"id": "sweatyconcentratedrageface",
+"name": "Sweaty Concentrated Rage Face",
+"lines": 2,
+"shape": "reaction",
+"core": "A sweating, straining rage face, used for intense concentration or nervous effort under pressure.",
+"slots": [
+"the tense task",
+"straining reaction"
+],
+"aliases": [
+"sweaty concentrated face",
+"concentrated rage face",
+"sweating rage face",
+"nervous rage face"
+],
+"avoid": "Not for relaxed or easy situations."
+},
+{
+"id": "foulbachelorettefrog",
+"name": "Foul Bachelorette Frog",
+"lines": 2,
+"shape": "self-own",
+"core": "A frog on a pink pinwheel confessing gross, lazy single-woman habits; used for admitting slobby shortcuts.",
+"slots": [
+"situation",
+"gross lazy habit"
+],
+"aliases": [
+"foul bachelorette frog",
+"pink frog",
+"foul bachelorette",
+"female foul bachelor frog"
+],
+"avoid": "Not for polished, put-together behaviour."
+},
+{
+"id": "friendzonefiona",
+"name": "Friend Zone Fiona",
+"lines": 2,
+"shape": "rejection",
+"core": "A laughing woman who obliviously keeps someone in the friend zone; used for cheerful rejections that sting.",
+"slots": [
+"hopeful setup",
+"friend-zone twist"
+],
+"aliases": [
+"friend zone fiona",
+"friendzone girl",
+"friend zone",
+"laughing blonde friendzone"
+],
+"avoid": "Not for actual mutual romance."
+},
+{
+"id": "dickcheney",
+"name": "Dick Cheney",
+"lines": 2,
+"shape": "irony",
+"core": "A grinning official portrait of Dick Cheney, used for smug, sinister behind-the-scenes power moves.",
+"slots": [
+"innocent setup",
+"sinister punchline"
+],
+"aliases": [
+"dick cheney",
+"cheney smile",
+"evil cheney",
+"cheney portrait"
+],
+"avoid": "Not for wholesome or sincere messages."
+},
+{
+"id": "lethalweapondannyglover",
+"name": "Lethal Weapon Danny Glover",
+"lines": 2,
+"shape": "reaction",
+"core": "Danny Glover's weary Murtaugh look, used for feeling too old or too tired for this nonsense.",
+"slots": [
+"exhausting situation",
+"too old for this"
+],
+"aliases": [
+"too old for this",
+"danny glover",
+"murtaugh",
+"lethal weapon",
+"im getting too old for this"
+],
+"avoid": "Not for energetic enthusiasm."
+},
+{
+"id": "artstudentowl",
+"name": "Art Student Owl",
+"lines": 2,
+"shape": "self-own",
+"core": "A cigarette-smoking owl voicing the pretensions and struggles of art students; used for creative-life gripes.",
+"slots": [
+"art-life setup",
+"pretentious or broke punchline"
+],
+"aliases": [
+"art student owl",
+"smoking owl",
+"art school owl",
+"artist owl"
+],
+"avoid": "Not for non-creative office achievements."
+},
+{
+"id": "smirkrageface",
+"name": "Smirk Rage Face",
+"lines": 2,
+"shape": "irony",
+"core": "A half-lidded, smug rage-comic smirk, used for quiet satisfaction or knowing you're right.",
+"slots": [
+"setup",
+"smug punchline"
+],
+"aliases": [
+"smirk face",
+"smug rage face",
+"smirk rage comic",
+"content face"
+],
+"avoid": "Not for genuine distress."
+}
+]

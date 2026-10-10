@@ -1,0 +1,1056 @@
+[
+{
+"id": "kickingoutsimpsons",
+"name": "Moe Throws Barney Out",
+"lines": 3,
+"shape": "irony",
+"core": "Moe throws Barney out of the bar, dusts off his hands, and Barney is instantly back inside, used for a problem that returns right after you get rid of it.",
+"slots": [
+"getting rid of the thing",
+"feeling done",
+"it's back already"
+],
+"aliases": [
+"moe throws barney out",
+"barney kicked out",
+"simpsons kicked out bar",
+"barney comes back"
+],
+"avoid": "Not for problems that stay solved."
+},
+{
+"id": "dontlookatthemricky",
+"name": "Don't Look At Them Ricky",
+"lines": 3,
+"shape": "plan-backfires",
+"core": "A mom points out people to judge and warns her son not to look at them, but he ends up enchanted by them instead.",
+"slots": [
+"kid points at the thing",
+"mom's warning",
+"kid's starry-eyed reply"
+],
+"aliases": [
+"don't look at them ricky",
+"ricky comic",
+"extra fabulous comics ricky",
+"don't look at them"
+],
+"avoid": "Not for mocking real groups of people."
+},
+{
+"id": "trapcard",
+"name": "Yu-Gi-Oh Trap Card",
+"lines": 3,
+"shape": "labeling",
+"core": "A blank Yu-Gi-Oh trap card you fill with a name and effect, used for a sneaky move that springs on someone.",
+"slots": [
+"card name",
+"card picture caption",
+"card effect"
+],
+"aliases": [
+"trap card",
+"you activated my trap card",
+"yugioh trap card",
+"blank trap card"
+],
+"avoid": "Not for straightforward, non-sneaky actions."
+},
+{
+"id": "stevejobs",
+"name": "Steve Jobs Pointing",
+"lines": 2,
+"shape": "approval",
+"core": "A grinning Steve Jobs pointing at the viewer, used to sell an idea or call someone out with smug approval.",
+"slots": [
+"setup",
+"punchline at you"
+],
+"aliases": [
+"steve jobs pointing",
+"steve jobs smiling",
+"steve jobs you",
+"apple keynote point"
+],
+"avoid": "Not for sad or serious topics."
+},
+{
+"id": "nobullshitbusinessbaby",
+"name": "No Bullshit Business Baby",
+"lines": 2,
+"shape": "reaction",
+"core": "A toddler on a toy phone over cereal looking like a stern executive, captioned with blunt, all-business statements about kid life.",
+"slots": [
+"setup",
+"blunt business line"
+],
+"aliases": [
+"business baby",
+"no bullshit business baby",
+"baby on phone",
+"toddler executive"
+],
+"avoid": "Not for emotional or soft content."
+},
+{
+"id": "mouseenteringandleaving",
+"name": "Mouse Entering And Leaving",
+"lines": 2,
+"shape": "before-after",
+"core": "A cartoon mouse cheerfully walks out of its hole, then immediately turns back in, used for trying something and instantly retreating.",
+"slots": [
+"going out to try it",
+"immediately leaving"
+],
+"aliases": [
+"mouse entering and leaving",
+"nope going back",
+"mouse hole meme",
+"walk in walk out"
+],
+"avoid": "Not for things you stick with."
+},
+{
+"id": "avengersassemble",
+"name": "Avengers Assemble",
+"lines": 2,
+"shape": "labeling",
+"core": "Captain America with every hero behind him ready to charge, used when everyone shows up together for a big moment.",
+"slots": [
+"the call",
+"everyone showing up"
+],
+"aliases": [
+"avengers assemble",
+"endgame portals",
+"everyone shows up",
+"captain america assemble"
+],
+"avoid": "Not for solo efforts."
+},
+{
+"id": "squidwardcompetition",
+"name": "When I'm In A Competition",
+"lines": 1,
+"shape": "reaction",
+"core": "Squidward's wide terrified stare at a competition opponent who turns out to be someone or something unbeatable.",
+"slots": [
+"the opponent"
+],
+"aliases": [
+"when i'm in a competition",
+"squidward competition",
+"my opponent is",
+"squidward scared stare"
+],
+"avoid": "Not for easy opponents."
+},
+{
+"id": "sigmamale",
+"name": "Sigma Male",
+"lines": 2,
+"shape": "approval",
+"core": "Gigachad-style sigma male: someone doing an unusual thing with total calm confidence.",
+"slots": [
+"setup",
+"the chad move"
+],
+"aliases": [
+"gigachad",
+"sigma male",
+"chad",
+"average enjoyer"
+],
+"avoid": "not for genuine admiration of real people"
+},
+{
+"id": "girlswhispering",
+"name": "Girls Whispering",
+"lines": 2,
+"shape": "reaction",
+"core": "One person whispers shocking gossip and the other reacts with delighted gasping disbelief.",
+"slots": [
+"the whispered secret",
+"the reaction"
+],
+"aliases": [
+"girls whispering",
+"whisper gossip",
+"shocked whisper"
+],
+"avoid": "not for serious bad news"
+},
+{
+"id": "howisleephomersimpson",
+"name": "How I Sleep",
+"lines": 2,
+"shape": "irony",
+"core": "Homer sleeping blissfully: how I sleep knowing something everyone else worries about, or ignoring it.",
+"slots": [
+"the thing I'm ignoring",
+"how I sleep"
+],
+"aliases": [
+"how i sleep",
+"homer sleeping",
+"sleeping homer",
+"how i sleep knowing"
+],
+"avoid": "not for actual sleep problems"
+},
+{
+"id": "goandgettheguitar",
+"name": "Go And Get The Guitar",
+"lines": 2,
+"shape": "reaction",
+"core": "David Brent eagerly suggests showing off his unwanted talent while the colleague endures it.",
+"slots": [
+"the boss's idea",
+"the reaction"
+],
+"aliases": [
+"go and get the guitar",
+"david brent guitar",
+"the office uk guitar"
+],
+"avoid": "not for genuinely welcome performances"
+},
+{
+"id": "fifaecallofduty",
+"name": "Fifa And Call Of Duty",
+"lines": 2,
+"shape": "irony",
+"core": "A civilian kid points like a commander while the soldier holds a football: roles swapped.",
+"slots": [
+"the civilian",
+"the soldier"
+],
+"aliases": [
+"fifa call of duty",
+"kid pointing soldier",
+"soldier with football"
+],
+"avoid": "not for real war commentary"
+},
+{
+"id": "cryingwojakmask",
+"name": "Crying Wojak Mask",
+"lines": 1,
+"shape": "irony",
+"core": "A crying wojak hides behind a smiling mask: pretending everything is fine while falling apart.",
+"slots": [
+"what I pretend"
+],
+"aliases": [
+"wojak mask",
+"crying behind mask",
+"smiling mask wojak"
+],
+"avoid": "not for real mental health crises"
+},
+{
+"id": "unwantedhouseguest",
+"name": "Unwanted House Guest",
+"lines": 2,
+"shape": "warning",
+"core": "Creepy grinning figure that shows up uninvited: an unwelcome thing you suddenly notice.",
+"slots": [
+"setup",
+"the creepy arrival"
+],
+"aliases": [
+"unwanted house guest",
+"creepy smile drawing",
+"horrifying house guest"
+],
+"avoid": "not for real stalking or intruders"
+},
+{
+"id": "guyposinginfrontofgrave",
+"name": "Guy Posing In Front Of Grave",
+"lines": 2,
+"shape": "labeling",
+"core": "A grinning man poses happily at a grave: celebrating the end of something others mourn.",
+"slots": [
+"what died",
+"who's happy about it"
+],
+"aliases": [
+"grant gustin grave",
+"posing at grave",
+"smiling at funeral"
+],
+"avoid": "not for real deaths or funerals"
+},
+{
+"id": "rastascienceteacher",
+"name": "Rasta Science Teacher",
+"lines": 2,
+"shape": "reaction",
+"core": "Teacher in a rasta hat delivering a lesson with a laid-back twist, for chill or punny advice.",
+"slots": [
+"setup",
+"the chill lesson"
+],
+"aliases": [
+"rasta science teacher",
+"rasta teacher"
+],
+"avoid": "not for stereotyping"
+},
+{
+"id": "comparisontable",
+"name": "Comparison Table",
+"lines": 5,
+"shape": "comparison",
+"core": "A blank T-chart to list two things side by side, usually rigged so one side wins.",
+"slots": [
+"left heading",
+"right heading",
+"left points",
+"right points",
+"conclusion"
+],
+"aliases": [
+"t chart",
+"comparison table",
+"pros and cons",
+"t-chart"
+],
+"avoid": "not for balanced serious analysis"
+},
+{
+"id": "fatguydrinkingwater",
+"name": "Fat Guy Drinking Water",
+"lines": 3,
+"shape": "labeling",
+"core": "A fat man guzzles from the main pipe while a thin man catches drips: unfair distribution of resources.",
+"slots": [
+"the resource",
+"who hogs it",
+"who gets drips"
+],
+"aliases": [
+"pipe cartoon",
+"fat man drinking from pipe",
+"resource inequality cartoon"
+],
+"avoid": "not for mocking real people's bodies"
+},
+{
+"id": "missingperson",
+"name": "Missing Person",
+"lines": 1,
+"shape": "other",
+"core": "Milk carton 'Have you seen me?' panel for something that's gone missing or disappeared from your life.",
+"slots": [
+"what's missing"
+],
+"aliases": [
+"have you seen me",
+"milk carton",
+"missing person carton"
+],
+"avoid": "not for real missing persons"
+},
+{
+"id": "puppethierarchy",
+"name": "Puppet Hierarchy",
+"lines": 3,
+"shape": "labeling",
+"core": "Puppets controlling smaller puppets: a chain of who really pulls the strings.",
+"slots": [
+"the top boss",
+"middle layer",
+"the bottom"
+],
+"aliases": [
+"puppet master",
+"puppet chain",
+"who pulls the strings"
+],
+"avoid": "not for conspiracy theories about real groups"
+},
+{
+"id": "iforonewelcomeournewoverlord",
+"name": "I For One Welcome Our New Overlords",
+"lines": 2,
+"shape": "approval",
+"core": "Kent Brockman cheerfully submits to whatever new thing is taking over.",
+"slots": [
+"setup",
+"I welcome our new X overlords"
+],
+"aliases": [
+"new overlords",
+"kent brockman",
+"i for one welcome"
+],
+"avoid": "not for real oppression"
+},
+{
+"id": "arnoldschwarzeneggermrbean",
+"name": "Arnold Carrying Mr. Bean",
+"lines": 2,
+"shape": "labeling",
+"core": "Arnold hauls Mr. Bean in an armchair: one person carrying a useless passenger.",
+"slots": [
+"the passenger",
+"the one carrying"
+],
+"aliases": [
+"arnold carrying mr bean",
+"carrying the team",
+"terminator mr bean"
+],
+"avoid": "not for literal disability jokes"
+},
+{
+"id": "annoyingfacebookgirl",
+"name": "Annoying Facebook Girl",
+"lines": 2,
+"shape": "self-own",
+"core": "Overdramatic oversharer posting things nobody asked for or misreading things wildly.",
+"slots": [
+"the post",
+"the overreaction"
+],
+"aliases": [
+"annoying facebook girl",
+"oversharing girl",
+"dramatic facebook girl"
+],
+"avoid": "not for mocking a real person"
+},
+{
+"id": "derp",
+"name": "Derp",
+"lines": 2,
+"shape": "self-own",
+"core": "Derp face: someone doing something obviously dumb without noticing.",
+"slots": [
+"setup",
+"the dumb move"
+],
+"aliases": [
+"derp",
+"derp face",
+"herp derp"
+],
+"avoid": "not for mocking disabilities"
+},
+{
+"id": "mentalgymnastics",
+"name": "Mental Gymnastics",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Normal gymnastics versus wild contortions: absurd reasoning someone uses to justify something.",
+"slots": [
+"normal gymnasts",
+"the wild justification"
+],
+"aliases": [
+"mental gymnastics",
+"olympic mental gymnastics",
+"gold medal mental gymnastics"
+],
+"avoid": "not for real athletes"
+},
+{
+"id": "goodgrinch",
+"name": "Good Grinch",
+"lines": 2,
+"shape": "irony",
+"core": "The scheming Grinch doing something unexpectedly kind or sneakily good.",
+"slots": [
+"setup",
+"the sneaky good deed"
+],
+"aliases": [
+"good grinch",
+"grinch smile",
+"sneaky grinch"
+],
+"avoid": "not for actual villainy"
+},
+{
+"id": "couragewolf",
+"name": "Courage Wolf",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Advice animal with absurdly aggressive motivational advice.",
+"slots": [
+"the challenge",
+"the brutal advice"
+],
+"aliases": [
+"courage wolf",
+"wolf advice",
+"motivational wolf"
+],
+"avoid": "not for real self-harm advice"
+},
+{
+"id": "imawakebutatwhatcost",
+"name": "I'm Awake But At What Cost",
+"lines": 2,
+"shape": "reaction",
+"core": "Groggy exhausted kitten: technically functioning but completely drained.",
+"slots": [
+"what I did",
+"at what cost"
+],
+"aliases": [
+"im awake but at what cost",
+"tired kitten",
+"sleepy cat"
+],
+"avoid": "not for real illness"
+},
+{
+"id": "proudness",
+"name": "Proudness",
+"lines": 2,
+"shape": "approval",
+"core": "Michael Scott tearing up with pride at someone's achievement.",
+"slots": [
+"the achievement",
+"the pride"
+],
+"aliases": [
+"proud michael scott",
+"teary eyed michael",
+"so proud"
+],
+"avoid": "not for sarcastic insults"
+},
+{
+"id": "gasprageface",
+"name": "Gasp Rage Face",
+"lines": 1,
+"shape": "reaction",
+"core": "Rage comic gasp: shocked, scandalized horror at something.",
+"slots": [
+"what shocked me"
+],
+"aliases": [
+"gasp rage face",
+"gasp",
+"shocked rage face"
+],
+"avoid": "not for real tragedies"
+},
+{
+"id": "obamanolisten",
+"name": "Obama Can't Hear You",
+"lines": 2,
+"shape": "rejection",
+"core": "Obama cupping his ear: pretending not to hear or asking for something to be said louder.",
+"slots": [
+"what they said",
+"I can't hear you"
+],
+"aliases": [
+"obama cupping ear",
+"i can't hear you",
+"obama no listen"
+],
+"avoid": "not for real hearing loss"
+},
+{
+"id": "nodisparendontshoot",
+"name": "Don't Shoot",
+"lines": 3,
+"shape": "dialogue",
+"core": "Adrien Brody pleads with soldiers: begging not to be attacked, then reaching for an excuse.",
+"slots": [
+"me pleading",
+"the threat",
+"my excuse"
+],
+"aliases": [
+"dont shoot",
+"the pianist",
+"adrien brody don't shoot",
+"no disparen"
+],
+"avoid": "not for real war violence"
+},
+{
+"id": "npccrowd",
+"name": "NPC Crowd",
+"lines": 1,
+"shape": "labeling",
+"core": "A crowd of identical NPC wojaks all saying the same thing: unthinking groupthink.",
+"slots": [
+"what they all say"
+],
+"aliases": [
+"npc crowd",
+"npc wojak",
+"npcs",
+"groupthink"
+],
+"avoid": "not for attacking real groups"
+},
+{
+"id": "harrypottersortinghat",
+"name": "Harry Potter Sorting Hat",
+"lines": 2,
+"shape": "labeling",
+"core": "The Sorting Hat decides where someone belongs: assigning a person to a ridiculous category.",
+"slots": [
+"the hat's verdict",
+"where he's sorted"
+],
+"aliases": [
+"sorting hat",
+"harry potter hat",
+"sorted into"
+],
+"avoid": "not for real labels on people"
+},
+{
+"id": "tintinandhaddock",
+"name": "Tintin And Haddock",
+"lines": 2,
+"shape": "dialogue",
+"core": "Captain Haddock rants grumpily while Tintin chimes in: a two-line exchange in speech bubbles.",
+"slots": [
+"Haddock's rant",
+"Tintin's reply"
+],
+"aliases": [
+"tintin haddock",
+"captain haddock",
+"tintin speech bubble"
+],
+"avoid": "not for long serious text"
+},
+{
+"id": "2ndtermobama",
+"name": "2nd Term Obama",
+"lines": 2,
+"shape": "approval",
+"core": "Smug Obama who no longer cares: doing what you want once there are no consequences.",
+"slots": [
+"no more consequences",
+"what I do now"
+],
+"aliases": [
+"2nd term obama",
+"smug obama",
+"no more elections"
+],
+"avoid": "not for serious political claims"
+},
+{
+"id": "youretooslowsonic",
+"name": "You're Too Slow Sonic",
+"lines": 2,
+"shape": "reaction",
+"core": "Smug Sonic taunting someone who reacted or acted too late.",
+"slots": [
+"setup",
+"taunt"
+],
+"aliases": [
+"too slow sonic",
+"sonic too slow",
+"smug sonic",
+"sonic taunt"
+],
+"avoid": "Not for sincere encouragement or slow-and-steady praise."
+},
+{
+"id": "intelligentdog",
+"name": "Intelligent Dog",
+"lines": 2,
+"shape": "exaggeration",
+"core": "A dog in glasses and scarf delivering a pretentious or falsely smart observation.",
+"slots": [
+"setup",
+"smug insight"
+],
+"aliases": [
+"smart dog",
+"dog with glasses",
+"hipster dog",
+"intellectual dog"
+],
+"avoid": "Not for genuinely clever or serious advice."
+},
+{
+"id": "modicongratulationsmeme",
+"name": "Modi Congratulations",
+"lines": 1,
+"shape": "approval",
+"core": "Modi beside empty space, used to sarcastically congratulate someone on a dubious achievement.",
+"slots": [
+"congratulation message"
+],
+"aliases": [
+"modi congratulations",
+"modi ji congrats",
+"modi blank",
+"modi meme"
+],
+"avoid": "Not for serious political commentary or attacks."
+},
+{
+"id": "tinderprofile",
+"name": "Tinder Profile",
+"lines": 4,
+"shape": "labeling",
+"core": "A fake Tinder profile for a thing or concept, roasting it as a dating match.",
+"slots": [
+"profile picture subject",
+"name and age",
+"miles away",
+"description"
+],
+"aliases": [
+"tinder template",
+"dating profile",
+"tinder card",
+"tinder bio"
+],
+"avoid": "Not for profiles of real private people."
+},
+{
+"id": "somuchdrama",
+"name": "So Much Drama",
+"lines": 2,
+"shape": "reaction",
+"core": "A shocked gasp at gossip or an outrageous revelation.",
+"slots": [
+"setup",
+"shocked reaction"
+],
+"aliases": [
+"heidi montag shocked",
+"gasp face",
+"so much drama",
+"shocked blonde"
+],
+"avoid": "Not for calm or unsurprising news."
+},
+{
+"id": "keepmywifesnameoutofyourmout",
+"name": "Keep My Wife's Name Out Of Your Mouth",
+"lines": 2,
+"shape": "plan-backfires",
+"core": "Will Smith laughing just before snapping, used for the calm moment before someone takes a joke too personally.",
+"slots": [
+"joke someone makes",
+"about to snap"
+],
+"aliases": [
+"will smith laughing",
+"will smith oscars",
+"before the slap",
+"keep my wife's name"
+],
+"avoid": "Not for glorifying actual violence."
+},
+{
+"id": "imtiredofthisgrandpa",
+"name": "I'm Tired Of This Grandpa",
+"lines": 2,
+"shape": "dialogue",
+"core": "A kid complains she's tired of something and grandpa replies it's what keeps them going, used for endless chores or traditions.",
+"slots": [
+"girl's complaint",
+"grandpa's reply"
+],
+"aliases": [
+"tired of this grandpa",
+"that's too bad we're doing it anyway",
+"grandpa cowboy",
+"i'm tired of this"
+],
+"avoid": "Not for a single one-off complaint with no reply."
+},
+{
+"id": "mariahcareyalliwantforchrist",
+"name": "Mariah Carey It's Time",
+"lines": 2,
+"shape": "warning",
+"core": "Mariah Carey announcing it's that time again, used for something annoying that returns every year.",
+"slots": [
+"date or trigger",
+"what's back"
+],
+"aliases": [
+"mariah carey it's time",
+"all i want for christmas",
+"mariah defrosting",
+"it's time"
+],
+"avoid": "Not for one-time events that never come back."
+},
+{
+"id": "napoleon",
+"name": "Napoleon",
+"lines": 2,
+"shape": "self-own",
+"core": "Napoleon brooding in exile on a beach, used for sulking after a big defeat or failed ambition.",
+"slots": [
+"setup",
+"the defeat"
+],
+"aliases": [
+"napoleon exile",
+"napoleon sulking",
+"napoleon st helena",
+"sad napoleon"
+],
+"avoid": "Not for victories or happy moments."
+},
+{
+"id": "suntsufakequote",
+"name": "Sun Tzu Fake Quote",
+"lines": 1,
+"shape": "irony",
+"core": "A mundane or absurd line attributed to Sun Tzu as if it were ancient strategic wisdom.",
+"slots": [
+"fake wise quote"
+],
+"aliases": [
+"sun tzu quote",
+"art of war fake quote",
+"sun tzu said",
+"fake wisdom"
+],
+"avoid": "Not for real Art of War quotes."
+},
+{
+"id": "breakingbadsaymyname",
+"name": "Say My Name",
+"lines": 3,
+"shape": "dialogue",
+"core": "Walter White demands someone say who he is, they answer, and he confirms, used to assert a reputation.",
+"slots": [
+"say my name",
+"the answer",
+"you're goddamn right"
+],
+"aliases": [
+"say my name",
+"heisenberg",
+"walter white say my name",
+"you're goddamn right"
+],
+"avoid": "Not for situations without an identity reveal."
+},
+{
+"id": "joebidenblanksign",
+"name": "Joe Biden Blank Sign",
+"lines": 1,
+"shape": "labeling",
+"core": "Biden grinning while holding a blank sign, filled with a cheerful declaration.",
+"slots": [
+"sign text"
+],
+"aliases": [
+"biden holding sign",
+"biden blank sign",
+"joe biden sign",
+"man holding sign"
+],
+"avoid": "Not for fake political statements presented as real."
+},
+{
+"id": "stanmeter",
+"name": "Stan Meter",
+"lines": 1,
+"shape": "exaggeration",
+"core": "Stan Smith next to a gauge maxing out, used when something pushes a feeling to the limit.",
+"slots": [
+"what maxes the meter"
+],
+"aliases": [
+"stan smith meter",
+"american dad meter",
+"anger meter",
+"stan gauge"
+],
+"avoid": "Not for mild, steady feelings."
+},
+{
+"id": "sigmundfreud",
+"name": "Sigmund Freud",
+"lines": 2,
+"shape": "irony",
+"core": "Freud staring knowingly, used for a psychoanalytic take that blames everything on hidden desires or your mother.",
+"slots": [
+"setup",
+"freudian punchline"
+],
+"aliases": [
+"freud",
+"freudian slip",
+"sigmund freud stare",
+"tell me about your mother"
+],
+"avoid": "Not for real mental health advice."
+},
+{
+"id": "paranoidparrot",
+"name": "Paranoid Parrot",
+"lines": 2,
+"shape": "exaggeration",
+"core": "A nervous parrot spiraling into paranoid conclusions about a normal situation.",
+"slots": [
+"normal situation",
+"paranoid conclusion"
+],
+"aliases": [
+"paranoid parrot",
+"nervous parrot",
+"anxious parrot",
+"advice parrot"
+],
+"avoid": "Not for calm, confident reactions."
+},
+{
+"id": "billnyethescienceguy",
+"name": "Bill Nye The Science Guy",
+"lines": 2,
+"shape": "reaction",
+"core": "Bill Nye clutching his head in disbelief at something scientifically or logically absurd.",
+"slots": [
+"absurd claim",
+"exasperated reaction"
+],
+"aliases": [
+"bill nye",
+"science guy",
+"bill nye shocked",
+"bill nye facepalm"
+],
+"avoid": "Not for actual science explanations."
+},
+{
+"id": "hereitcomes",
+"name": "Here It Comes",
+"lines": 1,
+"shape": "warning",
+"core": "A man screaming at an approaching tornado, labeled as some inevitable disaster heading your way.",
+"slots": [
+"the incoming disaster"
+],
+"aliases": [
+"here it comes",
+"tornado guy",
+"screaming tornado",
+"here it comes tornado"
+],
+"avoid": "Not for real-world tornado or disaster tragedies."
+},
+{
+"id": "boyholdinghisbreath",
+"name": "Hold Up Kid",
+"lines": 2,
+"shape": "reaction",
+"core": "A kid straining and holding in a reaction, used for trying not to laugh, react or say something.",
+"slots": [
+"situation",
+"holding it in"
+],
+"aliases": [
+"boy holding breath",
+"trying not to laugh",
+"hold up kid",
+"straining kid"
+],
+"avoid": "Not for relaxed, open reactions."
+},
+{
+"id": "unsheathingsword",
+"name": "Unsheathing Sword",
+"lines": 1,
+"shape": "escalation",
+"core": "Slowly drawing a sword, used for gearing up to argue or fight when a trigger topic comes up.",
+"slots": [
+"trigger situation"
+],
+"aliases": [
+"unsheathing sword",
+"drawing sword",
+"sword unsheath",
+"time to fight"
+],
+"avoid": "Not for calm, peaceful responses."
+},
+{
+"id": "quithatin",
+"name": "Quit Hatin",
+"lines": 2,
+"shape": "reaction",
+"core": "Camels laughing in a car, used to mock haters or brag while cruising past.",
+"slots": [
+"setup",
+"punchline"
+],
+"aliases": [
+"camels in car",
+"laughing camels",
+"quit hatin",
+"camel car"
+],
+"avoid": "Not for serious complaints."
+},
+{
+"id": "beatingtheallegations",
+"name": "Beating The Allegations",
+"lines": 1,
+"shape": "approval",
+"core": "Fill-in-the-blank relief for getting away with something you were accused of.",
+"slots": [
+"the allegation"
+],
+"aliases": [
+"beat the allegations",
+"when you beat the allegations",
+"allegations meme",
+"courtroom relief"
+],
+"avoid": "Not for real criminal cases or victims."
+},
+{
+"id": "mrbeancheatsonexam",
+"name": "Mr Bean Cheats On Exam",
+"lines": 2,
+"shape": "labeling",
+"core": "Mr Bean peeking at a neighbor's exam, used for copying someone else's work.",
+"slots": [
+"the one with answers",
+"the copier"
+],
+"aliases": [
+"mr bean exam",
+"mr bean copying",
+"mr bean cheating",
+"copying homework"
+],
+"avoid": "Not for original work or honest effort."
+},
+{
+"id": "angrytomreadingbook",
+"name": "Angry Tom Reading Book",
+"lines": 1,
+"shape": "reaction",
+"core": "Tom fuming after reading something, used for infuriating text or news.",
+"slots": [
+"what he read"
+],
+"aliases": [
+"angry tom",
+"tom reading book",
+"tom angry reading",
+"furious tom"
+],
+"avoid": "Not for pleasant or calming news."
+}
+]

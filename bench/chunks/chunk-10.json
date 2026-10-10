@@ -1,0 +1,1079 @@
+[
+{
+"id": "internetguide",
+"name": "Internet Guide",
+"lines": 2,
+"shape": "reaction",
+"core": "A nerdy 80s computer user, used to explain internet customs and unwritten online rules.",
+"slots": [
+"setup",
+"internet rule"
+],
+"aliases": [
+"internet guide",
+"80s computer nerd",
+"internet rules guy",
+"computer guy"
+],
+"avoid": "Not for offline, non-tech topics."
+},
+{
+"id": "straighttojail",
+"name": "Straight to Jail",
+"lines": 2,
+"shape": "rejection",
+"core": "Parks and Rec's dictator declaring instant punishment, used for absurdly harsh penalties for minor offenses.",
+"slots": [
+"the offense",
+"straight to jail"
+],
+"aliases": [
+"straight to jail",
+"fred armisen",
+"venezuelan dictator",
+"right away"
+],
+"avoid": "Not for real crimes or fair consequences."
+},
+{
+"id": "iknowthatfeelbro",
+"name": "I Know That Feel Bro",
+"lines": 1,
+"shape": "reaction",
+"core": "Two wojaks in a comforting hug, used to show sympathy for a shared, relatable pain.",
+"slots": [
+"the shared pain"
+],
+"aliases": [
+"i know that feel bro",
+"wojak hug",
+"feels guy hug",
+"that feel"
+],
+"avoid": "Not for bragging or happy news."
+},
+{
+"id": "itsfinallyover",
+"name": "It's Finally Over",
+"lines": 2,
+"shape": "reaction",
+"core": "An exhausted Frodo at Mount Doom, used for the weary relief when an ordeal finally ends.",
+"slots": [
+"the ordeal",
+"it's finally over"
+],
+"aliases": [
+"it's finally over",
+"frodo mount doom",
+"frodo relief",
+"it's over"
+],
+"avoid": "Not for things that were easy or fun."
+},
+{
+"id": "armyclown",
+"name": "Army Clown",
+"lines": 2,
+"shape": "labeling",
+"core": "A clown lined up with serious soldiers, used for the one ridiculous member blending into a serious group.",
+"slots": [
+"the serious group",
+"the clown among them"
+],
+"aliases": [
+"army clown",
+"clown with soldiers",
+"clown in military",
+"soldier clown"
+],
+"avoid": "Not for groups where everyone fits in."
+},
+{
+"id": "incomingcall",
+"name": "Incoming Call",
+"lines": 1,
+"shape": "warning",
+"core": "An iPhone incoming-call screen, used to show who or what is 'calling' you, usually something you don't want to answer.",
+"slots": [
+"the caller"
+],
+"aliases": [
+"incoming call",
+"iphone call screen",
+"phone call meme",
+"who's calling"
+],
+"avoid": "Not for calls you're excited to take."
+},
+{
+"id": "tomcruiselaugh",
+"name": "Tom Cruise Laugh",
+"lines": 2,
+"shape": "reaction",
+"core": "A collage of Tom Cruise laughing hysterically, used for finding something absurdly, over-the-top hilarious.",
+"slots": [
+"setup",
+"the laughable thing"
+],
+"aliases": [
+"tom cruise laugh",
+"tom cruise laughing",
+"laughing tom cruise",
+"cruise laugh collage"
+],
+"avoid": "Not for genuinely sad or serious news."
+},
+{
+"id": "obama",
+"name": "Thanks Obama",
+"lines": 2,
+"shape": "irony",
+"core": "Obama posing before the flag, used for sarcastically blaming him for any small everyday misfortune.",
+"slots": [
+"the misfortune",
+"thanks Obama"
+],
+"aliases": [
+"thanks obama",
+"obama",
+"obama flag",
+"obama arms crossed"
+],
+"avoid": "Not for serious political commentary."
+},
+{
+"id": "hypnotize",
+"name": "Hypnotize",
+"lines": 2,
+"shape": "exaggeration",
+"core": "A hypnotic spiral, used to 'hypnotize' the viewer into believing or doing something.",
+"slots": [
+"you are getting sleepy",
+"you will now ___"
+],
+"aliases": [
+"hypnotize",
+"hypnotic spiral",
+"hypnosis spiral",
+"you are getting sleepy"
+],
+"avoid": "Not for straightforward, honest requests."
+},
+{
+"id": "lookson",
+"name": "Look Son",
+"lines": 2,
+"shape": "irony",
+"core": "A proud dad pointing something out to his son, used for presenting something lame or obsolete as a wondrous sight.",
+"slots": [
+"look son",
+"the unimpressive thing"
+],
+"aliases": [
+"look son",
+"dad pointing son",
+"father and son pointing",
+"look son a rare"
+],
+"avoid": "Not for things that are genuinely new or impressive."
+},
+{
+"id": "spongebobwaiting",
+"name": "SpongeBob Waiting",
+"lines": 2,
+"shape": "reaction",
+"core": "SpongeBob sitting alone at a booth, used for waiting forever for something or someone that never comes.",
+"slots": [
+"what I'm waiting for",
+"how long it's been"
+],
+"aliases": [
+"spongebob waiting",
+"spongebob alone booth",
+"lonely spongebob",
+"spongebob still waiting"
+],
+"avoid": "Not for quick, instant results."
+},
+{
+"id": "grumpycatbirthday",
+"name": "Grumpy Cat Birthday",
+"lines": 2,
+"shape": "rejection",
+"core": "Grumpy Cat in a party hat, used for joylessly refusing to celebrate a birthday or happy occasion.",
+"slots": [
+"it's your birthday",
+"grumpy reply"
+],
+"aliases": [
+"grumpy cat birthday",
+"grumpy cat party hat",
+"grumpy cat happy birthday",
+"birthday grumpy cat"
+],
+"avoid": "Not for genuine excitement about celebrations."
+},
+{
+"id": "ifyouknowwhatimeanbean",
+"name": "If You Know What I Mean Bean",
+"lines": 2,
+"shape": "irony",
+"core": "A sly Mr. Bean rage face, used to add a suggestive 'if you know what I mean' wink to an innocent line.",
+"slots": [
+"innocent-sounding line",
+"if you know what I mean"
+],
+"aliases": [
+"if you know what i mean",
+"mr bean rage face",
+"know what i mean bean",
+"iykwim"
+],
+"avoid": "Not for plain statements with no double meaning."
+},
+{
+"id": "nobodyisborncool",
+"name": "Nobody Is Born Cool",
+"lines": 1,
+"shape": "approval",
+"core": "A cartoon tough guy says nobody is born cool, except of course the one thing that clearly was.",
+"slots": [
+"the naturally cool thing"
+],
+"aliases": [
+"nobody is born cool",
+"except of course",
+"born cool",
+"nobody is born cool except"
+],
+"avoid": "Not for things that had to try hard to be cool."
+},
+{
+"id": "businesscat",
+"name": "Business Cat",
+"lines": 2,
+"shape": "irony",
+"core": "A cat in a shirt and tie applies cat behavior to office life, or office jargon to cat behavior.",
+"slots": [
+"corporate setup",
+"cat-logic punchline"
+],
+"aliases": [
+"business cat",
+"cat in tie",
+"corporate cat",
+"office cat"
+],
+"avoid": "Not for genuine business advice or serious workplace complaints."
+},
+{
+"id": "needsmorecowbell",
+"name": "Needs More Cowbell",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Christopher Walken's SNL producer insists the fix for anything is more of one thing, used to demand more of something.",
+"slots": [
+"thing being reviewed",
+"I need more X"
+],
+"aliases": [
+"more cowbell",
+"i got a fever",
+"walken cowbell",
+"need more cowbell"
+],
+"avoid": "Not for asking for less of something or for subtle feedback."
+},
+{
+"id": "problemsstresspain",
+"name": "Problems Stress Pain",
+"lines": 3,
+"shape": "escalation",
+"core": "A sad guy is surrounded by his problems until something he loves grabs him and he happily forgets them all.",
+"slots": [
+"problems surrounding me",
+"the distraction arriving",
+"me forgetting everything"
+],
+"aliases": [
+"problems stress pain",
+"me and my problems",
+"forget my problems",
+"yellow guy dance"
+],
+"avoid": "Not for actually solving problems or for serious mental health topics."
+},
+{
+"id": "ligaf",
+"name": "LIGAF",
+"lines": 2,
+"shape": "reaction",
+"core": "A man calmly sits amid flames, showing total indifference to a disaster around him.",
+"slots": [
+"the disaster",
+"how much I care"
+],
+"aliases": [
+"ligaf",
+"look if i gave a",
+"man sitting in fire",
+"dont care fire"
+],
+"avoid": "Not for real fires or tragedies."
+},
+{
+"id": "secureparking",
+"name": "Secure Parking",
+"lines": 2,
+"shape": "plan-backfires",
+"core": "A car stuck high in a tree mocks an overly creative or absurd way of keeping something safe.",
+"slots": [
+"the safety plan",
+"the absurd result"
+],
+"aliases": [
+"secure parking",
+"car in tree",
+"tree parking",
+"safe parking"
+],
+"avoid": "Not for real car accidents."
+},
+{
+"id": "ted",
+"name": "Ted",
+"lines": 2,
+"shape": "reaction",
+"core": "The deadpan teddy bear from Ted stares unimpressed, used for blunt or crude-but-honest replies.",
+"slots": [
+"setup",
+"deadpan reply"
+],
+"aliases": [
+"ted",
+"ted bear",
+"teddy bear stare",
+"unimpressed teddy"
+],
+"avoid": "Not for cute or wholesome teddy bear content."
+},
+{
+"id": "imtiredofpretendingitsnot",
+"name": "I'm Tired Of Pretending It's Not",
+"lines": 2,
+"shape": "dialogue",
+"core": "Murray asks Joker about something and Joker admits he's tired of pretending it's not a certain way, revealing a hidden truth.",
+"slots": [
+"question",
+"I'm tired of pretending it's not X"
+],
+"aliases": [
+"joker tired of pretending",
+"im tired of pretending",
+"murray joker",
+"joker de niro"
+],
+"avoid": "Not for cheerful agreement or neutral answers."
+},
+{
+"id": "heyyougoingtosleep",
+"name": "Hey You Going To Sleep",
+"lines": 1,
+"shape": "self-own",
+"core": "Your brain waits until you're falling asleep to bring up an intrusive thought that wakes you right back up.",
+"slots": [
+"the brain's intrusive thought"
+],
+"aliases": [
+"brain before sleep",
+"hey you going to sleep",
+"brain at night",
+"brain keeps me awake"
+],
+"avoid": "Not for genuine sleep disorders or advice."
+},
+{
+"id": "spongefinnacommitmuder",
+"name": "Sponge Finna Commit Muder",
+"lines": 4,
+"shape": "escalation",
+"core": "SpongeBob gets progressively angrier and more buff across four panels as a provocation gets worse.",
+"slots": [
+"mild annoyance",
+"getting mad",
+"really mad",
+"full rage"
+],
+"aliases": [
+"spongebob getting angry",
+"sponge finna commit muder",
+"angry buff spongebob",
+"spongebob rage"
+],
+"avoid": "Not for calm or positive progressions."
+},
+{
+"id": "knightsoftheroundtable",
+"name": "Knights Of The Round Table",
+"lines": 2,
+"shape": "labeling",
+"core": "Knights point their swords at the center of the table, used to show a group united around one shared thing.",
+"slots": [
+"the group",
+"the thing they all agree on"
+],
+"aliases": [
+"knights round table",
+"swords pointing center",
+"united knights",
+"round table swords"
+],
+"avoid": "Not for disagreements or a lone person's opinion."
+},
+{
+"id": "bluegrinch",
+"name": "Blue Grinch",
+"lines": 2,
+"shape": "reaction",
+"core": "A blue-tinted, smug, scheming Grinch grin, used for petty or sneaky plans.",
+"slots": [
+"setup",
+"smug scheme"
+],
+"aliases": [
+"blue grinch",
+"smug grinch",
+"grinch smile",
+"scheming grinch"
+],
+"avoid": "Not for sincere kindness or wholesome holiday cheer."
+},
+{
+"id": "stophesalreadydead",
+"name": "Stop He's Already Dead",
+"lines": 3,
+"shape": "labeling",
+"core": "A kid begs others to stop beating something that's already defeated, used when people keep piling onto a dead topic.",
+"slots": [
+"the one pleading",
+"the attackers",
+"the already dead thing"
+],
+"aliases": [
+"stop he's already dead",
+"stop hes dead",
+"simpsons stop",
+"beating a dead horse"
+],
+"avoid": "Not for real violence or real deaths."
+},
+{
+"id": "todaywasagoodday",
+"name": "Today Was A Good Day",
+"lines": 2,
+"shape": "approval",
+"core": "Ice Cube cruising contentedly, used to list small things that made the day go perfectly.",
+"slots": [
+"good thing that happened",
+"today was a good day"
+],
+"aliases": [
+"today was a good day",
+"ice cube good day",
+"good day",
+"ice cube driving"
+],
+"avoid": "Not for bad days or complaints."
+},
+{
+"id": "nowthatswhaticall",
+"name": "Now That's What I Call",
+"lines": 1,
+"shape": "labeling",
+"core": "The NOW compilation album cover, filled in with a collection of something as if it were a hit album.",
+"slots": [
+"the compilation's subject"
+],
+"aliases": [
+"now thats what i call",
+"now album",
+"now thats what i call music",
+"now compilation"
+],
+"avoid": "Not for single items or things that aren't a collection."
+},
+{
+"id": "whatsmypurposebutterrobot",
+"name": "What's My Purpose Butter Robot",
+"lines": 3,
+"shape": "dialogue",
+"core": "A robot asks its purpose, learns it's something trivial, and despairs; used for things made for one pointless job.",
+"slots": [
+"what is my purpose",
+"your trivial job",
+"existential despair"
+],
+"aliases": [
+"butter robot",
+"what is my purpose",
+"you pass butter",
+"rick and morty butter"
+],
+"avoid": "Not for meaningful or fulfilling roles."
+},
+{
+"id": "atlasholdingearth",
+"name": "Atlas Holding Earth",
+"lines": 2,
+"shape": "labeling",
+"core": "Atlas straining under the globe, labeled as one person carrying an entire burden alone.",
+"slots": [
+"the huge burden",
+"the one carrying it"
+],
+"aliases": [
+"atlas holding earth",
+"atlas carrying world",
+"carrying the team",
+"holding up the world"
+],
+"avoid": "Not for shared or easy workloads."
+},
+{
+"id": "suprisedpatrick",
+"name": "Surprised Patrick",
+"lines": 2,
+"shape": "reaction",
+"core": "Patrick Star gasps in shock, used for an over-the-top surprised reaction.",
+"slots": [
+"the shocking news",
+"reaction"
+],
+"aliases": [
+"surprised patrick",
+"shocked patrick",
+"patrick gasp",
+"patrick star shocked"
+],
+"avoid": "Not for calm or expected outcomes."
+},
+{
+"id": "wellthatescalatedquickly",
+"name": "Well That Escalated Quickly",
+"lines": 2,
+"shape": "reaction",
+"core": "Ron Burgundy remarks that a situation got out of hand far faster than expected.",
+"slots": [
+"what happened",
+"well that escalated quickly"
+],
+"aliases": [
+"that escalated quickly",
+"ron burgundy escalated",
+"anchorman escalated",
+"escalated quickly"
+],
+"avoid": "Not for slow, calm or predictable developments."
+},
+{
+"id": "mrbeancopying",
+"name": "Mr Bean Copying",
+"lines": 2,
+"shape": "labeling",
+"core": "Mr Bean sneakily copies the answers of the person next to him in an exam, used for one thing copying another.",
+"slots": [
+"the original",
+"the copier"
+],
+"aliases": [
+"mr bean copying",
+"mr bean exam",
+"mr bean cheating",
+"copying answers"
+],
+"avoid": "Not for original ideas or open collaboration."
+},
+{
+"id": "sexyrailroadspiderman",
+"name": "Sexy Railroad Spiderman",
+"lines": 2,
+"shape": "irony",
+"core": "Spider-Man poses seductively on train tracks, used for flirty overconfidence in the face of obvious danger.",
+"slots": [
+"seductive offer",
+"the danger he ignores"
+],
+"aliases": [
+"sexy spiderman",
+"spiderman on tracks",
+"railroad spiderman",
+"seductive spiderman"
+],
+"avoid": "Not for real railway safety or explicit content."
+},
+{
+"id": "wewillrebuild",
+"name": "We Will Rebuild",
+"lines": 2,
+"shape": "exaggeration",
+"core": "One knocked-over lawn chair treated as a devastating catastrophe, mocking dramatic overreactions to minor damage.",
+"slots": [
+"the minor mishap",
+"we will rebuild"
+],
+"aliases": [
+"we will rebuild",
+"fallen lawn chair",
+"knocked over chair",
+"chair disaster"
+],
+"avoid": "Not for real disasters or serious losses."
+},
+{
+"id": "babeplease",
+"name": "Babe Please",
+"lines": 2,
+"shape": "rejection",
+"core": "A crying girl begs for something while the calm bearded Chad flatly refuses or answers stoically.",
+"slots": [
+"tearful plea",
+"calm reply"
+],
+"aliases": [
+"babe please",
+"crying girl chad",
+"wojak girl vs chad",
+"crying vs yes chad"
+],
+"avoid": "Not for mutual agreement or emotional support."
+},
+{
+"id": "huellmoney",
+"name": "Huell Money",
+"lines": 2,
+"shape": "approval",
+"core": "Huell from Breaking Bad naps peacefully on a huge pile of cash, used for feeling rich or content.",
+"slots": [
+"the windfall",
+"me relaxing"
+],
+"aliases": [
+"huell money",
+"huell on money",
+"sleeping on money",
+"bed of cash"
+],
+"avoid": "Not for financial advice or being broke."
+},
+{
+"id": "fordummiesbook",
+"name": "For Dummies Book",
+"lines": 1,
+"shape": "labeling",
+"core": "A fake For Dummies book cover titled with a basic skill someone clearly lacks.",
+"slots": [
+"topic of the book"
+],
+"aliases": [
+"for dummies",
+"for dummies book",
+"dummies cover",
+"x for dummies"
+],
+"avoid": "Not for real book recommendations."
+},
+{
+"id": "captainkirkkhan",
+"name": "Captain Kirk Khan",
+"lines": 2,
+"shape": "reaction",
+"core": "Captain Kirk screams KHAN in rage, used for furious frustration at a nemesis or setback.",
+"slots": [
+"the setback",
+"furious scream"
+],
+"aliases": [
+"khan",
+"kirk khan",
+"khaaan",
+"star trek scream"
+],
+"avoid": "Not for calm or happy moments."
+},
+{
+"id": "buzzlightyearclones",
+"name": "Buzz Lightyear Clones",
+"lines": 2,
+"shape": "irony",
+"core": "Buzz thinks he's unique until he sees an aisle of identical Buzz toys, used when something special turns out to be common.",
+"slots": [
+"me thinking I'm unique",
+"everyone else"
+],
+"aliases": [
+"buzz lightyear clones",
+"aisle of buzz",
+"not so unique",
+"buzz lightyear shelf"
+],
+"avoid": "Not for things that are genuinely rare."
+},
+{
+"id": "blanktombstone",
+"name": "Blank Tombstone",
+"lines": 1,
+"shape": "labeling",
+"core": "A blank gravestone inscribed with something that died or got discontinued.",
+"slots": [
+"epitaph"
+],
+"aliases": [
+"blank tombstone",
+"gravestone",
+"rip tombstone",
+"headstone"
+],
+"avoid": "Not for real people who have died."
+},
+{
+"id": "sadcatholdingdog",
+"name": "Sad Cat Holding Dog",
+"lines": 2,
+"shape": "rejection",
+"core": "A man hugs his dog while the neglected cat watches, tearing up; used for being overlooked for something else.",
+"slots": [
+"the favored thing",
+"the ignored one"
+],
+"aliases": [
+"sad cat holding dog",
+"crying cat watching",
+"jealous cat",
+"ignored cat"
+],
+"avoid": "Not for situations where everyone gets attention."
+},
+{
+"id": "knightwitharrowinhelmet",
+"name": "Knight With Arrow In Helmet",
+"lines": 2,
+"shape": "plan-backfires",
+"core": "A confident armored knight gets an arrow straight through the visor slit, used for a tiny weakness defeating heavy protection.",
+"slots": [
+"my strong defenses",
+"the one thing that got through"
+],
+"aliases": [
+"knight arrow helmet",
+"arrow through visor",
+"knight visor arrow",
+"armored knight arrow"
+],
+"avoid": "Not for real injuries or flawless defenses."
+},
+{
+"id": "grumpycatnotamused",
+"name": "Grumpy Cat Not Amused",
+"lines": 2,
+"shape": "rejection",
+"core": "Grumpy Cat glares, unimpressed, used to grumpily shoot down something others find exciting.",
+"slots": [
+"something exciting",
+"grumpy rejection"
+],
+"aliases": [
+"grumpy cat",
+"not amused cat",
+"grumpy cat no",
+"tard the cat"
+],
+"avoid": "Not for genuine enthusiasm."
+},
+{
+"id": "silentmoviecard",
+"name": "Silent Movie Card",
+"lines": 1,
+"shape": "dialogue",
+"core": "An old-timey silent film intertitle card, used to deliver a line in dramatic vintage style.",
+"slots": [
+"the intertitle line"
+],
+"aliases": [
+"silent movie card",
+"intertitle",
+"silent film title card",
+"old movie card"
+],
+"avoid": "Not for long multi-speaker conversations."
+},
+{
+"id": "homersimpsonsleepingpeaceful",
+"name": "Homer Simpson Sleeping Peacefully",
+"lines": 2,
+"shape": "irony",
+"core": "Homer sleeps blissfully, used for sleeping soundly despite something you should be worried about.",
+"slots": [
+"the looming problem",
+"me sleeping peacefully"
+],
+"aliases": [
+"homer sleeping",
+"sleeping peacefully",
+"homer asleep",
+"sleeping like a baby"
+],
+"avoid": "Not for insomnia or stress you are actually feeling."
+},
+{
+"id": "babycrying",
+"name": "Baby Crying",
+"lines": 2,
+"shape": "reaction",
+"core": "A baby bawling dramatically, used for overreacting to a small disappointment.",
+"slots": [
+"the minor letdown",
+"my reaction"
+],
+"aliases": [
+"baby crying",
+"crying baby",
+"sad baby",
+"baby tantrum"
+],
+"avoid": "Not for real grief or serious distress."
+},
+{
+"id": "professorfarnsworthgoodnewse",
+"name": "Professor Farnsworth Good News Everyone",
+"lines": 2,
+"shape": "irony",
+"core": "Cheerfully announcing 'good news' that is actually terrible news for everyone listening.",
+"slots": [
+"good news everyone",
+"the awful news"
+],
+"aliases": [
+"good news everyone",
+"farnsworth",
+"futurama professor",
+"good news"
+],
+"avoid": "Not for genuinely good news; the joke is the bad news delivered happily."
+},
+{
+"id": "yomamassofat",
+"name": "Yo Mama So Fat",
+"lines": 2,
+"shape": "exaggeration",
+"core": "A kid spits out his drink laughing at a 'yo mama' style roast punchline.",
+"slots": [
+"the setup",
+"the roast punchline"
+],
+"aliases": [
+"yo mama",
+"kid spitting milk",
+"spit take kids",
+"yo mama so fat"
+],
+"avoid": "Not for cruel jokes about real people's bodies; keep the roast absurd."
+},
+{
+"id": "honeyitstimetox",
+"name": "Honey It's Time For Your X",
+"lines": 2,
+"shape": "dialogue",
+"core": "A smiling wife cheerfully announces some dreaded routine and the exhausted husband wojak silently suffers.",
+"slots": [
+"honey, it's time for your...",
+"his weary reaction"
+],
+"aliases": [
+"honey its time",
+"honey it's time for your",
+"wojak wife",
+"tired wojak"
+],
+"avoid": "Not for things people actually look forward to."
+},
+{
+"id": "goingtoneedabiggerboat",
+"name": "Going To Need A Bigger Boat",
+"lines": 2,
+"shape": "reaction",
+"core": "Stunned realisation that a problem is far bigger than the resources you brought to handle it.",
+"slots": [
+"seeing the size of the problem",
+"you're gonna need a bigger X"
+],
+"aliases": [
+"bigger boat",
+"jaws",
+"we're gonna need a bigger boat",
+"chief brody"
+],
+"avoid": "Not for problems that are easily handled."
+},
+{
+"id": "kimjongunsad",
+"name": "Kim Jong Un Sad",
+"lines": 2,
+"shape": "reaction",
+"core": "A powerful person tearfully sad about a petty or ironic disappointment.",
+"slots": [
+"what happened",
+"the sad reaction"
+],
+"aliases": [
+"sad kim jong un",
+"crying kim",
+"kim jong un crying",
+"sad dictator"
+],
+"avoid": "Not for real political tragedies or human rights topics."
+},
+{
+"id": "sadguyhappyguybus",
+"name": "Bus Window Sad Guy Happy Guy",
+"lines": 2,
+"shape": "comparison",
+"core": "Two people on the same bus see the same situation completely differently: one sees a gloomy rock wall, the other a beautiful view.",
+"slots": [
+"the pessimist's view",
+"the optimist's view"
+],
+"aliases": [
+"two guys on a bus",
+"bus meme",
+"sad guy happy guy",
+"optimist pessimist bus",
+"bus window"
+],
+"avoid": "Not for situations without two contrasting outlooks."
+},
+{
+"id": "whoselineisitanyway",
+"name": "Whose Line Is It Anyway",
+"lines": 2,
+"shape": "irony",
+"core": "Welcome to a place where everything's made up and the points don't matter, used for systems with arbitrary meaningless scores.",
+"slots": [
+"welcome to X",
+"where everything's made up and the points don't matter"
+],
+"aliases": [
+"points don't matter",
+"drew carey",
+"everything is made up",
+"whose line"
+],
+"avoid": "Not for things with real, meaningful stakes."
+},
+{
+"id": "trustnobodynotevenyourself",
+"name": "Trust Nobody, Not Even Yourself",
+"lines": 2,
+"shape": "self-own",
+"core": "A person about to be betrayed by themselves, for when your own past actions sabotage you.",
+"slots": [
+"me",
+"also me, sabotaging"
+],
+"aliases": [
+"trust nobody",
+"not even yourself",
+"self betrayal",
+"guy pointing gun at himself"
+],
+"avoid": "Not for betrayal by other people."
+},
+{
+"id": "mememan",
+"name": "Meme Man",
+"lines": 2,
+"shape": "reaction",
+"core": "The surreal 3D Meme Man head delivering absurd, deadpan surreal-meme statements.",
+"slots": [
+"setup",
+"surreal punchline"
+],
+"aliases": [
+"meme man",
+"stonks guy",
+"surreal meme",
+"mr succ"
+],
+"avoid": "Not for serious or earnest messages."
+},
+{
+"id": "rickandmortyextrasteps",
+"name": "Rick And Morty Extra Steps",
+"lines": 1,
+"shape": "irony",
+"core": "Pointing out that something fancy is just a simpler familiar thing with extra steps.",
+"slots": [
+"it's just X with extra steps"
+],
+"aliases": [
+"with extra steps",
+"rick and morty",
+"it's just x with extra steps",
+"toxic rick"
+],
+"avoid": "Not for things that are genuinely new."
+},
+{
+"id": "permissionbane",
+"name": "Permission Bane",
+"lines": 2,
+"shape": "approval",
+"core": "Bane grandly granting permission for something, as in 'you have my permission to die'.",
+"slots": [
+"the request",
+"you have my permission"
+],
+"aliases": [
+"you have my permission",
+"bane permission",
+"permission to die",
+"bane"
+],
+"avoid": "Not for actual refusals."
+},
+{
+"id": "leonardodicapriothrowingmone",
+"name": "Leonardo DiCaprio Throwing Money",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Recklessly throwing money away, used for blowing cash on something without hesitation.",
+"slots": [
+"setup",
+"me throwing money at it"
+],
+"aliases": [
+"wolf of wall street money",
+"throwing money",
+"leo money",
+"make it rain"
+],
+"avoid": "Not for careful or frugal spending."
+},
+{
+"id": "drevilpinky",
+"name": "Dr Evil Pinky",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Dr Evil scheming with pinky to mouth, demanding an absurd amount or pitching a ridiculously evil plan.",
+"slots": [
+"the scheme",
+"the outrageous demand"
+],
+"aliases": [
+"dr evil",
+"one million dollars",
+"pinky to mouth",
+"austin powers"
+],
+"avoid": "Not for sincere or modest requests."
+}
+]

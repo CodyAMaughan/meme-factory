@@ -1,0 +1,1058 @@
+[
+{
+"id": "ewisteppedinshit",
+"name": "Ew, I Stepped In Shit",
+"lines": 2,
+"shape": "labeling",
+"core": "Someone checks their shoe in disgust, and the sole shows the gross thing they 'stepped in'.",
+"slots": [
+"who stepped in it",
+"the gross thing on the sole"
+],
+"aliases": [
+"Ew I Stepped In Shit",
+"Stepped In Shit",
+"Shoe sole meme",
+"Looking at shoe"
+],
+"avoid": "Not for things the speaker actually likes or admires."
+},
+{
+"id": "spongebobyelling",
+"name": "Spongebob Yelling",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Spongebob screams in front of a stunned crowd, for an over-the-top outburst nobody asked for.",
+"slots": [
+"the setup",
+"the screamed outburst"
+],
+"aliases": [
+"Spongebob Yelling",
+"Spongebob Screaming",
+"Spongebob crowd scream",
+"Spongebob outburst"
+],
+"avoid": "Not for quiet or polite reactions."
+},
+{
+"id": "unicornman",
+"name": "Unicorn Man",
+"lines": 2,
+"shape": "irony",
+"core": "A buff man dressed as a glittery unicorn with a teacup, for proudly fabulous or absurdly over-the-top behavior.",
+"slots": [
+"the setup",
+"the fabulous punchline"
+],
+"aliases": [
+"Unicorn Man",
+"Unicorn MAN",
+"Fabulous Unicorn Guy",
+"Unicorn teacup man"
+],
+"avoid": "Not for mocking anyone's identity or for serious topics."
+},
+{
+"id": "mahatmagandhirocks",
+"name": "Fake Gandhi Quote",
+"lines": 1,
+"shape": "irony",
+"core": "A silly or modern line passed off as a profound quote, already signed '-Mahatma Gandhi'.",
+"slots": [
+"the fake wise quote"
+],
+"aliases": [
+"Mahatma Gandhi Rocks",
+"Fake Gandhi Quote",
+"Gandhi quote",
+"Wise Gandhi"
+],
+"avoid": "Not for genuine Gandhi quotes or mocking his real cause."
+},
+{
+"id": "consuela",
+"name": "Consuela",
+"lines": 2,
+"shape": "rejection",
+"core": "A polite but firm 'no, no, no' refusal to a request, in Consuela's sing-song style.",
+"slots": [
+"the request",
+"the 'no no no' refusal"
+],
+"aliases": [
+"Consuela",
+"No No No Consuela",
+"Family Guy maid",
+"Consuela no"
+],
+"avoid": "Not for agreeing or for mocking accents or nationalities."
+},
+{
+"id": "michaeljacksonpopcorn",
+"name": "Michael Jackson Popcorn",
+"lines": 2,
+"shape": "reaction",
+"core": "Gleefully eating popcorn while watching drama or an argument unfold.",
+"slots": [
+"the drama unfolding",
+"me watching"
+],
+"aliases": [
+"Michael Jackson Popcorn",
+"MJ Popcorn",
+"Eating Popcorn",
+"Thriller popcorn"
+],
+"avoid": "Not for being personally involved in the conflict."
+},
+{
+"id": "overwatchmercymeme",
+"name": "Overwatch Mercy",
+"lines": 2,
+"shape": "reaction",
+"core": "Someone in trouble looks up in awe as a glowing hero arrives to save them.",
+"slots": [
+"the one in trouble",
+"the heroic rescuer"
+],
+"aliases": [
+"Overwatch Mercy",
+"Mercy saves girl",
+"Mercy hero arrives",
+"Overwatch Mercy Meme"
+],
+"avoid": "Not for disappointments or villains."
+},
+{
+"id": "butitwasmedio",
+"name": "But It Was Me, Dio",
+"lines": 2,
+"shape": "irony",
+"core": "A smug twist reveal: you expected one thing, but it was me all along.",
+"slots": [
+"what you expected",
+"the smug reveal"
+],
+"aliases": [
+"But It Was Me Dio",
+"Kono Dio Da",
+"It was me Dio",
+"Dio reveal",
+"JoJo Dio"
+],
+"avoid": "Not for sincere confessions or no-twist statements."
+},
+{
+"id": "amiajoketoyou",
+"name": "Am I A Joke To You",
+"lines": 2,
+"shape": "reaction",
+"core": "A neglected thing, ignored in favor of something else, asks indignantly 'Am I a joke to you?'.",
+"slots": [
+"the situation where it's ignored",
+"the ignored thing"
+],
+"aliases": [
+"Am I A Joke To You",
+"Am I a joke to you guy",
+"SABC man",
+"Ignored feature"
+],
+"avoid": "Not for things that are actually being used or appreciated."
+},
+{
+"id": "firstdayontheinternetkid",
+"name": "First Day On The Internet Kid",
+"lines": 2,
+"shape": "self-own",
+"core": "A newbie excitedly does something naive that any veteran would know better than to do.",
+"slots": [
+"the naive excitement",
+"the newbie move"
+],
+"aliases": [
+"First Day On The Internet Kid",
+"Internet Newbie",
+"Excited Laptop Kid",
+"Noob kid"
+],
+"avoid": "Not for experts or genuinely clever moves."
+},
+{
+"id": "cnnbreakingnewstemplate",
+"name": "CNN Breaking News",
+"lines": 1,
+"shape": "irony",
+"core": "A fake breaking-news chyron that treats something trivial as major headline news.",
+"slots": [
+"the breaking headline"
+],
+"aliases": [
+"CNN Breaking News",
+"Breaking News Template",
+"News Chyron",
+"Breaking News Banner"
+],
+"avoid": "Not for real news, misinformation, or anything that could pass as a genuine broadcast."
+},
+{
+"id": "petergriffinrunningaway",
+"name": "Peter Griffin Running Away",
+"lines": 2,
+"shape": "labeling",
+"core": "Peter flees in panic from a plane chasing him, for running away from a looming responsibility or threat.",
+"slots": [
+"the thing chasing",
+"who's running away"
+],
+"aliases": [
+"Peter Griffin Running Away",
+"Peter running from plane",
+"Family Guy plane chase",
+"Running away Peter"
+],
+"avoid": "Not for calmly facing problems or happy chases."
+},
+{
+"id": "ryangosling",
+"name": "Hey Girl Ryan Gosling",
+"lines": 2,
+"shape": "irony",
+"core": "A smooth 'Hey girl' pickup line that turns out to be about something nerdy or mundane.",
+"slots": [
+"'Hey girl' opener",
+"the nerdy sweet-talk"
+],
+"aliases": [
+"Ryan Gosling",
+"Hey Girl",
+"Hey Girl Ryan Gosling",
+"Gosling pickup line"
+],
+"avoid": "Not for creepy or explicit pickup lines."
+},
+{
+"id": "redpillbluepill",
+"name": "Red Pill Blue Pill",
+"lines": 2,
+"shape": "binary-choice",
+"core": "Choose between a harsh truth (red pill) and a comfortable illusion (blue pill).",
+"slots": [
+"red pill: the harsh truth",
+"blue pill: the comfy illusion"
+],
+"aliases": [
+"Red Pill Blue Pill",
+"Matrix Pills",
+"Morpheus pills",
+"Take the red pill"
+],
+"avoid": "Not for political 'red pill' ideology or choices with no truth-vs-comfort angle."
+},
+{
+"id": "narcoswaiting",
+"name": "Lonely Pablo Escobar",
+"lines": 1,
+"shape": "reaction",
+"core": "Pablo Escobar waiting alone and bored across three scenes, for endlessly waiting on something that never comes.",
+"slots": [
+"me waiting for..."
+],
+"aliases": [
+"Narcos Waiting",
+"Sad Pablo Escobar",
+"Lonely Pablo Escobar",
+"Pablo waiting"
+],
+"avoid": "Not for glorifying the real cartel or for exciting, busy moments."
+},
+{
+"id": "spidermanhospital",
+"name": "Spiderman Hospital",
+"lines": 2,
+"shape": "self-own",
+"core": "Spider-Man in a hospital bed, for ending up hurt or sick through your own silly choices.",
+"slots": [
+"how it happened",
+"the sad result"
+],
+"aliases": [
+"Spiderman Hospital",
+"Spider-Man in bed",
+"60s Spiderman hospital",
+"Sick Spiderman"
+],
+"avoid": "Not for real illness or serious injuries."
+},
+{
+"id": "pretendingtobehappyhidingcry",
+"name": "Wojak Smiling Mask",
+"lines": 2,
+"shape": "irony",
+"core": "A crying Wojak hides behind a smiley mask, for pretending everything is fine while falling apart inside.",
+"slots": [
+"the cheerful front",
+"the hidden truth"
+],
+"aliases": [
+"Pretending To Be Happy",
+"Wojak Mask",
+"Crying Behind Mask",
+"Smiling Mask Wojak"
+],
+"avoid": "Not for genuine happiness or serious mental health crises."
+},
+{
+"id": "khan",
+"name": "Khan",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Kirk's anguished 'KHAAAN!' scream, for rage at someone who wronged you.",
+"slots": [
+"what they did",
+"the anguished scream"
+],
+"aliases": [
+"Khan",
+"KHAAAN",
+"Kirk Khan scream",
+"Star Trek Khan"
+],
+"avoid": "Not for mild annoyance or happy news."
+},
+{
+"id": "leavebritneyalone",
+"name": "Leave Britney Alone",
+"lines": 2,
+"shape": "reaction",
+"core": "A tearful, over-the-top plea to stop criticizing something you love: 'Leave X alone!'.",
+"slots": [
+"the criticism",
+"LEAVE X ALONE"
+],
+"aliases": [
+"Leave Britney Alone",
+"Leave X Alone",
+"Chris Crocker",
+"Crying Leave Alone"
+],
+"avoid": "Not for mocking the person in the video or real distress."
+},
+{
+"id": "smilinbiden",
+"name": "Smilin Biden",
+"lines": 2,
+"shape": "approval",
+"core": "A grinning, finger-pointing 'you got it, buddy' approval of someone's cheeky move.",
+"slots": [
+"the cheeky move",
+"the grinning approval"
+],
+"aliases": [
+"Smilin Biden",
+"Biden pointing",
+"Joe Biden smiling",
+"Pointing Biden"
+],
+"avoid": "Not for political attacks or partisan messaging."
+},
+{
+"id": "moneymoney",
+"name": "Money Money",
+"lines": 2,
+"shape": "exaggeration",
+"core": "The Mask gleefully fanning wads of cash, for feeling rich or excited about money.",
+"slots": [
+"the setup",
+"the cash payoff"
+],
+"aliases": [
+"Money Money",
+"The Mask Money",
+"Jim Carrey Mask cash",
+"Somebody stop me money"
+],
+"avoid": "Not for real financial advice or money troubles."
+},
+{
+"id": "chubbybubblesgirl",
+"name": "Chubby Bubbles Girl",
+"lines": 2,
+"shape": "reaction",
+"core": "A little girl running eagerly toward something, for rushing excitedly at a thing you want.",
+"slots": [
+"the thing you want",
+"me running to it"
+],
+"aliases": [
+"Chubby Bubbles Girl",
+"Running Bubbles Girl",
+"Girl running with bubbles",
+"Here I come"
+],
+"avoid": "Not for mocking the child's appearance."
+},
+{
+"id": "ronburgundy",
+"name": "Ron Burgundy",
+"lines": 2,
+"shape": "irony",
+"core": "The pompous anchorman announces something trivial with total seriousness.",
+"slots": [
+"the setup",
+"the pompous announcement"
+],
+"aliases": [
+"Ron Burgundy",
+"Anchorman",
+"Stay classy",
+"I'm kind of a big deal"
+],
+"avoid": "Not for real news or serious announcements."
+},
+{
+"id": "impossibruguyoriginal",
+"name": "Impossibru Guy",
+"lines": 2,
+"shape": "reaction",
+"core": "A grimacing face of total disbelief that something could possibly happen: 'Impossibru!'.",
+"slots": [
+"the unbelievable thing",
+"IMPOSSIBRU"
+],
+"aliases": [
+"Impossibru",
+"Impossibru Guy",
+"Impossible face",
+"Impossibru Guy Original"
+],
+"avoid": "Not for mocking accents or ethnicity; it's about disbelief."
+},
+{
+"id": "gravestone",
+"name": "Gravestone",
+"lines": 1,
+"shape": "other",
+"core": "A blank headstone for a mock epitaph mourning something that has died or been abandoned.",
+"slots": [
+"the epitaph"
+],
+"aliases": [
+"Gravestone",
+"Tombstone",
+"RIP Headstone",
+"Blank Grave"
+],
+"avoid": "Not for real deaths or memorials."
+},
+{
+"id": "societyif",
+"name": "Society If",
+"lines": 1,
+"shape": "exaggeration",
+"core": "A gleaming utopian city captioned 'Society if...' to claim one small change would perfect the world.",
+"slots": [
+"society if..."
+],
+"aliases": [
+"Society If",
+"Imagine Society If",
+"Futuristic City",
+"Utopia Society"
+],
+"avoid": "Not for real political manifestos."
+},
+{
+"id": "evilcows",
+"name": "Evil Cows",
+"lines": 2,
+"shape": "plan-backfires",
+"core": "Two cows stand calmly in front of a raging fire, as if they caused the chaos and have no regrets.",
+"slots": [
+"the chaos they caused",
+"the smug innocence"
+],
+"aliases": [
+"Evil Cows",
+"Cows in front of fire",
+"Arsonist cows",
+"Burning field cows"
+],
+"avoid": "Not for real wildfires or disasters."
+},
+{
+"id": "charlieday",
+"name": "Pepe Silvia",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Charlie frantically explains a wild conspiracy board, for over-explaining a convoluted theory.",
+"slots": [
+"the setup",
+"the frantic theory"
+],
+"aliases": [
+"Charlie Day",
+"Pepe Silvia",
+"Conspiracy Board",
+"Charlie conspiracy"
+],
+"avoid": "Not for real conspiracy theories or clear, simple explanations."
+},
+{
+"id": "pointingmirrorguy",
+"name": "Pointing Mirror Guy",
+"lines": 2,
+"shape": "self-own",
+"core": "A man points at his own reflection, for blaming or calling out yourself.",
+"slots": [
+"me",
+"the me I'm blaming"
+],
+"aliases": [
+"Pointing Mirror Guy",
+"Pointing at Mirror",
+"Wikihow mirror guy",
+"Self-blame mirror"
+],
+"avoid": "Not for blaming other people."
+},
+{
+"id": "alwaysyouthree",
+"name": "Always You Three",
+"lines": 3,
+"shape": "labeling",
+"core": "McGonagall asks why it's always you three whenever something goes wrong, labeling the three usual culprits.",
+"slots": [
+"culprit one",
+"culprit two",
+"culprit three"
+],
+"aliases": [
+"Always You Three",
+"Why is it always you three",
+"McGonagall Harry Ron Hermione",
+"Harry Potter trio"
+],
+"avoid": "Not for a single culprit or for praise."
+},
+{
+"id": "ptsdchihuahua",
+"name": "PTSD Chihuahua",
+"lines": 2,
+"shape": "reaction",
+"core": "A wide-eyed chihuahua with war flashbacks, for being triggered by a reminder of a past ordeal.",
+"slots": [
+"the trigger",
+"the flashback"
+],
+"aliases": [
+"PTSD Chihuahua",
+"Flashback Dog",
+"Vietnam Flashback Chihuahua",
+"Chihuahua flashbacks"
+],
+"avoid": "Not for real trauma or veterans' experiences."
+},
+{
+"id": "shrekforfiveminutes",
+"name": "Shrek For Five Minutes",
+"lines": 2,
+"shape": "dialogue",
+"core": "Shrek asks for five minutes of peace, then glares with laser eyes at Donkey who interrupts anyway.",
+"slots": [
+"the request for peace",
+"the interrupter"
+],
+"aliases": [
+"Shrek For Five Minutes",
+"Shrek Laser Eyes",
+"Shrek Donkey Glare",
+"Five minutes of peace"
+],
+"avoid": "Not for welcome interruptions or happy surprises."
+},
+{
+"id": "dogvswerewolf",
+"name": "Dog Vs Werewolf",
+"lines": 2,
+"shape": "comparison",
+"core": "A friendly golden retriever next to a snarling werewolf: the same thing in its harmless form versus its terrifying form.",
+"slots": [
+"harmless version",
+"terrifying version"
+],
+"aliases": [
+"dog and werewolf",
+"golden retriever werewolf",
+"dog vs wolf"
+],
+"avoid": "Not for two unrelated things; both must be versions of the same thing."
+},
+{
+"id": "happydolphinrainbow",
+"name": "Happy Dolphin Rainbow",
+"lines": 2,
+"shape": "exaggeration",
+"core": "An over-the-top cheesy paradise of dolphins and rainbows, used to show pure bliss or how something feels in your imagination.",
+"slots": [
+"the trigger",
+"how it feels"
+],
+"aliases": [
+"dolphin rainbow",
+"dolphin paradise",
+"wholesome dolphins"
+],
+"avoid": "Not for genuinely sad or angry moments."
+},
+{
+"id": "forchristmasiwantadragon",
+"name": "For Christmas I Want A Dragon",
+"lines": 1,
+"shape": "irony",
+"core": "Told to be realistic, the kid names a 'realistic' wish so impossible that Santa would rather grant the dragon.",
+"slots": [
+"the realistic wish"
+],
+"aliases": [
+"be realistic",
+"santa dragon",
+"what color do you want your dragon"
+],
+"avoid": "Not for wishes that are actually achievable."
+},
+{
+"id": "nuclearexplosion",
+"name": "Nuclear Explosion",
+"lines": 2,
+"shape": "exaggeration",
+"core": "A mushroom cloud standing for a tiny action that causes total destruction or an overwhelming reaction.",
+"slots": [
+"small action",
+"the fallout"
+],
+"aliases": [
+"mushroom cloud",
+"nuke",
+"atomic bomb",
+"explosion"
+],
+"avoid": "Not for real-world wars or disasters."
+},
+{
+"id": "robotnikpressingredbutton",
+"name": "Robotnik Pressing Red Button",
+"lines": 2,
+"shape": "binary-choice",
+"core": "Two buttons and Robotnik gleefully slams the red one: picking the chaotic or bad option with enthusiasm.",
+"slots": [
+"red button (chosen)",
+"blue button (sensible)"
+],
+"aliases": [
+"robotnik button",
+"eggman button",
+"sonic movie button",
+"jim carrey button"
+],
+"avoid": "Not for agonising over a choice; he picks instantly and happily."
+},
+{
+"id": "overlymanlyman",
+"name": "Overly Manly Man",
+"lines": 2,
+"shape": "exaggeration",
+"core": "A Victorian boxer who does everything in the most absurdly manly way possible.",
+"slots": [
+"setup",
+"manly twist"
+],
+"aliases": [
+"manly man",
+"victorian boxer",
+"mustache boxer"
+],
+"avoid": "Not for weakness or failure."
+},
+{
+"id": "dwsignwontstopmebecauseicant",
+"name": "That Sign Won't Stop Me Because I Can't Read",
+"lines": 1,
+"shape": "irony",
+"core": "DW ignores a warning sign because she can't read it: blissfully ignoring a rule or warning out of ignorance.",
+"slots": [
+"the warning or rule"
+],
+"aliases": [
+"dw sign",
+"that sign won't stop me",
+"because i can't read",
+"arthur dw"
+],
+"avoid": "Not for rules someone consciously defies; the point is obliviousness."
+},
+{
+"id": "skyrimskillmeme",
+"name": "Skyrim Skill",
+"lines": 1,
+"shape": "exaggeration",
+"core": "A maxed-out Skyrim skill at level 100, used to brag about being an expert at some petty or useless thing.",
+"slots": [
+"the skill"
+],
+"aliases": [
+"skyrim skill 100",
+"skill level 100",
+"skill up",
+"level up"
+],
+"avoid": "Not for actual impressive achievements; it's for silly expertise."
+},
+{
+"id": "deadpoolsurprised",
+"name": "Deadpool Surprised",
+"lines": 2,
+"shape": "reaction",
+"core": "Deadpool clutching his masked face in mock shock, a theatrical gasp at something scandalous or unexpected.",
+"slots": [
+"the shocking thing",
+"reaction"
+],
+"aliases": [
+"deadpool shocked",
+"deadpool gasp",
+"surprised deadpool"
+],
+"avoid": "Not for genuine tragedy; the shock is playful."
+},
+{
+"id": "actualadvicemallard",
+"name": "Actual Advice Mallard",
+"lines": 2,
+"shape": "other",
+"core": "A mallard giving genuinely useful, sincere life advice, the helpful opposite of Malicious Advice Mallard.",
+"slots": [
+"situation",
+"useful advice"
+],
+"aliases": [
+"advice mallard",
+"advice duck",
+"good advice duck"
+],
+"avoid": "Not for sarcastic or harmful advice."
+},
+{
+"id": "girlrunning",
+"name": "Girl Running",
+"lines": 2,
+"shape": "reaction",
+"core": "A little girl in a yellow raincoat sprinting with wide eyes, used for eagerly rushing toward (or away from) something.",
+"slots": [
+"the trigger",
+"who's running"
+],
+"aliases": [
+"chubby bubbles girl",
+"running girl",
+"bubble girl running"
+],
+"avoid": "Not for calm or slow situations."
+},
+{
+"id": "benafflecksmoking",
+"name": "Ben Affleck Smoking",
+"lines": 1,
+"shape": "reaction",
+"core": "A worn-out Ben Affleck exhaling a cigarette, eyes closed: exhausted defeat after something draining.",
+"slots": [
+"the draining situation"
+],
+"aliases": [
+"sad affleck smoking",
+"ben affleck cigarette",
+"tired affleck",
+"affleck exhausted"
+],
+"avoid": "Not for happy or energetic moments."
+},
+{
+"id": "dabbingdude",
+"name": "Dabbing Dude",
+"lines": 2,
+"shape": "labeling",
+"core": "Chaos erupts on one side while a guy calmly hits his vape on the other: staying unbothered while everything falls apart.",
+"slots": [
+"the chaos",
+"the unbothered one"
+],
+"aliases": [
+"guy vaping during fight",
+"girls fighting vape",
+"vape guy fight"
+],
+"avoid": "Not for situations where the bystander is actually helping."
+},
+{
+"id": "frustratedboromir",
+"name": "Frustrated Boromir",
+"lines": 2,
+"shape": "reaction",
+"core": "Boromir rubbing his forehead in exasperation at something tiresome or stupid.",
+"slots": [
+"setup",
+"the frustrating part"
+],
+"aliases": [
+"boromir facepalm",
+"boromir headache",
+"frustrated sean bean"
+],
+"avoid": "Not to be confused with One Does Not Simply; this one is pure exasperation."
+},
+{
+"id": "momcanwehave",
+"name": "Mom Can We Have",
+"lines": 3,
+"shape": "before-after",
+"core": "Asking for the real thing and getting told there's one at home, then revealing the sad knockoff version you actually get.",
+"slots": [
+"the real thing",
+"same thing again",
+"the sad knockoff"
+],
+"aliases": [
+"we have food at home",
+"mom can we get",
+"we have it at home"
+],
+"avoid": "Not for cases where the home version is as good or better."
+},
+{
+"id": "welcometotheinternets",
+"name": "Welcome To The Internets",
+"lines": 2,
+"shape": "exaggeration",
+"core": "A cat with a gun riding a laser-eyed unicorn past rainbows and explosions: something absurdly epic or chaotic.",
+"slots": [
+"setup",
+"epic punchline"
+],
+"aliases": [
+"cat riding unicorn",
+"unicorn cat gun",
+"epic cat unicorn"
+],
+"avoid": "Not for mundane or understated moments."
+},
+{
+"id": "elmofire",
+"name": "Elmo Fire",
+"lines": 2,
+"shape": "reaction",
+"core": "Elmo raising his arms in front of hellfire, embracing pure chaos or unhinged rage.",
+"slots": [
+"the trigger",
+"who's raging"
+],
+"aliases": [
+"elmo rise",
+"hell elmo",
+"elmo flames",
+"elmo chaos"
+],
+"avoid": "Not for calm or wholesome moments."
+},
+{
+"id": "trojanhorse",
+"name": "Trojan Horse",
+"lines": 3,
+"shape": "labeling",
+"core": "A harmless-looking gift being welcomed in while soldiers hide inside: something appealing that smuggles in a nasty surprise.",
+"slots": [
+"the appealing gift",
+"the hidden payload",
+"the ones letting it in"
+],
+"aliases": [
+"trojan horse soldiers",
+"hidden soldiers horse",
+"trojan horse gift"
+],
+"avoid": "Not for things that are openly bad; the danger must be hidden."
+},
+{
+"id": "virginandchad",
+"name": "Virgin Vs Chad",
+"lines": 2,
+"shape": "comparison",
+"core": "A slouching, insecure 'virgin' strides beside a confident 'Chad', contrasting the timid way and the bold way of doing something.",
+"slots": [
+"virgin trait",
+"chad trait"
+],
+"aliases": [
+"virgin vs chad",
+"chad walk",
+"the virgin the chad",
+"chad meme"
+],
+"avoid": "Not for neutral comparisons; one side must be the cringe, the other the confident one."
+},
+{
+"id": "inspirationalquote",
+"name": "Inspirational Quote",
+"lines": 2,
+"shape": "irony",
+"core": "A serene sunset backdrop for a fake inspirational quote that is actually mundane, cynical or absurd.",
+"slots": [
+"the quote",
+"attribution"
+],
+"aliases": [
+"motivational poster",
+"sunset quote",
+"inspirational poster"
+],
+"avoid": "Not for sincerely inspirational quotes."
+},
+{
+"id": "disappearing",
+"name": "Disappearing",
+"lines": 1,
+"shape": "reaction",
+"core": "A guy slowly fades out of frame, used for quietly vanishing to avoid an awkward situation.",
+"slots": [
+"the situation to escape"
+],
+"aliases": [
+"guy fading away",
+"disappearing guy",
+"fade away",
+"me leaving"
+],
+"avoid": "Not for confronting a situation head on."
+},
+{
+"id": "evilplottingraccoon",
+"name": "Evil Plotting Raccoon",
+"lines": 2,
+"shape": "plan-backfires",
+"core": "A raccoon rubbing its paws together while hatching a sneaky, petty evil plan.",
+"slots": [
+"the setup",
+"the evil plan"
+],
+"aliases": [
+"scheming raccoon",
+"plotting raccoon",
+"evil raccoon"
+],
+"avoid": "Not for innocent or kind actions."
+},
+{
+"id": "yoda",
+"name": "Yoda",
+"lines": 2,
+"shape": "other",
+"core": "Yoda dispensing wisdom, captioned with advice phrased in his backwards sentence structure.",
+"slots": [
+"first half",
+"backwards wisdom"
+],
+"aliases": [
+"yoda says",
+"yoda wisdom",
+"star wars yoda"
+],
+"avoid": "Not for captions in normal word order; the joke is Yoda-speak."
+},
+{
+"id": "porquetanelegantehomero",
+"name": "Por Que Tan Elegante Homero",
+"lines": 2,
+"shape": "dialogue",
+"core": "Bart asks Homer why he's dressed so fancy, and Homer gives an absurdly trivial reason for celebrating.",
+"slots": [
+"why so fancy?",
+"the trivial reason"
+],
+"aliases": [
+"homer elegante",
+"why so elegant homer",
+"homer tuxedo",
+"elegant homer"
+],
+"avoid": "Not for genuinely big occasions; the reason should be petty."
+},
+{
+"id": "nopatrick",
+"name": "No Patrick",
+"lines": 2,
+"shape": "dialogue",
+"core": "Patrick raising his hand to ask a hilariously dumb or literal question, as in 'Is mayonnaise an instrument?'",
+"slots": [
+"the setup",
+"Patrick's dumb question"
+],
+"aliases": [
+"is mayonnaise an instrument",
+"patrick raises hand",
+"no patrick"
+],
+"avoid": "Not for smart or reasonable questions."
+},
+{
+"id": "blankprotestsign",
+"name": "Blank Protest Sign",
+"lines": 1,
+"shape": "other",
+"core": "A big blank sign held up at a protest, filled with a passionate demand about something petty.",
+"slots": [
+"the protest slogan"
+],
+"aliases": [
+"protest sign",
+"blank sign",
+"holding sign",
+"protester sign"
+],
+"avoid": "Not for mocking real tragedies or real protest causes."
+},
+{
+"id": "happyshock",
+"name": "Happy Then Shocked",
+"lines": 2,
+"shape": "before-after",
+"core": "A man grinning, then his smile collapsing into dismay as he learns the catch.",
+"slots": [
+"the good news",
+"the catch"
+],
+"aliases": [
+"disappointed black guy",
+"happy then sad",
+"smile fade",
+"happy to disappointed"
+],
+"avoid": "Not for news that stays good."
+},
+{
+"id": "orangutanchasinggirlonatricy",
+"name": "Orangutan Chasing Girl On A Tricycle",
+"lines": 2,
+"shape": "labeling",
+"core": "An orangutan pedalling a tiny tricycle after a screaming girl: something relentless chasing you down.",
+"slots": [
+"the pursuer",
+"the one fleeing"
+],
+"aliases": [
+"orangutan tricycle",
+"monkey chasing girl",
+"orangutan bike chase"
+],
+"avoid": "Not for things you're happy to see coming."
+}
+]

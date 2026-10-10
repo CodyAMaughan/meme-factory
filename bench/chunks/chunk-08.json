@@ -1,0 +1,1076 @@
+[
+{
+"id": "jacknicholsontheshiningsnow",
+"name": "Jack Nicholson The Shining Snow",
+"lines": 2,
+"shape": "reaction",
+"core": "Jack Torrance frozen solid in the snow, used for being freezing cold or for waiting forever.",
+"slots": [
+"setup",
+"frozen punchline"
+],
+"aliases": [
+"frozen jack",
+"shining frozen",
+"jack torrance frozen",
+"freezing cold"
+],
+"avoid": "Not for warm or quick situations."
+},
+{
+"id": "mangivingswordtolargerman",
+"name": "Man Giving Sword To Larger Man",
+"lines": 3,
+"shape": "labeling",
+"core": "A small warrior hands his sword up to a towering giant: passing a problem or power to someone far more capable.",
+"slots": [
+"the giant",
+"what's handed over",
+"the small one"
+],
+"aliases": [
+"handing sword to giant",
+"giving sword meme",
+"sword to bigger man"
+],
+"avoid": "Not for handing things down to someone weaker."
+},
+{
+"id": "computerguyfacepalm",
+"name": "Computer Guy Facepalm",
+"lines": 1,
+"shape": "self-own",
+"core": "A rage-comic guy faceplanting into his hands at the computer after realising something dumb.",
+"slots": [
+"the facepalm moment"
+],
+"aliases": [
+"facepalm computer",
+"rage comic facepalm",
+"head in hands computer"
+],
+"avoid": "Not for good news or success."
+},
+{
+"id": "broexplaining",
+"name": "Bro Explaining",
+"lines": 1,
+"shape": "reaction",
+"core": "A guy at a ballgame enthusiastically explaining something to a girl who isn't interested.",
+"slots": [
+"what he's explaining"
+],
+"aliases": [
+"guy explaining to girl",
+"mansplaining",
+"baseball guy explaining",
+"astros guy"
+],
+"avoid": "Not for listeners who are genuinely engaged."
+},
+{
+"id": "skibiditoilet",
+"name": "Skibidi Toilet",
+"lines": 2,
+"shape": "reaction",
+"core": "A grinning head popping out of a toilet, used for unhinged brainrot or something bizarre showing up.",
+"slots": [
+"setup",
+"punchline"
+],
+"aliases": [
+"skibidi",
+"toilet head",
+"skibidi toilet head"
+],
+"avoid": "Not for serious or sincere topics."
+},
+{
+"id": "nooohahagobrrr",
+"name": "Nooo Haha Go Brrr",
+"lines": 2,
+"shape": "comparison",
+"core": "A crying wojak protests 'nooo you can't just X' while a smug wojak replies 'haha Y go brrr' and does it anyway.",
+"slots": [
+"nooo you can't just...",
+"haha ... go brrr"
+],
+"aliases": [
+"haha go brrr",
+"nooo you can't",
+"wojak brrr",
+"money printer go brrr"
+],
+"avoid": "Not for situations where the objection wins."
+},
+{
+"id": "imindangerblankplaceabove",
+"name": "I'm In Danger",
+"lines": 1,
+"shape": "reaction",
+"core": "Ralph Wiggum cheerfully realizing he's in trouble; used when a situation is clearly about to go badly and you're oddly calm about it.",
+"slots": [
+"the dangerous situation"
+],
+"aliases": [
+"i'm in danger",
+"ralph in danger",
+"chuckles i'm in danger",
+"ralph wiggum bus"
+],
+"avoid": "Not for genuine emergencies or real harm."
+},
+{
+"id": "theloudestsoundsonearth",
+"name": "The Loudest Sounds On Earth",
+"lines": 1,
+"shape": "exaggeration",
+"core": "A bar chart of the loudest sounds where the longest bar is something mundane; used to exaggerate how annoyingly loud an everyday noise feels.",
+"slots": [
+"the surprisingly loud everyday sound"
+],
+"aliases": [
+"loudest sounds on earth",
+"loudest sounds chart",
+"loudest sound bar graph"
+],
+"avoid": "Not for quiet or positive things."
+},
+{
+"id": "blackguyconfused",
+"name": "Nick Young Confused",
+"lines": 1,
+"shape": "reaction",
+"core": "Basketball player Nick Young with question marks, baffled; used when something makes no sense at all.",
+"slots": [
+"the confusing thing"
+],
+"aliases": [
+"nick young",
+"confused nick young",
+"question mark guy",
+"black guy confused"
+],
+"avoid": "Not for understood or obvious situations."
+},
+{
+"id": "notepassing",
+"name": "Note Passing",
+"lines": 1,
+"shape": "irony",
+"core": "A kid passes a note in class and the receiver angrily reads it; used to reveal an annoying or outrageous message.",
+"slots": [
+"what the note says"
+],
+"aliases": [
+"note passing",
+"passing notes in class",
+"angry note reader"
+],
+"avoid": "Not for pleasant messages."
+},
+{
+"id": "angelascareddwight",
+"name": "Angela Scared Dwight",
+"lines": 2,
+"shape": "before-after",
+"core": "Dwight is happy until he notices Angela and panics; used when a good moment is ruined by noticing something.",
+"slots": [
+"happy situation",
+"the thing you notice"
+],
+"aliases": [
+"dwight scared",
+"dwight sees angela",
+"dwight f**k",
+"the office dwight panic"
+],
+"avoid": "Not for things that are good news."
+},
+{
+"id": "itsfreerealestate",
+"name": "It's Free Real Estate",
+"lines": 1,
+"shape": "approval",
+"core": "Tim Heidecker gleefully taking something offered for free; used when an opportunity is too easy not to grab.",
+"slots": [
+"the free opportunity"
+],
+"aliases": [
+"free real estate",
+"it's free real estate",
+"tim heidecker free"
+],
+"avoid": "Not for things that cost you or are refused."
+},
+{
+"id": "drowningkidskeleton",
+"name": "Drowning Kid In The Pool",
+"lines": 4,
+"shape": "labeling",
+"core": "A mom plays with one child while another drowns and a skeleton sits below; used when something new gets attention while older things are neglected or long forgotten.",
+"slots": [
+"favored new thing",
+"the one giving attention",
+"neglected thing",
+"long-forgotten thing"
+],
+"aliases": [
+"drowning kid",
+"mom ignoring drowning kid",
+"skeleton at bottom of pool",
+"kid drowning meme"
+],
+"avoid": "Not for situations where everything gets equal attention."
+},
+{
+"id": "ceilingcat",
+"name": "Ceiling Cat",
+"lines": 2,
+"shape": "warning",
+"core": "A cat peeking through a hole in the ceiling, always watching; used for being quietly observed or caught.",
+"slots": [
+"setup",
+"ceiling cat is watching"
+],
+"aliases": [
+"ceiling cat",
+"ceiling cat is watching",
+"cat in ceiling"
+],
+"avoid": "Not for sincere privacy concerns."
+},
+{
+"id": "monkeylookingaway",
+"name": "Monkey Puppet Looking Away",
+"lines": 2,
+"shape": "reaction",
+"core": "A monkey puppet awkwardly glances sideways and away; used for awkward guilt when you're implicated and pretend not to be.",
+"slots": [
+"awkward situation",
+"your reaction"
+],
+"aliases": [
+"monkey puppet",
+"awkward monkey",
+"monkey looking away",
+"side eye monkey"
+],
+"avoid": "Not for confident or proud moments."
+},
+{
+"id": "rightinthechildhood",
+"name": "Right In The Childhood",
+"lines": 2,
+"shape": "reaction",
+"core": "An old man clutching his chest in pain; used when something hurts nostalgically, like a beloved childhood thing being ruined.",
+"slots": [
+"the painful news",
+"right in the ..."
+],
+"aliases": [
+"right in the childhood",
+"right in the feels",
+"old man heart attack",
+"chest pain old man"
+],
+"avoid": "Not for real medical emergencies."
+},
+{
+"id": "hulk",
+"name": "Bruce Banner Always Angry",
+"lines": 2,
+"shape": "reaction",
+"core": "Bruce Banner glancing back before revealing his secret; used for 'that's my secret, I'm always X' style reveals.",
+"slots": [
+"setup",
+"my secret"
+],
+"aliases": [
+"hulk",
+"that's my secret",
+"i'm always angry",
+"bruce banner"
+],
+"avoid": "Not for situations with no hidden reveal."
+},
+{
+"id": "hulktaco",
+"name": "Hulk Taco",
+"lines": 2,
+"shape": "irony",
+"core": "Hulk responds to someone's sad story by offering a taco; used for a totally inadequate response to a serious problem.",
+"slots": [
+"someone's problem",
+"the useless offer"
+],
+"aliases": [
+"hulk taco",
+"hulk offering taco",
+"want a taco",
+"smart hulk taco"
+],
+"avoid": "Not for genuinely helpful responses."
+},
+{
+"id": "squidwardchair",
+"name": "Squidward Chair",
+"lines": 2,
+"shape": "before-after",
+"core": "Squidward happily carries his chair out, then grumpily carries it back in; used when plans to relax are cut short.",
+"slots": [
+"hopeful plan",
+"what ruins it"
+],
+"aliases": [
+"squidward chair",
+"squidward going inside",
+"squidward lawn chair",
+"squidward back inside"
+],
+"avoid": "Not for plans that work out."
+},
+{
+"id": "mariobrosviews",
+"name": "Mario Bros Views",
+"lines": 3,
+"shape": "comparison",
+"core": "Mario and Luigi give their opposing takes on a topic; used to contrast two opinions, usually one sane and one unhinged.",
+"slots": [
+"the topic",
+"Mario's view",
+"Luigi's view"
+],
+"aliases": [
+"mario bros views",
+"mario says luigi says",
+"what are the mario bros views on"
+],
+"avoid": "Not for topics with only one side."
+},
+{
+"id": "shrekcat",
+"name": "Puss In Boots Eyes",
+"lines": 2,
+"shape": "reaction",
+"core": "Puss in Boots making huge pleading eyes; used for begging or acting innocent to get something.",
+"slots": [
+"setup",
+"the plea"
+],
+"aliases": [
+"shrek cat",
+"puss in boots eyes",
+"sad cat eyes",
+"puppy eyes cat"
+],
+"avoid": "Not for angry or confident moments."
+},
+{
+"id": "oldmancupofcoffee",
+"name": "Hide The Pain Harold Laptop",
+"lines": 2,
+"shape": "before-after",
+"core": "Harold smiles at his laptop, then looks up with a pained forced smile; used when something seems fine then quietly turns awful.",
+"slots": [
+"what you see first",
+"the painful realization"
+],
+"aliases": [
+"hide the pain harold",
+"harold coffee laptop",
+"old man coffee",
+"pained smile old man"
+],
+"avoid": "Not for genuinely happy outcomes."
+},
+{
+"id": "relief",
+"name": "Relief",
+"lines": 2,
+"shape": "reaction",
+"core": "Robert Downey Jr. exhaling with a hand on his chest; used for huge relief when a disaster is narrowly avoided.",
+"slots": [
+"the scare",
+"the relief"
+],
+"aliases": [
+"relief",
+"rdj relief",
+"robert downey jr relieved",
+"sigh of relief"
+],
+"avoid": "Not for bad news that actually happened."
+},
+{
+"id": "trollface",
+"name": "Troll Face",
+"lines": 2,
+"shape": "reaction",
+"core": "The classic rage-comic troll grin; used when someone deliberately trolls or pranks others and is smug about it.",
+"slots": [
+"the troll move",
+"problem?"
+],
+"aliases": [
+"troll face",
+"trollface",
+"problem",
+"u mad bro"
+],
+"avoid": "Not for sincere or kind actions."
+},
+{
+"id": "soiguessyoucansaythingsarege",
+"name": "So I Guess You Can Say Things Are Getting Pretty Serious",
+"lines": 2,
+"shape": "irony",
+"core": "A man deadpans that things are getting pretty serious; used for a pun or an understated 'things are getting serious' line.",
+"slots": [
+"setup",
+"punny serious line"
+],
+"aliases": [
+"things are getting pretty serious",
+"so i guess you can say",
+"pretty serious guy"
+],
+"avoid": "Not for actually serious or tragic news."
+},
+{
+"id": "manholdingcardboardsign",
+"name": "Man Holding Cardboard Sign",
+"lines": 1,
+"shape": "other",
+"core": "A man silently holds a blank cardboard sign while people pass by; used to state an unpopular opinion or protest something.",
+"slots": [
+"what the sign says"
+],
+"aliases": [
+"man holding sign",
+"cardboard sign guy",
+"protest sign meme",
+"guy with sign"
+],
+"avoid": "Not for multi-person dialogues."
+},
+{
+"id": "yaoming",
+"name": "Yao Ming",
+"lines": 2,
+"shape": "reaction",
+"core": "Rage-comic Yao Ming laughing dismissively; used to laugh off something absurd or brush it aside.",
+"slots": [
+"the absurd thing",
+"laugh it off"
+],
+"aliases": [
+"yao ming",
+"yao ming face",
+"bitch please",
+"yao laugh"
+],
+"avoid": "Not for moments of genuine concern."
+},
+{
+"id": "herewegoagain",
+"name": "Ah Shit Here We Go Again",
+"lines": 1,
+"shape": "reaction",
+"core": "CJ from GTA San Andreas sighing as trouble starts again; used when a familiar bad situation repeats.",
+"slots": [
+"the recurring situation"
+],
+"aliases": [
+"here we go again",
+"ah shit here we go again",
+"cj gta",
+"gta san andreas"
+],
+"avoid": "Not for new or pleasant experiences."
+},
+{
+"id": "annoyedbird",
+"name": "Annoyed Bird",
+"lines": 3,
+"shape": "dialogue",
+"core": "A small bird speaks twice and a loud crow interrupts with a shouted reply, leaving the small bird annoyed; used for being drowned out or mansplained.",
+"slots": [
+"small bird says",
+"small bird again",
+"crow shouts over"
+],
+"aliases": [
+"annoyed bird",
+"bird interrupted",
+"crow yelling bird",
+"screaming crow"
+],
+"avoid": "Not for calm two-sided conversations."
+},
+{
+"id": "ppap",
+"name": "PPAP",
+"lines": 4,
+"shape": "escalation",
+"core": "Pikotaro's Pen Pineapple Apple Pen: two things combined into one silly mashup; used to show two things merging into a ridiculous result.",
+"slots": [
+"I have a ...",
+"I have a ...",
+"Uh! combined thing",
+"final mashup"
+],
+"aliases": [
+"ppap",
+"pen pineapple apple pen",
+"pikotaro",
+"i have a pen"
+],
+"avoid": "Not for things that don't combine."
+},
+{
+"id": "rainbowsixfuzethehostage",
+"name": "Fuze The Hostage",
+"lines": 2,
+"shape": "labeling",
+"core": "A soldier leaps onto a fleeing hostage; used when something pounces on an easy, helpless target.",
+"slots": [
+"the attacker",
+"the helpless target"
+],
+"aliases": [
+"fuze the hostage",
+"rainbow six siege",
+"r6 hostage",
+"jumping on hostage"
+],
+"avoid": "Not for fair, even matchups."
+},
+{
+"id": "jojoswalk",
+"name": "Jojo's Walk",
+"lines": 2,
+"shape": "labeling",
+"core": "Dio and Jotaro walk menacingly toward each other; used when two rivals or forces are about to clash.",
+"slots": [
+"first rival",
+"second rival"
+],
+"aliases": [
+"jojo walk",
+"dio vs jotaro",
+"approaching each other",
+"menacing walk"
+],
+"avoid": "Not for friendly or cooperative pairs."
+},
+{
+"id": "johndalyandtigerwoods",
+"name": "John Daly And Tiger Woods",
+"lines": 2,
+"shape": "comparison",
+"core": "Disciplined athlete Tiger Woods beside John Daly smoking in loud pants; used to contrast the polished version of something with the chaotic one.",
+"slots": [
+"the disciplined one",
+"the chaotic one"
+],
+"aliases": [
+"john daly tiger woods",
+"tiger and daly",
+"daly smoking golf",
+"golf contrast"
+],
+"avoid": "Not for two similar things."
+},
+{
+"id": "goodfellaslaugh",
+"name": "Goodfellas Laugh",
+"lines": 2,
+"shape": "reaction",
+"core": "Ray Liotta and friends laughing hard in Goodfellas; used for cracking up at something, often a shared inside joke.",
+"slots": [
+"setup",
+"the funny part"
+],
+"aliases": [
+"goodfellas laugh",
+"ray liotta laughing",
+"two guys laughing",
+"henry hill laugh"
+],
+"avoid": "Not for sad or awkward moments."
+},
+{
+"id": "funfactswithsquidward",
+"name": "Fun Facts With Squidward",
+"lines": 1,
+"shape": "irony",
+"core": "Squidward presents a 'fun fact' that is actually bleak or annoying; used to share a depressing or pedantic fact.",
+"slots": [
+"the bleak fun fact"
+],
+"aliases": [
+"fun facts with squidward",
+"squidward fun fact",
+"squidward speech bubble"
+],
+"avoid": "Not for genuinely fun or upbeat facts."
+},
+{
+"id": "iceberg",
+"name": "Iceberg",
+"lines": 5,
+"shape": "escalation",
+"core": "The tip of an iceberg shows what people know, deeper layers hide progressively obscure or darker truths; used for tiered levels of knowledge.",
+"slots": [
+"surface level",
+"a bit deeper",
+"deeper",
+"very deep",
+"the abyss"
+],
+"aliases": [
+"iceberg",
+"iceberg chart",
+"tip of the iceberg",
+"iceberg tiers"
+],
+"avoid": "Not for simple two-item comparisons."
+},
+{
+"id": "neildegrassetyson",
+"name": "Neil deGrasse Tyson Reaction",
+"lines": 2,
+"shape": "reaction",
+"core": "Rage-comic Neil deGrasse Tyson with hands up, smugly sarcastic; used for 'watch out, we got a badass over here' mocking of someone showing off.",
+"slots": [
+"what someone brags about",
+"sarcastic reaction"
+],
+"aliases": [
+"neil degrasse tyson",
+"we got a badass over here",
+"watch out guys",
+"ndt reaction"
+],
+"avoid": "Not for sincere praise."
+},
+{
+"id": "blankcomicpanel2x2",
+"name": "Blank Comic Panel 2x2",
+"lines": 4,
+"shape": "escalation",
+"core": "Four empty comic panels; used for a four-beat text joke with setup, build, turn and punchline.",
+"slots": [
+"setup",
+"build",
+"turn",
+"punchline"
+],
+"aliases": [
+"blank comic",
+"2x2 comic",
+"four panel comic",
+"empty comic panels"
+],
+"avoid": "Not for jokes that need a picture to land."
+},
+{
+"id": "scaryharry",
+"name": "Scary Harry",
+"lines": 2,
+"shape": "reaction",
+"core": "Harry from Dumb and Dumber screaming in wide-eyed horror; used for sudden panic or shock.",
+"slots": [
+"setup",
+"the horrifying realization"
+],
+"aliases": [
+"scary harry",
+"dumb and dumber scream",
+"harry screaming",
+"jeff daniels scream"
+],
+"avoid": "Not for calm or happy moments."
+},
+{
+"id": "lordoftheringsmeatsbackonthe",
+"name": "Meat's Back on the Menu",
+"lines": 2,
+"shape": "approval",
+"core": "A gleeful announcement that something once forbidden or scarce is allowed again, used when a restriction ends.",
+"slots": [
+"the restriction that just ended",
+"meat's back on the menu, boys"
+],
+"aliases": [
+"meat's back on the menu",
+"looks like meat's back on the menu boys",
+"lotr orc meat",
+"uruk-hai meat"
+],
+"avoid": "Not for sad news or ongoing restrictions."
+},
+{
+"id": "girlsgossiping",
+"name": "Girls Gossiping",
+"lines": 2,
+"shape": "dialogue",
+"core": "One person whispers shocking gossip and the other is scandalized, used for juicy or absurd revelations.",
+"slots": [
+"the whispered secret",
+"the shocked reaction"
+],
+"aliases": [
+"girls gossiping",
+"whispering girl",
+"emma roberts gossip",
+"did you hear"
+],
+"avoid": "Not for genuinely private or hurtful rumours about real people."
+},
+{
+"id": "insideyoutherearetwowolves",
+"name": "Inside You There Are Two Wolves",
+"lines": 3,
+"shape": "binary-choice",
+"core": "Two conflicting urges fight inside you, and the punchline reveals which one you actually are.",
+"slots": [
+"first wolf's urge",
+"second wolf's urge",
+"which one you are"
+],
+"aliases": [
+"two wolves",
+"inside you there are two wolves",
+"wolves inside you",
+"two wolves meme"
+],
+"avoid": "Not for comparisons that don't involve your own conflicting impulses."
+},
+{
+"id": "fantasypainting",
+"name": "Fantasy Painting",
+"lines": 2,
+"shape": "labeling",
+"core": "A towering armored giant looms over a tiny fallen warrior, labeled as an overwhelming problem and the small person facing it.",
+"slots": [
+"the giant threat",
+"you, tiny and defeated"
+],
+"aliases": [
+"fantasy painting",
+"yhorm the giant",
+"giant vs knight",
+"dark souls painting"
+],
+"avoid": "Not for evenly matched contests."
+},
+{
+"id": "myauntswedding",
+"name": "My Aunt's Wedding",
+"lines": 2,
+"shape": "before-after",
+"core": "The same guy looks scruffy in one setting and sharply dressed in another, contrasting how you act in two situations.",
+"slots": [
+"the casual situation",
+"the dressed-up situation"
+],
+"aliases": [
+"my aunt's wedding",
+"me at home vs me at my aunt's wedding",
+"pajamas vs suit",
+"casual vs formal"
+],
+"avoid": "Not for mocking someone's real appearance."
+},
+{
+"id": "cupheadflower",
+"name": "Cuphead Flower",
+"lines": 2,
+"shape": "irony",
+"core": "The flower screams in rage, then instantly switches to an innocent smile, contrasting a reaction in private versus in public.",
+"slots": [
+"situation that makes you rage",
+"situation where you act sweet"
+],
+"aliases": [
+"cuphead flower",
+"cagney carnation",
+"screaming flower smiling flower",
+"flower two faces"
+],
+"avoid": "Not for situations without a two-faced switch."
+},
+{
+"id": "sleepingsquidward",
+"name": "Sleeping Squidward",
+"lines": 2,
+"shape": "plan-backfires",
+"core": "Squidward is peacefully asleep, then jolts awake in horror, used for a sudden intrusive thought that ruins rest.",
+"slots": [
+"about to fall asleep",
+"the thought that jolts you awake"
+],
+"aliases": [
+"sleeping squidward",
+"squidward wakes up",
+"squidward can't sleep",
+"brain at 3am"
+],
+"avoid": "Not for things that are calming or pleasant."
+},
+{
+"id": "smashbros",
+"name": "Smash Bros Joins the Battle",
+"lines": 1,
+"shape": "other",
+"core": "Announces an unexpected newcomer entering the fray, in the style of a Super Smash Bros. character reveal.",
+"slots": [
+"the newcomer"
+],
+"aliases": [
+"joins the battle",
+"smash bros reveal",
+"smash bros newcomer",
+"everyone is here"
+],
+"avoid": "Not for something that is leaving or already familiar."
+},
+{
+"id": "littlemisssunshine",
+"name": "Little Miss",
+"lines": 1,
+"shape": "labeling",
+"core": "A Little Miss character captioned 'Little Miss ___' to name a relatable personal trait or habit.",
+"slots": [
+"Little Miss [your trait]"
+],
+"aliases": [
+"little miss",
+"little miss sunshine",
+"mr men little miss",
+"little miss meme"
+],
+"avoid": "Not for long sentences; it's a short title."
+},
+{
+"id": "excitedminions",
+"name": "Excited Minions",
+"lines": 2,
+"shape": "approval",
+"core": "Two minions scream with joy, used for over-the-top excitement about good news.",
+"slots": [
+"the good news",
+"the excited reaction"
+],
+"aliases": [
+"excited minions",
+"minions screaming",
+"happy minions",
+"minions yay"
+],
+"avoid": "Not for disappointment or calm approval."
+},
+{
+"id": "spidermanglasses",
+"name": "Peter Parker Glasses",
+"lines": 2,
+"shape": "before-after",
+"core": "Peter Parker sees clearly without glasses but blurry with them, used when a 'fix' makes things worse or things look different through a new lens.",
+"slots": [
+"seeing it without glasses",
+"seeing it with glasses on"
+],
+"aliases": [
+"spiderman glasses",
+"peter parker glasses",
+"peter parker putting on glasses",
+"glasses blurry"
+],
+"avoid": "Not for simple preferences without a change in perception."
+},
+{
+"id": "guyincornerofparty",
+"name": "Guy in Corner of Party",
+"lines": 2,
+"shape": "labeling",
+"core": "A lonely wojak stands in the corner while everyone else parties, used for the person quietly thinking about something niche while others have fun.",
+"slots": [
+"what the corner guy is thinking about",
+"the people partying"
+],
+"aliases": [
+"guy in corner of party",
+"wojak corner party",
+"loner at party",
+"they don't know"
+],
+"avoid": "Not for situations where everyone is equally involved."
+},
+{
+"id": "batmansmiles",
+"name": "Batman Smiles",
+"lines": 2,
+"shape": "approval",
+"core": "Batman goes from stone-faced to a rare small smile, used for a quiet moment of satisfaction.",
+"slots": [
+"the serious situation",
+"the thing that makes you smile"
+],
+"aliases": [
+"batman smiles",
+"batman smiling",
+"michael keaton batman smile",
+"batman smirk"
+],
+"avoid": "Not for big loud celebrations."
+},
+{
+"id": "babygodfather",
+"name": "Baby Godfather",
+"lines": 2,
+"shape": "warning",
+"core": "A toddler in a tux gestures like a mob boss, used for small-time threats or demands made with mafia gravity.",
+"slots": [
+"the setup",
+"the mob-boss demand"
+],
+"aliases": [
+"baby godfather",
+"godfather baby",
+"mafia baby",
+"tuxedo baby"
+],
+"avoid": "Not for genuinely threatening messages."
+},
+{
+"id": "aragornblackgateforfrodo",
+"name": "Aragorn For Frodo",
+"lines": 2,
+"shape": "other",
+"core": "Aragorn quietly says 'For Frodo' and charges a hopeless army alone, used for a brave, doomed effort on someone's behalf.",
+"slots": [
+"the rallying cry",
+"the hopeless charge"
+],
+"aliases": [
+"for frodo",
+"aragorn for frodo",
+"black gate charge",
+"aragorn charge"
+],
+"avoid": "Not for tasks that are easy or safe."
+},
+{
+"id": "cryingpeterparker",
+"name": "Crying Peter Parker",
+"lines": 2,
+"shape": "reaction",
+"core": "Peter Parker sobs openly, used for something heartbreaking or for crying over a small disappointment.",
+"slots": [
+"the sad setup",
+"the crying reaction"
+],
+"aliases": [
+"crying peter parker",
+"tobey maguire crying",
+"spiderman crying",
+"peter parker cry"
+],
+"avoid": "Not for happy or triumphant moments."
+},
+{
+"id": "ibringasortofxvibetothey",
+"name": "I Bring a Sort of X Vibe to the Y",
+"lines": 3,
+"shape": "self-own",
+"core": "A fill-in-the-blank boast about bringing an unwanted vibe to a group that doesn't like it, used to own your odd role.",
+"slots": [
+"the vibe you bring",
+"the group you bring it to",
+"who doesn't like it"
+],
+"aliases": [
+"i bring a sort of vibe",
+"x vibe to the y",
+"i bring a vibe that they don't like",
+"vibe to the family"
+],
+"avoid": "Not for vibes everyone welcomes."
+},
+{
+"id": "hellohumanresources",
+"name": "Hello Human Resources",
+"lines": 2,
+"shape": "irony",
+"core": "The same line is charming from an attractive coworker but reported to HR from a frumpy one, mocking double standards.",
+"slots": [
+"line from the handsome guy",
+"same line from the other guy"
+],
+"aliases": [
+"hello human resources",
+"know the work rules",
+"appropriate inappropriate",
+"hr comic"
+],
+"avoid": "Not for actual harassment situations."
+},
+{
+"id": "surprisedjoey",
+"name": "Surprised Joey",
+"lines": 2,
+"shape": "reaction",
+"core": "Joey goes from relaxed to wide-eyed as something slowly sinks in, used for a delayed shocked realization.",
+"slots": [
+"the calm setup",
+"the realization"
+],
+"aliases": [
+"surprised joey",
+"joey realization",
+"friends joey shocked",
+"joey wide eyes"
+],
+"avoid": "Not for things that are obvious from the start."
+},
+{
+"id": "swimmingpoolkids",
+"name": "Swimming Pool Kids",
+"lines": 4,
+"shape": "labeling",
+"core": "A mom plays with one kid while another drowns unnoticed and a skeleton sits forgotten below, used for neglecting old things for a new favourite.",
+"slots": [
+"the new favourite",
+"you",
+"the old thing being ignored",
+"the long-forgotten thing"
+],
+"aliases": [
+"swimming pool kids",
+"drowning kid meme",
+"skeleton at bottom of pool",
+"mom ignoring drowning kid"
+],
+"avoid": "Not for situations with only two things to compare."
+},
+{
+"id": "alrightgentlemenweneedanewid",
+"name": "Alright Gentlemen We Need a New Idea",
+"lines": 2,
+"shape": "plan-backfires",
+"core": "A boardroom brainstorm where a pitched idea gets a horrified reaction, used for terrible corporate ideas.",
+"slots": [
+"the idea being pitched",
+"the reaction or worse idea"
+],
+"aliases": [
+"alright gentlemen we need a new idea",
+"boardroom meeting comic",
+"we need a new idea",
+"board meeting shock"
+],
+"avoid": "Not for good ideas that get praised."
+}
+]

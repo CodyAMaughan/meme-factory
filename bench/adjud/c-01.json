@@ -1,0 +1,1255 @@
+[
+ {
+  "qid": "keanu#bdev",
+  "request": "what if my dog only pretends to not understand the word bath",
+  "style": "situation",
+  "target": {
+   "id": "keanu",
+   "name": "Conspiracy Keanu",
+   "shape": "question",
+   "core": "Stoned-sounding conspiracy theory musing 'what if' that connects unrelated things.",
+   "slots": [
+    "'what if' wild premise",
+    "the absurd connection or twist ending the thought"
+   ],
+   "aliases": [
+    "conspiracy keanu",
+    "what if keanu"
+   ],
+   "picture": "young man with shaggy hair and shocked open-mouth expression, mind-blown look, close-up"
+  },
+  "picked": [
+   {
+    "id": "kermit",
+    "name": "But That's None of My Business",
+    "shape": "ironic-denial",
+    "core": "Kermit sips tea while making a petty or shady comment, pretending it's not his business.",
+    "slots": [
+     "petty observation or shady fact, often blank",
+     "'but that's none of my business' deflection"
+    ],
+    "aliases": [
+     "but thats none of my business",
+     "kermit tea"
+    ],
+    "picture": "green frog puppet sipping cup of tea by window, nonchalant"
+   },
+   {
+    "id": "blackgirlwat",
+    "name": "Black Girl Wat",
+    "shape": "reaction",
+    "core": "A confused, skeptical side-eye with a raised hand, used when someone says something that makes no sense.",
+    "slots": [
+     "the baffling statement"
+    ],
+    "aliases": [
+     "black girl wat",
+     "confused girl",
+     "wat girl",
+     "confused side eye",
+     "excuse me what"
+    ],
+    "picture": "girl in classroom with confused disgusted face, hand raised palm up questioning, people behind her"
+   },
+   {
+    "id": "blackguyconfused",
+    "name": "Nick Young Confused",
+    "shape": "reaction",
+    "core": "Basketball player Nick Young with question marks, baffled; used when something makes no sense at all.",
+    "slots": [
+     "the confusing thing"
+    ],
+    "aliases": [
+     "nick young",
+     "confused nick young",
+     "question mark guy",
+     "black guy confused"
+    ],
+    "picture": "young man in white shirt with confused squinting smile, question marks floating around his head"
+   }
+  ]
+ },
+ {
+  "qid": "collegefreshman#bdev",
+  "request": "first week of college and i already spent my whole loan on pizza",
+  "style": "situation",
+  "target": {
+   "id": "collegefreshman",
+   "name": "College Freshman",
+   "shape": "irony",
+   "core": "An eager smiling freshman who naively thinks small newbie things are a big deal.",
+   "slots": [
+    "newbie situation",
+    "naive take"
+   ],
+   "aliases": [
+    "Freshman",
+    "Naive College Kid",
+    "First Year Student"
+   ],
+   "picture": "smiling young man in grey hoodie with backpack holding phone, college campus brick building"
+  },
+  "picked": [
+   {
+    "id": "thisiswhereidputmytrophyifih",
+    "name": "This Is Where I'd Put My Trophy If I Had One",
+    "shape": "self-own",
+    "core": "Proudly showing off the empty spot where an achievement would be, admitting you never got it.",
+    "slots": [
+     "the thing you'd display",
+     "admission you don't have it"
+    ],
+    "aliases": [
+     "trophy if I had one",
+     "Mr Turner trophy",
+     "Fairly OddParents trophy",
+     "empty pedestal"
+    ],
+    "picture": "cartoon man with big chin pointing at an empty pedestal, then crying holding nothing, two panels"
+   },
+   {
+    "id": "lazycollegesenior",
+    "name": "Lazy College Senior",
+    "shape": "self-own",
+    "core": "A scruffy student drinking beer; used for confessions of lazy, half-hearted, senior-year-style effort.",
+    "slots": [
+     "the responsibility",
+     "the lazy way out"
+    ],
+    "aliases": [
+     "Lazy Senior",
+     "Beer Student",
+     "College Senior",
+     "Senioritis Guy"
+    ],
+    "picture": "scruffy young man drinking a glass of dark beer at outdoor cafe, tired half-lidded look"
+   },
+   {
+    "id": "trustnobodynotevenyourself",
+    "name": "Trust Nobody, Not Even Yourself",
+    "shape": "self-own",
+    "core": "A person about to be betrayed by themselves, for when your own past actions sabotage you.",
+    "slots": [
+     "me",
+     "also me, sabotaging"
+    ],
+    "aliases": [
+     "trust nobody",
+     "not even yourself",
+     "self betrayal",
+     "guy pointing gun at himself"
+    ],
+    "picture": "young man in blue shirt, same man sneaking up behind holding a gun to his head"
+   }
+  ]
+ },
+ {
+  "qid": "happyguyrageface#bdev",
+  "request": "when the build finally passes after 3 days im literally crying with joy",
+  "style": "situation",
+  "target": {
+   "id": "happyguyrageface",
+   "name": "Happy Guy Rage Face",
+   "shape": "reaction",
+   "core": "A rage-comic face crying tears of joy, used for overwhelming happiness at a small win.",
+   "slots": [
+    "the small win"
+   ],
+   "aliases": [
+    "tears of joy rage face",
+    "happy crying rage comic",
+    "so happy rage face",
+    "joy rage face"
+   ],
+   "picture": "rage comic drawn face with big teary eyes, wide toothy grin, crying with happiness"
+  },
+  "picked": [
+   {
+    "id": "itsfinallyover",
+    "name": "It's Finally Over",
+    "shape": "reaction",
+    "core": "An exhausted Frodo at Mount Doom, used for the weary relief when an ordeal finally ends.",
+    "slots": [
+     "the ordeal",
+     "it's finally over"
+    ],
+    "aliases": [
+     "it's finally over",
+     "frodo mount doom",
+     "frodo relief",
+     "it's over"
+    ],
+    "picture": "young man with curly hair, dirty scratched face, teary relieved eyes, fire and lava behind him"
+   },
+   {
+    "id": "tearsofjoy",
+    "name": "Tears Of Joy",
+    "shape": "reaction",
+    "core": "A rage-comic face crying tears of happiness, used when something is so good or so relieving it makes you emotional.",
+    "slots": [
+     "good news",
+     "emotional reaction"
+    ],
+    "aliases": [
+     "Happy Crying Rage Face",
+     "Tears Of Joy Rage Comic",
+     "So Happy I Cried"
+    ],
+    "picture": "rage comic face crying blue tears with huge happy grin, overjoyed"
+   },
+   {
+    "id": "spongebobhappyandsad",
+    "name": "SpongeBob Happy And Sad",
+    "shape": "before-after",
+    "core": "SpongeBob grinning with excitement then bawling, used for expectations versus the crushing reality.",
+    "slots": [
+     "the happy expectation",
+     "the sad reality"
+    ],
+    "aliases": [
+     "spongebob happy sad",
+     "spongebob crying",
+     "happy then sad spongebob",
+     "expectation vs reality spongebob"
+    ],
+    "picture": "cartoon yellow sponge grinning excitedly with fists, then sitting crying fountains of tears, two panels top and bottom"
+   }
+  ]
+ },
+ {
+  "qid": "darthvadercometothedarkside#bdev",
+  "request": "trying to get my sister to switch to linux we have better tools",
+  "style": "situation",
+  "target": {
+   "id": "darthvadercometothedarkside",
+   "name": "Come To The Dark Side",
+   "shape": "approval",
+   "core": "Vader reaches out invitingly; used to tempt someone into a guilty pleasure or the 'wrong' side.",
+   "slots": [
+    "the invitation",
+    "the temptation"
+   ],
+   "aliases": [
+    "darth vader",
+    "join the dark side",
+    "we have cookies",
+    "vader reaching"
+   ],
+   "picture": "black armored helmeted villain reaching out one hand offering, blue lit space station background"
+  },
+  "picked": [
+   {
+    "id": "platetoss",
+    "name": "Plate Toss",
+    "shape": "rejection",
+    "core": "One guy serves another a plate, who instantly flings it away; used when an offer or gift is rejected immediately.",
+    "slots": [
+     "the offer",
+     "the instant rejection"
+    ],
+    "aliases": [
+     "plate toss",
+     "always sunny plate throw",
+     "throwing the plate",
+     "dennis plate toss"
+    ],
+    "picture": "man in pajamas setting plate of food in front of seated man, then man flings plate away, two panels top and bottom"
+   },
+   {
+    "id": "athome",
+    "name": "We Have It At Home",
+    "shape": "comparison",
+    "core": "Kid asks for something, mom says we have it at home, and the home version is a sad knockoff; used for disappointing cheap substitutes.",
+    "slots": [
+     "what you want",
+     "same thing again",
+     "the sad home version"
+    ],
+    "aliases": [
+     "we have it at home",
+     "mom we have at home",
+     "at home meme",
+     "food at home"
+    ],
+    "picture": "plain white text template: can we stop and get some, mom: we have it at home, at home: with blank spaces"
+   },
+   {
+    "id": "drake",
+    "name": "Drakeposting",
+    "shape": "binary-choice",
+    "core": "Drake rejects one thing and approves of another.",
+    "slots": [
+     "the rejected option",
+     "the preferred option"
+    ],
+    "aliases": [
+     "drakeposting",
+     "drake hotline bling",
+     "drake no yes"
+    ],
+    "picture": "man in orange puffer jacket holding hand up refusing, then smiling and pointing, two panels"
+   }
+  ]
+ },
+ {
+  "qid": "veinpoppingkid#bdev",
+  "request": "trying not to laugh during the serious all hands meeting",
+  "style": "situation",
+  "target": {
+   "id": "veinpoppingkid",
+   "name": "Guy Holding It In",
+   "shape": "reaction",
+   "core": "A student straining with a popping vein, used for desperately holding back a comment or reaction.",
+   "slots": [
+    "the situation",
+    "what you're dying to say"
+   ],
+   "aliases": [
+    "vein popping kid",
+    "trying not to say it",
+    "holding it in",
+    "kid straining in class",
+    "guy resisting"
+   ],
+   "picture": "teenage boy in classroom straining face with vein on forehead, holding it in, girl beside him at whiteboard"
+  },
+  "picked": [
+   {
+    "id": "neckveinguy",
+    "name": "Neck Vein Guy",
+    "shape": "reaction",
+    "core": "A guy visibly straining to hold back laughter or anger, for when you desperately try not to react.",
+    "slots": [
+     "the situation",
+     "trying not to react"
+    ],
+    "aliases": [
+     "trying not to laugh",
+     "holding in laugh",
+     "neck vein guy",
+     "trying to hold it in"
+    ],
+    "picture": "teenage boy with curly hair straining to hold it in, vein bulging on forehead, tense face"
+   },
+   {
+    "id": "strainingkid",
+    "name": "Straining Kid",
+    "shape": "reaction",
+    "core": "A kid in class visibly straining to hold something in, used when you're desperately trying not to say or do something.",
+    "slots": [
+     "the situation",
+     "what you're holding back"
+    ],
+    "aliases": [
+     "straining kid",
+     "holding it in",
+     "trying not to laugh kid",
+     "hold fart kid"
+    ],
+    "picture": "teen boy in hoodie in classroom straining face, holding something in, girl sitting behind him"
+   },
+   {
+    "id": "holdfart",
+    "name": "Hold Fart",
+    "shape": "reaction",
+    "core": "A student straining with a tense face, used for desperately holding something in or trying hard not to react.",
+    "slots": [
+     "the situation",
+     "what you're holding in"
+    ],
+    "aliases": [
+     "hold fart",
+     "trying not to fart",
+     "straining student",
+     "holding it in"
+    ],
+    "picture": "teenage boy in hoodie in classroom straining, tense face holding it in, girl sitting behind him"
+   }
+  ]
+ },
+ {
+  "qid": "briangriffin#bdev",
+  "request": "smug dog leaning back in his chair explaining why he doesnt own a tv",
+  "style": "visual",
+  "target": {
+   "id": "briangriffin",
+   "name": "Brian Griffin",
+   "shape": "irony",
+   "core": "Brian from Family Guy lounging smugly, used for pretentious, self-satisfied takes and humblebrags.",
+   "slots": [
+    "pretentious setup",
+    "smug punchline"
+   ],
+   "aliases": [
+    "brian griffin",
+    "family guy brian",
+    "smug brian",
+    "pretentious brian"
+   ],
+   "picture": "cartoon white dog with red collar reclining in a chair, arms spread out, smug half-lidded look, bookshelf behind"
+  },
+  "picked": [
+   {
+    "id": "hipsterkitty",
+    "name": "Hipster Kitty",
+    "shape": "irony",
+    "core": "A hipster cat smugly dismisses something for being too mainstream or claims to have liked it before it was cool.",
+    "slots": [
+     "the mainstream thing",
+     "the smug hipster take"
+    ],
+    "aliases": [
+     "hipster cat",
+     "before it was cool cat",
+     "hoodie kitten"
+    ],
+    "picture": "kitten wearing purple hoodie and thin glasses, yellow and white diagonal background"
+   },
+   {
+    "id": "smugbear",
+    "name": "Smug Bear",
+    "shape": "irony",
+    "core": "A bear with its nose in the air, used for smugly getting away with something or feeling superior.",
+    "slots": [
+     "smug setup",
+     "smug payoff"
+    ],
+    "aliases": [
+     "Smug Grizzly",
+     "Proud Bear",
+     "Arrogant Bear",
+     "Nose Up Bear"
+    ],
+    "picture": "brown bear with head tilted up looking smug and proud, side profile"
+   },
+   {
+    "id": "babybossrelaxedsmugcontent",
+    "name": "Baby Boss Relaxed Smug Content",
+    "shape": "reaction",
+    "core": "A baby leaning back with hands behind head, smugly content, used when everything is going your way.",
+    "slots": [
+     "the situation",
+     "my smug reaction"
+    ],
+    "aliases": [
+     "Smug Baby",
+     "Relaxed Baby",
+     "Baby Hands Behind Head",
+     "Content Baby"
+    ],
+    "picture": "smiling baby in high chair with hands behind head, relaxed smug content pose, blue bib, kitchen"
+   }
+  ]
+ },
+ {
+  "qid": "mysisterswedding#bdev",
+  "request": "dude asked if i could work saturday, i cant, its my sisters wedding",
+  "style": "situation",
+  "target": {
+   "id": "mysisterswedding",
+   "name": "My Sister's Wedding",
+   "shape": "before-after",
+   "core": "The same guy in pajamas versus a sharp suit, showing how differently you show up for two occasions.",
+   "slots": [
+    "the setup",
+    "the casual occasion",
+    "the occasion you dress up for"
+   ],
+   "aliases": [
+    "pajamas vs suit",
+    "same guy two outfits",
+    "my sisters wedding",
+    "dressed up vs casual"
+   ],
+   "picture": "same young man in hoodie and plaid pajama pants on left, then in sharp black suit on right, side by side"
+  },
+  "picked": [
+   {
+    "id": "noicantobama",
+    "name": "No I Can't Obama",
+    "shape": "rejection",
+    "core": "Obama on the phone looking pained; used to turn a 'yes we can' expectation into a weary 'no, I can't'.",
+    "slots": [
+     "the request",
+     "no I can't"
+    ],
+    "aliases": [
+     "obama phone",
+     "no we can't",
+     "obama facepalm phone",
+     "no i cant"
+    ],
+    "picture": "man on desk phone in office with fingers to temple, talking, flag behind"
+   },
+   {
+    "id": "howaboutnobear",
+    "name": "How About No Bear",
+    "shape": "rejection",
+    "core": "A bear raising its paws with 'how about no' printed below, used to flatly refuse a suggestion.",
+    "slots": [
+     "the request being refused"
+    ],
+    "aliases": [
+     "how about no",
+     "how about no bear",
+     "bear says no",
+     "no bear"
+    ],
+    "picture": "black bear standing on hind legs with paws raised in front, refusing, text how about no"
+   },
+   {
+    "id": "babeplease",
+    "name": "Babe Please",
+    "shape": "rejection",
+    "core": "A crying girl begs for something while the calm bearded Chad flatly refuses or answers stoically.",
+    "slots": [
+     "tearful plea",
+     "calm reply"
+    ],
+    "aliases": [
+     "babe please",
+     "crying girl chad",
+     "wojak girl vs chad",
+     "crying vs yes chad"
+    ],
+    "picture": "two panels side by side, crying anime girl with long black hair screaming, calm blond bearded man profile"
+   }
+  ]
+ },
+ {
+  "qid": "refusestoelaborateanyfurther#bdev",
+  "request": "my dog stole a whole sandwich and refuses to explain",
+  "style": "situation",
+  "target": {
+   "id": "refusestoelaborateanyfurther",
+   "name": "Refuses To Elaborate Any Further",
+   "shape": "irony",
+   "core": "A buff man posing over a bold one-line claim, used for confident statements made with zero explanation.",
+   "slots": [
+    "the bold unexplained claim"
+   ],
+   "aliases": [
+    "Refuses To Elaborate",
+    "Refuses To Elaborate Further",
+    "Leaves",
+    "No Elaboration"
+   ],
+   "picture": "black and white photo of shirtless muscular bearded man pulling shirt over shoulders, confident stare"
+  },
+  "picked": [
+   {
+    "id": "monkeylookingaway",
+    "name": "Monkey Puppet Looking Away",
+    "shape": "reaction",
+    "core": "A monkey puppet awkwardly glances sideways and away; used for awkward guilt when you're implicated and pretend not to be.",
+    "slots": [
+     "awkward situation",
+     "your reaction"
+    ],
+    "aliases": [
+     "monkey puppet",
+     "awkward monkey",
+     "monkey looking away",
+     "side eye monkey"
+    ],
+    "picture": "orange monkey puppet glancing sideways then looking away awkwardly, two panels side by side"
+   },
+   {
+    "id": "woman-cat",
+    "name": "Woman Yelling at a Cat",
+    "shape": "dialogue",
+    "core": "Angry woman yells at a confused, unbothered cat at a dinner table.",
+    "slots": [
+     "the accusation or yelling, from the woman",
+     "the cat's calm, confused or indifferent response"
+    ],
+    "aliases": [
+     "woman yelling at cat",
+     "smudge the cat"
+    ],
+    "picture": "crying blonde woman yelling and pointing, friend holding her back, next to white cat sitting at dinner table, side by side"
+   },
+   {
+    "id": "thatsmysecret",
+    "name": "That's My Secret",
+    "shape": "irony",
+    "core": "Hulk's 'that's my secret, I'm always angry', for revealing that your trick is a permanent bad state.",
+    "slots": [
+     "the question",
+     "that's my secret, I'm always X"
+    ],
+    "aliases": [
+     "i'm always angry",
+     "hulk secret",
+     "that's my secret cap",
+     "bruce banner"
+    ],
+    "picture": "dark haired man in gray shirt looking back over shoulder smiling in destroyed city street with fire and wreckage"
+   }
+  ]
+ },
+ {
+  "qid": "hereliesx#bdev",
+  "request": "rip my motivation to work out it died in january",
+  "style": "situation",
+  "target": {
+   "id": "hereliesx",
+   "name": "Here Lies X",
+   "shape": "labeling",
+   "core": "A SpongeBob tombstone; write what died or was given up on, to mourn something lost or abandoned.",
+   "slots": [
+    "what died"
+   ],
+   "aliases": [
+    "spongebob tombstone",
+    "here lies",
+    "rip spongebob",
+    "gravestone"
+   ],
+   "picture": "cartoon blank gravestone with white flowers at base, underwater seaweed background"
+  },
+  "picked": [
+   {
+    "id": "rip",
+    "name": "RIP Tombstone",
+    "shape": "labeling",
+    "core": "A blank gravestone marked R.I.P. for mourning something that just died or got discontinued.",
+    "slots": [
+     "what died"
+    ],
+    "aliases": [
+     "rip",
+     "tombstone",
+     "gravestone",
+     "rest in peace"
+    ],
+    "picture": "gray stone tombstone with R.I.P. carved on it and a skull at top, grass at base"
+   },
+   {
+    "id": "gravespongebob",
+    "name": "Grave SpongeBob",
+    "shape": "labeling",
+    "core": "Squidward sadly laying flowers on a grave, used to mourn something that is gone or discontinued.",
+    "slots": [
+     "who is mourning",
+     "what died (on the tombstone)"
+    ],
+    "aliases": [
+     "Squidward Grave",
+     "Squidward Tombstone",
+     "Squidward Flowers Grave",
+     "RIP Squidward"
+    ],
+    "picture": "Squidward kneeling sadly placing flowers at a gravestone, then gravestone alone with flowers, two panels"
+   },
+   {
+    "id": "sadcat",
+    "name": "Sad Cat",
+    "shape": "reaction",
+    "core": "A tiny kitten looking up with big sad eyes, used to express small disappointments or plead for sympathy.",
+    "slots": [
+     "the sad setup",
+     "the disappointing result"
+    ],
+    "aliases": [
+     "Sad Kitten",
+     "Sad Kitty",
+     "Crying Cat",
+     "Pleading Kitten"
+    ],
+    "picture": "fluffy gray kitten with folded ears sitting on white blanket, looking up with big sad eyes"
+   }
+  ]
+ },
+ {
+  "qid": "bernieiamonceagainaskingfory#bdev",
+  "request": "asking my team AGAIN to please write tests",
+  "style": "situation",
+  "target": {
+   "id": "bernieiamonceagainaskingfory",
+   "name": "Bernie I Am Once Again Asking",
+   "shape": "reaction",
+   "core": "A weary, repeated plea: someone asking yet again for the same thing they keep having to request.",
+   "slots": [
+    "what you keep asking for"
+   ],
+   "aliases": [
+    "once again asking",
+    "bernie asking",
+    "financial support",
+    "bernie sanders mittens"
+   ],
+   "picture": "old white-haired man with glasses in brown parka, serious face, snowy street, caption at bottom"
+  },
+  "picked": [
+   {
+    "id": "iamonceagainasking",
+    "name": "I Am Once Again Asking",
+    "shape": "reaction",
+    "core": "Bernie Sanders' weary repeated plea, used to ask for the same thing yet again.",
+    "slots": [
+     "i am once again asking",
+     "for the thing"
+    ],
+    "aliases": [
+     "bernie once again asking",
+     "i am once again asking for your financial support",
+     "bernie sanders mittens ask",
+     "once again asking"
+    ],
+    "picture": "old white-haired man with glasses in brown winter parka speaking earnestly to camera, outdoors in snowy yard"
+   },
+   {
+    "id": "couldyounotfor5minutes",
+    "name": "Could You Not For 5 Minutes",
+    "shape": "dialogue",
+    "core": "Shrek begging Donkey to stop doing one annoying thing for just five minutes, used for relentless habits.",
+    "slots": [
+     "could you not X for 5 minutes",
+     "who keeps doing it"
+    ],
+    "aliases": [
+     "Shrek For Five Minutes",
+     "Could You Not",
+     "Shrek Donkey 5 Minutes",
+     "For Five Minutes"
+    ],
+    "picture": "green ogre peeking from curtain smiling, then turning to yell at donkey outside, two panels top and bottom"
+   },
+   {
+    "id": "drakejoshmegan",
+    "name": "Josh Megan",
+    "shape": "reaction",
+    "core": "Josh stands frozen in exhausted exasperation; used for weary disbelief when someone does the annoying thing again.",
+    "slots": [
+     "what happened",
+     "my exhausted reaction"
+    ],
+    "aliases": [
+     "Drake and Josh Megan",
+     "Josh Peck Annoyed",
+     "Megan!",
+     "Josh Exasperated"
+    ],
+    "picture": "chubby teen with dark hair in red shirt standing in living room, mouth open in annoyed confused look"
+   }
+  ]
+ },
+ {
+  "qid": "unsettledtom#bdev",
+  "request": "cartoon cat with a disturbed face, when the dentist says hmm",
+  "style": "visual",
+  "target": {
+   "id": "unsettledtom",
+   "name": "Unsettled Tom",
+   "shape": "reaction",
+   "core": "Tom's uneasy, side-eyed stare, used for something quietly disturbing or suspicious that makes you uncomfortable.",
+   "slots": [
+    "the unsettling situation"
+   ],
+   "aliases": [
+    "unsettled tom",
+    "tom side eye",
+    "uncomfortable tom",
+    "tom and jerry stare"
+   ],
+   "picture": "close-up of grey cartoon cat with yellow eyes looking disturbed and uneasy, single image"
+  },
+  "picked": [
+   {
+    "id": "woahkitty",
+    "name": "Woah Kitty",
+    "shape": "reaction",
+    "core": "A wide-eyed black cat staring in shock, used for being startled or disturbed by something.",
+    "slots": [
+     "what you saw",
+     "shocked reaction"
+    ],
+    "aliases": [
+     "Shocked Cat",
+     "Wide Eyed Cat",
+     "Black Cat Stare",
+     "Surprised Kitty"
+    ],
+    "picture": "black cat with wide shocked green eyes staring at camera, collar, startled"
+   },
+   {
+    "id": "scaredcat",
+    "name": "Scared Cat",
+    "shape": "reaction",
+    "core": "A wide-eyed horrified cat, used for sudden shock or panic at a realisation.",
+    "slots": [
+     "the shocking realisation",
+     "the panicked reaction"
+    ],
+    "aliases": [
+     "scared cat",
+     "shocked cat",
+     "horrified cat",
+     "surprised cat"
+    ],
+    "picture": "cat with huge wide eyes and open mouth, shocked frightened expression, close-up"
+   },
+   {
+    "id": "omgcat",
+    "name": "OMG Cat",
+    "shape": "reaction",
+    "core": "A wide-eyed cat gasps in shock; used for being stunned by surprising news.",
+    "slots": [
+     "the shocking news",
+     "the reaction"
+    ],
+    "aliases": [
+     "omg cat",
+     "shocked cat",
+     "surprised cat",
+     "gasping cat"
+    ],
+    "picture": "white cat with wide eyes and mouth open in shock, surprised"
+   }
+  ]
+ },
+ {
+  "qid": "hotcaleb#bdev",
+  "request": "skinny kid in a tie hands on hips at the racetrack, me thinking im handsome after a haircut",
+  "style": "visual",
+  "target": {
+   "id": "hotcaleb",
+   "name": "Hot Caleb",
+   "shape": "approval",
+   "core": "A stylish guy posing confidently; used for effortlessly cool or attractive behaviour.",
+   "slots": [
+    "the setup",
+    "the smooth move"
+   ],
+   "aliases": [
+    "hot caleb",
+    "hot guy pose",
+    "cool guy"
+   ],
+   "picture": "skinny young man in gray shirt and black tie, hands on hips, smug pose at racetrack balcony"
+  },
+  "picked": [
+   {
+    "id": "squidward",
+    "name": "Handsome Squidward",
+    "shape": "before-after",
+    "core": "Handsome Squidward versus his normal ugly face, contrasting an idealised version with the grim reality.",
+    "slots": [
+     "the idealised version",
+     "the reality"
+    ],
+    "aliases": [
+     "handsome Squidward",
+     "ugly Squidward",
+     "Squidward handsome vs ugly",
+     "Squidward before after"
+    ],
+    "picture": "handsome chiseled cartoon squid man glowing, then ugly squid staring in horror at it, two panels top and bottom"
+   },
+   {
+    "id": "pointingmirrorguy",
+    "name": "Pointing Mirror Guy",
+    "shape": "self-own",
+    "core": "A man points at his own reflection, for blaming or calling out yourself.",
+    "slots": [
+     "me",
+     "the me I'm blaming"
+    ],
+    "aliases": [
+     "Pointing Mirror Guy",
+     "Pointing at Mirror",
+     "Wikihow mirror guy",
+     "Self-blame mirror"
+    ],
+    "picture": "cartoon man pointing at his reflection in a mirror, reflection pointing back, intense stare, wikihow style"
+   },
+   {
+    "id": "annoyingchildhoodfriend",
+    "name": "Annoying Childhood Friend",
+    "shape": "self-own",
+    "core": "A grinning kid looking up, used to describe the annoying things that one friend always did as a child.",
+    "slots": [
+     "annoying action",
+     "the twist"
+    ],
+    "aliases": [
+     "Annoying Kid",
+     "Childhood Friend",
+     "Annoying Friend",
+     "Smug Kid"
+    ],
+    "picture": "chubby boy with bowl haircut in white polo shirt looking up at camera with smug smile"
+   }
+  ]
+ },
+ {
+  "qid": "cryingwojakmask#bdev",
+  "request": "smiling mask wojak with tears underneath, me saying im fine at work",
+  "style": "visual",
+  "target": {
+   "id": "cryingwojakmask",
+   "name": "Crying Wojak Mask",
+   "shape": "irony",
+   "core": "A crying wojak hides behind a smiling mask: pretending everything is fine while falling apart.",
+   "slots": [
+    "what I pretend"
+   ],
+   "aliases": [
+    "wojak mask",
+    "crying behind mask",
+    "smiling mask wojak"
+   ],
+   "picture": "drawn face holding smiling mask over a crying face with tears, black and white line art"
+  },
+  "picked": [
+   {
+    "id": "pretendingtobehappyhidingcry",
+    "name": "Wojak Smiling Mask",
+    "shape": "irony",
+    "core": "A crying Wojak hides behind a smiley mask, for pretending everything is fine while falling apart inside.",
+    "slots": [
+     "the cheerful front",
+     "the hidden truth"
+    ],
+    "aliases": [
+     "Pretending To Be Happy",
+     "Wojak Mask",
+     "Crying Behind Mask",
+     "Smiling Mask Wojak"
+    ],
+    "picture": "crying bald stick figure face hiding behind a smiling mask on a stick, tears streaming, black and white drawing"
+   },
+   {
+    "id": "harold",
+    "name": "Hide the Pain Harold",
+    "shape": "ironic-denial",
+    "core": "Forced smile masking internal pain or embarrassment.",
+    "slots": [
+     "the awkward or painful situation",
+     "what he's pretending, or the detail that stings"
+    ],
+    "aliases": [
+     "hide the pain harold",
+     "harold"
+    ],
+    "picture": "smiling old man with white beard at laptop holding coffee mug, forced fake smile hiding pain"
+   },
+   {
+    "id": "fine",
+    "name": "This is Fine",
+    "shape": "ironic-denial",
+    "core": "Calmly insisting everything is fine while surrounded by disaster.",
+    "slots": [
+     "the escalating disaster or stressful situation (often blank)",
+     "calm denial line, e.g. 'this is fine'"
+    ],
+    "aliases": [
+     "this is fine dog",
+     "burning room dog"
+    ],
+    "picture": "cartoon dog in hat sitting at table in burning room, calm smile, coffee mug, flames everywhere"
+   }
+  ]
+ },
+ {
+  "qid": "highexpectationsasianfather#bdev",
+  "request": "got a 98 on my exam and my dad asked where the other 2 points went",
+  "style": "situation",
+  "target": {
+   "id": "highexpectationsasianfather",
+   "name": "High Expectations Asian Father",
+   "shape": "rejection",
+   "core": "A stern father is unimpressed by an achievement and demands even more, used for impossibly high standards.",
+   "slots": [
+    "your achievement",
+    "his unimpressed demand"
+   ],
+   "aliases": [
+    "asian father",
+    "high expectations dad",
+    "asian dad",
+    "why not a plus"
+   ],
+   "picture": "stern older asian man with glasses face on green starburst background, disappointed look"
+  },
+  "picked": [
+   {
+    "id": "happyshock",
+    "name": "Happy Then Shocked",
+    "shape": "before-after",
+    "core": "A man grinning, then his smile collapsing into dismay as he learns the catch.",
+    "slots": [
+     "the good news",
+     "the catch"
+    ],
+    "aliases": [
+     "disappointed black guy",
+     "happy then sad",
+     "smile fade",
+     "happy to disappointed"
+    ],
+    "picture": "man smiling happily then looking shocked and disappointed, blank spaces on left, two panels top and bottom"
+   },
+   {
+    "id": "harold",
+    "name": "Hide the Pain Harold",
+    "shape": "ironic-denial",
+    "core": "Forced smile masking internal pain or embarrassment.",
+    "slots": [
+     "the awkward or painful situation",
+     "what he's pretending, or the detail that stings"
+    ],
+    "aliases": [
+     "hide the pain harold",
+     "harold"
+    ],
+    "picture": "smiling old man with white beard at laptop holding coffee mug, forced fake smile hiding pain"
+   },
+   {
+    "id": "pretendingtobehappyhidingcry",
+    "name": "Wojak Smiling Mask",
+    "shape": "irony",
+    "core": "A crying Wojak hides behind a smiley mask, for pretending everything is fine while falling apart inside.",
+    "slots": [
+     "the cheerful front",
+     "the hidden truth"
+    ],
+    "aliases": [
+     "Pretending To Be Happy",
+     "Wojak Mask",
+     "Crying Behind Mask",
+     "Smiling Mask Wojak"
+    ],
+    "picture": "crying bald stick figure face hiding behind a smiling mask on a stick, tears streaming, black and white drawing"
+   }
+  ]
+ },
+ {
+  "qid": "yourelaughing#bdev",
+  "request": "my fantasy team lost by 0.2 points and youre laughing",
+  "style": "situation",
+  "target": {
+   "id": "yourelaughing",
+   "name": "You're Laughing",
+   "shape": "irony",
+   "core": "A stern talk-show host scolding someone for laughing, used when a terrible situation is met with amusement: 'X happened and you're laughing.'",
+   "slots": [
+    "the grim fact",
+    "and you're laughing"
+   ],
+   "aliases": [
+    "You're Laughing De Niro",
+    "Murray Franklin You're Laughing",
+    "And You're Laughing",
+    "Joker De Niro"
+   ],
+   "picture": "older man in suit sitting at bar with mug, wincing with disbelief, angry and hurt expression"
+  },
+  "picked": [
+   {
+    "id": "laughingleo",
+    "name": "Laughing Leo",
+    "shape": "reaction",
+    "core": "Leonardo DiCaprio laughing smugly with a drink in Django Unchained; a reaction to someone else's misfortune or a ridiculous situation.",
+    "slots": [
+     "the situation",
+     "the smug reaction"
+    ],
+    "aliases": [
+     "leo laughing",
+     "django leo",
+     "dicaprio laughing",
+     "leonardo dicaprio django"
+    ],
+    "picture": "man with goatee in old-fashioned suit and white flower laughing, holding up a glass of drink"
+   },
+   {
+    "id": "laughingkid",
+    "name": "Laughing Kid",
+    "shape": "reaction",
+    "core": "A kid laughing hysterically at someone else's misfortune or a ridiculous situation.",
+    "slots": [
+     "the setup",
+     "the funny misfortune"
+    ],
+    "aliases": [
+     "laughing kid",
+     "kid laughing apple",
+     "ginger kid laughing",
+     "laughing boy"
+    ],
+    "picture": "red-haired boy squinting and grinning hard while biting an apple, laughing scrunched face"
+   },
+   {
+    "id": "antanddeclaughing",
+    "name": "Ant And Dec Laughing",
+    "shape": "reaction",
+    "core": "The TV duo Ant and Dec in fits of laughter; used for laughing hard at something absurd or someone's misfortune.",
+    "slots": [
+     "setup",
+     "what made them laugh"
+    ],
+    "aliases": [
+     "ant and dec laughing",
+     "ant and dec",
+     "two guys laughing",
+     "crying laughing duo"
+    ],
+    "picture": "two men sitting at desk with microphones laughing hysterically, leaning back"
+   }
+  ]
+ },
+ {
+  "qid": "chair#bdev",
+  "request": "me and my dad yelling about whether to use tabs or spaces",
+  "style": "situation",
+  "target": {
+   "id": "chair",
+   "name": "American Chopper Argument",
+   "shape": "dialogue",
+   "core": "Father and son in heated argument, escalating until the chair is thrown.",
+   "slots": [
+    "first speaker opens with a position",
+    "second speaker objects",
+    "first rebuts",
+    "second counters",
+    "first concedes or proposes",
+    "second erupts with a rage line"
+   ],
+   "aliases": [
+    "american chopper",
+    "chopper argument",
+    "american chopper argument"
+   ],
+   "picture": "two bikers arguing and shouting, older bearded man and younger man in cap, chair thrown, multiple panels"
+  },
+  "picked": [
+   {
+    "id": "barbosaandsparrow",
+    "name": "Barbossa And Sparrow",
+    "shape": "dialogue",
+    "core": "Barbossa yells in Jack Sparrow's face while Jack stares back unbothered; used for an angry rant met with a deadpan reply.",
+    "slots": [
+     "the angry rant",
+     "the deadpan response"
+    ],
+    "aliases": [
+     "Barbossa Yelling At Jack",
+     "Pirates Argument",
+     "Jack Sparrow Barbossa",
+     "Barbossa Sparrow"
+    ],
+    "picture": "two pirates face to face, older one in big hat shouting angrily, dreadlocked one in red bandana unimpressed"
+   },
+   {
+    "id": "woman-cat",
+    "name": "Woman Yelling at a Cat",
+    "shape": "dialogue",
+    "core": "Angry woman yells at a confused, unbothered cat at a dinner table.",
+    "slots": [
+     "the accusation or yelling, from the woman",
+     "the cat's calm, confused or indifferent response"
+    ],
+    "aliases": [
+     "woman yelling at cat",
+     "smudge the cat"
+    ],
+    "picture": "crying blonde woman yelling and pointing, friend holding her back, next to white cat sitting at dinner table, side by side"
+   },
+   {
+    "id": "twocatsfightingforreal",
+    "name": "Two Cats Fighting",
+    "shape": "labeling",
+    "core": "Two cats brawl mid-air; used to label two sides locked in a pointless, heated fight.",
+    "slots": [
+     "first side",
+     "second side"
+    ],
+    "aliases": [
+     "Cats Fighting",
+     "Cat Fight",
+     "Two Cats Brawling",
+     "Cats Punching"
+    ],
+    "picture": "two cats standing up fighting each other on a table, orange cat and grey tabby grappling with paws"
+   }
+  ]
+ },
+ {
+  "qid": "citybear#bdev",
+  "request": "when you walk into a party and dont know anyone so you just lean on the railing",
+  "style": "situation",
+  "target": {
+   "id": "citybear",
+   "name": "City Bear",
+   "shape": "irony",
+   "core": "A bear casually leaning on a city railing among commuters, used for someone blending in where they obviously don't belong.",
+   "slots": [
+    "setup",
+    "out-of-place punchline"
+   ],
+   "aliases": [
+    "city bear",
+    "russian bear",
+    "bear in city",
+    "bear at bus stop"
+   ],
+   "picture": "person in brown bear costume leaning on railing by city street, bus and pedestrians behind"
+  },
+  "picked": [
+   {
+    "id": "partyloner",
+    "name": "Party Loner Wojak",
+    "shape": "irony",
+    "core": "A sad wojak alone at the wall while everyone else parties, for feeling left out or thinking about something else.",
+    "slots": [
+     "me at the party",
+     "what I'm thinking about"
+    ],
+    "aliases": [
+     "wojak at party",
+     "party loner",
+     "lonely wojak",
+     "sad guy at party",
+     "wallflower wojak"
+    ],
+    "picture": "simple sketch of lonely man in party hat holding cup standing against wall while others dance"
+   },
+   {
+    "id": "guyincornerofparty",
+    "name": "Guy in Corner of Party",
+    "shape": "labeling",
+    "core": "A lonely wojak stands in the corner while everyone else parties, used for the person quietly thinking about something niche while others have fun.",
+    "slots": [
+     "what the corner guy is thinking about",
+     "the people partying"
+    ],
+    "aliases": [
+     "guy in corner of party",
+     "wojak corner party",
+     "loner at party",
+     "they don't know"
+    ],
+    "picture": "simple drawing of guy in party hat standing alone in corner holding drink while others dance"
+   },
+   {
+    "id": "pretendingtobehappyhidingcry",
+    "name": "Wojak Smiling Mask",
+    "shape": "irony",
+    "core": "A crying Wojak hides behind a smiley mask, for pretending everything is fine while falling apart inside.",
+    "slots": [
+     "the cheerful front",
+     "the hidden truth"
+    ],
+    "aliases": [
+     "Pretending To Be Happy",
+     "Wojak Mask",
+     "Crying Behind Mask",
+     "Smiling Mask Wojak"
+    ],
+    "picture": "crying bald stick figure face hiding behind a smiling mask on a stick, tears streaming, black and white drawing"
+   }
+  ]
+ }
+]

@@ -1,0 +1,1051 @@
+[
+{
+"id": "neuronactivation",
+"name": "Neuron Activation",
+"lines": 1,
+"shape": "reaction",
+"core": "A monkey's brain lights up at a stimulus, used for something that instantly excites or triggers you.",
+"slots": [
+"the stimulus"
+],
+"aliases": [
+"neuron activation",
+"monkey neuron activation",
+"monkey sees action",
+"brain activation"
+],
+"avoid": "Not for boring or neutral things."
+},
+{
+"id": "nomaidens",
+"name": "No Maidens",
+"lines": 1,
+"shape": "rejection",
+"core": "Megamind staring smugly asking 'No ___?' to mock someone for lacking something.",
+"slots": [
+"no ___?"
+],
+"aliases": [
+"no maidens",
+"megamind no",
+"no bitches megamind",
+"megamind meme"
+],
+"avoid": "Not for kind or supportive messages."
+},
+{
+"id": "communistcat",
+"name": "Communist Cat",
+"lines": 2,
+"shape": "irony",
+"core": "A cat before a Soviet flag, used to declare something 'ours' in the shared-everything communist joke.",
+"slots": [
+"setup",
+"it's ours"
+],
+"aliases": [
+"communist cat",
+"soviet cat",
+"our cat",
+"comrade cat"
+],
+"avoid": "Not for serious political arguments."
+},
+{
+"id": "homersimpsonmmm",
+"name": "Homer Simpson Mmm",
+"lines": 2,
+"shape": "reaction",
+"core": "Homer drooling 'Mmm...' over something he craves.",
+"slots": [
+"mmm...",
+"the craving"
+],
+"aliases": [
+"homer drooling",
+"mmm donuts",
+"homer mmm",
+"homer simpson drool"
+],
+"avoid": "Not for things you find disgusting."
+},
+{
+"id": "officercartman",
+"name": "Officer Cartman",
+"lines": 2,
+"shape": "warning",
+"core": "Cartman as a cop demanding respect for his authority over something petty.",
+"slots": [
+"petty rule",
+"respect my authority"
+],
+"aliases": [
+"respect my authoritah",
+"cartman cop",
+"officer cartman",
+"cartman authority"
+],
+"avoid": "Not for real police or legal matters."
+},
+{
+"id": "advicegod",
+"name": "Advice God",
+"lines": 2,
+"shape": "irony",
+"core": "God explaining a petty or trolling design choice in creation.",
+"slots": [
+"what god made",
+"his petty reason"
+],
+"aliases": [
+"advice god",
+"trolling god",
+"god advice animal",
+"creator god"
+],
+"avoid": "Not for mocking anyone's sincere faith."
+},
+{
+"id": "lionkingrafikisimba",
+"name": "Rafiki Holding Up Simba",
+"lines": 2,
+"shape": "labeling",
+"core": "Rafiki proudly presenting baby Simba, used for proudly showing off something to the world.",
+"slots": [
+"the thing presented",
+"the proud presenter"
+],
+"aliases": [
+"rafiki simba",
+"lion king presentation",
+"holding up simba",
+"circle of life"
+],
+"avoid": "Not for embarrassing things you'd hide."
+},
+{
+"id": "researchcat",
+"name": "Research Cat",
+"lines": 2,
+"shape": "reaction",
+"core": "A bespectacled cat at a laptop, used for someone earnestly looking something up or researching an absurd question.",
+"slots": [
+"the situation",
+"what the cat is researching"
+],
+"aliases": [
+"cat with glasses laptop",
+"nerd cat",
+"smart cat computer",
+"cat googling"
+],
+"avoid": "Not for real expertise or serious academic topics."
+},
+{
+"id": "thosewhoknow",
+"name": "Those Who Know",
+"lines": 1,
+"shape": "irony",
+"core": "Mr. Incredible goes from cheerful to haunted, used for a thing that only people with grim insider experience truly understand.",
+"slots": [
+"the thing only insiders understand"
+],
+"aliases": [
+"those who know mr incredible",
+"mr incredible uncanny",
+"those who know meme",
+"traumatized mr incredible"
+],
+"avoid": "Not for ordinary good-or-bad comparisons with many stages."
+},
+{
+"id": "pressingbothbuttons",
+"name": "Pressing Both Buttons",
+"lines": 3,
+"shape": "binary-choice",
+"core": "Instead of agonizing between two options, the guy smugly presses both, used for choosing everything at once.",
+"slots": [
+"option one",
+"option two",
+"smug guy who picked both"
+],
+"aliases": [
+"why not both buttons",
+"two buttons both",
+"press both buttons",
+"daily struggle both"
+],
+"avoid": "Not for genuine painful dilemmas where only one choice is possible."
+},
+{
+"id": "masteroogway",
+"name": "Master Oogway",
+"lines": 2,
+"shape": "irony",
+"core": "The wise old turtle delivers a profound-sounding quote, used for fake wisdom about a mundane or silly truth.",
+"slots": [
+"setup of the wisdom",
+"the punchline wisdom"
+],
+"aliases": [
+"oogway quote",
+"kung fu panda turtle",
+"there are no accidents",
+"oogway wisdom"
+],
+"avoid": "Not for genuinely serious life advice."
+},
+{
+"id": "kidnamed",
+"name": "Kid Named",
+"lines": 1,
+"shape": "labeling",
+"core": "Mike Ehrmantraut stares deadpan under a 'Kid named ___:' caption, joking that someone or something is literally named after its defining trait.",
+"slots": [
+"kid named [trait]"
+],
+"aliases": [
+"kid named finger",
+"mike ehrmantraut stare",
+"kid named meme",
+"breaking bad mike"
+],
+"avoid": "Not for long setups; the joke is one short label."
+},
+{
+"id": "trailerparkboysbubbles",
+"name": "Trailer Park Boys Bubbles",
+"lines": 2,
+"shape": "reaction",
+"core": "Bubbles looks stunned and indignant, used to react to something outrageous or baffling.",
+"slots": [
+"what happened",
+"Bubbles' reaction"
+],
+"aliases": [
+"bubbles trailer park boys",
+"shocked bubbles",
+"trailer park boys reaction",
+"bubbles glasses"
+],
+"avoid": "Not for calm or happy reactions."
+},
+{
+"id": "gokustaring",
+"name": "Goku Staring",
+"lines": 2,
+"shape": "reaction",
+"core": "Super Saiyan Goku gives an intense, silent stare, used for quietly judging or sizing up someone's nonsense.",
+"slots": [
+"what someone said or did",
+"Goku's silent judgment"
+],
+"aliases": [
+"goku stare",
+"serious goku",
+"goku looking",
+"super saiyan stare"
+],
+"avoid": "Not for cheerful or excited reactions."
+},
+{
+"id": "elitistvictorianscumbag",
+"name": "Elitist Victorian Scumbag",
+"lines": 1,
+"shape": "irony",
+"core": "Powdered aristocrats look down from a balcony, used for snobbish disdain toward people doing something common.",
+"slots": [
+"the snobby opinion"
+],
+"aliases": [
+"volturi balcony",
+"aristocrats looking down",
+"snobby nobles",
+"twilight volturi"
+],
+"avoid": "Not for genuine admiration or warmth."
+},
+{
+"id": "ageofmen",
+"name": "Age of Men",
+"lines": 2,
+"shape": "escalation",
+"core": "The orc Gothmog declares 'the age of men is over, the time of the orc has come', used to announce one thing being replaced by something worse.",
+"slots": [
+"the age of [old thing] is over",
+"the time of [new thing] has come"
+],
+"aliases": [
+"the age of men is over",
+"time of the orc",
+"gothmog",
+"lord of the rings orc"
+],
+"avoid": "Not for welcome or positive change."
+},
+{
+"id": "angrykoala",
+"name": "Angry Koala",
+"lines": 2,
+"shape": "reaction",
+"core": "A soaked koala screams in rage, used for furious overreactions to small annoyances.",
+"slots": [
+"the annoyance",
+"the furious reaction"
+],
+"aliases": [
+"screaming koala",
+"mad koala",
+"wet angry koala",
+"furious koala"
+],
+"avoid": "Not for calm or cute moments."
+},
+{
+"id": "ididnthearnobell",
+"name": "I Didn't Hear No Bell",
+"lines": 2,
+"shape": "exaggeration",
+"core": "A battered Randy Marsh refuses to quit the fight, used for stubbornly carrying on after being clearly beaten.",
+"slots": [
+"what has beaten you",
+"I didn't hear no bell"
+],
+"aliases": [
+"randy marsh no bell",
+"i didnt hear no bell",
+"south park fight",
+"keep fighting randy"
+],
+"avoid": "Not for actual victories or graceful exits."
+},
+{
+"id": "scumbagminecraft",
+"name": "Scumbag Minecraft",
+"lines": 2,
+"shape": "plan-backfires",
+"core": "The Creeper face, used for something that seems fine and then sneakily ruins everything.",
+"slots": [
+"the innocent setup",
+"the sneaky betrayal"
+],
+"aliases": [
+"creeper face",
+"minecraft creeper",
+"scumbag creeper",
+"minecraft advice"
+],
+"avoid": "Not for genuinely helpful things."
+},
+{
+"id": "eightiesteen",
+"name": "Eighties Teen",
+"lines": 2,
+"shape": "comparison",
+"core": "A mulleted teen chugs a beer, used to brag about how carefree life was before modern tech and rules.",
+"slots": [
+"what kids have today",
+"how the 80s did it"
+],
+"aliases": [
+"80s teen",
+"eighties kid beer",
+"mullet teen",
+"back in my day 80s"
+],
+"avoid": "Not for things that are actually modern or high-tech."
+},
+{
+"id": "efrainjuarez",
+"name": "Efrain Juarez",
+"lines": 2,
+"shape": "reaction",
+"core": "A footballer on the ground covers his mouth in shock, used for gasping at something unbelievable.",
+"slots": [
+"the shocking thing",
+"the gasp"
+],
+"aliases": [
+"shocked footballer",
+"efrain juarez gasp",
+"soccer player shocked",
+"hand over mouth footballer"
+],
+"avoid": "Not for calm or bored reactions."
+},
+{
+"id": "scroogemcduck",
+"name": "Scrooge McDuck",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Scrooge McDuck lounges in a mountain of gold, used for feeling absurdly rich over a tiny windfall.",
+"slots": [
+"the small windfall",
+"feeling like a millionaire"
+],
+"aliases": [
+"scrooge swimming in money",
+"scrooge gold",
+"rich duck",
+"money pile"
+],
+"avoid": "Not for actual hardship or poverty jokes."
+},
+{
+"id": "happyguyrageface",
+"name": "Happy Guy Rage Face",
+"lines": 1,
+"shape": "reaction",
+"core": "A rage-comic face crying tears of joy, used for overwhelming happiness at a small win.",
+"slots": [
+"the small win"
+],
+"aliases": [
+"tears of joy rage face",
+"happy crying rage comic",
+"so happy rage face",
+"joy rage face"
+],
+"avoid": "Not for sad or angry moments."
+},
+{
+"id": "wrongneighboorhoodcats",
+"name": "Wrong Neighborhood Cats",
+"lines": 2,
+"shape": "warning",
+"core": "A gang of cats advances menacingly at night, used for a group coming to confront someone who messed up.",
+"slots": [
+"what you did",
+"the gang coming for you"
+],
+"aliases": [
+"cat gang",
+"you in the wrong neighborhood",
+"cats walking at night",
+"gang of cats"
+],
+"avoid": "Not for friendly or welcoming groups."
+},
+{
+"id": "shouter",
+"name": "Shouter",
+"lines": 2,
+"shape": "reaction",
+"core": "A man screams furiously into a phone, used for losing it at customer service or someone on a call.",
+"slots": [
+"what the other person said",
+"the screaming reply"
+],
+"aliases": [
+"man yelling into phone",
+"angry phone guy",
+"screaming on phone",
+"shouting man"
+],
+"avoid": "Not for calm conversations."
+},
+{
+"id": "brianwilliamswasthere2",
+"name": "Brian Williams Was There",
+"lines": 2,
+"shape": "exaggeration",
+"core": "The news anchor explains earnestly, used for someone falsely claiming they were present at a famous event.",
+"slots": [
+"the famous event",
+"claim of being there"
+],
+"aliases": [
+"brian williams lying",
+"brian williams was there",
+"news anchor story",
+"i was there"
+],
+"avoid": "Not for genuine first-hand accounts."
+},
+{
+"id": "bonobolyfe",
+"name": "Bonobo Lyfe",
+"lines": 2,
+"shape": "reaction",
+"core": "Two bonobos laugh hysterically together, used for cracking up at a shared joke or someone else's misfortune.",
+"slots": [
+"the funny thing",
+"us laughing"
+],
+"aliases": [
+"laughing bonobos",
+"laughing monkeys",
+"apes laughing",
+"monkeys cracking up"
+],
+"avoid": "Not for sincere or sad moments."
+},
+{
+"id": "engineeringprofessor",
+"name": "Engineering Professor",
+"lines": 2,
+"shape": "irony",
+"core": "A smug professor before a crowded whiteboard, used for absurd academic logic like hard exams or rounding pi to 3.",
+"slots": [
+"what the professor says",
+"the absurd twist"
+],
+"aliases": [
+"engineering professor meme",
+"smug professor whiteboard",
+"professor crossed arms",
+"engineer logic"
+],
+"avoid": "Not for praising good teaching."
+},
+{
+"id": "frowningnun",
+"name": "Frowning Nun",
+"lines": 2,
+"shape": "rejection",
+"core": "A stern nun glares with deep disapproval, used for silently judging bad behaviour.",
+"slots": [
+"the bad behaviour",
+"the disapproval"
+],
+"aliases": [
+"disapproving nun",
+"angry nun",
+"stern nun",
+"judging nun"
+],
+"avoid": "Not for approval or delight."
+},
+{
+"id": "eminem",
+"name": "Eminem",
+"lines": 2,
+"shape": "dialogue",
+"core": "Eminem stares intensely, used for rewriting his famous lyrics about everyday situations.",
+"slots": [
+"setup lyric",
+"punchline lyric"
+],
+"aliases": [
+"eminem stare",
+"slim shady",
+"eminem lyrics meme",
+"will the real please stand up"
+],
+"avoid": "Not for reposting his actual lyrics verbatim."
+},
+{
+"id": "surprizedvegeta",
+"name": "Surprised Vegeta",
+"lines": 2,
+"shape": "reaction",
+"core": "Vegeta's eyes go wide in shock, used for being stunned by unexpected news.",
+"slots": [
+"the unexpected news",
+"the shocked reaction"
+],
+"aliases": [
+"shocked vegeta",
+"vegeta surprised",
+"dragon ball shocked",
+"vegeta wide eyes"
+],
+"avoid": "Not for things everyone saw coming."
+},
+{
+"id": "rickgrimes",
+"name": "Rick Grimes",
+"lines": 2,
+"shape": "warning",
+"core": "Rick Grimes aims his revolver, used for a threatening ultimatum or dealing with a nuisance by force.",
+"slots": [
+"the nuisance",
+"the threat"
+],
+"aliases": [
+"walking dead rick",
+"rick grimes gun",
+"sheriff rick",
+"rick aiming"
+],
+"avoid": "Not for real violence or gun news."
+},
+{
+"id": "metaljesus",
+"name": "Metal Jesus",
+"lines": 2,
+"shape": "approval",
+"core": "Jesus throws up the devil horns, used for wholesome approval of something hardcore or rocking.",
+"slots": [
+"the hardcore thing",
+"the blessing"
+],
+"aliases": [
+"jesus devil horns",
+"rock on jesus",
+"heavy metal jesus",
+"jesus rock hand"
+],
+"avoid": "Not for mocking religion or believers."
+},
+{
+"id": "futuramaleela",
+"name": "Futurama Leela",
+"lines": 2,
+"shape": "reaction",
+"core": "Leela squints with an unimpressed, suspicious look, used for doubting an obviously dubious claim.",
+"slots": [
+"the dubious claim",
+"the unimpressed reaction"
+],
+"aliases": [
+"leela squint",
+"unimpressed leela",
+"skeptical leela",
+"futurama side eye"
+],
+"avoid": "Not for excitement or genuine belief."
+},
+{
+"id": "bartsimpsonpeeking",
+"name": "Bart Simpson Peeking",
+"lines": 2,
+"shape": "reaction",
+"core": "Bart peeks in from the edge of the frame, used for sneakily showing up when a topic you care about comes up.",
+"slots": [
+"the topic that comes up",
+"me peeking in"
+],
+"aliases": [
+"bart peeking",
+"bart simpson peek",
+"peeking around corner",
+"sneaky bart"
+],
+"avoid": "Not for bold, confident entrances."
+},
+{
+"id": "rebeccablack",
+"name": "Rebecca Black",
+"lines": 2,
+"shape": "reaction",
+"core": "Rebecca Black of the song Friday, used for jokes about Friday, weekends and gleefully obvious or silly statements.",
+"slots": [
+"setup",
+"punchline"
+],
+"aliases": [
+"Friday",
+"Rebecca Black Friday",
+"Its Friday"
+],
+"avoid": "Not for serious or sad news; it's peppy and cheesy."
+},
+{
+"id": "overeducatedproblems",
+"name": "Over Educated Problems",
+"lines": 2,
+"shape": "irony",
+"core": "A melancholy man at a rainy window lamenting problems only over-qualified, over-educated people have.",
+"slots": [
+"situation",
+"lament"
+],
+"aliases": [
+"Overeducated Problems",
+"Sad Man Rainy Window",
+"Over Educated"
+],
+"avoid": "Not for genuine grief or real hardship."
+},
+{
+"id": "fatherted",
+"name": "Father Ted",
+"lines": 2,
+"shape": "reaction",
+"core": "Father Ted's sly, knowing head-tilt, used for smug or cheeky remarks and mild scheming.",
+"slots": [
+"setup",
+"cheeky remark"
+],
+"aliases": [
+"Father Ted Smirk",
+"Ted Crilly",
+"Sly Priest"
+],
+"avoid": "Not for genuine anger or sadness."
+},
+{
+"id": "angrybride",
+"name": "Angry Bride",
+"lines": 2,
+"shape": "labeling",
+"core": "A bride karate-kicking her groom, used to label something that violently rejects or punishes something else.",
+"slots": [
+"the attacker",
+"the one getting kicked"
+],
+"aliases": [
+"Bride Kicking Groom",
+"Karate Bride",
+"Wedding Kick"
+],
+"avoid": "Not for real domestic violence."
+},
+{
+"id": "romney",
+"name": "Romney",
+"lines": 2,
+"shape": "reaction",
+"core": "Mitt Romney leaning in awkwardly while a girl behind him gasps, used for cringey, out-of-touch or creepy remarks.",
+"slots": [
+"awkward line",
+"punchline"
+],
+"aliases": [
+"Mitt Romney",
+"Romney Gasp",
+"Shocked Girl Romney"
+],
+"avoid": "Not for serious political arguments."
+},
+{
+"id": "dallascowboys",
+"name": "Dallas Cowboys",
+"lines": 2,
+"shape": "irony",
+"core": "The Dallas Cowboys star logo, used to mock the team's hype and its habit of choking when it matters.",
+"slots": [
+"hype",
+"letdown"
+],
+"aliases": [
+"Cowboys",
+"Dallas Cowboys Star",
+"Cowboys Logo"
+],
+"avoid": "Not for jokes unrelated to big promises followed by failure."
+},
+{
+"id": "fatcat",
+"name": "Fat Cat",
+"lines": 2,
+"shape": "self-own",
+"core": "A chubby cat sprawled on a bed in overalls, used for laziness, overeating and comfortable defeat.",
+"slots": [
+"setup",
+"lazy punchline"
+],
+"aliases": [
+"Cat In Overalls",
+"Lazy Fat Cat",
+"Overalls Cat"
+],
+"avoid": "Not for body-shaming real people."
+},
+{
+"id": "shelteringsuburbanmom",
+"name": "Sheltering Suburban Mom",
+"lines": 2,
+"shape": "exaggeration",
+"core": "A smiling suburban mom who wildly overreacts to harmless things out of misguided protectiveness.",
+"slots": [
+"harmless thing",
+"paranoid overreaction"
+],
+"aliases": [
+"Suburban Mom",
+"Overprotective Mom",
+"Sheltering Mom"
+],
+"avoid": "Not for real parenting dangers."
+},
+{
+"id": "overjoyed",
+"name": "Overjoyed",
+"lines": 2,
+"shape": "reaction",
+"core": "A silhouette leaping for joy at a beach sunset, used to celebrate small wins far too much.",
+"slots": [
+"small win",
+"celebration"
+],
+"aliases": [
+"Jumping For Joy",
+"Sunset Jump",
+"Happy Jump Silhouette"
+],
+"avoid": "Not for disappointment or sarcasm-free bad news."
+},
+{
+"id": "herculeshades",
+"name": "Hercules Hades",
+"lines": 2,
+"shape": "reaction",
+"core": "Hades from Hercules giving an exasperated, unimpressed shrug, used for sarcastic replies to annoying or dumb things.",
+"slots": [
+"annoying thing",
+"sarcastic reply"
+],
+"aliases": [
+"Hades",
+"Disney Hades",
+"Unimpressed Hades"
+],
+"avoid": "Not for sincere happiness."
+},
+{
+"id": "collegefreshman",
+"name": "College Freshman",
+"lines": 2,
+"shape": "irony",
+"core": "An eager smiling freshman who naively thinks small newbie things are a big deal.",
+"slots": [
+"newbie situation",
+"naive take"
+],
+"aliases": [
+"Freshman",
+"Naive College Kid",
+"First Year Student"
+],
+"avoid": "Not for experienced, jaded behaviour (that's College Senior)."
+},
+{
+"id": "predator",
+"name": "Predator",
+"lines": 2,
+"shape": "reaction",
+"core": "Muddy, shirtless Schwarzenegger from Predator standing grimly, used for tough-guy survival or grim determination after an ordeal.",
+"slots": [
+"ordeal",
+"grim outcome"
+],
+"aliases": [
+"Arnold Predator",
+"Dutch Predator",
+"Muddy Arnold"
+],
+"avoid": "Not for cute or gentle moments."
+},
+{
+"id": "suspiciouscat",
+"name": "Suspicious Cat",
+"lines": 2,
+"shape": "reaction",
+"core": "A cat squinting with deep distrust, used when something seems too good or too fishy to be true.",
+"slots": [
+"suspicious thing",
+"distrustful thought"
+],
+"aliases": [
+"Skeptical Cat",
+"Squinting Cat",
+"Distrustful Cat"
+],
+"avoid": "Not for genuine trust or delight."
+},
+{
+"id": "slenderman",
+"name": "Slenderman",
+"lines": 2,
+"shape": "warning",
+"core": "The faceless Slender Man in a suit, used for creepy lurking, silent watching or something that's always just behind you.",
+"slots": [
+"creepy setup",
+"ominous punchline"
+],
+"aliases": [
+"Slender Man",
+"Faceless Man",
+"Slendy"
+],
+"avoid": "Not for real violence or crimes linked to the character."
+},
+{
+"id": "zuckerberg",
+"name": "Zuckerberg",
+"lines": 2,
+"shape": "before-after",
+"core": "Mark Zuckerberg serious on top and laughing on the bottom, used for a calm setup followed by gleeful exploitation, usually about privacy or data.",
+"slots": [
+"serious setup",
+"gleeful payoff"
+],
+"aliases": [
+"Mark Zuckerberg",
+"Zuckerberg Laughing",
+"Facebook Zuck"
+],
+"avoid": "Not for jokes with no gotcha or reversal."
+},
+{
+"id": "computerhorse",
+"name": "Computer Horse",
+"lines": 1,
+"shape": "reaction",
+"core": "A horse-masked figure staring at a crudely drawn computer, used for baffled, absurd reactions to things seen online.",
+"slots": [
+"what's on the screen"
+],
+"aliases": [
+"Horse Mask Computer",
+"Horse At Computer",
+"Horse Head PC"
+],
+"avoid": "Not for serious tech explanations."
+},
+{
+"id": "googlechrome",
+"name": "Google Chrome",
+"lines": 2,
+"shape": "irony",
+"core": "The Chrome logo, used for jokes about Chrome hogging RAM, crashing tabs or being the browser everyone uses.",
+"slots": [
+"setup",
+"Chrome punchline"
+],
+"aliases": [
+"Chrome",
+"Chrome Logo",
+"Chrome RAM"
+],
+"avoid": "Not for topics unrelated to browsers or the web."
+},
+{
+"id": "onde",
+"name": "Onde",
+"lines": 2,
+"shape": "reaction",
+"core": "A wide-eyed old man with his mouth agape, used for over-the-top shock or 'where?!' disbelief.",
+"slots": [
+"shocking news",
+"stunned reaction"
+],
+"aliases": [
+"Shocked Old Man",
+"Wide Eyed Man",
+"Onde Man"
+],
+"avoid": "Not for calm or subtle reactions."
+},
+{
+"id": "babushkasonfacebook",
+"name": "Babushkas On Facebook",
+"lines": 2,
+"shape": "reaction",
+"core": "Four headscarved grandmas huddled around a laptop, used for older folks discovering the internet or gossiping about what they see online.",
+"slots": [
+"what they found",
+"their verdict"
+],
+"aliases": [
+"Grannies On Laptop",
+"Babushkas Laptop",
+"Grandmas On The Internet"
+],
+"avoid": "Not for cruel jokes about the elderly."
+},
+{
+"id": "jamminbaby",
+"name": "Jammin Baby",
+"lines": 2,
+"shape": "reaction",
+"core": "A blissful baby wearing headphones, used for grooving to your favourite song or blissfully tuning everything out.",
+"slots": [
+"situation",
+"blissful tune-out"
+],
+"aliases": [
+"Baby With Headphones",
+"Happy Headphones Baby",
+"Jamming Baby"
+],
+"avoid": "Not for stress or anger."
+},
+{
+"id": "finnthehuman",
+"name": "Finn The Human",
+"lines": 2,
+"shape": "reaction",
+"core": "Finn from Adventure Time screaming with a grotesque, toothy face, used for unhinged rage or panic.",
+"slots": [
+"trigger",
+"screaming reaction"
+],
+"aliases": [
+"Screaming Finn",
+"Adventure Time Finn",
+"Finn Rage"
+],
+"avoid": "Not for calm or happy moments."
+},
+{
+"id": "advicedoge",
+"name": "Advice Doge",
+"lines": 2,
+"shape": "reaction",
+"core": "The Doge shiba on a colour-wheel background, giving advice or commentary in Doge's broken 'such wow' style.",
+"slots": [
+"setup",
+"doge advice"
+],
+"aliases": [
+"Doge Advice",
+"Such Advice",
+"Shiba Advice Animal"
+],
+"avoid": "Not for serious, earnest advice."
+},
+{
+"id": "spangles",
+"name": "Spangles",
+"lines": 2,
+"shape": "reaction",
+"core": "A cross-eyed cat in a pirate hat, used for derpy, confused or pirate-themed jokes.",
+"slots": [
+"setup",
+"derpy punchline"
+],
+"aliases": [
+"Pirate Cat",
+"Cross Eyed Cat",
+"Spangles The Cat"
+],
+"avoid": "Not for serious or sad topics."
+},
+{
+"id": "vforvendetta",
+"name": "V For Vendetta",
+"lines": 2,
+"shape": "warning",
+"core": "V in his Guy Fawkes mask with crossed daggers, used for dramatic vows of revenge or rebellion over petty grievances.",
+"slots": [
+"grievance",
+"dramatic vow"
+],
+"aliases": [
+"V Mask",
+"Guy Fawkes Mask",
+"Remember Remember"
+],
+"avoid": "Not for real threats or political violence."
+},
+{
+"id": "dexter",
+"name": "Dexter",
+"lines": 2,
+"shape": "plan-backfires",
+"core": "Dexter from Dexter's Laboratory grinning with a test tube, used for evil-genius schemes and smug experiments.",
+"slots": [
+"scheme",
+"evil-genius result"
+],
+"aliases": [
+"Dexter's Laboratory",
+"Dexters Lab",
+"Boy Genius Dexter"
+],
+"avoid": "Not for the live-action Dexter TV series."
+}
+]

@@ -1,0 +1,1085 @@
+[
+{
+"id": "manandwomanmicrophone",
+"name": "Man And Woman Microphone",
+"lines": 2,
+"shape": "comparison",
+"core": "At a press conference one person gets every microphone while the other sits ignored and annoyed.",
+"slots": [
+"the ignored one",
+"the one getting all the attention"
+],
+"aliases": [
+"press conference microphones",
+"all the microphones",
+"ignored at press conference",
+"man and woman microphone"
+],
+"avoid": "Not for situations where attention is shared equally."
+},
+{
+"id": "ghettojesus",
+"name": "Ghetto Jesus",
+"lines": 2,
+"shape": "irony",
+"core": "A tough, gun-toting Jesus delivers a gangster twist on a Bible story or saying.",
+"slots": [
+"setup",
+"gangster twist"
+],
+"aliases": [
+"ghetto jesus",
+"gangsta jesus",
+"jesus with gun",
+"thug jesus"
+],
+"avoid": "Not for sincere religious messages."
+},
+{
+"id": "laviejaconfiable",
+"name": "La Vieja Confiable",
+"lines": 2,
+"shape": "approval",
+"core": "SpongeBob proudly opens his trusty old reliable, the go-to solution that never fails.",
+"slots": [
+"the situation",
+"the old reliable solution"
+],
+"aliases": [
+"la vieja confiable",
+"old reliable",
+"spongebob old reliable",
+"spongebob grill box"
+],
+"avoid": "Not for new or untested solutions."
+},
+{
+"id": "mantriggeredatschool",
+"name": "Man Triggered At School",
+"lines": 2,
+"shape": "reaction",
+"core": "A student visibly struggles to hold in his frustration at something said in class.",
+"slots": [
+"what was said",
+"trying to stay calm"
+],
+"aliases": [
+"visible frustration",
+"frustrated kid in class",
+"triggered student",
+"holding it in kid"
+],
+"avoid": "Not for openly angry outbursts."
+},
+{
+"id": "brooklyn99setthebartoolow",
+"name": "Brooklyn 99 Set The Bar Too Low",
+"lines": 3,
+"shape": "dialogue",
+"core": "Someone brags about a pathetic achievement and the other person admits it's their fault for expecting so little.",
+"slots": [
+"the low expectation",
+"the reaction",
+"the pathetic brag"
+],
+"aliases": [
+"set the bar too low",
+"that's on me i set the bar too low",
+"brooklyn 99 bar",
+"jake peralta bar too low"
+],
+"avoid": "Not for genuinely impressive achievements."
+},
+{
+"id": "bobbyhillkidsnowatermark",
+"name": "If Those Kids Could Read",
+"lines": 1,
+"shape": "irony",
+"core": "Bobby holds up a sign the kids would be furious about, if only they could read it.",
+"slots": [
+"the sign's message"
+],
+"aliases": [
+"if those kids could read",
+"theyd be very upset",
+"bobby hill sign",
+"king of the hill kids could read"
+],
+"avoid": "Not for messages the audience will actually read and understand."
+},
+{
+"id": "matrixpills",
+"name": "Matrix Pills",
+"lines": 3,
+"shape": "binary-choice",
+"core": "Morpheus offers the red pill of harsh truth or the blue pill of comfortable ignorance.",
+"slots": [
+"the choice being offered",
+"red pill: hard truth",
+"blue pill: comfy lie"
+],
+"aliases": [
+"red pill blue pill",
+"matrix pills",
+"morpheus pills",
+"take the red pill"
+],
+"avoid": "Not for choices with no truth-vs-comfort tension."
+},
+{
+"id": "wolfparty",
+"name": "Wolf Party",
+"lines": 2,
+"shape": "approval",
+"core": "Jordan Belfort stands arms wide amid a wild office party, celebrating a triumph in excess.",
+"slots": [
+"the triumph",
+"the celebration"
+],
+"aliases": [
+"wolf of wall street party",
+"leo arms out party",
+"wolf party",
+"office party confetti"
+],
+"avoid": "Not for modest or quiet wins."
+},
+{
+"id": "thecircleoflife",
+"name": "The Circle Of Life",
+"lines": 4,
+"shape": "escalation",
+"core": "Four steps arranged in an endless loop, showing a cycle that keeps repeating itself.",
+"slots": [
+"step 1",
+"step 2",
+"step 3",
+"step 4 (back to start)"
+],
+"aliases": [
+"circle of life",
+"endless cycle",
+"vicious cycle arrows",
+"cycle diagram"
+],
+"avoid": "Not for one-time sequences with a clear end."
+},
+{
+"id": "gta5franklinandhisdogchop",
+"name": "GTA 5 Franklin And His Dog Chop",
+"lines": 3,
+"shape": "labeling",
+"core": "Franklin calmly holds back a snarling Chop on a chain, keeping something aggressive barely under control.",
+"slots": [
+"the situation",
+"the one holding the leash",
+"the barely-contained beast"
+],
+"aliases": [
+"franklin and chop",
+"gta 5 chop",
+"franklin holding chop",
+"gta dog on chain"
+],
+"avoid": "Not for things that are fully calm or tamed."
+},
+{
+"id": "diaryofawimpykidcovertemplat",
+"name": "Diary Of A Wimpy Kid Cover",
+"lines": 1,
+"shape": "other",
+"core": "A fake Diary of a Wimpy Kid book cover whose subtitle names an absurd or relatable new volume.",
+"slots": [
+"the book's subtitle or picture"
+],
+"aliases": [
+"diary of a wimpy kid cover",
+"wimpy kid book template",
+"wimpy kid meme",
+"fake book cover"
+],
+"avoid": "Not for serious book recommendations."
+},
+{
+"id": "fastandfurious7finalscene",
+"name": "Fast And Furious 7 Final Scene",
+"lines": 3,
+"shape": "labeling",
+"core": "Two old friends drive side by side one last time before their roads split, used for bittersweet partings.",
+"slots": [
+"the one leaving",
+"the one staying",
+"the parting of ways"
+],
+"aliases": [
+"fast and furious 7 ending",
+"see you again",
+"paul walker goodbye",
+"roads split"
+],
+"avoid": "Not for happy reunions or mocking real loss."
+},
+{
+"id": "brovisitedhisfriend",
+"name": "Bro Visited His Friend",
+"lines": 3,
+"shape": "irony",
+"core": "Two people chat happily in their own lingo while the visiting friend stands by, awkwardly understanding nothing.",
+"slots": [
+"the situation",
+"first speaker",
+"second speaker"
+],
+"aliases": [
+"bro visited his friend",
+"visiting friend awkward",
+"friend's family different language",
+"awkward guest"
+],
+"avoid": "Not for situations where everyone understands each other."
+},
+{
+"id": "motherofgod",
+"name": "Mother Of God",
+"lines": 1,
+"shape": "reaction",
+"core": "A rage-comic face gasps 'Mother of God' in awe or horror at a shocking revelation.",
+"slots": [
+"the shocking revelation"
+],
+"aliases": [
+"mother of god",
+"rage face mother of god",
+"omg rage comic",
+"shocked rage face"
+],
+"avoid": "Not for mild or expected news."
+},
+{
+"id": "onemilliondollars",
+"name": "One Million Dollars",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Dr. Evil, pinky to lip, demands an absurdly out-of-touch amount for something.",
+"slots": [
+"the setup",
+"the ridiculous demand"
+],
+"aliases": [
+"one million dollars",
+"dr evil pinky",
+"dr evil million dollars",
+"austin powers pinky"
+],
+"avoid": "Not for reasonable, realistic requests."
+},
+{
+"id": "wontsomebodythinkofthechildr",
+"name": "Won't Somebody Think Of The Children",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Helen Lovejoy hysterically wails 'won't somebody think of the children' to overdramatize a trivial issue.",
+"slots": [
+"the trivial issue",
+"the hysterical plea"
+],
+"aliases": [
+"won't somebody think of the children",
+"helen lovejoy",
+"think of the children",
+"simpsons lovejoy"
+],
+"avoid": "Not for genuine child-safety concerns."
+},
+{
+"id": "dadlegend",
+"name": "Dad Legend",
+"lines": 3,
+"shape": "dialogue",
+"core": "A vintage family scene where a daughter asks Dad something, he gives a confident answer and the son adds a remark; used for parent wisdom or tall-tale dialogues.",
+"slots": [
+"daughter's question",
+"dad's answer",
+"son's remark"
+],
+"aliases": [
+"dad legend",
+"vintage dad speech bubbles",
+"dad explains",
+"father and kids comic"
+],
+"avoid": "Not for single-line reactions; it needs a three-line exchange."
+},
+{
+"id": "trumphat",
+"name": "Trump Hat",
+"lines": 1,
+"shape": "irony",
+"core": "A blank red campaign-style cap you write your own slogan on, parodying 'Make America Great Again' for any cause.",
+"slots": [
+"slogan on the hat"
+],
+"aliases": [
+"maga hat",
+"red hat blank",
+"make x great again",
+"trump hat"
+],
+"avoid": "Not for multi-step jokes; it holds one slogan."
+},
+{
+"id": "whohad",
+"name": "Who Had",
+"lines": 2,
+"shape": "reaction",
+"core": "A man in front of a betting board raising his hand to claim a win; used when an absurd outcome happens that someone 'bet on'.",
+"slots": [
+"who had",
+"the unlikely outcome"
+],
+"aliases": [
+"who had",
+"cabin in the woods betting board",
+"who had this on their bingo card",
+"i had that"
+],
+"avoid": "Not for predictable outcomes; the joke is something unlikely happening."
+},
+{
+"id": "somehowpalpatinereturned",
+"name": "Somehow Palpatine Returned",
+"lines": 1,
+"shape": "irony",
+"core": "Mocks the Star Wars line 'Somehow, Palpatine returned'; used when something that was gone comes back with no explanation.",
+"slots": [
+"somehow, X returned"
+],
+"aliases": [
+"somehow palpatine returned",
+"somehow x returned",
+"rise of skywalker",
+"palpatine returned"
+],
+"avoid": "Not for comebacks that make sense or are explained."
+},
+{
+"id": "megarageface",
+"name": "Mega Rage Face",
+"lines": 1,
+"shape": "exaggeration",
+"core": "The extreme rage comic face screaming; used for the moment something pushes you completely over the edge.",
+"slots": [
+"what made you furious"
+],
+"aliases": [
+"mega rage face",
+"fffuuu",
+"rage comic",
+"rage guy",
+"fuuuu face"
+],
+"avoid": "Not for mild annoyance or calm reactions."
+},
+{
+"id": "womanshowingpapertocat",
+"name": "Woman Showing Paper To Cat",
+"lines": 2,
+"shape": "dialogue",
+"core": "A woman earnestly explains a document to an unimpressed cat; used for presenting something to someone who clearly doesn't care or understand.",
+"slots": [
+"what she explains",
+"cat's indifferent reply"
+],
+"aliases": [
+"woman showing paper to cat",
+"cat reading paper",
+"explaining to cat",
+"cat looking at document"
+],
+"avoid": "Not for an audience that is interested or engaged."
+},
+{
+"id": "datboi",
+"name": "Dat Boi",
+"lines": 2,
+"shape": "dialogue",
+"core": "A frog riding a unicycle, from 'here come dat boi' / 'o shit waddup'; used to announce something arriving with absurd swagger.",
+"slots": [
+"here come dat ___",
+"the arrival's greeting"
+],
+"aliases": [
+"dat boi",
+"here come dat boi",
+"o shit waddup",
+"unicycle frog"
+],
+"avoid": "Not for serious or somber announcements."
+},
+{
+"id": "christmaself",
+"name": "Christmas Elf",
+"lines": 2,
+"shape": "reaction",
+"core": "Buddy the Elf screaming with joy; used for over-the-top excitement about something small.",
+"slots": [
+"the news",
+"the excited reaction"
+],
+"aliases": [
+"buddy the elf",
+"elf excited",
+"will ferrell elf",
+"santa's coming"
+],
+"avoid": "Not for disappointment or calm reactions."
+},
+{
+"id": "georgewashington",
+"name": "George Washington",
+"lines": 2,
+"shape": "irony",
+"core": "A stern portrait of George Washington used for founding-father takes, history jokes, or patriotic irony.",
+"slots": [
+"setup",
+"punchline"
+],
+"aliases": [
+"george washington",
+"founding father",
+"washington portrait",
+"first president"
+],
+"avoid": "Not for modern celebrity reactions."
+},
+{
+"id": "oregontrail",
+"name": "Oregon Trail",
+"lines": 2,
+"shape": "warning",
+"core": "The Oregon Trail game's wagon screen, parodying 'You have died of dysentery'; used for absurd ways something failed or ended.",
+"slots": [
+"the situation",
+"how you died"
+],
+"aliases": [
+"oregon trail",
+"you have died of dysentery",
+"covered wagon",
+"oregon trail game"
+],
+"avoid": "Not for real deaths or tragedies."
+},
+{
+"id": "itstrueallofithansolo",
+"name": "It's True All Of It",
+"lines": 3,
+"shape": "dialogue",
+"core": "Han Solo confirms to Rey and Finn that the legends are real; used to confirm an old rumor or myth is actually true.",
+"slots": [
+"Han's setup",
+"the rumor they ask about",
+"Han confirms it's all true"
+],
+"aliases": [
+"it's true all of it",
+"han solo it's true",
+"the force awakens han",
+"han solo legends"
+],
+"avoid": "Not for debunking; it's about confirming a myth."
+},
+{
+"id": "bobrossmeme",
+"name": "Bob Ross",
+"lines": 2,
+"shape": "irony",
+"core": "Bob Ross smiling at his canvas; used to reframe mistakes as 'happy little accidents' or for gentle, wholesome advice.",
+"slots": [
+"the mistake",
+"Bob's calm reframe"
+],
+"aliases": [
+"bob ross",
+"happy little accidents",
+"happy little trees",
+"joy of painting"
+],
+"avoid": "Not for anger or harsh criticism."
+},
+{
+"id": "giveme",
+"name": "Give Me",
+"lines": 2,
+"shape": "reaction",
+"core": "A man in an old painting jabs his palm demanding payment; used for demanding what you're owed.",
+"slots": [
+"the situation",
+"the demand"
+],
+"aliases": [
+"give me",
+"pay up painting",
+"palm tap painting",
+"where's my money"
+],
+"avoid": "Not for giving or generosity."
+},
+{
+"id": "abesimpsontellingstories",
+"name": "Abe Simpson Telling Stories",
+"lines": 1,
+"shape": "irony",
+"core": "Grampa Simpson telling kids a story from his past; used for old-timer tales about how things used to be.",
+"slots": [
+"the old-timer story"
+],
+"aliases": [
+"abe simpson story",
+"grampa simpson",
+"back in my day",
+"old man yells stories"
+],
+"avoid": "Not for current or future events."
+},
+{
+"id": "illdoitagain",
+"name": "I'll Do It Again",
+"lines": 1,
+"shape": "self-own",
+"core": "Goofy grinning under the caption 'I'll do it again'; used to proudly admit a bad habit you have no intention of stopping.",
+"slots": [
+"the thing you did"
+],
+"aliases": [
+"i'll do it again",
+"goofy i'll do it again",
+"no regrets goofy",
+"goofy chef"
+],
+"avoid": "Not for genuine apologies or regret."
+},
+{
+"id": "antanddeclaughing",
+"name": "Ant And Dec Laughing",
+"lines": 2,
+"shape": "reaction",
+"core": "The TV duo Ant and Dec in fits of laughter; used for laughing hard at something absurd or someone's misfortune.",
+"slots": [
+"setup",
+"what made them laugh"
+],
+"aliases": [
+"ant and dec laughing",
+"ant and dec",
+"two guys laughing",
+"crying laughing duo"
+],
+"avoid": "Not for sad or serious news."
+},
+{
+"id": "praisesquirrel",
+"name": "Praise Squirrel",
+"lines": 2,
+"shape": "approval",
+"core": "A squirrel standing with arms raised as if praising the heavens; used to celebrate something wonderful.",
+"slots": [
+"the good news",
+"praise it"
+],
+"aliases": [
+"praise squirrel",
+"praise the lord squirrel",
+"hallelujah squirrel",
+"squirrel arms up"
+],
+"avoid": "Not for complaints or bad news."
+},
+{
+"id": "damnikindadontmeme",
+"name": "Damn I Kinda Don't",
+"lines": 1,
+"shape": "self-own",
+"core": "A boy scratching his head under 'Damn... I kinda'; used when you realise you don't actually want or know something you're supposed to.",
+"slots": [
+"what you kinda don't"
+],
+"aliases": [
+"damn i kinda",
+"damn i kinda don't",
+"kid scratching head",
+"confused kid"
+],
+"avoid": "Not for confident or certain statements."
+},
+{
+"id": "whydowehavehandsallblank",
+"name": "Why Do We Have Hands",
+"lines": 4,
+"shape": "escalation",
+"core": "A wholesome chart of reasons we have hands that ends with forfeiting all mortal possessions to something; used to show devotion to a thing escalating to absurdity.",
+"slots": [
+"thing to pat",
+"thing to hold",
+"thing to cherish",
+"thing you'd give everything to"
+],
+"aliases": [
+"why do we have hands",
+"there are many reasons",
+"pat the hold the",
+"forfeit all mortal possessions"
+],
+"avoid": "Not for things you dislike."
+},
+{
+"id": "harryyoudontneedtosellittome",
+"name": "Harry You Don't Need To Sell It To Me",
+"lines": 3,
+"shape": "dialogue",
+"core": "Peter and Harry from Spider-Man trade lines, ending with Peter's smug reply; used when someone over-pitches something you were already sold on.",
+"slots": [
+"Peter's opener",
+"Harry's pitch",
+"Peter: you don't need to sell it"
+],
+"aliases": [
+"you don't need to sell it to me",
+"peter and harry",
+"spider-man 3 diner",
+"tobey maguire harry"
+],
+"avoid": "Not for genuine disagreement."
+},
+{
+"id": "worshipthelord",
+"name": "Worship The Lord",
+"lines": 2,
+"shape": "labeling",
+"core": "Tiny figures kneel before a giant enthroned lord; used to show a group devoutly worshipping something.",
+"slots": [
+"the thing worshipped",
+"the worshippers"
+],
+"aliases": [
+"worship the lord",
+"kneeling before the throne",
+"bowing to the king",
+"all hail"
+],
+"avoid": "Not for equal relationships between peers."
+},
+{
+"id": "mayipleasegetacrumb",
+"name": "May I Please Get A Crumb",
+"lines": 2,
+"shape": "reaction",
+"core": "Disguised Robin Hood the fox begging humbly; used when pleading for even the tiniest bit of something.",
+"slots": [
+"what you want",
+"humble plea"
+],
+"aliases": [
+"may i please get a crumb",
+"robin hood begging",
+"just a crumb",
+"beggar fox"
+],
+"avoid": "Not for demanding or entitled requests."
+},
+{
+"id": "gondorcallsforaid",
+"name": "Gondor Calls For Aid",
+"lines": 2,
+"shape": "dialogue",
+"core": "Aragorn announces 'Gondor calls for aid' and Th\u00e9oden answers 'And Rohan will answer'; used when someone asks for help and an ally steps up.",
+"slots": [
+"the call for help",
+"who answers"
+],
+"aliases": [
+"gondor calls for aid",
+"and rohan will answer",
+"the beacons are lit",
+"lord of the rings beacons"
+],
+"avoid": "Not for refusing help."
+},
+{
+"id": "condescendinggoku",
+"name": "Condescending Goku",
+"lines": 2,
+"shape": "reaction",
+"core": "Goku leaning on his hand with a smug grin; used to condescendingly mock someone's obvious mistake or naive statement.",
+"slots": [
+"their claim",
+"smug retort"
+],
+"aliases": [
+"condescending goku",
+"smug goku",
+"goku hand on cheek",
+"goku smirk"
+],
+"avoid": "Not for sincere sympathy."
+},
+{
+"id": "smallfaceromney",
+"name": "Small Face Romney",
+"lines": 2,
+"shape": "reaction",
+"core": "Mitt Romney laughing with his head thrown back; used for laughing heartily at something ridiculous.",
+"slots": [
+"setup",
+"what's so funny"
+],
+"aliases": [
+"small face romney",
+"romney laughing",
+"mitt romney laugh",
+"laughing romney"
+],
+"avoid": "Not for sad or sincere moments."
+},
+{
+"id": "futuramazerodayssincelastbla",
+"name": "Futurama Zero Days Since Last",
+"lines": 1,
+"shape": "irony",
+"core": "A workplace safety sign reset to zero, used when the same mistake or incident has just happened again.",
+"slots": [
+"the incident that keeps recurring"
+],
+"aliases": [
+"days since last accident",
+"zero days since",
+"futurama days since sign",
+"days without incident"
+],
+"avoid": "Not for one-off events; the joke is the repetition."
+},
+{
+"id": "vincemcmahon5tier",
+"name": "Vince McMahon Reaction 5 Tier",
+"lines": 5,
+"shape": "escalation",
+"core": "Vince McMahon gets more and more excited across five panels as each listed thing gets better, ending in glowing-eyed ecstasy.",
+"slots": [
+"mildly good thing",
+"better thing",
+"even better",
+"amazing",
+"ultimate thing"
+],
+"aliases": [
+"vince mcmahon reaction",
+"vince mcmahon escalating",
+"vince mcmahon chair",
+"mcmahon hype"
+],
+"avoid": "Not for things getting worse; it only escalates excitement."
+},
+{
+"id": "letsseepaulallenscard",
+"name": "Let's See Paul Allen's Card",
+"lines": 2,
+"shape": "comparison",
+"core": "Patrick Bateman's nervous smile as he asks to see a rival's thing, used when someone is about to be shown up by a superior version of what they're proud of.",
+"slots": [
+"setup",
+"let's see the rival's thing"
+],
+"aliases": [
+"paul allen's card",
+"american psycho business card",
+"patrick bateman card",
+"lets see paul allens card"
+],
+"avoid": "Not for genuine admiration; it's about envious one-upmanship."
+},
+{
+"id": "stewiewheresmymoney",
+"name": "Stewie Where's My Money",
+"lines": 2,
+"shape": "warning",
+"core": "Stewie beating up Brian demanding his money, used when aggressively collecting something you're owed.",
+"slots": [
+"setup",
+"where's my thing"
+],
+"aliases": [
+"stewie where's my money",
+"stewie beats brian",
+"you got my money",
+"stewie brian money"
+],
+"avoid": "Not for polite reminders; it's about furious collection."
+},
+{
+"id": "wouldyoupressthebutton",
+"name": "Would You Press The Button",
+"lines": 2,
+"shape": "binary-choice",
+"core": "A dilemma: pressing the button gives you a great perk, but with a catch, and people debate whether it's worth it.",
+"slots": [
+"the reward",
+"the catch"
+],
+"aliases": [
+"will you press the button",
+"would you press the button",
+"button dilemma",
+"red button but"
+],
+"avoid": "Not for choices without a trade-off."
+},
+{
+"id": "theydontevenhavedental",
+"name": "They Don't Even Have Dental",
+"lines": 2,
+"shape": "rejection",
+"core": "Shrek scoffing that something is a terrible deal because it doesn't even offer a basic benefit.",
+"slots": [
+"the offer",
+"the missing basic perk"
+],
+"aliases": [
+"they don't even have dental",
+"shrek dental",
+"shrek no dental plan",
+"doesn't even have dental"
+],
+"avoid": "Not for genuinely good offers."
+},
+{
+"id": "playstationtrophy",
+"name": "PlayStation Trophy Unlocked",
+"lines": 1,
+"shape": "approval",
+"core": "A PlayStation trophy notification awarding an achievement for some mundane or embarrassing real-life feat.",
+"slots": [
+"the achievement"
+],
+"aliases": [
+"you have earned a trophy",
+"trophy unlocked",
+"ps4 trophy",
+"achievement unlocked"
+],
+"avoid": "Not for serious accomplishments; it mocks trivial ones."
+},
+{
+"id": "tireddadatcomputer",
+"name": "Tired Dad At Computer",
+"lines": 2,
+"shape": "reaction",
+"core": "Coraline's exhausted dad slumped at his computer, used for the drained feeling of grinding through tedious work.",
+"slots": [
+"situation",
+"the exhausting part"
+],
+"aliases": [
+"coraline dad",
+"tired dad at computer",
+"exhausted at computer",
+"coraline dad working"
+],
+"avoid": "Not for excitement or energy."
+},
+{
+"id": "youcanexcuseracismblank",
+"name": "You Can Excuse Racism",
+"lines": 2,
+"shape": "dialogue",
+"core": "From Community: one person forgives something terrible but draws the line at something trivial, and the other is shocked.",
+"slots": [
+"you can excuse a big thing",
+"but not this petty thing"
+],
+"aliases": [
+"you can excuse racism",
+"community racism meme",
+"but this is where i draw the line",
+"you can excuse"
+],
+"avoid": "Not for actual bigotry; the joke is the absurd priorities."
+},
+{
+"id": "lastplacedouchebag",
+"name": "Last Place Celebration",
+"lines": 2,
+"shape": "irony",
+"core": "A comic of a guy celebrating wildly like a champion, revealed to have finished dead last, used for overcelebrating a poor result.",
+"slots": [
+"everyone who did better",
+"the overconfident last place"
+],
+"aliases": [
+"last place celebration",
+"last place douchebag",
+"celebrating last place",
+"champagne last place"
+],
+"avoid": "Not for genuine wins."
+},
+{
+"id": "lebronjamesreportedlyforgott",
+"name": "LeBron James Reportedly Forgot To",
+"lines": 1,
+"shape": "self-own",
+"core": "A fake sports-news headline about LeBron facepalming because he forgot something, used for a mundane thing you forgot to do.",
+"slots": [
+"what he forgot to do"
+],
+"aliases": [
+"lebron forgot to",
+"lebron james reportedly forgot",
+"lebron facepalm headline",
+"lebron reportedly"
+],
+"avoid": "Not for serious news."
+},
+{
+"id": "sovietbugsbunny",
+"name": "Soviet Bugs Bunny",
+"lines": 2,
+"shape": "labeling",
+"core": "Bugs Bunny in front of a hammer and sickle declaring something 'ours', used when claiming something should be shared by everyone.",
+"slots": [
+"setup",
+"OUR thing"
+],
+"aliases": [
+"our meme",
+"communist bugs bunny",
+"soviet bugs bunny",
+"bugs bunny our"
+],
+"avoid": "Not for serious political statements."
+},
+{
+"id": "impracticaljokers",
+"name": "Impractical Jokers Laughing",
+"lines": 1,
+"shape": "reaction",
+"core": "The Impractical Jokers watch calmly, then collapse laughing, used for something that is unexpectedly hilarious.",
+"slots": [
+"the thing that broke them"
+],
+"aliases": [
+"impractical jokers laughing",
+"impractical jokers reaction",
+"jokers collapse laughing",
+"tru tv laughing"
+],
+"avoid": "Not for things that are only mildly amusing."
+},
+{
+"id": "bitchplease",
+"name": "Yao Ming Bitch Please",
+"lines": 2,
+"shape": "rejection",
+"core": "The Yao Ming rage face laughing dismissively, used to scoff at a claim or suggestion.",
+"slots": [
+"the claim",
+"dismissive reply"
+],
+"aliases": [
+"bitch please",
+"yao ming face",
+"yao ming rage face",
+"pfft please"
+],
+"avoid": "Not for sincere agreement."
+},
+{
+"id": "jumponrake",
+"name": "Stepping On Rakes",
+"lines": 3,
+"shape": "plan-backfires",
+"core": "One person steps on a rake by accident, while another deliberately jumps on rake after rake, used for repeating the same painful mistake on purpose.",
+"slots": [
+"normal person's mistake",
+"the result",
+"me, repeatedly"
+],
+"aliases": [
+"stepping on rakes",
+"jump on rake",
+"rake meme",
+"same mistake again"
+],
+"avoid": "Not for one-off accidents."
+},
+{
+"id": "behonest",
+"name": "Be Honest",
+"lines": 3,
+"shape": "dialogue",
+"core": "Victoria Beckham claims a modest background while David peeks in urging her to 'be honest', escalating until she admits the privileged truth.",
+"slots": [
+"her modest claim",
+"her hedged version",
+"the honest truth"
+],
+"aliases": [
+"be honest",
+"beckham be honest",
+"david beckham door",
+"victoria beckham working class"
+],
+"avoid": "Not for sincere confessions; it's about being caught downplaying."
+},
+{
+"id": "iscallingyou",
+"name": "Is Calling You",
+"lines": 1,
+"shape": "warning",
+"core": "An incoming phone call screen from someone or something, used when a dreaded responsibility or consequence comes calling.",
+"slots": [
+"who or what is calling"
+],
+"aliases": [
+"is calling you",
+"incoming call meme",
+"iphone call screen",
+"x is calling"
+],
+"avoid": "Not for welcome calls."
+},
+{
+"id": "fortunecookie",
+"name": "Fortune Cookie",
+"lines": 1,
+"shape": "warning",
+"core": "A cracked fortune cookie with a blank slip, used to deliver an ominous or painfully accurate prediction.",
+"slots": [
+"the fortune"
+],
+"aliases": [
+"fortune cookie",
+"blank fortune",
+"fortune cookie message",
+"your fortune"
+],
+"avoid": "Not for long texts."
+},
+{
+"id": "highdog",
+"name": "High Dog",
+"lines": 2,
+"shape": "reaction",
+"core": "A droopy-eyed dog that looks stoned, captioned with spaced-out shower thoughts or zoned-out reactions.",
+"slots": [
+"setup",
+"dazed thought"
+],
+"aliases": [
+"high dog",
+"stoned dog",
+"baked dog",
+"spaced out dog"
+],
+"avoid": "Not for alert or sharp reactions."
+}
+]

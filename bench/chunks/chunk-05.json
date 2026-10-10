@@ -1,0 +1,1084 @@
+[
+{
+"id": "soyboyvsyeschad",
+"name": "Soyboy Vs Yes Chad",
+"lines": 2,
+"shape": "comparison",
+"core": "A crying, ranting wojak objects to something while the calm Nordic gamer Chad simply accepts it.",
+"slots": [
+"the overreacting objection",
+"the calm 'yes'"
+],
+"aliases": [
+"soyjak vs chad",
+"yes chad",
+"crying wojak vs chad",
+"nordic gamer",
+"soyboy vs chad"
+],
+"avoid": "Not for balanced, nuanced comparisons."
+},
+{
+"id": "carsalesmanslapsroofofcar",
+"name": "Car Salesman Slaps Roof Of Car",
+"lines": 2,
+"shape": "exaggeration",
+"core": "A salesman slaps the roof of a car and boasts how much 'this bad boy' can fit or do.",
+"slots": [
+"the sales pitch",
+"the thing being sold"
+],
+"aliases": [
+"slaps roof of car",
+"this bad boy can fit",
+"car salesman",
+"slaps roof"
+],
+"avoid": "Not for honest product reviews."
+},
+{
+"id": "chillguy",
+"name": "Chill Guy",
+"lines": 1,
+"shape": "irony",
+"core": "A relaxed dog-like guy in a sweater stays totally unbothered, used to describe staying chill despite chaos.",
+"slots": [
+"the situation he's chill about"
+],
+"aliases": [
+"chill guy",
+"just a chill guy",
+"my new character is a chill guy",
+"lowkey chill guy"
+],
+"avoid": "Not for panic or anger."
+},
+{
+"id": "jackiechanwtf",
+"name": "Jackie Chan WTF",
+"lines": 2,
+"shape": "reaction",
+"core": "Jackie Chan clutches his head in total bafflement at something that makes no sense.",
+"slots": [
+"the baffling thing",
+"the confused reaction"
+],
+"aliases": [
+"jackie chan confused",
+"my brain is full of",
+"wtf jackie chan",
+"jackie chan meme"
+],
+"avoid": "Not for things that make perfect sense."
+},
+{
+"id": "theofficecongratulations",
+"name": "The Office Congratulations",
+"lines": 2,
+"shape": "approval",
+"core": "A boss shakes young Michael Scott's hand in congratulations, used for being rewarded for something dubious or minor.",
+"slots": [
+"the one congratulating",
+"the one being congratulated"
+],
+"aliases": [
+"michael scott handshake",
+"the office handshake",
+"congratulations michael",
+"young michael scott"
+],
+"avoid": "Not for genuine heartfelt achievements."
+},
+{
+"id": "andjustlikethat",
+"name": "And Just Like That",
+"lines": 2,
+"shape": "before-after",
+"core": "Forrest Gump gazes off as something suddenly changes or ends, captioned 'and just like that...'.",
+"slots": [
+"the sudden event",
+"and just like that..."
+],
+"aliases": [
+"and just like that",
+"forrest gump stare",
+"forrest gump",
+"just like that"
+],
+"avoid": "Not for slow, gradual changes."
+},
+{
+"id": "happystarcongratulations",
+"name": "Happy Star Congratulations",
+"lines": 2,
+"shape": "irony",
+"core": "A cheesy kids' award certificate sarcastically congratulating someone for a tiny or dumb achievement.",
+"slots": [
+"presented to",
+"the trivial achievement"
+],
+"aliases": [
+"you did it certificate",
+"congratulations you did it",
+"award certificate",
+"happy star award"
+],
+"avoid": "Not for sincere big accomplishments."
+},
+{
+"id": "keepcalmandcarryonred",
+"name": "Keep Calm And Carry On",
+"lines": 2,
+"shape": "irony",
+"core": "A parody of the British wartime poster, swapping in new advice in the 'Keep Calm and ...' format.",
+"slots": [
+"keep calm",
+"and do this"
+],
+"aliases": [
+"keep calm and carry on",
+"keep calm poster",
+"keep calm",
+"crown poster"
+],
+"avoid": "Not for panicked or chaotic messages."
+},
+{
+"id": "megamindnobitches",
+"name": "Megamind No Bitches",
+"lines": 1,
+"shape": "rejection",
+"core": "Megamind leans in with a smug stare asking 'No ___?' to mock someone for lacking something.",
+"slots": [
+"no ___?"
+],
+"aliases": [
+"no bitches",
+"megamind no",
+"megamind peeking",
+"no bitches megamind"
+],
+"avoid": "Not for sincere questions."
+},
+{
+"id": "thefutureworldif",
+"name": "The Future World If",
+"lines": 1,
+"shape": "exaggeration",
+"core": "A utopian futuristic city showing how amazing the world would be if some small thing happened.",
+"slots": [
+"the future world if..."
+],
+"aliases": [
+"the world if",
+"future world if",
+"utopia city",
+"imagine the world if"
+],
+"avoid": "Not for things that would make the world worse."
+},
+{
+"id": "obamamedal",
+"name": "Obama Medal",
+"lines": 2,
+"shape": "self-own",
+"core": "Obama awards a medal to himself, used when someone congratulates themselves or a thing praises itself.",
+"slots": [
+"the one getting the medal",
+"the one giving it"
+],
+"aliases": [
+"obama giving himself a medal",
+"obama awards obama",
+"self award",
+"obama medal"
+],
+"avoid": "Not for praise that genuinely comes from someone else."
+},
+{
+"id": "arthurfist",
+"name": "Arthur Fist",
+"lines": 2,
+"shape": "reaction",
+"core": "A clenched fist showing suppressed rage or frustration at something annoying that you can't openly react to.",
+"slots": [
+"the annoying situation",
+"your restrained reaction"
+],
+"aliases": [
+"arthur fist",
+"clenched fist",
+"arthur angry fist",
+"angry arthur"
+],
+"avoid": "Not for genuine anger or violence; it's for petty, bottled-up irritation."
+},
+{
+"id": "petergriffinnews",
+"name": "Peter Griffin News",
+"lines": 2,
+"shape": "reaction",
+"core": "Peter Griffin's 'What Really Grinds My Gears' segment, used to rant about a petty pet peeve.",
+"slots": [
+"setup line",
+"the pet peeve"
+],
+"aliases": [
+"what really grinds my gears",
+"grinds my gears",
+"peter griffin news",
+"family guy news"
+],
+"avoid": "Not for serious grievances or praise; it's for petty complaints."
+},
+{
+"id": "bellcurve",
+"name": "Bell Curve (IQ)",
+"lines": 3,
+"shape": "irony",
+"core": "The dumb take and the genius take agree; only the overthinking midwit in the middle disagrees.",
+"slots": [
+"the simple take (low IQ)",
+"the overthought midwit take",
+"the same simple take (high IQ)"
+],
+"aliases": [
+"iq bell curve",
+"midwit",
+"bell curve meme"
+],
+"avoid": "Jokes where the middle opinion is right."
+},
+{
+"id": "inception",
+"name": "Inception",
+"lines": 3,
+"shape": "escalation",
+"core": "Characters proposing to go a level deeper, used for nested or recursive ideas that spiral absurdly.",
+"slots": [
+"first proposal",
+"going deeper",
+"the absurd nested result"
+],
+"aliases": [
+"inception",
+"we need to go deeper",
+"dicaprio inception",
+"inception three panel"
+],
+"avoid": "Not for simple one-step comparisons; it needs a nested or recursive idea."
+},
+{
+"id": "kermitwindow",
+"name": "Kermit Window",
+"lines": 2,
+"shape": "reaction",
+"core": "Kermit gazing sadly out a rainy window, used for melancholy, longing or quietly waiting for something that won't come.",
+"slots": [
+"the sad situation",
+"what you're longing for"
+],
+"aliases": [
+"kermit window",
+"sad kermit",
+"kermit looking out window",
+"kermit rain"
+],
+"avoid": "Not for happy or energetic moments."
+},
+{
+"id": "spongegar",
+"name": "Spongegar",
+"lines": 2,
+"shape": "reaction",
+"core": "Primitive caveman SpongeBob, used to mock primitive, simplistic or outdated thinking and behavior.",
+"slots": [
+"setup",
+"the primitive reaction"
+],
+"aliases": [
+"spongegar",
+"primitive sponge",
+"caveman spongebob",
+"spongebob caveman"
+],
+"avoid": "Not for sophisticated or clever ideas."
+},
+{
+"id": "liamneesontaken",
+"name": "Liam Neeson Taken",
+"lines": 2,
+"shape": "warning",
+"core": "Liam Neeson's Taken phone call: 'I will find you', used as an over-the-top threat about a minor offense.",
+"slots": [
+"the offense",
+"the threat"
+],
+"aliases": [
+"liam neeson taken",
+"i will find you",
+"taken phone call",
+"particular set of skills"
+],
+"avoid": "Not for real threats or serious crimes."
+},
+{
+"id": "peterparkercry",
+"name": "Peter Parker Cry",
+"lines": 4,
+"shape": "dialogue",
+"core": "J. Jonah Jameson dismisses Peter's hopeful answer and laughs, leaving Peter in tears; used for having your hopes crushed.",
+"slots": [
+"Jameson's question",
+"Peter's hopeful answer",
+"Jameson's crushing reply",
+"Peter's sad reaction"
+],
+"aliases": [
+"peter parker cry",
+"jameson laughing",
+"peter parker crying",
+"jj jameson laughing"
+],
+"avoid": "Not for happy outcomes; the hope must get crushed."
+},
+{
+"id": "wellyesbutactuallyno",
+"name": "Well Yes, But Actually No",
+"lines": 1,
+"shape": "rejection",
+"core": "A pirate captain's 'Well yes, but actually no', used to contradict a question or claim that seems true but isn't.",
+"slots": [
+"the question or claim"
+],
+"aliases": [
+"well yes but actually no",
+"pirate captain",
+"yes but no",
+"pirates band of misfits"
+],
+"avoid": "Not for clear agreement; the answer has to be a twisty no."
+},
+{
+"id": "gollum",
+"name": "Gollum",
+"lines": 2,
+"shape": "reaction",
+"core": "Gollum's creepy eager grin, used for obsessive greed over something you treasure ('my precious').",
+"slots": [
+"setup",
+"the obsessive reaction"
+],
+"aliases": [
+"gollum",
+"my precious",
+"smeagol",
+"gollum smile"
+],
+"avoid": "Not for calm or wholesome moments."
+},
+{
+"id": "moethrowsbarney",
+"name": "Moe Throws Barney",
+"lines": 3,
+"shape": "plan-backfires",
+"core": "Moe throws Barney out of the bar, but Barney is back inside moments later; used for something you got rid of that instantly returns.",
+"slots": [
+"you",
+"the thing you throw out",
+"it coming right back"
+],
+"aliases": [
+"moe throws barney",
+"moe kicks out barney",
+"barney comes back",
+"simpsons bar throw out"
+],
+"avoid": "Not for permanent fixes; the thing has to return."
+},
+{
+"id": "kevinhart",
+"name": "Kevin Hart Stare",
+"lines": 1,
+"shape": "reaction",
+"core": "Kevin Hart's wide-eyed suspicious stare, used when someone says something shocking, sketchy or unbelievable.",
+"slots": [
+"what was said"
+],
+"aliases": [
+"kevin hart",
+"kevin hart stare",
+"kevin hart side eye",
+"kevin hart face"
+],
+"avoid": "Not for happy approval; it's for disbelief."
+},
+{
+"id": "grimreaperknockingdoor",
+"name": "Grim Reaper Knocking Door",
+"lines": 4,
+"shape": "labeling",
+"core": "Death knocks on door after door, each victim behind one; used when a threat has taken out others and is now coming for you or the next one.",
+"slots": [
+"first victim",
+"second victim",
+"the threat",
+"the next target"
+],
+"aliases": [
+"grim reaper knocking door",
+"grim reaper doors",
+"death knocking",
+"reaper door"
+],
+"avoid": "Not for real deaths or tragedies."
+},
+{
+"id": "undertaker",
+"name": "Undertaker Behind",
+"lines": 2,
+"shape": "warning",
+"core": "The Undertaker appears menacingly behind a celebrating wrestler; used when someone is enjoying a moment, unaware of the doom about to arrive.",
+"slots": [
+"the celebrating person",
+"the doom behind them"
+],
+"aliases": [
+"undertaker",
+"undertaker behind you",
+"undertaker appears",
+"aj styles undertaker"
+],
+"avoid": "Not for pleasant surprises."
+},
+{
+"id": "satisfiedseal",
+"name": "Satisfied Seal",
+"lines": 2,
+"shape": "approval",
+"core": "A smug, contented seal, used for small petty victories or quiet satisfaction.",
+"slots": [
+"the situation",
+"the smug payoff"
+],
+"aliases": [
+"satisfied seal",
+"smug seal",
+"happy seal",
+"content seal"
+],
+"avoid": "Not for frustration or bad news."
+},
+{
+"id": "leonardodicapriowolfofwallst",
+"name": "Leonardo DiCaprio Wolf Of Wall Street Laughing",
+"lines": 2,
+"shape": "escalation",
+"core": "Leo grins, then bursts out laughing; used when something is funny and then gets even funnier, or for laughing at someone's naivety.",
+"slots": [
+"the setup",
+"the punchline that makes it funnier"
+],
+"aliases": [
+"leonardo dicaprio laughing",
+"wolf of wall street laughing",
+"leo laughing",
+"dicaprio laugh"
+],
+"avoid": "Not for sad or serious moments."
+},
+{
+"id": "spidermancomputerdesk",
+"name": "Spiderman Computer Desk",
+"lines": 2,
+"shape": "irony",
+"core": "Spider-Man sits at a desk under a portrait of himself, used for smug or absurd self-referential statements and dry deadpan announcements.",
+"slots": [
+"setup",
+"punchline"
+],
+"aliases": [
+"spiderman desk",
+"spiderman computer desk",
+"60s spiderman desk",
+"spiderman office"
+],
+"avoid": "Not for emotional reactions; it's deadpan."
+},
+{
+"id": "presidentialalert",
+"name": "Presidential Alert",
+"lines": 1,
+"shape": "warning",
+"core": "A phone's emergency Presidential Alert, used to announce something trivial as if it were a national emergency.",
+"slots": [
+"the urgent announcement"
+],
+"aliases": [
+"presidential alert",
+"emergency alert",
+"phone alert",
+"iphone alert"
+],
+"avoid": "Not for real emergencies or disasters."
+},
+{
+"id": "didyoumean",
+"name": "Google Did You Mean",
+"lines": 2,
+"shape": "irony",
+"core": "A Google search where Google 'corrects' your query to something funnier or more honest; used to reveal what you really meant.",
+"slots": [
+"the search query",
+"Google's correction"
+],
+"aliases": [
+"did you mean",
+"google did you mean",
+"google search",
+"google correction"
+],
+"avoid": "Not for photo reactions; it's a text-swap joke."
+},
+{
+"id": "gigachad",
+"name": "Giga Chad",
+"lines": 2,
+"shape": "approval",
+"core": "The idealized, impossibly confident Giga Chad, used to portray someone or something as the ultimate effortless alpha choice.",
+"slots": [
+"setup",
+"the chad move"
+],
+"aliases": [
+"giga chad",
+"gigachad",
+"chad",
+"average enjoyer"
+],
+"avoid": "Not for weakness or failure."
+},
+{
+"id": "whowantstobeamillionaire",
+"name": "Who Wants To Be A Millionaire",
+"lines": 5,
+"shape": "binary-choice",
+"core": "A shocked contestant faces a quiz question with four answers, used for trick questions where every option is bad or the answer is obvious.",
+"slots": [
+"the question",
+"answer A",
+"answer B",
+"answer C",
+"answer D"
+],
+"aliases": [
+"who wants to be a millionaire",
+"millionaire question",
+"quiz show meme",
+"steve harvey millionaire"
+],
+"avoid": "Not for single-statement reactions; it needs a question and options."
+},
+{
+"id": "itsnotgoingtohappen",
+"name": "It's Not Going To Happen",
+"lines": 2,
+"shape": "rejection",
+"core": "Regina George from Mean Girls telling someone to stop trying to make something happen, because it's not going to happen.",
+"slots": [
+"stop trying to make X happen",
+"it's not going to happen"
+],
+"aliases": [
+"its not going to happen",
+"stop trying to make fetch happen",
+"regina george",
+"mean girls fetch"
+],
+"avoid": "Not for encouragement or things that are catching on."
+},
+{
+"id": "holdfart",
+"name": "Hold Fart",
+"lines": 2,
+"shape": "reaction",
+"core": "A student straining with a tense face, used for desperately holding something in or trying hard not to react.",
+"slots": [
+"the situation",
+"what you're holding in"
+],
+"aliases": [
+"hold fart",
+"trying not to fart",
+"straining student",
+"holding it in"
+],
+"avoid": "Not for relaxed or calm moments."
+},
+{
+"id": "davechappelle",
+"name": "Y'all Got Any More Of That",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Tyrone Biggums twitchily begging for more of something, used when someone is hooked on a thing and craves more of it.",
+"slots": [
+"setup",
+"y'all got any more of that X"
+],
+"aliases": [
+"dave chappelle",
+"tyrone biggums",
+"y'all got any more of that",
+"chappelle crackhead"
+],
+"avoid": "Not for things nobody would crave; it's about addictive wanting."
+},
+{
+"id": "lisasimpsonspresentation",
+"name": "Lisa Simpson's Presentation",
+"lines": 1,
+"shape": "irony",
+"core": "Lisa presents a statement on a screen as if it were an undeniable fact, used for blunt truths or hot takes stated with authority.",
+"slots": [
+"the stated fact"
+],
+"aliases": [
+"lisa simpson presentation",
+"lisa presenting",
+"lisa simpson projector",
+"lisa facts"
+],
+"avoid": "Not for multi-step stories or dialogue; one statement only."
+},
+{
+"id": "youknowimsomethingofascienti",
+"name": "I'm Something Of A Scientist Myself",
+"lines": 2,
+"shape": "self-own",
+"core": "Norman Osborn smugly claims expertise, used when someone with minimal skill compares themselves to experts.",
+"slots": [
+"the amateur thing I did",
+"I'm something of a X myself"
+],
+"aliases": [
+"something of a scientist",
+"norman osborn",
+"willem dafoe scientist",
+"im something of a"
+],
+"avoid": "Not for real experts; the joke is unearned confidence."
+},
+{
+"id": "spidermanpeterparker",
+"name": "Peter Parker Smirk",
+"lines": 2,
+"shape": "reaction",
+"core": "Peter Parker's sly sideways smirk, used for feeling smug or quietly mischievous about something.",
+"slots": [
+"setup",
+"smug punchline"
+],
+"aliases": [
+"peter parker smirk",
+"tobey maguire smirk",
+"spiderman smug",
+"peter parker face"
+],
+"avoid": "Not for genuine sadness or anger."
+},
+{
+"id": "suregrandmaletsgetyoutobed",
+"name": "Sure Grandma Let's Get You To Bed",
+"lines": 2,
+"shape": "rejection",
+"core": "A young woman gently escorts a rambling grandma away, used to dismiss an outdated or absurd claim condescendingly.",
+"slots": [
+"grandma's outdated claim",
+"sure grandma, let's get you to bed"
+],
+"aliases": [
+"sure grandma",
+"lets get you to bed",
+"grandma walker",
+"ok grandma"
+],
+"avoid": "Not for mocking real elderly people; it's about dismissing silly takes."
+},
+{
+"id": "smilingcat",
+"name": "Smiling Cat",
+"lines": 2,
+"shape": "reaction",
+"core": "A wide-eyed cat with an awkward forced smile, used for nervously pretending everything is fine or innocently hiding something.",
+"slots": [
+"situation",
+"awkward reaction"
+],
+"aliases": [
+"smiling cat",
+"awkward smile cat",
+"creepy smiling cat",
+"cat smile"
+],
+"avoid": "Not for genuine joy or anger."
+},
+{
+"id": "obiwankenobi",
+"name": "Obi Wan Kenobi",
+"lines": 2,
+"shape": "irony",
+"core": "Old Obi-Wan delivering wise-sounding but evasive lines, used for technically-true excuses or nostalgic remarks.",
+"slots": [
+"setup",
+"wise or evasive reply"
+],
+"aliases": [
+"obi wan kenobi",
+"old ben kenobi",
+"from a certain point of view",
+"alec guinness obi wan"
+],
+"avoid": "Not for direct, angry reactions."
+},
+{
+"id": "thatsapaddlin",
+"name": "That's A Paddlin'",
+"lines": 2,
+"shape": "warning",
+"core": "Jasper holding a paddle declares any petty offense punishable, used to mock strict rules or warn against a small annoying behaviour.",
+"slots": [
+"the offense",
+"that's a paddlin'"
+],
+"aliases": [
+"thats a paddlin",
+"jasper paddle",
+"simpsons paddle",
+"paddlin"
+],
+"avoid": "Not for serious real-world punishment."
+},
+{
+"id": "jasonmomoahenrycavillmeme",
+"name": "Jason Momoa Henry Cavill",
+"lines": 2,
+"shape": "labeling",
+"core": "Jason Momoa creeps up grinning behind an unaware Henry Cavill, used for a problem or person sneaking up on someone oblivious.",
+"slots": [
+"you, unaware",
+"the thing sneaking up"
+],
+"aliases": [
+"jason momoa henry cavill",
+"momoa sneaking",
+"momoa behind cavill",
+"creeping momoa"
+],
+"avoid": "Not for open confrontations; the target must be oblivious."
+},
+{
+"id": "floatingboychasingrunningboy",
+"name": "Floating Boy Chasing Running Boy",
+"lines": 2,
+"shape": "labeling",
+"core": "A boy floats eerily down a hallway after a fleeing boy, used for something inescapable pursuing someone.",
+"slots": [
+"the one running away",
+"the thing chasing them"
+],
+"aliases": [
+"floating boy",
+"floating boy chasing",
+"hallway chase",
+"levitating boy"
+],
+"avoid": "Not for things you can easily escape."
+},
+{
+"id": "blankstarterpack",
+"name": "Blank Starter Pack",
+"lines": 5,
+"shape": "labeling",
+"core": "A titled grid of items that stereotypically come with a type of person or situation, used to roast a familiar archetype.",
+"slots": [
+"the X starter pack title",
+"item 1",
+"item 2",
+"item 3",
+"item 4"
+],
+"aliases": [
+"starter pack",
+"blank starter pack",
+"the starter pack",
+"starterpack"
+],
+"avoid": "Not for a single punchline; needs several telling items."
+},
+{
+"id": "bender19pu",
+"name": "Bender",
+"lines": 2,
+"shape": "rejection",
+"core": "Bender in a fur coat smugly declaring he'll do his own thing, used for spitefully making your own version of something that excluded you.",
+"slots": [
+"setup",
+"I'll make my own, with X"
+],
+"aliases": [
+"bender",
+"futurama bender",
+"bender blackjack",
+"bender fur coat"
+],
+"avoid": "Not for humble or sincere moments."
+},
+{
+"id": "mrkrabsblurmeme",
+"name": "Confused Mr Krabs",
+"lines": 2,
+"shape": "reaction",
+"core": "Mr Krabs spinning in a blur of confusion, used when overwhelmed or utterly lost in a situation.",
+"slots": [
+"setup",
+"confused reaction"
+],
+"aliases": [
+"confused mr krabs",
+"mr krabs blur",
+"blurry mr krabs",
+"krabs confused"
+],
+"avoid": "Not for calm understanding or confidence."
+},
+{
+"id": "heresjohnny",
+"name": "Here's Johnny",
+"lines": 2,
+"shape": "warning",
+"core": "Jack Torrance leering through a broken door, used for something unwelcome forcing its way back in or a menacing arrival.",
+"slots": [
+"setup",
+"here's X"
+],
+"aliases": [
+"heres johnny",
+"the shining",
+"jack nicholson door",
+"jack torrance"
+],
+"avoid": "Not for pleasant or welcome arrivals."
+},
+{
+"id": "yeshoney",
+"name": "Yes Honey",
+"lines": 2,
+"shape": "dialogue",
+"core": "A smiling woman makes a request and a weary wojak man submits, used for tired, automatic agreement with a demand.",
+"slots": [
+"her request",
+"his defeated yes honey"
+],
+"aliases": [
+"yes honey",
+"tired wojak yes honey",
+"wojak wife",
+"yes dear"
+],
+"avoid": "Not for enthusiastic agreement."
+},
+{
+"id": "wolverineremember",
+"name": "Wolverine Remember",
+"lines": 2,
+"shape": "before-after",
+"core": "Wolverine wistfully gazing at a framed picture, used for nostalgically missing something from the past.",
+"slots": [
+"me now",
+"the thing I miss in the frame"
+],
+"aliases": [
+"wolverine remember",
+"wolverine picture frame",
+"wolverine nostalgia",
+"wolverine looking at photo"
+],
+"avoid": "Not for things you're glad are gone."
+},
+{
+"id": "rickandcarl",
+"name": "Rick And Carl",
+"lines": 2,
+"shape": "dialogue",
+"core": "Rick sets up a dad joke and delivers the pun while Carl stares down in annoyance, used for groan-worthy puns.",
+"slots": [
+"Rick's setup",
+"Rick's pun punchline"
+],
+"aliases": [
+"rick and carl",
+"walking dead dad joke",
+"carl coral",
+"rick dad joke"
+],
+"avoid": "Not for serious conversations; needs a pun."
+},
+{
+"id": "angrybaby",
+"name": "Angry Baby",
+"lines": 2,
+"shape": "reaction",
+"core": "A baby screaming in outrage, used for overreacting with fury to a small inconvenience.",
+"slots": [
+"the trigger",
+"furious reaction"
+],
+"aliases": [
+"angry baby",
+"screaming baby",
+"mad baby",
+"outraged baby"
+],
+"avoid": "Not for calm or happy moments."
+},
+{
+"id": "milkcarton",
+"name": "Milk Carton",
+"lines": 2,
+"shape": "irony",
+"core": "A missing-person milk carton, used to joke that something has gone missing or disappeared for ages.",
+"slots": [
+"what's missing",
+"who to contact"
+],
+"aliases": [
+"milk carton",
+"missing milk carton",
+"have you seen me",
+"missing poster"
+],
+"avoid": "Not for real missing people."
+},
+{
+"id": "theofficehandshake",
+"name": "The Office Handshake",
+"lines": 2,
+"shape": "labeling",
+"core": "An awkward, forced handshake between two parties, used when two unlikely sides make an uneasy deal or agreement.",
+"slots": [
+"first party",
+"second party"
+],
+"aliases": [
+"michael scott handshake",
+"the office handshake",
+"awkward handshake",
+"ed truck handshake"
+],
+"avoid": "Not for genuine, warm partnerships."
+},
+{
+"id": "pentagonhexagonoctagon",
+"name": "Pentagon Hexagon Octagon",
+"lines": 1,
+"shape": "escalation",
+"core": "Three real shapes followed by an absurd '-agon' pun in the empty fourth panel, used for wordplay on any word ending in 'gone'.",
+"slots": [
+"the -agon pun"
+],
+"aliases": [
+"pentagon hexagon octagon",
+"no-agon",
+"-agon meme",
+"shapes pun"
+],
+"avoid": "Not for captions that aren't an '-agon' pun."
+},
+{
+"id": "iamonceagainasking",
+"name": "I Am Once Again Asking",
+"lines": 2,
+"shape": "reaction",
+"core": "Bernie Sanders' weary repeated plea, used to ask for the same thing yet again.",
+"slots": [
+"i am once again asking",
+"for the thing"
+],
+"aliases": [
+"bernie once again asking",
+"i am once again asking for your financial support",
+"bernie sanders mittens ask",
+"once again asking"
+],
+"avoid": "Not for first-time or one-off requests."
+},
+{
+"id": "chefgordonramsay",
+"name": "Chef Gordon Ramsay",
+"lines": 2,
+"shape": "reaction",
+"core": "Gordon Ramsay screaming in the kitchen, used for furious, brutally honest criticism of poor work.",
+"slots": [
+"the screw-up",
+"ramsay's insult"
+],
+"aliases": [
+"gordon ramsay",
+"angry gordon ramsay",
+"hells kitchen ramsay",
+"ramsay yelling"
+],
+"avoid": "Not for gentle or constructive feedback."
+},
+{
+"id": "guessilldie",
+"name": "Guess I'll Die",
+"lines": 1,
+"shape": "reaction",
+"core": "An old man shrugging in resignation, used when there's no way out of a bad situation and you just accept doom.",
+"slots": [
+"hopeless situation"
+],
+"aliases": [
+"guess i'll die",
+"shrugging old man",
+"well i guess i'll die",
+"old man shrug"
+],
+"avoid": "Not for situations with an easy fix."
+},
+{
+"id": "ifearnoman",
+"name": "I Fear No Man",
+"lines": 1,
+"shape": "irony",
+"core": "The TF2 Heavy says he fears no man, but that thing scares him; the blank panel shows the one harmless-looking thing that terrifies you.",
+"slots": [
+"the scary thing"
+],
+"aliases": [
+"i fear no man",
+"but that thing it scares me",
+"heavy fears no man",
+"tf2 heavy scared"
+],
+"avoid": "Not for things that are genuinely, obviously dangerous."
+},
+{
+"id": "achievementunlocked",
+"name": "Achievement Unlocked",
+"lines": 1,
+"shape": "approval",
+"core": "An Xbox achievement badge, used to sarcastically celebrate a tiny, dubious or embarrassing accomplishment.",
+"slots": [
+"the achievement"
+],
+"aliases": [
+"achievement unlocked",
+"xbox achievement",
+"achievement get",
+"trophy unlocked"
+],
+"avoid": "Not for genuinely big milestones meant seriously."
+}
+]

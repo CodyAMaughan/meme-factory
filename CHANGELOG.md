@@ -2,6 +2,14 @@
 
 All notable changes to Meme Factory. Versions follow [semantic versioning](https://semver.org).
 
+## 0.12.0 (2026-10-10)
+
+- **Better at finding the right meme.** Measured on a new benchmark (bench/): about 2,400 requests, one to three per template, a 70/30 split, and a held-out set written by people who only saw the picture. On that set the right template now lands in the top three 90% of the time, up from 76%; for requests that describe only a situation ("my boss wants me to work saturday for a pizza"), 77%, up from 53%.
+  - Haiku writes the card of the ideal template (HyDE) and names 15 candidates from the whole catalog, in parallel; then reranks the search's best 200, with their pictures. The writer still chooses, from the 40 that come out. Any step that fails falls back to the search.
+  - Every template's card now describes its picture ("man in orange jacket holding hand up refusing"), and the search weighs it.
+  - A meme asked for right as a session starts waits (up to 5 seconds) for the server's templates.
+- **74 duplicate templates removed** from the server (the same picture under two names); their names live on as aliases of the copy kept.
+
 ## 0.11.0 (2026-10-09)
 
 - **About 1,500 templates.** The Meme Factory's own server adds some 1,300 of Imgflip's most popular templates of all time to memegen.link's 210. Each was laid out by a model looking at the picture (boxes where people put the text) and given a card (what it means, each box's role, its popularity rank). Offensive, obscure and duplicate templates were left out.

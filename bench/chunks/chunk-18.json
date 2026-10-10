@@ -1,0 +1,1099 @@
+[
+{
+"id": "patrickstarandmanray",
+"name": "Patrick Star And Man Ray",
+"lines": 8,
+"shape": "dialogue",
+"core": "Patrick keeps failing to grasp that Man Ray wants his wallet, used for someone who misses an obvious point over and over.",
+"slots": [
+"the ask",
+"the clueless reply",
+"the clarification",
+"still clueless",
+"the hint",
+"the obvious hint",
+"the demand",
+"the final miss"
+],
+"aliases": [
+"patrick wallet",
+"patrick and man ray",
+"is this your wallet",
+"patrick id card"
+],
+"avoid": "Not for quick single-beat jokes."
+},
+{
+"id": "obamagivingobamaaward",
+"name": "Obama Awarding Obama",
+"lines": 2,
+"shape": "self-own",
+"core": "Obama places a medal on another Obama, used for congratulating or rewarding yourself for something.",
+"slots": [
+"the one receiving",
+"the one giving"
+],
+"aliases": [
+"obama awarding himself",
+"obama medal meme",
+"obama gives obama medal",
+"self award"
+],
+"avoid": "Not for recognition from others."
+},
+{
+"id": "eyeofsauron",
+"name": "Eye Of Sauron",
+"lines": 2,
+"shape": "warning",
+"core": "The flaming Eye of Sauron watches from its tower, used for someone or something that sees everything you do.",
+"slots": [
+"who is watching",
+"what they're watching for"
+],
+"aliases": [
+"eye of sauron",
+"sauron watching",
+"all seeing eye",
+"sauron eye"
+],
+"avoid": "Not for cheerful or private moments."
+},
+{
+"id": "kamalaharrislaughing",
+"name": "Kamala Harris Laughing",
+"lines": 2,
+"shape": "reaction",
+"core": "Kamala Harris laughing heartily, used as a reaction to something absurdly funny or laughing off a problem.",
+"slots": [
+"the situation",
+"the laughing reaction"
+],
+"aliases": [
+"kamala laughing",
+"kamala harris laugh",
+"laughing kamala",
+"harris laughing"
+],
+"avoid": "Not for partisan attacks or hateful messages."
+},
+{
+"id": "dadbelttemplate",
+"name": "Dad Belt",
+"lines": 3,
+"shape": "plan-backfires",
+"core": "A furious dad bursts in holding a belt as the kid on the floor makes an excuse, used for getting caught and facing consequences.",
+"slots": [
+"the angry line",
+"who the dad is",
+"the kid's excuse"
+],
+"aliases": [
+"dad with belt",
+"dad belt comic",
+"belt dad",
+"angry dad belt"
+],
+"avoid": "Not for real abuse or wholesome moments."
+},
+{
+"id": "watertankleakingfix",
+"name": "Flex Tape Leak Fix",
+"lines": 2,
+"shape": "labeling",
+"core": "Phil Swift slaps Flex Tape over a gushing tank leak, used for a quick patch that covers up a big problem.",
+"slots": [
+"the problem (leak)",
+"the quick fix (tape)"
+],
+"aliases": [
+"flex tape",
+"phil swift flex tape",
+"that's a lot of damage",
+"flex tape leak"
+],
+"avoid": "Not for proper, thorough solutions."
+},
+{
+"id": "freezingcold",
+"name": "Frozen Jack Torrance",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Jack from The Shining frozen solid in the snow, used for being freezing cold or waiting so long you froze.",
+"slots": [
+"the setup",
+"the frozen result"
+],
+"aliases": [
+"frozen jack",
+"the shining frozen",
+"freezing cold",
+"jack torrance frozen"
+],
+"avoid": "Not for hot weather or quick results."
+},
+{
+"id": "pouringgasonfire",
+"name": "Pouring Gas On Fire",
+"lines": 3,
+"shape": "plan-backfires",
+"core": "A man pours a gas can onto a campfire, used for someone making a bad situation much worse.",
+"slots": [
+"the person",
+"the existing problem",
+"what they add"
+],
+"aliases": [
+"pouring gasoline on fire",
+"adding fuel to the fire",
+"gas on fire",
+"fuel the fire"
+],
+"avoid": "Not for genuinely helpful fixes."
+},
+{
+"id": "austedeslespagan",
+"name": "A Ustedes Les Pagan",
+"lines": 2,
+"shape": "reaction",
+"core": "Kenny from We're the Millers asking 'do you guys get paid?', used when someone does unpaid work or effort nobody asked for.",
+"slots": [
+"what someone does for free",
+"do you guys get paid for this?"
+],
+"aliases": [
+"do you guys get paid",
+"we're the millers kenny",
+"a ustedes les pagan",
+"you guys are getting paid"
+],
+"avoid": "Not for genuine questions about salaries."
+},
+{
+"id": "ihavefailedyou",
+"name": "I Have Failed You",
+"lines": 1,
+"shape": "self-own",
+"core": "Dexter tearfully apologising to a picture taped in his locker, used for letting down something you care about.",
+"slots": [
+"the thing you let down"
+],
+"aliases": [
+"dexter i have failed you",
+"i have failed you",
+"dexter locker",
+"dexter crying"
+],
+"avoid": "Not for blaming someone else."
+},
+{
+"id": "dartiboy",
+"name": "Darti Boy",
+"lines": 2,
+"shape": "exaggeration",
+"core": "A man bent over as a huge fireball blasts out behind him, used for an explosive, over-the-top aftermath of eating or doing something.",
+"slots": [
+"setup",
+"the explosive result"
+],
+"aliases": [
+"fire fart",
+"darti boy",
+"flaming fart guy",
+"fart explosion"
+],
+"avoid": "Not for real fires or accidents."
+},
+{
+"id": "statlerandwaldorf",
+"name": "Statler and Waldorf",
+"lines": 2,
+"shape": "dialogue",
+"core": "The two Muppet hecklers in their balcony, used for grumpy commentary mocking something from the sidelines.",
+"slots": [
+"setup or first heckle",
+"punchline heckle"
+],
+"aliases": [
+"muppet hecklers",
+"statler and waldorf",
+"two old muppets",
+"balcony muppets"
+],
+"avoid": "Not for sincere praise."
+},
+{
+"id": "wolfofwallstreet",
+"name": "Wolf of Wall Street",
+"lines": 2,
+"shape": "approval",
+"core": "Jordan Belfort with arms spread before a cheering crowd, used for basking in triumph over a small or dubious win.",
+"slots": [
+"the win",
+"triumphant boast"
+],
+"aliases": [
+"wolf of wall street",
+"leo arms out",
+"jordan belfort",
+"dicaprio crowd"
+],
+"avoid": "Not for humble or quiet moments."
+},
+{
+"id": "bugsbunnyking",
+"name": "Bugs Bunny King",
+"lines": 2,
+"shape": "approval",
+"core": "Smug Bugs Bunny wearing a crown on a throne, used when you feel like royalty after a petty achievement.",
+"slots": [
+"what you did",
+"how royal you feel"
+],
+"aliases": [
+"king bugs bunny",
+"bugs bunny crown",
+"smug bugs bunny",
+"bugs bunny throne"
+],
+"avoid": "Not for real defeats or sadness."
+},
+{
+"id": "angrychihuahuahappychihuahua",
+"name": "Angry Chihuahua Happy Chihuahua",
+"lines": 2,
+"shape": "before-after",
+"core": "The same chihuahua snarling then smiling, used for an instant mood flip when the situation changes.",
+"slots": [
+"what makes you angry",
+"what instantly makes you happy"
+],
+"aliases": [
+"angry chihuahua happy chihuahua",
+"angry dog happy dog",
+"chihuahua mood swing",
+"snarling then smiling dog"
+],
+"avoid": "Not for slow or gradual changes."
+},
+{
+"id": "newsheadline",
+"name": "Breaking News Headline",
+"lines": 1,
+"shape": "irony",
+"core": "A CNN Breaking News banner with a blank headline, used to announce a trivial event as major news.",
+"slots": [
+"the breaking headline"
+],
+"aliases": [
+"breaking news",
+"cnn breaking news",
+"news headline",
+"anderson cooper breaking news"
+],
+"avoid": "Not for real tragedies or misinformation made to look genuine."
+},
+{
+"id": "omgkaren",
+"name": "OMG Karen",
+"lines": 2,
+"shape": "reaction",
+"core": "Gretchen from Mean Girls gasping 'Oh my God Karen, you can't just ask people...', used when someone says something shockingly blunt.",
+"slots": [
+"the blunt thing someone said",
+"OMG Karen, you can't just..."
+],
+"aliases": [
+"omg karen",
+"you can't just ask people",
+"mean girls gretchen",
+"oh my god karen"
+],
+"avoid": "Not for the modern 'Karen' complaining-customer stereotype."
+},
+{
+"id": "trolleyproblem",
+"name": "Trolley Problem",
+"lines": 3,
+"shape": "binary-choice",
+"core": "The trolley ethics dilemma: pull the lever to hit one person or let it hit five, used for absurd forced choices.",
+"slots": [
+"the trolley",
+"the one on the side track",
+"the five on the main track"
+],
+"aliases": [
+"trolley problem",
+"lever dilemma",
+"train tracks choice",
+"pull the lever"
+],
+"avoid": "Not for choices with an obvious easy answer and no stakes."
+},
+{
+"id": "monkeyooh",
+"name": "Monkey Ooh",
+"lines": 2,
+"shape": "reaction",
+"core": "An orangutan making an impressed 'oooh' face, used when reacting to juicy gossip or something surprisingly impressive.",
+"slots": [
+"what you just heard",
+"the ooh reaction"
+],
+"aliases": [
+"monkey ooh",
+"orangutan ooh",
+"ooh monkey",
+"impressed orangutan"
+],
+"avoid": "Not for sad or angry reactions."
+},
+{
+"id": "spidermancamera",
+"name": "Spider-Man Camera",
+"lines": 2,
+"shape": "reaction",
+"core": "1960s Spider-Man snapping a photo, used for capturing evidence of something you'll bring up later.",
+"slots": [
+"what you just witnessed",
+"why you're saving proof"
+],
+"aliases": [
+"spiderman camera",
+"spider-man taking picture",
+"spiderman photo",
+"screenshot spiderman"
+],
+"avoid": "Not for real surveillance or doxxing."
+},
+{
+"id": "veinpoppingkid",
+"name": "Guy Holding It In",
+"lines": 2,
+"shape": "reaction",
+"core": "A student straining with a popping vein, used for desperately holding back a comment or reaction.",
+"slots": [
+"the situation",
+"what you're dying to say"
+],
+"aliases": [
+"vein popping kid",
+"trying not to say it",
+"holding it in",
+"kid straining in class",
+"guy resisting"
+],
+"avoid": "Not for relaxed or calm moments."
+},
+{
+"id": "dogebonk",
+"name": "Doge Bonk",
+"lines": 2,
+"shape": "labeling",
+"core": "A shiba bonking Cheems with a bat, used when something punishes or shuts down someone's bad idea.",
+"slots": [
+"the one bonking",
+"who gets bonked"
+],
+"aliases": [
+"doge bonk",
+"cheems bonk",
+"go to horny jail",
+"bonk meme",
+"shiba bat"
+],
+"avoid": "Not for real violence."
+},
+{
+"id": "viciouscycle",
+"name": "Vicious Cycle",
+"lines": 4,
+"shape": "escalation",
+"core": "Four steps joined by arrows in a loop, used for a self-reinforcing cycle you can't escape.",
+"slots": [
+"step 1",
+"step 2",
+"step 3",
+"step 4 (leads back to 1)"
+],
+"aliases": [
+"vicious cycle",
+"cycle diagram",
+"endless loop",
+"circle of life arrows"
+],
+"avoid": "Not for a one-way sequence with an ending."
+},
+{
+"id": "gibbyhittingspencerwithastop",
+"name": "Gibby Hitting Spencer With a Stop Sign",
+"lines": 3,
+"shape": "labeling",
+"core": "Gibby swinging a stop sign at unaware Spencer from iCarly, used when something blindsides a person who's just going about their day.",
+"slots": [
+"the weapon",
+"the unaware victim",
+"the attacker"
+],
+"aliases": [
+"gibby stop sign",
+"icarly stop sign",
+"gibby hits spencer",
+"spencer stop sign"
+],
+"avoid": "Not for real assaults."
+},
+{
+"id": "walterwhitescreamingathank",
+"name": "Walter White Screaming At Hank",
+"lines": 2,
+"shape": "reaction",
+"core": "Walter White screaming from a car window, used for a desperate, furious warning or outburst.",
+"slots": [
+"what's happening",
+"the screamed reaction"
+],
+"aliases": [
+"walter white screaming",
+"walt screaming in car",
+"breaking bad scream",
+"walter yelling at hank"
+],
+"avoid": "Not for calm or polite requests."
+},
+{
+"id": "mendiscussingmenfighting",
+"name": "Men Discussing Men Fighting",
+"lines": 2,
+"shape": "comparison",
+"core": "A brawl above a formal round-table summit, used for people fighting over something while others solemnly discuss the fight.",
+"slots": [
+"the ones fighting",
+"the ones discussing it"
+],
+"aliases": [
+"men discussing men fighting",
+"brawl and summit",
+"fight vs meeting",
+"round table discussion"
+],
+"avoid": "Not for real wars or political violence."
+},
+{
+"id": "skeletoruntilwemeetagain",
+"name": "Skeletor Until We Meet Again",
+"lines": 2,
+"shape": "irony",
+"core": "Skeletor delivers an unsettling fact, then runs off saying 'until we meet again', used for dropping a grim truth and leaving.",
+"slots": [
+"the disturbing fact",
+"until we meet again!"
+],
+"aliases": [
+"skeletor disturbing facts",
+"until we meet again",
+"skeletor running",
+"skeletor facts"
+],
+"avoid": "Not for cheerful or comforting facts."
+},
+{
+"id": "googlenoresults",
+"name": "Google No Results",
+"lines": 1,
+"shape": "irony",
+"core": "A Google search that returns no results, used for something so rare or nonexistent even Google can't find it.",
+"slots": [
+"the search query"
+],
+"aliases": [
+"google no results",
+"your search did not match",
+"no search results",
+"google nothing found"
+],
+"avoid": "Not for things that are easy to find."
+},
+{
+"id": "idontcareifyouwinijustneedxt",
+"name": "I Don't Care If You Win, I Just Need X To Lose",
+"lines": 2,
+"shape": "dialogue",
+"core": "General Hux saying he doesn't care who wins as long as a hated rival loses, used for spiteful rooting against something.",
+"slots": [
+"I don't care if you win",
+"I just need X to lose"
+],
+"aliases": [
+"i just need x to lose",
+"hux i don't care if you win",
+"general hux",
+"i don't care if you win"
+],
+"avoid": "Not for genuinely supporting a favourite."
+},
+{
+"id": "powerrangerteletubbies",
+"name": "Power Rangers Teletubbies",
+"lines": 2,
+"shape": "labeling",
+"core": "Power Rangers stack hands for a team cheer and a Teletubby sneaks its hand in, used for an outsider awkwardly joining a group.",
+"slots": [
+"the outsider joining in",
+"the group"
+],
+"aliases": [
+"power rangers teletubby",
+"tinky winky joins",
+"hands in teletubby",
+"power ranger hand stack"
+],
+"avoid": "Not for groups that welcome newcomers."
+},
+{
+"id": "beggar",
+"name": "Please Sir I Want Some More",
+"lines": 2,
+"shape": "reaction",
+"core": "Oliver Twist holding up his empty bowl, used for timidly begging for more of something.",
+"slots": [
+"what you got",
+"please sir, can I have more"
+],
+"aliases": [
+"oliver twist",
+"please sir i want some more",
+"beggar boy",
+"can i have some more"
+],
+"avoid": "Not for mocking real poverty."
+},
+{
+"id": "howcouldtheyhavedonethis",
+"name": "Why Would They Do This",
+"lines": 3,
+"shape": "self-own",
+"core": "Eric Andre shoots his guest, then looks shocked asking who would do this, used when someone causes a problem then acts baffled by it.",
+"slots": [
+"the victim",
+"the culprit",
+"the baffled reaction"
+],
+"aliases": [
+"eric andre shooting",
+"why would they do this",
+"how could they do this",
+"who would do this",
+"eric andre meme"
+],
+"avoid": "Not for real shootings or violence."
+},
+{
+"id": "lifeisgoodbutitcanbebetter",
+"name": "Life Is Good But It Can Be Better",
+"lines": 2,
+"shape": "escalation",
+"core": "Pedro Pascal pointing twice, first serious then smug, used for 'this is good, but this would make it even better'.",
+"slots": [
+"life is good",
+"but it could be better with..."
+],
+"aliases": [
+"life is good but it can be better",
+"pedro pascal pointing",
+"pedro pascal meme",
+"it can be better"
+],
+"avoid": "Not for things that make life worse."
+},
+{
+"id": "maliciousadvicemallard",
+"name": "Malicious Advice Mallard",
+"lines": 2,
+"shape": "plan-backfires",
+"core": "An advice-animal duck that gives deliberately harmful tips dressed up as helpful advice.",
+"slots": [
+"the problem",
+"the terrible advice"
+],
+"aliases": [
+"malicious advice mallard",
+"evil advice duck",
+"bad advice mallard",
+"malicious duck"
+],
+"avoid": "Not for genuinely dangerous instructions."
+},
+{
+"id": "awwdidsomeonegetaddictedtocr",
+"name": "Aww Did Someone Get Addicted To Crack",
+"lines": 2,
+"shape": "reaction",
+"core": "Dennis and Mac mock-crying with fists at their eyes, used to sarcastically pity someone for a problem they caused themselves.",
+"slots": [
+"setup",
+"aww, did someone..."
+],
+"aliases": [
+"aww did someone get addicted to crack",
+"always sunny fake crying",
+"dennis and mac crying",
+"boo hoo meme"
+],
+"avoid": "Not for mocking real addiction or genuine grief."
+},
+{
+"id": "wholesomeprotector",
+"name": "Wholesome Protector",
+"lines": 3,
+"shape": "labeling",
+"core": "A big armored guardian shields a small, vulnerable thing from a hail of arrows; used when someone defends something they love from all criticism.",
+"slots": [
+"what the protector says",
+"the protector",
+"the thing being protected"
+],
+"aliases": [
+"wholesome protector",
+"armored protector",
+"protecting from arrows",
+"srgrafo protector"
+],
+"avoid": "Not for actual violence or attacks on real people."
+},
+{
+"id": "businesshandshake",
+"name": "Business Handshake",
+"lines": 3,
+"shape": "labeling",
+"core": "Two parties shake hands on a deal; used to label two sides that agree on or bond over something.",
+"slots": [
+"the deal or shared thing",
+"first party",
+"second party"
+],
+"aliases": [
+"business handshake",
+"handshake deal",
+"corporate handshake",
+"deal handshake"
+],
+"avoid": "Not the Epic Handshake arm-wrestle meme; this is a plain corporate deal."
+},
+{
+"id": "originalstonerdog",
+"name": "Original Stoner Dog",
+"lines": 2,
+"shape": "reaction",
+"core": "A sled dog grinning with a dazed, blissed-out face; used for spaced-out, giddy or half-baked thoughts.",
+"slots": [
+"setup",
+"dazed punchline"
+],
+"aliases": [
+"stoner dog",
+"high dog",
+"grinning sled dog",
+"happy husky"
+],
+"avoid": "Not for serious or sad news."
+},
+{
+"id": "obiwanofcourseiknowhimhesme",
+"name": "Of Course I Know Him, He's Me",
+"lines": 1,
+"shape": "self-own",
+"core": "Obi-Wan admits the person being asked about is himself; used when you are secretly the culprit or the person in question.",
+"slots": [
+"who did this?"
+],
+"aliases": [
+"of course i know him hes me",
+"obi wan hes me",
+"i know him he's me",
+"obi-wan kenobi"
+],
+"avoid": "Not for cases where the speaker is innocent."
+},
+{
+"id": "yougetanxandyougetanx",
+"name": "You Get An X And You Get An X",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Oprah gleefully handing the same thing out to everyone, used when something (often unwanted) is given to everybody at once.",
+"slots": [
+"you get a thing",
+"and you get a thing"
+],
+"aliases": [
+"Oprah You Get A Car",
+"You Get A Car",
+"Everybody Gets One",
+"Oprah Giveaway"
+],
+"avoid": "Not for things given to just one person."
+},
+{
+"id": "ferrisbuellerbenstein",
+"name": "Ferris Bueller Ben Stein",
+"lines": 2,
+"shape": "reaction",
+"core": "The monotone teacher calling roll to silence, used when you ask a question or call for someone and nobody responds.",
+"slots": [
+"the question nobody answers",
+"bueller? bueller?"
+],
+"aliases": [
+"Bueller Bueller",
+"Anyone Anyone",
+"Ben Stein Teacher",
+"Ferris Bueller Teacher"
+],
+"avoid": "Not for lively or enthusiastic situations."
+},
+{
+"id": "hector",
+"name": "Hector",
+"lines": 2,
+"shape": "reaction",
+"core": "Achilles furiously screaming a name outside the walls of Troy, used to angrily summon whoever is responsible for something.",
+"slots": [
+"the situation",
+"the name being screamed"
+],
+"aliases": [
+"Achilles Hector",
+"Troy Hector Scream",
+"Brad Pitt Hector",
+"Hector Come Out"
+],
+"avoid": "Not for calm or friendly calls."
+},
+{
+"id": "maslowshierarchyofneeds",
+"name": "Maslow's Hierarchy of Needs",
+"lines": 5,
+"shape": "escalation",
+"core": "A pyramid of needs relabelled with your own priorities, from the most basic at the bottom to the loftiest at the top, used to rank what truly matters to someone.",
+"slots": [
+"top luxury need",
+"fourth need",
+"middle need",
+"second need",
+"most basic need"
+],
+"aliases": [
+"Maslow Pyramid",
+"Hierarchy of Needs",
+"Needs Pyramid",
+"Maslow's Pyramid"
+],
+"avoid": "Not for simple two-way comparisons."
+},
+{
+"id": "greedypipeman",
+"name": "Greedy Pipe Man",
+"lines": 3,
+"shape": "labeling",
+"core": "A fat man gulping a whole pipe's flow while a starving man gets drips, used when one party hoards a shared resource and others get scraps.",
+"slots": [
+"the resource",
+"who hogs it",
+"who gets the drips"
+],
+"aliases": [
+"Greedy Man Pipe",
+"Water Pipe Cartoon",
+"Inequality Pipe",
+"Hogging The Pipe"
+],
+"avoid": "Not for fair or evenly shared things."
+},
+{
+"id": "gravespongebob",
+"name": "Grave SpongeBob",
+"lines": 2,
+"shape": "labeling",
+"core": "Squidward sadly laying flowers on a grave, used to mourn something that is gone or discontinued.",
+"slots": [
+"who is mourning",
+"what died (on the tombstone)"
+],
+"aliases": [
+"Squidward Grave",
+"Squidward Tombstone",
+"Squidward Flowers Grave",
+"RIP Squidward"
+],
+"avoid": "Not for real deaths or tragedies."
+},
+{
+"id": "iknowkungfu",
+"name": "I Know Kung Fu",
+"lines": 2,
+"shape": "reaction",
+"core": "Neo waking up after a skill is uploaded into his brain, used when you suddenly gain expertise after a crash course or a quick tutorial.",
+"slots": [
+"the quick crash course",
+"i know kung fu"
+],
+"aliases": [
+"Neo I Know Kung Fu",
+"Matrix Kung Fu",
+"Neo Wakes Up",
+"Instant Expert"
+],
+"avoid": "Not for skills learned slowly over years."
+},
+{
+"id": "yourelaughing",
+"name": "You're Laughing",
+"lines": 2,
+"shape": "irony",
+"core": "A stern talk-show host scolding someone for laughing, used when a terrible situation is met with amusement: 'X happened and you're laughing.'",
+"slots": [
+"the grim fact",
+"and you're laughing"
+],
+"aliases": [
+"You're Laughing De Niro",
+"Murray Franklin You're Laughing",
+"And You're Laughing",
+"Joker De Niro"
+],
+"avoid": "Not for genuinely happy news."
+},
+{
+"id": "sixthsense",
+"name": "Sixth Sense",
+"lines": 2,
+"shape": "warning",
+"core": "The terrified boy whispering 'I see dead people', used when you notice something dead or abandoned that others think is alive.",
+"slots": [
+"i see",
+"dead things"
+],
+"aliases": [
+"I See Dead People",
+"Sixth Sense Kid",
+"Haley Joel Osment",
+"I See Dead Code"
+],
+"avoid": "Not for real deaths or cheerful news."
+},
+{
+"id": "jobinterview",
+"name": "Job Interview",
+"lines": 2,
+"shape": "dialogue",
+"core": "A Cyanide and Happiness interview where an absurd answer gets an instant 'Welcome aboard!', used to mock companies hiring for the wrong qualities.",
+"slots": [
+"the candidate's answer",
+"the interviewer's reply"
+],
+"aliases": [
+"Cyanide And Happiness Interview",
+"Welcome Aboard",
+"Job Interview Comic",
+"You're Hired"
+],
+"avoid": "Not for interviews that go badly."
+},
+{
+"id": "billboardblank",
+"name": "Blank Billboard",
+"lines": 1,
+"shape": "other",
+"core": "An empty roadside billboard, used to broadcast a message or announcement as if it were advertised to the whole city.",
+"slots": [
+"the billboard message"
+],
+"aliases": [
+"Billboard Blank",
+"Empty Billboard",
+"Billboard Template",
+"Blank Sign"
+],
+"avoid": "Not for multi-part comparisons."
+},
+{
+"id": "helenlovejoychildren",
+"name": "Helen Lovejoy Think Of The Children",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Helen Lovejoy shrieking 'Won't somebody please think of the children!', used to mock overblown moral panic over something trivial.",
+"slots": [
+"the trivial thing",
+"think of the children"
+],
+"aliases": [
+"Think Of The Children",
+"Won't Somebody Please Think Of The Children",
+"Helen Lovejoy",
+"Simpsons Think Of The Children"
+],
+"avoid": "Not for real child-safety issues."
+},
+{
+"id": "sadcat",
+"name": "Sad Cat",
+"lines": 2,
+"shape": "reaction",
+"core": "A tiny kitten looking up with big sad eyes, used to express small disappointments or plead for sympathy.",
+"slots": [
+"the sad setup",
+"the disappointing result"
+],
+"aliases": [
+"Sad Kitten",
+"Sad Kitty",
+"Crying Cat",
+"Pleading Kitten"
+],
+"avoid": "Not for happy or triumphant moments."
+},
+{
+"id": "koreaturkeyolympicshooter",
+"name": "Korea Turkey Olympic Shooters",
+"lines": 2,
+"shape": "comparison",
+"core": "A fully kitted-out shooter next to a relaxed one in a t-shirt getting the same result, used to contrast heavy preparation with casual effortless competence.",
+"slots": [
+"the over-equipped one",
+"the casual one"
+],
+"aliases": [
+"Turkish Olympic Shooter",
+"Yusuf Dikec",
+"Kim Yeji Shooter",
+"Olympic Shooter Gear Vs No Gear"
+],
+"avoid": "Not for cases where gear clearly wins."
+},
+{
+"id": "teamrocket",
+"name": "Team Rocket",
+"lines": 2,
+"shape": "labeling",
+"core": "Jessie, James and Meowth striking their motto pose, used to label a troublemaking duo that keeps showing up together.",
+"slots": [
+"James",
+"Jessie"
+],
+"aliases": [
+"Prepare For Trouble",
+"Make It Double",
+"Jessie And James",
+"Team Rocket Blasting Off"
+],
+"avoid": "Not for solo characters."
+},
+{
+"id": "staringfish",
+"name": "Staring Fish",
+"lines": 2,
+"shape": "reaction",
+"core": "A fish staring blankly straight into the camera, used for a silent, judgmental or awkward stare at someone's statement.",
+"slots": [
+"what was said",
+"the blank stare"
+],
+"aliases": [
+"Fish Staring",
+"Staring Fish Meme",
+"Awkward Fish",
+"Fish Looking At Camera"
+],
+"avoid": "Not for excited reactions."
+},
+{
+"id": "ichooseyou",
+"name": "I Choose You",
+"lines": 2,
+"shape": "approval",
+"core": "Ash hurling a Pok\u00e9 Ball while shouting 'I choose you!', used when someone dramatically picks a person or tool for the job.",
+"slots": [
+"the situation",
+"the chosen one"
+],
+"aliases": [
+"Pokemon I Choose You",
+"Ash Throwing Pokeball",
+"Ash Ketchum I Choose You",
+"Pokeball Throw"
+],
+"avoid": "Not for rejecting options."
+},
+{
+"id": "spongebobpanicinside",
+"name": "SpongeBob Panic Inside",
+"lines": 2,
+"shape": "irony",
+"core": "SpongeBob sitting calmly while a ghostly copy of him screams inside, used when you look composed on the outside but are panicking internally.",
+"slots": [
+"the stressful situation",
+"calm outside, screaming inside"
+],
+"aliases": [
+"Internal Screaming SpongeBob",
+"SpongeBob Calm Outside Panic Inside",
+"Inner Panic SpongeBob",
+"SpongeBob Screaming Inside"
+],
+"avoid": "Not for openly expressed panic."
+},
+{
+"id": "tsadouche",
+"name": "TSA Douche",
+"lines": 2,
+"shape": "warning",
+"core": "A smug TSA agent snapping on a rubber glove, used to announce an invasive, overly thorough inspection or check.",
+"slots": [
+"the setup",
+"the invasive check"
+],
+"aliases": [
+"TSA Agent Glove",
+"TSA Guy",
+"Rubber Glove TSA",
+"SNL TSA Agent"
+],
+"avoid": "Not for gentle or friendly checks."
+},
+{
+"id": "sleepyguy",
+"name": "Sleepy Guy",
+"lines": 2,
+"shape": "reaction",
+"core": "A groggy guy squinting from his pillow, used when you are rudely woken up or too tired to deal with something.",
+"slots": [
+"what woke you up",
+"your groggy reaction"
+],
+"aliases": [
+"Tired Guy In Bed",
+"Sleepy Man",
+"Just Woke Up Guy",
+"Groggy Guy"
+],
+"avoid": "Not for energetic, alert moments."
+},
+{
+"id": "patrickscientistvsnail",
+"name": "Patrick Scientist Vs Nail",
+"lines": 2,
+"shape": "comparison",
+"core": "Patrick as a brilliant scientist next to Patrick with a plank nailed to his head, used to contrast being a genius at hard things but hopeless at simple ones.",
+"slots": [
+"the hard thing you ace",
+"the simple thing you fail"
+],
+"aliases": [
+"Smart Patrick Dumb Patrick",
+"Patrick Scientist",
+"Patrick Nail Head",
+"Genius Vs Idiot Patrick"
+],
+"avoid": "Not for consistent competence."
+}
+]

@@ -1,0 +1,1092 @@
+[
+{
+"id": "nickcageandpedropascal",
+"name": "Nick Cage and Pedro Pascal",
+"lines": 2,
+"shape": "comparison",
+"core": "Nicolas Cage screaming in panic beside Pedro Pascal laughing with joy, used for two people reacting totally differently to the same thing.",
+"slots": [
+"the panicking one",
+"the delighted one"
+],
+"aliases": [
+"nic cage pedro pascal",
+"unbearable weight of massive talent",
+"cage screaming pascal laughing",
+"nick cage pedro"
+],
+"avoid": "Not for two people who agree."
+},
+{
+"id": "skysportsbreakingnews",
+"name": "Sky Sports Breaking News",
+"lines": 1,
+"shape": "irony",
+"core": "A Sky Sports News lower-third, used to announce a trivial or obvious event as dramatic breaking news.",
+"slots": [
+"the breaking headline"
+],
+"aliases": [
+"sky sports news",
+"breaking news sky sports",
+"transfer deadline breaking news",
+"sky sports headline"
+],
+"avoid": "Not for genuinely serious news."
+},
+{
+"id": "helpmeobiwan",
+"name": "Help Me Obi-Wan",
+"lines": 2,
+"shape": "other",
+"core": "Leia's hologram plea, used to beg someone or something as your only remaining hope.",
+"slots": [
+"help me, [savior]",
+"you're my only hope"
+],
+"aliases": [
+"help me obi wan kenobi",
+"you're my only hope",
+"leia hologram",
+"princess leia message"
+],
+"avoid": "Not for confident, self-sufficient situations."
+},
+{
+"id": "blankcomicpanel1x2",
+"name": "Blank Comic Panel 1x2",
+"lines": 2,
+"shape": "before-after",
+"core": "Two empty stacked panels, used for a simple setup-and-punchline or before-and-after text joke.",
+"slots": [
+"the setup",
+"the punchline"
+],
+"aliases": [
+"blank two panel",
+"two panel comic",
+"blank comic 1x2",
+"empty panels"
+],
+"avoid": "Not for jokes that need a specific picture or reaction face."
+},
+{
+"id": "boyandgirltexting",
+"name": "Boy and Girl Texting",
+"lines": 2,
+"shape": "dialogue",
+"core": "A girl and boy texting each other at night with blank speech bubbles, used for a sweet message met with an unexpected or nerdy reply.",
+"slots": [
+"her message",
+"his reply"
+],
+"aliases": [
+"couple texting",
+"boy and girl texting",
+"texting at night",
+"girl texting boy comic"
+],
+"avoid": "Not for group chats or more than two speakers."
+},
+{
+"id": "yuubuysacookie",
+"name": "Yuu Buys a Cookie",
+"lines": 3,
+"shape": "escalation",
+"core": "Yuu proudly slaps down her payment and the shopkeeper lights up, used for handing over something small and getting an oddly delighted reaction.",
+"slots": [
+"what's handed over",
+"the reveal",
+"the delighted receiver"
+],
+"aliases": [
+"yuu cookie",
+"anime girl buying cookie",
+"paying with coins anime",
+"yuu buys a cookie"
+],
+"avoid": "Not for rejections or disappointed reactions."
+},
+{
+"id": "seinfeldnewman",
+"name": "Seinfeld Smug Grin",
+"lines": 2,
+"shape": "reaction",
+"core": "Jerry Seinfeld grinning with a little fist pump, used for smug satisfaction when something goes your way at someone else's expense.",
+"slots": [
+"the setup",
+"the smug payoff"
+],
+"aliases": [
+"seinfeld grin",
+"jerry seinfeld smug",
+"hello newman",
+"seinfeld fist pump"
+],
+"avoid": "Not for genuine sympathy or bad news."
+},
+{
+"id": "extrahell",
+"name": "Extra-Hell",
+"lines": 1,
+"shape": "self-own",
+"core": "Someone insists they don't belong in Hell, then admits a sin so bad they get escorted to Extra-Hell; used to confess an especially awful habit or opinion.",
+"slots": [
+"the unforgivable confession"
+],
+"aliases": [
+"extra hell",
+"light roast extra hell",
+"you don't belong in hell",
+"i don't belong here comic"
+],
+"avoid": "Not for genuinely good deeds or mild quirks."
+},
+{
+"id": "funeral",
+"name": "Grant Gustin Over Grave",
+"lines": 2,
+"shape": "irony",
+"core": "Grant Gustin grinning and pointing at a fresh grave, used to cheerfully gloat over the death of something you're glad is gone.",
+"slots": [
+"what died",
+"who's glad about it"
+],
+"aliases": [
+"grant gustin grave",
+"oliver queen grave",
+"funeral pointing",
+"gloating at grave"
+],
+"avoid": "Not for real deaths or sincere mourning."
+},
+{
+"id": "strainingkid",
+"name": "Straining Kid",
+"lines": 2,
+"shape": "reaction",
+"core": "A kid in class visibly straining to hold something in, used when you're desperately trying not to say or do something.",
+"slots": [
+"the situation",
+"what you're holding back"
+],
+"aliases": [
+"straining kid",
+"holding it in",
+"trying not to laugh kid",
+"hold fart kid"
+],
+"avoid": "Not for relaxed, carefree moments."
+},
+{
+"id": "twocastles",
+"name": "Two Castles",
+"lines": 3,
+"shape": "binary-choice",
+"core": "A boy at a fork choosing between a sunny castle and a dark, stormy one, used for a choice between the good option and the obviously bad one you'll pick anyway.",
+"slots": [
+"the good option",
+"the bad option",
+"who's choosing"
+],
+"aliases": [
+"two castles",
+"two paths",
+"fork in the road castles",
+"good castle bad castle"
+],
+"avoid": "Not for choices between two equally good things."
+},
+{
+"id": "sadspiderman",
+"name": "Sad Spiderman",
+"lines": 2,
+"shape": "reaction",
+"core": "Spider-Man slumped with his head in his hands, used for despair over a small personal tragedy.",
+"slots": [
+"the setup",
+"the sad outcome"
+],
+"aliases": [
+"sad spiderman",
+"spiderman head in hands",
+"depressed spiderman",
+"spiderman crying"
+],
+"avoid": "Not for happy or triumphant moments."
+},
+{
+"id": "skeletoncomputer",
+"name": "Skeleton Waiting at Computer",
+"lines": 2,
+"shape": "exaggeration",
+"core": "A skeleton still sitting at its desk, used for waiting absurdly long for something to finish or reply.",
+"slots": [
+"what you're waiting for",
+"how long it's been"
+],
+"aliases": [
+"skeleton computer",
+"waiting skeleton",
+"skeleton at desk",
+"still waiting"
+],
+"avoid": "Not for things that happen quickly."
+},
+{
+"id": "howaboutnobear",
+"name": "How About No Bear",
+"lines": 1,
+"shape": "rejection",
+"core": "A bear raising its paws with 'how about no' printed below, used to flatly refuse a suggestion.",
+"slots": [
+"the request being refused"
+],
+"aliases": [
+"how about no",
+"how about no bear",
+"bear says no",
+"no bear"
+],
+"avoid": "Not for agreeing or saying yes."
+},
+{
+"id": "gentlemanfrog",
+"name": "Gentleman Frog",
+"lines": 2,
+"shape": "irony",
+"core": "A frog in a fine suit posed like an aristocrat, used for a formal 'good evening, gentlemen' style announcement of something silly.",
+"slots": [
+"the formal greeting",
+"the silly announcement"
+],
+"aliases": [
+"gentleman frog",
+"good evening gentlemen frog",
+"frog in suit",
+"sir frog"
+],
+"avoid": "Not for casual or chaotic reactions."
+},
+{
+"id": "djkhaledsufferingfromsuccess",
+"name": "DJ Khaled Suffering From Success",
+"lines": 1,
+"shape": "irony",
+"core": "DJ Khaled's 'Suffering From Success' album cover, used to humblebrag about a problem caused by things going too well.",
+"slots": [
+"the too-good problem"
+],
+"aliases": [
+"suffering from success",
+"dj khaled",
+"humblebrag",
+"khaled suffering"
+],
+"avoid": "Not for real failures or bad luck."
+},
+{
+"id": "mytimehascome",
+"name": "My Time Has Come",
+"lines": 1,
+"shape": "reaction",
+"core": "Master Oogway calmly accepting 'my time has come', used when you serenely accept an inevitable end or finally get your moment.",
+"slots": [
+"the moment that's arrived"
+],
+"aliases": [
+"oogway my time has come",
+"my time has come",
+"master oogway",
+"kung fu panda oogway"
+],
+"avoid": "Not for panicked or resisting reactions."
+},
+{
+"id": "chrisfarleyfortheloveofgod",
+"name": "Chris Farley For the Love of God",
+"lines": 2,
+"shape": "reaction",
+"core": "Chris Farley lunging and yelling in exasperation, used to beg someone to finally stop doing something.",
+"slots": [
+"the frustrating situation",
+"the desperate plea"
+],
+"aliases": [
+"for the love of god",
+"chris farley yelling",
+"farley screaming",
+"tommy boy yelling"
+],
+"avoid": "Not for calm or polite requests."
+},
+{
+"id": "wouldntthatmakeyou",
+"name": "Wouldn't That Make You",
+"lines": 2,
+"shape": "irony",
+"core": "The Madagascar penguins hear a remark and Skipper realizes the awkward implication, used to point out a logical gotcha in someone's statement.",
+"slots": [
+"the statement",
+"wouldn't that make you..."
+],
+"aliases": [
+"wouldn't that make you",
+"madagascar penguins",
+"skipper realization",
+"penguins shocked"
+],
+"avoid": "Not for straightforward agreement."
+},
+{
+"id": "csi",
+"name": "CSI Horatio Sunglasses",
+"lines": 3,
+"shape": "dialogue",
+"core": "Horatio Caine delivers a pun while putting on sunglasses before the 'YEAAAH' scream, used for a terrible one-liner delivered with total drama.",
+"slots": [
+"the setup",
+"the pun begins",
+"the pun lands"
+],
+"aliases": [
+"csi yeah",
+"horatio caine",
+"csi miami sunglasses",
+"yeeeaaah"
+],
+"avoid": "Not for jokes without a pun or punchline."
+},
+{
+"id": "idontthinkaboutyouatallmadme",
+"name": "I Don't Think About You at All",
+"lines": 2,
+"shape": "rejection",
+"core": "One man says 'I feel bad for you' and Don Draper replies 'I don't think about you at all', used when something obsessed with you is totally ignored in return.",
+"slots": [
+"the one who cares",
+"the one who doesn't"
+],
+"aliases": [
+"i don't think about you at all",
+"mad men elevator",
+"don draper",
+"i feel bad for you"
+],
+"avoid": "Not for mutual rivalries where both sides care."
+},
+{
+"id": "finallyaworthyopponent",
+"name": "Finally! A Worthy Opponent!",
+"lines": 1,
+"shape": "reaction",
+"core": "Tai Lung declaring 'Finally! A worthy opponent! Our battle will be legendary!', used when you meet a challenge or rival that matches you.",
+"slots": [
+"the worthy challenge"
+],
+"aliases": [
+"finally a worthy opponent",
+"our battle will be legendary",
+"tai lung",
+"kung fu panda worthy opponent"
+],
+"avoid": "Not for easy wins or trivial problems."
+},
+{
+"id": "ptsddog",
+"name": "Vietnam Flashback Dog",
+"lines": 2,
+"shape": "reaction",
+"core": "A wide-eyed dog overlaid with war helicopters, used when something triggers flashbacks to a past bad experience.",
+"slots": [
+"the trigger",
+"the flashback"
+],
+"aliases": [
+"vietnam flashbacks",
+"ptsd dog",
+"flashback dog",
+"nam flashbacks"
+],
+"avoid": "Not for pleasant memories or nostalgia."
+},
+{
+"id": "deannorrissreaction",
+"name": "Dean Norris Happy and Grim",
+"lines": 2,
+"shape": "before-after",
+"core": "Dean Norris grinning beside the same man scowling, used to contrast how you feel before and after learning something.",
+"slots": [
+"the good version",
+"the grim version"
+],
+"aliases": [
+"dean norris reaction",
+"hank happy sad",
+"dean norris smile frown",
+"happy then grim"
+],
+"avoid": "Not for single reactions with no contrast."
+},
+{
+"id": "guygettingbeatup",
+"name": "Muscle Guys Beat Up Box",
+"lines": 1,
+"shape": "plan-backfires",
+"core": "A cheerful little guy says something, a muscle man laughs along, then brings his buddy and they pummel him; used for a take so bad it gets you destroyed.",
+"slots": [
+"the bad take"
+],
+"aliases": [
+"guy getting beat up",
+"muscle guys beat up",
+"made by tio comic",
+"laughs then beats up"
+],
+"avoid": "Not for opinions that get a warm reception."
+},
+{
+"id": "dumpsterfire",
+"name": "Dumpster Fire",
+"lines": 2,
+"shape": "labeling",
+"core": "A dumpster engulfed in flames, used to label something that is a complete, chaotic disaster.",
+"slots": [
+"the setup",
+"the disaster"
+],
+"aliases": [
+"dumpster fire",
+"burning dumpster",
+"total disaster",
+"trash fire"
+],
+"avoid": "Not for things that are going well."
+},
+{
+"id": "ilovethesmellofnapalminthemo",
+"name": "I Love the Smell of Napalm in the Morning",
+"lines": 2,
+"shape": "approval",
+"core": "Kilgore from Apocalypse Now, used as 'I love the smell of [X] in the morning' to relish something others find chaotic.",
+"slots": [
+"i love the smell of...",
+"...in the morning"
+],
+"aliases": [
+"napalm in the morning",
+"apocalypse now kilgore",
+"i love the smell of",
+"kilgore"
+],
+"avoid": "Not for real wars or genuine tragedies."
+},
+{
+"id": "friendsjoeyteachedfrench",
+"name": "Joey Learns French",
+"lines": 8,
+"shape": "dialogue",
+"core": "Phoebe patiently repeats a simple thing and Joey keeps garbling it, ending in confident nonsense; used when someone just cannot learn something no matter how often it's explained.",
+"slots": [
+"teacher line 1",
+"learner attempt 1",
+"teacher line 2",
+"learner attempt 2",
+"teacher line 3",
+"learner attempt 3",
+"teacher gives up",
+"learner's confident nonsense"
+],
+"aliases": [
+"joey french",
+"phoebe teaches joey french",
+"friends french lesson",
+"joey can't learn"
+],
+"avoid": "Not for two people agreeing or for a single reaction."
+},
+{
+"id": "womanshoutingknives",
+"name": "Woman Shouting Knives",
+"lines": 2,
+"shape": "labeling",
+"core": "Someone shouts words that hit like knives; used for a short phrase that is devastating to hear.",
+"slots": [
+"the hurtful words",
+"who gets hurt"
+],
+"aliases": [
+"words like knives",
+"shouting knives",
+"words hurt",
+"verbal knives"
+],
+"avoid": "Not for actual violence or real abuse."
+},
+{
+"id": "braveheartfreedom",
+"name": "Braveheart Freedom",
+"lines": 2,
+"shape": "exaggeration",
+"core": "William Wallace screams 'freedom!'; used to celebrate escaping something minor like it's a historic liberation.",
+"slots": [
+"the situation",
+"the battle cry"
+],
+"aliases": [
+"freedom",
+"braveheart",
+"william wallace freedom",
+"mel gibson freedom"
+],
+"avoid": "Not for quiet relief or sad moments."
+},
+{
+"id": "guypouringoliveoilonthesalad",
+"name": "Guy Pouring Olive Oil On The Salad",
+"lines": 3,
+"shape": "exaggeration",
+"core": "A man happily pours a giant jug of oil onto a tiny salad; used when someone adds a ridiculous excess of something to a small thing.",
+"slots": [
+"who's overdoing it",
+"the excessive thing",
+"the small thing it goes on"
+],
+"aliases": [
+"olive oil guy",
+"pouring olive oil",
+"too much olive oil",
+"salad oil jug"
+],
+"avoid": "Not for balanced or careful choices."
+},
+{
+"id": "lookmarge",
+"name": "Look Marge",
+"lines": 2,
+"shape": "reaction",
+"core": "Homer excitedly points out something to Marge; used for getting overly thrilled about something mundane.",
+"slots": [
+"look marge, the thing",
+"the excited follow-up"
+],
+"aliases": [
+"look marge",
+"homer excited",
+"homer look marge",
+"marge look"
+],
+"avoid": "Not for calm or disappointed reactions."
+},
+{
+"id": "smokeythebear",
+"name": "Smokey The Bear",
+"lines": 2,
+"shape": "warning",
+"core": "Smokey points at you with his PSA warning; used for 'only you can prevent X' style public-service jokes.",
+"slots": [
+"setup",
+"only you can prevent..."
+],
+"aliases": [
+"smokey bear",
+"only you can prevent forest fires",
+"smokey the bear",
+"only you"
+],
+"avoid": "Not for celebrating or praising something."
+},
+{
+"id": "iamtheonewhoknocks",
+"name": "I Am The One Who Knocks",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Walter White menacingly declares he is the danger; used when someone dramatically asserts they're the threat, not the victim.",
+"slots": [
+"i am not in danger...",
+"i am the one who..."
+],
+"aliases": [
+"i am the one who knocks",
+"heisenberg",
+"walter white",
+"i am the danger"
+],
+"avoid": "Not for humble or scared reactions."
+},
+{
+"id": "tadawillsmith",
+"name": "Tada Will Smith",
+"lines": 1,
+"shape": "approval",
+"core": "Will Smith proudly presents something with a 'ta-da' gesture; used to show off an underwhelming or questionable result.",
+"slots": [
+"the thing presented"
+],
+"aliases": [
+"tada",
+"will smith tada",
+"will smith presenting",
+"behold"
+],
+"avoid": "Not for hiding or being ashamed of something."
+},
+{
+"id": "spongebobmoney",
+"name": "Spongebob Money",
+"lines": 2,
+"shape": "before-after",
+"core": "SpongeBob is bored, then gleefully grabs his wallet; used when something unappealing suddenly becomes exciting once money or a reward appears.",
+"slots": [
+"the boring situation",
+"when the money shows up"
+],
+"aliases": [
+"spongebob wallet",
+"spongebob money",
+"spongebob payday",
+"take my money spongebob"
+],
+"avoid": "Not for losing money or being broke."
+},
+{
+"id": "blackscientistfinallyxium",
+"name": "Black Scientist Finally Xium",
+"lines": 2,
+"shape": "approval",
+"core": "A scientist inspects a test tube with satisfaction; used for proudly announcing a made-up discovery or element, often a pun ending in '-ium'.",
+"slots": [
+"the setup",
+"the discovery"
+],
+"aliases": [
+"finally xium",
+"scientist test tube",
+"black scientist",
+"new element"
+],
+"avoid": "Not for failed experiments or confusion."
+},
+{
+"id": "policechasingguy",
+"name": "Police Chasing Guy",
+"lines": 2,
+"shape": "labeling",
+"core": "A riot cop sprints after a fleeing man; used for one thing relentlessly chasing another.",
+"slots": [
+"the chaser",
+"the one running away"
+],
+"aliases": [
+"cop chasing guy",
+"police chase",
+"riot police chasing",
+"running from police"
+],
+"avoid": "Not for cooperation or friendly races."
+},
+{
+"id": "jesuswatchadoin",
+"name": "Jesus Watcha Doin",
+"lines": 2,
+"shape": "reaction",
+"core": "Jesus peeks in from the side asking what you're up to; used when you get caught doing something you shouldn't.",
+"slots": [
+"what you're doing",
+"the question"
+],
+"aliases": [
+"jesus watcha doin",
+"peeking jesus",
+"jesus peeking",
+"whatcha doing"
+],
+"avoid": "Not for mocking religion itself."
+},
+{
+"id": "omgcat",
+"name": "OMG Cat",
+"lines": 2,
+"shape": "reaction",
+"core": "A wide-eyed cat gasps in shock; used for being stunned by surprising news.",
+"slots": [
+"the shocking news",
+"the reaction"
+],
+"aliases": [
+"omg cat",
+"shocked cat",
+"surprised cat",
+"gasping cat"
+],
+"avoid": "Not for calm or unimpressed reactions."
+},
+{
+"id": "iceberglevelstiers",
+"name": "Iceberg Tiers",
+"lines": 8,
+"shape": "escalation",
+"core": "An iceberg chart where each deeper tier holds more obscure or disturbing knowledge, with an ever more unhinged person beside it; used to rank a topic from common knowledge to deep lore.",
+"slots": [
+"surface level",
+"level 2",
+"level 3",
+"level 4",
+"level 5",
+"level 6",
+"level 7",
+"deepest level"
+],
+"aliases": [
+"iceberg",
+"iceberg tiers",
+"iceberg levels",
+"iceberg chart"
+],
+"avoid": "Not for simple two-option comparisons."
+},
+{
+"id": "grumpycatstarwars",
+"name": "Grumpy Cat Star Wars",
+"lines": 2,
+"shape": "rejection",
+"core": "Grumpy Cat as Darth Vader, unimpressed; used for grumpy, Star Wars-flavoured refusals.",
+"slots": [
+"setup",
+"grumpy dismissal"
+],
+"aliases": [
+"grumpy cat vader",
+"grumpy cat star wars",
+"darth grumpy",
+"grumpy vader"
+],
+"avoid": "Not for genuine enthusiasm."
+},
+{
+"id": "yourcountryneedsyou",
+"name": "Your Country Needs You",
+"lines": 2,
+"shape": "warning",
+"core": "Lord Kitchener's recruiting poster points straight at you; used to draft the viewer into some task or cause.",
+"slots": [
+"the cause",
+"needs YOU"
+],
+"aliases": [
+"your country needs you",
+"kitchener",
+"lord kitchener",
+"wants you poster"
+],
+"avoid": "Not for refusing or excluding someone."
+},
+{
+"id": "bugsbunnyiwishallemptytempla",
+"name": "Bugs Bunny I Wish All",
+"lines": 2,
+"shape": "irony",
+"core": "A dapper Bugs Bunny formally wishes a group 'a very' something; used for sarcastic, mock-polite greetings to people you dislike.",
+"slots": [
+"who you're wishing",
+"what you wish them"
+],
+"aliases": [
+"i wish all",
+"bugs bunny i wish all",
+"bugs bunny greeting",
+"a very happy"
+],
+"avoid": "Not for sincere heartfelt greetings."
+},
+{
+"id": "iamgoingtocreateanenvironmen",
+"name": "I Am Going To Create An Environment So Toxic",
+"lines": 2,
+"shape": "warning",
+"core": "Sue Sylvester threatens to create an environment so hostile it drives people away; used for vowing to make something unbearable on purpose.",
+"slots": [
+"the environment",
+"so... what"
+],
+"aliases": [
+"environment so toxic",
+"sue sylvester toxic",
+"i am going to create an environment",
+"so toxic"
+],
+"avoid": "Not for welcoming or kind gestures."
+},
+{
+"id": "southparkunderpantsgnomes",
+"name": "Underpants Gnomes",
+"lines": 1,
+"shape": "plan-backfires",
+"core": "The gnomes' business plan: Phase 1 something, Phase 2 '?', Phase 3 profit; used for plans with a glaringly missing middle step.",
+"slots": [
+"phase 1"
+],
+"aliases": [
+"underpants gnomes",
+"phase 1 phase 2 profit",
+"step 2 profit",
+"collect underpants"
+],
+"avoid": "Not for well-thought-out plans."
+},
+{
+"id": "alberteinsteinquotes",
+"name": "Albert Einstein Quote",
+"lines": 1,
+"shape": "irony",
+"core": "A portrait of Einstein beside a 'quote'; used to attribute an obviously silly modern saying to a genius.",
+"slots": [
+"the fake quote"
+],
+"aliases": [
+"einstein quote",
+"albert einstein",
+"fake einstein quote",
+"einstein said"
+],
+"avoid": "Not for real, accurate quotations."
+},
+{
+"id": "prisonersblank",
+"name": "I Killed A Man And You",
+"lines": 1,
+"shape": "self-own",
+"core": "A huge inmate says he killed a man and asks the small guy what he did; the small guy's confession is so bad the big guy moves away from him.",
+"slots": [
+"the small guy's crime"
+],
+"aliases": [
+"i killed a man and you",
+"prisoners",
+"prison cellmate",
+"what are you in for"
+],
+"avoid": "Not for real crimes or violence."
+},
+{
+"id": "elonmusksmokingajoint",
+"name": "Elon Musk Smoking",
+"lines": 2,
+"shape": "reaction",
+"core": "Elon Musk takes a puff on a podcast with a dazed look; used for a spaced-out, 'whatever, man' reaction to a wild idea.",
+"slots": [
+"the wild idea",
+"the dazed reaction"
+],
+"aliases": [
+"elon smoking",
+"elon musk joint",
+"elon rogan",
+"elon musk smoking"
+],
+"avoid": "Not for serious or alert reactions."
+},
+{
+"id": "mrmackey",
+"name": "Mr Mackey",
+"lines": 2,
+"shape": "warning",
+"core": "South Park's counselor delivers a preachy lesson ending in 'mkay'; used for lecturing that something is bad.",
+"slots": [
+"the thing",
+"is bad, mkay"
+],
+"aliases": [
+"mr mackey",
+"drugs are bad mkay",
+"mkay",
+"south park mackey"
+],
+"avoid": "Not for praising something."
+},
+{
+"id": "babeits4pmtimeforyour",
+"name": "Babe It's 4PM Time For Your",
+"lines": 2,
+"shape": "dialogue",
+"core": "A cheerful wife reminds her exhausted husband it's time for his daily ritual; used for a routine someone is hopelessly dependent on.",
+"slots": [
+"babe, it's time for your...",
+"the tired reply"
+],
+"aliases": [
+"babe its 4pm",
+"time for your",
+"wojak wife reminder",
+"babe wake up"
+],
+"avoid": "Not for one-off events or things people enjoy freshly."
+},
+{
+"id": "ripheadstone",
+"name": "RIP Headstone",
+"lines": 1,
+"shape": "other",
+"core": "A blank gravestone marked R.I.P.; used to mourn something that has died, been discontinued or been given up on.",
+"slots": [
+"what died"
+],
+"aliases": [
+"rip",
+"headstone",
+"gravestone",
+"tombstone",
+"rest in peace"
+],
+"avoid": "Not for real people's deaths."
+},
+{
+"id": "openthegatealittle",
+"name": "Open The Gate A Little",
+"lines": 3,
+"shape": "escalation",
+"core": "A lookout yells to open, then close, then open the gate a little; used for someone who wants to let in just a bit of something risky.",
+"slots": [
+"what's coming (open the gate!)",
+"it's dangerous (close it!)",
+"but tempting (a little!)"
+],
+"aliases": [
+"open the gate a little",
+"open the gate",
+"close the gate",
+"gatekeeper comic"
+],
+"avoid": "Not for clear yes or no decisions."
+},
+{
+"id": "isfouralot",
+"name": "Is Four A Lot",
+"lines": 4,
+"shape": "dialogue",
+"core": "Clara mentions a number and the Doctor anxiously wonders whether it's a lot; used for someone over-justifying a habit or quantity.",
+"slots": [
+"the question",
+"the first defence",
+"the doubt",
+"the anxious ask"
+],
+"aliases": [
+"is four a lot",
+"doctor who is four a lot",
+"is that a lot",
+"peter capaldi"
+],
+"avoid": "Not for confident, settled answers."
+},
+{
+"id": "xwhenxwalksin",
+"name": "X When X Walks In",
+"lines": 1,
+"shape": "reaction",
+"core": "A stunned stare at someone arriving; used for the reaction when a certain person or thing shows up.",
+"slots": [
+"who reacts when who walks in"
+],
+"aliases": [
+"x when x walks in",
+"when she walks in",
+"stunned stare",
+"walks in reaction"
+],
+"avoid": "Not for calm, unsurprised reactions."
+},
+{
+"id": "jessewtfareyoutalkingabout",
+"name": "Jesse What Are You Talking About",
+"lines": 5,
+"shape": "dialogue",
+"core": "Jesse and Walt trade lines at a diner until Jesse is baffled by Walt's bizarre reply; used for a conversation that takes an absurd turn.",
+"slots": [
+"Jesse's question",
+"Walt's odd answer",
+"Jesse's confusion",
+"Jesse's follow-up",
+"Walt doubles down"
+],
+"aliases": [
+"jesse what are you talking about",
+"jesse wtf",
+"breaking bad diner",
+"walt and jesse"
+],
+"avoid": "Not for a single reaction shot."
+},
+{
+"id": "catlooksinside",
+"name": "Cat Looks Inside",
+"lines": 3,
+"shape": "escalation",
+"core": "A greentext story ending as a cat peers into the camera; used for '>be me >open thing >cat looks inside' stories where you look into something and find disaster.",
+"slots": [
+"first line",
+"second line",
+"the reveal"
+],
+"aliases": [
+"cat looks inside",
+"greentext cat",
+"cat stares into camera",
+"cat looks inside meme"
+],
+"avoid": "Not for single-line captions."
+},
+{
+"id": "firstruleofthefightclub",
+"name": "First Rule Of Fight Club",
+"lines": 2,
+"shape": "warning",
+"core": "Tyler Durden lays down the first rule of a club; used for 'the first rule of X club is you don't talk about X club' secrets.",
+"slots": [
+"the first rule of X club",
+"you do not talk about X club"
+],
+"aliases": [
+"first rule of fight club",
+"fight club",
+"tyler durden",
+"you do not talk about"
+],
+"avoid": "Not for openly announced things."
+},
+{
+"id": "gofundme",
+"name": "Go Fund Me",
+"lines": 1,
+"shape": "exaggeration",
+"core": "A crowdfunding page header above a cause; used to jokingly ask for donations for a petty or absurd problem.",
+"slots": [
+"the absurd cause"
+],
+"aliases": [
+"gofundme",
+"go fund me",
+"crowdfunding",
+"fundraiser for"
+],
+"avoid": "Not for real fundraisers or genuine hardship."
+},
+{
+"id": "themandalorian",
+"name": "The Mandalorian",
+"lines": 2,
+"shape": "approval",
+"core": "The Mandalorian solemnly endorses a habit or rule as the one true way, used for stubborn rituals people defend.",
+"slots": [
+"the habit or rule",
+"the solemn endorsement"
+],
+"aliases": [
+"this is the way",
+"mandalorian",
+"mando",
+"din djarin"
+],
+"avoid": "Not for things that are clearly wrong or shameful."
+}
+]

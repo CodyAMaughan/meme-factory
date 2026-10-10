@@ -1,0 +1,18 @@
+[
+ {"qid": "whyistherumgone#bdev", "verdict": "target", "better": null, "why": "", "new_request": ""},
+ {"qid": "computerguy#bdev", "verdict": "target", "better": null, "why": "", "new_request": ""},
+ {"qid": "thislittlemanueverisgonnacos#bdev", "verdict": "target", "better": null, "why": "", "new_request": ""},
+ {"qid": "isfouralot#bdev", "verdict": "target", "better": null, "why": "", "new_request": ""},
+ {"qid": "theofficecongratulations#bdev", "verdict": "target", "better": null, "why": "", "new_request": ""},
+ {"qid": "gandalfyoushallnotpass#bdev", "verdict": "target", "better": null, "why": "", "new_request": ""},
+ {"qid": "blb#bdev", "verdict": "target", "better": null, "why": "", "new_request": ""},
+ {"qid": "scumbagdaylightsavingstime#bdev", "verdict": "target", "better": null, "why": "", "new_request": ""},
+ {"qid": "excitedcat#bdev", "verdict": "target", "better": null, "why": "", "new_request": ""},
+ {"qid": "chosen#bdev", "verdict": "target", "better": null, "why": "", "new_request": ""},
+ {"qid": "gandhi#bdev", "verdict": "picked", "better": "mahatmagandhirocks", "why": "asking for a fake gandhi quote is exactly mahatmagandhirocks's joke; the target's own hook, gandhi on an old phone, was never mentioned", "new_request": "gandhi on the old phone meme, calling my boss to say im not comin in"},
+ {"qid": "looksgoodtome#bdev", "verdict": "target", "better": null, "why": "", "new_request": ""},
+ {"qid": "communistcat#bdev", "verdict": "target", "better": null, "why": "", "new_request": ""},
+ {"qid": "elitistvictorianscumbag#bdev", "verdict": "target", "better": null, "why": "", "new_request": ""},
+ {"qid": "cryingbecauseofcute#bdev", "verdict": "target", "better": null, "why": "", "new_request": ""},
+ {"qid": "foulbachelorettefrog#bdev", "verdict": "target", "better": null, "why": "", "new_request": ""}
+]

@@ -1,0 +1,19 @@
+[
+ {"qid": "keanu#bdev", "verdict": "target", "better": null, "why": "", "new_request": ""},
+ {"qid": "collegefreshman#bdev", "verdict": "target", "better": null, "why": "", "new_request": ""},
+ {"qid": "happyguyrageface#bdev", "verdict": "picked", "better": "tearsofjoy", "why": "tearsofjoy is the same rage-comic happy-crying face, so nothing in the request can separate them.", "new_request": "crying happy tears bc the vending machine dropped two snacks"},
+ {"qid": "darthvadercometothedarkside#bdev", "verdict": "target", "better": null, "why": "", "new_request": ""},
+ {"qid": "veinpoppingkid#bdev", "verdict": "picked", "better": "neckveinguy", "why": "'trying not to laugh' is neckveinguy's exact alias; the target's own joke is holding back a comment you're dying to say.", "new_request": "boss mispronounced gif in the meeting and im dying to correct him"},
+ {"qid": "briangriffin#bdev", "verdict": "target", "better": null, "why": "", "new_request": ""},
+ {"qid": "mysisterswedding#bdev", "verdict": "picked", "better": "noicantobama", "why": "The request is a refusal to a work ask, not a contrast between how you show up for two occasions.", "new_request": "how i dress for work zoom calls vs how i dress for my sisters wedding"},
+ {"qid": "refusestoelaborateanyfurther#bdev", "verdict": "target", "better": null, "why": "", "new_request": ""},
+ {"qid": "hereliesx#bdev", "verdict": "picked", "better": "rip", "why": "'rip' plus something dying fits any tombstone; nothing points at the SpongeBob 'here lies' grave.", "new_request": "here lies my sleep schedule, passed away during finals week"},
+ {"qid": "bernieiamonceagainaskingfory#bdev", "verdict": "picked", "better": "iamonceagainasking", "why": "iamonceagainasking is the same Bernie repeated-plea meme, so the request can't single out the target.", "new_request": "once again asking my roommate to plz do his dishes"},
+ {"qid": "unsettledtom#bdev", "verdict": "target", "better": null, "why": "", "new_request": ""},
+ {"qid": "hotcaleb#bdev", "verdict": "target", "better": null, "why": "", "new_request": ""},
+ {"qid": "cryingwojakmask#bdev", "verdict": "picked", "better": "pretendingtobehappyhidingcry", "why": "pretendingtobehappyhidingcry is the same crying-wojak-behind-smiling-mask meme with the same meaning.", "new_request": "me telling my mom im doing great after failing two classes"},
+ {"qid": "highexpectationsasianfather#bdev", "verdict": "target", "better": null, "why": "", "new_request": ""},
+ {"qid": "yourelaughing#bdev", "verdict": "target", "better": null, "why": "", "new_request": ""},
+ {"qid": "chair#bdev", "verdict": "target", "better": null, "why": "", "new_request": ""},
+ {"qid": "citybear#bdev", "verdict": "picked", "better": "partyloner", "why": "Being alone at a party where you know no one is the party-loner joke, not someone obviously out of place trying to blend in.", "new_request": "me at the fancy wine tasting in gym shorts acting like i belong"}
+]

@@ -1,0 +1,121 @@
+[
+{
+"id": "gangnamstyle",
+"name": "Gangnam Style",
+"lines": 2,
+"shape": "reaction",
+"core": "Psy lounging in a playground from the Gangnam Style video; used for acting fancy in a decidedly unfancy setting.",
+"slots": [
+"the setup",
+"the fancy attitude"
+],
+"aliases": [
+"gangnam style",
+"psy",
+"oppa gangnam style"
+],
+"avoid": "Not for anything subtle or serious."
+},
+{
+"id": "familytechsupportguy",
+"name": "Family Tech Support Guy",
+"lines": 2,
+"shape": "self-own",
+"core": "The family's go-to computer guy, weary and resigned; used for the burden of being everyone's unpaid IT support.",
+"slots": [
+"what family asks",
+"the grim reality"
+],
+"aliases": [
+"family tech support",
+"tech support guy",
+"computer guy"
+],
+"avoid": "Not for paid professional support."
+},
+{
+"id": "perturbedportman",
+"name": "Perturbed Portman",
+"lines": 2,
+"shape": "reaction",
+"core": "Padme looking quietly unsettled; used for a mildly disturbed reaction to something said.",
+"slots": [
+"what was said",
+"her unsettled thought"
+],
+"aliases": [
+"perturbed portman",
+"padme worried",
+"natalie portman disturbed"
+],
+"avoid": "Not for loud anger."
+},
+{
+"id": "hotcaleb",
+"name": "Hot Caleb",
+"lines": 2,
+"shape": "approval",
+"core": "A stylish guy posing confidently; used for effortlessly cool or attractive behaviour.",
+"slots": [
+"the setup",
+"the smooth move"
+],
+"aliases": [
+"hot caleb",
+"hot guy pose",
+"cool guy"
+],
+"avoid": "Not for mocking someone's looks."
+},
+{
+"id": "contradictorychris",
+"name": "Contradictory Chris",
+"lines": 2,
+"shape": "irony",
+"core": "A guy grinning while saying one thing and doing the opposite; used for hypocrisy.",
+"slots": [
+"what he says",
+"what he does"
+],
+"aliases": [
+"contradictory chris",
+"hypocrite guy",
+"says one thing"
+],
+"avoid": "Not for consistent behaviour."
+},
+{
+"id": "misunderstoodmitch",
+"name": "Misunderstood Mitch",
+"lines": 2,
+"shape": "irony",
+"core": "A smiling guy whose innocent statements sound terrible out of context; used for misunderstood good intentions.",
+"slots": [
+"the innocent setup",
+"how it sounds"
+],
+"aliases": [
+"misunderstood mitch",
+"innocent smile guy",
+"out of context"
+],
+"avoid": "Not for genuinely bad intent."
+},
+{
+"id": "skepticalswardson",
+"name": "Skeptical Swardson",
+"lines": 2,
+"shape": "reaction",
+"core": "Nick Swardson on stage looking doubtful; used for skeptical disbelief at a claim.",
+"slots": [
+"the claim",
+"the skeptical reply"
+],
+"aliases": [
+"skeptical swardson",
+"nick swardson",
+"doubtful comedian"
+],
+"avoid": "Not for sincere agreement."
+}
+]

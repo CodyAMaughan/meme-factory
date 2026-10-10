@@ -1,0 +1,1177 @@
+[
+ {
+  "qid": "same#1",
+  "action": "duplicate",
+  "with": "corporateneedsyoutofindthedi"
+ },
+ {
+  "qid": "xy#1",
+  "action": "duplicate",
+  "with": "buzz"
+ },
+ {
+  "qid": "awkwardmomentsealion#1",
+  "action": "duplicate",
+  "with": "ams"
+ },
+ {
+  "qid": "idontwanttoplaywithyouanymor#1",
+  "action": "duplicate",
+  "with": "andydroppingwoody"
+ },
+ {
+  "qid": "itsbeen84years#1",
+  "action": "switched",
+  "to": "waitingskeleton",
+  "old_request": "waiting for my package from overseas shipping",
+  "new_request": "my package finally showed up, ordered it so long ago i forgot",
+  "why": "still waiting for something is exactly the skeleton joke; 84 years is about something finally happening after forever"
+ },
+ {
+  "qid": "fordummiesbook#1",
+  "action": "duplicate",
+  "with": "fordummies"
+ },
+ {
+  "qid": "milkingthecow#1",
+  "action": "switched",
+  "to": "toohigh",
+  "old_request": "my landlord raising rent again on me when im already broke",
+  "new_request": "streaming services hiking prices again like i have anything left to give",
+  "why": "a rent hike literally is the rent is too damn high joke; the squeezing-a-drained-source angle was secondary"
+ },
+ {
+  "qid": "titanicband#1",
+  "action": "switched",
+  "to": "fine",
+  "old_request": "prod is on fire and the team is still doing the planned standup retro games",
+  "new_request": "company going under and marketing still posting cheerful tweets right on schedule",
+  "why": "carrying on calmly while prod burns is also the this is fine joke; nothing stressed a group performing on as the ship goes down"
+ },
+ {
+  "qid": "tomandspikefighting#1",
+  "action": "duplicate",
+  "with": "tomandjerryswordfight"
+ },
+ {
+  "qid": "futuramazerodayssincelastbla#1",
+  "action": "duplicate",
+  "with": "0dayswithoutlennysimpsons"
+ },
+ {
+  "qid": "surprizedvegeta#1",
+  "action": "switched",
+  "to": "onde",
+  "old_request": "landlord actually fixed the sink the same day and im stunned",
+  "new_request": "anime level shock when the group project guy actually did his part",
+  "why": "a plain stunned reaction fits any wide-eyed shock template equally"
+ },
+ {
+  "qid": "sarcasticanthony#bdev",
+  "action": "switched",
+  "to": "robertdowneyjrannoyed",
+  "old_request": "oh wow another meeting that couldve been an email, how thrilling",
+  "new_request": "my landlord calls a mattress on the floor a furnished apartment",
+  "why": "request is generic sarcastic exasperation, with nothing only 'technically' true to put in air quotes"
+ },
+ {
+  "qid": "hewillnever#bdev",
+  "action": "switched",
+  "to": "spongebobwaiting",
+  "old_request": "my dog sitting at the door waiting for my ex who is never coming back",
+  "new_request": "my dog sits with me every time im sad... cuz i drop snacks when i cry",
+  "why": "request is a sad waiting-forever setup with no shocking twist punchline"
+ },
+ {
+  "qid": "itsbeen84years#bdev",
+  "action": "switched",
+  "to": "waitingskeleton",
+  "old_request": "waiting for the bus this morning felt like decades had passed",
+  "new_request": "finally back at my hometown pizza place, feels like its been forever",
+  "why": "waiting at a bus stop forever reads as literal waiting, not the long-time-since feeling"
+ },
+ {
+  "qid": "awesome#bdev",
+  "action": "switched",
+  "to": "barneystinsonwin",
+  "old_request": "held the door for the whole class and everyone said thanks",
+  "new_request": "tripped walking into the party and everyone thought it was a dance move",
+  "why": "request is a plain small win with no awkward mistake that turned social"
+ },
+ {
+  "qid": "drevilonemillion#bdev",
+  "action": "switched",
+  "to": "drevilpinky",
+  "old_request": "my 8 year old asking for one million dollars allowance",
+  "new_request": "my boss offering a whole 2% raise like its a fortune",
+  "why": "a kid demanding a huge sum is just an outrageous demand, not one that's laughably small"
+ },
+ {
+  "qid": "andjustlikethat#bdev",
+  "action": "switched",
+  "to": "boat",
+  "old_request": "carrie typing at her laptop by the window, deciding to quit my job",
+  "new_request": "forrest gump blank stare, and just like that my weekend was over",
+  "why": "visual describes carrie at a laptop by a window, not the target's blank forrest gump stare"
+ },
+ {
+  "qid": "sweatingbullets#bdev",
+  "action": "switched",
+  "to": "spongebobpanicinside",
+  "old_request": "when the teacher says lets go over the homework i didnt do",
+  "new_request": "sweating buckets when the cop asks if i know how fast i was going",
+  "why": "not-done-homework anxiety fits calm-outside-panic-inside equally, nothing mentions sweating"
+ },
+ {
+  "qid": "spongebobwaiting#bdev",
+  "action": "switched",
+  "to": "skeletoncomputer",
+  "old_request": "waiting forever for the ci pipeline to finish",
+  "new_request": "sitting alone at the diner waiting for my date who never showd",
+  "why": "waiting on a ci pipeline is computer waiting, which the skeleton at a desk fits better"
+ },
+ {
+  "qid": "mrbeanwaiting#bdev",
+  "action": "switched",
+  "to": "skeletoncomputer",
+  "old_request": "waiting forever for the client to reply to my email",
+  "new_request": "standing outside waiting for my friend who said 5 min an hour ago",
+  "why": "waiting for an email reply is desk waiting, exactly the skeleton computer's 'finish or reply'"
+ },
+ {
+  "qid": "unhappybaby#bdev",
+  "action": "switched",
+  "to": "evilbaby",
+  "old_request": "grumpy baby face scowling, me when the coffee machine is broken",
+  "new_request": "baby screaming and crying, me when the wifi drops for 10 seconds",
+  "why": "visual says scowling grumpy baby, which matches the glaring baby, not a wailing one"
+ },
+ {
+  "qid": "10guy#bdev",
+  "action": "switched",
+  "to": "keanu",
+  "old_request": "what if my dog thinks im the pet tho",
+  "new_request": "me at 2am staring at my hand like whoa fingers are so weird",
+  "why": "a 'what if' musing is exactly keanu's what-if card rather than a dazed stoned face"
+ },
+ {
+  "qid": "evenharder#bdev",
+  "action": "switched",
+  "to": "spongefinnacommitmuder",
+  "old_request": "kid getting more intense each panel, me on my third energy drink still coding",
+  "new_request": "doctor says cut back on coffee, me ordering a triple shot",
+  "why": "visual describes escalating intensity panels, not a told-to-stop then do-it-harder exchange"
+ },
+ {
+  "qid": "crazypills#bdev",
+  "action": "switched",
+  "to": "amitheonlyonearoundhere",
+  "old_request": "am i the only one who thinks this meeting could be an email",
+  "new_request": "everyone says the redesign looks great but none of the buttons even work",
+  "why": "'am i the only one' phrasing points straight at Walter's 'am I the only one around here' caption."
+ },
+ {
+  "qid": "grandmafindstheinternet#bdev",
+  "action": "switched",
+  "to": "babushkasonfacebook",
+  "old_request": "my mom discovering facebook and sharing every chain post",
+  "new_request": "my grandma asked if she has to print the email before she can send it",
+  "why": "a parent discovering facebook matches the babushkas-on-the-internet card just as well."
+ },
+ {
+  "qid": "peterparkercry#bdev",
+  "action": "switched",
+  "to": "sadspiderman",
+  "old_request": "spiderman crying meme about tuition going up again",
+  "new_request": "asked my boss if raises are happening this year and he just laughed",
+  "why": "'spiderman crying' plus a plain sad event fits slumped Spider-Man; no hopeful answer gets laughed at."
+ },
+ {
+  "qid": "bubbaandbarack#bdev",
+  "action": "switched",
+  "to": "spongebobightimmaheadout",
+  "old_request": "former president sneaking away from the podium, me leaving the meeting before questions",
+  "new_request": "coworker swoops in and presents my slides like he made them",
+  "why": "the request is about leaving before questions, which is a nope-out, not someone taking over the podium."
+ },
+ {
+  "qid": "perturbedportman#bdev",
+  "action": "switched",
+  "to": "kurtanglestare",
+  "old_request": "when my coworker says they dont use version control",
+  "new_request": "my date said she puts ketchup on ice cream but like only a little, right?",
+  "why": "a disturbing thing a coworker said fits Kurt Angle's stunned stare just as well."
+ },
+ {
+  "qid": "scaredhamster#bdev",
+  "action": "switched",
+  "to": "jordanpeelesweating",
+  "old_request": "me when the manager says can you stay a minute after the meeting",
+  "new_request": "when a leaf blows across the floor and i think its a spider",
+  "why": "a vague ominous ask from the manager is nervous dread, which fits the sweating Peele just as well."
+ },
+ {
+  "qid": "advicedoge#bdev",
+  "action": "switched",
+  "to": "advicedog",
+  "old_request": "advice dog meme with the rainbow, always back up your files",
+  "new_request": "doge on the rainbow wheel, such backup very files wow",
+  "why": "'advice dog with the rainbow' literally names the advice dog puppy template."
+ },
+ {
+  "qid": "hipster#bdev",
+  "action": "switched",
+  "to": "hipsterkitty",
+  "old_request": "i was into sourdough before the pandemic made it cool",
+  "new_request": "barista sighing at me when i order a caramel frappucino extra whip",
+  "why": "'into it before it was cool' is exactly the hipster kitty card, not a sneering barista."
+ },
+ {
+  "qid": "overlymanlyman#bdev",
+  "action": "switched",
+  "to": "flextape",
+  "old_request": "dad fixed the sink with duct tape and refused to read instructions",
+  "new_request": "my uncle opens beers with his teeth and says sunscreen is for quitters",
+  "why": "a duct tape sink fix reads as a quick superficial cover-up, which is flex tape's joke."
+ },
+ {
+  "qid": "spidermancamera#bdev",
+  "action": "switched",
+  "to": "howcouldtheyhavedonethis",
+  "old_request": "when i act surprised the project is late but i caused it",
+  "new_request": "screenshotting my boss saying no weekend work this quarter for later",
+  "why": "causing a problem then acting surprised is the Eric Andre joke, not saving evidence."
+ },
+ {
+  "qid": "yuno1bh3#bdev",
+  "action": "switched",
+  "to": "yuno",
+  "old_request": "printer why you no work when i actually need you",
+  "new_request": "y u no rage face on dark blue, wifi y u no connect when im on a call",
+  "why": "both cards are the same Y U NO rage face; nothing in the request separates them."
+ },
+ {
+  "qid": "heresjohnny#bdev",
+  "action": "switched",
+  "to": "selfloathingotter",
+  "old_request": "me breaking into the fridge at 2am after starting my diet",
+  "new_request": "when the bug i fixed last week shows up in prod again",
+  "why": "diet-breaking fridge raid is guilty indulgence, the otter's joke, as much as a menacing arrival."
+ },
+ {
+  "qid": "gandhi#bdev",
+  "action": "switched",
+  "to": "mahatmagandhirocks",
+  "old_request": "fake gandhi quote meme about not replying to work emails on weekends",
+  "new_request": "gandhi on the old phone meme, calling my boss to say im not comin in",
+  "why": "asking for a fake gandhi quote is exactly mahatmagandhirocks's joke; the target's own hook, gandhi on an old phone, was never mentioned"
+ },
+ {
+  "qid": "happyguyrageface#bdev",
+  "action": "switched",
+  "to": "tearsofjoy",
+  "old_request": "when the build finally passes after 3 days im literally crying with joy",
+  "new_request": "crying happy tears bc the vending machine dropped two snacks",
+  "why": "tearsofjoy is the same rage-comic happy-crying face, so nothing in the request can separate them."
+ },
+ {
+  "qid": "veinpoppingkid#bdev",
+  "action": "switched",
+  "to": "neckveinguy",
+  "old_request": "trying not to laugh during the serious all hands meeting",
+  "new_request": "boss mispronounced gif in the meeting and im dying to correct him",
+  "why": "'trying not to laugh' is neckveinguy's exact alias; the target's own joke is holding back a comment you're dying to say."
+ },
+ {
+  "qid": "mysisterswedding#bdev",
+  "action": "switched",
+  "to": "noicantobama",
+  "old_request": "dude asked if i could work saturday, i cant, its my sisters wedding",
+  "new_request": "how i dress for work zoom calls vs how i dress for my sisters wedding",
+  "why": "The request is a refusal to a work ask, not a contrast between how you show up for two occasions."
+ },
+ {
+  "qid": "hereliesx#bdev",
+  "action": "switched",
+  "to": "rip",
+  "old_request": "rip my motivation to work out it died in january",
+  "new_request": "here lies my sleep schedule, passed away during finals week",
+  "why": "'rip' plus something dying fits any tombstone; nothing points at the SpongeBob 'here lies' grave."
+ },
+ {
+  "qid": "bernieiamonceagainaskingfory#bdev",
+  "action": "switched",
+  "to": "iamonceagainasking",
+  "old_request": "asking my team AGAIN to please write tests",
+  "new_request": "once again asking my roommate to plz do his dishes",
+  "why": "iamonceagainasking is the same Bernie repeated-plea meme, so the request can't single out the target."
+ },
+ {
+  "qid": "cryingwojakmask#bdev",
+  "action": "switched",
+  "to": "pretendingtobehappyhidingcry",
+  "old_request": "smiling mask wojak with tears underneath, me saying im fine at work",
+  "new_request": "me telling my mom im doing great after failing two classes",
+  "why": "pretendingtobehappyhidingcry is the same crying-wojak-behind-smiling-mask meme with the same meaning."
+ },
+ {
+  "qid": "citybear#bdev",
+  "action": "switched",
+  "to": "partyloner",
+  "old_request": "when you walk into a party and dont know anyone so you just lean on the railing",
+  "new_request": "me at the fancy wine tasting in gym shorts acting like i belong",
+  "why": "Being alone at a party where you know no one is the party-loner joke, not someone obviously out of place trying to blend in."
+ },
+ {
+  "qid": "cbb#blind",
+  "action": "switched",
+  "to": "communistcat",
+  "also_acceptable": [],
+  "old_request": "my roommates eating my leftovers like its shared property now",
+  "new_request": "bugs bunny in the soviet hat going our leftovers, my roommate",
+  "why": "the 'shared property' joke fits any communist 'ours' template and nothing points to bugs bunny"
+ },
+ {
+  "qid": "feelsgood#blind",
+  "action": "switched",
+  "to": "gordonramsaysomegoodfood",
+  "also_acceptable": [],
+  "old_request": "when the office coffee machine finally gets fixed after a month",
+  "new_request": "that smug blissful face when i get the parking spot right by the door",
+  "why": "'finally fixed after a month' reads as gordon's 'finally' relief rather than a quiet smug pleasure"
+ },
+ {
+  "qid": "oprah#blind",
+  "action": "switched",
+  "to": "yougetanxandyougetanx",
+  "also_acceptable": [],
+  "old_request": "manager handing out extra meetings to everyone on the team",
+  "new_request": "oprah in the red suit pointing at the crowd, you get a jira ticket",
+  "why": "both are the same oprah giveaway joke and the request doesn't name the red-suit picture"
+ },
+ {
+  "qid": "sad-bush#blind",
+  "action": "switched",
+  "to": "andjustlikethat",
+  "also_acceptable": [],
+  "old_request": "when you realize the weekend is over and its monday tomorrow",
+  "new_request": "sad bush face, monday doesnt think you'll make it to friday",
+  "why": "a generic sad realization about the weekend ending; nothing about a sad politician or 'doesn't think you'll'"
+ },
+ {
+  "qid": "tried#blind",
+  "action": "switched",
+  "to": "happystarcongratulations",
+  "also_acceptable": [],
+  "old_request": "kid with a little cake congratulating, my mom making the wifi password secure",
+  "new_request": "wolf pup patting the other ones head, my moms wifi password attempt",
+  "why": "the described picture isn't the wolf pups and 'congratulating' fits any sarcastic-congrats template"
+ },
+ {
+  "qid": "imaginationspongebob#blind",
+  "action": "switched",
+  "to": "needsmorecowbell",
+  "also_acceptable": [
+   "pouringgasonfire"
+  ],
+  "old_request": "when my manager says we can fix scope creep with more meetings",
+  "new_request": "spongebob rainbow hands, just ship it without testing. imagination",
+  "why": "'fix it with more meetings' reads as more-cowbell or making it worse; nothing signals the rainbow imagination gag"
+ },
+ {
+  "qid": "bikefall#blind",
+  "action": "switched",
+  "to": "howcouldtheyhavedonethis",
+  "also_acceptable": [
+   "pikachu"
+  ],
+  "old_request": "i unplugged the server to clean it and now the whole office is down why",
+  "new_request": "i jam a stick in my own deploy then blame the ci server",
+  "why": "a self-caused outage followed by a baffled 'why' fits any cause-it-then-act-surprised template; target needs blaming something else"
+ },
+ {
+  "qid": "petergriffinnews#blind",
+  "action": "switched",
+  "to": "cnnbreakingnewstemplate",
+  "also_acceptable": [
+   "newsheadline",
+   "skysportsbreakingnews",
+   "ronburgundy"
+  ],
+  "old_request": "breaking news my roommate actually washed his dishes",
+  "new_request": "peter griffin at the news desk, what grinds my gears is reply-all",
+  "why": "the request is a trivial breaking-news headline, not a petty pet-peeve rant"
+ },
+ {
+  "qid": "obiwankenobi#blind",
+  "action": "switched",
+  "to": "chosen",
+  "also_acceptable": [
+   "anakinandobiwan"
+  ],
+  "old_request": "obi wan meme from star wars, you were supposed to be the chosen one about my fantasy football pick",
+  "new_request": "old obi wan in the hood, my code works from a certain point of view",
+  "why": "the quoted line belongs to lava-scene obi-wan, not old hooded obi-wan"
+ },
+ {
+  "qid": "thisisbrilliantbutilikethis#blind",
+  "action": "switched",
+  "to": "drake",
+  "also_acceptable": [],
+  "old_request": "guy holding up papers pointing at one, my team's design doc vs my napkin sketch",
+  "new_request": "clarkson by the two cars, the test suite is brilliant but i like console.log",
+  "why": "plain prefer-the-simpler-one is drake-shaped and the described papers picture isn't the car scene"
+ },
+ {
+  "qid": "npcmeme#blind",
+  "action": "switched",
+  "to": "npccrowd",
+  "also_acceptable": [],
+  "old_request": "grey expressionless stick face guy repeating whatever linkedin influencers say",
+  "new_request": "npc face turning angry when i say i dont like hustle culture",
+  "why": "'repeating whatever influencers say' is groupthink, which npc crowd covers just as well"
+ },
+ {
+  "qid": "drowningkidskeleton#blind",
+  "action": "switched",
+  "to": "swimmingpoolkids",
+  "also_acceptable": [],
+  "old_request": "the old feature requests while everyone focuses on the shiny new one",
+  "new_request": "drowning kid meme: new js framework, jquery drowning, cobol skeleton at the bottom",
+  "why": "swimmingpoolkids is the same pool picture and meaning, so nothing can separate them."
+ },
+ {
+  "qid": "monkeylookingaway#blind",
+  "action": "switched",
+  "to": "sweatingbullets",
+  "also_acceptable": [],
+  "old_request": "when the teacher asks who hasnt done the reading",
+  "new_request": "me looking away real slow when the teacher asks who hasnt done the reading",
+  "why": "guilt at being caught out fits nervous sweating as well as the awkward glance away."
+ },
+ {
+  "qid": "herewegoagain#blind",
+  "action": "switched",
+  "to": "billmurraygroundhogday",
+  "also_acceptable": [],
+  "old_request": "when its monday and the same server goes down again",
+  "new_request": "ah sh*t here we go again, the server's down on monday",
+  "why": "'the same thing again' matches Groundhog Day as well as the CJ sigh."
+ },
+ {
+  "qid": "batmansmiles#blind",
+  "action": "switched",
+  "to": "firsttry",
+  "also_acceptable": [
+   "success"
+  ],
+  "old_request": "when my code compiles on the first try for once",
+  "new_request": "my usually grim face cracking a tiny smile when the tests pass",
+  "why": "'compiles on the first try' is literally the first-try payoff and a small-win fist pump too."
+ },
+ {
+  "qid": "cryingpeterparker#blind",
+  "action": "switched",
+  "to": "sadspiderman",
+  "also_acceptable": [],
+  "old_request": "spiderman guy crying in the dark when my favorite show gets cancelled",
+  "new_request": "tobey maguire sobbing close up when my favorite show gets cancelled",
+  "why": "'spiderman guy... in the dark' describes the dejected comic Spider-Man as well as the crying actor."
+ },
+ {
+  "qid": "1950smiddlefinger#blind",
+  "action": "switched",
+  "to": "tableflipguy",
+  "also_acceptable": [
+   "drakejoshmegan"
+  ],
+  "old_request": "when the printer jams for the fifth time today",
+  "new_request": "smiling retro guy flipping the bird at monday mornings",
+  "why": "the request is about repeated annoyance, not a cheerful smug rejection."
+ },
+ {
+  "qid": "chainsawbear#blind",
+  "action": "switched",
+  "to": "spartaleonidas",
+  "also_acceptable": [],
+  "old_request": "when someone says my code needs refactoring and i take it too far",
+  "new_request": "someone says touch my code again and i calmly hold up a chainsaw",
+  "why": "the request is an overreaction to mild criticism, which Sparta covers as well as a calm menacing threat."
+ },
+ {
+  "qid": "spongefinnacommitmuder#blind",
+  "action": "switched",
+  "to": "hector",
+  "also_acceptable": [
+   "khan"
+  ],
+  "old_request": "when my roommate eats the leftovers i labeled with my name",
+  "new_request": "roommate eats one fry, then my burger, then the whole leftovers, i get progressively buffer",
+  "why": "a single rage at whoever ate the food fits screaming-name templates; nothing asks for escalation."
+ },
+ {
+  "qid": "spongebobtimecardbackground#blind",
+  "action": "switched",
+  "to": "skeletoncomputer",
+  "also_acceptable": [
+   "illjustwaithere"
+  ],
+  "old_request": "3 hours later my build is still running",
+  "new_request": "spongebob narrator card: 'three eternities later' my build finishes",
+  "why": "'build is still running' reads as waiting forever at a computer, not specifically a narrator time card."
+ },
+ {
+  "qid": "badassskeleton#blind",
+  "action": "switched",
+  "to": "freezingcold",
+  "also_acceptable": [
+   "waitingskeleton",
+   "skeletoncomputer",
+   "spongebobwaiting",
+   "illjustwaithere",
+   "mattdamongetsolder"
+  ],
+  "old_request": "me still waiting for the landlord to fix the heater",
+  "new_request": "skeleton with two revolvers when someone touches my parking spot",
+  "why": "the request is about waiting forever, which every waiting template fits better than an armed threat."
+ },
+ {
+  "qid": "jayinbetweenerscompletedit#blind",
+  "action": "switched",
+  "to": "bugsbunnyking",
+  "also_acceptable": [
+   "playstationtrophy"
+  ],
+  "old_request": "when you finish the whole netflix series in one weekend and feel proud",
+  "new_request": "binged the whole show in a weekend, completed it mate",
+  "why": "pride in a petty feat fits royalty and trophy-unlock templates as well as a smug 'completed it'."
+ },
+ {
+  "qid": "blankkermitwaiting#blind",
+  "action": "switched",
+  "to": "waitingskeleton",
+  "also_acceptable": [
+   "skeletoncomputer",
+   "spongebobwaiting",
+   "illjustwaithere"
+  ],
+  "old_request": "still waiting for the recruiter to email me back",
+  "new_request": "kermit waiting through spring summer fall winter for the recruiter to reply",
+  "why": "waiting on a reply fits every waiting template equally; nothing points to Kermit through the seasons."
+ },
+ {
+  "qid": "youhavenopowerhere#blind",
+  "action": "switched",
+  "to": "iamthesenate",
+  "also_acceptable": [],
+  "old_request": "my toddler trying to tell me bedtime is optional",
+  "new_request": "toddler declares bedtime optional, me: you have no power here",
+  "why": "denying the toddler's claimed authority fits 'I am the senate' as well as 'you have no power here'."
+ },
+ {
+  "qid": "wearethemillers#blind",
+  "action": "switched",
+  "to": "homersimpsonsbackfat",
+  "also_acceptable": [
+   "pretendingtobehappyhidingcry",
+   "spongebobpanicinside"
+  ],
+  "old_request": "my team pretending to be a functional agile squad during the client demo",
+  "new_request": "the whole family's shocked faces one by one when grandma says she's on tinder",
+  "why": "the request is a fake front over chaos, not a group shock reaction."
+ },
+ {
+  "qid": "howaboutnobear#blind",
+  "action": "switched",
+  "to": "yeahifyoucould",
+  "also_acceptable": [
+   "officespace"
+  ],
+  "old_request": "my boss asked if i could work saturday",
+  "new_request": "boss asks me to work saturday, bear with paws up: how about no",
+  "why": "the boss asking for saturday work is literally the Lumbergh line; nothing names the refusal."
+ },
+ {
+  "qid": "jessewtfareyoutalkingabout#blind",
+  "action": "switched",
+  "to": "jackiechanwtf",
+  "also_acceptable": [
+   "confusedmelgibson"
+  ],
+  "old_request": "my dad explaining crypto to me at thanksgiving makes zero sense",
+  "new_request": "jesse and walt diner convo but walt keeps explaining crypto weirder",
+  "why": "the request only asks for bafflement, not a back-and-forth diner conversation."
+ },
+ {
+  "qid": "catlooksinside#blind",
+  "action": "switched",
+  "to": "regret",
+  "also_acceptable": [
+   "mouseenteringandleaving"
+  ],
+  "old_request": "opened my bank app to check balance, immediately regretted it",
+  "new_request": "be me, open bank app, cat looks inside",
+  "why": "opening something and instantly regretting it fits regret and retreat templates; nothing asks for a greentext story."
+ },
+ {
+  "qid": "angryturkishmanplayingcardsm#blind",
+  "action": "switched",
+  "to": "touch",
+  "also_acceptable": [],
+  "old_request": "my uncle losing at uno and accusing everyone of cheating",
+  "new_request": "my uncle slamming down the draw four like it's a war move",
+  "why": "losing and blaming everyone is Skinner's 'it's the children who are wrong', not slamming a winning card."
+ },
+ {
+  "qid": "platetoss#blind",
+  "action": "switched",
+  "to": "tennisdefeat",
+  "also_acceptable": [
+   "guessilldie",
+   "billmurraygolf",
+   "waygd"
+  ],
+  "old_request": "when the dishwasher is full and i just give up",
+  "new_request": "wife hands me a salad and i yeet the plate across the room",
+  "why": "giving up on chores is resignation, not instantly flinging away an offer."
+ },
+ {
+  "qid": "adviceyoda#blind",
+  "action": "switched",
+  "to": "starwarsyoda",
+  "also_acceptable": [
+   "yoda"
+  ],
+  "old_request": "commit early you must, or lose your work you will",
+  "new_request": "advice yoda on the green rays background: commit early you must",
+  "why": "all three are Yoda giving inverted-grammar advice, so the request cannot pick one."
+ },
+ {
+  "qid": "ismayonnaiseaninstrument#blind",
+  "action": "switched",
+  "to": "pigeon",
+  "also_acceptable": [],
+  "old_request": "my coworker asked if excel counts as a database",
+  "new_request": "patrick raising his hand asking if excel is a database",
+  "why": "'is excel a database' works as both 'is X a Y' and 'is this a pigeon' misidentification."
+ },
+ {
+  "qid": "randyortonundertaker#blind",
+  "action": "switched",
+  "to": "jasonmomoahenrycavillmeme",
+  "also_acceptable": [
+   "churchgun",
+   "barthittinghomerwithachair",
+   "ajstylesundertaker"
+  ],
+  "old_request": "my dog sneaking up behind the cat while it eats",
+  "new_request": "my ex's face when the old bug i fixed shows up again",
+  "why": "sneaking up on someone is the creeping-threat templates, not something returning unexpectedly."
+ },
+ {
+  "qid": "whatifyoubutgodsaid#blind",
+  "action": "switched",
+  "to": "sleepyguy",
+  "also_acceptable": [
+   "dbg"
+  ],
+  "old_request": "i planned to sleep in saturday but my neighbors leaf blower had other plans",
+  "new_request": "what if i slept in saturday, but god said leaf blower",
+  "why": "a plan ruined by a rude wakeup fits a groggy woken-up face or expectation vs reality as well."
+ },
+ {
+  "qid": "notbadobama#blind",
+  "action": "switched",
+  "to": "firsttry",
+  "also_acceptable": [
+   "success"
+  ],
+  "old_request": "my code ran with zero warnings on the first try",
+  "new_request": "the intern's code is actually kinda decent, not bad face",
+  "why": "'zero warnings on the first try' is a triumph or first-try payoff, not grudging approval."
+ },
+ {
+  "qid": "uncomfortablenightclubgirl#blind",
+  "action": "switched",
+  "to": "guytalkingtogirlinclub",
+  "also_acceptable": [],
+  "old_request": "girl at party looking super awkward while guys talk to her, me at networking events",
+  "new_request": "guy whispering in her ear at the club, her face says get me out",
+  "why": "guytalkingtogirlinclub is the same nightclub picture and meaning."
+ },
+ {
+  "qid": "willemdafoelookingup#blind",
+  "action": "switched",
+  "to": "proudness",
+  "also_acceptable": [],
+  "old_request": "when my kid says something smart for once and i feel proud",
+  "new_request": "when the sunrise hits the mountains on my hike and i just stare in awe",
+  "why": "Feeling proud of someone's achievement is exactly the Michael Scott pride template, not awe at something beautiful."
+ },
+ {
+  "qid": "gottagocat#blind",
+  "action": "switched",
+  "to": "spongebobightimmaheadout",
+  "also_acceptable": [],
+  "old_request": "when my coworker starts telling his weekend story at 4:59",
+  "new_request": "me crossing my legs in line for the only bathroom at the festival",
+  "why": "Wanting out of a long story is just as well served by the nope-out-and-leave template; nothing singles out frantic bodily urgency."
+ },
+ {
+  "qid": "miketyson#blind",
+  "action": "switched",
+  "to": "mathladyconfusedlady",
+  "also_acceptable": [
+   "confusedlebowski",
+   "blackguyconfused",
+   "jackiechanconfused",
+   "questionrageface"
+  ],
+  "old_request": "boxer with face tattoo looking confused, my professor explaining the grading rubric",
+  "new_request": "tattooed boxer pointing at the camera telling me to drink more water",
+  "why": "The request asks for a confused reaction, but the Tyson picture is pointing and smiling, so dedicated confusion templates fit better."
+ },
+ {
+  "qid": "tomthecatshootinghimself#blind",
+  "action": "switched",
+  "to": "facepalm",
+  "also_acceptable": [
+   "frustratedboromir"
+  ],
+  "old_request": "when the group project partner submits the wrong file",
+  "new_request": "when the printer jams for the fifth time and im ready to end it all lol",
+  "why": "A partner's dumb mistake fits any exasperation template; nothing asks for an over-the-top 'i'm done' self-destruct."
+ },
+ {
+  "qid": "tornadoguy#blind",
+  "action": "switched",
+  "to": "fine",
+  "also_acceptable": [
+   "thereisnowarinbasingse"
+  ],
+  "old_request": "my landlord calmly saying everything is fine while the ceiling leaks",
+  "new_request": "me grinning at my desk while the layoff email tornado heads my way",
+  "why": "Calmly insisting everything is fine amid damage is the this-is-fine / cheerful-denial joke, not someone caught in front of an oncoming disaster."
+ },
+ {
+  "qid": "austedeslespagan#blind",
+  "action": "switched",
+  "to": "squidwardwindow",
+  "also_acceptable": [],
+  "old_request": "when i'm working overtime and my coworkers are just chilling",
+  "new_request": "when coworkers answer slack at midnight on salary, do u guys get paid",
+  "why": "Working while others relax is the stuck-inside-while-others-have-fun joke; nothing about doing unpaid work nobody asked for."
+ },
+ {
+  "qid": "omgkaren#blind",
+  "action": "switched",
+  "to": "girlsgossiping",
+  "also_acceptable": [
+   "girlswhispering"
+  ],
+  "old_request": "two women gossiping shocked, mom finding out the neighbor painted their house pink",
+  "new_request": "blonde mean girl gasping when my coworker asks how much i make",
+  "why": "The request describes two women gossiping in shock, which is the gossip templates' picture, not a lone girl reacting to a blunt question."
+ },
+ {
+  "qid": "staringfish#blind",
+  "action": "switched",
+  "to": "chloe",
+  "also_acceptable": [
+   "kevinhart"
+  ],
+  "old_request": "when my coworker says reply all was an accident and i just stare",
+  "new_request": "orange fish staring blankly into the camera when my boss says we're a family",
+  "why": "A silent skeptical stare at someone's flimsy excuse fits the side-eye and suspicious-stare templates just as well."
+ },
+ {
+  "qid": "sleepyguy#blind",
+  "action": "switched",
+  "to": "brainbeforesleep",
+  "also_acceptable": [
+   "heyyougoingtosleep",
+   "sleepingsquidward"
+  ],
+  "old_request": "me at 3am when the baby finally sleeps but my brain decides to replay every mistake",
+  "new_request": "when the garbage truck wakes me up at 6am on my day off",
+  "why": "The brain replaying mistakes at bedtime is the intrusive-thought-before-sleep joke, not being rudely woken up."
+ },
+ {
+  "qid": "yodabeguntheclonewarhas#blind",
+  "action": "switched",
+  "to": "spiderman",
+  "also_acceptable": [],
+  "old_request": "when my sister and i both bought the same dress for the wedding",
+  "new_request": "when my neighbor puts up bigger christmas lights than mine, begun the war has",
+  "why": "Two people with the identical dress is the Spider-Men pointing at each other joke; nothing frames it as a rivalry officially starting."
+ },
+ {
+  "qid": "confessionkid#blind",
+  "action": "switched",
+  "to": "cb",
+  "also_acceptable": [
+   "kevinjames"
+  ],
+  "old_request": "kid with a guilty smirk admitting something, confessing i ate my roomies leftovers",
+  "new_request": "kid hiding his face in shame, confessing i still sleep with a nightlight",
+  "why": "A guilty-smirk confession of a petty crime matches confession bear and the sheepish grin better than a boy hiding his face in shame."
+ },
+ {
+  "qid": "thecircleoflife#blind",
+  "action": "switched",
+  "to": "lionkingrafikisimba",
+  "also_acceptable": [],
+  "old_request": "dad lifting my kid up like simba, passing down his terrible jokes",
+  "new_request": "the cycle of getting paid, spending it all, being broke, getting paid again",
+  "why": "Mentioning lifting the kid like Simba points straight at the Rafiki picture, not a four-step cycle diagram."
+ },
+ {
+  "qid": "antanddeclaughing#blind",
+  "action": "switched",
+  "to": "jimofficeblinds",
+  "also_acceptable": [
+   "jordanpeelesweating"
+  ],
+  "old_request": "when my team watches the new guy run the migration on prod",
+  "new_request": "me and my brother crying laughing when dad sits on the whoopee cushion",
+  "why": "Watching a risky prod migration reads as tense dread or watching a mistake unfold; the request never says anyone is laughing."
+ },
+ {
+  "qid": "annoyingfacebookgirl#blind",
+  "action": "switched",
+  "to": "faceyoumakerobertdowneyjr",
+  "also_acceptable": [
+   "robertdowneyjrannoyed"
+  ],
+  "old_request": "blonde girl rolling her eyes at the screen, my aunt posting vague status updates",
+  "new_request": "that eye rolling facebook girl, posting 'ugh some people' with zero context",
+  "why": "The request makes the eye-roller a reactor to someone else's posts, which the eye-roll reaction templates cover; the target is the oversharer herself."
+ },
+ {
+  "qid": "gasprageface#blind",
+  "action": "switched",
+  "to": "ohno",
+  "also_acceptable": [
+   "scaredcat"
+  ],
+  "old_request": "when i see my teammate pushed straight to main with no review",
+  "new_request": "rage comic gasp face when someone says they dont like pizza",
+  "why": "Generic shocked horror at a teammate's move fits any horrified-reaction template; nothing points at the rage-comic gasp."
+ },
+ {
+  "qid": "ididnthearnobell#blind",
+  "action": "switched",
+  "to": "skeletoncomputer",
+  "also_acceptable": [
+   "illjustwaithere"
+  ],
+  "old_request": "still at my desk at 7pm refusing to log off before this deploy finishes",
+  "new_request": "down 40 at halftime and still talking trash, i didnt hear no bell",
+  "why": "Sitting at a desk waiting for a deploy to finish is the waiting-forever skeleton joke, not stubbornly fighting on after being beaten."
+ },
+ {
+  "qid": "efrainjuarez#blind",
+  "action": "switched",
+  "to": "scaredcat",
+  "also_acceptable": [
+   "regret"
+  ],
+  "old_request": "the exact moment i realized i replied all to the whole company",
+  "new_request": "footballer on the grass covering his mouth when the ref gives a red card for nothing",
+  "why": "The panicked realization of a reply-all mistake fits the shock-at-realisation and instant-regret templates just as well."
+ },
+ {
+  "qid": "killyoucat#blind",
+  "action": "switched",
+  "to": "evilbaby",
+  "also_acceptable": [],
+  "old_request": "when someone wakes me from my nap and i want to end them",
+  "new_request": "wet kitten glaring after a bath, me after my brother dumps water on me",
+  "why": "Petty rage and wanting revenge on whoever woke you is equally the furious baby; nothing singles out the wet kitten."
+ },
+ {
+  "qid": "mrtroc9#blind",
+  "action": "switched",
+  "to": "mrtpitythefool",
+  "also_acceptable": [],
+  "old_request": "when my little brother keeps whining about doing homework, quit your jibber jabber",
+  "new_request": "mr t flexing his bicep in gold chains, i pity the fool who skips leg day",
+  "why": "Quoting Mr T calls up either Mr T template; nothing specifies the flexing, gold-chain picture."
+ },
+ {
+  "qid": "manningbroncos#blind",
+  "action": "switched",
+  "to": "success",
+  "also_acceptable": [
+   "tonystarksuccess"
+  ],
+  "old_request": "when my old team cut me and i went somewhere better and won",
+  "new_request": "broncos qb calling an audible at the line on 3rd and long",
+  "why": "A comeback win after getting cut is a generic triumph joke; the request never mentions football or calling a play."
+ },
+ {
+  "qid": "nailedit#blind",
+  "action": "switched",
+  "to": "squidward",
+  "also_acceptable": [
+   "dbg",
+   "tried"
+  ],
+  "old_request": "tried to make the pinterest cake for my kids birthday",
+  "new_request": "me wiping out face first on my first wakeboard try, nailed it",
+  "why": "A failed Pinterest cake is the classic expectation-versus-reality or 'you tried' joke; nothing asks for a sarcastic 'nailed it' wipeout."
+ },
+ {
+  "qid": "gangnamstyle#blind",
+  "action": "switched",
+  "to": "billmurraygroundhogday",
+  "also_acceptable": [],
+  "old_request": "me hearing that one 2012 song at every wedding reception still",
+  "new_request": "me lounging like a millionaire in the playground sandbox at my nephews party",
+  "why": "request is about a song repeating forever, not psy acting fancy in an unfancy place"
+ },
+ {
+  "qid": "coolcatstroll#blind",
+  "action": "switched",
+  "to": "success",
+  "also_acceptable": [],
+  "old_request": "me walking out of the dentist with zero cavities like a boss",
+  "new_request": "kitten strutting on two legs after i parallel parked first try",
+  "why": "a generic small win fits success kid just as well; the strut is not singled out"
+ },
+ {
+  "qid": "peasants#blind",
+  "action": "switched",
+  "to": "elitistvictorianscumbag",
+  "also_acceptable": [],
+  "old_request": "snobby rich lady in fancy hat sneering, me with my new phone around android users",
+  "new_request": "pale twilight vampire guys on a balcony lookin down at android users",
+  "why": "a snobby fancy figure looking down fits the aristocrat balcony template equally; no vampires described"
+ },
+ {
+  "qid": "trapcard#blind",
+  "action": "switched",
+  "to": "yugioh",
+  "also_acceptable": [
+   "yugiohcarddraw"
+  ],
+  "old_request": "guy dramatically flipping a card, my cat lying belly up so i pet her then attacking",
+  "new_request": "blank trap card, card effect: cat shows belly, you pet, you lose hand",
+  "why": "a guy flipping a card describes the duel panels, not the blank trap card itself"
+ },
+ {
+  "qid": "findingnemoseagulls#blind",
+  "action": "switched",
+  "to": "nemoseagullsmine",
+  "also_acceptable": [],
+  "old_request": "my siblings when theres one slice of pizza left yelling mine mine mine",
+  "new_request": "finding nemo seagull close up staring, my siblings vs the last slice",
+  "why": "near-duplicate template with the same picture and meaning"
+ },
+ {
+  "qid": "spongebobmoney#blind",
+  "action": "switched",
+  "to": "spongebobhappyandsad",
+  "also_acceptable": [],
+  "old_request": "spongebob holding cash meme for payday and my bills are already waiting",
+  "new_request": "spongebob bored at work then grabbing his wallet when they mention overtime",
+  "why": "the bills punchline is a happy-then-crushed joke, not bored-then-excited when money shows up"
+ },
+ {
+  "qid": "interruptingbird#blind",
+  "action": "switched",
+  "to": "batmanslappingrobin",
+  "also_acceptable": [],
+  "old_request": "me trying to explain my plan and my dad cutting me off yelling",
+  "new_request": "me trying to talk 3 times at dinner and my uncle squawking over me every time",
+  "why": "one interruption of a pitched idea fits batman shutting robin down just as well"
+ },
+ {
+  "qid": "feelsgood#1",
+  "action": "switched",
+  "to": "smirkrageface",
+  "also_acceptable": [
+   "satisfiedseal",
+   "spidermanpeterparker"
+  ],
+  "old_request": "when the code compiles and nobody saw how many tries it took, quietly smug",
+  "new_request": "bald drawn guy hands on cheeks eyes closed, peeling plastic off a new phone",
+  "why": "generic quiet smugness fits any smug face; nothing about the blissful hands-on-cheeks drawing"
+ },
+ {
+  "qid": "internetexplorer#1",
+  "action": "switched",
+  "to": "slowpoke",
+  "also_acceptable": [],
+  "old_request": "my dad just found out about the ice bucket challenge",
+  "new_request": "me loading the trend from 2014 like internet explorer",
+  "why": "finding out late fits slowpoke equally; nothing pointed at the old browser"
+ },
+ {
+  "qid": "blanktombstone#1",
+  "action": "switched",
+  "to": "rip",
+  "also_acceptable": [
+   "hereliesx",
+   "gravespongebob"
+  ],
+  "old_request": "rip to my favorite snack that just got discontinued",
+  "new_request": "just a plain blank tombstone, epitaph: my fave snack 2009-2026",
+  "why": "a generic rip epitaph fits any gravestone template"
+ },
+ {
+  "qid": "findingnemoseagulls#1",
+  "action": "switched",
+  "to": "spongebobhypestand",
+  "also_acceptable": [],
+  "old_request": "everyone in the office swarming the free leftover donuts after the meeting",
+  "new_request": "the whole office going mine mine mine at the last donut",
+  "why": "a crowd swarming a free thing fits hypestand as well as the seagulls"
+ },
+ {
+  "qid": "ohno#1",
+  "action": "switched",
+  "to": "scaredcat",
+  "also_acceptable": [
+   "sf"
+  ],
+  "old_request": "realizing i replied all with my complaint about the client",
+  "new_request": "that horrified grimace guy when i realize i hit reply all",
+  "why": "generic horrified realization fits any shock face"
+ },
+ {
+  "qid": "doyouwannabuildasnowman#1",
+  "action": "switched",
+  "to": "bernieiamonceagainaskingfory",
+  "also_acceptable": [
+   "iamonceagainasking"
+  ],
+  "old_request": "texting my friend every single day begging him to play elden ring w me",
+  "new_request": "do u wanna play elden ring, sung through his door like anna",
+  "why": "repeated daily begging fits the bernie plea equally"
+ },
+ {
+  "qid": "depressedcat#1",
+  "action": "switched",
+  "to": "sadbaby",
+  "also_acceptable": [
+   "sadcat"
+  ],
+  "old_request": "when the pizza place is closed on sunday and its a tiny tragedy",
+  "new_request": "droopy eyed sad tabby when the pizza place is closed sunday",
+  "why": "small disappointment with exaggerated sadness fits many sad-face templates"
+ },
+ {
+  "qid": "laviejaconfiable#1",
+  "action": "switched",
+  "to": "olreliable",
+  "also_acceptable": [],
+  "old_request": "every time prod breaks i just restart the server and it works",
+  "new_request": "spongebob opening his glowing case: restarting the server",
+  "why": "olreliable is the same spongebob ol reliable meme"
+ },
+ {
+  "qid": "thecircleoflife#1",
+  "action": "switched",
+  "to": "viciouscycle",
+  "also_acceptable": [
+   "sadwojakcycle"
+  ],
+  "old_request": "cycle where i buy a planner, use it 2 days, feel guilty, buy a new planner",
+  "new_request": "plain circle of arrows: buy planner, use 2 days, guilt, buy planner",
+  "why": "a four-step repeating loop fits every cycle template"
+ },
+ {
+  "qid": "depressiondog#1",
+  "action": "switched",
+  "to": "sadkeanu",
+  "also_acceptable": [
+   "fa"
+  ],
+  "old_request": "its friday night and my only plans are laundry and nobody has texted me",
+  "new_request": "sad dog head on grey sunburst: my weekend plans are laundry",
+  "why": "lonely friday night fits loneliness templates as well as generic bleakness"
+ },
+ {
+  "qid": "sadpablo#1",
+  "action": "switched",
+  "to": "pabloescobarwaitingalone",
+  "also_acceptable": [
+   "spongebobwaiting"
+  ],
+  "old_request": "sitting around bored and alone waiting for my code review to get approved for days",
+  "new_request": "pablo on the swing, then the table, then the empty pool, waiting on code review",
+  "why": "lonely waiting fits other waiting templates and the same pablo image"
+ },
+ {
+  "qid": "gravestone#1",
+  "action": "switched",
+  "to": "ripheadstone",
+  "also_acceptable": [
+   "hereliesx"
+  ],
+  "old_request": "rip my new years gym resolution, died jan 9, it will not be missed",
+  "new_request": "blank granite headstone in a cemetery, here lies my gym resolution",
+  "why": "a mock epitaph fits any rip gravestone"
+ },
+ {
+  "qid": "monkeylookingaway#1",
+  "action": "switched",
+  "to": "monkeypuppet",
+  "also_acceptable": [],
+  "old_request": "teacher asks who hasnt turned in the group project yet",
+  "new_request": "monkey puppet side eye then looks away when teacher asks about the group project",
+  "why": "monkeypuppet is the same monkey looking-away meme"
+ },
+ {
+  "qid": "drevilpinky#1",
+  "action": "switched",
+  "to": "onemilliondollars",
+  "also_acceptable": [
+   "drevilonemillion"
+  ],
+  "old_request": "my kid demanding one million dollars to clean his room",
+  "new_request": "dr evil pinky scheming his evil plan to get out of chores",
+  "why": "one million dollars demand is the core of the duplicate dr evil templates"
+ },
+ {
+  "qid": "evilbaby#1",
+  "action": "switched",
+  "to": "evilplottingraccoon",
+  "also_acceptable": [
+   "killyoucat"
+  ],
+  "old_request": "my little brother ate my last fry and now im plotting his downfall",
+  "new_request": "angry glaring baby in pink when my brother eats my last fry",
+  "why": "plotting petty revenge fits other plotting/revenge templates"
+ },
+ {
+  "qid": "winter#1",
+  "action": "switched",
+  "to": "braceyourself",
+  "also_acceptable": [],
+  "old_request": "brace yourselves, finals week is coming for my college roommates",
+  "new_request": "ned stark winter is coming but its tax season",
+  "why": "braceyourself is a duplicate of the same Ned Stark 'brace yourselves, X is coming' template, so the request can't tell them apart."
+ },
+ {
+  "qid": "samuelljacksonsayonemoretime#1",
+  "action": "switched",
+  "to": "saythatagainidareyou",
+  "also_acceptable": [
+   "saywhatagain"
+  ],
+  "old_request": "pm says 'quick sync' one more time i swear",
+  "new_request": "jules close up glaring no gun, say 'per my last email' one more time",
+  "why": "All three are Pulp Fiction Jules 'say it again, I dare you' templates; the request names no picture detail to pick the close-up glare."
+ },
+ {
+  "qid": "happywojakvsdepressedwojak#1",
+  "action": "switched",
+  "to": "spongebobhappyandsad",
+  "also_acceptable": [],
+  "old_request": "me starting a new side project vs me 3 weeks later debugging webpack config",
+  "new_request": "happy wojak vs doomer wojak, me day 1 of a side project vs week 3",
+  "why": "A generic 'fun at first vs despair later' before-after fits any happy-then-sad template; nothing points to wojaks."
+ }
+]

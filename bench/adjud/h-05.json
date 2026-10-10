@@ -1,0 +1,493 @@
+[
+ {
+  "qid": "blankforpresident#1",
+  "request": "the guy who brought donuts to the 8am meeting for president",
+  "style": "situation",
+  "target": {
+   "id": "blankforpresident",
+   "name": "Blank For President",
+   "shape": "approval",
+   "core": "A blank campaign button, used to nominate someone or something as the obvious best choice.",
+   "slots": [
+    "X for president"
+   ],
+   "aliases": [
+    "For President Button",
+    "Campaign Button",
+    "Vote For",
+    "X For President"
+   ],
+   "picture": "round campaign button with red stars top, blue stars bottom, blank white stripe in middle"
+  },
+  "picked": []
+ },
+ {
+  "qid": "researchcat#1",
+  "request": "me at 3am researching if ducks have knees instead of sleeping",
+  "style": "situation",
+  "target": {
+   "id": "researchcat",
+   "name": "Research Cat",
+   "shape": "reaction",
+   "core": "A bespectacled cat at a laptop, used for someone earnestly looking something up or researching an absurd question.",
+   "slots": [
+    "the situation",
+    "what the cat is researching"
+   ],
+   "aliases": [
+    "cat with glasses laptop",
+    "nerd cat",
+    "smart cat computer",
+    "cat googling"
+   ],
+   "picture": "fluffy cat wearing round glasses and bow tie sitting at laptop, looking at screen seriously"
+  },
+  "picked": [
+   {
+    "id": "sleepingsquidward",
+    "name": "Sleeping Squidward",
+    "shape": "plan-backfires",
+    "core": "Squidward is peacefully asleep, then jolts awake in horror, used for a sudden intrusive thought that ruins rest.",
+    "slots": [
+     "about to fall asleep",
+     "the thought that jolts you awake"
+    ],
+    "aliases": [
+     "sleeping squidward",
+     "squidward wakes up",
+     "squidward can't sleep",
+     "brain at 3am"
+    ],
+    "picture": "Squidward sleeping peacefully, then waking with bloodshot wide eyes in red, two panels with blank left side"
+   },
+   {
+    "id": "heyyougoingtosleep",
+    "name": "Hey You Going To Sleep",
+    "shape": "self-own",
+    "core": "Your brain waits until you're falling asleep to bring up an intrusive thought that wakes you right back up.",
+    "slots": [
+     "the brain's intrusive thought"
+    ],
+    "aliases": [
+     "brain before sleep",
+     "hey you going to sleep",
+     "brain at night",
+     "brain keeps me awake"
+    ],
+    "picture": "four panel comic, cartoon brain asking woman in bed if she's sleeping, she says shut up, then eyes wide awake"
+   },
+   {
+    "id": "brainbeforesleep",
+    "name": "Brain Before Sleep",
+    "shape": "dialogue",
+    "core": "Your brain keeps you awake at bedtime by bringing up random worries or embarrassing memories.",
+    "slots": [
+     "brain asks",
+     "you reply",
+     "brain's follow-up",
+     "your reaction"
+    ],
+    "aliases": [
+     "brain at night",
+     "are you awake",
+     "brain keeping me up",
+     "sleep brain"
+    ],
+    "picture": "cartoon brain with speech bubble talking to girl trying to sleep in bed, then she lies wide awake, four panels"
+   }
+  ]
+ },
+ {
+  "qid": "legalbillmurray#1",
+  "request": "technically the sign only says no parking on weekdays so i parked there sunday",
+  "style": "situation",
+  "target": {
+   "id": "legalbillmurray",
+   "name": "Legal Bill Murray",
+   "shape": "irony",
+   "core": "Bill Murray grinning as gonzo Hunter S. Thompson; used for shady but technically allowed behaviour.",
+   "slots": [
+    "the loophole",
+    "the smug excuse"
+   ],
+   "aliases": [
+    "legal bill murray",
+    "bill murray grin",
+    "where the buffalo roam"
+   ],
+   "picture": "curly-haired man in a car grinning slyly at camera, dark night scene"
+  },
+  "picked": [
+   {
+    "id": "rollsafe",
+    "name": "Roll Safe",
+    "shape": "other",
+    "core": "Smug 'can't have a problem if you avoid it' pseudo-genius logic.",
+    "slots": [
+     "the premise or setup",
+     "the flawed 'smart' loophole conclusion"
+    ],
+    "aliases": [
+     "roll safe",
+     "thinking black guy",
+     "you can't if you don't"
+    ],
+    "picture": "young man in leather jacket tapping temple with finger, smirking knowingly, outside a building"
+   },
+   {
+    "id": "spidermanpeterparker",
+    "name": "Peter Parker Smirk",
+    "shape": "reaction",
+    "core": "Peter Parker's sly sideways smirk, used for feeling smug or quietly mischievous about something.",
+    "slots": [
+     "setup",
+     "smug punchline"
+    ],
+    "aliases": [
+     "peter parker smirk",
+     "tobey maguire smirk",
+     "spiderman smug",
+     "peter parker face"
+    ],
+    "picture": "close-up of young dark-haired man with sly smirk, eyes glancing sideways, pursed lips, mischievous"
+   },
+   {
+    "id": "disastergirl",
+    "name": "Disaster Girl",
+    "shape": "reaction",
+    "core": "A girl smirks at the camera before a burning house, implying she caused the chaos on purpose.",
+    "slots": [
+     "often blank",
+     "the gleeful admission or implied responsibility for the disaster"
+    ],
+    "aliases": [
+     "disaster girl",
+     "burning house girl",
+     "evil girl"
+    ],
+    "picture": "little girl smirking at camera in front of burning house with fire truck"
+   }
+  ]
+ },
+ {
+  "qid": "winter#1",
+  "request": "brace yourselves, finals week is coming for my college roommates",
+  "style": "situation",
+  "target": {
+   "id": "winter",
+   "name": "Winter is coming",
+   "shape": "advice",
+   "core": "Ned Stark-style warning of a coming dreaded event: 'brace yourselves, X is coming'.",
+   "slots": [
+    "'brace yourselves' warning setup",
+    "'X is coming' dreaded imminent event"
+   ],
+   "aliases": [
+    "brace yourselves",
+    "winter is coming",
+    "ned stark"
+   ],
+   "picture": "bearded man in fur cloak holding sword hilt, serious stern expression looking aside, white background"
+  },
+  "picked": [
+   {
+    "id": "braceyourself",
+    "name": "Brace Yourselves",
+    "shape": "warning",
+    "core": "Ned Stark gravely warning that something is coming, used to predict an incoming flood of annoying, predictable things.",
+    "slots": [
+     "brace yourselves",
+     "the thing that's coming"
+    ],
+    "aliases": [
+     "brace yourselves",
+     "winter is coming",
+     "ned stark",
+     "brace yourself"
+    ],
+    "picture": "bearded man in fur cloak holding sword hilt, serious stare, Ned Stark, winter"
+   },
+   {
+    "id": "atrainhittingaschoolbus",
+    "name": "A Train Hitting a School Bus",
+    "shape": "escalation",
+    "core": "A train approaches and then smashes a parked school bus; used when something overwhelming flattens something unprepared.",
+    "slots": [
+     "the incoming force",
+     "the unprepared victim",
+     "the force hits",
+     "the victim wrecked"
+    ],
+    "aliases": [
+     "train hits bus",
+     "train school bus",
+     "train crash bus",
+     "bus vs train"
+    ],
+    "picture": "yellow school bus stopped on railroad tracks with train approaching, then train smashing into the bus, two panels top and bottom"
+   },
+   {
+    "id": "tornadoguy",
+    "name": "Tornado Guy",
+    "shape": "labeling",
+    "core": "A man takes a panicked selfie as a tornado looms behind him, used for someone caught right in front of an approaching disaster.",
+    "slots": [
+     "the incoming disaster",
+     "the person in danger"
+    ],
+    "aliases": [
+     "tornado selfie",
+     "tornado guy",
+     "man in front of tornado",
+     "selfie with tornado"
+    ],
+    "picture": "man grimacing with clenched teeth in foreground while a huge tornado swirls behind him"
+   }
+  ]
+ },
+ {
+  "qid": "samuelljacksonsayonemoretime#1",
+  "request": "pm says 'quick sync' one more time i swear",
+  "style": "situation",
+  "target": {
+   "id": "samuelljacksonsayonemoretime",
+   "name": "Samuel L Jackson Say One More Time",
+   "shape": "warning",
+   "core": "Jules daring someone to say a hated phrase one more time.",
+   "slots": [
+    "say X",
+    "one more time"
+   ],
+   "aliases": [
+    "say what again",
+    "say one more time",
+    "pulp fiction jules",
+    "i dare you"
+   ],
+   "picture": "man with curly hair and sideburns in suit glaring with wide angry eyes, intense close up"
+  },
+  "picked": [
+   {
+    "id": "saythatagainidareyou",
+    "name": "Say That Again I Dare You",
+    "shape": "warning",
+    "core": "Jules from Pulp Fiction pointing a gun, daring someone to repeat something wrong or annoying.",
+    "slots": [
+     "the annoying thing said",
+     "say it again, I dare you"
+    ],
+    "aliases": [
+     "say that again I dare you",
+     "Samuel L Jackson Pulp Fiction",
+     "Jules Winnfield",
+     "say what again"
+    ],
+    "picture": "man with curly hair in black suit pointing a pistol, stern intense glare"
+   },
+   {
+    "id": "saywhatagain",
+    "name": "Say What Again",
+    "shape": "warning",
+    "core": "Daring someone to repeat something annoying one more time: \"say X again, I dare you\".",
+    "slots": [
+     "the threat",
+     "the forbidden word"
+    ],
+    "aliases": [
+     "say what again",
+     "pulp fiction",
+     "samuel l jackson",
+     "i dare you"
+    ],
+    "picture": "angry man in suit shouting and pointing silver pistol at scared man in chair"
+   },
+   {
+    "id": "shrekforfiveminutes",
+    "name": "Shrek For Five Minutes",
+    "shape": "dialogue",
+    "core": "Shrek asks for five minutes of peace, then glares with laser eyes at Donkey who interrupts anyway.",
+    "slots": [
+     "the request for peace",
+     "the interrupter"
+    ],
+    "aliases": [
+     "Shrek For Five Minutes",
+     "Shrek Laser Eyes",
+     "Shrek Donkey Glare",
+     "Five minutes of peace"
+    ],
+    "picture": "green ogre peeking out of curtain annoyed, then shooting red laser eyes at a donkey, two panels top and bottom"
+   }
+  ]
+ },
+ {
+  "qid": "happywojakvsdepressedwojak#1",
+  "request": "me starting a new side project vs me 3 weeks later debugging webpack config",
+  "style": "situation",
+  "target": {
+   "id": "happywojakvsdepressedwojak",
+   "name": "Happy Wojak Vs Depressed Wojak",
+   "shape": "before-after",
+   "core": "A smiling wojak above a hollow, broken one, for something that starts fun and ends in despair.",
+   "slots": [
+    "what makes you happy",
+    "what breaks you"
+   ],
+   "aliases": [
+    "happy wojak sad wojak",
+    "wojak before after",
+    "doomer wojak",
+    "depressed wojak"
+   ],
+   "picture": "drawn smiling bald wojak face on top, dark scribbled hollow-eyed depressed wojak below, four panels with blank right side"
+  },
+  "picked": [
+   {
+    "id": "spongebobhappyandsad",
+    "name": "SpongeBob Happy And Sad",
+    "shape": "before-after",
+    "core": "SpongeBob grinning with excitement then bawling, used for expectations versus the crushing reality.",
+    "slots": [
+     "the happy expectation",
+     "the sad reality"
+    ],
+    "aliases": [
+     "spongebob happy sad",
+     "spongebob crying",
+     "happy then sad spongebob",
+     "expectation vs reality spongebob"
+    ],
+    "picture": "cartoon yellow sponge grinning excitedly with fists, then sitting crying fountains of tears, two panels top and bottom"
+   },
+   {
+    "id": "oldmancupofcoffee",
+    "name": "Hide The Pain Harold Laptop",
+    "shape": "before-after",
+    "core": "Harold smiles at his laptop, then looks up with a pained forced smile; used when something seems fine then quietly turns awful.",
+    "slots": [
+     "what you see first",
+     "the painful realization"
+    ],
+    "aliases": [
+     "hide the pain harold",
+     "harold coffee laptop",
+     "old man coffee",
+     "pained smile old man"
+    ],
+    "picture": "smiling older white-haired man at laptop holding mug, forced pained smile, two panels top and bottom"
+   },
+   {
+    "id": "traumatizedmrincredible",
+    "name": "Traumatized Mr Incredible",
+    "shape": "before-after",
+    "core": "Mr Incredible goes from cheerful to haunted, used to contrast an innocent view of something with the dark truth you learn later.",
+    "slots": [
+     "the innocent view",
+     "once you know the truth"
+    ],
+    "aliases": [
+     "traumatized mr incredible",
+     "mr incredible becoming uncanny",
+     "uncanny mr incredible",
+     "mr incredible canny"
+    ],
+    "picture": "cartoon muscular man smiling happily on left, same man in dark black and white creepy version on right, side by side"
+   }
+  ]
+ },
+ {
+  "qid": "trailerparkboysbubbles#1",
+  "request": "guy with the huge thick glasses looking outraged that my landlord raised rent again",
+  "style": "visual",
+  "target": {
+   "id": "trailerparkboysbubbles",
+   "name": "Trailer Park Boys Bubbles",
+   "shape": "reaction",
+   "core": "Bubbles looks stunned and indignant, used to react to something outrageous or baffling.",
+   "slots": [
+    "what happened",
+    "Bubbles' reaction"
+   ],
+   "aliases": [
+    "bubbles trailer park boys",
+    "shocked bubbles",
+    "trailer park boys reaction",
+    "bubbles glasses"
+   ],
+   "picture": "man with thick glasses and plaid shirt, mouth open talking, backhoe and trailers behind him"
+  },
+  "picked": [
+   {
+    "id": "toohigh",
+    "name": "The Rent Is Too Damn High",
+    "shape": "hot-take",
+    "core": "Jimmy McMillan's rant that something is 'too damn high', a complaint about excess.",
+    "slots": [
+     "the thing complained about, 'the X is'",
+     "'too damn high' punchline"
+    ],
+    "aliases": [
+     "rent is too damn high",
+     "too damn high",
+     "jimmy mcmillan"
+    ],
+    "picture": "older man with white beard and glasses in black gloves raising a fist, shouting passionately, blue curtain behind"
+   },
+   {
+    "id": "angrybaby",
+    "name": "Angry Baby",
+    "shape": "reaction",
+    "core": "A baby screaming in outrage, used for overreacting with fury to a small inconvenience.",
+    "slots": [
+     "the trigger",
+     "furious reaction"
+    ],
+    "aliases": [
+     "angry baby",
+     "screaming baby",
+     "mad baby",
+     "outraged baby"
+    ],
+    "picture": "black and white photo of baby screaming with mouth wide open, furrowed brows, furious angry face"
+   },
+   {
+    "id": "gears",
+    "name": "You Know What Really Grinds My Gears?",
+    "shape": "hot-take",
+    "core": "Host announces the thing that really grinds their gears, then a petty gripe.",
+    "slots": [
+     "'you know what really grinds my gears?'",
+     "the petty annoyance"
+    ],
+    "aliases": [
+     "grinds my gears",
+     "peter griffin gears"
+    ],
+    "picture": "cartoon fat man in suit at news desk ranting angrily, sign with gears behind him"
+   }
+  ]
+ },
+ {
+  "qid": "questionablestrategykobe#1",
+  "request": "questionable strategy kobe meme abt my team going for it on 4th and 20",
+  "style": "named",
+  "target": {
+   "id": "questionablestrategykobe",
+   "name": "Questionable Strategy Kobe",
+   "shape": "reaction",
+   "core": "Kobe Bryant staring in disbelief, used to question someone's baffling decision or strategy.",
+   "slots": [
+    "questionable decision",
+    "skeptical reaction"
+   ],
+   "aliases": [
+    "kobe stare",
+    "questionable strategy",
+    "kobe what",
+    "kobe face"
+   ],
+   "picture": "bald basketball player staring with confused skeptical look, scoreboard graphic"
+  },
+  "picked": []
+ }
+]

@@ -1,0 +1,183 @@
+<title>Meme Picker Benchmark</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one reading column; result tables and the chart break out wider. A lab report in the Meme Factory's colours (eggplant ink, chartreuse sticker). */
+:root {
+  --bg: #f7f6f2; --panel: #ffffff; --ink: #1f1a26; --muted: #625a6b; --rule: #e3e0e8;
+  --accent: #d9f24a; --accent-ink: #19141f; --good: #2e7d4f; --bad: #b4433b; --bar: #19141f; --bar2: #b9b2c2;
+  --display: "Bricolage Grotesque", "Avenir Next", system-ui, sans-serif;
+  --body: "Instrument Sans", "Helvetica Neue", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #17131c; --panel: #201b27; --ink: #ece8f1; --muted: #a59db0; --rule: #352e3f;
+  --accent: #d9f24a; --accent-ink: #19141f; --good: #6fcf97; --bad: #f08a80; --bar: #d9f24a; --bar2: #5b5266; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #17131c; --panel: #201b27; --ink: #ece8f1; --muted: #a59db0; --rule: #352e3f;
+  --accent: #d9f24a; --accent-ink: #19141f; --good: #6fcf97; --bad: #f08a80; --bar: #d9f24a; --bar2: #5b5266; color-scheme: dark }
+* { box-sizing: border-box }
+body { background: var(--bg); color: var(--ink); font: 16px/1.6 var(--body); margin: 0 }
+.page { max-width: 1040px; margin: 0 auto; padding-inline: 20px; padding-block: 40px 80px; display: grid; gap: 28px }
+.col { max-width: 68ch }
+h1, h2, h3 { font-family: var(--display); line-height: 1.15; text-wrap: balance; margin: 0 }
+h1 { font-size: clamp(2rem, 5vw, 3.1rem); font-weight: 800; letter-spacing: -0.02em }
+h2 { font-size: 1.55rem; font-weight: 800; margin-top: 18px }
+h3 { font-size: 1.1rem; font-weight: 600 }
+p { margin: 0 }
+.stack { display: grid; gap: 12px }
+.eyebrow { font: 600 0.78rem/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted) }
+.sticker { display: inline-block; background: var(--accent); color: var(--accent-ink); font: 800 0.8rem/1 var(--display); padding: 6px 9px; border-radius: 4px; transform: rotate(-2deg) }
+.lede { font-size: 1.15rem }
+.verdict { background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: 22px; display: grid; gap: 14px }
+.big { display: flex; flex-wrap: wrap; gap: 28px; align-items: baseline }
+.big div { display: grid; gap: 2px; min-width: 0 }
+.num { font: 800 2.6rem/1 var(--display); font-variant-numeric: tabular-nums }
+.num small { font-size: 1rem; color: var(--muted); font-weight: 600 }
+.label { color: var(--muted); font-size: 0.9rem }
+.wrap { overflow-x: auto }
+table { border-collapse: collapse; width: 100%; font-size: 0.92rem; font-variant-numeric: tabular-nums }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--rule); vertical-align: top }
+th { font: 600 0.75rem/1.3 var(--mono); text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted) }
+td.n { text-align: right; font-family: var(--mono); white-space: nowrap }
+tr.win td { background: color-mix(in srgb, var(--accent) 28%, transparent) }
+tr.base td { color: var(--muted) }
+.chart { background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: 18px }
+.chart svg { width: 100%; height: auto; display: block }
+.chart text { fill: var(--ink); font-family: var(--body) }
+.chart .tick { fill: var(--muted); font-family: var(--mono); font-size: 11px }
+ul, ol { margin: 0; padding-left: 1.2em; display: grid; gap: 6px }
+code { font: 0.86em var(--mono); background: color-mix(in srgb, var(--rule) 70%, transparent); padding: 1px 5px; border-radius: 4px }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px }
+.card { background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: 16px; display: grid; gap: 8px; min-width: 0 }
+.q { font-family: var(--mono); font-size: 0.86rem; color: var(--muted) }
+.up { color: var(--good); font-weight: 600 }
+.down { color: var(--bad); font-weight: 600 }
+a { color: inherit; text-decoration-color: var(--muted) }
+@media (prefers-reduced-motion: no-preference) { .sticker { transition: transform .2s } .sticker:hover { transform: rotate(1deg) } }
+</style>
+
+<div class="page">
+  <header class="stack col">
+    <span class="eyebrow">Meme Factory · retrieval benchmark · 9–10 Oct 2026</span>
+    <h1>Does it pick the right meme?</h1>
+    <p class="lede">I built a benchmark of about 2,400 requests across the 1,507-template catalog and ran 17 experiments on how the mod finds templates. The best one puts the right meme in the top three for <strong>90%</strong> of honest held-out requests, up from <strong>76%</strong> today. It's ready as <a href="https://github.com/CodyAMaughan/meme-factory/pull/6">PR #6</a>.</p>
+  </header>
+
+  <section class="verdict">
+    <span class="sticker">Recommendation: ship it</span>
+    <div class="big">
+      <div><span class="num">76.5 → 90.4<small>%</small></span><span class="label">right meme in the top 3, picture-only test set</span></div>
+      <div><span class="num">52.9 → 76.8<small>%</small></span><span class="label">same, for requests that only describe a situation</span></div>
+      <div><span class="num">87.2 → 96.1<small>%</small></span><span class="label">description-written test set</span></div>
+    </div>
+    <p class="col">The change: before the writer sees anything, Haiku does three things. It writes the card of the ideal template for the joke, and at the same time names 15 candidates from the whole catalog. Then it reranks the search's best 200 against that card, with a description of each picture. The writer still makes the final choice, from the 40 that come out. That costs three Haiku calls per meme, two of them in parallel, adding a few seconds to a draft that takes about 30.</p>
+  </section>
+
+  <section class="stack">
+    <h2>Held-out results</h2>
+    <p class="col">Neither test set was used for any decision, and both cover the 30% of templates held out. A pick counts if it's the target, a duplicate of it, or a template that reviewers judged an equally good fit. Reviewers judged every finalist's misses together, so no system was favoured. Sonnet was the writer throughout; Opus is checked below.</p>
+    <div class="chart" role="img" aria-label="Bar chart of top-3 accuracy on the picture-only test set: current 76.5%, picture descriptions 79.0%, rerank 85.9%, combined 90.7%, production version 90.4%">
+      <svg viewBox="0 0 720 250">
+        <g class="tick"><text x="190" y="242">50%</text><text x="352" y="242">70%</text><text x="514" y="242">90%</text><text x="595" y="242">100%</text></g>
+        <g stroke="var(--rule)"><line x1="200" y1="10" x2="200" y2="225"/><line x1="362" y1="10" x2="362" y2="225"/><line x1="524" y1="10" x2="524" y2="225"/><line x1="605" y1="10" x2="605" y2="225"/></g>
+        <!-- x = 200 + (pct-50)*8.1 -->
+        <g font-size="13">
+          <text x="0" y="34">Current (0.11.0)</text><rect x="200" y="20" width="214.6" height="22" fill="var(--bar2)"/><text x="420" y="36" font-family="var(--mono)">76.5</text>
+          <text x="0" y="78">+ picture descriptions</text><rect x="200" y="64" width="234.9" height="22" fill="var(--bar2)"/><text x="441" y="80" font-family="var(--mono)">79.0</text>
+          <text x="0" y="122">+ Haiku rerank</text><rect x="200" y="108" width="290.8" height="22" fill="var(--bar2)"/><text x="497" y="124" font-family="var(--mono)">85.9</text>
+          <text x="0" y="166">Combined (experiment)</text><rect x="200" y="152" width="329.7" height="22" fill="var(--bar)"/><text x="536" y="168" font-family="var(--mono)">90.7</text>
+          <text x="0" y="210" font-weight="600">Combined (as shipped)</text><rect x="200" y="196" width="327.2" height="22" fill="var(--bar)"/><text x="533" y="212" font-family="var(--mono)" font-weight="600">90.4</text>
+        </g>
+      </svg>
+    </div>
+    <div class="wrap"><table>
+      <thead><tr><th>System</th><th>Test set</th><th>In shortlist</th><th>Top 1</th><th>Top 3</th><th>Situation</th><th>Picture</th><th>Named</th></tr></thead>
+      <tbody>
+        <tr class="base"><td>Current (0.11.0)</td><td>picture-only</td><td class="n">70.4</td><td class="n">68.8</td><td class="n">76.5</td><td class="n">52.9</td><td class="n">81.9</td><td class="n">97.1</td></tr>
+        <tr><td>+ picture descriptions</td><td>picture-only</td><td class="n">73.3</td><td class="n">72.2</td><td class="n">79.0</td><td class="n">53.5</td><td class="n">88.9</td><td class="n">97.1</td></tr>
+        <tr><td>+ Haiku rerank</td><td>picture-only</td><td class="n">79.5</td><td class="n">77.4</td><td class="n">85.9</td><td class="n">67.7</td><td class="n">93.1</td><td class="n">98.6</td></tr>
+        <tr><td>Combined (experiment)</td><td>picture-only</td><td class="n">86.3</td><td class="n">81.5</td><td class="n">90.7</td><td class="n">76.8</td><td class="n">97.9</td><td class="n">98.6</td></tr>
+        <tr class="win"><td><strong>Combined (as shipped)</strong></td><td>picture-only</td><td class="n">86.3</td><td class="n">81.5</td><td class="n">90.4</td><td class="n">76.8</td><td class="n">97.2</td><td class="n">98.6</td></tr>
+        <tr class="base"><td>Current (0.11.0)</td><td>description-written</td><td class="n">86.6</td><td class="n">80.6</td><td class="n">87.2</td><td class="n">68.9</td><td class="n">94.9</td><td class="n">99.2</td></tr>
+        <tr><td>+ picture descriptions</td><td>description-written</td><td class="n">89.3</td><td class="n">85.9</td><td class="n">90.4</td><td class="n">75.5</td><td class="n">97.5</td><td class="n">99.2</td></tr>
+        <tr><td>+ Haiku rerank</td><td>description-written</td><td class="n">92.3</td><td class="n">87.0</td><td class="n">92.5</td><td class="n">79.5</td><td class="n">99.4</td><td class="n">99.2</td></tr>
+        <tr class="win"><td><strong>Combined (as shipped)</strong></td><td>description-written</td><td class="n">96.4</td><td class="n">88.6</td><td class="n">96.1</td><td class="n">90.1</td><td class="n">99.4</td><td class="n">99.2</td></tr>
+      </tbody>
+    </table></div>
+    <p class="col label">439 requests per set (about 145 per style). "In shortlist" means the target was among the 40 templates the writer saw. The columns after Top 3 are top-3 accuracy by request style.</p>
+  </section>
+
+  <section class="stack col">
+    <h2>What I learned</h2>
+    <ul>
+      <li><strong>Finding is the problem, not choosing.</strong> When the right template is in the writer's shortlist, the writer picks it about 98% of the time, both today and with the change. Every gain came from getting it into the shortlist: 70% → 86% on the picture-only set.</li>
+      <li><strong>Situations are the hard case.</strong> "my boss wants me to work saturday for a pizza" shares no words with "Trade Offer". Keyword search alone found the right meme for a quarter of these; the combined approach finds it for three quarters.</li>
+      <li><strong>Describe the ideal template, don't name it.</strong> Asking Haiku for template names made things worse (70.2% on dev, against 77.9% without it). Asking it for the ideal template's card, in the catalog's own words (a technique called HyDE), made them better (79.3%). Asking it to name templates from the full catalog list also helped (80.7%), because there it can only name real ones.</li>
+      <li><strong>A second look beats a wider net.</strong> Showing the writer 70 templates instead of 40 helped a little (81.5% on dev). Having Haiku rerank the best 100 helped more (84.0%), and costs less than a longer writer prompt.</li>
+      <li><strong>Haiku is enough.</strong> Sonnet as the reranker scored the same as Haiku (83.7% either way, on the same 200-template pool).</li>
+      <li><strong>Popularity: keep a little.</strong> No popularity scored 77.9% on dev, today's weight 77.9%, and double the weight 76.0%. It's a fine tiebreaker and a poor signal. On the description-written set, today's weight did slightly better, so it stays.</li>
+      <li><strong>Picture descriptions help when people describe the picture</strong> ("the guy sweating over two buttons"): 82% → 89% on that style. Every card now has one.</li>
+      <li><strong>Opus doesn't change the story.</strong> On 120 picture-only requests, with Opus as the writer the way the mod runs it: today 76.7%, the change 87.5%. Sonnet scored 73.3% and 86.7% on the same requests.</li>
+    </ul>
+  </section>
+
+  <section class="stack">
+    <h2>Every experiment, on the dev set</h2>
+    <p class="col">I made every decision on a picture-only dev set: 362 requests for 330 training templates, written by people who saw only the picture. The training templates' own description-written requests flatter keyword search, so I used them only to cross-check.</p>
+    <div class="wrap"><table>
+      <thead><tr><th>#</th><th>Experiment</th><th>In shortlist</th><th>Top 1</th><th>Top 3</th><th>Situation</th><th>What it tested</th></tr></thead>
+      <tbody>
+        <tr class="base"><td>e0</td><td>Keyword search alone</td><td class="n">78.5</td><td class="n">54.1</td><td class="n">67.4</td><td class="n">42.0</td><td>No model at all: the search's top three.</td></tr>
+        <tr class="base"><td>e0v</td><td>+ picture descriptions</td><td class="n">80.9</td><td class="n">59.4</td><td class="n">70.4</td><td class="n">42.8</td><td>Weights 1–3 tried; 1 is best.</td></tr>
+        <tr class="base"><td>e1</td><td>Current mod (0.11.0)</td><td class="n">76.0</td><td class="n">66.3</td><td class="n">74.0</td><td class="n">50.7</td><td>Haiku search words, search, writer picks.</td></tr>
+        <tr><td>e2</td><td>+ picture descriptions</td><td class="n">79.8</td><td class="n">70.4</td><td class="n">77.9</td><td class="n">55.8</td><td>Pictures in the index.</td></tr>
+        <tr><td>e3</td><td>Popularity 0 / ×2</td><td class="n">80.1 / 78.2</td><td class="n">71.5 / 69.6</td><td class="n">77.9 / 76.0</td><td class="n">55.8 / 52.2</td><td>Prior weight. Keep today's.</td></tr>
+        <tr><td>e4</td><td>Haiku names templates</td><td class="n">71.5</td><td class="n">64.6</td><td class="n">70.2</td><td class="n">45.7</td><td>Worse: names it half-remembers drag the search off.</td></tr>
+        <tr><td>e5</td><td>Wider shortlist (70)</td><td class="n">84.0</td><td class="n">71.8</td><td class="n">81.5</td><td class="n">60.9</td><td>More for the writer to read.</td></tr>
+        <tr><td>e6</td><td>Separate picker</td><td class="n">79.8</td><td class="n">70.4</td><td class="n">78.2</td><td class="n">57.2</td><td>Choose from full cards, then write. No gain.</td></tr>
+        <tr><td>e7</td><td>Haiku rerank of top 100</td><td class="n">87.8</td><td class="n">72.9</td><td class="n">84.0</td><td class="n">68.8</td><td>Two-stage retrieval.</td></tr>
+        <tr><td>e9</td><td>HyDE</td><td class="n">81.8</td><td class="n">69.6</td><td class="n">79.3</td><td class="n">56.5</td><td>Haiku writes the ideal card; that's the query.</td></tr>
+        <tr><td>e10</td><td>Whole-catalog naming</td><td class="n">85.1</td><td class="n">72.9</td><td class="n">80.7</td><td class="n">60.9</td><td>Haiku reads all 1,507 names, picks 15.</td></tr>
+        <tr><td>e11</td><td>Rerank with pictures</td><td class="n">87.3</td><td class="n">74.9</td><td class="n">84.3</td><td class="n">66.7</td><td>Rerank sees picture descriptions.</td></tr>
+        <tr><td>e12</td><td>Rerank of top 200</td><td class="n">88.7</td><td class="n">75.1</td><td class="n">83.7</td><td class="n">66.7</td><td>Wider pool for the rerank.</td></tr>
+        <tr><td>e13</td><td>Sonnet reranks</td><td class="n">89.2</td><td class="n">71.8</td><td class="n">83.7</td><td class="n">67.4</td><td>A bigger reranker: no gain.</td></tr>
+        <tr><td>e14</td><td>HyDE + rerank</td><td class="n">89.5</td><td class="n">73.5</td><td class="n">83.4</td><td class="n">65.9</td><td>Two of the three pieces.</td></tr>
+        <tr><td>e8</td><td>Combined</td><td class="n">91.7</td><td class="n">74.6</td><td class="n">84.5</td><td class="n">68.8</td><td>HyDE + whole-catalog naming + rerank of 200.</td></tr>
+        <tr class="win"><td>e15</td><td><strong>As shipped</strong></td><td class="n">92.0</td><td class="n">72.4</td><td class="n">85.1</td><td class="n">70.3</td><td>The combined approach, run from the mod's own code.</td></tr>
+      </tbody>
+    </table></div>
+    <p class="col label">e8, e12 and e14 ran later on the reviewed labels. e7 and e9–e11 gained 1–4 points from those reviews, because their own misses were the ones reviewed; the held-out comparison above doesn't have that problem.</p>
+  </section>
+
+  <section class="stack col">
+    <h2>How the benchmark was built</h2>
+    <ol>
+      <li><strong>One request per template.</strong> 26 agents each read 60 cards and wrote casual one-liners ("drake meme abt jira", "the guy sweating over two red buttons but its tabs vs spaces"), in three styles: a situation, a description of the picture, or a loosely remembered name. That gave 1,505 requests, split 70/30 by template.</li>
+      <li><strong>A bias, caught.</strong> Requests written from cards reuse the cards' words, so keyword search alone scored 81% on them. I added two picture-only sets, written from the picture and name only: 439 held-out requests and 362 for development. There, keyword search alone scores 61–67%. The picture-only sets are the honest numbers.</li>
+      <li><strong>Misses reviewed, as you described.</strong> Agents judged each miss. If a pick fit as well or better, the original request went to that template (up to three per template), and the target got a rewritten request that singles it out. That's 118 requests rewritten in all, 82 of them in the held-out sets. Example: "brace yourselves, finals week is coming" was really two Ned Stark templates, and became "ned stark winter is coming but its tax season".</li>
+      <li><strong>Duplicates found.</strong> Reviews kept turning up the same meme under two names. Picture fingerprints plus a review found 67 groups covering 142 templates. 74 duplicates are removed from the server; their names stay on as aliases of the copy kept. Duplicates count as correct when scoring.</li>
+    </ol>
+  </section>
+
+  <section class="stack">
+    <h2>Recommended changes</h2>
+    <div class="grid2">
+      <div class="card"><span class="eyebrow">Ready · do now</span><h3>Deploy the server, merge PR #6</h3><p>The server change adds picture descriptions to every card and removes the 74 duplicates. It's on the dev environment, and production comes first. Then merge 0.12.0, which runs the combined search with the HyDE card, whole-catalog naming and rerank, and waits briefly at session start for the template list.</p></div>
+      <div class="card"><span class="eyebrow">Next</span><h3>A second duplicate pass</h3><p>The held-out reviews found more duplicates that fingerprints missed (crops and re-uploads, such as two Pulp Fiction Jules templates). Describing each picture and grouping similar descriptions would catch most of them.</p></div>
+      <div class="card"><span class="eyebrow">Next</span><h3>Embeddings for situations</h3><p>Situation requests are still the weakest style, at 77%. A small embedding index over cards and pictures, served from the memegen server, would give the search meaning-based matches without another model call.</p></div>
+      <div class="card"><span class="eyebrow">Later</span><h3>Learn from approvals</h3><p>Each approved meme is a free label: request in, template out. Logging which template people approve, with consent, would let the reranker learn which memes this crowd actually reaches for.</p></div>
+    </div>
+  </section>
+
+  <section class="stack col">
+    <h2>Limits</h2>
+    <ul>
+      <li>Requests and reviews were written by models, standing in for real users. They're casual and varied, but they aren't real traffic.</li>
+      <li>Each configuration ran once. At 439 requests, differences under about 3 points aren't meaningful. The rerank and combined gains, 7 to 14 points, are well clear of that.</li>
+      <li>This measures picking, not funniness. I didn't judge captions.</li>
+      <li>Jev was off throughout, as you asked.</li>
+    </ul>
+    <p class="label">Everything is reproducible from <code>bench/</code> on the <code>retrieval-bench</code> branch: <code>node bench/run.mjs &lt;experiment&gt; &lt;split&gt;</code>, then <code>python3 bench/final.py</code>. Model answers are cached in <code>bench/cache</code>.</p>
+  </section>
+</div>

@@ -150,6 +150,9 @@ function factory(on, rig: Rig = {}) {
   on('model.complete', async ($, e) => {
     log.prompts.push(e.prompt)
     log.models.push({ system: String(e.system), model: e.model })
+    if (String(e.prompt).includes('Describe the ideal meme template')) return { value: { isAnswered: true, text: JSON.stringify({ name: 'Zz Big Rodent', shape: 'reaction', core: 'Shock.', slots: ['', ''], picture: 'a rodent' }), usage: USAGE } }
+    if (String(e.prompt).includes('Which 15 templates above')) return { value: { isAnswered: true, text: JSON.stringify({ ids: ['big-007'] }), usage: USAGE } }
+    if (String(e.prompt).includes('Which 25 of these')) return { value: { isAnswered: true, text: JSON.stringify({ ids: ['big-042', 'not-a-template'] }), usage: USAGE } }
     if (String(e.prompt).includes('Write a catalog card')) return { value: { isAnswered: true, text: JSON.stringify(rig.cardsReply ?? { cards: [] }), usage: USAGE } }
     if (e.system.includes('judge')) return { value: { isAnswered: true, text: JUDGE_REPLY, usage: USAGE } }
     if (e.system.includes('chat box') && rig.chatDelay) await clock.sleep(rig.chatDelay)
@@ -1126,4 +1129,20 @@ test("if the Meme Factory's server is down, memes come from memegen.link instead
   const downloads = log.ran.filter((argv) => argv[0] === 'curl' && argv.includes('-o'))
   expect(downloads.length > 0).toBe(true)
   expect(downloads.every((argv) => argv.at(-1)!.startsWith('https://api.memegen.link/images/'))).toBe(true)
+})
+
+test('with a big catalog, a quick model finds the template: its rerank and catalog picks lead the writer\'s shortlist', async ($, on) => {
+  const many = Array.from({ length: 300 }, (_, i) => {
+    const n = String(i).padStart(3, '0')
+    return { id: `big-${n}`, name: `Zz Big Template ${n}`, lines: 2, card: { shape: 'reaction', core: `Template number ${n}.`, slots: ['a', 'b'], aliases: [], rank: 100 + i } }
+  })
+  const { clock, log } = factory(on, { env: { MEMEGEN_URL: 'https://memes.example.com', MEME_FACTORY_IMGFLIP: '0' }, serverTemplates: many })
+  await draftsReady($, clock)
+  expect(log.prompts.some((p) => String(p).includes('Describe the ideal meme template'))).toBe(true)
+  expect(log.models.some((m) => m.model === 'haiku')).toBe(true)
+  const writer = log.prompts.find((p) => String(p).includes('Meme request:') && String(p).includes('candidates'))
+  const lines = String(writer).split('\n').filter((l) => /^[a-z0-9-]+ \| /.test(l))
+  expect(lines[0].startsWith('big-042 |')).toBe(true)
+  expect(lines[1].startsWith('big-007 |')).toBe(true)
+  expect(lines.length).toBe(40)
 })

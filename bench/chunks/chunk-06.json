@@ -1,0 +1,1080 @@
+[
+{
+"id": "iseedeadpeople",
+"name": "I See Dead People",
+"lines": 2,
+"shape": "reaction",
+"core": "The frightened boy from The Sixth Sense whispering 'I see dead people', used for noticing things that are dead or abandoned but still around.",
+"slots": [
+"i see",
+"the dead things"
+],
+"aliases": [
+"i see dead people",
+"sixth sense kid",
+"haley joel osment",
+"sixth sense"
+],
+"avoid": "Not for real deaths or tragedies."
+},
+{
+"id": "thanoswhatdiditcost",
+"name": "Thanos What Did It Cost",
+"lines": 4,
+"shape": "dialogue",
+"core": "Young Gamora asks Thanos if he did it and what it cost; he answers 'everything', used for a win that required a ridiculous sacrifice.",
+"slots": [
+"did you do it?",
+"yes",
+"what did it cost?",
+"everything / the sacrifice"
+],
+"aliases": [
+"what did it cost",
+"thanos everything",
+"did you do it thanos",
+"what did it cost everything"
+],
+"avoid": "Not for wins that came easily."
+},
+{
+"id": "mrbeanwaiting",
+"name": "Mr Bean Waiting",
+"lines": 1,
+"shape": "exaggeration",
+"core": "Mr Bean waiting in a field until he's lying down exhausted, used for waiting absurdly long for something.",
+"slots": [
+"what you're waiting for"
+],
+"aliases": [
+"mr bean waiting",
+"waiting mr bean",
+"mr bean field waiting",
+"still waiting"
+],
+"avoid": "Not for things that arrive quickly."
+},
+{
+"id": "birdbox",
+"name": "Bird Box",
+"lines": 2,
+"shape": "labeling",
+"core": "Sandra Bullock blindfolded in Bird Box, used for deliberately refusing to look at something you don't want to see.",
+"slots": [
+"the thing you won't look at",
+"who's avoiding it"
+],
+"aliases": [
+"bird box",
+"bird box blindfold",
+"sandra bullock blindfold",
+"don't look"
+],
+"avoid": "Not for things you're eager to see."
+},
+{
+"id": "secondbreakfast",
+"name": "Second Breakfast",
+"lines": 2,
+"shape": "dialogue",
+"core": "Merry and Pippin from Lord of the Rings, 'What about second breakfast?', used for wanting a second helping of something you already had.",
+"slots": [
+"we've had one, yes",
+"what about the second one?"
+],
+"aliases": [
+"second breakfast",
+"what about second breakfast",
+"pippin second breakfast",
+"we've had one yes"
+],
+"avoid": "Not for situations where once is clearly enough."
+},
+{
+"id": "thisisbrilliantbutilikethis",
+"name": "This Is Brilliant But I Like This",
+"lines": 2,
+"shape": "binary-choice",
+"core": "Top Gear's Jeremy Clarkson calls one car brilliant but prefers the other, used for admitting you prefer the worse or simpler option.",
+"slots": [
+"the objectively better thing",
+"the thing you actually like"
+],
+"aliases": [
+"this is brilliant but i like this",
+"clarkson brilliant but i like this",
+"top gear brilliant",
+"but i like this"
+],
+"avoid": "Not for when the preferred option is clearly the best."
+},
+{
+"id": "dwightschrute",
+"name": "Dwight Schrute False",
+"lines": 2,
+"shape": "rejection",
+"core": "Dwight Schrute's deadpan 'False.' correction, used to pedantically shoot down a common claim and state a smug counter-fact.",
+"slots": [
+"the claim or 'False.'",
+"the pedantic correction"
+],
+"aliases": [
+"dwight false",
+"dwight schrute fact",
+"false dwight",
+"the office dwight"
+],
+"avoid": "Not for warm agreement or praise."
+},
+{
+"id": "stevebuscemifellowkids",
+"name": "How Do You Do Fellow Kids",
+"lines": 2,
+"shape": "irony",
+"core": "Steve Buscemi disguised as a teen, used for someone or some brand awkwardly trying too hard to seem young and cool.",
+"slots": [
+"the outsider's setup",
+"the cringe attempt to fit in"
+],
+"aliases": [
+"how do you do fellow kids",
+"steve buscemi fellow kids",
+"fellow kids",
+"30 rock fellow kids"
+],
+"avoid": "Not for people who genuinely belong in the group."
+},
+{
+"id": "gentlemenitiswithgreatpleasu",
+"name": "Gentlemen It Is With Great Pleasure To Inform You",
+"lines": 2,
+"shape": "irony",
+"core": "A dignified frog in a suit making a formal announcement, used for delivering bad or trivial news with mock solemnity.",
+"slots": [
+"gentlemen, it is with great pleasure to inform you",
+"the news"
+],
+"aliases": [
+"gentlemen it is with great pleasure",
+"frog in suit",
+"gentleman frog",
+"it is with great pleasure to inform you"
+],
+"avoid": "Not for casual, unceremonious statements."
+},
+{
+"id": "idontwanttoplaywithyouanymor",
+"name": "I Don't Want To Play With You Anymore",
+"lines": 2,
+"shape": "rejection",
+"core": "Andy dropping Woody in Toy Story 2's nightmare, used when someone abandons an old favourite for something new.",
+"slots": [
+"the thing being dropped",
+"who drops it"
+],
+"aliases": [
+"i don't want to play with you anymore",
+"andy drops woody",
+"toy story woody dropped",
+"woody nightmare"
+],
+"avoid": "Not for staying loyal to something."
+},
+{
+"id": "jimhalpertexplains",
+"name": "Jim Halpert Explains",
+"lines": 2,
+"shape": "irony",
+"core": "Jim points at a whiteboard, then smugly looks at the camera, used to state a fact or plan and let the obvious punchline sink in.",
+"slots": [
+"the explanation",
+"the smug conclusion"
+],
+"aliases": [
+"jim halpert whiteboard",
+"jim explains",
+"the office whiteboard",
+"jim pointing at board"
+],
+"avoid": "Not for confused or uncertain statements."
+},
+{
+"id": "firsttime",
+"name": "First Time",
+"lines": 2,
+"shape": "labeling",
+"core": "James Franco calmly asks a panicking man 'First time?' at the gallows, used when a veteran of some recurring disaster greets a newcomer to it.",
+"slots": [
+"the panicking newbie",
+"the jaded veteran"
+],
+"aliases": [
+"first time",
+"james franco first time",
+"first time meme",
+"buster scruggs first time"
+],
+"avoid": "Not for real executions or deaths."
+},
+{
+"id": "traumatizedmrincredible",
+"name": "Traumatized Mr Incredible",
+"lines": 2,
+"shape": "before-after",
+"core": "Mr Incredible goes from cheerful to haunted, used to contrast an innocent view of something with the dark truth you learn later.",
+"slots": [
+"the innocent view",
+"once you know the truth"
+],
+"aliases": [
+"traumatized mr incredible",
+"mr incredible becoming uncanny",
+"uncanny mr incredible",
+"mr incredible canny"
+],
+"avoid": "Not for things that get better on closer look."
+},
+{
+"id": "sweatingbullets",
+"name": "Sweating Bullets",
+"lines": 1,
+"shape": "reaction",
+"core": "Jordan Peele sweating heavily in nervous silence, used for intense anxiety when you're about to be caught or exposed.",
+"slots": [
+"the nerve-wracking moment"
+],
+"aliases": [
+"sweating bullets",
+"jordan peele sweating",
+"nervous sweating",
+"sweating guy"
+],
+"avoid": "Not for calm, confident situations."
+},
+{
+"id": "bigbooksmallbook",
+"name": "Big Book Small Book",
+"lines": 2,
+"shape": "comparison",
+"core": "A huge book next to a tiny one, used to contrast something with tons of content against something with very little.",
+"slots": [
+"the big one",
+"the small one"
+],
+"aliases": [
+"big book small book",
+"thick book thin book",
+"big book vs small book",
+"two books"
+],
+"avoid": "Not for comparing things of similar size."
+},
+{
+"id": "thisisworthless",
+"name": "This Is Worthless",
+"lines": 1,
+"shape": "rejection",
+"core": "Dipper from Gravity Falls excitedly reads a paper then cheerfully declares it worthless, used for something that seemed promising but turns out useless.",
+"slots": [
+"the worthless thing"
+],
+"aliases": [
+"this is worthless",
+"gravity falls this is worthless",
+"dipper worthless",
+"woah this is worthless"
+],
+"avoid": "Not for things that are genuinely valuable."
+},
+{
+"id": "patricktodolistactuallyblank",
+"name": "Patrick To-Do List",
+"lines": 1,
+"shape": "irony",
+"core": "Patrick writes a to-do list; used to show the one absurd or lazy item that actually makes someone's plan.",
+"slots": [
+"the to-do list items"
+],
+"aliases": [
+"patrick to do list",
+"spongebob to do list",
+"patrick writing list",
+"to-do list meme"
+],
+"avoid": "Not for comparisons or reactions; it needs list-like content."
+},
+{
+"id": "dontmakemetapthesign",
+"name": "Don't Make Me Tap The Sign",
+"lines": 1,
+"shape": "warning",
+"core": "A bus driver taps a sign stating a rule people keep breaking; used to remind someone of a repeated, obvious rule.",
+"slots": [
+"the rule on the sign"
+],
+"aliases": [
+"tap the sign",
+"bus driver sign",
+"simpsons tap the sign",
+"don't make me tap the sign"
+],
+"avoid": "Not for two-sided comparisons; it is one stated rule."
+},
+{
+"id": "whycantiholdalltheselimes",
+"name": "Why Can't I Hold All These Limes",
+"lines": 2,
+"shape": "exaggeration",
+"core": "A man fumbling an armful of limes; used when someone has taken on more things than they can manage.",
+"slots": [
+"setup",
+"why can't I hold all these X"
+],
+"aliases": [
+"limes guy",
+"why can't i hold all these",
+"hold all these limes",
+"too many limes"
+],
+"avoid": "Not for single problems; it is about overload."
+},
+{
+"id": "unhelpfulhighschoolteacher",
+"name": "Unhelpful High School Teacher",
+"lines": 2,
+"shape": "plan-backfires",
+"core": "A smiling teacher who does something petty or unhelpful; used for authority figures who make things pointlessly harder.",
+"slots": [
+"reasonable setup",
+"unhelpful twist"
+],
+"aliases": [
+"unhelpful teacher",
+"scumbag teacher",
+"evil teacher",
+"smiling teacher"
+],
+"avoid": "Not for genuinely helpful advice or wholesome teachers."
+},
+{
+"id": "batmansignal",
+"name": "Batman Signal",
+"lines": 2,
+"shape": "labeling",
+"core": "A signal lights up the sky to summon Batman; used when a specific trigger instantly summons someone who can't resist it.",
+"slots": [
+"the signal",
+"who answers it"
+],
+"aliases": [
+"bat signal",
+"batman signal",
+"batman answering the call",
+"signal in the sky"
+],
+"avoid": "Not for slow or reluctant responses."
+},
+{
+"id": "meexplainingtomymom",
+"name": "Me Explaining To My Mom",
+"lines": 2,
+"shape": "dialogue",
+"core": "A girl passionately explains something to her bored, unconvinced mom; used for explaining niche interests to someone who doesn't care.",
+"slots": [
+"what I'm explaining",
+"the unimpressed listener"
+],
+"aliases": [
+"me explaining to my mom",
+"explaining to mom",
+"girl explaining",
+"mom not listening"
+],
+"avoid": "Not for situations where the listener is genuinely interested."
+},
+{
+"id": "thesearentthedroidsyouwerelo",
+"name": "These Aren't The Droids You're Looking For",
+"lines": 2,
+"shape": "irony",
+"core": "Obi-Wan uses a Jedi mind trick; used when someone smoothly talks their way out of an obvious problem.",
+"slots": [
+"obvious problem",
+"these aren't the X you're looking for"
+],
+"aliases": [
+"jedi mind trick",
+"not the droids",
+"obi wan mind trick",
+"these aren't the droids"
+],
+"avoid": "Not for honest explanations."
+},
+{
+"id": "homersimpsonsbackfat",
+"name": "Homer Simpson's Back Fat",
+"lines": 2,
+"shape": "before-after",
+"core": "Homer looks fine from the front but has his fat clipped up behind him; used for things that look good on the surface but are a mess behind the scenes.",
+"slots": [
+"the polished front",
+"the mess behind it"
+],
+"aliases": [
+"homer back fat",
+"homer clipped fat",
+"front vs back",
+"homer simpson pinned fat"
+],
+"avoid": "Not for body-shaming real people."
+},
+{
+"id": "blankredmagahat",
+"name": "Blank Red MAGA Hat",
+"lines": 1,
+"shape": "other",
+"core": "A blank red cap for writing a parody slogan; used to mock a cause or demand by putting it on a campaign-style hat.",
+"slots": [
+"the slogan"
+],
+"aliases": [
+"red hat",
+"maga hat blank",
+"make x great again",
+"blank red cap"
+],
+"avoid": "Not for attacking real private people or hateful slogans."
+},
+{
+"id": "coolcatstroll",
+"name": "Cool Cat Stroll",
+"lines": 2,
+"shape": "reaction",
+"core": "A kitten strutting upright with confidence; used for walking away smugly after a small win.",
+"slots": [
+"the small win",
+"the confident strut"
+],
+"aliases": [
+"strutting cat",
+"cool cat walk",
+"kitten strut",
+"confident cat"
+],
+"avoid": "Not for sad or anxious moments."
+},
+{
+"id": "ibelieveinsupremacy",
+"name": "I Believe In Supremacy",
+"lines": 1,
+"shape": "exaggeration",
+"core": "A figure bows to a declared supremacy; used to jokingly proclaim something trivial as superior to everything else.",
+"slots": [
+"the thing that is supreme"
+],
+"aliases": [
+"i believe in supremacy",
+"x supremacy",
+"supremacy meme",
+"bowing to supremacy"
+],
+"avoid": "Not for real groups of people or hateful ideologies."
+},
+{
+"id": "horsedrawing",
+"name": "Horse Drawing",
+"lines": 2,
+"shape": "before-after",
+"core": "A horse drawing that starts detailed and ends as a stick doodle; used for projects that start with great effort and end rushed.",
+"slots": [
+"the careful start",
+"the rushed end"
+],
+"aliases": [
+"half drawn horse",
+"horse drawing",
+"unfinished horse",
+"start vs finish drawing"
+],
+"avoid": "Not for things that stay consistent quality."
+},
+{
+"id": "wakeupbabe",
+"name": "Wake Up Babe",
+"lines": 1,
+"shape": "irony",
+"core": "A man wakes his partner to announce news; used to mock excitement over a new, trivial or recurring thing.",
+"slots": [
+"wake up babe, new X just dropped"
+],
+"aliases": [
+"wake up babe",
+"new x just dropped",
+"wake up honey",
+"babe wake up"
+],
+"avoid": "Not for genuinely important news."
+},
+{
+"id": "illhaveyouknowspongebob",
+"name": "I'll Have You Know Spongebob",
+"lines": 2,
+"shape": "self-own",
+"core": "SpongeBob smugly raises a finger to make a point; used for someone proudly defending something that isn't impressive.",
+"slots": [
+"the accusation",
+"smug weak defense"
+],
+"aliases": [
+"i'll have you know",
+"smug spongebob",
+"spongebob finger",
+"spongebob i'll have you know"
+],
+"avoid": "Not for genuinely strong arguments."
+},
+{
+"id": "chucknorris",
+"name": "Chuck Norris",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Chuck Norris facts; used for absurd claims of invincible toughness or skill.",
+"slots": [
+"Chuck Norris setup",
+"absurd feat"
+],
+"aliases": [
+"chuck norris facts",
+"chuck norris",
+"walker texas ranger",
+"chuck norris joke"
+],
+"avoid": "Not for modest or relatable struggles."
+},
+{
+"id": "olreliable",
+"name": "Ol' Reliable",
+"lines": 2,
+"shape": "approval",
+"core": "SpongeBob opens his trusty case to reveal his go-to tool; used for the fallback someone always reaches for.",
+"slots": [
+"the situation",
+"the trusty go-to"
+],
+"aliases": [
+"ol reliable",
+"old reliable",
+"spongebob spatula case",
+"ole reliable"
+],
+"avoid": "Not for new or untested solutions."
+},
+{
+"id": "youtherealmvp",
+"name": "You The Real MVP",
+"lines": 2,
+"shape": "approval",
+"core": "Kevin Durant tearfully thanks his mom in his MVP speech; used to sincerely or sarcastically praise an unsung hero.",
+"slots": [
+"what they did",
+"you the real MVP"
+],
+"aliases": [
+"real mvp",
+"you da real mvp",
+"kevin durant mvp",
+"you're the real mvp"
+],
+"avoid": "Not for criticism or blame."
+},
+{
+"id": "heyinternet",
+"name": "Hey Internet",
+"lines": 1,
+"shape": "plan-backfires",
+"core": "A guy happily shares something with the internet and gets mobbed by trolls; used when an innocent post triggers a pile-on.",
+"slots": [
+"hey internet, the innocent post"
+],
+"aliases": [
+"hey internet",
+"internet trolls",
+"trollface mob",
+"rage comic hey internet"
+],
+"avoid": "Not for posts that get a nice reception."
+},
+{
+"id": "skeletordisturbingfacts",
+"name": "Skeletor Disturbing Facts",
+"lines": 2,
+"shape": "warning",
+"core": "Skeletor shares an unsettling fact, then walks off; used to drop an uncomfortable truth and leave.",
+"slots": [
+"the disturbing fact",
+"until we meet again"
+],
+"aliases": [
+"skeletor facts",
+"skeletor until we meet again",
+"skeletor disturbing facts",
+"skeletor walking away"
+],
+"avoid": "Not for cheerful or comforting news."
+},
+{
+"id": "tableflipguy",
+"name": "Table Flip Guy",
+"lines": 2,
+"shape": "reaction",
+"core": "A rage-comic guy angrily flips a table, used for reaching your breaking point and giving up on something in fury.",
+"slots": [
+"what finally set you off",
+"the thing you flip/abandon"
+],
+"aliases": [
+"flipping table",
+"table flip",
+"rage flip",
+"rage comic table"
+],
+"avoid": "Not for calm disappointment or quiet sadness."
+},
+{
+"id": "drevilairquotes",
+"name": "Dr. Evil Air Quotes",
+"lines": 2,
+"shape": "irony",
+"core": "Dr. Evil makes air quotes, used to mock something as a so-called version of itself that isn't really what it claims to be.",
+"slots": [
+"setup",
+"the \"air-quoted\" phrase"
+],
+"aliases": [
+"dr evil quotes",
+"air quotes",
+"austin powers air quotes",
+"so called"
+],
+"avoid": "Not for sincere statements or genuine praise."
+},
+{
+"id": "slowpoke",
+"name": "Slowpoke",
+"lines": 2,
+"shape": "self-own",
+"core": "The dim Pokemon Slowpoke reacts to old news or realises something long after everyone else.",
+"slots": [
+"setup",
+"belated realisation"
+],
+"aliases": [
+"slowpoke pokemon",
+"late to the party",
+"slow realization",
+"old news"
+],
+"avoid": "Not for fresh news or quick thinking."
+},
+{
+"id": "itooliketolivedangerously",
+"name": "I Too Like To Live Dangerously",
+"lines": 2,
+"shape": "irony",
+"core": "Austin Powers smugly approves of someone's tiny, harmless act of 'rebellion' as if it were reckless.",
+"slots": [
+"the mild risky act",
+"I too like to live dangerously"
+],
+"aliases": [
+"austin powers live dangerously",
+"live dangerously",
+"i too like to live dangerously",
+"austin powers"
+],
+"avoid": "Not for actually dangerous situations."
+},
+{
+"id": "pinkguyvsbane",
+"name": "Pink Guy vs Bane",
+"lines": 2,
+"shape": "comparison",
+"core": "Bane and Pink Guy strike the same arms-out pose, used to compare an imposing original with a ridiculous counterpart facing off.",
+"slots": [
+"the imposing one",
+"the silly counterpart"
+],
+"aliases": [
+"bane and pink guy",
+"pink guy bane",
+"filthy frank bane",
+"bane vs pink guy"
+],
+"avoid": "Not for two equally serious rivals."
+},
+{
+"id": "youcantdefeatme",
+"name": "You Can't Defeat Me",
+"lines": 3,
+"shape": "plan-backfires",
+"core": "Hela says Thor can't beat her, Thor agrees and points to the unstoppable thing that will; used when you outsource the problem to something worse.",
+"slots": [
+"the threat (Hela)",
+"the one who can't win (Thor)",
+"the thing that can (explosion)"
+],
+"aliases": [
+"i know but he can",
+"thor ragnarok hela",
+"you cant defeat me",
+"but he can"
+],
+"avoid": "Not for straightforward wins with no third party."
+},
+{
+"id": "heavybreathingcat",
+"name": "Heavy Breathing Cat",
+"lines": 1,
+"shape": "reaction",
+"core": "A wide-eyed cat 'breathing heavily' with excitement, used for getting overly excited about something.",
+"slots": [
+"the exciting thing"
+],
+"aliases": [
+"heavy breathing",
+"excited cat",
+"intensifies breathing",
+"breathing cat"
+],
+"avoid": "Not for boredom or disappointment."
+},
+{
+"id": "normalanddarkmrincredibles",
+"name": "Mr. Incredible Becoming Uncanny",
+"lines": 3,
+"shape": "escalation",
+"core": "Mr. Incredible goes from smug and happy to a dark, haunted face, used when learning a detail turns something innocent into something disturbing.",
+"slots": [
+"setup",
+"the innocent version",
+"the disturbing version"
+],
+"aliases": [
+"mr incredible uncanny",
+"canny uncanny",
+"traumatized mr incredible",
+"mr incredible becoming uncanny"
+],
+"avoid": "Not for things that get better or more cheerful."
+},
+{
+"id": "cryingcat",
+"name": "Crying Cat",
+"lines": 2,
+"shape": "reaction",
+"core": "A white cat with teary eyes, used for sad, heartbroken or 'it hurts but I'm fine' moments.",
+"slots": [
+"setup",
+"the sad part"
+],
+"aliases": [
+"sad cat",
+"crying cat",
+"teary eyed cat",
+"sad kitty"
+],
+"avoid": "Not for happy or triumphant moments."
+},
+{
+"id": "highexpectationsasianfather",
+"name": "High Expectations Asian Father",
+"lines": 2,
+"shape": "rejection",
+"core": "A stern father is unimpressed by an achievement and demands even more, used for impossibly high standards.",
+"slots": [
+"your achievement",
+"his unimpressed demand"
+],
+"aliases": [
+"asian father",
+"high expectations dad",
+"asian dad",
+"why not a plus"
+],
+"avoid": "Not for racial jokes; keep it about demanding standards."
+},
+{
+"id": "pennywiseinsewer",
+"name": "Pennywise in the Sewer",
+"lines": 2,
+"shape": "dialogue",
+"core": "Pennywise lures a kid from a storm drain with a tempting offer, used for suspicious too-good-to-be-true bait and the person who takes it.",
+"slots": [
+"the tempting bait offer",
+"the victim's eager reply"
+],
+"aliases": [
+"pennywise sewer",
+"hey georgie",
+"want a balloon",
+"pennywise storm drain"
+],
+"avoid": "Not for genuinely safe, trustworthy offers."
+},
+{
+"id": "getinloser",
+"name": "Get In Loser",
+"lines": 2,
+"shape": "other",
+"core": "The Mean Girls pull up in a convertible, used to invite someone along on a usually silly or chaotic mission: 'Get in loser, we're going...'.",
+"slots": [
+"get in loser",
+"we're going to do X"
+],
+"aliases": [
+"mean girls car",
+"get in loser we're going shopping",
+"mean girls",
+"regina george car"
+],
+"avoid": "Not for solo activities or rejections."
+},
+{
+"id": "laughingwolf",
+"name": "Laughing Wolves",
+"lines": 1,
+"shape": "reaction",
+"core": "One wolf laughs hysterically while the others look on, used for laughing at something cringe or for the one person who finds a joke hilarious.",
+"slots": [
+"the laughable thing"
+],
+"aliases": [
+"laughing wolf",
+"wolves laughing",
+"laughing wolves",
+"wolf pack laughing"
+],
+"avoid": "Not for genuinely sad or serious news."
+},
+{
+"id": "lookatallthese",
+"name": "Look At All These",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Maria twirls joyfully in the hills from The Sound of Music, used to sarcastically celebrate an abundance of something: 'Look at all these...'.",
+"slots": [
+"look at all these",
+"the thing you have too much of"
+],
+"aliases": [
+"sound of music",
+"look at all these chickens",
+"julie andrews spinning",
+"the hills are alive"
+],
+"avoid": "Not for scarcity or having none of something."
+},
+{
+"id": "anthonyadamsrubbinghands",
+"name": "Anthony Adams Rubbing Hands",
+"lines": 1,
+"shape": "reaction",
+"core": "A man in a yellow suit peeks from behind a tree rubbing his hands, used for eagerly anticipating something sneaky or about to pounce on an opportunity.",
+"slots": [
+"the opportunity you're waiting for"
+],
+"aliases": [
+"rubbing hands",
+"yellow suit guy",
+"man behind tree",
+"sneaky rubbing hands",
+"excited hands"
+],
+"avoid": "Not for reluctance or disinterest."
+},
+{
+"id": "mrtpitythefool",
+"name": "Mr. T Pity the Fool",
+"lines": 2,
+"shape": "warning",
+"core": "Mr. T points and scowls, used to declare pity for the fool who does something dumb.",
+"slots": [
+"I pity the fool",
+"who does the dumb thing"
+],
+"aliases": [
+"i pity the fool",
+"mr t",
+"pity the fool",
+"mr t pointing"
+],
+"avoid": "Not for praise or sympathy for real victims."
+},
+{
+"id": "fordummies",
+"name": "For Dummies",
+"lines": 2,
+"shape": "irony",
+"core": "A fake For Dummies book cover, used to mock someone who needs an idiot's guide for something basic.",
+"slots": [
+"the topic (before 'For Dummies')",
+"the subtitle or tagline"
+],
+"aliases": [
+"for dummies book",
+"dummies book cover",
+"for dummies",
+"idiots guide"
+],
+"avoid": "Not for genuinely advanced or expert topics."
+},
+{
+"id": "howtoughareyou",
+"name": "How Tough Are You",
+"lines": 4,
+"shape": "escalation",
+"core": "The Salty Spitoon bouncer asks how tough you are, a guy brags about a 'tough' feat, and the bouncer is unimpressed; used for mocking weak bragging.",
+"slots": [
+"bouncer: how tough are ya?",
+"the brag",
+"bouncer: yeah so?",
+"the lame extra detail"
+],
+"aliases": [
+"salty spitoon",
+"how tough are ya",
+"weenie hut jr",
+"spongebob bouncer"
+],
+"avoid": "Not for genuinely impressive feats that win respect."
+},
+{
+"id": "npcmeme",
+"name": "NPC Wojak",
+"lines": 2,
+"shape": "dialogue",
+"core": "A blank NPC face hears an unexpected statement and turns angry, used for mocking scripted, unthinking reactions.",
+"slots": [
+"the challenging statement",
+"the NPC's canned reply"
+],
+"aliases": [
+"npc",
+"npc wojak",
+"npc meme",
+"npc angry"
+],
+"avoid": "Not for thoughtful, nuanced responses."
+},
+{
+"id": "dinkleberg",
+"name": "Dinkleberg",
+"lines": 2,
+"shape": "reaction",
+"core": "Someone sets up a mystery problem, then furiously blames the one usual suspect they always blame.",
+"slots": [
+"the mysterious problem",
+"the usual suspect, spat out"
+],
+"aliases": [
+"Dinkleberg",
+"Mr. Turner",
+"Fairly OddParents Dinkleberg",
+"Dinkleberg rage"
+],
+"avoid": "Not for genuine accusations or calm, neutral blame."
+},
+{
+"id": "warningsign",
+"name": "Warning Sign",
+"lines": 1,
+"shape": "warning",
+"core": "A blank warning sign used to issue a mock-serious warning about some everyday hazard.",
+"slots": [
+"the warning"
+],
+"aliases": [
+"Warning Sign",
+"Blank Warning Sign",
+"Caution Sign",
+"Warning Label"
+],
+"avoid": "Not for real safety warnings or emergencies."
+},
+{
+"id": "djpaulyd",
+"name": "DJ Pauly D",
+"lines": 2,
+"shape": "exaggeration",
+"core": "An exasperated plea at someone doing something obviously wrong, as in 'for the love of God, just do it right'.",
+"slots": [
+"what they keep doing",
+"the desperate plea"
+],
+"aliases": [
+"DJ Pauly D",
+"For The Love Of God",
+"Jersey Shore Pauly D",
+"Pauly D pleading"
+],
+"avoid": "Not for calm disagreement or happy moments."
+},
+{
+"id": "konggodzilladoge",
+"name": "Godzilla vs Kong vs Doge",
+"lines": 3,
+"shape": "escalation",
+"core": "Two big rivals fight it out until a small, unexpected third party bonks them both and wins.",
+"slots": [
+"rival one",
+"rival two",
+"the unexpected winner"
+],
+"aliases": [
+"Kong Godzilla Doge",
+"Godzilla vs Kong Cheems",
+"Doge bonk Godzilla Kong",
+"Cheems bat"
+],
+"avoid": "Not for a simple two-way comparison with no surprise third option."
+},
+{
+"id": "simpsonssofar",
+"name": "Simpsons So Far",
+"lines": 2,
+"shape": "dialogue",
+"core": "Bart says something, and Homer leans in to answer with a smug or absurd comeback.",
+"slots": [
+"Bart's line",
+"Homer's reply"
+],
+"aliases": [
+"Simpsons So Far",
+"Homer and Bart",
+"Homer pointing at Bart",
+"Homer explains to Bart"
+],
+"avoid": "Not for single-caption reactions with no back-and-forth."
+},
+{
+"id": "memestealinglicense",
+"name": "Meme Stealing License",
+"lines": 5,
+"shape": "labeling",
+"core": "A fake ID card you fill in to jokingly 'license' someone for a habit, usually reposting memes.",
+"slots": [
+"name",
+"gender",
+"level",
+"joined",
+"occupation"
+],
+"aliases": [
+"Meme Stealing License",
+"Meme License",
+"Official Meme Stealing License",
+"Repost License"
+],
+"avoid": "Not for real identification or anything that looks like a genuine document."
+}
+]
