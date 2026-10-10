@@ -13,6 +13,7 @@ import {
   draftsFromWriter,
   firstSlackLink,
   galleryState,
+  pickerTemplates,
   hash,
   imageCells,
   isMemePost,
@@ -1189,16 +1190,34 @@ async function openGallery($, tab = 'drafts') {
   if (!ok) $.ui.toast(`Open http://127.0.0.1:${gallery.port} in your browser`)
 }
 
+// Pushes the state to the page, and the meme picker when it has changed since the last push. A push
+// the server refuses goes in the debug log, so a page stuck on its first screen says why.
 function syncGallery($) {
   if (!gallery?.port) return
-  const body = JSON.stringify(galleryState(job, connectors, settings))
-  $.http
-    .fetch(`http://127.0.0.1:${gallery.port}/api/state`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'X-Meme-Token': gallery.token },
-      body,
+  const mine = gallery
+  const push = (path, value) =>
+    $.http
+      .fetch(`http://127.0.0.1:${mine.port}${path}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Meme-Token': mine.token },
+        body: JSON.stringify(value),
+      })
+      .then((res) => {
+        if (!res.ok) dlog($, `gallery: ${path} refused (${res.status})`)
+        return res.ok
+      })
+      .catch((err) => {
+        dlog($, `gallery: ${path} failed (${err?.message ?? err})`)
+        return false
+      })
+  const picker = pickerTemplates()
+  if (mine.pickerVersion !== picker.version) {
+    mine.pickerVersion = picker.version
+    push('/api/templates', picker).then((ok) => {
+      if (!ok && mine.pickerVersion === picker.version) mine.pickerVersion = null
     })
-    .catch(() => {})
+  }
+  push('/api/state', galleryState(job, connectors, settings))
 }
 
 // What the page asks for. Its values are untrusted input: check each one.

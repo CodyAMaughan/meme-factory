@@ -8,6 +8,8 @@ when the session or the mod unloads. Standard library only.
           EVENT <json>             one line per action taken on the page
   POST /api/state                  the mod pushes the current state (token header)
   GET  /api/state?since=<version>  the page long-polls for a newer state
+  POST /api/templates              the mod pushes the meme picker, when it changes
+  GET  /api/templates              the page reads the meme picker
   POST /api/event                  the page reports an action
 """
 
@@ -35,8 +37,11 @@ try:
 except OSError:
     WORDMARK = b''
 MAX_BODY = 256 * 1024
+# The picker holds every template (1,400 or so), so it comes on its own, once, with room to grow.
+MAX_TEMPLATES_BODY = 4 * 1024 * 1024
 
 state = {'version': 0, 'body': {}}
+picker = {'body': b'{"version":0,"templates":[]}'}
 changed = threading.Condition()
 out_lock = threading.Lock()
 
@@ -85,9 +90,9 @@ class Handler(BaseHTTPRequestHandler):
             return False
         return bool(TOKEN) and hmac.compare_digest(self.headers.get('X-Meme-Token', ''), TOKEN)
 
-    def _json_body(self):
+    def _json_body(self, limit=MAX_BODY):
         length = int(self.headers.get('Content-Length') or 0)
-        if length <= 0 or length > MAX_BODY:
+        if length <= 0 or length > limit:
             raise ValueError('bad length')
         # NaN and Infinity aren't JSON: the mod's JSON.parse would drop the event.
         return json.loads(self.rfile.read(length), parse_constant=_reject)
@@ -115,16 +120,31 @@ class Handler(BaseHTTPRequestHandler):
                 changed.wait_for(lambda: state['version'] != since, timeout=25)
                 payload = json.dumps({'version': state['version'], **state['body']}).encode()
             return self._send(200, payload)
+        if url.path == '/api/templates':
+            if not self._trusted():
+                return self._send(403)
+            with changed:
+                payload = picker['body']
+            return self._send(200, payload)
         self._send(404)
 
     def do_POST(self):
         if not self._trusted():
             return self._send(403)
+        url = urlparse(self.path)
         try:
-            body = self._json_body()
+            body = self._json_body(MAX_TEMPLATES_BODY if url.path == '/api/templates' else MAX_BODY)
         except Exception:
             return self._send(400)
-        url = urlparse(self.path)
+        if url.path == '/api/templates':
+            if not isinstance(body, dict) or not isinstance(body.get('templates'), list):
+                return self._send(400)
+            # The page learns of it from the state's templatesVersion: wake its long poll.
+            with changed:
+                picker['body'] = json.dumps({'version': body.get('version'), 'templates': body['templates']}).encode()
+                state['version'] += 1
+                changed.notify_all()
+            return self._send(204)
         if url.path == '/api/state':
             with changed:
                 state['version'] += 1

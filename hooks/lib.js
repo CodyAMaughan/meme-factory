@@ -620,6 +620,13 @@ const pickerEntry = (t) => ({
   thumb: memeUrl(t.id, Array(t.lines).fill(''), 'jpg', { width: 240 }),
 })
 let PICKER = TEMPLATES.map(pickerEntry)
+let PICKER_VERSION = 1
+
+// The picker for the gallery, sent once and again only when it changes: at 1,400 or so templates
+// it's far bigger than the state the page polls for.
+export function pickerTemplates() {
+  return { version: PICKER_VERSION, templates: PICKER }
+}
 
 // ---------- More templates: the memegen server's ----------
 
@@ -894,6 +901,7 @@ export function removeTemplates(ids) {
     CATALOG = TEMPLATES.map(catalogLine).join('\n')
     WRITER_RULES = RULES_HEAD + CATALOG
     PICKER = [...TEMPLATES].sort((a, b) => popularity(b) - popularity(a)).map(pickerEntry)
+    PICKER_VERSION++
   }
   return before - TEMPLATES.length
 }
@@ -921,6 +929,7 @@ export function addTemplates(extra) {
     CATALOG = TEMPLATES.map(catalogLine).join('\n')
     WRITER_RULES = RULES_HEAD + CATALOG
     PICKER = [...TEMPLATES].sort((a, b) => popularity(b) - popularity(a)).map(pickerEntry)
+    PICKER_VERSION++
   }
   return added
 }
@@ -930,7 +939,7 @@ export function galleryState(job, connectors, settings) {
   return {
     status: job.status,
     stage: job.stage,
-    templates: PICKER,
+    templatesVersion: PICKER_VERSION,
     pending: job.pending ?? null,
     lock: job.lock ?? null,
     check: job.check ?? null,

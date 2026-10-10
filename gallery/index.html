@@ -247,6 +247,21 @@ function flash(text) {
   flashTimer = setTimeout(() => ($('flash').style.display = 'none'), 4000)
 }
 
+// Every template, for the picker: about 1,400, too many to send with every state.
+let templates = []
+let templatesVersion = null
+async function loadTemplates() {
+  try {
+    const res = await fetch('/api/templates', { headers: { 'X-Meme-Token': token } })
+    if (!res.ok) return
+    const got = await res.json()
+    if (Array.isArray(got.templates)) {
+      templates = got.templates
+      templatesVersion = got.version
+    }
+  } catch {}
+}
+
 async function poll() {
   for (;;) {
     try {
@@ -263,6 +278,8 @@ async function poll() {
       if (next.version !== version) {
         version = next.version
         state = next
+        // The meme picker comes on its own, read again only when the mod says it changed.
+        if (next.templatesVersion !== templatesVersion) await loadTemplates()
         render()
       }
     } catch {
@@ -329,8 +346,8 @@ function draftsPage() {
 function pickerBox() {
   const s = state
   const q = tplQuery.trim().toLowerCase()
-  const list = (s.templates || []).filter((t) => !q || t.name.toLowerCase().includes(q) || t.shape.includes(q) || t.aliases.some((a) => a.includes(q)))
-  const search = el('input', { type: 'text', id: 'tpl-search', placeholder: `Search ${(s.templates || []).length || 'the'} memes: drake, side eye, two buttons…`, value: tplQuery,
+  const list = templates.filter((t) => !q || t.name.toLowerCase().includes(q) || t.shape.includes(q) || t.aliases.some((a) => a.includes(q)))
+  const search = el('input', { type: 'text', id: 'tpl-search', placeholder: `Search ${templates.length || 'the'} memes: drake, side eye, two buttons…`, value: tplQuery,
     oninput: (e) => { tplQuery = e.target.value; render() } })
   const choose = (t) => {
     showPicker = false
@@ -352,7 +369,7 @@ function pickerBox() {
 }
 
 function pendingName() {
-  const t = (state.templates || []).find((x) => x.id === state.pending)
+  const t = templates.find((x) => x.id === state.pending)
   return t ? t.name : ''
 }
 

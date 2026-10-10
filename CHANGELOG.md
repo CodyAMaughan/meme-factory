@@ -2,6 +2,13 @@
 
 All notable changes to Meme Factory. Versions follow [semantic versioning](https://semver.org).
 
+## 0.12.3 (2026-10-10)
+
+- **The browser gallery shows your drafts again.** Since 0.11.0 it stayed on "Cooking drafts…".
+  - **Why:** the state the mod sends the page carried the whole meme picker. At about 1,500 templates that's over 300 KB, past the 256 KB the gallery server accepts, so every update was refused without a word.
+  - **The fix:** the picker now goes on its own, once, and again only when the catalog changes. The page fetches it when the state says it changed. The state it polls for is small again.
+  - **Refusals are logged:** an update the gallery refuses now goes in the debug log (`meme_factory_debug` status), so a page stuck on its first screen says why.
+
 ## 0.12.2 (2026-10-10)
 
 - **A clean catalog.** Every template was screened again, picture and words, for a work Slack: 92 offensive or crude ones are gone (swearing in the name or printed on the picture, bathroom and pickup-line jokes, drugs or drunkenness as the point, stereotypes, guns and gore played straight), 14 of them from the built-in list. Another 42 kept their picture and got clean names, aliases or example captions; 10 got new ids (`soup-nazi` is now `nosoup`). About 1,400 templates remain.
