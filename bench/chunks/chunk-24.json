@@ -1,0 +1,1061 @@
+[
+{
+"id": "pickuplinepanda",
+"name": "Pickup Line Panda",
+"lines": 2,
+"shape": "irony",
+"core": "A panda leaning on a stump with a beer, delivering cheesy, terrible pickup lines.",
+"slots": [
+"pickup line setup",
+"cheesy punchline"
+],
+"aliases": [
+"pickup line panda",
+"bad pickup line panda",
+"panda pickup line",
+"drunk panda"
+],
+"avoid": "Not for sincere romance or crude harassment."
+},
+{
+"id": "goodguypizzarolls",
+"name": "Good Guy Pizza Rolls",
+"lines": 2,
+"shape": "irony",
+"core": "A bowl of pizza rolls framed as a helpful good guy that inevitably betrays you with molten filling or uneven heating.",
+"slots": [
+"what it promises",
+"how it betrays you"
+],
+"aliases": [
+"good guy pizza rolls",
+"pizza rolls",
+"scumbag pizza rolls",
+"totinos"
+],
+"avoid": "Not for genuinely reliable things."
+},
+{
+"id": "jesustalkingtocooldude",
+"name": "Jesus Talking To Cool Dude",
+"lines": 2,
+"shape": "dialogue",
+"core": "Jesus chatting with a guy in a sports car, used for an anachronistic conversation where one side asks and the other gives a modern reply.",
+"slots": [
+"jesus says",
+"cool dude replies"
+],
+"aliases": [
+"jesus and cool dude",
+"jesus sports car",
+"jesus talking to guy",
+"jesus ferrari"
+],
+"avoid": "Not for mocking faith or religious groups."
+},
+{
+"id": "paulwonderyears",
+"name": "Paul Wonder Years",
+"lines": 2,
+"shape": "irony",
+"core": "A grinning nerdy Paul Pfeiffer, used for awkward, overly earnest nerd triumphs.",
+"slots": [
+"nerdy setup",
+"awkward triumph"
+],
+"aliases": [
+"paul wonder years",
+"paul pfeiffer",
+"wonder years nerd",
+"nerdy paul"
+],
+"avoid": "Not for cool or sophisticated achievements."
+},
+{
+"id": "zorg",
+"name": "Zorg",
+"lines": 2,
+"shape": "irony",
+"core": "The Fifth Element villain Zorg smoking smugly, used for cold, condescending villain logic.",
+"slots": [
+"setup",
+"villainous punchline"
+],
+"aliases": [
+"zorg",
+"fifth element zorg",
+"gary oldman zorg",
+"zorg villain"
+],
+"avoid": "Not for warm or wholesome messages."
+},
+{
+"id": "briangriffin",
+"name": "Brian Griffin",
+"lines": 2,
+"shape": "irony",
+"core": "Brian from Family Guy lounging smugly, used for pretentious, self-satisfied takes and humblebrags.",
+"slots": [
+"pretentious setup",
+"smug punchline"
+],
+"aliases": [
+"brian griffin",
+"family guy brian",
+"smug brian",
+"pretentious brian"
+],
+"avoid": "Not for humble or sincere statements."
+},
+{
+"id": "crazydawg",
+"name": "Crazy Dawg",
+"lines": 2,
+"shape": "reaction",
+"core": "A wild-eyed dog in the snow, used for manic, unhinged excitement or a frantic reaction.",
+"slots": [
+"trigger",
+"unhinged reaction"
+],
+"aliases": [
+"crazy dawg",
+"crazy dog",
+"wild eyed dog",
+"derp dog snow"
+],
+"avoid": "Not for calm, measured responses."
+},
+{
+"id": "originalilied",
+"name": "I Lied",
+"lines": 2,
+"shape": "irony",
+"core": "The grinning, crying I Lied rage face, used for gleefully admitting you were lying all along.",
+"slots": [
+"false promise",
+"i lied"
+],
+"aliases": [
+"i lied",
+"original i lied",
+"i lied rage face",
+"lied face"
+],
+"avoid": "Not for sincere apologies."
+},
+{
+"id": "tennisdefeat",
+"name": "Tennis Defeat",
+"lines": 2,
+"shape": "self-own",
+"core": "A man lying face-down on a tennis court in total defeat, used for giving up after being utterly beaten by something.",
+"slots": [
+"the battle",
+"total defeat"
+],
+"aliases": [
+"tennis defeat",
+"tennis guy lying down",
+"defeated tennis player",
+"giving up"
+],
+"avoid": "Not for victories or real injuries."
+},
+{
+"id": "sincewhenwereyouundertheimpr",
+"name": "Since When Were You Under The Impression",
+"lines": 1,
+"shape": "irony",
+"core": "Aizen's smug reveal that what you believed all along was never true; used to twist an assumption.",
+"slots": [
+"the assumption that was false"
+],
+"aliases": [
+"Aizen",
+"since when were you under the impression",
+"Bleach Aizen",
+"it was me all along"
+],
+"avoid": "Not for simple statements with no false belief to reveal."
+},
+{
+"id": "obamacowboyhat",
+"name": "Obama Cowboy Hat",
+"lines": 2,
+"shape": "approval",
+"core": "Obama tipping a cowboy hat with a grin; used for folksy swagger or a cheeky 'howdy' moment.",
+"slots": [
+"setup",
+"punchline"
+],
+"aliases": [
+"Obama cowboy",
+"cowboy Obama",
+"Obama hat tip",
+"howdy Obama"
+],
+"avoid": "Not for serious political commentary."
+},
+{
+"id": "chesterthecat",
+"name": "Chester The Cat",
+"lines": 2,
+"shape": "reaction",
+"core": "A cat sitting upright like a lazy human, staring at you; used for casual, unbothered or awkward moments.",
+"slots": [
+"setup",
+"punchline"
+],
+"aliases": [
+"sitting cat",
+"cat sitting like human",
+"Chester cat",
+"lazy cat"
+],
+"avoid": "Not for high-energy or angry reactions."
+},
+{
+"id": "hedonismbot",
+"name": "Hedonism Bot",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Futurama's decadent robot approving of over-the-top indulgence; used for gleeful excess.",
+"slots": [
+"setup",
+"decadent approval"
+],
+"aliases": [
+"Hedonism Bot",
+"Futurama hedonism bot",
+"I apologize for nothing",
+"decadent robot"
+],
+"avoid": "Not for genuine frugality or restraint."
+},
+{
+"id": "gangsterbaby",
+"name": "Gangster Baby",
+"lines": 2,
+"shape": "reaction",
+"core": "A toddler slumped in a car seat with a tough, unimpressed stare; used for tiny-but-tough attitude.",
+"slots": [
+"setup",
+"tough-guy punchline"
+],
+"aliases": [
+"gangster baby",
+"thug baby",
+"car seat baby",
+"unimpressed baby"
+],
+"avoid": "Not for mocking the child himself."
+},
+{
+"id": "sawfulla",
+"name": "Saw Fulla",
+"lines": 2,
+"shape": "warning",
+"core": "Jigsaw from Saw staring you down; used to propose a cruel 'game' or test.",
+"slots": [
+"I want to play a game",
+"the cruel rules"
+],
+"aliases": [
+"Jigsaw",
+"Saw",
+"I want to play a game",
+"Saw guy"
+],
+"avoid": "Not for real threats or violence."
+},
+{
+"id": "fimdesemana",
+"name": "Fim De Semana",
+"lines": 2,
+"shape": "reaction",
+"core": "A chubby baby lounging on a pool float like a tiny vacationer; used for weekend or day-off bliss.",
+"slots": [
+"setup",
+"relaxed punchline"
+],
+"aliases": [
+"fim de semana",
+"weekend baby",
+"pool float baby",
+"baby on vacation"
+],
+"avoid": "Not for stressful or busy situations."
+},
+{
+"id": "dancingtrollmom",
+"name": "Dancing Trollmom",
+"lines": 2,
+"shape": "irony",
+"core": "A troll-faced mom dancing gleefully after trolling her kids; used for parents' smug pranks and gotchas.",
+"slots": [
+"the troll move",
+"the gleeful aftermath"
+],
+"aliases": [
+"troll mom",
+"dancing troll mom",
+"trollface mom",
+"mom troll"
+],
+"avoid": "Not for sincere, wholesome parenting moments."
+},
+{
+"id": "selfloathingotter",
+"name": "Self Loathing Otter",
+"lines": 2,
+"shape": "self-own",
+"core": "A teary otter chomping watermelon; used for indulging while hating yourself for it.",
+"slots": [
+"the guilty indulgence",
+"the self-loathing"
+],
+"aliases": [
+"self loathing otter",
+"crying otter",
+"otter eating watermelon",
+"sad otter"
+],
+"avoid": "Not for proud or triumphant moments."
+},
+{
+"id": "meridabrave",
+"name": "Merida Brave",
+"lines": 2,
+"shape": "approval",
+"core": "Merida from Brave with a confident smile; used for bold, independent choices.",
+"slots": [
+"setup",
+"confident punchline"
+],
+"aliases": [
+"Merida",
+"Brave",
+"Disney Merida",
+"Brave princess"
+],
+"avoid": "Not for timid or defeated moments."
+},
+{
+"id": "alangreenspan",
+"name": "Alan Greenspan",
+"lines": 2,
+"shape": "warning",
+"core": "The former Fed chair wagging a finger mid-lecture; used for stern economic or 'well, actually' advice.",
+"slots": [
+"setup",
+"stern lecture"
+],
+"aliases": [
+"Greenspan",
+"Alan Greenspan finger",
+"Fed chair",
+"finger wag economist"
+],
+"avoid": "Not for real financial advice."
+},
+{
+"id": "ridiculouslyphotogenicguy",
+"name": "Ridiculously Photogenic Guy",
+"lines": 2,
+"shape": "irony",
+"core": "A marathon runner looking effortlessly great mid-race; used for someone who looks perfect while doing something hard.",
+"slots": [
+"the hard thing",
+"still looking great"
+],
+"aliases": [
+"ridiculously photogenic guy",
+"photogenic runner",
+"Zeddie Little",
+"marathon guy"
+],
+"avoid": "Not for genuine struggle or failure."
+},
+{
+"id": "manningbroncos",
+"name": "Manning Broncos",
+"lines": 2,
+"shape": "other",
+"core": "Peyton Manning lining up a pass in Broncos orange; used for football jokes and calling the play.",
+"slots": [
+"setup",
+"the play call"
+],
+"aliases": [
+"Peyton Manning",
+"Manning Broncos",
+"Omaha",
+"Broncos quarterback"
+],
+"avoid": "Not for non-sports jokes that need a reaction face."
+},
+{
+"id": "angrychickenboss",
+"name": "Angry Chicken Boss",
+"lines": 2,
+"shape": "dialogue",
+"core": "A chicken glaring sideways like a furious manager; used for petty boss demands and complaints.",
+"slots": [
+"the boss's demand",
+"the angry follow-up"
+],
+"aliases": [
+"angry chicken",
+"chicken boss",
+"angry chicken boss",
+"mad hen"
+],
+"avoid": "Not for calm or friendly messages."
+},
+{
+"id": "superkamiguruallowsthis",
+"name": "Super Kami Guru Allows This",
+"lines": 2,
+"shape": "approval",
+"core": "Dragon Ball's sleepy Grand Elder granting permission; used to solemnly approve something questionable.",
+"slots": [
+"the request",
+"Super Kami Guru allows this"
+],
+"aliases": [
+"Super Kami Guru",
+"Guru allows this",
+"Grand Elder Guru",
+"DBZ Abridged Guru"
+],
+"avoid": "Not for refusals or rejections."
+},
+{
+"id": "dolphzigglersells",
+"name": "Dolph Ziggler Sells",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Wrestler Dolph Ziggler posing smugly, known for overselling hits; used for dramatic overreactions.",
+"slots": [
+"tiny problem",
+"huge overreaction"
+],
+"aliases": [
+"Dolph Ziggler",
+"Ziggler sells",
+"show off",
+"WWE Ziggler"
+],
+"avoid": "Not for genuinely serious injuries."
+},
+{
+"id": "rarity",
+"name": "Rarity",
+"lines": 2,
+"shape": "reaction",
+"core": "My Little Pony's fashionable unicorn looking pleased with herself; used for prim, fancy or dramatic attitudes.",
+"slots": [
+"setup",
+"fancy punchline"
+],
+"aliases": [
+"Rarity",
+"MLP Rarity",
+"My Little Pony",
+"fancy pony"
+],
+"avoid": "Not for gritty or angry reactions."
+},
+{
+"id": "nailedit",
+"name": "Nailed It",
+"lines": 2,
+"shape": "irony",
+"core": "A wakeboarder wiping out headfirst; used sarcastically to say 'nailed it' about a total failure.",
+"slots": [
+"what I attempted",
+"nailed it"
+],
+"aliases": [
+"nailed it",
+"wakeboard fail",
+"epic fail",
+"nailed it fail"
+],
+"avoid": "Not for real successes."
+},
+{
+"id": "badwifeworsemom",
+"name": "Bad Wife Worse Mom",
+"lines": 2,
+"shape": "self-own",
+"core": "Lori from The Walking Dead looking guilty and alarmed; used for someone failing at every responsibility at once.",
+"slots": [
+"first failure",
+"even worse failure"
+],
+"aliases": [
+"Bad Wife Worse Mom",
+"Lori Grimes",
+"Walking Dead Lori",
+"where's Carl"
+],
+"avoid": "Not for real parenting criticism of actual people."
+},
+{
+"id": "beyoncesuperbowlyell",
+"name": "Beyonce Superbowl Yell",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Beyonce mid-roar at the Super Bowl; used for fierce, over-the-top shouting energy.",
+"slots": [
+"setup",
+"the yell"
+],
+"aliases": [
+"Beyonce yell",
+"unflattering Beyonce",
+"Beyonce Super Bowl",
+"Beyonce roar"
+],
+"avoid": "Not for calm or quiet moments."
+},
+{
+"id": "ohmygodorange",
+"name": "Oh My God Orange",
+"lines": 2,
+"shape": "reaction",
+"core": "Dave from 2001: A Space Odyssey staring in awe; used for overwhelming 'my God, it's full of...' moments.",
+"slots": [
+"what I opened",
+"my God, it's full of..."
+],
+"aliases": [
+"my god it's full of stars",
+"2001 Dave",
+"Space Odyssey stare",
+"Dave Bowman"
+],
+"avoid": "Not for mild or bored reactions."
+},
+{
+"id": "frustratingmom",
+"name": "Frustrating Mom",
+"lines": 2,
+"shape": "dialogue",
+"core": "A cheerful stock-photo mom baking with her kids; used for a mom's maddening logic or contradictory rules.",
+"slots": [
+"what mom says",
+"the contradiction"
+],
+"aliases": [
+"frustrating mom",
+"stock photo mom",
+"annoying mom",
+"baking mom"
+],
+"avoid": "Not for sincere family praise."
+},
+{
+"id": "sadlyiamonlyaneel",
+"name": "Sadly I Am Only An Eel",
+"lines": 2,
+"shape": "rejection",
+"core": "SpongeBob's eel solemnly declining because of its limits; used for 'I'd love to, but I can't'.",
+"slots": [
+"the request",
+"sadly, I am only an eel"
+],
+"aliases": [
+"sadly I am only an eel",
+"SpongeBob eel",
+"only an eel",
+"eel meme"
+],
+"avoid": "Not for enthusiastic yeses."
+},
+{
+"id": "thecritic",
+"name": "The Critic",
+"lines": 2,
+"shape": "warning",
+"core": "Jay Sherman from The Critic raising a finger to pass judgment; used for harsh reviews and nitpicks.",
+"slots": [
+"what's being reviewed",
+"the scathing verdict"
+],
+"aliases": [
+"The Critic",
+"Jay Sherman",
+"it stinks",
+"critic cartoon"
+],
+"avoid": "Not for praise or approval."
+},
+{
+"id": "overlyattachedfather",
+"name": "Overly Attached Father",
+"lines": 2,
+"shape": "warning",
+"core": "Liam Neeson pointing with a Taken-style stare; used for overprotective, 'I will find you' threats.",
+"slots": [
+"the situation",
+"I will find you"
+],
+"aliases": [
+"overly attached father",
+"Liam Neeson",
+"Taken",
+"I will find you"
+],
+"avoid": "Not for genuine threats."
+},
+{
+"id": "solemnlumberjack",
+"name": "Solemn Lumberjack",
+"lines": 2,
+"shape": "self-own",
+"core": "A lumberjack gazing off solemnly; used for manly, deadpan confessions of small first-world woes.",
+"slots": [
+"the confession setup",
+"the solemn punchline"
+],
+"aliases": [
+"solemn lumberjack",
+"sad lumberjack",
+"lumberjack meme",
+"plaid lumberjack"
+],
+"avoid": "Not for upbeat or excited messages."
+},
+{
+"id": "overlysuaveitguy",
+"name": "Overly Suave IT Guy",
+"lines": 2,
+"shape": "irony",
+"core": "A slick stock-photo IT guy at a laptop; used for smooth, overconfident tech pickup lines or fixes.",
+"slots": [
+"the smooth setup",
+"the techy punchline"
+],
+"aliases": [
+"overly suave IT guy",
+"suave IT guy",
+"smooth IT guy",
+"IT pickup lines"
+],
+"avoid": "Not for genuine tech frustration."
+},
+{
+"id": "somanyshirts",
+"name": "So Many Shirts",
+"lines": 2,
+"shape": "exaggeration",
+"core": "A shocked man clutching an armful of boxed shirts; used for overbuying or being overwhelmed by too much of something.",
+"slots": [
+"the deal",
+"how much I grabbed"
+],
+"aliases": [
+"so many shirts",
+"shirt guy",
+"armful of shirts",
+"too many shirts"
+],
+"avoid": "Not for scarcity or having too little."
+},
+{
+"id": "maroneyandobamanotimpressed",
+"name": "Maroney And Obama Not Impressed",
+"lines": 2,
+"shape": "reaction",
+"core": "McKayla Maroney and Obama doing the same smirking 'not impressed' face; used to shrug off something meant to impress.",
+"slots": [
+"the supposedly impressive thing",
+"not impressed"
+],
+"aliases": [
+"not impressed",
+"McKayla Maroney",
+"Obama not impressed",
+"unimpressed duo"
+],
+"avoid": "Not for genuine admiration."
+},
+{
+"id": "determinedguyrageface",
+"name": "Determined Guy Rage Face",
+"lines": 2,
+"shape": "reaction",
+"core": "A rage-comic face with furrowed, determined brows; used for grimly resolving to push through something.",
+"slots": [
+"the challenge",
+"the grim resolve"
+],
+"aliases": [
+"determined face",
+"rage face determined",
+"determined guy",
+"rage comic determined"
+],
+"avoid": "Not for happy or relaxed moods."
+},
+{
+"id": "richraven",
+"name": "Rich Raven",
+"lines": 2,
+"shape": "exaggeration",
+"core": "A raven in a top hat with champagne and a cane; used for absurdly snobbish, rich-person problems.",
+"slots": [
+"the fancy setup",
+"the snobbish punchline"
+],
+"aliases": [
+"rich raven",
+"fancy raven",
+"top hat raven",
+"posh crow"
+],
+"avoid": "Not for being broke or humble."
+},
+{
+"id": "hipsterkitty",
+"name": "Hipster Kitty",
+"lines": 2,
+"shape": "irony",
+"core": "A hipster cat smugly dismisses something for being too mainstream or claims to have liked it before it was cool.",
+"slots": [
+"the mainstream thing",
+"the smug hipster take"
+],
+"aliases": [
+"hipster cat",
+"before it was cool cat",
+"hoodie kitten"
+],
+"avoid": "Not for sincere enthusiasm or genuine recommendations."
+},
+{
+"id": "hawkward",
+"name": "Hawkward",
+"lines": 2,
+"shape": "self-own",
+"core": "A wide-eyed hawk captures a socially awkward moment: the setup on top, the cringe outcome below.",
+"slots": [
+"the awkward setup",
+"the cringe outcome"
+],
+"aliases": [
+"awkward hawk",
+"hawkward hawk",
+"awkward bird"
+],
+"avoid": "Not for confident wins or smooth social moments."
+},
+{
+"id": "sarcasticanthony",
+"name": "Sarcastic Anthony",
+"lines": 2,
+"shape": "irony",
+"core": "A guy making air quotes, used to mock something that's only 'technically' what it claims to be.",
+"slots": [
+"the setup",
+"the air-quoted phrase"
+],
+"aliases": [
+"air quotes guy",
+"sarcastic air quotes",
+"afro air quotes"
+],
+"avoid": "Not for sincere statements or literal quotes."
+},
+{
+"id": "scumbagdaylightsavingstime",
+"name": "Scumbag Daylight Savings Time",
+"lines": 2,
+"shape": "plan-backfires",
+"core": "A clock in the scumbag hat for complaining about clock changes or anything time-related that betrays you.",
+"slots": [
+"what time gives you",
+"how it screws you over"
+],
+"aliases": [
+"scumbag clock",
+"scumbag dst",
+"daylight saving time meme"
+],
+"avoid": "Not for praising time or good scheduling news."
+},
+{
+"id": "helpfultylerdurden",
+"name": "Helpful Tyler Durden",
+"lines": 2,
+"shape": "plan-backfires",
+"core": "Tyler Durden offers a tip that technically solves the problem in a chaotic, destructive way.",
+"slots": [
+"the problem",
+"the chaotic 'helpful' solution"
+],
+"aliases": [
+"tyler durden advice",
+"fight club tyler",
+"helpful tyler"
+],
+"avoid": "Not for genuinely sensible advice."
+},
+{
+"id": "beyonceknowlessuperbowlface",
+"name": "Beyonce Superbowl Face",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Beyonce's fierce mid-performance grimace, used for going into something with way too much intensity.",
+"slots": [
+"the situation",
+"the over-the-top reaction"
+],
+"aliases": [
+"unflattering beyonce",
+"beyonce super bowl",
+"fierce beyonce"
+],
+"avoid": "Not for calm, subtle or sad reactions."
+},
+{
+"id": "jonstewartskeptical",
+"name": "Jon Stewart Skeptical",
+"lines": 2,
+"shape": "reaction",
+"core": "Jon Stewart's doubtful pout, for reacting to a claim you don't believe for a second.",
+"slots": [
+"the dubious claim",
+"the skeptical reply"
+],
+"aliases": [
+"skeptical jon stewart",
+"jon stewart unconvinced",
+"daily show skeptical"
+],
+"avoid": "Not for genuine surprise or approval."
+},
+{
+"id": "baneandbruce",
+"name": "Bane And Bruce",
+"lines": 2,
+"shape": "dialogue",
+"core": "Bane looms over a broken Bruce Wayne in the pit, for a bully delivering a crushing line to someone defeated.",
+"slots": [
+"Bane's taunt",
+"Bruce's weak reply"
+],
+"aliases": [
+"bane and bruce wayne",
+"dark knight rises pit",
+"bane standing over bruce"
+],
+"avoid": "Not for friendly or equal conversations."
+},
+{
+"id": "speechlesscolbertface",
+"name": "Speechless Colbert Face",
+"lines": 2,
+"shape": "reaction",
+"core": "Stephen Colbert stares blankly at his desk, for being left speechless by something absurd.",
+"slots": [
+"what was said",
+"the speechless reaction"
+],
+"aliases": [
+"colbert speechless",
+"stephen colbert stare",
+"colbert no words"
+],
+"avoid": "Not for excited or angry reactions."
+},
+{
+"id": "brianburkeonthephone",
+"name": "Brian Burke On The Phone",
+"lines": 2,
+"shape": "reaction",
+"core": "Someone confidently making a call to strike a lopsided deal or fix a situation; used for scheming over the phone.",
+"slots": [
+"the setup",
+"the call he makes"
+],
+"aliases": [
+"brian burke phone",
+"burke on the phone",
+"hockey gm phone"
+],
+"avoid": "Not for sad or serious news."
+},
+{
+"id": "hermedwards",
+"name": "Herm Edwards",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Herm Edwards passionately stating the obvious; used to shout a blindingly obvious rule.",
+"slots": [
+"the setup",
+"the obvious rule"
+],
+"aliases": [
+"you play to win the game",
+"herm edwards",
+"win the game"
+],
+"avoid": "Not for subtle or quiet points."
+},
+{
+"id": "derpina",
+"name": "Derpina",
+"lines": 2,
+"shape": "reaction",
+"core": "The female rage-comic derp face; used for a goofy, clueless moment.",
+"slots": [
+"the setup",
+"the derpy act"
+],
+"aliases": [
+"derpina",
+"derp girl",
+"rage comic derp"
+],
+"avoid": "Not for clever or competent moments."
+},
+{
+"id": "gagababy",
+"name": "Gaga Baby",
+"lines": 2,
+"shape": "reaction",
+"core": "A baby screaming in terror while held by a glamorous Lady Gaga; used for someone horrified by who or what is holding them.",
+"slots": [
+"the situation",
+"the terrified reaction"
+],
+"aliases": [
+"gaga baby",
+"scared baby lady gaga",
+"baby crying gaga"
+],
+"avoid": "Not for genuinely calm situations."
+},
+{
+"id": "superiorwadsworth",
+"name": "Superior Wadsworth",
+"lines": 2,
+"shape": "irony",
+"core": "Grinning Wadsworth from Clue pointing a gun; used for smug, cheerful menace or a gleeful reveal.",
+"slots": [
+"the setup",
+"the smug twist"
+],
+"aliases": [
+"wadsworth clue",
+"tim curry clue",
+"superior wadsworth"
+],
+"avoid": "Not for real violence."
+},
+{
+"id": "brianwilsonvszztop",
+"name": "Brian Wilson Vs ZZ Top",
+"lines": 2,
+"shape": "comparison",
+"core": "A big beard on top is outdone by ZZ Top's legendary beards below; used to show an amateur version next to the real masters.",
+"slots": [
+"the amateur",
+"the masters"
+],
+"aliases": [
+"brian wilson beard",
+"zz top beard",
+"beard comparison"
+],
+"avoid": "Not for things of equal size."
+},
+{
+"id": "horaextra",
+"name": "Hora Extra",
+"lines": 2,
+"shape": "other",
+"core": "An alarm clock on a pile of cash, Portuguese for overtime; used for jokes about overtime pay and time being money.",
+"slots": [
+"the extra work",
+"the payoff"
+],
+"aliases": [
+"hora extra",
+"overtime",
+"time is money"
+],
+"avoid": "Not for unpaid volunteer work."
+},
+{
+"id": "benbarbapointing",
+"name": "Ben Barba Pointing",
+"lines": 2,
+"shape": "reaction",
+"core": "A rugby player pointing straight at the viewer; used to call someone out directly.",
+"slots": [
+"the call-out",
+"the accusation"
+],
+"aliases": [
+"ben barba pointing",
+"pointing at you",
+"rugby guy pointing"
+],
+"avoid": "Not for praise without a target."
+},
+{
+"id": "barackandkumar2013",
+"name": "Barack And Kumar 2013",
+"lines": 2,
+"shape": "other",
+"core": "Obama walking with Kal Penn as a Harold and Kumar parody; used for buddy-movie style puns about an unlikely duo.",
+"slots": [
+"the duo title",
+"the mission"
+],
+"aliases": [
+"barack and kumar",
+"obama kal penn",
+"harold and kumar obama"
+],
+"avoid": "Not for serious political arguments."
+},
+{
+"id": "legalbillmurray",
+"name": "Legal Bill Murray",
+"lines": 2,
+"shape": "irony",
+"core": "Bill Murray grinning as gonzo Hunter S. Thompson; used for shady but technically allowed behaviour.",
+"slots": [
+"the loophole",
+"the smug excuse"
+],
+"aliases": [
+"legal bill murray",
+"bill murray grin",
+"where the buffalo roam"
+],
+"avoid": "Not for genuinely illegal advice."
+},
+{
+"id": "selfishozzy",
+"name": "Selfish Ozzy",
+"lines": 2,
+"shape": "reaction",
+"core": "Ozzy Osbourne pulling a jealous face while Sharon fawns over a puppy; used for being selfish or jealous of attention.",
+"slots": [
+"what gets attention",
+"the jealous reaction"
+],
+"aliases": [
+"selfish ozzy",
+"jealous ozzy",
+"ozzy puppy"
+],
+"avoid": "Not for genuine sharing."
+}
+]

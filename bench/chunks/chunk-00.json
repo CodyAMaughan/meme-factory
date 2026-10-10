@@ -1,0 +1,983 @@
+[
+{
+"id": "3hd",
+"name": "Three-Headed Dragon",
+"lines": 3,
+"shape": "labeling",
+"core": "Three-headed dragon with each head labeled as a distinct option or personality in a set.",
+"slots": [
+"left head, first item in the set",
+"middle head, second item",
+"right head, third item"
+],
+"aliases": [
+"three headed dragon",
+"three dragon heads"
+],
+"avoid": "Two-option choices or sequential escalation jokes."
+},
+{
+"id": "aag",
+"name": "Ancient Aliens Guy",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Absurdly attributing any event or topic to aliens as the explanation.",
+"slots": [
+"often blank",
+"the topic, ending in 'aliens' as the answer"
+],
+"aliases": [
+"ancient aliens",
+"history channel guy",
+"giorgio tsoukalos"
+],
+"avoid": "Serious explanations or jokes unrelated to conspiracy-style reasoning."
+},
+{
+"id": "ackbar",
+"name": "It's A Trap!",
+"lines": 2,
+"shape": "reaction",
+"core": "Admiral Ackbar warns of an obvious danger: 'It's a trap!'",
+"slots": [
+"often blank, or the tempting bait setup",
+"it's a trap!"
+],
+"aliases": [
+"admiral ackbar",
+"its a trap"
+],
+"avoid": "Genuine good deals or things that turn out fine."
+},
+{
+"id": "afraid",
+"name": "Afraid to Ask Andy",
+"lines": 2,
+"shape": "other",
+"core": "Admitting you never understood something and now it's too late to ask.",
+"slots": [
+"the thing you never understood",
+"and at this point i'm too afraid to ask"
+],
+"aliases": [
+"afraid to ask andy",
+"too afraid to ask"
+],
+"avoid": "Confident knowledge or things you simply don't care about."
+},
+{
+"id": "agnes",
+"name": "Agnes Harkness Winking",
+"lines": 2,
+"shape": "reaction",
+"core": "Agnes winks knowingly while agreeing to something sketchy or questionable.",
+"slots": [
+"often blank, or the sketchy setup",
+"the sly knowing admission or agreement"
+],
+"aliases": [
+"agnes harkness",
+"agatha all along wink"
+],
+"avoid": "Sincere approval or earnest agreement."
+},
+{
+"id": "aint-got-time",
+"name": "Sweet Brown",
+"lines": 2,
+"shape": "hot-take",
+"core": "Dismissing something as not worth your time, Sweet Brown style.",
+"slots": [
+"the thing being dismissed",
+"ain't nobody got time fo' that"
+],
+"aliases": [
+"sweet brown",
+"ain't nobody got time for that"
+],
+"avoid": "Things you eagerly make time for."
+},
+{
+"id": "ams",
+"name": "Awkward Moment Seal",
+"lines": 2,
+"shape": "before-after",
+"core": "A relatable situation followed by an embarrassing awkward moment.",
+"slots": [
+"when you're doing something ordinary",
+"the cringey awkward interruption or outcome"
+],
+"aliases": [
+"awkward moment seal",
+"awkward seal"
+],
+"avoid": "Triumphant or smooth outcomes."
+},
+{
+"id": "ants",
+"name": "Do You Want Ants?",
+"lines": 2,
+"shape": "advice",
+"core": "Warning that careless behavior is exactly what causes a predictable bad consequence.",
+"slots": [
+"do you want [bad consequence]?",
+"because that's how you get [bad consequence]"
+],
+"aliases": [
+"do you want ants",
+"that's how you get ants"
+],
+"avoid": "Praising good habits or unrelated punchlines."
+},
+{
+"id": "apcr",
+"name": "Almost Politically Correct Redneck",
+"lines": 2,
+"shape": "dialogue",
+"core": "A mostly progressive statement undercut by a regressive or redneck afterthought.",
+"slots": [
+"the enlightened, tolerant statement",
+"the backward twist undermining it"
+],
+"aliases": [
+"almost politically correct redneck",
+"apcr"
+],
+"avoid": "Wholesome or consistently progressive jokes."
+},
+{
+"id": "astronaut",
+"name": "Always Has Been",
+"lines": 4,
+"shape": "dialogue",
+"core": "One astronaut realizes the truth; the other confirms 'always has been'.",
+"slots": [
+"naive question: 'wait, it's all X?'",
+"the answer: 'it's all Y'",
+"the revelation: 'always has been'",
+"often blank"
+],
+"aliases": [
+"always has been",
+"wait it's all"
+],
+"avoid": "Jokes with no hidden-truth reveal."
+},
+{
+"id": "atis",
+"name": "And Then I Said",
+"lines": 2,
+"shape": "dialogue",
+"core": "Bragging about the clever or bold thing you said, then the absurd punchline.",
+"slots": [
+"and then i said",
+"the bold or mundane thing you said"
+],
+"aliases": [
+"and then i said",
+"and then i said"
+],
+"avoid": "Real comebacks that are actually impressive."
+},
+{
+"id": "away",
+"name": "Life... Finds a Way",
+"lines": 2,
+"shape": "other",
+"core": "Life finds a way: nature or people overcome an obstacle despite odds.",
+"slots": [
+"life...",
+"finds a way"
+],
+"aliases": [
+"life finds a way",
+"jurassic park ian malcolm"
+],
+"avoid": "Defeat, hopelessness, or things that don't persist."
+},
+{
+"id": "awesome",
+"name": "Socially Awesome Penguin",
+"lines": 2,
+"shape": "before-after",
+"core": "A small awkward moment accidentally turns into a social win.",
+"slots": [
+"the awkward mistake or oddity",
+"the unexpectedly great social payoff"
+],
+"aliases": [
+"socially awesome penguin"
+],
+"avoid": "Outcomes that are actually bad."
+},
+{
+"id": "awesome-awkward",
+"name": "Socially Awesome Awkward Penguin",
+"lines": 2,
+"shape": "before-after",
+"core": "A great social moment ruined by a clumsy blunder.",
+"slots": [
+"the promising, cool setup",
+"the awkward disaster"
+],
+"aliases": [
+"socially awesome awkward penguin"
+],
+"avoid": "Good outcomes with no embarrassment."
+},
+{
+"id": "awkward",
+"name": "Socially Awkward Penguin",
+"lines": 2,
+"shape": "before-after",
+"core": "Social setup that ends in an awkward blunder.",
+"slots": [
+"the normal social action beginning",
+"the cringey mistake or fumble"
+],
+"aliases": [
+"socially awkward penguin",
+"awkward penguin"
+],
+"avoid": "Smooth or successful social outcomes."
+},
+{
+"id": "awkward-awesome",
+"name": "Socially Awkward Awesome Penguin",
+"lines": 2,
+"shape": "before-after",
+"core": "An awkward-looking act turns out to be heroic or justified.",
+"slots": [
+"the awkward or questionable action",
+"the surprising justification making it awesome"
+],
+"aliases": [
+"socially awkward awesome penguin"
+],
+"avoid": "Mistakes with no redeeming twist."
+},
+{
+"id": "bad",
+"name": "You Should Feel Bad",
+"lines": 2,
+"shape": "mocking-echo",
+"core": "Scolding someone's thing as bad and telling them to feel bad.",
+"slots": [
+"your [thing] is bad",
+"and you should feel bad"
+],
+"aliases": [
+"you should feel bad",
+"zoidberg"
+],
+"avoid": "Praise or gentle criticism."
+},
+{
+"id": "badchoice",
+"name": "Milk Was a Bad Choice",
+"lines": 2,
+"shape": "ironic-denial",
+"core": "Bitter regret over a choice that predictably went wrong.",
+"slots": [
+"the regrettable choice",
+"was a bad choice"
+],
+"aliases": [
+"milk was a bad choice",
+"anchorman milk"
+],
+"avoid": "Choices that turned out well."
+},
+{
+"id": "balloon",
+"name": "Running Away Balloon",
+"lines": 3,
+"shape": "labeling",
+"core": "A person chasing a balloon that drifts away, labeled as an opportunity lost to a hindrance.",
+"slots": [
+"the chaser's goal or the balloon",
+"second label for the balloon or opportunity",
+"the holder/hindrance causing it to be lost"
+],
+"aliases": [
+"running away balloon"
+],
+"avoid": "Gaining or catching what you wanted."
+},
+{
+"id": "bd",
+"name": "Butthurt Dweller",
+"lines": 2,
+"shape": "dialogue",
+"core": "A person offers a flimsy excuse for avoiding a worthwhile thing.",
+"slots": [
+"the thing they can't or won't do",
+"the absurd excuse"
+],
+"aliases": [
+"butthurt dweller",
+"gordo granudo"
+],
+"avoid": "Legitimate reasons or clever excuses."
+},
+{
+"id": "because",
+"name": "Men in Black",
+"lines": 2,
+"shape": "dialogue",
+"core": "A statement of fairness quickly undercut by a self-incriminating admission.",
+"slots": [
+"the principled disclaimer about not jumping to conclusions",
+"the reveal that the suspicion was true anyway"
+],
+"aliases": [
+"men in black",
+"black man nice car"
+],
+"avoid": "Sincere moral statements with no twist."
+},
+{
+"id": "bender",
+"name": "I'm Going to Build My Own Theme Park",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Bender threatens to start his own version of something, with blackjack and hookers.",
+"slots": [
+"i'm going to build my own [thing]",
+"with blackjack and hookers"
+],
+"aliases": [
+"blackjack and hookers",
+"bender theme park"
+],
+"avoid": "Serious plans or wholesome additions."
+},
+{
+"id": "bihw",
+"name": "But It's Honest Work",
+"lines": 2,
+"shape": "reaction",
+"core": "A humble, modest offering presented with dignified pride: it ain't much but it's honest work.",
+"slots": [
+"it ain't much",
+"but it's honest work"
+],
+"aliases": [
+"it ain't much",
+"honest work farmer"
+],
+"avoid": "Bragging about impressive achievements."
+},
+{
+"id": "bilbo",
+"name": "Why Shouldn't I Keep It",
+"lines": 2,
+"shape": "question",
+"core": "Rationalizing keeping something you shouldn't, like Bilbo with the Ring.",
+"slots": [
+"after all... why not?",
+"why shouldn't i keep it?"
+],
+"aliases": [
+"why shouldn't i keep it",
+"bilbo ring"
+],
+"avoid": "Generosity or giving things away willingly."
+},
+{
+"id": "biw",
+"name": "Baby Insanity Wolf",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Baby version of Insanity Wolf: mild, petty or toddler-level bad behavior stated deadpan.",
+"slots": [
+"the mundane setup or small act",
+"the slightly unhinged or rebellious punchline"
+],
+"aliases": [
+"baby insanity wolf",
+"insanity puppy"
+],
+"avoid": "genuinely dark violence; wholesome jokes; multi-step stories"
+},
+{
+"id": "blb",
+"name": "Bad Luck Brian",
+"lines": 2,
+"shape": "plan-backfire",
+"core": "An ordinary action leads to the worst possible ironic outcome for unlucky Brian.",
+"slots": [
+"the innocent or hopeful action",
+"the disastrously unlucky consequence"
+],
+"aliases": [
+"bad luck brian",
+"bad luck"
+],
+"avoid": "good luck stories; deliberate bad choices; smug superiority"
+},
+{
+"id": "boat",
+"name": "I Should Buy a Boat Cat",
+"lines": 2,
+"shape": "other",
+"core": "Cat contemplating an impulsive purchase, reasoning that buying a boat solves everything.",
+"slots": [
+"often blank",
+"the impulsive, extravagant idea or purchase thought"
+],
+"aliases": [
+"i should buy a boat cat",
+"boat cat"
+],
+"avoid": "frugal or cautious decisions; reactions to others"
+},
+{
+"id": "bongo",
+"name": "Bongo Cat",
+"lines": 2,
+"shape": "binary-choice",
+"core": "Calm bongo cat versus frantic bongo cat: gentle thing versus its aggressive counterpart.",
+"slots": [
+"the quiet or gentle version of something",
+"the loud, intense or annoying version"
+],
+"aliases": [
+"bongo cat",
+"two bongo cats"
+],
+"avoid": "non-contrasting jokes; single-sentence statements"
+},
+{
+"id": "both",
+"name": "Why Not Both?",
+"lines": 2,
+"shape": "dilemma",
+"core": "Offered a choice between two options, the answer is greedy: why not both?",
+"slots": [
+"the either-or choice presented",
+"'why not both?' or the greedy answer"
+],
+"aliases": [
+"why not both",
+"why don't we have both"
+],
+"avoid": "genuine tradeoffs; rejecting options; decisive single picks"
+},
+{
+"id": "box",
+"name": "What's in the box!?",
+"lines": 2,
+"shape": "question",
+"core": "Desperate demand to know what's in the box, from Se7en's ending, expecting something terrible.",
+"slots": [
+"often blank",
+"the frantic question about an unknown thing"
+],
+"aliases": [
+"what's in the box",
+"se7en box"
+],
+"avoid": "calm curiosity; lighthearted wholesome mystery"
+},
+{
+"id": "bs",
+"name": "This is Bull, Shark",
+"lines": 2,
+"shape": "dialogue",
+"core": "Shark and bull pun on 'this is bull': a tired complaint met by a knowing reply.",
+"slots": [
+"the exasperated remark about a recurring annoyance",
+"the wry reply admitting the pattern"
+],
+"aliases": [
+"this is bull shark",
+"bull shark"
+],
+"avoid": "serious arguments; jokes with no repeated-annoyance angle"
+},
+{
+"id": "bus",
+"name": "Two Guys on a Bus",
+"lines": 2,
+"shape": "before-after",
+"core": "Two guys on a bus: one cheerful, one grim, contrasting two states of the same thing.",
+"slots": [
+"the grim or later state",
+"the cheerful or earlier state"
+],
+"aliases": [
+"two guys on a bus",
+"bus guys"
+],
+"avoid": "jokes without a clear two-state contrast"
+},
+{
+"id": "buzz",
+"name": "X, X Everywhere",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Buzz shows Woody that something is everywhere: 'X, X everywhere'.",
+"slots": [
+"the thing being noticed",
+"the same thing repeated 'everywhere'"
+],
+"aliases": [
+"x x everywhere",
+"buzz and woody"
+],
+"avoid": "rare or one-off things; anything not about ubiquity"
+},
+{
+"id": "cake",
+"name": "Office Space Milton",
+"lines": 2,
+"shape": "ironic-denial",
+"core": "Meek Milton complains he was promised something and it never came.",
+"slots": [
+"often blank",
+"'I was told there would be\u2026' broken promise"
+],
+"aliases": [
+"i was told there would be cake",
+"milton"
+],
+"avoid": "assertive demands; promises that were actually kept"
+},
+{
+"id": "captain",
+"name": "I am the Captain Now",
+"lines": 2,
+"shape": "other",
+"core": "Calm hijacker declares he's now in control after seizing a situation.",
+"slots": [
+"the setup of someone taking over, 'look at me'",
+"'I am the captain now' takeover declaration"
+],
+"aliases": [
+"i am the captain now",
+"captain phillips"
+],
+"avoid": "losing control; humble statements"
+},
+{
+"id": "captain-america",
+"name": "Captain America Elevator Fight Dad Joke",
+"lines": 3,
+"shape": "dialogue",
+"core": "Someone asks a setup question and the answer is a dad-joke pun punchline.",
+"slots": [
+"the setup question",
+"the deadpan answer",
+"the pun punchline"
+],
+"aliases": [
+"elevator fight dad joke",
+"captain america dad joke",
+"time consuming"
+],
+"avoid": "non-pun jokes; serious exchanges"
+},
+{
+"id": "cb",
+"name": "Confession Bear",
+"lines": 2,
+"shape": "hot-take",
+"core": "Bear confesses a guilty secret or petty crime, setup then reveal.",
+"slots": [
+"the start of the confession",
+"the guilty reveal, usually a pun or petty wrongdoing"
+],
+"aliases": [
+"confession bear"
+],
+"avoid": "boasting; non-secret statements"
+},
+{
+"id": "cbb",
+"name": "Communist Bugs Bunny",
+"lines": 2,
+"shape": "hot-take",
+"core": "Bugs Bunny in Soviet garb seizing something for the collective: 'our X!'",
+"slots": [
+"often blank",
+"the thing declared collectively owned, 'our X!'"
+],
+"aliases": [
+"communist bugs bunny",
+"comrade bugs"
+],
+"avoid": "jokes unrelated to ownership or sharing; actual politics lectures"
+},
+{
+"id": "cbg",
+"name": "Comic Book Guy",
+"lines": 2,
+"shape": "hot-take",
+"core": "Comic Book Guy pedantically declares something the worst ever, fanboy-style.",
+"slots": [
+"often blank",
+"'Worst X ever' pedantic complaint"
+],
+"aliases": [
+"comic book guy",
+"worst episode ever"
+],
+"avoid": "praise; sincere complaints; non-nerdy topics"
+},
+{
+"id": "center",
+"name": "What is this, a Center for Ants?!",
+"lines": 2,
+"shape": "question",
+"core": "Incredulous outraged question mocking something as pointlessly small, inept or silly.",
+"slots": [
+"'What is this'",
+"the ridiculous thing it's compared to"
+],
+"aliases": [
+"what is this a center for ants",
+"center for ants"
+],
+"avoid": "genuine curiosity; praise"
+},
+{
+"id": "ch",
+"name": "Captain Hindsight",
+"lines": 2,
+"shape": "advice",
+"core": "Captain Hindsight smugly states the obvious advice that would have prevented a problem.",
+"slots": [
+"the problem or goal",
+"the obvious, too-late solution"
+],
+"aliases": [
+"captain hindsight"
+],
+"avoid": "foresight; advice that is not obvious or retrospective"
+},
+{
+"id": "chair",
+"name": "American Chopper Argument",
+"lines": 6,
+"shape": "dialogue",
+"core": "Father and son in heated argument, escalating until the chair is thrown.",
+"slots": [
+"first speaker opens with a position",
+"second speaker objects",
+"first rebuts",
+"second counters",
+"first concedes or proposes",
+"second erupts with a rage line"
+],
+"aliases": [
+"american chopper",
+"chopper argument",
+"american chopper argument"
+],
+"avoid": "agreement; short one-liners; non-argumentative jokes"
+},
+{
+"id": "cheems",
+"name": "Cheems",
+"lines": 2,
+"shape": "plan-backfire",
+"core": "Sad-meek Cheems states a reassuring thing, hinting disaster will follow.",
+"slots": [
+"the cozy or hopeful setup",
+"the naive assurance that precedes doom"
+],
+"aliases": [
+"cheems",
+"cheems doge",
+"balltze"
+],
+"avoid": "confident heroes; wins; non-ironic comfort"
+},
+{
+"id": "chosen",
+"name": "You Were the Chosen One!",
+"lines": 2,
+"shape": "other",
+"core": "Obi-Wan laments the betrayal of someone who was supposed to save everything.",
+"slots": [
+"the lament, 'you were the chosen one!'",
+"often blank"
+],
+"aliases": [
+"you were the chosen one",
+"obi-wan chosen one"
+],
+"avoid": "praise; minor annoyances; unrelated tragedies"
+},
+{
+"id": "cmm",
+"name": "Change My Mind",
+"lines": 1,
+"shape": "hot-take",
+"core": "Man at a table with a sign offering to debate a bold opinion.",
+"slots": [
+"the controversial opinion to be debated"
+],
+"aliases": [
+"change my mind",
+"steven crowder sign"
+],
+"avoid": "settled facts; dialogue; multi-part jokes"
+},
+{
+"id": "country",
+"name": "What a Country",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Incredulous comment on a ridiculous fact, ending with an exasperated 'What a country!'",
+"slots": [
+"the absurd fact or law observed",
+"'What a country!'"
+],
+"aliases": [
+"what a country",
+"yakov smirnoff"
+],
+"avoid": "genuine patriotism; serious criticism"
+},
+{
+"id": "crazypills",
+"name": "I Feel Like I'm Taking Crazy Pills",
+"lines": 2,
+"shape": "reaction",
+"core": "Zoolander's Mugatu feels insane because everyone else misses the obvious problem.",
+"slots": [
+"often blank",
+"'I feel like I'm taking crazy pills' about everyone ignoring the obvious"
+],
+"aliases": [
+"i feel like i'm taking crazy pills",
+"crazy pills",
+"mugatu"
+],
+"avoid": "actual confusion; admiration; jokes with no frustration"
+},
+{
+"id": "crow",
+"name": "Get Better Material",
+"lines": 2,
+"shape": "mocking-echo",
+"core": "A crow squawks repetitive lines, told to get better material.",
+"slots": [
+"the repetitive or lazy joke",
+"the same joke longer and no better"
+],
+"aliases": [
+"get better material",
+"crow meme"
+],
+"avoid": "original jokes; non-repetitive observations"
+},
+{
+"id": "crowd",
+"name": "Soccer Celebration In A Bar",
+"lines": 2,
+"shape": "labeling",
+"core": "A tense moment resolves and a crowd erupts in joyous celebration over a small win.",
+"slots": [
+"the nervous action or anticipated event",
+"the good outcome that triggers the celebration"
+],
+"aliases": [
+"soccer celebration",
+"bar celebration",
+"crowd cheering"
+],
+"avoid": "sad outcomes, disappointment, or serious reflection"
+},
+{
+"id": "cryingfloor",
+"name": "Crying on Floor",
+"lines": 2,
+"shape": "dialogue",
+"core": "Someone breaks down sobbing on the floor while another tries to console or deflect.",
+"slots": [
+"the comforting or dismissive line",
+"the pathetic, absurd follow-up that shows the despair"
+],
+"aliases": [
+"crying on floor",
+"hold the door sad",
+"sobbing on floor"
+],
+"avoid": "triumph, smugness, or calm acceptance"
+},
+{
+"id": "db",
+"name": "Distracted Boyfriend",
+"lines": 3,
+"shape": "labeling",
+"core": "A man checks out another woman while his girlfriend glares, showing temptation toward something new.",
+"slots": [
+"the new tempting thing (woman in red)",
+"the person being unfaithful (the boyfriend)",
+"the neglected existing thing (the girlfriend)"
+],
+"aliases": [
+"distracted boyfriend",
+"man looking at other woman",
+"disloyal man"
+],
+"avoid": "simple two-option rejection or plain reaction jokes"
+},
+{
+"id": "dbg",
+"name": "Expectation vs. Reality",
+"lines": 2,
+"shape": "before-after",
+"core": "Hopeful expectation versus disappointing reality, shown by a disappointed man looking away.",
+"slots": [
+"the hopeful expectation or normal action",
+"the disappointing reality or twist"
+],
+"aliases": [
+"disappointed black guy",
+"expectation vs reality",
+"disappointed guy"
+],
+"avoid": "genuine wins, triumph, or neutral comparisons"
+},
+{
+"id": "dg",
+"name": "Distracted Girlfriend",
+"lines": 3,
+"shape": "labeling",
+"core": "Gender-swapped Distracted Boyfriend: someone is lured away from their current loyalty by a shinier alternative.",
+"slots": [
+"the new tempting thing",
+"the person being lured away",
+"the neglected existing thing"
+],
+"aliases": [
+"distracted girlfriend",
+"distracted boyfriend variant",
+"girl looking at other guy"
+],
+"avoid": "simple two-option rejection or plain reaction jokes"
+},
+{
+"id": "disastergirl",
+"name": "Disaster Girl",
+"lines": 2,
+"shape": "reaction",
+"core": "A girl smirks at the camera before a burning house, implying she caused the chaos on purpose.",
+"slots": [
+"often blank",
+"the gleeful admission or implied responsibility for the disaster"
+],
+"aliases": [
+"disaster girl",
+"burning house girl",
+"evil girl"
+],
+"avoid": "innocent mistakes, sadness, or genuine fear"
+},
+{
+"id": "dodgson",
+"name": "See? Nobody Cares",
+"lines": 2,
+"shape": "dialogue",
+"core": "Dennis Nedry gets cut off: a ranting shout is met with dismissive indifference from the crowd.",
+"slots": [
+"the announcement or attention-grabbing claim",
+"the deflating dismissal that nobody cares"
+],
+"aliases": [
+"see nobody cares",
+"we got dodgson here",
+"nobody cares jurassic park"
+],
+"avoid": "genuine enthusiasm, hype, or earnest agreement"
+},
+{
+"id": "doge",
+"name": "Doge",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Shiba Inu with broken-English inner monologue: 'such X', 'very Y', 'wow'.",
+"slots": [
+"'such [noun]' style phrase",
+"'very [adjective]' style phrase"
+],
+"aliases": [
+"such meme",
+"wow doge",
+"shiba inu"
+],
+"avoid": "serious, polished, or grammatically correct jokes"
+},
+{
+"id": "dragon",
+"name": "What Color Do You Want Your Dragon",
+"lines": 1,
+"shape": "other",
+"core": "A wish is granted in an unexpectedly specific or literal way, like choosing a dragon's color.",
+"slots": [
+"the wish or request, answered with a specific unwanted detail"
+],
+"aliases": [
+"what color do you want your dragon",
+"dragon color",
+"tumblr dragon"
+],
+"avoid": "multi-part setups or punchlines needing two boxes"
+},
+{
+"id": "drake",
+"name": "Drakeposting",
+"lines": 2,
+"shape": "binary-choice",
+"core": "Drake rejects one thing and approves of another.",
+"slots": [
+"the rejected option",
+"the preferred option"
+],
+"aliases": [
+"drakeposting",
+"drake hotline bling",
+"drake no yes"
+],
+"avoid": "three-way choices, escalation, or non-comparative jokes"
+},
+{
+"id": "drowning",
+"name": "Drowning High Five",
+"lines": 3,
+"shape": "labeling",
+"core": "A drowning person gets an unhelpful high five instead of rescue, showing useless 'support'.",
+"slots": [
+"the person struggling or asking for help",
+"the unhelpful bystander offering empty solidarity",
+"the useless response given"
+],
+"aliases": [
+"drowning high five",
+"high five drowning",
+"useless support"
+],
+"avoid": "genuinely helpful support or successful rescue"
+},
+{
+"id": "drunk",
+"name": "Drunk Baby",
+"lines": 2,
+"shape": "dialogue",
+"core": "A drunk baby gives an absurdly honest, incapacitated reply to an officer's sobriety test.",
+"slots": [
+"the officer's request or question",
+"the incoherent or self-incriminating reply"
+],
+"aliases": [
+"drunk baby",
+"baby sobriety test",
+"drunk toddler"
+],
+"avoid": "sober, clever, or competent responses"
+}
+]

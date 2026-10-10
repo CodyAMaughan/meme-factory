@@ -1,0 +1,1945 @@
+[
+ {
+  "qid": "box#1",
+  "request": "brad pitt screaming in the desert about the mystery package my wife ordered",
+  "style": "visual",
+  "target": {
+   "id": "box",
+   "name": "What's in the box!?",
+   "shape": "question",
+   "core": "Desperate demand to know what's in the box, from Se7en's ending, expecting something terrible.",
+   "slots": [
+    "often blank",
+    "the frantic question about an unknown thing"
+   ],
+   "aliases": [
+    "what's in the box",
+    "se7en box"
+   ]
+  },
+  "picked": [
+   {
+    "id": "hector",
+    "name": "Hector",
+    "shape": "reaction",
+    "core": "Achilles furiously screaming a name outside the walls of Troy, used to angrily summon whoever is responsible for something.",
+    "slots": [
+     "the situation",
+     "the name being screamed"
+    ],
+    "aliases": [
+     "Achilles Hector",
+     "Troy Hector Scream",
+     "Brad Pitt Hector",
+     "Hector Come Out"
+    ]
+   },
+   {
+    "id": "khan",
+    "name": "Khan",
+    "shape": "exaggeration",
+    "core": "Kirk's anguished 'KHAAAN!' scream, for rage at someone who wronged you.",
+    "slots": [
+     "what they did",
+     "the anguished scream"
+    ],
+    "aliases": [
+     "Khan",
+     "KHAAAN",
+     "Kirk Khan scream",
+     "Star Trek Khan"
+    ]
+   },
+   {
+    "id": "michael-scott",
+    "name": "Michael Scott No God No",
+    "shape": "reaction",
+    "core": "Michael screams a dramatic denial of bad news or an unwanted outcome.",
+    "slots": [
+     "the bad news or unwanted situation",
+     "the dramatic 'nooo' scream"
+    ],
+    "aliases": [
+     "michael scott no",
+     "no god no"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "cb#1",
+  "request": "i secretly pretend to be on calls so nobody talks to me at the office",
+  "style": "situation",
+  "target": {
+   "id": "cb",
+   "name": "Confession Bear",
+   "shape": "hot-take",
+   "core": "Bear confesses a guilty secret or petty crime, setup then reveal.",
+   "slots": [
+    "the start of the confession",
+    "the guilty reveal, usually a pun or petty wrongdoing"
+   ],
+   "aliases": [
+    "confession bear"
+   ]
+  },
+  "picked": [
+   {
+    "id": "trustnobodynotevenyourself",
+    "name": "Trust Nobody, Not Even Yourself",
+    "shape": "self-own",
+    "core": "A person about to be betrayed by themselves, for when your own past actions sabotage you.",
+    "slots": [
+     "me",
+     "also me, sabotaging"
+    ],
+    "aliases": [
+     "trust nobody",
+     "not even yourself",
+     "self betrayal",
+     "guy pointing gun at himself"
+    ]
+   },
+   {
+    "id": "pretendingtobehappyhidingcry",
+    "name": "Wojak Smiling Mask",
+    "shape": "irony",
+    "core": "A crying Wojak hides behind a smiley mask, for pretending everything is fine while falling apart inside.",
+    "slots": [
+     "the cheerful front",
+     "the hidden truth"
+    ],
+    "aliases": [
+     "Pretending To Be Happy",
+     "Wojak Mask",
+     "Crying Behind Mask",
+     "Smiling Mask Wojak"
+    ]
+   },
+   {
+    "id": "spidermancomputerdesk",
+    "name": "Spiderman Computer Desk",
+    "shape": "irony",
+    "core": "Spider-Man sits at a desk under a portrait of himself, used for smug or absurd self-referential statements and dry deadpan announcements.",
+    "slots": [
+     "setup",
+     "punchline"
+    ],
+    "aliases": [
+     "spiderman desk",
+     "spiderman computer desk",
+     "60s spiderman desk",
+     "spiderman office"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "fa#1",
+  "request": "everyone in the group chat paired up for the trip and im just sitting here alone",
+  "style": "situation",
+  "target": {
+   "id": "fa",
+   "name": "Forever Alone",
+   "shape": "exaggeration",
+   "core": "A lonely, sad stick-face laments being alone with no one else around.",
+   "slots": [
+    "the lonely setup",
+    "the alone punchline"
+   ],
+   "aliases": [
+    "forever alone",
+    "fa face",
+    "lonely guy"
+   ]
+  },
+  "picked": [
+   {
+    "id": "partyloner",
+    "name": "Party Loner Wojak",
+    "shape": "irony",
+    "core": "A sad wojak alone at the wall while everyone else parties, for feeling left out or thinking about something else.",
+    "slots": [
+     "me at the party",
+     "what I'm thinking about"
+    ],
+    "aliases": [
+     "wojak at party",
+     "party loner",
+     "lonely wojak",
+     "sad guy at party",
+     "wallflower wojak"
+    ]
+   },
+   {
+    "id": "guyincornerofparty",
+    "name": "Guy in Corner of Party",
+    "shape": "labeling",
+    "core": "A lonely wojak stands in the corner while everyone else parties, used for the person quietly thinking about something niche while others have fun.",
+    "slots": [
+     "what the corner guy is thinking about",
+     "the people partying"
+    ],
+    "aliases": [
+     "guy in corner of party",
+     "wojak corner party",
+     "loner at party",
+     "they don't know"
+    ]
+   },
+   {
+    "id": "sadkeanu",
+    "name": "Sad Keanu",
+    "shape": "reaction",
+    "core": "Keanu Reeves eating alone on a park bench, for lonely, melancholy moments.",
+    "slots": [
+     "the sad situation",
+     "the lonely punchline"
+    ],
+    "aliases": [
+     "sad keanu",
+     "keanu bench",
+     "lonely keanu",
+     "keanu reeves sad"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "fmr#1",
+  "request": "the fmr meme about me buying a 4th mechanical keyboard",
+  "style": "named",
+  "target": {
+   "id": "fmr",
+   "name": "Fuck Me, Right?",
+   "shape": "reaction",
+   "core": "Smug rhetorical 'right?' after a deliberately suggestive or crude setup.",
+   "slots": [
+    "the suggestive or ambiguous setup (often blank)",
+    "'fuck me, right?' punchline"
+   ],
+   "aliases": [
+    "fuck me right",
+    "fmr"
+   ]
+  },
+  "picked": [
+   {
+    "id": "db",
+    "name": "Distracted Boyfriend",
+    "shape": "labeling",
+    "core": "A man checks out another woman while his girlfriend glares, showing temptation toward something new.",
+    "slots": [
+     "the new tempting thing (woman in red)",
+     "the person being unfaithful (the boyfriend)",
+     "the neglected existing thing (the girlfriend)"
+    ],
+    "aliases": [
+     "distracted boyfriend",
+     "man looking at other woman",
+     "disloyal man"
+    ]
+   },
+   {
+    "id": "exit",
+    "name": "Left Exit 12 Off Ramp",
+    "shape": "binary-choice",
+    "core": "A driver swerves hard from the sensible highway to take an off-ramp for something unwise.",
+    "slots": [
+     "the sensible path continuing straight",
+     "the tempting off-ramp alternative",
+     "the car/person making the sudden swerve"
+    ],
+    "aliases": [
+     "left exit 12",
+     "exit 12 off ramp",
+     "car swerving exit"
+    ]
+   },
+   {
+    "id": "drake",
+    "name": "Drakeposting",
+    "shape": "binary-choice",
+    "core": "Drake rejects one thing and approves of another.",
+    "slots": [
+     "the rejected option",
+     "the preferred option"
+    ],
+    "aliases": [
+     "drakeposting",
+     "drake hotline bling",
+     "drake no yes"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "jw#1",
+  "request": "my brother put a space heater under his desk made of cardboard, chris pratt reaction",
+  "style": "visual",
+  "target": {
+   "id": "jw",
+   "name": "Probably Not a Good Idea",
+   "shape": "dialogue",
+   "core": "A skeptical character states a reckless creation or decision is a bad idea.",
+   "slots": [
+    "the reckless thing someone did, stated incredulously",
+    "'probably not a good idea' deadpan response"
+   ],
+   "aliases": [
+    "jurassic world probably not a good idea",
+    "probably not a good idea"
+   ]
+  },
+  "picked": [
+   {
+    "id": "sf",
+    "name": "Sealed Fate",
+    "shape": "plan-backfire",
+    "core": "Something minor goes wrong and you realize doom is certain and imminent.",
+    "slots": [
+     "the minor mishap or action that sets things off",
+     "the grim realization that consequences are unavoidable"
+    ],
+    "aliases": [
+     "impending doom seal",
+     "seal of doom",
+     "sealed fate seal"
+    ]
+   },
+   {
+    "id": "burnkitty",
+    "name": "Burn Kitty",
+    "shape": "irony",
+    "core": "Grumpy Cat glaring in front of a burning house, for unbothered, deadpan responses to a disaster you may have caused.",
+    "slots": [
+     "the disaster",
+     "the grumpy remark"
+    ],
+    "aliases": [
+     "burn kitty",
+     "grumpy cat fire",
+     "grumpy cat burning house",
+     "cat house fire"
+    ]
+   },
+   {
+    "id": "smilingcat",
+    "name": "Smiling Cat",
+    "shape": "reaction",
+    "core": "A wide-eyed cat with an awkward forced smile, used for nervously pretending everything is fine or innocently hiding something.",
+    "slots": [
+     "situation",
+     "awkward reaction"
+    ],
+    "aliases": [
+     "smiling cat",
+     "awkward smile cat",
+     "creepy smiling cat",
+     "cat smile"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "keanu#1",
+  "request": "what if the printer only jams cuz it knows im in a hurry",
+  "style": "situation",
+  "target": {
+   "id": "keanu",
+   "name": "Conspiracy Keanu",
+   "shape": "question",
+   "core": "Stoned-sounding conspiracy theory musing 'what if' that connects unrelated things.",
+   "slots": [
+    "'what if' wild premise",
+    "the absurd connection or twist ending the thought"
+   ],
+   "aliases": [
+    "conspiracy keanu",
+    "what if keanu"
+   ]
+  },
+  "picked": [
+   {
+    "id": "morpheus",
+    "name": "Matrix Morpheus",
+    "shape": "hot-take",
+    "core": "Morpheus offers a mind-blowing reframing of something you thought you knew.",
+    "slots": [
+     "what if I told you (setup)",
+     "surprising revelation or reframing"
+    ],
+    "aliases": [
+     "what if i told you",
+     "matrix morpheus",
+     "morpheus"
+    ]
+   },
+   {
+    "id": "spongebobpanicinside",
+    "name": "SpongeBob Panic Inside",
+    "shape": "irony",
+    "core": "SpongeBob sitting calmly while a ghostly copy of him screams inside, used when you look composed on the outside but are panicking internally.",
+    "slots": [
+     "the stressful situation",
+     "calm outside, screaming inside"
+    ],
+    "aliases": [
+     "Internal Screaming SpongeBob",
+     "SpongeBob Calm Outside Panic Inside",
+     "Inner Panic SpongeBob",
+     "SpongeBob Screaming Inside"
+    ]
+   },
+   {
+    "id": "surprisedjoey",
+    "name": "Surprised Joey",
+    "shape": "reaction",
+    "core": "Joey goes from relaxed to wide-eyed as something slowly sinks in, used for a delayed shocked realization.",
+    "slots": [
+     "the calm setup",
+     "the realization"
+    ],
+    "aliases": [
+     "surprised joey",
+     "joey realization",
+     "friends joey shocked",
+     "joey wide eyes"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "officespace#1",
+  "request": "manager w a coffee mug casually asking me to come in saturday too, mmkay",
+  "style": "situation",
+  "target": {
+   "id": "officespace",
+   "name": "That Would Be Great",
+   "shape": "advice",
+   "core": "Passive-aggressive boss casually dumps extra work with fake politeness.",
+   "slots": [
+    "yeah... (opener, setup of the unreasonable request)",
+    "that'd be great (the ask or demand)"
+   ],
+   "aliases": [
+    "that would be great",
+    "bill lumbergh",
+    "lumbergh"
+   ]
+  },
+  "picked": [
+   {
+    "id": "oldmancupofcoffee",
+    "name": "Hide The Pain Harold Laptop",
+    "shape": "before-after",
+    "core": "Harold smiles at his laptop, then looks up with a pained forced smile; used when something seems fine then quietly turns awful.",
+    "slots": [
+     "what you see first",
+     "the painful realization"
+    ],
+    "aliases": [
+     "hide the pain harold",
+     "harold coffee laptop",
+     "old man coffee",
+     "pained smile old man"
+    ]
+   },
+   {
+    "id": "unodraw25cards",
+    "name": "UNO Draw 25 Cards",
+    "shape": "rejection",
+    "core": "Someone would rather suffer a huge penalty than do one simple, reasonable thing.",
+    "slots": [
+     "the simple thing to do",
+     "the stubborn person"
+    ],
+    "aliases": [
+     "draw 25",
+     "uno draw 25",
+     "uno or draw 25",
+     "uno card"
+    ]
+   },
+   {
+    "id": "fine",
+    "name": "This is Fine",
+    "shape": "ironic-denial",
+    "core": "Calmly insisting everything is fine while surrounded by disaster.",
+    "slots": [
+     "the escalating disaster or stressful situation (often blank)",
+     "calm denial line, e.g. 'this is fine'"
+    ],
+    "aliases": [
+     "this is fine dog",
+     "burning room dog"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "patrick#1",
+  "request": "patrick star suggesting we just take the bug and move it into a different file",
+  "style": "visual",
+  "target": {
+   "id": "patrick",
+   "name": "Push it somewhere else Patrick",
+   "shape": "dialogue",
+   "core": "SpongeBob suggests an idea; Patrick says to push it somewhere else.",
+   "slots": [
+    "the suggestion or proposal",
+    "the rejection or deflection of the problem to somewhere else"
+   ],
+   "aliases": [
+    "push it somewhere else",
+    "push it somewhere else patrick",
+    "spongebob patrick"
+   ]
+  },
+  "picked": [
+   {
+    "id": "patricksays",
+    "name": "Patrick Says",
+    "shape": "other",
+    "core": "Patrick confidently raising a finger to share a dumb or naively literal piece of wisdom.",
+    "slots": [
+     "the setup",
+     "patrick's dumb insight"
+    ],
+    "aliases": [
+     "patrick says",
+     "patrick star finger",
+     "patrick idea",
+     "patrick wisdom"
+    ]
+   },
+   {
+    "id": "wediditpatrickwesavedthecity",
+    "name": "We Did It Patrick We Saved The City",
+    "shape": "irony",
+    "core": "SpongeBob celebrating in front of a burning city, used for declaring victory while causing obvious disaster.",
+    "slots": [
+     "the 'fix'",
+     "we did it, we saved it"
+    ],
+    "aliases": [
+     "We Saved The City",
+     "Spongebob Burning City",
+     "We Did It Patrick",
+     "Saved The City"
+    ]
+   },
+   {
+    "id": "intelligentdog",
+    "name": "Intelligent Dog",
+    "shape": "exaggeration",
+    "core": "A dog in glasses and scarf delivering a pretentious or falsely smart observation.",
+    "slots": [
+     "setup",
+     "smug insight"
+    ],
+    "aliases": [
+     "smart dog",
+     "dog with glasses",
+     "hipster dog",
+     "intellectual dog"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "remembers#1",
+  "request": "remember when games came w a paper manual and no day one patch",
+  "style": "situation",
+  "target": {
+   "id": "remembers",
+   "name": "Pepperidge Farm Remembers",
+   "shape": "other",
+   "core": "Old-timey nostalgia: Pepperidge Farm 'remembers' something from the past, asked of the audience.",
+   "slots": [
+    "the nostalgic thing or question about the past",
+    "'pepperidge farm remembers' or a tweak of it"
+   ],
+   "aliases": [
+    "pepperidge farm remembers",
+    "pepperidge farm"
+   ]
+  },
+  "picked": [
+   {
+    "id": "abesimpsontellingstories",
+    "name": "Abe Simpson Telling Stories",
+    "shape": "irony",
+    "core": "Grampa Simpson telling kids a story from his past; used for old-timer tales about how things used to be.",
+    "slots": [
+     "the old-timer story"
+    ],
+    "aliases": [
+     "abe simpson story",
+     "grampa simpson",
+     "back in my day",
+     "old man yells stories"
+    ]
+   },
+   {
+    "id": "wolverineremember",
+    "name": "Wolverine Remember",
+    "shape": "before-after",
+    "core": "Wolverine wistfully gazing at a framed picture, used for nostalgically missing something from the past.",
+    "slots": [
+     "me now",
+     "the thing I miss in the frame"
+    ],
+    "aliases": [
+     "wolverine remember",
+     "wolverine picture frame",
+     "wolverine nostalgia",
+     "wolverine looking at photo"
+    ]
+   },
+   {
+    "id": "backinmyday",
+    "name": "Back In My Day",
+    "shape": "comparison",
+    "core": "A grumpy old man complains that things were harder in his day, mocking nostalgia for tougher times.",
+    "slots": [
+     "back in my day",
+     "the old hardship"
+    ],
+    "aliases": [
+     "back in my day",
+     "grumpy old man",
+     "angry old man pointing",
+     "old man yells"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "same#1",
+  "request": "pam from the office holding two pictures, my resume and the job posting, saying no difference",
+  "style": "visual",
+  "target": {
+   "id": "same",
+   "name": "They're The Same Picture",
+   "shape": "labeling",
+   "core": "Pointing at two things claiming they're identical, while a third labels the sameness.",
+   "slots": [
+    "first thing claimed to be the same",
+    "second thing claimed to be the same",
+    "the shared label that makes them equivalent"
+   ],
+   "aliases": [
+    "they're the same picture",
+    "same picture"
+   ]
+  },
+  "picked": [
+   {
+    "id": "corporateneedsyoutofindthedi",
+    "name": "Corporate Needs You To Find The Differences",
+    "shape": "comparison",
+    "core": "Pam says two pictures are the same; used when two things claimed to be different are identical.",
+    "slots": [
+     "first picture",
+     "second picture"
+    ],
+    "aliases": [
+     "theyre the same picture",
+     "find the differences",
+     "pam same picture",
+     "corporate wants you"
+    ]
+   },
+   {
+    "id": "drake",
+    "name": "Drakeposting",
+    "shape": "binary-choice",
+    "core": "Drake rejects one thing and approves of another.",
+    "slots": [
+     "the rejected option",
+     "the preferred option"
+    ],
+    "aliases": [
+     "drakeposting",
+     "drake hotline bling",
+     "drake no yes"
+    ]
+   },
+   {
+    "id": "comparisontable",
+    "name": "Comparison Table",
+    "shape": "comparison",
+    "core": "A blank T-chart to list two things side by side, usually rigged so one side wins.",
+    "slots": [
+     "left heading",
+     "right heading",
+     "left points",
+     "right points",
+     "conclusion"
+    ],
+    "aliases": [
+     "t chart",
+     "comparison table",
+     "pros and cons",
+     "t-chart"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "say#1",
+  "request": "simpsons crowd begging the senior dev to say it depends in the design review",
+  "style": "visual",
+  "target": {
+   "id": "say",
+   "name": "Say the Line, Bart!",
+   "shape": "dialogue",
+   "core": "A character is goaded into saying a signature catchphrase they're known for.",
+   "slots": [
+    "the prompt urging someone to say their catchphrase",
+    "the signature line or clich\u00e9 response"
+   ],
+   "aliases": [
+    "say the line bart",
+    "say it bart"
+   ]
+  },
+  "picked": [
+   {
+    "id": "crowd",
+    "name": "Soccer Celebration In A Bar",
+    "shape": "labeling",
+    "core": "A tense moment resolves and a crowd erupts in joyous celebration over a small win.",
+    "slots": [
+     "the nervous action or anticipated event",
+     "the good outcome that triggers the celebration"
+    ],
+    "aliases": [
+     "soccer celebration",
+     "bar celebration",
+     "crowd cheering"
+    ]
+   },
+   {
+    "id": "sayitagaindexter",
+    "name": "Say It Again, Dexter",
+    "shape": "approval",
+    "core": "Dexter, dazed after a kiss, wants to hear something so pleasing said again.",
+    "slots": [
+     "the delightful thing said",
+     "say it again"
+    ],
+    "aliases": [
+     "say it again dexter",
+     "dexter kiss",
+     "dexter's laboratory kiss",
+     "say it again"
+    ]
+   },
+   {
+    "id": "dependsonthecontext",
+    "name": "Depends On The Context",
+    "shape": "dialogue",
+    "core": "Someone asks a simple question and the Doctor launches into an overcomplicated 'it depends on the context' answer.",
+    "slots": [
+     "the simple question",
+     "it depends",
+     "on the context",
+     "the overcomplicated detail"
+    ],
+    "aliases": [
+     "depends on the context",
+     "doctor who it depends",
+     "peter capaldi explaining",
+     "clara asks doctor"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "soup-nazi#1",
+  "request": "telling my roommate he gets none of my leftovers ever again after he ate my fries",
+  "style": "situation",
+  "target": {
+   "id": "soup-nazi",
+   "name": "No Soup for You",
+   "shape": "other",
+   "core": "Denying someone something they want, shouted with 'No soup for you!'",
+   "slots": [
+    "the denial, 'no X for you!'",
+    "often blank"
+   ],
+   "aliases": [
+    "no soup for you",
+    "soup nazi",
+    "seinfeld soup nazi"
+   ]
+  },
+  "picked": [
+   {
+    "id": "saythatagainidareyou",
+    "name": "Say That Again I Dare You",
+    "shape": "warning",
+    "core": "Jules from Pulp Fiction pointing a gun, daring someone to repeat something wrong or annoying.",
+    "slots": [
+     "the annoying thing said",
+     "say it again, I dare you"
+    ],
+    "aliases": [
+     "say that again I dare you",
+     "Samuel L Jackson Pulp Fiction",
+     "Jules Winnfield",
+     "say what again"
+    ]
+   },
+   {
+    "id": "pissedoffobama",
+    "name": "Pissed Off Obama",
+    "shape": "warning",
+    "core": "A stern, pointing Obama calling someone out for something they did, like an angry personal accusation.",
+    "slots": [
+     "the offense",
+     "the stern callout"
+    ],
+    "aliases": [
+     "angry obama pointing",
+     "obama pointing",
+     "obama mad",
+     "obama finger point"
+    ]
+   },
+   {
+    "id": "unodraw25cards",
+    "name": "UNO Draw 25 Cards",
+    "shape": "rejection",
+    "core": "Someone would rather suffer a huge penalty than do one simple, reasonable thing.",
+    "slots": [
+     "the simple thing to do",
+     "the stubborn person"
+    ],
+    "aliases": [
+     "draw 25",
+     "uno draw 25",
+     "uno or draw 25",
+     "uno card"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "ugandanknuck#1",
+  "request": "my gps lost signal and now im asking strangers if they know the way lol",
+  "style": "situation",
+  "target": {
+   "id": "ugandanknuck",
+   "name": "Ugandan Knuckles",
+   "shape": "question",
+   "core": "Crowd of Ugandan Knuckles characters demands that others 'show de wey' or asks 'do u know de wey'.",
+   "slots": [
+    "often blank",
+    "the 'do u know de wey' demand or question"
+   ],
+   "aliases": [
+    "do you know de wey",
+    "da wae"
+   ]
+  },
+  "picked": [
+   {
+    "id": "fine",
+    "name": "This is Fine",
+    "shape": "ironic-denial",
+    "core": "Calmly insisting everything is fine while surrounded by disaster.",
+    "slots": [
+     "the escalating disaster or stressful situation (often blank)",
+     "calm denial line, e.g. 'this is fine'"
+    ],
+    "aliases": [
+     "this is fine dog",
+     "burning room dog"
+    ]
+   },
+   {
+    "id": "sohot",
+    "name": "So Hot Right Now",
+    "shape": "hot-take",
+    "core": "Mugatu's deadpan declaration that something is 'so hot right now', mocking fads.",
+    "slots": [
+     "the trendy thing, 'X is'",
+     "'so hot right now' punchline"
+    ],
+    "aliases": [
+     "mugatu so hot right now",
+     "so hot right now",
+     "mugatu"
+    ]
+   },
+   {
+    "id": "kidandmap",
+    "name": "Kid And Map",
+    "shape": "escalation",
+    "core": "A schoolboy points at the map, a close-up of his finger, then he stares smugly at the camera; used to point out something and land a deadpan punchline.",
+    "slots": [
+     "setup",
+     "zoom in on the detail",
+     "smug conclusion"
+    ],
+    "aliases": [
+     "kid pointing at map",
+     "boy and map",
+     "map kid",
+     "kid points at map"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "xy#1",
+  "request": "opened my inbox after vacation and theres unread slack messages literally everywhere",
+  "style": "situation",
+  "target": {
+   "id": "xy",
+   "name": "X all the Y",
+   "shape": "exaggeration",
+   "core": "Buzz Lightyear presents 'X, X everywhere' with a sweeping gesture, stating abundance.",
+   "slots": [
+    "the X, the thing there is a lot of",
+    "'X everywhere' or 'all the Y' ending"
+   ],
+   "aliases": [
+    "x x everywhere",
+    "buzz lightyear x everywhere"
+   ]
+  },
+  "picked": [
+   {
+    "id": "buzz",
+    "name": "X, X Everywhere",
+    "shape": "exaggeration",
+    "core": "Buzz shows Woody that something is everywhere: 'X, X everywhere'.",
+    "slots": [
+     "the thing being noticed",
+     "the same thing repeated 'everywhere'"
+    ],
+    "aliases": [
+     "x x everywhere",
+     "buzz and woody"
+    ]
+   },
+   {
+    "id": "busy",
+    "name": "Busy",
+    "shape": "exaggeration",
+    "core": "An office worker buried under a mountain of paperwork; used for being utterly swamped with work.",
+    "slots": [
+     "the setup",
+     "the overwhelming pile"
+    ],
+    "aliases": [
+     "Buried In Paperwork",
+     "Overwhelmed Office Worker",
+     "Paperwork Pile",
+     "Too Much Work"
+    ]
+   },
+   {
+    "id": "floodingthumbsup",
+    "name": "Flooding Thumbs Up",
+    "shape": "irony",
+    "core": "Two thumbs up sticking out of floodwater, used for insisting things are fine while completely sunk.",
+    "slots": [
+     "the overwhelming situation",
+     "I'm fine"
+    ],
+    "aliases": [
+     "Drowning Thumbs Up",
+     "Thumbs Up Underwater",
+     "Sinking Thumbs Up",
+     "Everything Is Fine Flood"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "thescrolloftruth#1",
+  "request": "reading the bit where my fantasy football team is just bad and tossing it away angry",
+  "style": "situation",
+  "target": {
+   "id": "thescrolloftruth",
+   "name": "The Scroll Of Truth",
+   "shape": "rejection",
+   "core": "Someone finds the scroll of truth, reads an uncomfortable fact, and angrily throws it away; used for truths people refuse to accept.",
+   "slots": [
+    "the unwelcome truth"
+   ],
+   "aliases": [
+    "scroll of truth",
+    "nyeh",
+    "truth scroll",
+    "uncomfortable truth"
+   ]
+  },
+  "picked": [
+   {
+    "id": "spongebobburningpaper",
+    "name": "Spongebob Burning Paper",
+    "shape": "rejection",
+    "core": "Spongebob reads a paper, gets angry, and throws it in the fire; used for rejecting something that offends you.",
+    "slots": [
+     "the offending thing written on the paper"
+    ],
+    "aliases": [
+     "Spongebob burning paper",
+     "Spongebob throws paper in fire",
+     "Spongebob reading paper",
+     "burn it"
+    ]
+   },
+   {
+    "id": "angrytomreadingbook",
+    "name": "Angry Tom Reading Book",
+    "shape": "reaction",
+    "core": "Tom fuming after reading something, used for infuriating text or news.",
+    "slots": [
+     "what he read"
+    ],
+    "aliases": [
+     "angry tom",
+     "tom reading book",
+     "tom angry reading",
+     "furious tom"
+    ]
+   },
+   {
+    "id": "tableflipguy",
+    "name": "Table Flip Guy",
+    "shape": "reaction",
+    "core": "A rage-comic guy angrily flips a table, used for reaching your breaking point and giving up on something in fury.",
+    "slots": [
+     "what finally set you off",
+     "the thing you flip/abandon"
+    ],
+    "aliases": [
+     "flipping table",
+     "table flip",
+     "rage flip",
+     "rage comic table"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "clownmakeup#1",
+  "request": "said ill just fix one thing, then refactored, then rewrote it in rust, now nothing works",
+  "style": "situation",
+  "target": {
+   "id": "clownmakeup",
+   "name": "Clown Applying Makeup",
+   "shape": "escalation",
+   "core": "Each step of a bad decision makes you more of a clown, ending in full clown.",
+   "slots": [
+    "first small mistake",
+    "second step",
+    "third step",
+    "final step: full clown"
+   ],
+   "aliases": [
+    "putting on clown makeup",
+    "clown makeup",
+    "clown applying makeup"
+   ]
+  },
+  "picked": [
+   {
+    "id": "gb",
+    "name": "Galaxy Brain",
+    "shape": "escalation",
+    "core": "Four tiers of increasingly enlightened thinking, ending in absurd or overcomplicated 'genius'.",
+    "slots": [
+     "basic, ordinary take",
+     "slightly smarter take",
+     "more advanced take",
+     "absurdly elevated final take"
+    ],
+    "aliases": [
+     "expanding brain",
+     "galaxy brain",
+     "big brain"
+    ]
+   },
+   {
+    "id": "fine",
+    "name": "This is Fine",
+    "shape": "ironic-denial",
+    "core": "Calmly insisting everything is fine while surrounded by disaster.",
+    "slots": [
+     "the escalating disaster or stressful situation (often blank)",
+     "calm denial line, e.g. 'this is fine'"
+    ],
+    "aliases": [
+     "this is fine dog",
+     "burning room dog"
+    ]
+   },
+   {
+    "id": "tenguy",
+    "name": "10 Guy",
+    "shape": "exaggeration",
+    "core": "Absurdly illogical behavior in response to a problem, one dumb fix.",
+    "slots": [
+     "the problem or confusing situation",
+     "the nonsensical, irrational reaction"
+    ],
+    "aliases": [
+     "10 guy",
+     "ten guy",
+     "confused guy"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "awkwardmomentsealion#1",
+  "request": "when you wave back at someone who was waving at the person behind you",
+  "style": "situation",
+  "target": {
+   "id": "awkwardmomentsealion",
+   "name": "Awkward Moment Sealion",
+   "shape": "reaction",
+   "core": "A side-eyeing seal, used for socially awkward or uncomfortable moments.",
+   "slots": [
+    "the setup",
+    "the awkward moment"
+   ],
+   "aliases": [
+    "awkward seal",
+    "awkward moment seal",
+    "awkward sealion",
+    "uncomfortable seal"
+   ]
+  },
+  "picked": [
+   {
+    "id": "ams",
+    "name": "Awkward Moment Seal",
+    "shape": "before-after",
+    "core": "A relatable situation followed by an embarrassing awkward moment.",
+    "slots": [
+     "when you're doing something ordinary",
+     "the cringey awkward interruption or outcome"
+    ],
+    "aliases": [
+     "awkward moment seal",
+     "awkward seal"
+    ]
+   },
+   {
+    "id": "facepalmbear",
+    "name": "Facepalm Bear",
+    "shape": "self-own",
+    "core": "A polar bear cub covering its face with its paw, used for embarrassing realizations or awkward social blunders.",
+    "slots": [
+     "the awkward situation",
+     "the cringe outcome"
+    ],
+    "aliases": [
+     "facepalm bear",
+     "embarrassed bear",
+     "polar bear facepalm",
+     "awkward bear"
+    ]
+   },
+   {
+    "id": "smilingcat",
+    "name": "Smiling Cat",
+    "shape": "reaction",
+    "core": "A wide-eyed cat with an awkward forced smile, used for nervously pretending everything is fine or innocently hiding something.",
+    "slots": [
+     "situation",
+     "awkward reaction"
+    ],
+    "aliases": [
+     "smiling cat",
+     "awkward smile cat",
+     "creepy smiling cat",
+     "cat smile"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "notthesame#1",
+  "request": "you go to the gym to get fit. i go to the gym to use their wifi and showers. we're different",
+  "style": "situation",
+  "target": {
+   "id": "notthesame",
+   "name": "We Are Not The Same",
+   "shape": "comparison",
+   "core": "Contrasting how \"you\" do something with how \"I\" do it, smugly, ending in \"we are not the same\".",
+   "slots": [
+    "you do X",
+    "I do X, but different",
+    "\"we are not the same\""
+   ],
+   "aliases": [
+    "gus fring",
+    "we are not the same",
+    "i am not like you"
+   ]
+  },
+  "picked": [
+   {
+    "id": "drake",
+    "name": "Drakeposting",
+    "shape": "binary-choice",
+    "core": "Drake rejects one thing and approves of another.",
+    "slots": [
+     "the rejected option",
+     "the preferred option"
+    ],
+    "aliases": [
+     "drakeposting",
+     "drake hotline bling",
+     "drake no yes"
+    ]
+   },
+   {
+    "id": "poorsquidwardvsrichspongebob",
+    "name": "Poor Squidward Vs Rich Spongebob",
+    "shape": "comparison",
+    "core": "Broke Squidward begging in a box next to rich, smug SpongeBob; used to contrast the poor option with the luxurious one.",
+    "slots": [
+     "the broke one",
+     "the rich one"
+    ],
+    "aliases": [
+     "poor squidward rich spongebob",
+     "rich spongebob",
+     "broke squidward",
+     "poor vs rich"
+    ]
+   },
+   {
+    "id": "guysmokingwhiletwopeoplefigh",
+    "name": "Guy Smoking While Two People Fight",
+    "shape": "labeling",
+    "core": "Two people brawl over something while a third calmly ignores it all and does his own thing.",
+    "slots": [
+     "the people fighting",
+     "the unbothered one"
+    ],
+    "aliases": [
+     "guy smoking while girls fight",
+     "vape guy fight",
+     "unbothered smoking guy",
+     "chillin while they fight"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "inception#1",
+  "request": "a meeting to plan the meeting about planning our meetings",
+  "style": "situation",
+  "target": {
+   "id": "inception",
+   "name": "Inception",
+   "shape": "escalation",
+   "core": "Characters proposing to go a level deeper, used for nested or recursive ideas that spiral absurdly.",
+   "slots": [
+    "first proposal",
+    "going deeper",
+    "the absurd nested result"
+   ],
+   "aliases": [
+    "inception",
+    "we need to go deeper",
+    "dicaprio inception",
+    "inception three panel"
+   ]
+  },
+  "picked": [
+   {
+    "id": "gb",
+    "name": "Galaxy Brain",
+    "shape": "escalation",
+    "core": "Four tiers of increasingly enlightened thinking, ending in absurd or overcomplicated 'genius'.",
+    "slots": [
+     "basic, ordinary take",
+     "slightly smarter take",
+     "more advanced take",
+     "absurdly elevated final take"
+    ],
+    "aliases": [
+     "expanding brain",
+     "galaxy brain",
+     "big brain"
+    ]
+   },
+   {
+    "id": "gru",
+    "name": "Gru's Plan",
+    "shape": "plan-backfire",
+    "core": "A confident four-step plan whose last step reveals it backfired, repeating the previous step.",
+    "slots": [
+     "step 1 of the plan",
+     "step 2 of the plan",
+     "step 3, the unexpected problem",
+     "step 4, same problem repeated with shock"
+    ],
+    "aliases": [
+     "gru's plan",
+     "gru plan"
+    ]
+   },
+   {
+    "id": "skeletoncomputer",
+    "name": "Skeleton Waiting at Computer",
+    "shape": "exaggeration",
+    "core": "A skeleton still sitting at its desk, used for waiting absurdly long for something to finish or reply.",
+    "slots": [
+     "what you're waiting for",
+     "how long it's been"
+    ],
+    "aliases": [
+     "skeleton computer",
+     "waiting skeleton",
+     "skeleton at desk",
+     "still waiting"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "angrybaby#1",
+  "request": "me screaming like a toddler when the wifi drops for 3 seconds",
+  "style": "situation",
+  "target": {
+   "id": "angrybaby",
+   "name": "Angry Baby",
+   "shape": "reaction",
+   "core": "A baby screaming in outrage, used for overreacting with fury to a small inconvenience.",
+   "slots": [
+    "the trigger",
+    "furious reaction"
+   ],
+   "aliases": [
+    "angry baby",
+    "screaming baby",
+    "mad baby",
+    "outraged baby"
+   ]
+  },
+  "picked": [
+   {
+    "id": "childrenscaredofrabbit",
+    "name": "Children Scared Of Rabbit",
+    "shape": "exaggeration",
+    "core": "Two kids cowering in terror from a tiny harmless bunny, used for overreacting to something trivial.",
+    "slots": [
+     "the terrified people",
+     "the harmless thing"
+    ],
+    "aliases": [
+     "kids scared of bunny",
+     "scared of rabbit",
+     "children afraid of bunny",
+     "terrified kids bunny"
+    ]
+   },
+   {
+    "id": "spongebobyelling",
+    "name": "Spongebob Yelling",
+    "shape": "exaggeration",
+    "core": "Spongebob screams in front of a stunned crowd, for an over-the-top outburst nobody asked for.",
+    "slots": [
+     "the setup",
+     "the screamed outburst"
+    ],
+    "aliases": [
+     "Spongebob Yelling",
+     "Spongebob Screaming",
+     "Spongebob crowd scream",
+     "Spongebob outburst"
+    ]
+   },
+   {
+    "id": "scaredhamster",
+    "name": "Scared Hamster",
+    "shape": "reaction",
+    "core": "A hamster frozen in open-mouthed shock, used for sudden fear or alarm at something small.",
+    "slots": [
+     "the scary thing",
+     "the reaction"
+    ],
+    "aliases": [
+     "scared hamster",
+     "shocked hamster",
+     "surprised hamster",
+     "hamster scream"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "ifearnoman#1",
+  "request": "i fear nothing except my cat staring at the wall at 3am",
+  "style": "situation",
+  "target": {
+   "id": "ifearnoman",
+   "name": "I Fear No Man",
+   "shape": "irony",
+   "core": "The TF2 Heavy says he fears no man, but that thing scares him; the blank panel shows the one harmless-looking thing that terrifies you.",
+   "slots": [
+    "the scary thing"
+   ],
+   "aliases": [
+    "i fear no man",
+    "but that thing it scares me",
+    "heavy fears no man",
+    "tf2 heavy scared"
+   ]
+  },
+  "picked": [
+   {
+    "id": "scaredcat",
+    "name": "Scared Cat",
+    "shape": "reaction",
+    "core": "A wide-eyed horrified cat, used for sudden shock or panic at a realisation.",
+    "slots": [
+     "the shocking realisation",
+     "the panicked reaction"
+    ],
+    "aliases": [
+     "scared cat",
+     "shocked cat",
+     "horrified cat",
+     "surprised cat"
+    ]
+   },
+   {
+    "id": "unsettledtom",
+    "name": "Unsettled Tom",
+    "shape": "reaction",
+    "core": "Tom's uneasy, side-eyed stare, used for something quietly disturbing or suspicious that makes you uncomfortable.",
+    "slots": [
+     "the unsettling situation"
+    ],
+    "aliases": [
+     "unsettled tom",
+     "tom side eye",
+     "uncomfortable tom",
+     "tom and jerry stare"
+    ]
+   },
+   {
+    "id": "harold",
+    "name": "Hide the Pain Harold",
+    "shape": "ironic-denial",
+    "core": "Forced smile masking internal pain or embarrassment.",
+    "slots": [
+     "the awkward or painful situation",
+     "what he's pretending, or the detail that stings"
+    ],
+    "aliases": [
+     "hide the pain harold",
+     "harold"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "idontwanttoplaywithyouanymor#1",
+  "request": "my dog ignoring his old favorite toy the second we bought him a new one",
+  "style": "situation",
+  "target": {
+   "id": "idontwanttoplaywithyouanymor",
+   "name": "I Don't Want To Play With You Anymore",
+   "shape": "rejection",
+   "core": "Andy dropping Woody in Toy Story 2's nightmare, used when someone abandons an old favourite for something new.",
+   "slots": [
+    "the thing being dropped",
+    "who drops it"
+   ],
+   "aliases": [
+    "i don't want to play with you anymore",
+    "andy drops woody",
+    "toy story woody dropped",
+    "woody nightmare"
+   ]
+  },
+  "picked": [
+   {
+    "id": "andydroppingwoody",
+    "name": "Andy Dropping Woody",
+    "shape": "rejection",
+    "core": "Andy carelessly drops Woody, his old favourite; used for abandoning something you used to love for something new.",
+    "slots": [
+     "the old favourite being dropped",
+     "the person dropping it"
+    ],
+    "aliases": [
+     "Andy Drops Woody",
+     "Toy Story Dropping Woody",
+     "Woody Abandoned",
+     "Andy Throwing Woody"
+    ]
+   },
+   {
+    "id": "dg",
+    "name": "Distracted Girlfriend",
+    "shape": "labeling",
+    "core": "Gender-swapped Distracted Boyfriend: someone is lured away from their current loyalty by a shinier alternative.",
+    "slots": [
+     "the new tempting thing",
+     "the person being lured away",
+     "the neglected existing thing"
+    ],
+    "aliases": [
+     "distracted girlfriend",
+     "distracted boyfriend variant",
+     "girl looking at other guy"
+    ]
+   },
+   {
+    "id": "swimmingpoolkids",
+    "name": "Swimming Pool Kids",
+    "shape": "labeling",
+    "core": "A mom plays with one kid while another drowns unnoticed and a skeleton sits forgotten below, used for neglecting old things for a new favourite.",
+    "slots": [
+     "the new favourite",
+     "you",
+     "the old thing being ignored",
+     "the long-forgotten thing"
+    ],
+    "aliases": [
+     "swimming pool kids",
+     "drowning kid meme",
+     "skeleton at bottom of pool",
+     "mom ignoring drowning kid"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "redpillbluepill#1",
+  "request": "choosing between checking my bank balance or just assuming im fine",
+  "style": "situation",
+  "target": {
+   "id": "redpillbluepill",
+   "name": "Red Pill Blue Pill",
+   "shape": "binary-choice",
+   "core": "Choose between a harsh truth (red pill) and a comfortable illusion (blue pill).",
+   "slots": [
+    "red pill: the harsh truth",
+    "blue pill: the comfy illusion"
+   ],
+   "aliases": [
+    "Red Pill Blue Pill",
+    "Matrix Pills",
+    "Morpheus pills",
+    "Take the red pill"
+   ]
+  },
+  "picked": [
+   {
+    "id": "ds",
+    "name": "Daily Struggle",
+    "shape": "dilemma",
+    "core": "A sweating man must choose between two equally agonizing buttons.",
+    "slots": [
+     "the first agonizing option",
+     "the second agonizing option",
+     "the person sweating over the choice"
+    ],
+    "aliases": [
+     "daily struggle",
+     "two buttons",
+     "sweating guy buttons"
+    ]
+   },
+   {
+    "id": "exit",
+    "name": "Left Exit 12 Off Ramp",
+    "shape": "binary-choice",
+    "core": "A driver swerves hard from the sensible highway to take an off-ramp for something unwise.",
+    "slots": [
+     "the sensible path continuing straight",
+     "the tempting off-ramp alternative",
+     "the car/person making the sudden swerve"
+    ],
+    "aliases": [
+     "left exit 12",
+     "exit 12 off ramp",
+     "car swerving exit"
+    ]
+   },
+   {
+    "id": "drake",
+    "name": "Drakeposting",
+    "shape": "binary-choice",
+    "core": "Drake rejects one thing and approves of another.",
+    "slots": [
+     "the rejected option",
+     "the preferred option"
+    ],
+    "aliases": [
+     "drakeposting",
+     "drake hotline bling",
+     "drake no yes"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "angelascareddwight#1",
+  "request": "enjoying my saturday then i see 14 slack notifications from my manager",
+  "style": "situation",
+  "target": {
+   "id": "angelascareddwight",
+   "name": "Angela Scared Dwight",
+   "shape": "before-after",
+   "core": "Dwight is happy until he notices Angela and panics; used when a good moment is ruined by noticing something.",
+   "slots": [
+    "happy situation",
+    "the thing you notice"
+   ],
+   "aliases": [
+    "dwight scared",
+    "dwight sees angela",
+    "dwight f**k",
+    "the office dwight panic"
+   ]
+  },
+  "picked": [
+   {
+    "id": "panik-kalm-panik",
+    "name": "Panik Kalm Panik",
+    "shape": "escalation",
+    "core": "Panic, then false reassurance, then even worse panic.",
+    "slots": [
+     "alarming thing, panic",
+     "reassuring explanation, calm",
+     "reveal that makes it worse, panic"
+    ],
+    "aliases": [
+     "panik kalm",
+     "panik kalm panik",
+     "panic calm panic"
+    ]
+   },
+   {
+    "id": "iscallingyou",
+    "name": "Is Calling You",
+    "shape": "warning",
+    "core": "An incoming phone call screen from someone or something, used when a dreaded responsibility or consequence comes calling.",
+    "slots": [
+     "who or what is calling"
+    ],
+    "aliases": [
+     "is calling you",
+     "incoming call meme",
+     "iphone call screen",
+     "x is calling"
+    ]
+   },
+   {
+    "id": "spongebobpanicinside",
+    "name": "SpongeBob Panic Inside",
+    "shape": "irony",
+    "core": "SpongeBob sitting calmly while a ghostly copy of him screams inside, used when you look composed on the outside but are panicking internally.",
+    "slots": [
+     "the stressful situation",
+     "calm outside, screaming inside"
+    ],
+    "aliases": [
+     "Internal Screaming SpongeBob",
+     "SpongeBob Calm Outside Panic Inside",
+     "Inner Panic SpongeBob",
+     "SpongeBob Screaming Inside"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "lordoftheringsmeatsbackonthe#1",
+  "request": "doctor said i can eat carbs again after the diet",
+  "style": "situation",
+  "target": {
+   "id": "lordoftheringsmeatsbackonthe",
+   "name": "Meat's Back on the Menu",
+   "shape": "approval",
+   "core": "A gleeful announcement that something once forbidden or scarce is allowed again, used when a restriction ends.",
+   "slots": [
+    "the restriction that just ended",
+    "meat's back on the menu, boys"
+   ],
+   "aliases": [
+    "meat's back on the menu",
+    "looks like meat's back on the menu boys",
+    "lotr orc meat",
+    "uruk-hai meat"
+   ]
+  },
+  "picked": [
+   {
+    "id": "sayitagaindexter",
+    "name": "Say It Again, Dexter",
+    "shape": "approval",
+    "core": "Dexter, dazed after a kiss, wants to hear something so pleasing said again.",
+    "slots": [
+     "the delightful thing said",
+     "say it again"
+    ],
+    "aliases": [
+     "say it again dexter",
+     "dexter kiss",
+     "dexter's laboratory kiss",
+     "say it again"
+    ]
+   },
+   {
+    "id": "drake",
+    "name": "Drakeposting",
+    "shape": "binary-choice",
+    "core": "Drake rejects one thing and approves of another.",
+    "slots": [
+     "the rejected option",
+     "the preferred option"
+    ],
+    "aliases": [
+     "drakeposting",
+     "drake hotline bling",
+     "drake no yes"
+    ]
+   },
+   {
+    "id": "pressingbothbuttons",
+    "name": "Pressing Both Buttons",
+    "shape": "binary-choice",
+    "core": "Instead of agonizing between two options, the guy smugly presses both, used for choosing everything at once.",
+    "slots": [
+     "option one",
+     "option two",
+     "smug guy who picked both"
+    ],
+    "aliases": [
+     "why not both buttons",
+     "two buttons both",
+     "press both buttons",
+     "daily struggle both"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "laughingvillains#1",
+  "request": "intern asked if we could just rewrite the whole app in a weekend",
+  "style": "situation",
+  "target": {
+   "id": "laughingvillains",
+   "name": "Laughing Villains",
+   "shape": "irony",
+   "core": "Dr. Evil and his henchmen burst out laughing, used for mocking a ridiculous suggestion or someone's naive plan.",
+   "slots": [
+    "the naive suggestion",
+    "the group laughing"
+   ],
+   "aliases": [
+    "laughing villains",
+    "dr evil laughing",
+    "austin powers laughing",
+    "evil laugh group"
+   ]
+  },
+  "picked": [
+   {
+    "id": "boardroom",
+    "name": "Boardroom Meeting Suggestion",
+    "shape": "rejection",
+    "core": "A boss asks for ideas; two safe ones get nods and the one sensible idea gets the person thrown out the window.",
+    "slots": [
+     "the boss's question",
+     "first bad idea",
+     "second bad idea",
+     "the sensible idea that gets him thrown out"
+    ],
+    "aliases": [
+     "boardroom suggestion",
+     "thrown out the window",
+     "meeting suggestion"
+    ]
+   },
+   {
+    "id": "mordor",
+    "name": "One Does Not Simply Walk into Mordor",
+    "shape": "advice",
+    "core": "Boromir warns that some task is far harder than people assume.",
+    "slots": [
+     "one does not simply",
+     "an task that sounds easy but is actually hard"
+    ],
+    "aliases": [
+     "one does not simply",
+     "boromir",
+     "walk into mordor"
+    ]
+   },
+   {
+    "id": "fine",
+    "name": "This is Fine",
+    "shape": "ironic-denial",
+    "core": "Calmly insisting everything is fine while surrounded by disaster.",
+    "slots": [
+     "the escalating disaster or stressful situation (often blank)",
+     "calm denial line, e.g. 'this is fine'"
+    ],
+    "aliases": [
+     "this is fine dog",
+     "burning room dog"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "whyistherumgone#1",
+  "request": "roommate finished the coffee again and didnt buy more",
+  "style": "situation",
+  "target": {
+   "id": "whyistherumgone",
+   "name": "Why Is the Rum Gone",
+   "shape": "reaction",
+   "core": "Jack Sparrow exasperatedly demands to know why something essential has run out.",
+   "slots": [
+    "the setup",
+    "why is the ___ gone"
+   ],
+   "aliases": [
+    "why is the rum gone",
+    "jack sparrow rum",
+    "but why",
+    "pirates rum gone"
+   ]
+  },
+  "picked": [
+   {
+    "id": "pissedoffobama",
+    "name": "Pissed Off Obama",
+    "shape": "warning",
+    "core": "A stern, pointing Obama calling someone out for something they did, like an angry personal accusation.",
+    "slots": [
+     "the offense",
+     "the stern callout"
+    ],
+    "aliases": [
+     "angry obama pointing",
+     "obama pointing",
+     "obama mad",
+     "obama finger point"
+    ]
+   },
+   {
+    "id": "skeletoncomputer",
+    "name": "Skeleton Waiting at Computer",
+    "shape": "exaggeration",
+    "core": "A skeleton still sitting at its desk, used for waiting absurdly long for something to finish or reply.",
+    "slots": [
+     "what you're waiting for",
+     "how long it's been"
+    ],
+    "aliases": [
+     "skeleton computer",
+     "waiting skeleton",
+     "skeleton at desk",
+     "still waiting"
+    ]
+   },
+   {
+    "id": "bernieiamonceagainaskingfory",
+    "name": "Bernie I Am Once Again Asking",
+    "shape": "reaction",
+    "core": "A weary, repeated plea: someone asking yet again for the same thing they keep having to request.",
+    "slots": [
+     "what you keep asking for"
+    ],
+    "aliases": [
+     "once again asking",
+     "bernie asking",
+     "financial support",
+     "bernie sanders mittens"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "nemoseagullsmine#1",
+  "request": "the whole office when someone says theres leftover pizza",
+  "style": "situation",
+  "target": {
+   "id": "nemoseagullsmine",
+   "name": "Nemo Seagulls Mine",
+   "shape": "labeling",
+   "core": "The Finding Nemo seagulls all screaming \"mine\", used for a crowd greedily fighting over one thing.",
+   "slots": [
+    "the crowd",
+    "the thing they all want"
+   ],
+   "aliases": [
+    "mine mine mine",
+    "finding nemo seagulls",
+    "seagulls mine",
+    "nemo seagulls"
+   ]
+  },
+  "picked": [
+   {
+    "id": "reactionguys",
+    "name": "Reaction Guys",
+    "shape": "binary-choice",
+    "core": "A group of guys staring blankly at one thing and then going wild for another, used to show what bores people versus what excites them.",
+    "slots": [
+     "the boring thing",
+     "the exciting thing"
+    ],
+    "aliases": [
+     "Reaction Guys",
+     "Bored Vs Excited Guys",
+     "Gamers Reaction",
+     "Unimpressed Then Hyped"
+    ]
+   },
+   {
+    "id": "angrychihuahuahappychihuahua",
+    "name": "Angry Chihuahua Happy Chihuahua",
+    "shape": "before-after",
+    "core": "The same chihuahua snarling then smiling, used for an instant mood flip when the situation changes.",
+    "slots": [
+     "what makes you angry",
+     "what instantly makes you happy"
+    ],
+    "aliases": [
+     "angry chihuahua happy chihuahua",
+     "angry dog happy dog",
+     "chihuahua mood swing",
+     "snarling then smiling dog"
+    ]
+   },
+   {
+    "id": "drake",
+    "name": "Drakeposting",
+    "shape": "binary-choice",
+    "core": "Drake rejects one thing and approves of another.",
+    "slots": [
+     "the rejected option",
+     "the preferred option"
+    ],
+    "aliases": [
+     "drakeposting",
+     "drake hotline bling",
+     "drake no yes"
+    ]
+   }
+  ]
+ }
+]

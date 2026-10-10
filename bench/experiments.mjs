@@ -144,7 +144,11 @@ export const EXPERIMENTS = {
     },
     pick: writerPick('sonnet'),
   },
+  'e15-production-opus': null,
   // Everything that might help together.
   'e8-combined': { expand: expandHyde, search: V, shortlistAsync: async (q, lib, r, llm) => { const a = await catalogShortlist(q, lib, r, llm); const b = await rerankVisual(200, 25)(q, lib, r, llm); return [...new Set([...b.slice(0, 25), ...a.slice(0, 15), ...b])].slice(0, 40) }, pick: writerPick('sonnet') },
   'e14-hyde-rerank': { expand: expandHyde, search: V, shortlistAsync: rerankVisual(200, 25), pick: writerPick('sonnet') },
 }
+
+EXPERIMENTS['e15-production-opus'] = { ...EXPERIMENTS['e15-production'], pick: writerPick('opus') }
+EXPERIMENTS['e1-current-opus'] = { expand: expandCurrent, pick: writerPick('opus') }

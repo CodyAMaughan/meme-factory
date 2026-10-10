@@ -1,0 +1,1958 @@
+[
+ {
+  "qid": "itsbeen84years#1",
+  "request": "waiting for my package from overseas shipping",
+  "style": "situation",
+  "target": {
+   "id": "itsbeen84years",
+   "name": "It's Been 84 Years",
+   "shape": "exaggeration",
+   "core": "Old Rose from Titanic saying \"it's been 84 years\", used when something feels like it took forever.",
+   "slots": [
+    "the thing that took forever"
+   ],
+   "aliases": [
+    "84 years",
+    "its been 84 years",
+    "titanic old rose",
+    "been forever"
+   ]
+  },
+  "picked": [
+   {
+    "id": "waitingskeleton",
+    "name": "Waiting Skeleton",
+    "shape": "exaggeration",
+    "core": "Waiting so long for something that you've died and decomposed.",
+    "slots": [
+     "setup",
+     "what you're still waiting for"
+    ],
+    "aliases": [
+     "skeleton waiting",
+     "still waiting",
+     "skeleton on bench",
+     "me waiting"
+    ]
+   },
+   {
+    "id": "skeletoncomputer",
+    "name": "Skeleton Waiting at Computer",
+    "shape": "exaggeration",
+    "core": "A skeleton still sitting at its desk, used for waiting absurdly long for something to finish or reply.",
+    "slots": [
+     "what you're waiting for",
+     "how long it's been"
+    ],
+    "aliases": [
+     "skeleton computer",
+     "waiting skeleton",
+     "skeleton at desk",
+     "still waiting"
+    ]
+   },
+   {
+    "id": "illjustwaithere",
+    "name": "I'll Just Wait Here",
+    "shape": "before-after",
+    "core": "A man waiting at a computer turns into a skeleton, used for things that take forever.",
+    "slots": [
+     "what you're waiting for",
+     "how long it takes"
+    ],
+    "aliases": [
+     "i'll just wait here",
+     "waiting skeleton",
+     "skeleton computer",
+     "still waiting"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "peterparkerreadingabook#1",
+  "request": "reading the terms of service and it says they own my firstborn",
+  "style": "situation",
+  "target": {
+   "id": "peterparkerreadingabook",
+   "name": "Peter Parker Reading A Book",
+   "shape": "reaction",
+   "core": "Peter Parker reads something in a book and turns to stare in disbelief, used for reading something absurd.",
+   "slots": [
+    "what the book says"
+   ],
+   "aliases": [
+    "peter parker book",
+    "spiderman reading",
+    "60s spiderman reading",
+    "peter parker reads"
+   ]
+  },
+  "picked": [
+   {
+    "id": "pikachu",
+    "name": "Surprised Pikachu",
+    "shape": "irony",
+    "core": "Shock at an outcome that was obvious from what you did.",
+    "slots": [
+     "what you did",
+     "the obvious consequence",
+     "who is surprised (often \"me:\")"
+    ],
+    "aliases": [
+     "shocked pikachu",
+     "surprised pikachu",
+     "pikachu face"
+    ]
+   },
+   {
+    "id": "hewillnever",
+    "name": "He Will Never",
+    "shape": "plan-backfires",
+    "core": "Cereal Guy reads a sad statement then spits out his cereal at a twist ending, used for a sympathetic setup with a shocking or absurd punchline.",
+    "slots": [
+     "the sad setup",
+     "the shocking twist"
+    ],
+    "aliases": [
+     "Cereal Guy",
+     "Cereal Guy Spitting",
+     "He Will Never Have A Girlfriend",
+     "Spit Take Rage Comic"
+    ]
+   },
+   {
+    "id": "scaredcat",
+    "name": "Scared Cat",
+    "shape": "reaction",
+    "core": "A wide-eyed horrified cat, used for sudden shock or panic at a realisation.",
+    "slots": [
+     "the shocking realisation",
+     "the panicked reaction"
+    ],
+    "aliases": [
+     "scared cat",
+     "shocked cat",
+     "horrified cat",
+     "surprised cat"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "fordummiesbook#1",
+  "request": "my roommate needs a beginners book on how to load a dishwasher",
+  "style": "situation",
+  "target": {
+   "id": "fordummiesbook",
+   "name": "For Dummies Book",
+   "shape": "labeling",
+   "core": "A fake For Dummies book cover titled with a basic skill someone clearly lacks.",
+   "slots": [
+    "topic of the book"
+   ],
+   "aliases": [
+    "for dummies",
+    "for dummies book",
+    "dummies cover",
+    "x for dummies"
+   ]
+  },
+  "picked": [
+   {
+    "id": "fordummies",
+    "name": "For Dummies",
+    "shape": "irony",
+    "core": "A fake For Dummies book cover, used to mock someone who needs an idiot's guide for something basic.",
+    "slots": [
+     "the topic (before 'For Dummies')",
+     "the subtitle or tagline"
+    ],
+    "aliases": [
+     "for dummies book",
+     "dummies book cover",
+     "for dummies",
+     "idiots guide"
+    ]
+   },
+   {
+    "id": "mordor",
+    "name": "One Does Not Simply Walk into Mordor",
+    "shape": "advice",
+    "core": "Boromir warns that some task is far harder than people assume.",
+    "slots": [
+     "one does not simply",
+     "an task that sounds easy but is actually hard"
+    ],
+    "aliases": [
+     "one does not simply",
+     "boromir",
+     "walk into mordor"
+    ]
+   },
+   {
+    "id": "cbg",
+    "name": "Comic Book Guy",
+    "shape": "hot-take",
+    "core": "Comic Book Guy pedantically declares something the worst ever, fanboy-style.",
+    "slots": [
+     "often blank",
+     "'Worst X ever' pedantic complaint"
+    ],
+    "aliases": [
+     "comic book guy",
+     "worst episode ever"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "vegetaover9000#1",
+  "request": "my screen time this week is absurdly high",
+  "style": "situation",
+  "target": {
+   "id": "vegetaover9000",
+   "name": "Vegeta Over 9000",
+   "shape": "exaggeration",
+   "core": "Vegeta crushing his scouter in disbelief, for a number or level that is absurdly high.",
+   "slots": [
+    "what was measured",
+    "it's over 9000"
+   ],
+   "aliases": [
+    "its over 9000",
+    "over 9000",
+    "vegeta scouter",
+    "vegeta power level"
+   ]
+  },
+  "picked": [
+   {
+    "id": "toohigh",
+    "name": "The Rent Is Too Damn High",
+    "shape": "hot-take",
+    "core": "Jimmy McMillan's rant that something is 'too damn high', a complaint about excess.",
+    "slots": [
+     "the thing complained about, 'the X is'",
+     "'too damn high' punchline"
+    ],
+    "aliases": [
+     "rent is too damn high",
+     "too damn high",
+     "jimmy mcmillan"
+    ]
+   },
+   {
+    "id": "whataweekhuh",
+    "name": "What A Week Huh",
+    "shape": "dialogue",
+    "core": "Captain Haddock sighs 'What a week, huh?' and Tintin replies 'Captain, it's Wednesday'; used when things feel worse than they've had time to be.",
+    "slots": [
+     "Haddock's weary remark",
+     "Tintin's deflating reply"
+    ],
+    "aliases": [
+     "what a week huh",
+     "captain it's wednesday",
+     "tintin haddock",
+     "it's only wednesday"
+    ]
+   },
+   {
+    "id": "pikachu",
+    "name": "Surprised Pikachu",
+    "shape": "irony",
+    "core": "Shock at an outcome that was obvious from what you did.",
+    "slots": [
+     "what you did",
+     "the obvious consequence",
+     "who is surprised (often \"me:\")"
+    ],
+    "aliases": [
+     "shocked pikachu",
+     "surprised pikachu",
+     "pikachu face"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "milkingthecow#1",
+  "request": "my landlord raising rent again on me when im already broke",
+  "style": "situation",
+  "target": {
+   "id": "milkingthecow",
+   "name": "Milking The Cow",
+   "shape": "labeling",
+   "core": "A cheerful farmer loaded with buckets greets an exhausted, drained cow; used for someone who keeps squeezing an already depleted source.",
+   "slots": [
+    "the drained cow",
+    "the one milking it"
+   ],
+   "aliases": [
+    "milking the cow",
+    "good morning sunshine cow",
+    "drained cow cartoon",
+    "milked dry"
+   ]
+  },
+  "picked": [
+   {
+    "id": "toohigh",
+    "name": "The Rent Is Too Damn High",
+    "shape": "hot-take",
+    "core": "Jimmy McMillan's rant that something is 'too damn high', a complaint about excess.",
+    "slots": [
+     "the thing complained about, 'the X is'",
+     "'too damn high' punchline"
+    ],
+    "aliases": [
+     "rent is too damn high",
+     "too damn high",
+     "jimmy mcmillan"
+    ]
+   },
+   {
+    "id": "fine",
+    "name": "This is Fine",
+    "shape": "ironic-denial",
+    "core": "Calmly insisting everything is fine while surrounded by disaster.",
+    "slots": [
+     "the escalating disaster or stressful situation (often blank)",
+     "calm denial line, e.g. 'this is fine'"
+    ],
+    "aliases": [
+     "this is fine dog",
+     "burning room dog"
+    ]
+   },
+   {
+    "id": "patheticspidey",
+    "name": "Pathetic Spidey",
+    "shape": "comparison",
+    "core": "Batman and Iron Man shower cash on a poor Spider-Man scrambling for it; used when the well-off flaunt resources at someone who has none.",
+    "slots": [
+     "rich one",
+     "other rich one",
+     "the broke one"
+    ],
+    "aliases": [
+     "pathetic spidey",
+     "batman iron man throwing money",
+     "rich superheroes",
+     "spiderman broke"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "narutohandshakememetemplate#1",
+  "request": "vim users and emacs users finally agreeing that vscode is bloated",
+  "style": "situation",
+  "target": {
+   "id": "narutohandshakememetemplate",
+   "name": "Naruto Handshake",
+   "shape": "labeling",
+   "core": "Two rival groups shaking hands, showing what unlikely sides agree on.",
+   "slots": [
+    "one side",
+    "the other side",
+    "what they agree on"
+   ],
+   "aliases": [
+    "naruto handshake",
+    "madara hashirama handshake",
+    "anime handshake",
+    "uchiha senju handshake"
+   ]
+  },
+  "picked": [
+   {
+    "id": "chadweknow",
+    "name": "Yes Chad We Know",
+    "shape": "dialogue",
+    "core": "Two wojaks argue loudly while two calm chads already agree, for stating something obvious that everyone knows.",
+    "slots": [
+     "smug wojak's take",
+     "crying wojak's take",
+     "chads calmly agreeing"
+    ],
+    "aliases": [
+     "yes chad we know",
+     "chad we know",
+     "nodding chads",
+     "wojak vs chad"
+    ]
+   },
+   {
+    "id": "yodabeguntheclonewarhas",
+    "name": "Begun The Clone War Has",
+    "shape": "warning",
+    "core": "A grave Yoda announces that a war has begun; used when a petty conflict or rivalry officially kicks off.",
+    "slots": [
+     "the triggering event",
+     "begun the ___ war has"
+    ],
+    "aliases": [
+     "Begun The Clone War Has",
+     "Yoda Clone War",
+     "Begun This War Has",
+     "Yoda War Has Begun"
+    ]
+   },
+   {
+    "id": "astronaut",
+    "name": "Always Has Been",
+    "shape": "dialogue",
+    "core": "One astronaut realizes the truth; the other confirms 'always has been'.",
+    "slots": [
+     "naive question: 'wait, it's all X?'",
+     "the answer: 'it's all Y'",
+     "the revelation: 'always has been'",
+     "often blank"
+    ],
+    "aliases": [
+     "always has been",
+     "wait it's all"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "tunathedogphteven#1",
+  "request": "phteven dog meme for when i say expresso instead of espresso",
+  "style": "named",
+  "target": {
+   "id": "tunathedogphteven",
+   "name": "Phteven",
+   "shape": "reaction",
+   "core": "An overbitten dog with a lisp; used to mispronounce a word or make a goofy, awkward statement.",
+   "slots": [
+    "setup",
+    "lisped punchline"
+   ],
+   "aliases": [
+    "phteven",
+    "tuna the dog",
+    "overbite dog",
+    "phteven dog"
+   ]
+  },
+  "picked": [
+   {
+    "id": "confessionkid",
+    "name": "Confession Kid",
+    "shape": "self-own",
+    "core": "A boy hides his face in shame; used to confess embarrassing habits or secrets.",
+    "slots": [
+     "the setup",
+     "the embarrassing confession"
+    ],
+    "aliases": [
+     "Confession Kid",
+     "Embarrassed Kid",
+     "Facepalm Kid",
+     "Shameful Confession"
+    ]
+   },
+   {
+    "id": "facepalmbear",
+    "name": "Facepalm Bear",
+    "shape": "self-own",
+    "core": "A polar bear cub covering its face with its paw, used for embarrassing realizations or awkward social blunders.",
+    "slots": [
+     "the awkward situation",
+     "the cringe outcome"
+    ],
+    "aliases": [
+     "facepalm bear",
+     "embarrassed bear",
+     "polar bear facepalm",
+     "awkward bear"
+    ]
+   },
+   {
+    "id": "woman-cat",
+    "name": "Woman Yelling at a Cat",
+    "shape": "dialogue",
+    "core": "Angry woman yells at a confused, unbothered cat at a dinner table.",
+    "slots": [
+     "the accusation or yelling, from the woman",
+     "the cat's calm, confused or indifferent response"
+    ],
+    "aliases": [
+     "woman yelling at cat",
+     "smudge the cat"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "arewethebaddies#1",
+  "request": "just realized im the toxic coworker everyone vents about in the other channel",
+  "style": "situation",
+  "target": {
+   "id": "arewethebaddies",
+   "name": "Are We The Baddies?",
+   "shape": "self-own",
+   "core": "A soldier in a skull-cap realises his side might be the villains; used when you notice you're the bad guy.",
+   "slots": [
+    "the evidence",
+    "the realisation"
+   ],
+   "aliases": [
+    "are we the baddies",
+    "mitchell and webb",
+    "hans are we the baddies",
+    "skulls on our caps"
+   ]
+  },
+  "picked": [
+   {
+    "id": "pointingmirrorguy",
+    "name": "Pointing Mirror Guy",
+    "shape": "self-own",
+    "core": "A man points at his own reflection, for blaming or calling out yourself.",
+    "slots": [
+     "me",
+     "the me I'm blaming"
+    ],
+    "aliases": [
+     "Pointing Mirror Guy",
+     "Pointing at Mirror",
+     "Wikihow mirror guy",
+     "Self-blame mirror"
+    ]
+   },
+   {
+    "id": "harold",
+    "name": "Hide the Pain Harold",
+    "shape": "ironic-denial",
+    "core": "Forced smile masking internal pain or embarrassment.",
+    "slots": [
+     "the awkward or painful situation",
+     "what he's pretending, or the detail that stings"
+    ],
+    "aliases": [
+     "hide the pain harold",
+     "harold"
+    ]
+   },
+   {
+    "id": "kevinjames",
+    "name": "Kevin James",
+    "shape": "self-own",
+    "core": "Kevin James with a sheepish, smug grin and hands in pockets; used when you've done something mildly embarrassing and own it.",
+    "slots": [
+     "setup",
+     "sheepish admission"
+    ],
+    "aliases": [
+     "kevin james smirk",
+     "kevin james hands in pockets",
+     "awkward smirk",
+     "king of queens"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "seinfeldnewman#1",
+  "request": "when my coworker gets the 6am shift i wanted to dodge and i didnt",
+  "style": "situation",
+  "target": {
+   "id": "seinfeldnewman",
+   "name": "Seinfeld Smug Grin",
+   "shape": "reaction",
+   "core": "Jerry Seinfeld grinning with a little fist pump, used for smug satisfaction when something goes your way at someone else's expense.",
+   "slots": [
+    "the setup",
+    "the smug payoff"
+   ],
+   "aliases": [
+    "seinfeld grin",
+    "jerry seinfeld smug",
+    "hello newman",
+    "seinfeld fist pump"
+   ]
+  },
+  "picked": [
+   {
+    "id": "jordanpeelesweating",
+    "name": "Jordan Peele Sweating",
+    "shape": "reaction",
+    "core": "Jordan Peele sweats profusely with nervous dread; used for a tense moment when you might get caught or something might go wrong.",
+    "slots": [
+     "the nerve-racking situation"
+    ],
+    "aliases": [
+     "jordan peele sweating",
+     "nervous sweating",
+     "sweating guy",
+     "key and peele sweat"
+    ]
+   },
+   {
+    "id": "sweatingbullets",
+    "name": "Sweating Bullets",
+    "shape": "reaction",
+    "core": "Jordan Peele sweating heavily in nervous silence, used for intense anxiety when you're about to be caught or exposed.",
+    "slots": [
+     "the nerve-wracking moment"
+    ],
+    "aliases": [
+     "sweating bullets",
+     "jordan peele sweating",
+     "nervous sweating",
+     "sweating guy"
+    ]
+   },
+   {
+    "id": "unodraw25cards",
+    "name": "UNO Draw 25 Cards",
+    "shape": "rejection",
+    "core": "Someone would rather suffer a huge penalty than do one simple, reasonable thing.",
+    "slots": [
+     "the simple thing to do",
+     "the stubborn person"
+    ],
+    "aliases": [
+     "draw 25",
+     "uno draw 25",
+     "uno or draw 25",
+     "uno card"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "djkhaledsufferingfromsuccess#1",
+  "request": "so many job offers i cant decide which one to take, life is hard",
+  "style": "situation",
+  "target": {
+   "id": "djkhaledsufferingfromsuccess",
+   "name": "DJ Khaled Suffering From Success",
+   "shape": "irony",
+   "core": "DJ Khaled's 'Suffering From Success' album cover, used to humblebrag about a problem caused by things going too well.",
+   "slots": [
+    "the too-good problem"
+   ],
+   "aliases": [
+    "suffering from success",
+    "dj khaled",
+    "humblebrag",
+    "khaled suffering"
+   ]
+  },
+  "picked": [
+   {
+    "id": "ds",
+    "name": "Daily Struggle",
+    "shape": "dilemma",
+    "core": "A sweating man must choose between two equally agonizing buttons.",
+    "slots": [
+     "the first agonizing option",
+     "the second agonizing option",
+     "the person sweating over the choice"
+    ],
+    "aliases": [
+     "daily struggle",
+     "two buttons",
+     "sweating guy buttons"
+    ]
+   },
+   {
+    "id": "bothbuttonspressed",
+    "name": "Both Buttons Pressed",
+    "shape": "binary-choice",
+    "core": "Faced with two options, the guy smugly presses both buttons at once and gives a thumbs up.",
+    "slots": [
+     "first option",
+     "second option",
+     "the smug do-both person"
+    ],
+    "aliases": [
+     "press both buttons",
+     "two buttons both",
+     "why not both",
+     "both buttons thumbs up"
+    ]
+   },
+   {
+    "id": "whycantiholdalltheselimes",
+    "name": "Why Can't I Hold All These Limes",
+    "shape": "exaggeration",
+    "core": "A man fumbling an armful of limes; used when someone has taken on more things than they can manage.",
+    "slots": [
+     "setup",
+     "why can't I hold all these X"
+    ],
+    "aliases": [
+     "limes guy",
+     "why can't i hold all these",
+     "hold all these limes",
+     "too many limes"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "xwhenxwalksin#1",
+  "request": "my dog when the mailman walks in stunned stare",
+  "style": "situation",
+  "target": {
+   "id": "xwhenxwalksin",
+   "name": "X When X Walks In",
+   "shape": "reaction",
+   "core": "A stunned stare at someone arriving; used for the reaction when a certain person or thing shows up.",
+   "slots": [
+    "who reacts when who walks in"
+   ],
+   "aliases": [
+    "x when x walks in",
+    "when she walks in",
+    "stunned stare",
+    "walks in reaction"
+   ]
+  },
+  "picked": [
+   {
+    "id": "kurtanglestare",
+    "name": "Kurt Angle Stare",
+    "shape": "reaction",
+    "core": "Kurt Angle stares wide-eyed into the camera; used for stunned, awkward disbelief at what someone just said or did.",
+    "slots": [
+     "what I just witnessed"
+    ],
+    "aliases": [
+     "Kurt Angle Stare",
+     "Kurt Angle Wide Eyes",
+     "Kurt Angle Staring",
+     "Wide Eyed Stare"
+    ]
+   },
+   {
+    "id": "woahkitty",
+    "name": "Woah Kitty",
+    "shape": "reaction",
+    "core": "A wide-eyed black cat staring in shock, used for being startled or disturbed by something.",
+    "slots": [
+     "what you saw",
+     "shocked reaction"
+    ],
+    "aliases": [
+     "Shocked Cat",
+     "Wide Eyed Cat",
+     "Black Cat Stare",
+     "Surprised Kitty"
+    ]
+   },
+   {
+    "id": "umbrellaacademymeme",
+    "name": "Umbrella Academy Car Stare",
+    "shape": "dialogue",
+    "core": "Vanya stares from one car and Five stares back stunned from another; used for two parties awkwardly noticing each other in the same situation.",
+    "slots": [
+     "first one",
+     "the one staring back"
+    ],
+    "aliases": [
+     "umbrella academy car",
+     "vanya five car",
+     "car window stare",
+     "umbrella academy"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "yeahifyoucould#1",
+  "request": "my manager asking if i could just go ahead and come in on saturday too mmkay",
+  "style": "situation",
+  "target": {
+   "id": "yeahifyoucould",
+   "name": "Yeah If You Could",
+   "shape": "irony",
+   "core": "Bill Lumbergh from Office Space passive-aggressively asking for something unreasonable, used for bosses making annoying requests.",
+   "slots": [
+    "yeah, if you could...",
+    "the unreasonable request"
+   ],
+   "aliases": [
+    "lumbergh",
+    "that would be great",
+    "office space boss",
+    "yeah if you could",
+    "bill lumbergh"
+   ]
+  },
+  "picked": [
+   {
+    "id": "spongebobburningpaper",
+    "name": "Spongebob Burning Paper",
+    "shape": "rejection",
+    "core": "Spongebob reads a paper, gets angry, and throws it in the fire; used for rejecting something that offends you.",
+    "slots": [
+     "the offending thing written on the paper"
+    ],
+    "aliases": [
+     "Spongebob burning paper",
+     "Spongebob throws paper in fire",
+     "Spongebob reading paper",
+     "burn it"
+    ]
+   },
+   {
+    "id": "badassskeleton",
+    "name": "Badass Skeleton",
+    "shape": "warning",
+    "core": "A skeleton aiming two revolvers, used for aggressive threats or extreme over-the-top reactions to small things.",
+    "slots": [
+     "the trigger",
+     "the threat"
+    ],
+    "aliases": [
+     "skeleton with guns",
+     "skeleton guns",
+     "badass skeleton",
+     "skeleton revolvers"
+    ]
+   },
+   {
+    "id": "unodraw25cards",
+    "name": "UNO Draw 25 Cards",
+    "shape": "rejection",
+    "core": "Someone would rather suffer a huge penalty than do one simple, reasonable thing.",
+    "slots": [
+     "the simple thing to do",
+     "the stubborn person"
+    ],
+    "aliases": [
+     "draw 25",
+     "uno draw 25",
+     "uno or draw 25",
+     "uno card"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "knightprotectingprincess#1",
+  "request": "me defending my old honda civic from my friends roasting it",
+  "style": "situation",
+  "target": {
+   "id": "knightprotectingprincess",
+   "name": "Knight Protecting Princess",
+   "shape": "labeling",
+   "core": "A knight shielding a princess from a hostile crowd, used for someone defending something they love from critics.",
+   "slots": [
+    "the protector",
+    "the attackers",
+    "the thing protected"
+   ],
+   "aliases": [
+    "Knight Shield Princess",
+    "Knight Protecting",
+    "Shielding Princess",
+    "Protect At All Costs"
+   ]
+  },
+  "picked": [
+   {
+    "id": "illhaveyouknowspongebob",
+    "name": "I'll Have You Know Spongebob",
+    "shape": "self-own",
+    "core": "SpongeBob smugly raises a finger to make a point; used for someone proudly defending something that isn't impressive.",
+    "slots": [
+     "the accusation",
+     "smug weak defense"
+    ],
+    "aliases": [
+     "i'll have you know",
+     "smug spongebob",
+     "spongebob finger",
+     "spongebob i'll have you know"
+    ]
+   },
+   {
+    "id": "older",
+    "name": "An Older Code Sir, But It Checks Out",
+    "shape": "hot-take",
+    "core": "Acknowledging something is old or outdated, but still valid or working.",
+    "slots": [
+     "it's an older [thing], sir",
+     "but it checks out"
+    ],
+    "aliases": [
+     "it's an older meme sir",
+     "but it checks out",
+     "older code sir"
+    ]
+   },
+   {
+    "id": "woman-cat",
+    "name": "Woman Yelling at a Cat",
+    "shape": "dialogue",
+    "core": "Angry woman yells at a confused, unbothered cat at a dinner table.",
+    "slots": [
+     "the accusation or yelling, from the woman",
+     "the cat's calm, confused or indifferent response"
+    ],
+    "aliases": [
+     "woman yelling at cat",
+     "smudge the cat"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "viciouscycle#1",
+  "request": "stay up late, tired at work, drink coffee, cant sleep, repeat",
+  "style": "situation",
+  "target": {
+   "id": "viciouscycle",
+   "name": "Vicious Cycle",
+   "shape": "escalation",
+   "core": "Four steps joined by arrows in a loop, used for a self-reinforcing cycle you can't escape.",
+   "slots": [
+    "step 1",
+    "step 2",
+    "step 3",
+    "step 4 (leads back to 1)"
+   ],
+   "aliases": [
+    "vicious cycle",
+    "cycle diagram",
+    "endless loop",
+    "circle of life arrows"
+   ]
+  },
+  "picked": [
+   {
+    "id": "spongebobcoffee",
+    "name": "Spongebob Coffee",
+    "shape": "reaction",
+    "core": "An exhausted, wide-eyed Spongebob sits with his coffee, used for being drained, sleep-deprived or waiting forever.",
+    "slots": [
+     "the situation",
+     "the tired reaction"
+    ],
+    "aliases": [
+     "tired spongebob",
+     "spongebob coffee",
+     "spongebob waiting",
+     "exhausted spongebob"
+    ]
+   },
+   {
+    "id": "sleepingsquidward",
+    "name": "Sleeping Squidward",
+    "shape": "plan-backfires",
+    "core": "Squidward is peacefully asleep, then jolts awake in horror, used for a sudden intrusive thought that ruins rest.",
+    "slots": [
+     "about to fall asleep",
+     "the thought that jolts you awake"
+    ],
+    "aliases": [
+     "sleeping squidward",
+     "squidward wakes up",
+     "squidward can't sleep",
+     "brain at 3am"
+    ]
+   },
+   {
+    "id": "gru",
+    "name": "Gru's Plan",
+    "shape": "plan-backfire",
+    "core": "A confident four-step plan whose last step reveals it backfired, repeating the previous step.",
+    "slots": [
+     "step 1 of the plan",
+     "step 2 of the plan",
+     "step 3, the unexpected problem",
+     "step 4, same problem repeated with shock"
+    ],
+    "aliases": [
+     "gru's plan",
+     "gru plan"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "businesshandshake#1",
+  "request": "me and my cat agreeing that mondays should be illegal",
+  "style": "situation",
+  "target": {
+   "id": "businesshandshake",
+   "name": "Business Handshake",
+   "shape": "labeling",
+   "core": "Two parties shake hands on a deal; used to label two sides that agree on or bond over something.",
+   "slots": [
+    "the deal or shared thing",
+    "first party",
+    "second party"
+   ],
+   "aliases": [
+    "business handshake",
+    "handshake deal",
+    "corporate handshake",
+    "deal handshake"
+   ]
+  },
+  "picked": [
+   {
+    "id": "cmm",
+    "name": "Change My Mind",
+    "shape": "hot-take",
+    "core": "Man at a table with a sign offering to debate a bold opinion.",
+    "slots": [
+     "the controversial opinion to be debated"
+    ],
+    "aliases": [
+     "change my mind",
+     "steven crowder sign"
+    ]
+   },
+   {
+    "id": "grumpycatnotamused",
+    "name": "Grumpy Cat Not Amused",
+    "shape": "rejection",
+    "core": "Grumpy Cat glares, unimpressed, used to grumpily shoot down something others find exciting.",
+    "slots": [
+     "something exciting",
+     "grumpy rejection"
+    ],
+    "aliases": [
+     "grumpy cat",
+     "not amused cat",
+     "grumpy cat no",
+     "tard the cat"
+    ]
+   },
+   {
+    "id": "woman-cat",
+    "name": "Woman Yelling at a Cat",
+    "shape": "dialogue",
+    "core": "Angry woman yells at a confused, unbothered cat at a dinner table.",
+    "slots": [
+     "the accusation or yelling, from the woman",
+     "the cat's calm, confused or indifferent response"
+    ],
+    "aliases": [
+     "woman yelling at cat",
+     "smudge the cat"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "yougetanxandyougetanx#1",
+  "request": "my kid bringing home a cold and giving it to the whole family",
+  "style": "situation",
+  "target": {
+   "id": "yougetanxandyougetanx",
+   "name": "You Get An X And You Get An X",
+   "shape": "exaggeration",
+   "core": "Oprah gleefully handing the same thing out to everyone, used when something (often unwanted) is given to everybody at once.",
+   "slots": [
+    "you get a thing",
+    "and you get a thing"
+   ],
+   "aliases": [
+    "Oprah You Get A Car",
+    "You Get A Car",
+    "Everybody Gets One",
+    "Oprah Giveaway"
+   ]
+  },
+  "picked": [
+   {
+    "id": "dominoeffect",
+    "name": "Domino Effect",
+    "shape": "escalation",
+    "core": "A tiny first action sets off a chain reaction that ends in something huge.",
+    "slots": [
+     "the small cause",
+     "the huge consequence"
+    ],
+    "aliases": [
+     "domino chain",
+     "small domino big domino",
+     "chain reaction",
+     "domino effect"
+    ]
+   },
+   {
+    "id": "pikachu",
+    "name": "Surprised Pikachu",
+    "shape": "irony",
+    "core": "Shock at an outcome that was obvious from what you did.",
+    "slots": [
+     "what you did",
+     "the obvious consequence",
+     "who is surprised (often \"me:\")"
+    ],
+    "aliases": [
+     "shocked pikachu",
+     "surprised pikachu",
+     "pikachu face"
+    ]
+   },
+   {
+    "id": "fine",
+    "name": "This is Fine",
+    "shape": "ironic-denial",
+    "core": "Calmly insisting everything is fine while surrounded by disaster.",
+    "slots": [
+     "the escalating disaster or stressful situation (often blank)",
+     "calm denial line, e.g. 'this is fine'"
+    ],
+    "aliases": [
+     "this is fine dog",
+     "burning room dog"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "titanicband#1",
+  "request": "prod is on fire and the team is still doing the planned standup retro games",
+  "style": "situation",
+  "target": {
+   "id": "titanicband",
+   "name": "Titanic Band",
+   "shape": "irony",
+   "core": "The Titanic sinking while the band keeps calmly playing, used when people carry on as normal while everything collapses around them.",
+   "slots": [
+    "the sinking thing",
+    "who keeps playing"
+   ],
+   "aliases": [
+    "Titanic Band Playing",
+    "The Band Played On",
+    "Titanic Violinists",
+    "Keep Playing As Ship Sinks"
+   ]
+  },
+  "picked": [
+   {
+    "id": "fine",
+    "name": "This is Fine",
+    "shape": "ironic-denial",
+    "core": "Calmly insisting everything is fine while surrounded by disaster.",
+    "slots": [
+     "the escalating disaster or stressful situation (often blank)",
+     "calm denial line, e.g. 'this is fine'"
+    ],
+    "aliases": [
+     "this is fine dog",
+     "burning room dog"
+    ]
+   },
+   {
+    "id": "spongebobfire",
+    "name": "SpongeBob Office Fire",
+    "shape": "reaction",
+    "core": "Many SpongeBobs panicking in a burning office; used for total chaos and panic.",
+    "slots": [
+     "situation",
+     "the panic"
+    ],
+    "aliases": [
+     "spongebob panic",
+     "spongebob fire",
+     "everything is on fire spongebob",
+     "spongebob chaos"
+    ]
+   },
+   {
+    "id": "dumpsterfire",
+    "name": "Dumpster Fire",
+    "shape": "labeling",
+    "core": "A dumpster engulfed in flames, used to label something that is a complete, chaotic disaster.",
+    "slots": [
+     "the setup",
+     "the disaster"
+    ],
+    "aliases": [
+     "dumpster fire",
+     "burning dumpster",
+     "total disaster",
+     "trash fire"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "tomandspikefighting#1",
+  "request": "my two siblings arguing over the remote while i eat their snacks",
+  "style": "situation",
+  "target": {
+   "id": "tomandspikefighting",
+   "name": "Tom And Spike Fighting",
+   "shape": "labeling",
+   "core": "Spike and Tom duel while Jerry grins at the chaos; used when two parties fight and a third enjoys watching or benefits.",
+   "slots": [
+    "first fighter",
+    "second fighter",
+    "gleeful onlooker"
+   ],
+   "aliases": [
+    "Jerry Watching Fight",
+    "Tom and Spike Sword Fight",
+    "Jerry Enjoying Chaos",
+    "Jerry Smiling Fight"
+   ]
+  },
+  "picked": [
+   {
+    "id": "guysmokingwhiletwopeoplefigh",
+    "name": "Guy Smoking While Two People Fight",
+    "shape": "labeling",
+    "core": "Two people brawl over something while a third calmly ignores it all and does his own thing.",
+    "slots": [
+     "the people fighting",
+     "the unbothered one"
+    ],
+    "aliases": [
+     "guy smoking while girls fight",
+     "vape guy fight",
+     "unbothered smoking guy",
+     "chillin while they fight"
+    ]
+   },
+   {
+    "id": "tomandjerryswordfight",
+    "name": "Tom and Jerry Swordfight",
+    "shape": "labeling",
+    "core": "Spike and Tom sword-fighting while Jerry watches gleefully, used for enjoying two rivals going at each other.",
+    "slots": [
+     "fighter one",
+     "fighter two",
+     "gleeful onlooker"
+    ],
+    "aliases": [
+     "tom and jerry swordfight",
+     "jerry watching fight",
+     "spike vs tom",
+     "jerry excited"
+    ]
+   },
+   {
+    "id": "mendiscussingmenfighting",
+    "name": "Men Discussing Men Fighting",
+    "shape": "comparison",
+    "core": "A brawl above a formal round-table summit, used for people fighting over something while others solemnly discuss the fight.",
+    "slots": [
+     "the ones fighting",
+     "the ones discussing it"
+    ],
+    "aliases": [
+     "men discussing men fighting",
+     "brawl and summit",
+     "fight vs meeting",
+     "round table discussion"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "ptsdclarinetboy#1",
+  "request": "hearing the teams notification sound on my day off",
+  "style": "situation",
+  "target": {
+   "id": "ptsdclarinetboy",
+   "name": "PTSD Clarinet Boy",
+   "shape": "reaction",
+   "core": "A grim boy flashes back to his happier clarinet days; used for being haunted by a memory triggered by something small.",
+   "slots": [
+    "the trigger",
+    "the haunting memory"
+   ],
+   "aliases": [
+    "Clarinet Boy Flashback",
+    "PTSD Clarinet Kid",
+    "Band Kid Flashback",
+    "Clarinet Flashback"
+   ]
+  },
+  "picked": [
+   {
+    "id": "jordanpeelesweating",
+    "name": "Jordan Peele Sweating",
+    "shape": "reaction",
+    "core": "Jordan Peele sweats profusely with nervous dread; used for a tense moment when you might get caught or something might go wrong.",
+    "slots": [
+     "the nerve-racking situation"
+    ],
+    "aliases": [
+     "jordan peele sweating",
+     "nervous sweating",
+     "sweating guy",
+     "key and peele sweat"
+    ]
+   },
+   {
+    "id": "iscallingyou",
+    "name": "Is Calling You",
+    "shape": "warning",
+    "core": "An incoming phone call screen from someone or something, used when a dreaded responsibility or consequence comes calling.",
+    "slots": [
+     "who or what is calling"
+    ],
+    "aliases": [
+     "is calling you",
+     "incoming call meme",
+     "iphone call screen",
+     "x is calling"
+    ]
+   },
+   {
+    "id": "blankietheshockeddog",
+    "name": "Blankie The Shocked Dog",
+    "shape": "reaction",
+    "core": "A boxer dog with wide, startled eyes, for being shocked or caught off guard.",
+    "slots": [
+     "the shocking thing",
+     "the reaction"
+    ],
+    "aliases": [
+     "shocked dog",
+     "surprised boxer dog",
+     "blankie dog",
+     "wide eyed dog"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "darthvaderwhereispadme#1",
+  "request": "me after force pushing to main asking where did my commits go",
+  "style": "situation",
+  "target": {
+   "id": "darthvaderwhereispadme",
+   "name": "Darth Vader Where Is Padme",
+   "shape": "dialogue",
+   "core": "Vader anxiously asks where something precious is, right after he was the one who destroyed it.",
+   "slots": [
+    "the setup",
+    "the anxious question about the lost thing"
+   ],
+   "aliases": [
+    "where is padme",
+    "vader is she safe",
+    "where is padme is she safe",
+    "darth vader padme"
+   ]
+  },
+  "picked": [
+   {
+    "id": "pikachu",
+    "name": "Surprised Pikachu",
+    "shape": "irony",
+    "core": "Shock at an outcome that was obvious from what you did.",
+    "slots": [
+     "what you did",
+     "the obvious consequence",
+     "who is surprised (often \"me:\")"
+    ],
+    "aliases": [
+     "shocked pikachu",
+     "surprised pikachu",
+     "pikachu face"
+    ]
+   },
+   {
+    "id": "pointingmirrorguy",
+    "name": "Pointing Mirror Guy",
+    "shape": "self-own",
+    "core": "A man points at his own reflection, for blaming or calling out yourself.",
+    "slots": [
+     "me",
+     "the me I'm blaming"
+    ],
+    "aliases": [
+     "Pointing Mirror Guy",
+     "Pointing at Mirror",
+     "Wikihow mirror guy",
+     "Self-blame mirror"
+    ]
+   },
+   {
+    "id": "burnkitty",
+    "name": "Burn Kitty",
+    "shape": "irony",
+    "core": "Grumpy Cat glaring in front of a burning house, for unbothered, deadpan responses to a disaster you may have caused.",
+    "slots": [
+     "the disaster",
+     "the grumpy remark"
+    ],
+    "aliases": [
+     "burn kitty",
+     "grumpy cat fire",
+     "grumpy cat burning house",
+     "cat house fire"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "wontsomebodythinkofthechildr#1",
+  "request": "my mom freaking out that we switched from 2 ply to 1 ply toilet paper",
+  "style": "situation",
+  "target": {
+   "id": "wontsomebodythinkofthechildr",
+   "name": "Won't Somebody Think Of The Children",
+   "shape": "exaggeration",
+   "core": "Helen Lovejoy hysterically wails 'won't somebody think of the children' to overdramatize a trivial issue.",
+   "slots": [
+    "the trivial issue",
+    "the hysterical plea"
+   ],
+   "aliases": [
+    "won't somebody think of the children",
+    "helen lovejoy",
+    "think of the children",
+    "simpsons lovejoy"
+   ]
+  },
+  "picked": [
+   {
+    "id": "woman-cat",
+    "name": "Woman Yelling at a Cat",
+    "shape": "dialogue",
+    "core": "Angry woman yells at a confused, unbothered cat at a dinner table.",
+    "slots": [
+     "the accusation or yelling, from the woman",
+     "the cat's calm, confused or indifferent response"
+    ],
+    "aliases": [
+     "woman yelling at cat",
+     "smudge the cat"
+    ]
+   },
+   {
+    "id": "fine",
+    "name": "This is Fine",
+    "shape": "ironic-denial",
+    "core": "Calmly insisting everything is fine while surrounded by disaster.",
+    "slots": [
+     "the escalating disaster or stressful situation (often blank)",
+     "calm denial line, e.g. 'this is fine'"
+    ],
+    "aliases": [
+     "this is fine dog",
+     "burning room dog"
+    ]
+   },
+   {
+    "id": "barbosaandsparrow",
+    "name": "Barbossa And Sparrow",
+    "shape": "dialogue",
+    "core": "Barbossa yells in Jack Sparrow's face while Jack stares back unbothered; used for an angry rant met with a deadpan reply.",
+    "slots": [
+     "the angry rant",
+     "the deadpan response"
+    ],
+    "aliases": [
+     "Barbossa Yelling At Jack",
+     "Pirates Argument",
+     "Jack Sparrow Barbossa",
+     "Barbossa Sparrow"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "gondorcallsforaid#1",
+  "request": "i posted in slack that ci is broken and the one devops guy immediately answered",
+  "style": "situation",
+  "target": {
+   "id": "gondorcallsforaid",
+   "name": "Gondor Calls For Aid",
+   "shape": "dialogue",
+   "core": "Aragorn announces 'Gondor calls for aid' and Th\u00e9oden answers 'And Rohan will answer'; used when someone asks for help and an ally steps up.",
+   "slots": [
+    "the call for help",
+    "who answers"
+   ],
+   "aliases": [
+    "gondor calls for aid",
+    "and rohan will answer",
+    "the beacons are lit",
+    "lord of the rings beacons"
+   ]
+  },
+  "picked": [
+   {
+    "id": "umbrellaacademymeme",
+    "name": "Umbrella Academy Car Stare",
+    "shape": "dialogue",
+    "core": "Vanya stares from one car and Five stares back stunned from another; used for two parties awkwardly noticing each other in the same situation.",
+    "slots": [
+     "first one",
+     "the one staring back"
+    ],
+    "aliases": [
+     "umbrella academy car",
+     "vanya five car",
+     "car window stare",
+     "umbrella academy"
+    ]
+   },
+   {
+    "id": "pikachu",
+    "name": "Surprised Pikachu",
+    "shape": "irony",
+    "core": "Shock at an outcome that was obvious from what you did.",
+    "slots": [
+     "what you did",
+     "the obvious consequence",
+     "who is surprised (often \"me:\")"
+    ],
+    "aliases": [
+     "shocked pikachu",
+     "surprised pikachu",
+     "pikachu face"
+    ]
+   },
+   {
+    "id": "omgcat",
+    "name": "OMG Cat",
+    "shape": "reaction",
+    "core": "A wide-eyed cat gasps in shock; used for being stunned by surprising news.",
+    "slots": [
+     "the shocking news",
+     "the reaction"
+    ],
+    "aliases": [
+     "omg cat",
+     "shocked cat",
+     "surprised cat",
+     "gasping cat"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "futuramazerodayssincelastbla#1",
+  "request": "someone pushed directly to main again, resetting the counter",
+  "style": "situation",
+  "target": {
+   "id": "futuramazerodayssincelastbla",
+   "name": "Futurama Zero Days Since Last",
+   "shape": "irony",
+   "core": "A workplace safety sign reset to zero, used when the same mistake or incident has just happened again.",
+   "slots": [
+    "the incident that keeps recurring"
+   ],
+   "aliases": [
+    "days since last accident",
+    "zero days since",
+    "futurama days since sign",
+    "days without incident"
+   ]
+  },
+  "picked": [
+   {
+    "id": "0dayswithoutlennysimpsons",
+    "name": "0 Days Without",
+    "shape": "irony",
+    "core": "The streak counter reset to zero again because the same mistake keeps happening.",
+    "slots": [
+     "the recurring mishap"
+    ],
+    "aliases": [
+     "0 days without",
+     "zero days without accident",
+     "lenny days without",
+     "days since last incident"
+    ]
+   },
+   {
+    "id": "evilcows",
+    "name": "Evil Cows",
+    "shape": "plan-backfires",
+    "core": "Two cows stand calmly in front of a raging fire, as if they caused the chaos and have no regrets.",
+    "slots": [
+     "the chaos they caused",
+     "the smug innocence"
+    ],
+    "aliases": [
+     "Evil Cows",
+     "Cows in front of fire",
+     "Arsonist cows",
+     "Burning field cows"
+    ]
+   },
+   {
+    "id": "burnkitty",
+    "name": "Burn Kitty",
+    "shape": "irony",
+    "core": "Grumpy Cat glaring in front of a burning house, for unbothered, deadpan responses to a disaster you may have caused.",
+    "slots": [
+     "the disaster",
+     "the grumpy remark"
+    ],
+    "aliases": [
+     "burn kitty",
+     "grumpy cat fire",
+     "grumpy cat burning house",
+     "cat house fire"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "kickingoutsimpsons#1",
+  "request": "finally fixed the flaky test, merged it, and its failing again 5 min later",
+  "style": "situation",
+  "target": {
+   "id": "kickingoutsimpsons",
+   "name": "Moe Throws Barney Out",
+   "shape": "irony",
+   "core": "Moe throws Barney out of the bar, dusts off his hands, and Barney is instantly back inside, used for a problem that returns right after you get rid of it.",
+   "slots": [
+    "getting rid of the thing",
+    "feeling done",
+    "it's back already"
+   ],
+   "aliases": [
+    "moe throws barney out",
+    "barney kicked out",
+    "simpsons kicked out bar",
+    "barney comes back"
+   ]
+  },
+  "picked": [
+   {
+    "id": "happyshock",
+    "name": "Happy Then Shocked",
+    "shape": "before-after",
+    "core": "A man grinning, then his smile collapsing into dismay as he learns the catch.",
+    "slots": [
+     "the good news",
+     "the catch"
+    ],
+    "aliases": [
+     "disappointed black guy",
+     "happy then sad",
+     "smile fade",
+     "happy to disappointed"
+    ]
+   },
+   {
+    "id": "fine",
+    "name": "This is Fine",
+    "shape": "ironic-denial",
+    "core": "Calmly insisting everything is fine while surrounded by disaster.",
+    "slots": [
+     "the escalating disaster or stressful situation (often blank)",
+     "calm denial line, e.g. 'this is fine'"
+    ],
+    "aliases": [
+     "this is fine dog",
+     "burning room dog"
+    ]
+   },
+   {
+    "id": "oldmancupofcoffee",
+    "name": "Hide The Pain Harold Laptop",
+    "shape": "before-after",
+    "core": "Harold smiles at his laptop, then looks up with a pained forced smile; used when something seems fine then quietly turns awful.",
+    "slots": [
+     "what you see first",
+     "the painful realization"
+    ],
+    "aliases": [
+     "hide the pain harold",
+     "harold coffee laptop",
+     "old man coffee",
+     "pained smile old man"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "breakingbadsaymyname#1",
+  "request": "coworker asks who fixed prod at 2am and i make them say who",
+  "style": "situation",
+  "target": {
+   "id": "breakingbadsaymyname",
+   "name": "Say My Name",
+   "shape": "dialogue",
+   "core": "Walter White demands someone say who he is, they answer, and he confirms, used to assert a reputation.",
+   "slots": [
+    "say my name",
+    "the answer",
+    "you're goddamn right"
+   ],
+   "aliases": [
+    "say my name",
+    "heisenberg",
+    "walter white say my name",
+    "you're goddamn right"
+   ]
+  },
+  "picked": [
+   {
+    "id": "gb",
+    "name": "Galaxy Brain",
+    "shape": "escalation",
+    "core": "Four tiers of increasingly enlightened thinking, ending in absurd or overcomplicated 'genius'.",
+    "slots": [
+     "basic, ordinary take",
+     "slightly smarter take",
+     "more advanced take",
+     "absurdly elevated final take"
+    ],
+    "aliases": [
+     "expanding brain",
+     "galaxy brain",
+     "big brain"
+    ]
+   },
+   {
+    "id": "illhaveyouknowspongebob",
+    "name": "I'll Have You Know Spongebob",
+    "shape": "self-own",
+    "core": "SpongeBob smugly raises a finger to make a point; used for someone proudly defending something that isn't impressive.",
+    "slots": [
+     "the accusation",
+     "smug weak defense"
+    ],
+    "aliases": [
+     "i'll have you know",
+     "smug spongebob",
+     "spongebob finger",
+     "spongebob i'll have you know"
+    ]
+   },
+   {
+    "id": "simpsonssofar",
+    "name": "Simpsons So Far",
+    "shape": "dialogue",
+    "core": "Bart says something, and Homer leans in to answer with a smug or absurd comeback.",
+    "slots": [
+     "Bart's line",
+     "Homer's reply"
+    ],
+    "aliases": [
+     "Simpsons So Far",
+     "Homer and Bart",
+     "Homer pointing at Bart",
+     "Homer explains to Bart"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "paranoidparrot#1",
+  "request": "boss says can we chat later and i assume im getting fired and evicted",
+  "style": "situation",
+  "target": {
+   "id": "paranoidparrot",
+   "name": "Paranoid Parrot",
+   "shape": "exaggeration",
+   "core": "A nervous parrot spiraling into paranoid conclusions about a normal situation.",
+   "slots": [
+    "normal situation",
+    "paranoid conclusion"
+   ],
+   "aliases": [
+    "paranoid parrot",
+    "nervous parrot",
+    "anxious parrot",
+    "advice parrot"
+   ]
+  },
+  "picked": [
+   {
+    "id": "panik-kalm-panik",
+    "name": "Panik Kalm Panik",
+    "shape": "escalation",
+    "core": "Panic, then false reassurance, then even worse panic.",
+    "slots": [
+     "alarming thing, panic",
+     "reassuring explanation, calm",
+     "reveal that makes it worse, panic"
+    ],
+    "aliases": [
+     "panik kalm",
+     "panik kalm panik",
+     "panic calm panic"
+    ]
+   },
+   {
+    "id": "gb",
+    "name": "Galaxy Brain",
+    "shape": "escalation",
+    "core": "Four tiers of increasingly enlightened thinking, ending in absurd or overcomplicated 'genius'.",
+    "slots": [
+     "basic, ordinary take",
+     "slightly smarter take",
+     "more advanced take",
+     "absurdly elevated final take"
+    ],
+    "aliases": [
+     "expanding brain",
+     "galaxy brain",
+     "big brain"
+    ]
+   },
+   {
+    "id": "fine",
+    "name": "This is Fine",
+    "shape": "ironic-denial",
+    "core": "Calmly insisting everything is fine while surrounded by disaster.",
+    "slots": [
+     "the escalating disaster or stressful situation (often blank)",
+     "calm denial line, e.g. 'this is fine'"
+    ],
+    "aliases": [
+     "this is fine dog",
+     "burning room dog"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "surprizedvegeta#1",
+  "request": "landlord actually fixed the sink the same day and im stunned",
+  "style": "situation",
+  "target": {
+   "id": "surprizedvegeta",
+   "name": "Surprised Vegeta",
+   "shape": "reaction",
+   "core": "Vegeta's eyes go wide in shock, used for being stunned by unexpected news.",
+   "slots": [
+    "the unexpected news",
+    "the shocked reaction"
+   ],
+   "aliases": [
+    "shocked vegeta",
+    "vegeta surprised",
+    "dragon ball shocked",
+    "vegeta wide eyes"
+   ]
+  },
+  "picked": [
+   {
+    "id": "surprisedjoey",
+    "name": "Surprised Joey",
+    "shape": "reaction",
+    "core": "Joey goes from relaxed to wide-eyed as something slowly sinks in, used for a delayed shocked realization.",
+    "slots": [
+     "the calm setup",
+     "the realization"
+    ],
+    "aliases": [
+     "surprised joey",
+     "joey realization",
+     "friends joey shocked",
+     "joey wide eyes"
+    ]
+   },
+   {
+    "id": "onde",
+    "name": "Onde",
+    "shape": "reaction",
+    "core": "A wide-eyed old man with his mouth agape, used for over-the-top shock or 'where?!' disbelief.",
+    "slots": [
+     "shocking news",
+     "stunned reaction"
+    ],
+    "aliases": [
+     "Shocked Old Man",
+     "Wide Eyed Man",
+     "Onde Man"
+    ]
+   },
+   {
+    "id": "woahkitty",
+    "name": "Woah Kitty",
+    "shape": "reaction",
+    "core": "A wide-eyed black cat staring in shock, used for being startled or disturbed by something.",
+    "slots": [
+     "what you saw",
+     "shocked reaction"
+    ],
+    "aliases": [
+     "Shocked Cat",
+     "Wide Eyed Cat",
+     "Black Cat Stare",
+     "Surprised Kitty"
+    ]
+   }
+  ]
+ },
+ {
+  "qid": "frustratingmom#1",
+  "request": "mom says go outside and play but dont get dirty and be back in 5 min",
+  "style": "situation",
+  "target": {
+   "id": "frustratingmom",
+   "name": "Frustrating Mom",
+   "shape": "dialogue",
+   "core": "A cheerful stock-photo mom baking with her kids; used for a mom's maddening logic or contradictory rules.",
+   "slots": [
+    "what mom says",
+    "the contradiction"
+   ],
+   "aliases": [
+    "frustrating mom",
+    "stock photo mom",
+    "annoying mom",
+    "baking mom"
+   ]
+  },
+  "picked": [
+   {
+    "id": "ds",
+    "name": "Daily Struggle",
+    "shape": "dilemma",
+    "core": "A sweating man must choose between two equally agonizing buttons.",
+    "slots": [
+     "the first agonizing option",
+     "the second agonizing option",
+     "the person sweating over the choice"
+    ],
+    "aliases": [
+     "daily struggle",
+     "two buttons",
+     "sweating guy buttons"
+    ]
+   },
+   {
+    "id": "wouldyoupressthebutton",
+    "name": "Would You Press The Button",
+    "shape": "binary-choice",
+    "core": "A dilemma: pressing the button gives you a great perk, but with a catch, and people debate whether it's worth it.",
+    "slots": [
+     "the reward",
+     "the catch"
+    ],
+    "aliases": [
+     "will you press the button",
+     "would you press the button",
+     "button dilemma",
+     "red button but"
+    ]
+   },
+   {
+    "id": "harold",
+    "name": "Hide the Pain Harold",
+    "shape": "ironic-denial",
+    "core": "Forced smile masking internal pain or embarrassment.",
+    "slots": [
+     "the awkward or painful situation",
+     "what he's pretending, or the detail that stings"
+    ],
+    "aliases": [
+     "hide the pain harold",
+     "harold"
+    ]
+   }
+  ]
+ }
+]

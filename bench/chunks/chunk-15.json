@@ -1,0 +1,1083 @@
+[
+{
+"id": "umbrellaacademymeme",
+"name": "Umbrella Academy Car Stare",
+"lines": 2,
+"shape": "dialogue",
+"core": "Vanya stares from one car and Five stares back stunned from another; used for two parties awkwardly noticing each other in the same situation.",
+"slots": [
+"first one",
+"the one staring back"
+],
+"aliases": [
+"umbrella academy car",
+"vanya five car",
+"car window stare",
+"umbrella academy"
+],
+"avoid": "Not for warm, friendly reunions."
+},
+{
+"id": "yesdear",
+"name": "Yes Dear",
+"lines": 2,
+"shape": "dialogue",
+"core": "A cheerful woman makes a request and a worn-out face answers with weary compliance; used for tired, resigned agreement.",
+"slots": [
+"the cheerful request",
+"the weary 'yes dear'"
+],
+"aliases": [
+"yes dear",
+"tired yes",
+"wojak yes dear",
+"henpecked"
+],
+"avoid": "Not for enthusiastic agreement."
+},
+{
+"id": "athome",
+"name": "We Have It At Home",
+"lines": 3,
+"shape": "comparison",
+"core": "Kid asks for something, mom says we have it at home, and the home version is a sad knockoff; used for disappointing cheap substitutes.",
+"slots": [
+"what you want",
+"same thing again",
+"the sad home version"
+],
+"aliases": [
+"we have it at home",
+"mom we have at home",
+"at home meme",
+"food at home"
+],
+"avoid": "Not for substitutes that are actually better."
+},
+{
+"id": "nowthatsanameihaventheardsin",
+"name": "Now That's A Name I Haven't Heard In A Long Time",
+"lines": 2,
+"shape": "reaction",
+"core": "Obi-Wan wistfully recalls an old name; used when something long forgotten is suddenly mentioned again.",
+"slots": [
+"the old thing mentioned",
+"haven't heard that in years"
+],
+"aliases": [
+"obi wan old name",
+"haven't heard that name",
+"old ben kenobi",
+"a name i haven't heard"
+],
+"avoid": "Not for brand-new things."
+},
+{
+"id": "dafuqdidijustread",
+"name": "Dafuq Did I Just Read",
+"lines": 2,
+"shape": "reaction",
+"core": "Samuel Johnson squints at a paper then looks up appalled; used after reading something baffling or absurd.",
+"slots": [
+"what you read",
+"the stunned reaction"
+],
+"aliases": [
+"samuel johnson",
+"what did i just read",
+"confused reading man",
+"dafuq"
+],
+"avoid": "Not for sensible, clear writing."
+},
+{
+"id": "churchgun",
+"name": "Church Gun",
+"lines": 2,
+"shape": "labeling",
+"core": "A man sits unaware while two women behind him quietly draw guns; used for an oblivious target and the threat sneaking up on it.",
+"slots": [
+"the oblivious target",
+"the hidden threat"
+],
+"aliases": [
+"church gun",
+"person of interest church",
+"gun behind back",
+"sneaky threat"
+],
+"avoid": "Not for real violence or attacks on places of worship."
+},
+{
+"id": "wtf",
+"name": "WTF Face",
+"lines": 2,
+"shape": "reaction",
+"core": "A guy grimacing in disgusted confusion; used to react to something gross or baffling.",
+"slots": [
+"the gross or baffling thing",
+"the reaction"
+],
+"aliases": [
+"wtf guy",
+"what the f face",
+"disgusted face",
+"grimace guy"
+],
+"avoid": "Not for pleasant surprises."
+},
+{
+"id": "spidermanpresentation",
+"name": "Spiderman Presentation",
+"lines": 1,
+"shape": "other",
+"core": "Spider-Man presents in front of a projector screen; used to share a 'fact' or hot take as if it's an official lecture.",
+"slots": [
+"the presented point"
+],
+"aliases": [
+"spiderman presentation",
+"spider-man school assembly",
+"spiderman lecture",
+"presentation meme"
+],
+"avoid": "Not for multi-part dialogue."
+},
+{
+"id": "mrkrabsmoney",
+"name": "Mr Krabs Money",
+"lines": 2,
+"shape": "reaction",
+"core": "Mr. Krabs rolling blissfully in a pile of cash; used for the joy of finally getting paid or getting something you crave in abundance.",
+"slots": [
+"setup",
+"punchline"
+],
+"aliases": [
+"mr krabs money",
+"mr krabs rolling in money",
+"money bath",
+"krabs cash pile"
+],
+"avoid": "Not for losing money or being broke."
+},
+{
+"id": "thousandyardstare",
+"name": "Thousand Yard Stare",
+"lines": 2,
+"shape": "reaction",
+"core": "A shell-shocked soldier staring blankly into nothing; used for feeling traumatized or numb after an ordeal.",
+"slots": [
+"the ordeal",
+"the aftermath"
+],
+"aliases": [
+"thousand yard stare",
+"shell shocked soldier",
+"war flashback stare",
+"2000 yard stare"
+],
+"avoid": "Not for real war tragedies or genuine trauma."
+},
+{
+"id": "girlputtingtubaongirlshead",
+"name": "Girl Putting Tuba on Girl's Head",
+"lines": 3,
+"shape": "labeling",
+"core": "One girl calmly placing a tuba over another girl's head; used when someone or something smothers you with an unwanted thing while you just stand there.",
+"slots": [
+"the thing",
+"the victim",
+"the one imposing it"
+],
+"aliases": [
+"tuba girl",
+"girl putting tuba on head",
+"tuba on head",
+"tuba meme"
+],
+"avoid": "Not for mutual or welcome situations."
+},
+{
+"id": "loadingcat",
+"name": "Loading Cat",
+"lines": 2,
+"shape": "reaction",
+"core": "A frozen cat with a loading spinner on its face; used when someone (or something) needs a long time to process what just happened.",
+"slots": [
+"the input",
+"the buffering reaction"
+],
+"aliases": [
+"loading cat",
+"buffering cat",
+"cat loading spinner",
+"processing cat"
+],
+"avoid": "Not for quick, sharp responses."
+},
+{
+"id": "breakingbadsmilefrown",
+"name": "Breaking Bad Smile Frown",
+"lines": 2,
+"shape": "binary-choice",
+"core": "Hank grinning wildly beside Hank scowling; contrasts what makes you happy with what makes you miserable.",
+"slots": [
+"thing that delights",
+"thing that disgusts"
+],
+"aliases": [
+"hank smile frown",
+"breaking bad smile frown",
+"dean norris happy sad",
+"hank happy angry"
+],
+"avoid": "Not for things that are equally good or bad."
+},
+{
+"id": "thislittlemanueverisgonnacos",
+"name": "This Little Maneuver Is Gonna Cost Us 51 Years",
+"lines": 1,
+"shape": "plan-backfires",
+"core": "Interstellar astronaut realizing a quick decision will cost decades; used when a small shortcut or mistake turns out to have huge time costs.",
+"slots": [
+"the small action"
+],
+"aliases": [
+"this little maneuver",
+"51 years",
+"interstellar 51 years",
+"cost us 51 years"
+],
+"avoid": "Not for decisions with no lasting consequence."
+},
+{
+"id": "youwouldntxay",
+"name": "You Wouldn't X A Y",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Parody of the anti-piracy ad 'You wouldn't steal a car'; used to mock an overblown moral argument with an absurd comparison.",
+"slots": [
+"the verb",
+"the object"
+],
+"aliases": [
+"you wouldn't steal a car",
+"you wouldnt download a car",
+"piracy ad",
+"you wouldn't x a y"
+],
+"avoid": "Not for sincere public-service messages."
+},
+{
+"id": "platetoss",
+"name": "Plate Toss",
+"lines": 2,
+"shape": "rejection",
+"core": "One guy serves another a plate, who instantly flings it away; used when an offer or gift is rejected immediately.",
+"slots": [
+"the offer",
+"the instant rejection"
+],
+"aliases": [
+"plate toss",
+"always sunny plate throw",
+"throwing the plate",
+"dennis plate toss"
+],
+"avoid": "Not for offers that get accepted."
+},
+{
+"id": "run",
+"name": "Run",
+"lines": 2,
+"shape": "labeling",
+"core": "An orangutan on a tricycle chasing a screaming girl; used for being pursued by something you desperately want to escape.",
+"slots": [
+"the pursuer",
+"the one fleeing"
+],
+"aliases": [
+"orangutan chasing girl",
+"run meme",
+"monkey on bike chasing kid",
+"orangutan tricycle"
+],
+"avoid": "Not for welcome or friendly encounters."
+},
+{
+"id": "kevinjames",
+"name": "Kevin James",
+"lines": 2,
+"shape": "self-own",
+"core": "Kevin James with a sheepish, smug grin and hands in pockets; used when you've done something mildly embarrassing and own it.",
+"slots": [
+"setup",
+"sheepish admission"
+],
+"aliases": [
+"kevin james smirk",
+"kevin james hands in pockets",
+"awkward smirk",
+"king of queens"
+],
+"avoid": "Not for genuine remorse or anger."
+},
+{
+"id": "redditorswife",
+"name": "Redditor's Wife",
+"lines": 2,
+"shape": "irony",
+"core": "A woman gazing sadly at her partner hunched over a glowing computer; used to describe someone neglecting their partner for the internet.",
+"slots": [
+"what she hopes",
+"what he's doing"
+],
+"aliases": [
+"redditor's wife",
+"sad wife computer",
+"husband on computer",
+"neglected wife"
+],
+"avoid": "Not for happy couples sharing screen time."
+},
+{
+"id": "veinforeheadguy",
+"name": "Vein Forehead Guy",
+"lines": 2,
+"shape": "reaction",
+"core": "A teen straining with a bulging forehead vein; used for desperately holding something in, like laughter or a comment.",
+"slots": [
+"situation",
+"what you're holding in"
+],
+"aliases": [
+"vein forehead guy",
+"trying not to laugh kid",
+"holding it in",
+"straining boy"
+],
+"avoid": "Not for relaxed, carefree moments."
+},
+{
+"id": "blankyellowsign",
+"name": "Blank Yellow Sign",
+"lines": 1,
+"shape": "warning",
+"core": "A blank yellow warning sign; used to post a mock warning or notice about something.",
+"slots": [
+"the warning"
+],
+"aliases": [
+"blank yellow sign",
+"warning sign",
+"caution sign",
+"yellow road sign"
+],
+"avoid": "Not for scenes needing a person or reaction."
+},
+{
+"id": "highdrunkguy",
+"name": "High Drunk Guy",
+"lines": 2,
+"shape": "irony",
+"core": "A bleary-eyed, grinning guy who looks totally wasted; used for absurd 'deep' thoughts or dumb ideas that sound genius in the moment.",
+"slots": [
+"setup",
+"dumb epiphany"
+],
+"aliases": [
+"10 guy",
+"really high guy",
+"stoner stanley",
+"drunk guy"
+],
+"avoid": "Not for sober, sensible advice."
+},
+{
+"id": "patheticspidey",
+"name": "Pathetic Spidey",
+"lines": 3,
+"shape": "comparison",
+"core": "Batman and Iron Man shower cash on a poor Spider-Man scrambling for it; used when the well-off flaunt resources at someone who has none.",
+"slots": [
+"rich one",
+"other rich one",
+"the broke one"
+],
+"aliases": [
+"pathetic spidey",
+"batman iron man throwing money",
+"rich superheroes",
+"spiderman broke"
+],
+"avoid": "Not for equal footing between parties."
+},
+{
+"id": "monkeybusiness",
+"name": "Monkey Business",
+"lines": 2,
+"shape": "self-own",
+"core": "A chimp in a shirt typing at an office cubicle; used for clueless work or someone faking competence on the job.",
+"slots": [
+"setup",
+"punchline"
+],
+"aliases": [
+"monkey business",
+"monkey at computer",
+"chimp typing",
+"office monkey"
+],
+"avoid": "Not for genuine expertise."
+},
+{
+"id": "wehaveahulk",
+"name": "We Have A Hulk",
+"lines": 2,
+"shape": "dialogue",
+"core": "Loki boasts 'I have an army' and Tony Stark coolly replies 'We have a Hulk'; used to answer a big threat with an even bigger trump card.",
+"slots": [
+"the threat",
+"the trump card"
+],
+"aliases": [
+"we have a hulk",
+"i have an army",
+"loki tony stark",
+"avengers hulk"
+],
+"avoid": "Not for situations where you're outmatched."
+},
+{
+"id": "noyeslady",
+"name": "No Yes Lady",
+"lines": 2,
+"shape": "before-after",
+"core": "A woman grimacing in disgust, then reconsidering with intrigue; used when something seems bad at first but grows on you.",
+"slots": [
+"first impression",
+"second thought"
+],
+"aliases": [
+"kombucha girl",
+"no yes lady",
+"disgust then intrigued",
+"brittany tomlinson"
+],
+"avoid": "Not for things you hate consistently."
+},
+{
+"id": "borat",
+"name": "Borat",
+"lines": 2,
+"shape": "approval",
+"core": "Borat grinning with two thumbs up; used to celebrate a (often dubious) success with 'Great success!'.",
+"slots": [
+"the dubious achievement",
+"the celebration"
+],
+"aliases": [
+"borat thumbs up",
+"great success",
+"very nice",
+"borat"
+],
+"avoid": "Not for failures or sad news."
+},
+{
+"id": "gordonramsaysomegoodfood",
+"name": "Gordon Ramsay Some Good Food",
+"lines": 1,
+"shape": "approval",
+"core": "Gordon Ramsay savoring a dish with the subtitle 'Finally, some good food'; used when something finally meets your standards after a run of bad ones.",
+"slots": [
+"the finally-good thing"
+],
+"aliases": [
+"finally some good food",
+"gordon ramsay delicious",
+"finally some good f food",
+"ramsay approval"
+],
+"avoid": "Not for criticism or disappointing results."
+},
+{
+"id": "jessicajonesdeathstare",
+"name": "Jessica Jones Death Stare",
+"lines": 2,
+"shape": "labeling",
+"core": "Kilgrave leaning in and staring intently at an uncomfortable Jessica Jones; used when someone or something creepily fixates on you.",
+"slots": [
+"the uncomfortable one",
+"the one staring"
+],
+"aliases": [
+"jessica jones death stare",
+"kilgrave stare",
+"creepy stare",
+"david tennant staring"
+],
+"avoid": "Not for mutual affection."
+},
+{
+"id": "dbzfusion",
+"name": "DBZ Fusion",
+"lines": 3,
+"shape": "labeling",
+"core": "Goten and Trunks doing the fusion dance and becoming Super Saiyan 3 Gotenks; used when two things combine into something far more powerful.",
+"slots": [
+"first thing",
+"second thing",
+"the combined result"
+],
+"aliases": [
+"dbz fusion",
+"fusion dance",
+"gotenks fusion",
+"dragon ball fusion"
+],
+"avoid": "Not for things that combine badly."
+},
+{
+"id": "chilloutlemur",
+"name": "Chill Out Lemur",
+"lines": 2,
+"shape": "warning",
+"core": "A lemur holding up a calming palm; used to tell someone to calm down about something overblown.",
+"slots": [
+"the overreaction",
+"chill-out advice"
+],
+"aliases": [
+"chill out lemur",
+"calm down lemur",
+"lemur hand",
+"relax lemur"
+],
+"avoid": "Not for encouraging excitement."
+},
+{
+"id": "nobodyexpectsthespanishinqui",
+"name": "Nobody Expects The Spanish Inquisition",
+"lines": 2,
+"shape": "irony",
+"core": "Monty Python's red-robed inquisitors bursting in; used for something showing up completely unexpectedly.",
+"slots": [
+"setup",
+"the unexpected arrival"
+],
+"aliases": [
+"nobody expects the spanish inquisition",
+"spanish inquisition",
+"monty python inquisition",
+"nobody expects"
+],
+"avoid": "Not for planned or predictable events."
+},
+{
+"id": "urinalguymoretextroom",
+"name": "Urinal Guy",
+"lines": 1,
+"shape": "irony",
+"core": "A man picks the urinal right next to the only other guy despite a whole empty row; used for someone choosing the most awkward option when plenty of space exists.",
+"slots": [
+"the awkward choice explained"
+],
+"aliases": [
+"urinal guy",
+"urinal etiquette",
+"picks the urinal next to you",
+"empty urinals"
+],
+"avoid": "Not for situations where space is genuinely scarce."
+},
+{
+"id": "isaidwesadtoday",
+"name": "I Said We Sad Today",
+"lines": 2,
+"shape": "reaction",
+"core": "A guy leaning into a friend's face insisting 'I said we sad today'; used to force someone to share your gloomy mood.",
+"slots": [
+"the setup",
+"the insistence"
+],
+"aliases": [
+"i said we sad today",
+"we sad today",
+"we sad",
+"forced sadness"
+],
+"avoid": "Not for genuinely cheering someone up."
+},
+{
+"id": "loveactuallysign",
+"name": "Love Actually Sign",
+"lines": 1,
+"shape": "dialogue",
+"core": "Mark silently confessing via cue cards at the door in Love Actually; used for a heartfelt or awkward confession delivered via sign.",
+"slots": [
+"the sign's confession"
+],
+"aliases": [
+"love actually sign",
+"love actually cue cards",
+"to me you are perfect",
+"doorstep sign"
+],
+"avoid": "Not for loud, spoken announcements."
+},
+{
+"id": "spongebobmyeyes",
+"name": "Spongebob My Eyes",
+"lines": 2,
+"shape": "reaction",
+"core": "Patrick screaming 'My eyes!' with bloodshot eyes; used when you see something painful, bright, or horrifying.",
+"slots": [
+"what you saw",
+"the scream"
+],
+"aliases": [
+"my eyes",
+"patrick my eyes",
+"spongebob my eyes",
+"light mode eyes"
+],
+"avoid": "Not for pleasant sights."
+},
+{
+"id": "sisyphus",
+"name": "Sisyphus",
+"lines": 2,
+"shape": "labeling",
+"core": "Sisyphus endlessly pushing a boulder uphill; used for a pointless, never-ending task.",
+"slots": [
+"the endless task",
+"the one pushing"
+],
+"aliases": [
+"sisyphus",
+"pushing boulder uphill",
+"sisyphean task",
+"endless struggle"
+],
+"avoid": "Not for tasks that actually get finished."
+},
+{
+"id": "mariohammersmash",
+"name": "Mario Hammer Smash",
+"lines": 2,
+"shape": "labeling",
+"core": "Paper Mario slamming a hammer down; used for crushing or forcefully dealing with something.",
+"slots": [
+"the smasher",
+"what gets smashed"
+],
+"aliases": [
+"mario hammer",
+"paper mario hammer smash",
+"hammer time",
+"mario smash"
+],
+"avoid": "Not for gentle or careful handling."
+},
+{
+"id": "joeyrepeatafterme",
+"name": "Joey Repeat After Me",
+"lines": 4,
+"shape": "dialogue",
+"core": "Phoebe coaching Joey to repeat a phrase until he confidently gets it wrong; used when someone keeps failing to learn something simple.",
+"slots": [
+"teacher's first line",
+"student repeats",
+"teacher's next line",
+"student's confident mess"
+],
+"aliases": [
+"joey repeat after me",
+"phoebe teaching joey",
+"friends french lesson",
+"joey french"
+],
+"avoid": "Not for someone who learns quickly."
+},
+{
+"id": "boratigotoamerica",
+"name": "Borat I Go To America",
+"lines": 2,
+"shape": "reaction",
+"core": "Borat leaving his village joyfully as the crowd watches; used for excitedly heading off somewhere or leaving something behind.",
+"slots": [
+"setup",
+"joyful departure"
+],
+"aliases": [
+"borat i go to america",
+"borat leaving village",
+"borat celebration",
+"borat excited"
+],
+"avoid": "Not for reluctant or sad departures."
+},
+{
+"id": "multidoge",
+"name": "Multi Doge",
+"lines": 2,
+"shape": "exaggeration",
+"core": "A wall of countless Doge faces; used for something overwhelming in quantity or everywhere at once.",
+"slots": [
+"setup",
+"the overload"
+],
+"aliases": [
+"multi doge",
+"many doge",
+"doge collage",
+"so much doge"
+],
+"avoid": "Not for single, rare things."
+},
+{
+"id": "ifihadanickelforeverytime",
+"name": "If I Had A Nickel For Every Time",
+"lines": 2,
+"shape": "irony",
+"core": "Doofenshmirtz: 'If I had a nickel for every time X, I'd have two nickels... which isn't a lot, but it's weird it happened twice'; used for an oddly specific thing that happened exactly twice.",
+"slots": [
+"the weird recurring event",
+"two nickels punchline"
+],
+"aliases": [
+"if i had a nickel",
+"doofenshmirtz nickel",
+"two nickels",
+"weird it happened twice"
+],
+"avoid": "Not for things that happen constantly."
+},
+{
+"id": "theofficebankruptcy",
+"name": "I Declare Bankruptcy",
+"lines": 2,
+"shape": "reaction",
+"core": "Michael Scott shouting that he declares bankruptcy, used when someone tries to escape a huge problem with a dramatic, useless announcement.",
+"slots": [
+"the overwhelming problem",
+"the dramatic non-solution"
+],
+"aliases": [
+"i declare bankruptcy",
+"michael scott bankruptcy",
+"the office bankruptcy",
+"declare bankruptcy"
+],
+"avoid": "Not for real financial hardship or serious debt stories."
+},
+{
+"id": "adviceyoda",
+"name": "Advice Yoda",
+"lines": 2,
+"shape": "other",
+"core": "Yoda gives advice in his backwards Yoda grammar, used for wise-sounding tips with inverted word order.",
+"slots": [
+"first half of the advice",
+"second half, Yoda style"
+],
+"aliases": [
+"advice yoda",
+"yoda advice",
+"yoda says",
+"wise yoda"
+],
+"avoid": "Not for advice that doesn't work in Yoda's inverted sentence style."
+},
+{
+"id": "penguingang",
+"name": "Penguin Gang",
+"lines": 2,
+"shape": "reaction",
+"core": "A crew of rockhopper penguins strutting together, used for a group showing up as a squad to deal with something.",
+"slots": [
+"the situation",
+"the squad arriving"
+],
+"aliases": [
+"penguin gang",
+"penguin squad",
+"rockhopper penguins",
+"squad walking"
+],
+"avoid": "Not for solo reactions; it needs a group showing up together."
+},
+{
+"id": "scaredhamster",
+"name": "Scared Hamster",
+"lines": 2,
+"shape": "reaction",
+"core": "A hamster frozen in open-mouthed shock, used for sudden fear or alarm at something small.",
+"slots": [
+"the scary thing",
+"the reaction"
+],
+"aliases": [
+"scared hamster",
+"shocked hamster",
+"surprised hamster",
+"hamster scream"
+],
+"avoid": "Not for calm or happy reactions."
+},
+{
+"id": "yeahifyoucould",
+"name": "Yeah If You Could",
+"lines": 2,
+"shape": "irony",
+"core": "Bill Lumbergh from Office Space passive-aggressively asking for something unreasonable, used for bosses making annoying requests.",
+"slots": [
+"yeah, if you could...",
+"the unreasonable request"
+],
+"aliases": [
+"lumbergh",
+"that would be great",
+"office space boss",
+"yeah if you could",
+"bill lumbergh"
+],
+"avoid": "Not for genuine, polite requests."
+},
+{
+"id": "ericandreletmeinblank",
+"name": "Eric Andre Let Me In",
+"lines": 2,
+"shape": "rejection",
+"core": "Eric Andre desperately shaking a locked gate and screaming to be let in, used for being shut out of something you badly want.",
+"slots": [
+"who wants in",
+"the place or thing they're locked out of"
+],
+"aliases": [
+"let me in",
+"eric andre let me in",
+"let me in gate",
+"eric andre fence"
+],
+"avoid": "Not for situations where someone gets in easily."
+},
+{
+"id": "trumpinterview",
+"name": "Trump Interview Papers",
+"lines": 1,
+"shape": "reaction",
+"core": "An interviewer squints in confusion at papers he's handed, used when someone presents baffling evidence as if it proves their point.",
+"slots": [
+"what's written on the papers"
+],
+"aliases": [
+"jonathan swan",
+"axios interview",
+"trump papers",
+"confused interviewer",
+"trump interview"
+],
+"avoid": "Not for evidence that actually makes sense."
+},
+{
+"id": "godfather",
+"name": "Godfather",
+"lines": 2,
+"shape": "irony",
+"core": "Don Corleone shrugging with open hands, used to complain that someone asks a favour without respect, or to make an offer they can't refuse.",
+"slots": [
+"the setup",
+"the Godfather line"
+],
+"aliases": [
+"godfather",
+"vito corleone",
+"you come to me",
+"offer you can't refuse",
+"without respect"
+],
+"avoid": "Not for real threats or violence."
+},
+{
+"id": "kirbyholdingasign",
+"name": "Kirby Holding A Sign",
+"lines": 1,
+"shape": "approval",
+"core": "Kirby cheerfully holds up a blank sign, used to deliver any wholesome or blunt message with cute enthusiasm.",
+"slots": [
+"what the sign says"
+],
+"aliases": [
+"kirby sign",
+"kirby holding sign",
+"kirby blank sign",
+"kirby"
+],
+"avoid": "Not for long messages; the sign is small."
+},
+{
+"id": "karen",
+"name": "Karen",
+"lines": 2,
+"shape": "reaction",
+"core": "The asymmetric bob haircut that stands for an entitled person demanding to speak to the manager, used for petty complaints.",
+"slots": [
+"the minor inconvenience",
+"the entitled demand"
+],
+"aliases": [
+"karen",
+"speak to the manager",
+"karen haircut",
+"manager haircut"
+],
+"avoid": "Not for reasonable complaints or attacks on real private people."
+},
+{
+"id": "joinsthebattle",
+"name": "Joins The Battle",
+"lines": 1,
+"shape": "other",
+"core": "The Super Smash Bros. new-challenger splash, used to announce someone or something unexpected entering a situation.",
+"slots": [
+"who joins the battle"
+],
+"aliases": [
+"joins the battle",
+"smash bros joins the battle",
+"new challenger",
+"smash splash"
+],
+"avoid": "Not for things that were already part of the situation."
+},
+{
+"id": "ismayonnaiseaninstrument",
+"name": "Is Mayonnaise An Instrument",
+"lines": 2,
+"shape": "reaction",
+"core": "Patrick earnestly asking if mayonnaise is an instrument, used for a sincerely dumb question in the 'Is X a Y?' format.",
+"slots": [
+"the context",
+"Is X a Y?"
+],
+"aliases": [
+"is mayonnaise an instrument",
+"patrick mayonnaise",
+"no patrick",
+"patrick question"
+],
+"avoid": "Not for smart or reasonable questions."
+},
+{
+"id": "wewantyou",
+"name": "Uncle Sam I Want You",
+"lines": 2,
+"shape": "warning",
+"core": "Uncle Sam pointing at the viewer, used to recruit or call out the reader for some task or duty.",
+"slots": [
+"I want you",
+"to do this thing"
+],
+"aliases": [
+"uncle sam",
+"i want you",
+"we want you",
+"uncle sam pointing"
+],
+"avoid": "Not for messages not aimed at the viewer."
+},
+{
+"id": "themoreyouknow",
+"name": "The More You Know",
+"lines": 1,
+"shape": "irony",
+"core": "The NBC PSA shooting-star logo, used to sarcastically present a useless or obvious fact as enlightening.",
+"slots": [
+"the 'educational' fact"
+],
+"aliases": [
+"the more you know",
+"nbc the more you know",
+"shooting star psa",
+"tmyk"
+],
+"avoid": "Not for genuinely important safety information."
+},
+{
+"id": "robertdowneyjrannoyed",
+"name": "Robert Downey Jr Eye Roll",
+"lines": 2,
+"shape": "reaction",
+"core": "Robert Downey Jr. rolling his eyes with arms crossed, used for exasperation at something said for the hundredth time.",
+"slots": [
+"the annoying thing",
+"the reaction"
+],
+"aliases": [
+"rdj eye roll",
+"robert downey jr annoyed",
+"tony stark eye roll",
+"eye roll"
+],
+"avoid": "Not for genuine surprise or delight."
+},
+{
+"id": "powerpuffgirlscreation",
+"name": "Powerpuff Girls Creation",
+"lines": 4,
+"shape": "escalation",
+"core": "Professor Utonium's recipe of sugar, spice, everything nice and accidental Chemical X, used to list the ingredients of something with one chaotic extra.",
+"slots": [
+"ingredient one",
+"ingredient two",
+"ingredient three",
+"the accidental Chemical X"
+],
+"aliases": [
+"powerpuff girls ingredients",
+"sugar spice everything nice",
+"chemical x",
+"powerpuff recipe"
+],
+"avoid": "Not for things without a recipe-like list of ingredients."
+},
+{
+"id": "ifindyourlackoffaithdisturbi",
+"name": "I Find Your Lack Of Faith Disturbing",
+"lines": 2,
+"shape": "warning",
+"core": "Darth Vader force-choking an officer who doubted him, used to menacingly respond to someone doubting your favourite thing.",
+"slots": [
+"the doubter's remark",
+"Vader's response"
+],
+"aliases": [
+"lack of faith",
+"darth vader choke",
+"i find your lack of faith disturbing",
+"vader force choke"
+],
+"avoid": "Not for friendly disagreements with no menace."
+},
+{
+"id": "braceyourself",
+"name": "Brace Yourselves",
+"lines": 2,
+"shape": "warning",
+"core": "Ned Stark gravely warning that something is coming, used to predict an incoming flood of annoying, predictable things.",
+"slots": [
+"brace yourselves",
+"the thing that's coming"
+],
+"aliases": [
+"brace yourselves",
+"winter is coming",
+"ned stark",
+"brace yourself"
+],
+"avoid": "Not for events that already happened."
+}
+]

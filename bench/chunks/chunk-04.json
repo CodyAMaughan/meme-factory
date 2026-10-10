@@ -1,0 +1,1089 @@
+[
+{
+"id": "evilkermit",
+"name": "Evil Kermit",
+"lines": 2,
+"shape": "dialogue",
+"core": "Kermit faces his hooded dark side, who urges him to give in to a bad impulse; used for self-sabotaging temptation.",
+"slots": [
+"me: the sensible intention",
+"dark me: the bad temptation"
+],
+"aliases": [
+"kermit dark side",
+"hooded kermit",
+"me inside me",
+"kermit sith"
+],
+"avoid": "Not for conflict between two different people."
+},
+{
+"id": "flextape",
+"name": "Flex Tape",
+"lines": 3,
+"shape": "labeling",
+"core": "Phil Swift slaps Flex Tape over a huge leak; used for covering up a serious problem with a quick, superficial fix.",
+"slots": [
+"me",
+"the serious problem",
+"the quick cover-up"
+],
+"aliases": [
+"phil swift",
+"flex tape leak",
+"that's a lotta damage",
+"flex seal"
+],
+"avoid": "Not for real, thorough fixes."
+},
+{
+"id": "starwarsyoda",
+"name": "Star Wars Yoda",
+"lines": 2,
+"shape": "dialogue",
+"core": "Yoda giving wise-sounding advice, captioned in his inverted word order.",
+"slots": [
+"setup",
+"Yoda-speak wisdom"
+],
+"aliases": [
+"yoda",
+"star wars yoda",
+"wise yoda",
+"yoda speak"
+],
+"avoid": "Not for captions written in normal word order."
+},
+{
+"id": "allmyhomieshate",
+"name": "All My Homies Hate",
+"lines": 2,
+"shape": "rejection",
+"core": "A group posing defiantly with a rejection of something on top and 'all my homies hate it' below; used to declare collective disdain.",
+"slots": [
+"reject the thing",
+"all my homies hate it"
+],
+"aliases": [
+"all my homies hate",
+"all my homies",
+"f this thing",
+"my homies hate"
+],
+"avoid": "Not for targeting real people with abuse; aim it at things, tools or habits."
+},
+{
+"id": "bikefall",
+"name": "Bike Fall",
+"lines": 3,
+"shape": "self-own",
+"core": "Someone sabotages themselves, then blames something else.",
+"slots": [
+"who it is",
+"the thing they do to themselves",
+"what they blame afterwards"
+],
+"aliases": [
+"stick in bike wheel",
+"bike stick",
+"bicycle pole sabotage"
+],
+"avoid": "Bad luck that is nobody's fault."
+},
+{
+"id": "atrainhittingaschoolbus",
+"name": "A Train Hitting a School Bus",
+"lines": 4,
+"shape": "escalation",
+"core": "A train approaches and then smashes a parked school bus; used when something overwhelming flattens something unprepared.",
+"slots": [
+"the incoming force",
+"the unprepared victim",
+"the force hits",
+"the victim wrecked"
+],
+"aliases": [
+"train hits bus",
+"train school bus",
+"train crash bus",
+"bus vs train"
+],
+"avoid": "Not for evenly matched contests."
+},
+{
+"id": "spongebobightimmaheadout",
+"name": "Spongebob Ight Imma Head Out",
+"lines": 1,
+"shape": "rejection",
+"core": "SpongeBob gets up from his chair to leave, used for the moment a situation makes you nope out.",
+"slots": [
+"the situation you leave"
+],
+"aliases": [
+"ight imma head out",
+"spongebob leaving",
+"imma head out",
+"spongebob gets up"
+],
+"avoid": "Not for staying to deal with a problem."
+},
+{
+"id": "laughingleo",
+"name": "Laughing Leo",
+"lines": 2,
+"shape": "reaction",
+"core": "Leonardo DiCaprio laughing smugly with a drink in Django Unchained; a reaction to someone else's misfortune or a ridiculous situation.",
+"slots": [
+"the situation",
+"the smug reaction"
+],
+"aliases": [
+"leo laughing",
+"django leo",
+"dicaprio laughing",
+"leonardo dicaprio django"
+],
+"avoid": "Not for sincere happiness or sympathy."
+},
+{
+"id": "dontyousquidward",
+"name": "Don't You Squidward",
+"lines": 2,
+"shape": "irony",
+"core": "SpongeBob's smug, knowing grin, used for teasing someone with a sly 'don't you...' setup and punchline.",
+"slots": [
+"setup",
+"smug punchline"
+],
+"aliases": [
+"don't you squidward",
+"smug spongebob",
+"spongebob smirk",
+"dontyouquidward"
+],
+"avoid": "Not for sincere or sad moments."
+},
+{
+"id": "clownmakeup",
+"name": "Clown Applying Makeup",
+"lines": 4,
+"shape": "escalation",
+"core": "Each step of a bad decision makes you more of a clown, ending in full clown.",
+"slots": [
+"first small mistake",
+"second step",
+"third step",
+"final step: full clown"
+],
+"aliases": [
+"putting on clown makeup",
+"clown makeup",
+"clown applying makeup"
+],
+"avoid": "Stories that end well."
+},
+{
+"id": "tradeoffer",
+"name": "Trade Offer",
+"lines": 2,
+"shape": "comparison",
+"core": "A lopsided deal pitched as a fair trade: what I get versus what you get.",
+"slots": [
+"what I get (under \"i receive:\")",
+"what you get (under \"you receive:\")"
+],
+"aliases": [
+"trade offer",
+"i receive you receive",
+"tiktok trade offer"
+],
+"avoid": "Fair, balanced exchanges; the joke needs one side to be clearly worse."
+},
+{
+"id": "eviltoddler",
+"name": "Evil Toddler",
+"lines": 2,
+"shape": "irony",
+"core": "A toddler with a scheming grin, used for small, deliberately mischievous plans.",
+"slots": [
+"innocent-looking setup",
+"devious twist"
+],
+"aliases": [
+"evil toddler",
+"evil baby",
+"scheming kid",
+"mischievous toddler"
+],
+"avoid": "Not for genuinely harmful acts or innocent joy."
+},
+{
+"id": "sleepingshaq",
+"name": "Sleeping Shaq",
+"lines": 2,
+"shape": "comparison",
+"core": "Shaq sleeps through something serious but wakes up wide-eyed for something trivial; used for misplaced priorities.",
+"slots": [
+"important thing ignored",
+"trivial thing that wakes you"
+],
+"aliases": [
+"i sleep real shit",
+"sleeping shaq",
+"shaq i sleep",
+"real shit"
+],
+"avoid": "Not for things you care about equally."
+},
+{
+"id": "hardtoswallowpills",
+"name": "Hard To Swallow Pills",
+"lines": 1,
+"shape": "irony",
+"core": "A bottle of 'hard to swallow pills' with the pill labelled as an uncomfortable truth people don't want to accept.",
+"slots": [
+"the uncomfortable truth"
+],
+"aliases": [
+"hard to swallow pills",
+"pills meme",
+"tough pills",
+"uncomfortable truth pills"
+],
+"avoid": "Not for welcome or easy facts."
+},
+{
+"id": "blackgirlwat",
+"name": "Black Girl Wat",
+"lines": 1,
+"shape": "reaction",
+"core": "A confused, skeptical side-eye with a raised hand, used when someone says something that makes no sense.",
+"slots": [
+"the baffling statement"
+],
+"aliases": [
+"black girl wat",
+"confused girl",
+"wat girl",
+"confused side eye",
+"excuse me what"
+],
+"avoid": "Not for agreement or understanding."
+},
+{
+"id": "picardwtf",
+"name": "Picard WTF",
+"lines": 2,
+"shape": "reaction",
+"core": "Captain Picard exasperatedly gesturing, used to question something absurd or illogical.",
+"slots": [
+"the absurd situation",
+"exasperated question"
+],
+"aliases": [
+"picard wtf",
+"annoyed picard",
+"picard what the hell",
+"why the fuck picard"
+],
+"avoid": "Not for calm approval."
+},
+{
+"id": "whowouldwin",
+"name": "Who Would Win?",
+"lines": 2,
+"shape": "comparison",
+"core": "Pits a mighty-sounding contender against a tiny, silly one that obviously wins anyway.",
+"slots": [
+"impressive contender",
+"one small thing that wins"
+],
+"aliases": [
+"who would win",
+"who would win template",
+"vs meme",
+"one smol boi"
+],
+"avoid": "Not for evenly matched fair fights."
+},
+{
+"id": "laughingmeninsuits",
+"name": "Laughing Men In Suits",
+"lines": 2,
+"shape": "irony",
+"core": "Powerful men laughing hysterically, used for those in charge laughing at a ridiculous idea or at the little guy.",
+"slots": [
+"setup",
+"the laughable idea"
+],
+"aliases": [
+"laughing men in suits",
+"and then he said",
+"rich men laughing",
+"laughing executives"
+],
+"avoid": "Not for genuine friendly fun."
+},
+{
+"id": "10guy",
+"name": "10 Guy",
+"lines": 2,
+"shape": "reaction",
+"core": "A dazed, very high-looking guy, used for spaced-out 'deep' thoughts or baffling logic.",
+"slots": [
+"setup",
+"stoned realization"
+],
+"aliases": [
+"10 guy",
+"stoner stanley",
+"really high guy",
+"stoned guy"
+],
+"avoid": "Not for sharp, clear-headed thinking."
+},
+{
+"id": "yodawgheardyou",
+"name": "Yo Dawg Heard You",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Xzibit putting a thing inside the same thing, used for recursive or redundant setups.",
+"slots": [
+"yo dawg, I heard you like X",
+"so we put X in your X"
+],
+"aliases": [
+"yo dawg",
+"xzibit",
+"yo dawg i heard you like",
+"pimp my ride"
+],
+"avoid": "Not for things that aren't recursive or nested."
+},
+{
+"id": "drevillaser",
+"name": "Dr Evil Laser",
+"lines": 2,
+"shape": "irony",
+"core": "Dr. Evil making air quotes, used to mock something that's only nominally what it claims to be.",
+"slots": [
+"setup",
+"the \"air-quoted\" thing"
+],
+"aliases": [
+"dr evil air quotes",
+"dr evil laser",
+"air quotes",
+"dr evil"
+],
+"avoid": "Not for sincere, literal statements."
+},
+{
+"id": "illjustwaithere",
+"name": "I'll Just Wait Here",
+"lines": 2,
+"shape": "before-after",
+"core": "A man waiting at a computer turns into a skeleton, used for things that take forever.",
+"slots": [
+"what you're waiting for",
+"how long it takes"
+],
+"aliases": [
+"i'll just wait here",
+"waiting skeleton",
+"skeleton computer",
+"still waiting"
+],
+"avoid": "Not for things that happen fast."
+},
+{
+"id": "amitheonlyonearoundhere",
+"name": "Am I The Only One Around Here",
+"lines": 2,
+"shape": "reaction",
+"core": "Walter from The Big Lebowski furiously exasperated, used when you seem to be the only one who cares about something.",
+"slots": [
+"am I the only one around here",
+"who cares about this"
+],
+"aliases": [
+"am i the only one around here",
+"walter lebowski",
+"angry walter",
+"big lebowski"
+],
+"avoid": "Not for things everyone agrees on calmly."
+},
+{
+"id": "faceyoumakerobertdowneyjr",
+"name": "Face You Make Robert Downey Jr",
+"lines": 2,
+"shape": "reaction",
+"core": "An eye-roll reaction: the face you make when someone says or does something tiresome or ridiculous.",
+"slots": [
+"the annoying situation",
+"the face you make"
+],
+"aliases": [
+"RDJ eye roll",
+"Robert Downey Jr eye roll",
+"face you make when",
+"Tony Stark eye roll"
+],
+"avoid": "Not for genuine excitement or approval."
+},
+{
+"id": "belikebill",
+"name": "Be Like Bill",
+"lines": 4,
+"shape": "approval",
+"core": "A stick figure modelling sensible behaviour, used to passive-aggressively shame people who do the opposite.",
+"slots": [
+"this is Bill",
+"what Bill does (or doesn't)",
+"Bill is smart",
+"be like Bill"
+],
+"aliases": [
+"Be Like Bill",
+"this is Bill",
+"Bill is smart",
+"stick figure beanie"
+],
+"avoid": "Not for praising someone sincerely without a dig at others."
+},
+{
+"id": "lookatme",
+"name": "Look At Me",
+"lines": 2,
+"shape": "other",
+"core": "From Captain Phillips: someone abruptly seizing control or a new role, 'Look at me, I'm the captain now.'",
+"slots": [
+"look at me",
+"I'm the X now"
+],
+"aliases": [
+"I'm the captain now",
+"look at me I'm the captain now",
+"Captain Phillips",
+"I am the captain now"
+],
+"avoid": "Not for situations where nobody takes over or gains power."
+},
+{
+"id": "drakeblank",
+"name": "Drake Hotline Bling",
+"lines": 2,
+"shape": "binary-choice",
+"core": "Drake rejects one option and approves another, used to show a preference, often an absurd one.",
+"slots": [
+"the rejected thing",
+"the preferred thing"
+],
+"aliases": [
+"Drake",
+"Drakeposting",
+"Hotline Bling",
+"Drake yes no",
+"Drake no yes"
+],
+"avoid": "Not for situations with no clear preference between two things."
+},
+{
+"id": "badpundog",
+"name": "Bad Pun Dog",
+"lines": 3,
+"shape": "escalation",
+"core": "A grinning husky builds up to a groan-worthy pun across three panels.",
+"slots": [
+"setup",
+"build-up",
+"pun punchline"
+],
+"aliases": [
+"pun husky",
+"pun dog",
+"bad pun husky",
+"husky pun"
+],
+"avoid": "Not for jokes that aren't puns or wordplay."
+},
+{
+"id": "jacksparrowbeingchased",
+"name": "Jack Sparrow Being Chased",
+"lines": 2,
+"shape": "labeling",
+"core": "Jack Sparrow flees an angry mob; used for someone being chased down by a crowd of consequences or people.",
+"slots": [
+"the angry mob",
+"the one running away"
+],
+"aliases": [
+"Jack Sparrow running",
+"Jack Sparrow chased",
+"Pirates of the Caribbean running",
+"running from cannibals"
+],
+"avoid": "Not for calm situations or friendly pursuit."
+},
+{
+"id": "spartaleonidas",
+"name": "Sparta Leonidas",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Leonidas roaring 'This is Sparta!', used to shout an overly intense response to a mild question.",
+"slots": [
+"the mild question",
+"THIS IS ..."
+],
+"aliases": [
+"This is Sparta",
+"Leonidas",
+"300 Sparta",
+"madness this is Sparta"
+],
+"avoid": "Not for calm or subtle reactions."
+},
+{
+"id": "whisperandgoosebumps",
+"name": "Whisper and Goosebumps",
+"lines": 2,
+"shape": "reaction",
+"core": "Someone whispers something in an ear and it gives goosebumps; used for words that thrill (or terrify) the listener.",
+"slots": [
+"what's whispered",
+"who gets goosebumps"
+],
+"aliases": [
+"whisper goosebumps",
+"whispering in ear goosebumps",
+"ear whisper chills",
+"goosebumps meme"
+],
+"avoid": "Not for things said loudly or that leave people indifferent."
+},
+{
+"id": "mauryliedetector",
+"name": "Maury Lie Detector",
+"lines": 2,
+"shape": "irony",
+"core": "Maury reads the lie detector result, used to call out an obvious lie.",
+"slots": [
+"the claim",
+"the lie detector determined that was a lie"
+],
+"aliases": [
+"Maury lie detector",
+"the lie detector determined",
+"that was a lie",
+"Maury Povich"
+],
+"avoid": "Not for statements that are actually true."
+},
+{
+"id": "animegirlhidingfromterminato",
+"name": "Anime Girl Hiding From Terminator",
+"lines": 2,
+"shape": "labeling",
+"core": "A terrified girl hides while a Terminator hunts for her; used for trying to avoid something that's coming for you.",
+"slots": [
+"the thing hunting",
+"the one hiding"
+],
+"aliases": [
+"anime girl hiding",
+"girl hiding from terminator",
+"terminator hiding meme",
+"hiding from robot"
+],
+"avoid": "Not for things you're happy to face."
+},
+{
+"id": "backinmyday",
+"name": "Back In My Day",
+"lines": 2,
+"shape": "comparison",
+"core": "A grumpy old man complains that things were harder in his day, mocking nostalgia for tougher times.",
+"slots": [
+"back in my day",
+"the old hardship"
+],
+"aliases": [
+"back in my day",
+"grumpy old man",
+"angry old man pointing",
+"old man yells"
+],
+"avoid": "Not for praising modern conveniences sincerely."
+},
+{
+"id": "unclesam",
+"name": "Uncle Sam",
+"lines": 2,
+"shape": "warning",
+"core": "Uncle Sam points at the viewer, 'I want you', used to demand something of the reader.",
+"slots": [
+"I want you",
+"to do this"
+],
+"aliases": [
+"I want you",
+"Uncle Sam pointing",
+"Uncle Sam wants you",
+"we want you"
+],
+"avoid": "Not for statements that aren't aimed at the reader."
+},
+{
+"id": "saythatagainidareyou",
+"name": "Say That Again I Dare You",
+"lines": 2,
+"shape": "warning",
+"core": "Jules from Pulp Fiction pointing a gun, daring someone to repeat something wrong or annoying.",
+"slots": [
+"the annoying thing said",
+"say it again, I dare you"
+],
+"aliases": [
+"say that again I dare you",
+"Samuel L Jackson Pulp Fiction",
+"Jules Winnfield",
+"say what again"
+],
+"avoid": "Not for agreeing with what was said."
+},
+{
+"id": "scaredcat",
+"name": "Scared Cat",
+"lines": 2,
+"shape": "reaction",
+"core": "A wide-eyed horrified cat, used for sudden shock or panic at a realisation.",
+"slots": [
+"the shocking realisation",
+"the panicked reaction"
+],
+"aliases": [
+"scared cat",
+"shocked cat",
+"horrified cat",
+"surprised cat"
+],
+"avoid": "Not for calm or happy moments."
+},
+{
+"id": "awkwardmomentsealion",
+"name": "Awkward Moment Sealion",
+"lines": 2,
+"shape": "reaction",
+"core": "A side-eyeing seal, used for socially awkward or uncomfortable moments.",
+"slots": [
+"the setup",
+"the awkward moment"
+],
+"aliases": [
+"awkward seal",
+"awkward moment seal",
+"awkward sealion",
+"uncomfortable seal"
+],
+"avoid": "Not for comfortable or triumphant situations."
+},
+{
+"id": "simbashadowyplace",
+"name": "Simba Shadowy Place",
+"lines": 2,
+"shape": "warning",
+"core": "Mufasa shows Simba the kingdom, then warns him the shadowy place is off-limits; used for something you must never touch.",
+"slots": [
+"everything the light touches",
+"that's the forbidden thing"
+],
+"aliases": [
+"shadowy place",
+"Lion King shadowy place",
+"Mufasa Simba",
+"everything the light touches"
+],
+"avoid": "Not for things that are encouraged or harmless."
+},
+{
+"id": "squidward",
+"name": "Handsome Squidward",
+"lines": 2,
+"shape": "before-after",
+"core": "Handsome Squidward versus his normal ugly face, contrasting an idealised version with the grim reality.",
+"slots": [
+"the idealised version",
+"the reality"
+],
+"aliases": [
+"handsome Squidward",
+"ugly Squidward",
+"Squidward handsome vs ugly",
+"Squidward before after"
+],
+"avoid": "Not for comparisons where both sides look equally good."
+},
+{
+"id": "andeverybodylosestheirminds",
+"name": "And Everybody Loses Their Minds",
+"lines": 2,
+"shape": "irony",
+"core": "The Joker points out the double standard: nobody minds when X happens, but do a small Y and everybody loses their minds.",
+"slots": [
+"the accepted bad thing",
+"the minor thing that causes outrage"
+],
+"aliases": [
+"everybody loses their minds",
+"Joker double standard",
+"Joker nobody panics",
+"and everyone loses their minds"
+],
+"avoid": "Not for situations without an obvious double standard."
+},
+{
+"id": "marvelcivilwar1",
+"name": "Marvel Civil War",
+"lines": 2,
+"shape": "binary-choice",
+"core": "Captain America and Iron Man face off over a petty disagreement, framed as an epic civil war.",
+"slots": [
+"one side's position",
+"the other side's position"
+],
+"aliases": [
+"Civil War meme",
+"Captain America vs Iron Man",
+"Team Cap Team Iron Man",
+"Marvel Civil War"
+],
+"avoid": "Not for things everyone agrees on."
+},
+{
+"id": "whatgivespeoplefeelingsofpow",
+"name": "What Gives People Feelings Of Power",
+"lines": 1,
+"shape": "exaggeration",
+"core": "A bar chart where money and status lose to a trivial, petty source of power that dwarfs them.",
+"slots": [
+"the petty thing that gives the most power"
+],
+"aliases": [
+"feelings of power",
+"what gives people feelings of power",
+"money status chart",
+"power bar chart"
+],
+"avoid": "Not for genuinely powerful things like wealth or authority."
+},
+{
+"id": "goodfellashilarious",
+"name": "Goodfellas Hilarious",
+"lines": 2,
+"shape": "reaction",
+"core": "Ray Liotta and De Niro laughing hysterically, used for finding something absurdly funny, often sarcastically.",
+"slots": [
+"the setup",
+"the hilarious thing"
+],
+"aliases": [
+"Goodfellas laughing",
+"Ray Liotta laughing",
+"hilarious",
+"Goodfellas hilarious",
+"laughing mobsters"
+],
+"avoid": "Not for things that are actually upsetting."
+},
+{
+"id": "buddychrist",
+"name": "Buddy Christ",
+"lines": 2,
+"shape": "approval",
+"core": "A winking, thumbs-up Jesus statue from Dogma, giving cheesy approval or a cheeky 'you got this'.",
+"slots": [
+"the setup",
+"the cheeky approval"
+],
+"aliases": [
+"Buddy Christ",
+"Buddy Jesus",
+"thumbs up Jesus",
+"Dogma Jesus"
+],
+"avoid": "Not for serious religious content or disapproval."
+},
+{
+"id": "ajstylesundertaker",
+"name": "AJ Styles & Undertaker",
+"lines": 2,
+"shape": "labeling",
+"core": "The Undertaker looms silently behind a celebrating AJ Styles, used for a threat sneaking up on someone unaware.",
+"slots": [
+"the looming threat",
+"the oblivious one"
+],
+"aliases": [
+"Undertaker behind AJ Styles",
+"Undertaker appears behind",
+"AJ Styles Undertaker",
+"guess who's behind you"
+],
+"avoid": "Not for threats everyone already sees coming."
+},
+{
+"id": "cutecat",
+"name": "Cute Cat",
+"lines": 2,
+"shape": "reaction",
+"core": "A tiny kitten standing up with big pleading eyes, used for begging or acting innocent.",
+"slots": [
+"the setup",
+"the innocent plea"
+],
+"aliases": [
+"cute cat",
+"standing kitten",
+"pleading kitten",
+"innocent cat"
+],
+"avoid": "Not for angry or aggressive moods."
+},
+{
+"id": "spongebobburningpaper",
+"name": "Spongebob Burning Paper",
+"lines": 1,
+"shape": "rejection",
+"core": "Spongebob reads a paper, gets angry, and throws it in the fire; used for rejecting something that offends you.",
+"slots": [
+"the offending thing written on the paper"
+],
+"aliases": [
+"Spongebob burning paper",
+"Spongebob throws paper in fire",
+"Spongebob reading paper",
+"burn it"
+],
+"avoid": "Not for things you agree with or want to keep."
+},
+{
+"id": "notthesame",
+"name": "We Are Not The Same",
+"lines": 3,
+"shape": "comparison",
+"core": "Contrasting how \"you\" do something with how \"I\" do it, smugly, ending in \"we are not the same\".",
+"slots": [
+"you do X",
+"I do X, but different",
+"\"we are not the same\""
+],
+"aliases": [
+"gus fring",
+"we are not the same",
+"i am not like you"
+],
+"avoid": "Comparisons where the speaker comes out worse."
+},
+{
+"id": "skepticalbaby",
+"name": "Skeptical Baby",
+"lines": 2,
+"shape": "reaction",
+"core": "A suspicious baby squints at a claim that sounds too good or too convenient to be true.",
+"slots": [
+"the dubious claim",
+"the skeptical thought"
+],
+"aliases": [
+"suspicious baby",
+"skeptical toddler",
+"baby side eye",
+"doubtful baby"
+],
+"avoid": "Not for genuine excitement or agreement."
+},
+{
+"id": "brainbeforesleep",
+"name": "Brain Before Sleep",
+"lines": 4,
+"shape": "dialogue",
+"core": "Your brain keeps you awake at bedtime by bringing up random worries or embarrassing memories.",
+"slots": [
+"brain asks",
+"you reply",
+"brain's follow-up",
+"your reaction"
+],
+"aliases": [
+"brain at night",
+"are you awake",
+"brain keeping me up",
+"sleep brain"
+],
+"avoid": "Not for anything unrelated to overthinking or intrusive thoughts."
+},
+{
+"id": "dominoeffect",
+"name": "Domino Effect",
+"lines": 2,
+"shape": "escalation",
+"core": "A tiny first action sets off a chain reaction that ends in something huge.",
+"slots": [
+"the small cause",
+"the huge consequence"
+],
+"aliases": [
+"domino chain",
+"small domino big domino",
+"chain reaction",
+"domino effect"
+],
+"avoid": "Not for things that stay small."
+},
+{
+"id": "mathladyconfusedlady",
+"name": "Math Lady",
+"lines": 2,
+"shape": "reaction",
+"core": "A woman stares in confusion as equations float around her, used when trying to make sense of something baffling.",
+"slots": [
+"the confusing situation",
+"the attempt to figure it out"
+],
+"aliases": [
+"confused math lady",
+"math lady",
+"calculating meme",
+"confused lady equations"
+],
+"avoid": "Not for things that are easy to understand."
+},
+{
+"id": "charlieconspiracyalwayssunny",
+"name": "Charlie Conspiracy",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Charlie frantically explains an elaborate theory in front of a board of strings, used for over-the-top explanations connecting unrelated things.",
+"slots": [
+"the person explaining",
+"the wild theory"
+],
+"aliases": [
+"pepe silvia",
+"conspiracy board",
+"charlie day conspiracy",
+"always sunny conspiracy",
+"red string board"
+],
+"avoid": "Not for calm, simple explanations."
+},
+{
+"id": "meandtheboys",
+"name": "Me And The Boys",
+"lines": 1,
+"shape": "reaction",
+"core": "A grinning gang of villains captioned 'me and the boys' doing some dumb or mischievous group activity.",
+"slots": [
+"me and the boys when..."
+],
+"aliases": [
+"me and the boys",
+"me and the boys at 3am",
+"spiderman villains grinning",
+"the boys"
+],
+"avoid": "Not for solo activities or serious moments."
+},
+{
+"id": "bothbuttonspressed",
+"name": "Both Buttons Pressed",
+"lines": 3,
+"shape": "binary-choice",
+"core": "Faced with two options, the guy smugly presses both buttons at once and gives a thumbs up.",
+"slots": [
+"first option",
+"second option",
+"the smug do-both person"
+],
+"aliases": [
+"press both buttons",
+"two buttons both",
+"why not both",
+"both buttons thumbs up"
+],
+"avoid": "Not for picking one side of a hard choice."
+},
+{
+"id": "cmondosomething",
+"name": "C'mon Do Something",
+"lines": 2,
+"shape": "reaction",
+"core": "A stick figure pokes something with a stick, waiting for it to react or do anything at all.",
+"slots": [
+"the poker",
+"the thing that won't do anything"
+],
+"aliases": [
+"poking with stick",
+"cmon do something",
+"stick poke",
+"do something"
+],
+"avoid": "Not for things that are actively happening."
+},
+{
+"id": "archer",
+"name": "Archer",
+"lines": 2,
+"shape": "warning",
+"core": "Sterling Archer deadpans a warning, usually 'do you want X? because that's how you get X'.",
+"slots": [
+"do you want X?",
+"because that's how you get X"
+],
+"aliases": [
+"do you want ants",
+"that's how you get ants",
+"sterling archer",
+"archer meme"
+],
+"avoid": "Not for sincere, enthusiastic advice."
+},
+{
+"id": "surprisedkoala",
+"name": "Surprised Koala",
+"lines": 2,
+"shape": "reaction",
+"core": "A wide-eyed koala caught mid-chew reacts with shock to something unexpected.",
+"slots": [
+"the setup",
+"the shocking twist"
+],
+"aliases": [
+"shocked koala",
+"koala surprised",
+"startled koala",
+"koala eating leaf"
+],
+"avoid": "Not for calm or expected outcomes."
+},
+{
+"id": "sayitagaindexter",
+"name": "Say It Again, Dexter",
+"lines": 2,
+"shape": "approval",
+"core": "Dexter, dazed after a kiss, wants to hear something so pleasing said again.",
+"slots": [
+"the delightful thing said",
+"say it again"
+],
+"aliases": [
+"say it again dexter",
+"dexter kiss",
+"dexter's laboratory kiss",
+"say it again"
+],
+"avoid": "Not for things you don't want to hear."
+}
+]

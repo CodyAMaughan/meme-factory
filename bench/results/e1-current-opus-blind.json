@@ -1,0 +1,1835 @@
+{
+ "summary": {
+  "experiment": "e1-current-opus",
+  "split": "blind",
+  "n": 120,
+  "shortlist": 78.3,
+  "hit1": 74.2,
+  "hit3": 76.7,
+  "byStyle": {
+   "situation": {
+    "n": 43,
+    "shortlist": 55.8,
+    "hit1": 53.5,
+    "hit3": 53.5
+   },
+   "visual": {
+    "n": 39,
+    "shortlist": 82.1,
+    "hit1": 74.4,
+    "hit3": 79.5
+   },
+   "named": {
+    "n": 38,
+    "shortlist": 100,
+    "hit1": 97.4,
+    "hit3": 100
+   }
+  },
+  "calls": 132,
+  "cached": 108,
+  "minutes": 3.4
+ },
+ "results": [
+  {
+   "qid": "3hd#blind",
+   "target": "3hd",
+   "request": "our dev team: two smart backend guys and the intern who pushes to prod",
+   "style": "situation",
+   "inShortlist": false,
+   "rank": -1,
+   "picks": [
+    "millers",
+    "gru",
+    "howcouldtheyhavedonethis"
+   ],
+   "hit1": false,
+   "hit3": false
+  },
+  {
+   "qid": "ams#blind",
+   "target": "ams",
+   "request": "seal looking sideways awkwardly, when i waved back at someone waving at the person behind me",
+   "style": "visual",
+   "inShortlist": true,
+   "rank": 3,
+   "picks": [
+    "awkwardmomentsealion",
+    "shortsatisfactionvstruth",
+    "ams"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "apcr#blind",
+   "target": "apcr",
+   "request": "almost pc redneck guy meme about my uncle at thanksgiving trying to be nice about my vegan gf",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 7,
+   "picks": [
+    "apcr",
+    "caniofferyouanegginthesetryi",
+    "harold"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "balloon#blind",
+   "target": "balloon",
+   "request": "every time i try to save money my car needs new tires and my savings floats away",
+   "style": "situation",
+   "inShortlist": true,
+   "rank": 35,
+   "picks": [
+    "balloon",
+    "gru",
+    "exit"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "bd#blind",
+   "target": "bd",
+   "request": "that butthurt basement guy meme for when someone downvotes my build guide",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 1,
+   "picks": [
+    "bd",
+    "arthurfist",
+    "rpgfan"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "bihw#blind",
+   "target": "bihw",
+   "request": "farmer wiping his brow looking at his tiny garden, my code only passes 2 of 40 tests",
+   "style": "visual",
+   "inShortlist": false,
+   "rank": -1,
+   "picks": [
+    "fine",
+    "tinypieceofpaper",
+    "happyshock"
+   ],
+   "hit1": false,
+   "hit3": false
+  },
+  {
+   "qid": "captain#blind",
+   "target": "captain",
+   "request": "the somali pirate captain now meme, intern took over the standup after manager left",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 0,
+   "picks": [
+    "captain",
+    "lookatme",
+    "harold"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "cbb#blind",
+   "target": "cbb",
+   "request": "bugs bunny in the soviet hat going our leftovers, my roommate",
+   "style": "situation",
+   "inShortlist": true,
+   "rank": 0,
+   "picks": [
+    "cbb",
+    "sovietbugsbunny",
+    "capitalistandcommunist"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "cbg#blind",
+   "target": "cbg",
+   "request": "fat nerd in a ponytail and band shirt saying worst sequel ever about the new star wars",
+   "style": "visual",
+   "inShortlist": true,
+   "rank": 3,
+   "picks": [
+    "cbg",
+    "grumpycatstarwars",
+    "starwarsyoda"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "cheems#blind",
+   "target": "cheems",
+   "request": "that doge with the m's in every word, me trying to do my taxes",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 10,
+   "picks": [
+    "cheems",
+    "buffdoge",
+    "multidoge"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "elf#blind",
+   "target": "elf",
+   "request": "my dad says he didnt eat the last slice of cake but theres crumbs on his shirt",
+   "style": "situation",
+   "inShortlist": false,
+   "rank": -1,
+   "picks": [
+    "kidandmap",
+    "spongebob",
+    "kermit"
+   ],
+   "hit1": false,
+   "hit3": false
+  },
+  {
+   "qid": "exit#blind",
+   "target": "exit",
+   "request": "car swerving hard onto the off ramp, me picking video games instead of finishing my thesis",
+   "style": "visual",
+   "inShortlist": true,
+   "rank": 0,
+   "picks": [
+    "exit",
+    "db",
+    "drake"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "fbf#blind",
+   "target": "fbf",
+   "request": "that gross bachelor frog meme, i flip my sheets instead of washing them",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 4,
+   "picks": [
+    "fbf",
+    "rollsafe",
+    "cb"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "feelsgood#blind",
+   "target": "feelsgood",
+   "request": "that smug blissful face when i get the parking spot right by the door",
+   "style": "situation",
+   "inShortlist": false,
+   "rank": -1,
+   "picks": [
+    "satisfiedseal",
+    "babybossrelaxedsmugcontent",
+    "success"
+   ],
+   "hit1": false,
+   "hit3": false
+  },
+  {
+   "qid": "friends#blind",
+   "target": "friends",
+   "request": "two dogs and a guy asking if theyre friends, my cat and my new puppy",
+   "style": "visual",
+   "inShortlist": true,
+   "rank": 3,
+   "picks": [
+    "friends",
+    "woman-cat",
+    "suspiciouscat"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "fry#blind",
+   "target": "fry",
+   "request": "not sure if my coworker is joking or actually mad at me",
+   "style": "situation",
+   "inShortlist": true,
+   "rank": 3,
+   "picks": [
+    "fry",
+    "ds",
+    "harold"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "gandalf#blind",
+   "target": "gandalf",
+   "request": "old wizard looking puzzled and squinting, reading my own code from last year",
+   "style": "visual",
+   "inShortlist": false,
+   "rank": -1,
+   "picks": [
+    "dafuqdidijustread",
+    "older",
+    "confusedlebowski"
+   ],
+   "hit1": false,
+   "hit3": false
+  },
+  {
+   "qid": "gb#blind",
+   "target": "gb",
+   "request": "expanding brain meme with levels of how i fix bugs in prod",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 2,
+   "picks": [
+    "gb",
+    "iceberg",
+    "elmo"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "gru#blind",
+   "target": "gru",
+   "request": "plan to study all weekend, open laptop, watch netflix instead, realize no studying happened",
+   "style": "situation",
+   "inShortlist": true,
+   "rank": 11,
+   "picks": [
+    "gru",
+    "exit",
+    "pikachu"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "imsorry#blind",
+   "target": "imsorry",
+   "request": "the oh im sorry i thought this was america guy, when the cafeteria stopped selling fries",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 0,
+   "picks": [
+    "imsorry",
+    "sarcasticbear",
+    "spongebob"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "inigo#blind",
+   "target": "inigo",
+   "request": "my boss keeps saying agile but we plan everything 6 months out",
+   "style": "situation",
+   "inShortlist": false,
+   "rank": -1,
+   "picks": [
+    "athome",
+    "drake",
+    "woman-cat"
+   ],
+   "hit1": false,
+   "hit3": false
+  },
+  {
+   "qid": "interesting#blind",
+   "target": "interesting",
+   "request": "bearded old guy holding a beer, i dont always test my code but when i do its in production",
+   "style": "visual",
+   "inShortlist": true,
+   "rank": 0,
+   "picks": [
+    "interesting",
+    "pikachu",
+    "howcouldtheyhavedonethis"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "kermit#blind",
+   "target": "kermit",
+   "request": "frog sipping tea, my sister says shes on a diet but ordered three desserts",
+   "style": "visual",
+   "inShortlist": true,
+   "rank": 5,
+   "picks": [
+    "kermit",
+    "contradictorychris",
+    "spongebob"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "leo#blind",
+   "target": "leo",
+   "request": "leo dicaprio walking proud meme for when i finally pay off my credit card",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 5,
+   "picks": [
+    "leo",
+    "wolfofwallstreet",
+    "leonardodicapriocheers"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "light#blind",
+   "target": "light",
+   "request": "telling my kid one day all these chores will be his",
+   "style": "situation",
+   "inShortlist": true,
+   "rank": 4,
+   "picks": [
+    "simbashadowyplace",
+    "lookson",
+    "imtiredofthisgrandpa"
+   ],
+   "hit1": false,
+   "hit3": false
+  },
+  {
+   "qid": "live#blind",
+   "target": "live",
+   "request": "bill o reilly yelling we'll do it live, deploying friday with no tests",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 5,
+   "picks": [
+    "live",
+    "gru",
+    "fine"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "lrv#blind",
+   "target": "lrv",
+   "request": "guy in a viking helmet in a laundry room, me conquering the pile of dirty clothes",
+   "style": "visual",
+   "inShortlist": true,
+   "rank": 3,
+   "picks": [
+    "lrv",
+    "wolfofwallstreet",
+    "knightwitharrowinhelmet"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "made#blind",
+   "target": "made",
+   "request": "my coworker presenting my slides to the boss as his own work",
+   "style": "situation",
+   "inShortlist": false,
+   "rank": -1,
+   "picks": [
+    "anakinandobiwan",
+    "illhaveyouknowspongebob",
+    "pikachu"
+   ],
+   "hit1": false,
+   "hit3": false
+  },
+  {
+   "qid": "mb#blind",
+   "target": "mb",
+   "request": "those grape berries from south park that say member, about old flash games",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 3,
+   "picks": [
+    "mb",
+    "remembers",
+    "backinmyday"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "money#blind",
+   "target": "money",
+   "request": "fry waving cash, new game console announced with a cat mode",
+   "style": "visual",
+   "inShortlist": true,
+   "rank": 0,
+   "picks": [
+    "money",
+    "spongebobmoney",
+    "exit"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "morpheus#blind",
+   "target": "morpheus",
+   "request": "what if i told you studying the night before doesnt work",
+   "style": "situation",
+   "inShortlist": true,
+   "rank": 1,
+   "picks": [
+    "morpheus",
+    "hardtoswallowpills",
+    "pikachu"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "noidea#blind",
+   "target": "noidea",
+   "request": "dog at a computer with a tie on, me on my first day as a sys admin",
+   "style": "visual",
+   "inShortlist": false,
+   "rank": -1,
+   "picks": [
+    "firstdayontheinternetkid",
+    "fine",
+    "pikachu"
+   ],
+   "hit1": false,
+   "hit3": false
+  },
+  {
+   "qid": "ntot#blind",
+   "target": "ntot",
+   "request": "no take only throw dog meme, my dog wants to play fetch but wont let go of the ball",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 1,
+   "picks": [
+    "ntot",
+    "unodraw25cards",
+    "gru"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "oprah#blind",
+   "target": "oprah",
+   "request": "oprah in the red suit pointing at the crowd, you get a jira ticket",
+   "style": "situation",
+   "inShortlist": true,
+   "rank": 2,
+   "picks": [
+    "oprah",
+    "yougetanxandyougetanx",
+    "esdemiagradoinformarles"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "panik-kalm-panik#blind",
+   "target": "panik-kalm-panik",
+   "request": "panic calm panic meme about forgetting my homework then teacher absent then sub collects it",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 0,
+   "picks": [
+    "panik-kalm-panik",
+    "happyshock",
+    "gru"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "philosoraptor#blind",
+   "target": "philosoraptor",
+   "request": "if i eat my feelings am i a cannibal",
+   "style": "situation",
+   "inShortlist": false,
+   "rank": -1,
+   "picks": [
+    "wouldntthatmakeyou",
+    "maybeiamamonsterblank",
+    "fry"
+   ],
+   "hit1": false,
+   "hit3": false
+  },
+  {
+   "qid": "puffin#blind",
+   "target": "puffin",
+   "request": "that bird with the unpopular opinion meme, pineapple on pizza is actually fine",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 0,
+   "picks": [
+    "puffin",
+    "cmm",
+    "manholdingcardboardsign"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "regret#blind",
+   "target": "regret",
+   "request": "tried the ghost pepper wings at the work lunch",
+   "style": "situation",
+   "inShortlist": false,
+   "rank": -1,
+   "picks": [
+    "harold",
+    "fine",
+    "kombucha"
+   ],
+   "hit1": false,
+   "hit3": false
+  },
+  {
+   "qid": "reveal#blind",
+   "target": "reveal",
+   "request": "pulling the mask off the ghost to reveal its just a rebranded old product, new phone launch",
+   "style": "visual",
+   "inShortlist": true,
+   "rank": 0,
+   "picks": [
+    "reveal",
+    "borndiedwelcomeback",
+    "homersimpsonsbackfat"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "right#blind",
+   "target": "right",
+   "request": "anakin padme for the better right meme, we're switching to microservices to make it simpler right",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 2,
+   "picks": [
+    "right",
+    "gru",
+    "lrv"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "rollsafe#blind",
+   "target": "rollsafe",
+   "request": "guy tapping his head grinning, cant fail the exam if you dont take it",
+   "style": "visual",
+   "inShortlist": true,
+   "rank": 0,
+   "picks": [
+    "rollsafe",
+    "patricksays",
+    "gb"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "sad-bush#blind",
+   "target": "sad-bush",
+   "request": "sad bush face, monday doesnt think you'll make it to friday",
+   "style": "situation",
+   "inShortlist": true,
+   "rank": 3,
+   "picks": [
+    "sad-bush",
+    "sad-biden",
+    "sad-obama"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "ski#blind",
+   "target": "ski",
+   "request": "south park ski teacher meme, if you skip the gym youre gonna have a bad time",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 0,
+   "picks": [
+    "ski",
+    "mrmackey",
+    "frango"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "spiderman#blind",
+   "target": "spiderman",
+   "request": "two identical guys in red suits pointing at each other, me and my brother blaming each other for the broken vase",
+   "style": "visual",
+   "inShortlist": true,
+   "rank": 0,
+   "picks": [
+    "spiderman",
+    "obamaromneypointing",
+    "spidermantriple"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "stonks#blind",
+   "target": "stonks",
+   "request": "bought pizza with the money meant for groceries, saved time on cooking",
+   "style": "situation",
+   "inShortlist": false,
+   "rank": -1,
+   "picks": [
+    "wediditpatrickwesavedthecity",
+    "exit",
+    "pikachu"
+   ],
+   "hit1": false,
+   "hit3": false
+  },
+  {
+   "qid": "stop#blind",
+   "target": "stop",
+   "request": "patrick and spongebob scaring the new guy meme for when we explain our legacy codebase",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 2,
+   "picks": [
+    "stop",
+    "spongebobsquarepantsscaredbu",
+    "patrickscared"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "stop-it#blind",
+   "target": "stop-it",
+   "request": "my friend keeps buying more crypto after losing everything",
+   "style": "situation",
+   "inShortlist": false,
+   "rank": -1,
+   "picks": [
+    "fine",
+    "unodraw25cards",
+    "exit"
+   ],
+   "hit1": false,
+   "hit3": false
+  },
+  {
+   "qid": "toohigh#blind",
+   "target": "toohigh",
+   "request": "guy with black gloves and a big beard ranting angrily, about my apartment rent going up again",
+   "style": "visual",
+   "inShortlist": true,
+   "rank": 7,
+   "picks": [
+    "toohigh",
+    "walterwhitescreamingathank",
+    "bernieiamonceagainaskingfory"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "touch#blind",
+   "target": "touch",
+   "request": "am i out of touch? no its the customers who are wrong",
+   "style": "situation",
+   "inShortlist": true,
+   "rank": 5,
+   "picks": [
+    "touch",
+    "howcouldtheyhavedonethis",
+    "fine"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "tried#blind",
+   "target": "tried",
+   "request": "wolf pup patting the other ones head, my moms wifi password attempt",
+   "style": "visual",
+   "inShortlist": false,
+   "rank": -1,
+   "picks": [
+    "odd1soutvscomputerchess",
+    "nailedit",
+    "meexplainingtomymom"
+   ],
+   "hit1": false,
+   "hit3": false
+  },
+  {
+   "qid": "trump#blind",
+   "target": "trump",
+   "request": "trump meme where he says its gonna be huge about our team potluck",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 0,
+   "picks": [
+    "trump",
+    "wolfofwallstreet",
+    "mw"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "waygd#blind",
+   "target": "waygd",
+   "request": "my team lost again in the 9th inning, oh well",
+   "style": "situation",
+   "inShortlist": false,
+   "rank": -1,
+   "picks": [
+    "fine",
+    "harold",
+    "guessilldie"
+   ],
+   "hit1": false,
+   "hit3": false
+  },
+  {
+   "qid": "winter#blind",
+   "target": "winter",
+   "request": "ned stark brace yourselves meme, finals week is coming",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 0,
+   "picks": [
+    "braceyourself",
+    "winter",
+    "hereitcomes"
+   ],
+   "hit1": false,
+   "hit3": true
+  },
+  {
+   "qid": "worst#blind",
+   "target": "worst",
+   "request": "homer leaning down telling bart this is the worst day of his life so far, my son on his first day of work",
+   "style": "visual",
+   "inShortlist": true,
+   "rank": 0,
+   "picks": [
+    "worst",
+    "simpsonssofar",
+    "cryingfloor"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "yuno#blind",
+   "target": "yuno",
+   "request": "printer why wont you work when i have a deadline",
+   "style": "situation",
+   "inShortlist": true,
+   "rank": 15,
+   "picks": [
+    "yuno",
+    "woman-cat",
+    "traviskelcescreaming"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "unodraw25cards#blind",
+   "target": "unodraw25cards",
+   "request": "my coworker would rather do 3 hours of manual entry than learn excel macros",
+   "style": "situation",
+   "inShortlist": true,
+   "rank": 5,
+   "picks": [
+    "unodraw25cards",
+    "drake",
+    "exit"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "buffdoge#blind",
+   "target": "buffdoge",
+   "request": "buff dog vs little crying dog meme, devs in 2005 vs devs now asking chatgpt",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 0,
+   "picks": [
+    "buffdoge",
+    "cryingwojakvschad",
+    "bigbooksmallbook"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "sadpablo#blind",
+   "target": "sadpablo",
+   "request": "guy sitting alone sadly in three panels, waiting for my friends to reply in group chat",
+   "style": "visual",
+   "inShortlist": true,
+   "rank": 1,
+   "picks": [
+    "sadpablo",
+    "narcoswaiting",
+    "pabloescobarwaitingalone"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "absolutecinema#blind",
+   "target": "absolutecinema",
+   "request": "that movie meme guy holding his hands up like cinema, for my kids school play",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 4,
+   "picks": [
+    "absolutecinema",
+    "harold",
+    "silentmoviecard"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "findingneverland#blind",
+   "target": "findingneverland",
+   "request": "kid whispering to old guy then old guy crying, my son telling me hes switching majors",
+   "style": "visual",
+   "inShortlist": true,
+   "rank": 17,
+   "picks": [
+    "tellmethetruthimreadytoheari",
+    "onde",
+    "sadthumbsupcat"
+   ],
+   "hit1": false,
+   "hit3": false
+  },
+  {
+   "qid": "imaginationspongebob#blind",
+   "target": "imaginationspongebob",
+   "request": "spongebob rainbow hands, just ship it without testing. imagination",
+   "style": "situation",
+   "inShortlist": true,
+   "rank": 1,
+   "picks": [
+    "imaginationspongebob",
+    "jokerrainbowhands",
+    "wediditpatrickwesavedthecity"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "evilkermit#blind",
+   "target": "evilkermit",
+   "request": "kermit and the hooded dark kermit, me vs me telling me to order takeout again",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 1,
+   "picks": [
+    "evilkermit",
+    "exit",
+    "darthvadercometothedarkside"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "bikefall#blind",
+   "target": "bikefall",
+   "request": "i jam a stick in my own deploy then blame the ci server",
+   "style": "situation",
+   "inShortlist": true,
+   "rank": 2,
+   "picks": [
+    "bikefall",
+    "pikachu",
+    "pointingmirrorguy"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "spongebobightimmaheadout#blind",
+   "target": "spongebobightimmaheadout",
+   "request": "when the zoom call hits the 'any other business' section at 4:58pm",
+   "style": "situation",
+   "inShortlist": false,
+   "rank": -1,
+   "picks": [
+    "harold",
+    "fine",
+    "winter"
+   ],
+   "hit1": false,
+   "hit3": false
+  },
+  {
+   "qid": "tradeoffer#blind",
+   "target": "tradeoffer",
+   "request": "guy in suit with hands out offering a deal, my cat offering to let me sleep if i feed him at 4am",
+   "style": "visual",
+   "inShortlist": false,
+   "rank": -1,
+   "picks": [
+    "woman-cat",
+    "illusionoffreechoice",
+    "bernieiamonceagainaskingfory"
+   ],
+   "hit1": false,
+   "hit3": false
+  },
+  {
+   "qid": "eviltoddler#blind",
+   "target": "eviltoddler",
+   "request": "little kid with evil smirk face, my nephew after hiding my car keys",
+   "style": "visual",
+   "inShortlist": true,
+   "rank": 2,
+   "picks": [
+    "eviltoddler",
+    "disastergirl",
+    "evilbaby"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "hardtoswallowpills#blind",
+   "target": "hardtoswallowpills",
+   "request": "hard pills to take meme, your side project is never getting finished",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 12,
+   "picks": [
+    "hardtoswallowpills",
+    "redpillbluepill",
+    "familyguylouispills"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "whowouldwin#blind",
+   "target": "whowouldwin",
+   "request": "a 4 billion dollar trading system vs one intern with a typo in the config",
+   "style": "situation",
+   "inShortlist": false,
+   "rank": -1,
+   "picks": [
+    "giantvsman",
+    "pikachu",
+    "gru"
+   ],
+   "hit1": false,
+   "hit3": false
+  },
+  {
+   "qid": "illjustwaithere#blind",
+   "target": "illjustwaithere",
+   "request": "skeleton sitting on a bench covered in cobwebs, waiting for IT to fix my laptop",
+   "style": "visual",
+   "inShortlist": true,
+   "rank": 5,
+   "picks": [
+    "waitingskeleton",
+    "skeletoncomputer",
+    "illjustwaithere"
+   ],
+   "hit1": false,
+   "hit3": true
+  },
+  {
+   "qid": "faceyoumakerobertdowneyjr#blind",
+   "target": "faceyoumakerobertdowneyjr",
+   "request": "robert downey eye roll face you make meme, when someone says crypto is a sure thing",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 0,
+   "picks": [
+    "faceyoumakerobertdowneyjr",
+    "robertdowneyjrannoyed",
+    "sk"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "badpundog#blind",
+   "target": "badpundog",
+   "request": "dog in a suit making three faces telling a dumb joke, pun about my sourdough starter",
+   "style": "visual",
+   "inShortlist": true,
+   "rank": 6,
+   "picks": [
+    "badpundog",
+    "badjokeeel",
+    "rickandcarl"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "unclesam#blind",
+   "target": "unclesam",
+   "request": "the i want you poster guy pointing, recruiting people to fix the flaky tests",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 1,
+   "picks": [
+    "wewantyou",
+    "unclesam",
+    "yourcountryneedsyou"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "squidward#blind",
+   "target": "squidward",
+   "request": "when i see my gym selfie from january vs the mirror in october",
+   "style": "situation",
+   "inShortlist": false,
+   "rank": -1,
+   "picks": [
+    "dbg",
+    "shortsatisfactionvstruth",
+    "pointingmirrorguy"
+   ],
+   "hit1": false,
+   "hit3": false
+  },
+  {
+   "qid": "andeverybodylosestheirminds#blind",
+   "target": "andeverybodylosestheirminds",
+   "request": "nobody cares when prod goes down for 3 hours but i change the logo color and everyone loses it",
+   "style": "situation",
+   "inShortlist": true,
+   "rank": 1,
+   "picks": [
+    "andeverybodylosestheirminds",
+    "woman-cat",
+    "traviskelcescreaming"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "marvelcivilwar1#blind",
+   "target": "marvelcivilwar1",
+   "request": "captain america vs iron man splitting sides, tabs vs spaces debate at my office",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 1,
+   "picks": [
+    "marvelcivilwar1",
+    "illusionoffreechoice",
+    "obamaromneypointing"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "cutecat#blind",
+   "target": "cutecat",
+   "request": "adorable fluffy kitten looking up sweetly, my cat right after knocking my coffee off the desk",
+   "style": "visual",
+   "inShortlist": true,
+   "rank": 8,
+   "picks": [
+    "cutecat",
+    "woman-cat",
+    "homersimpsonsbackfat"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "brainbeforesleep#blind",
+   "target": "brainbeforesleep",
+   "request": "trying to sleep and my brain asks if i locked the car three times",
+   "style": "situation",
+   "inShortlist": true,
+   "rank": 2,
+   "picks": [
+    "brainbeforesleep",
+    "sleepingsquidward",
+    "heyyougoingtosleep"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "mathladyconfusedlady#blind",
+   "target": "mathladyconfusedlady",
+   "request": "woman with math equations floating around her head, me reading my health insurance bill",
+   "style": "visual",
+   "inShortlist": true,
+   "rank": 0,
+   "picks": [
+    "mathladyconfusedlady",
+    "blackguyconfused",
+    "happyshock"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "charlieconspiracyalwayssunny#blind",
+   "target": "charlieconspiracyalwayssunny",
+   "request": "me trying to explain how the jira tickets connect to the missing budget",
+   "style": "situation",
+   "inShortlist": true,
+   "rank": 4,
+   "picks": [
+    "charlieconspiracyalwayssunny",
+    "tryingtoexplain",
+    "jimhalpertexplains"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "archer#blind",
+   "target": "archer",
+   "request": "do you want more bugs? because thats how you get more bugs, about skipping code review",
+   "style": "situation",
+   "inShortlist": true,
+   "rank": 1,
+   "picks": [
+    "archer",
+    "ants",
+    "pikachu"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "sayitagaindexter#blind",
+   "target": "sayitagaindexter",
+   "request": "dexter say it again meme, my brother said the cowboys are a good team",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 1,
+   "picks": [
+    "sayitagaindexter",
+    "saythatagainidareyou",
+    "mybrotherinchrist"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "carsalesmanslapsroofofcar#blind",
+   "target": "carsalesmanslapsroofofcar",
+   "request": "salesman slapping the roof of a car, this old laptop can fit so many chrome tabs",
+   "style": "visual",
+   "inShortlist": true,
+   "rank": 0,
+   "picks": [
+    "carsalesmanslapsroofofcar",
+    "googlechrome",
+    "multidoge"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "happystarcongratulations#blind",
+   "target": "happystarcongratulations",
+   "request": "that cheesy smiling star with congrats text, for my friend who finally passed her driving test",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 6,
+   "picks": [
+    "happystarcongratulations",
+    "proudness",
+    "leonardodicapriocheers"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "keepcalmandcarryonred#blind",
+   "target": "keepcalmandcarryonred",
+   "request": "red poster with crown and calm text, keep calm its only finals week",
+   "style": "visual",
+   "inShortlist": true,
+   "rank": 0,
+   "picks": [
+    "keepcalmandcarryonred",
+    "fine",
+    "panik-kalm-panik"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "petergriffinnews#blind",
+   "target": "petergriffinnews",
+   "request": "peter griffin at the news desk, what grinds my gears is reply-all",
+   "style": "situation",
+   "inShortlist": true,
+   "rank": 0,
+   "picks": [
+    "petergriffinnews",
+    "gears",
+    "michaelphelpsdeathstare"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "moethrowsbarney#blind",
+   "target": "moethrowsbarney",
+   "request": "bartender throwing a drunk guy out the door, my inbox kicking out every recruiter email",
+   "style": "visual",
+   "inShortlist": true,
+   "rank": 5,
+   "picks": [
+    "moethrowsbarney",
+    "kickingoutsimpsons",
+    "heresjohnny"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "kevinhart#blind",
+   "target": "kevinhart",
+   "request": "kevin hart staring meme, when my wife says she only spent 20 bucks at target",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 0,
+   "picks": [
+    "kevinhart",
+    "skepticalbaby",
+    "sk"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "grimreaperknockingdoor#blind",
+   "target": "grimreaperknockingdoor",
+   "request": "deadline knocking on every coworkers door and skipping mine somehow",
+   "style": "situation",
+   "inShortlist": true,
+   "rank": 4,
+   "picks": [
+    "grimreaperknockingdoor",
+    "somehowpalpatinereturned",
+    "spongebobwaiting"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "undertaker#blind",
+   "target": "undertaker",
+   "request": "wrestler sneaking up behind a guy, the tax bill coming after my freelance year",
+   "style": "visual",
+   "inShortlist": true,
+   "rank": 9,
+   "picks": [
+    "undertaker",
+    "jasonmomoahenrycavillmeme",
+    "churchgun"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "spidermancomputerdesk#blind",
+   "target": "spidermancomputerdesk",
+   "request": "spiderman sitting at desk computer meme, me pretending to work while watching the game",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 2,
+   "picks": [
+    "spidermancomputerdesk",
+    "clowncomputer",
+    "smilingcat"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "presidentialalert#blind",
+   "target": "presidentialalert",
+   "request": "phone emergency alert screen, my mom telling me to call her more",
+   "style": "visual",
+   "inShortlist": true,
+   "rank": 3,
+   "picks": [
+    "emergencyalert",
+    "presidentialalert",
+    "incomingcall"
+   ],
+   "hit1": false,
+   "hit3": true
+  },
+  {
+   "qid": "whowantstobeamillionaire#blind",
+   "target": "whowantstobeamillionaire",
+   "request": "quiz show question, which of these is a real reason the build failed",
+   "style": "situation",
+   "inShortlist": true,
+   "rank": 5,
+   "picks": [
+    "whowantstobeamillionaire",
+    "boardroom",
+    "therockdriving"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "holdfart#blind",
+   "target": "holdfart",
+   "request": "trying to stay quiet during a silent exam when my stomach starts making noises",
+   "style": "situation",
+   "inShortlist": false,
+   "rank": -1,
+   "picks": [
+    "harold",
+    "fine",
+    "traviskelcescreaming"
+   ],
+   "hit1": false,
+   "hit3": false
+  },
+  {
+   "qid": "obiwankenobi#blind",
+   "target": "obiwankenobi",
+   "request": "old obi wan in the hood, my code works from a certain point of view",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 0,
+   "picks": [
+    "obiwankenobi",
+    "older",
+    "obiwanofcourseiknowhimhesme"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "thatsapaddlin#blind",
+   "target": "thatsapaddlin",
+   "request": "old guy in a canoe pointing seriously, pushing directly to main on friday",
+   "style": "visual",
+   "inShortlist": false,
+   "rank": -1,
+   "picks": [
+    "miketyson",
+    "mordor",
+    "backinmyday"
+   ],
+   "hit1": false,
+   "hit3": false
+  },
+  {
+   "qid": "jasonmomoahenrycavillmeme#blind",
+   "target": "jasonmomoahenrycavillmeme",
+   "request": "momoa looking at cavill that meme, me watching my friend hold a baby properly",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 4,
+   "picks": [
+    "jasonmomoahenrycavillmeme",
+    "proudness",
+    "sadcatholdingdog"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "rickandcarl#blind",
+   "target": "rickandcarl",
+   "request": "my dad trying to get me to say thank you to the waiter and me ignoring him",
+   "style": "situation",
+   "inShortlist": false,
+   "rank": -1,
+   "picks": [
+    "unodraw25cards",
+    "chloe",
+    "monkeylookingaway"
+   ],
+   "hit1": false,
+   "hit3": false
+  },
+  {
+   "qid": "chefgordonramsay#blind",
+   "target": "chefgordonramsay",
+   "request": "angry celebrity chef yelling at someone, my code reviewer looking at my sql query",
+   "style": "visual",
+   "inShortlist": true,
+   "rank": 0,
+   "picks": [
+    "chefgordonramsay",
+    "gordonramsayidiotsandwich",
+    "gordonramsaysomegoodfood"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "guessilldie#blind",
+   "target": "guessilldie",
+   "request": "pharmacy is closed and my sinus headache is killing me oh well",
+   "style": "situation",
+   "inShortlist": true,
+   "rank": 13,
+   "picks": [
+    "guessilldie",
+    "fine",
+    "waitingskeleton"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "thanoswhatdiditcost#blind",
+   "target": "thanoswhatdiditcost",
+   "request": "thanos asking what did it cost, finally got the deploy working but lost my weekend",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 1,
+   "picks": [
+    "thanoswhatdiditcost",
+    "imawakebutatwhatcost",
+    "tireddadatcomputer"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "thisisbrilliantbutilikethis#blind",
+   "target": "thisisbrilliantbutilikethis",
+   "request": "clarkson by the two cars, the test suite is brilliant but i like console.log",
+   "style": "visual",
+   "inShortlist": true,
+   "rank": 2,
+   "picks": [
+    "thisisbrilliantbutilikethis",
+    "drake",
+    "db"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "firsttime#blind",
+   "target": "firsttime",
+   "request": "first time huh meme, intern panicking about their first merge conflict",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 3,
+   "picks": [
+    "firsttime",
+    "panik-kalm-panik",
+    "scaredhamster"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "traumatizedmrincredible#blind",
+   "target": "traumatizedmrincredible",
+   "request": "seeing the word 'bigint' in our legacy code after the y2k38 story",
+   "style": "situation",
+   "inShortlist": false,
+   "rank": -1,
+   "picks": [
+    "older",
+    "castawayfire",
+    "oldmancupofcoffee"
+   ],
+   "hit1": false,
+   "hit3": false
+  },
+  {
+   "qid": "whycantiholdalltheselimes#blind",
+   "target": "whycantiholdalltheselimes",
+   "request": "guy fumbling an armful of fruit, me juggling five side gigs and a toddler",
+   "style": "visual",
+   "inShortlist": true,
+   "rank": 20,
+   "picks": [
+    "whycantiholdalltheselimes",
+    "somanyshirts",
+    "floodingthumbsup"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "meexplainingtomymom#blind",
+   "target": "meexplainingtomymom",
+   "request": "trying to tell my mom what i actually do as a data engineer",
+   "style": "situation",
+   "inShortlist": true,
+   "rank": 5,
+   "picks": [
+    "meexplainingtomymom",
+    "tryingtoexplain",
+    "whatmyfriendsthinkido"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "thesearentthedroidsyouwerelo#blind",
+   "target": "thesearentthedroidsyouwerelo",
+   "request": "jedi waving his hand mind trick, telling my boss the report is basically done",
+   "style": "visual",
+   "inShortlist": true,
+   "rank": 0,
+   "picks": [
+    "thesearentthedroidsyouwerelo",
+    "obiwankenobi",
+    "fine"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "homersimpsonsbackfat#blind",
+   "target": "homersimpsonsbackfat",
+   "request": "homer with the clip on his back fat meme, me fitting into my old jeans for the reunion",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 2,
+   "picks": [
+    "homersimpsonsbackfat",
+    "oldmancupofcoffee",
+    "fine"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "coolcatstroll#blind",
+   "target": "coolcatstroll",
+   "request": "kitten strutting on two legs after i parallel parked first try",
+   "style": "situation",
+   "inShortlist": true,
+   "rank": 2,
+   "picks": [
+    "coolcatstroll",
+    "firsttry",
+    "success"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "ibelieveinsupremacy#blind",
+   "target": "ibelieveinsupremacy",
+   "request": "i believe in dark mode supremacy for every app",
+   "style": "situation",
+   "inShortlist": true,
+   "rank": 2,
+   "picks": [
+    "ibelieveinsupremacy",
+    "spongebobmyeyes",
+    "drake"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "wakeupbabe#blind",
+   "target": "wakeupbabe",
+   "request": "man shaking his sleeping partner awake in bed, new iphone leak just dropped",
+   "style": "visual",
+   "inShortlist": true,
+   "rank": 0,
+   "picks": [
+    "wakeupbabe",
+    "sleepyguy",
+    "sleepingshaq"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "illhaveyouknowspongebob#blind",
+   "target": "illhaveyouknowspongebob",
+   "request": "when my coworker says i never finish tickets but i closed 3 this week",
+   "style": "situation",
+   "inShortlist": false,
+   "rank": -1,
+   "picks": [
+    "woman-cat",
+    "barbosaandsparrow",
+    "spongebob"
+   ],
+   "hit1": false,
+   "hit3": false
+  },
+  {
+   "qid": "chucknorris#blind",
+   "target": "chucknorris",
+   "request": "chuck norris meme about my dad fixing the wifi by staring at the router",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 2,
+   "picks": [
+    "chucknorris",
+    "jessicajonesdeathstare",
+    "mordor"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "itooliketolivedangerously#blind",
+   "target": "itooliketolivedangerously",
+   "request": "austin powers guy in a suit sipping tea about me pushing to prod on friday",
+   "style": "visual",
+   "inShortlist": false,
+   "rank": -1,
+   "picks": [
+    "austinpowershonestly",
+    "pikachu",
+    "fine"
+   ],
+   "hit1": false,
+   "hit3": false
+  },
+  {
+   "qid": "normalanddarkmrincredibles#blind",
+   "target": "normalanddarkmrincredibles",
+   "request": "my anxiety levels as the deadline gets closer each day",
+   "style": "situation",
+   "inShortlist": false,
+   "rank": -1,
+   "picks": [
+    "panik-kalm-panik",
+    "gb",
+    "spongebobpanicinside"
+   ],
+   "hit1": false,
+   "hit3": false
+  },
+  {
+   "qid": "lookatallthese#blind",
+   "target": "lookatallthese",
+   "request": "that look at all these chickens meme for my unread slack messages",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 0,
+   "picks": [
+    "lookatallthese",
+    "whycantiholdalltheselimes",
+    "busy"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "anthonyadamsrubbinghands#blind",
+   "target": "anthonyadamsrubbinghands",
+   "request": "guy in hoodie rubbing hands together excited when pizza arrives at the office",
+   "style": "visual",
+   "inShortlist": true,
+   "rank": 5,
+   "picks": [
+    "anthonyadamsrubbinghands",
+    "lickinglips",
+    "evilplottingraccoon"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "fordummies#blind",
+   "target": "fordummies",
+   "request": "make one of those for dummies book covers about adulting and doing taxes",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 2,
+   "picks": [
+    "fordummies",
+    "fordummiesbook",
+    "diaryofawimpykidcovertemplat"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "npcmeme#blind",
+   "target": "npcmeme",
+   "request": "npc face turning angry when i say i dont like hustle culture",
+   "style": "visual",
+   "inShortlist": true,
+   "rank": 4,
+   "picks": [
+    "npcmeme",
+    "angryface",
+    "npccrowd"
+   ],
+   "hit1": true,
+   "hit3": true
+  },
+  {
+   "qid": "dinkleberg#blind",
+   "target": "dinkleberg",
+   "request": "when my wifi drops again and i know its the neighbor downloading stuff",
+   "style": "situation",
+   "inShortlist": false,
+   "rank": -1,
+   "picks": [
+    "woman-cat",
+    "killyoucat",
+    "persian"
+   ],
+   "hit1": false,
+   "hit3": false
+  },
+  {
+   "qid": "memestealinglicense#blind",
+   "target": "memestealinglicense",
+   "request": "meme license card thing for my friend who reposts all my jokes",
+   "style": "named",
+   "inShortlist": true,
+   "rank": 5,
+   "picks": [
+    "memestealinglicense",
+    "pikachu",
+    "drake"
+   ],
+   "hit1": true,
+   "hit3": true
+  }
+ ]
+}

@@ -1,0 +1,362 @@
+[
+ {
+  "target": "pickuplinepanda",
+  "request": "pickup line panda but for a dev asking to merge into ur branch",
+  "style": "named",
+  "weak": false
+ },
+ {
+  "target": "goodguypizzarolls",
+  "request": "pizza rolls are frozen in the middle and molten lava on the edges every single time",
+  "style": "situation",
+  "weak": false
+ },
+ {
+  "target": "jesustalkingtocooldude",
+  "request": "jesus chatting with a guy in a sports car asking for my wifi password",
+  "style": "visual",
+  "weak": false
+ },
+ {
+  "target": "paulwonderyears",
+  "request": "paul from wonder years nerd grin when i got 100% on my excel certification",
+  "style": "named",
+  "weak": true
+ },
+ {
+  "target": "zorg",
+  "request": "zorg fifth element villain meme about laying off the team to boost q4",
+  "style": "named",
+  "weak": false
+ },
+ {
+  "target": "briangriffin",
+  "request": "smug brian family guy meme, i dont own a tv btw",
+  "style": "named",
+  "weak": false
+ },
+ {
+  "target": "crazydawg",
+  "request": "wild eyed dog in the snow when the deploy finally goes green",
+  "style": "visual",
+  "weak": true
+ },
+ {
+  "target": "originalilied",
+  "request": "i lied rage face for 'just one more episode then bed'",
+  "style": "named",
+  "weak": false
+ },
+ {
+  "target": "tennisdefeat",
+  "request": "guy lying face down on a tennis court after losing to the office printer again",
+  "style": "visual",
+  "weak": false
+ },
+ {
+  "target": "sincewhenwereyouundertheimpr",
+  "request": "aizen since when were you under the impression meme abt the sprint ending friday",
+  "style": "named",
+  "weak": false
+ },
+ {
+  "target": "obamacowboyhat",
+  "request": "obama tipping a cowboy hat on my first day at the texas office",
+  "style": "visual",
+  "weak": true
+ },
+ {
+  "target": "chesterthecat",
+  "request": "cat sitting upright like a human just staring at me when i get home late",
+  "style": "visual",
+  "weak": true
+ },
+ {
+  "target": "hedonismbot",
+  "request": "hedonism bot meme for ordering three desserts on the company card",
+  "style": "named",
+  "weak": false
+ },
+ {
+  "target": "gangsterbaby",
+  "request": "toddler slumped in his car seat giving a thug stare after daycare pickup",
+  "style": "visual",
+  "weak": false
+ },
+ {
+  "target": "sawfulla",
+  "request": "the saw puppet guy saying lets play a game but its group projects",
+  "style": "visual",
+  "weak": false
+ },
+ {
+  "target": "fimdesemana",
+  "request": "chubby baby lounging on a pool float, me on saturday with slack notifications off",
+  "style": "visual",
+  "weak": false
+ },
+ {
+  "target": "dancingtrollmom",
+  "request": "my mom told us we were going to disneyland and pulled into the dentist parking lot",
+  "style": "situation",
+  "weak": false
+ },
+ {
+  "target": "selfloathingotter",
+  "request": "crying otter eating watermelon while i eat a whole pizza on day 2 of my diet",
+  "style": "visual",
+  "weak": false
+ },
+ {
+  "target": "meridabrave",
+  "request": "merida from brave meme about quitting my job to go freelance",
+  "style": "named",
+  "weak": true
+ },
+ {
+  "target": "alangreenspan",
+  "request": "greenspan finger wag meme lecturing my roommate about his crypto",
+  "style": "named",
+  "weak": true
+ },
+ {
+  "target": "ridiculouslyphotogenicguy",
+  "request": "my coworker ran the whole 10k and still looks like a model in the finish line photo",
+  "style": "situation",
+  "weak": false
+ },
+ {
+  "target": "manningbroncos",
+  "request": "peyton manning omaha meme calling an audible in standup",
+  "style": "named",
+  "weak": true
+ },
+ {
+  "target": "angrychickenboss",
+  "request": "chicken glaring sideways like my boss asking why the tps report is late",
+  "style": "visual",
+  "weak": false
+ },
+ {
+  "target": "superkamiguruallowsthis",
+  "request": "super kami guru allows this, me approving my own pr",
+  "style": "named",
+  "weak": false
+ },
+ {
+  "target": "dolphzigglersells",
+  "request": "dolph ziggler selling meme for my bf with a mild cold",
+  "style": "named",
+  "weak": false
+ },
+ {
+  "target": "rarity",
+  "request": "rarity from my little pony meme about refusing to wear crocs",
+  "style": "named",
+  "weak": true
+ },
+ {
+  "target": "nailedit",
+  "request": "tried to make the pinterest birthday cake and it collapsed into a puddle",
+  "style": "situation",
+  "weak": false
+ },
+ {
+  "target": "badwifeworsemom",
+  "request": "bad wife worse mom lori meme, forgot the kids lunch and our anniversary",
+  "style": "named",
+  "weak": false
+ },
+ {
+  "target": "beyoncesuperbowlyell",
+  "request": "beyonce mid roar at the super bowl, me yelling at the router",
+  "style": "visual",
+  "weak": true
+ },
+ {
+  "target": "ohmygodorange",
+  "request": "opened my teenagers closet and my god its full of empty energy drink cans",
+  "style": "situation",
+  "weak": true
+ },
+ {
+  "target": "frustratingmom",
+  "request": "mom says go outside and play but dont get dirty and be back in 5 min",
+  "style": "situation",
+  "weak": true
+ },
+ {
+  "target": "sadlyiamonlyaneel",
+  "request": "sadly i am only an eel meme for declining extra on call shifts",
+  "style": "named",
+  "weak": false
+ },
+ {
+  "target": "thecritic",
+  "request": "cartoon movie critic with glasses raising a finger to judge my code review",
+  "style": "visual",
+  "weak": false
+ },
+ {
+  "target": "overlyattachedfather",
+  "request": "my daughters prom date better have her home by 11 or i will find him",
+  "style": "situation",
+  "weak": false
+ },
+ {
+  "target": "solemnlumberjack",
+  "request": "solemn lumberjack meme abt my beard oil running out",
+  "style": "named",
+  "weak": true
+ },
+ {
+  "target": "overlysuaveitguy",
+  "request": "slick stock photo it guy at a laptop with a smooth line about rebooting her heart",
+  "style": "visual",
+  "weak": false
+ },
+ {
+  "target": "somanyshirts",
+  "request": "shocked guy clutching an armful of boxed shirts, me at the steam summer sale",
+  "style": "visual",
+  "weak": false
+ },
+ {
+  "target": "maroneyandobamanotimpressed",
+  "request": "gymnast and obama doing the same not impressed smirk at my coworkers new tesla",
+  "style": "visual",
+  "weak": false
+ },
+ {
+  "target": "determinedguyrageface",
+  "request": "determined rage comic face for finishing the semester with 3 finals left",
+  "style": "named",
+  "weak": false
+ },
+ {
+  "target": "richraven",
+  "request": "raven in a top hat with champagne complaining the yacht wifi is slow",
+  "style": "visual",
+  "weak": false
+ },
+ {
+  "target": "hipsterkitty",
+  "request": "my friend used linux before it was cool and now says its too mainstream",
+  "style": "situation",
+  "weak": false
+ },
+ {
+  "target": "hawkward",
+  "request": "awkward hawk meme waving back at someone who was waving at the person behind me",
+  "style": "named",
+  "weak": false
+ },
+ {
+  "target": "sarcasticanthony",
+  "request": "guy with an afro doing air quotes about my 'unlimited' pto",
+  "style": "visual",
+  "weak": false
+ },
+ {
+  "target": "scumbagdaylightsavingstime",
+  "request": "lost an hour of sleep this weekend cause the clocks jumped forward again",
+  "style": "situation",
+  "weak": false
+ },
+ {
+  "target": "helpfultylerdurden",
+  "request": "helpful tyler durden tip for when your inbox is full",
+  "style": "named",
+  "weak": false
+ },
+ {
+  "target": "beyonceknowlessuperbowlface",
+  "request": "unflattering beyonce face going way too hard at zumba class",
+  "style": "named",
+  "weak": true
+ },
+ {
+  "target": "jonstewartskeptical",
+  "request": "skeptical jon stewart face when the pm says its a quick fix",
+  "style": "named",
+  "weak": false
+ },
+ {
+  "target": "baneandbruce",
+  "request": "bane standing over broken bruce wayne in the pit, my landlord vs me asking for my deposit",
+  "style": "visual",
+  "weak": false
+ },
+ {
+  "target": "speechlesscolbertface",
+  "request": "manager announced a pizza party instead of raises and i just sat there with no words",
+  "style": "situation",
+  "weak": true
+ },
+ {
+  "target": "brianburkeonthephone",
+  "request": "brian burke on the phone meme trading my little brother for a ps5",
+  "style": "named",
+  "weak": true
+ },
+ {
+  "target": "hermedwards",
+  "request": "herm edwards you play to win the game but for my fantasy league",
+  "style": "named",
+  "weak": false
+ },
+ {
+  "target": "derpina",
+  "request": "female rage comic derp face when i put the milk in the cupboard",
+  "style": "visual",
+  "weak": false
+ },
+ {
+  "target": "gagababy",
+  "request": "baby screaming in terror while lady gaga holds it, my cat at the vet",
+  "style": "visual",
+  "weak": false
+ },
+ {
+  "target": "superiorwadsworth",
+  "request": "wadsworth from clue grinning with the gun, i ate the last donut",
+  "style": "named",
+  "weak": true
+ },
+ {
+  "target": "brianwilsonvszztop",
+  "request": "guy with a big beard on top and zz tops beards below for my no shave november",
+  "style": "visual",
+  "weak": false
+ },
+ {
+  "target": "horaextra",
+  "request": "working saturday but its time and a half so honestly worth it",
+  "style": "situation",
+  "weak": true
+ },
+ {
+  "target": "benbarbapointing",
+  "request": "rugby player pointing straight at you, whoever keeps stealing my yogurt from the office fridge",
+  "style": "visual",
+  "weak": true
+ },
+ {
+  "target": "barackandkumar2013",
+  "request": "barack and kumar style buddy movie poster for me and my lab partner",
+  "style": "named",
+  "weak": false
+ },
+ {
+  "target": "legalbillmurray",
+  "request": "technically the sign only says no parking on weekdays so i parked there sunday",
+  "style": "situation",
+  "weak": true
+ },
+ {
+  "target": "selfishozzy",
+  "request": "my wife gives the new puppy way more attention than me and im jealous",
+  "style": "situation",
+  "weak": false
+ }
+]

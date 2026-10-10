@@ -1,0 +1,2369 @@
+[
+ {
+  "qid": "sarcasticanthony#bdev",
+  "request": "oh wow another meeting that couldve been an email, how thrilling",
+  "style": "situation",
+  "target": {
+   "id": "sarcasticanthony",
+   "name": "Sarcastic Anthony",
+   "shape": "irony",
+   "core": "A guy making air quotes, used to mock something that's only 'technically' what it claims to be.",
+   "slots": [
+    "the setup",
+    "the air-quoted phrase"
+   ],
+   "aliases": [
+    "air quotes guy",
+    "sarcastic air quotes",
+    "afro air quotes"
+   ],
+   "picture": "guy with huge afro and green shirt making air quotes with both hands, sarcastic face"
+  },
+  "picked": [
+   {
+    "id": "robertdowneyjrannoyed",
+    "name": "Robert Downey Jr Eye Roll",
+    "shape": "reaction",
+    "core": "Robert Downey Jr. rolling his eyes with arms crossed, used for exasperation at something said for the hundredth time.",
+    "slots": [
+     "the annoying thing",
+     "the reaction"
+    ],
+    "aliases": [
+     "rdj eye roll",
+     "robert downey jr annoyed",
+     "tony stark eye roll",
+     "eye roll"
+    ],
+    "picture": "man with goatee crossing arms rolling eyes up, annoyed, dark jacket"
+   },
+   {
+    "id": "faceyoumakerobertdowneyjr",
+    "name": "Face You Make Robert Downey Jr",
+    "shape": "reaction",
+    "core": "An eye-roll reaction: the face you make when someone says or does something tiresome or ridiculous.",
+    "slots": [
+     "the annoying situation",
+     "the face you make"
+    ],
+    "aliases": [
+     "RDJ eye roll",
+     "Robert Downey Jr eye roll",
+     "face you make when",
+     "Tony Stark eye roll"
+    ],
+    "picture": "man with goatee in dark suit with arms crossed, rolling his eyes upward, annoyed"
+   },
+   {
+    "id": "skeletoncomputer",
+    "name": "Skeleton Waiting at Computer",
+    "shape": "exaggeration",
+    "core": "A skeleton still sitting at its desk, used for waiting absurdly long for something to finish or reply.",
+    "slots": [
+     "what you're waiting for",
+     "how long it's been"
+    ],
+    "aliases": [
+     "skeleton computer",
+     "waiting skeleton",
+     "skeleton at desk",
+     "still waiting"
+    ],
+    "picture": "skeleton sitting at office desk in front of computer, waiting forever, keyboard and mouse"
+   }
+  ]
+ },
+ {
+  "qid": "blackgirlwat#bdev",
+  "request": "when my dad says he invested the college fund in beanie babies",
+  "style": "situation",
+  "target": {
+   "id": "blackgirlwat",
+   "name": "Black Girl Wat",
+   "shape": "reaction",
+   "core": "A confused, skeptical side-eye with a raised hand, used when someone says something that makes no sense.",
+   "slots": [
+    "the baffling statement"
+   ],
+   "aliases": [
+    "black girl wat",
+    "confused girl",
+    "wat girl",
+    "confused side eye",
+    "excuse me what"
+   ],
+   "picture": "girl in classroom with confused disgusted face, hand raised palm up questioning, people behind her"
+  },
+  "picked": [
+   {
+    "id": "hewillnever",
+    "name": "He Will Never",
+    "shape": "plan-backfires",
+    "core": "Cereal Guy reads a sad statement then spits out his cereal at a twist ending, used for a sympathetic setup with a shocking or absurd punchline.",
+    "slots": [
+     "the sad setup",
+     "the shocking twist"
+    ],
+    "aliases": [
+     "Cereal Guy",
+     "Cereal Guy Spitting",
+     "He Will Never Have A Girlfriend",
+     "Spit Take Rage Comic"
+    ],
+    "picture": "rage comic stick guy eating cereal with a stern face, then spitting cereal out in shock, four panel grid with blank left side"
+   },
+   {
+    "id": "happyshock",
+    "name": "Happy Then Shocked",
+    "shape": "before-after",
+    "core": "A man grinning, then his smile collapsing into dismay as he learns the catch.",
+    "slots": [
+     "the good news",
+     "the catch"
+    ],
+    "aliases": [
+     "disappointed black guy",
+     "happy then sad",
+     "smile fade",
+     "happy to disappointed"
+    ],
+    "picture": "man smiling happily then looking shocked and disappointed, blank spaces on left, two panels top and bottom"
+   },
+   {
+    "id": "gone",
+    "name": "And It's Gone",
+    "shape": "plan-backfire",
+    "core": "Optimistic plan with money or opportunity that vanishes in an instant.",
+    "slots": [
+     "the hopeful plan or setup",
+     "'aaand it's gone' vanishing payoff"
+    ],
+    "aliases": [
+     "and its gone",
+     "aaaand its gone",
+     "south park and it's gone"
+    ],
+    "picture": "cartoon man in suit at desk with computer, wide blank stare, office window behind"
+   }
+  ]
+ },
+ {
+  "qid": "hewillnever#bdev",
+  "request": "my dog sitting at the door waiting for my ex who is never coming back",
+  "style": "situation",
+  "target": {
+   "id": "hewillnever",
+   "name": "He Will Never",
+   "shape": "plan-backfires",
+   "core": "Cereal Guy reads a sad statement then spits out his cereal at a twist ending, used for a sympathetic setup with a shocking or absurd punchline.",
+   "slots": [
+    "the sad setup",
+    "the shocking twist"
+   ],
+   "aliases": [
+    "Cereal Guy",
+    "Cereal Guy Spitting",
+    "He Will Never Have A Girlfriend",
+    "Spit Take Rage Comic"
+   ],
+   "picture": "rage comic stick guy eating cereal with a stern face, then spitting cereal out in shock, four panel grid with blank left side"
+  },
+  "picked": [
+   {
+    "id": "blankkermitwaiting",
+    "name": "Kermit Waiting",
+    "shape": "reaction",
+    "core": "Four shots of Kermit waiting patiently through every season, for waiting forever on something that never comes.",
+    "slots": [
+     "what you're waiting for",
+     "how long it's been"
+    ],
+    "aliases": [
+     "kermit waiting",
+     "still waiting kermit",
+     "waiting kermit",
+     "kermit seasons"
+    ],
+    "picture": "green frog puppet fishing, sitting on rock, leaning on pillar, staring out rainy window, four panels waiting"
+   },
+   {
+    "id": "spongebobwaiting",
+    "name": "SpongeBob Waiting",
+    "shape": "reaction",
+    "core": "SpongeBob sitting alone at a booth, used for waiting forever for something or someone that never comes.",
+    "slots": [
+     "what I'm waiting for",
+     "how long it's been"
+    ],
+    "aliases": [
+     "spongebob waiting",
+     "spongebob alone booth",
+     "lonely spongebob",
+     "spongebob still waiting"
+    ],
+    "picture": "cartoon yellow sponge sitting alone in red diner booth, sad and bored, coffee mug on table, waiting"
+   },
+   {
+    "id": "illjustwaithere",
+    "name": "I'll Just Wait Here",
+    "shape": "before-after",
+    "core": "A man waiting at a computer turns into a skeleton, used for things that take forever.",
+    "slots": [
+     "what you're waiting for",
+     "how long it takes"
+    ],
+    "aliases": [
+     "i'll just wait here",
+     "waiting skeleton",
+     "skeleton computer",
+     "still waiting"
+    ],
+    "picture": "man sitting at computer waiting, then the same man as a skeleton still at the computer, two panels top and bottom"
+   }
+  ]
+ },
+ {
+  "qid": "paranoidparrot#bdev",
+  "request": "hear one noise downstairs at 2am, convinced someone broke in",
+  "style": "situation",
+  "target": {
+   "id": "paranoidparrot",
+   "name": "Paranoid Parrot",
+   "shape": "exaggeration",
+   "core": "A nervous parrot spiraling into paranoid conclusions about a normal situation.",
+   "slots": [
+    "normal situation",
+    "paranoid conclusion"
+   ],
+   "aliases": [
+    "paranoid parrot",
+    "nervous parrot",
+    "anxious parrot",
+    "advice parrot"
+   ],
+   "picture": "blue macaw parrot looking sideways suspiciously, orange and green triangle background"
+  },
+  "picked": [
+   {
+    "id": "kidsafraidofrabbit",
+    "name": "Kids Afraid Of Rabbit",
+    "shape": "exaggeration",
+    "core": "Two kids cower in a corner, terrified of a harmless bunny; used for overreacting in fear to something trivial.",
+    "slots": [
+     "the terrified ones",
+     "the harmless thing"
+    ],
+    "aliases": [
+     "Scared Of Bunny",
+     "Kids Scared Of Rabbit",
+     "Afraid Of Bunny",
+     "Terrified Kids Bunny"
+    ],
+    "picture": "two scared kids cowering in the corner of a room against the wall away from a small black rabbit"
+   },
+   {
+    "id": "scaredcat",
+    "name": "Scared Cat",
+    "shape": "reaction",
+    "core": "A wide-eyed horrified cat, used for sudden shock or panic at a realisation.",
+    "slots": [
+     "the shocking realisation",
+     "the panicked reaction"
+    ],
+    "aliases": [
+     "scared cat",
+     "shocked cat",
+     "horrified cat",
+     "surprised cat"
+    ],
+    "picture": "cat with huge wide eyes and open mouth, shocked frightened expression, close-up"
+   },
+   {
+    "id": "harold",
+    "name": "Hide the Pain Harold",
+    "shape": "ironic-denial",
+    "core": "Forced smile masking internal pain or embarrassment.",
+    "slots": [
+     "the awkward or painful situation",
+     "what he's pretending, or the detail that stings"
+    ],
+    "aliases": [
+     "hide the pain harold",
+     "harold"
+    ],
+    "picture": "smiling old man with white beard at laptop holding coffee mug, forced fake smile hiding pain"
+   }
+  ]
+ },
+ {
+  "qid": "fwp#bdev",
+  "request": "my airpods case wont close all the way and its ruining my day",
+  "style": "situation",
+  "target": {
+   "id": "fwp",
+   "name": "First World Problems",
+   "shape": "exaggeration",
+   "core": "Mocking trivial privileged complaints as if they were real hardship.",
+   "slots": [
+    "the petty privileged situation",
+    "the trivial complaint or outcome"
+   ],
+   "aliases": [
+    "first world problems",
+    "white woman crying"
+   ],
+   "picture": "crying woman with hand on forehead, tears running down cheek, eyes closed, close-up"
+  },
+  "picked": [
+   {
+    "id": "gears",
+    "name": "You Know What Really Grinds My Gears?",
+    "shape": "hot-take",
+    "core": "Host announces the thing that really grinds their gears, then a petty gripe.",
+    "slots": [
+     "'you know what really grinds my gears?'",
+     "the petty annoyance"
+    ],
+    "aliases": [
+     "grinds my gears",
+     "peter griffin gears"
+    ],
+    "picture": "cartoon fat man in suit at news desk ranting angrily, sign with gears behind him"
+   },
+   {
+    "id": "fine",
+    "name": "This is Fine",
+    "shape": "ironic-denial",
+    "core": "Calmly insisting everything is fine while surrounded by disaster.",
+    "slots": [
+     "the escalating disaster or stressful situation (often blank)",
+     "calm denial line, e.g. 'this is fine'"
+    ],
+    "aliases": [
+     "this is fine dog",
+     "burning room dog"
+    ],
+    "picture": "cartoon dog in hat sitting at table in burning room, calm smile, coffee mug, flames everywhere"
+   },
+   {
+    "id": "chrisfarleyfortheloveofgod",
+    "name": "Chris Farley For the Love of God",
+    "shape": "reaction",
+    "core": "Chris Farley lunging and yelling in exasperation, used to beg someone to finally stop doing something.",
+    "slots": [
+     "the frustrating situation",
+     "the desperate plea"
+    ],
+    "aliases": [
+     "for the love of god",
+     "chris farley yelling",
+     "farley screaming",
+     "tommy boy yelling"
+    ],
+    "picture": "heavy man in plaid jacket and glasses hunched over yelling with mouth open, motivational speaker, living room"
+   }
+  ]
+ },
+ {
+  "qid": "itsbeen84years#bdev",
+  "request": "waiting for the bus this morning felt like decades had passed",
+  "style": "situation",
+  "target": {
+   "id": "itsbeen84years",
+   "name": "It's Been 84 Years",
+   "shape": "exaggeration",
+   "core": "Old Rose from Titanic saying \"it's been 84 years\", used when something feels like it took forever.",
+   "slots": [
+    "the thing that took forever"
+   ],
+   "aliases": [
+    "84 years",
+    "its been 84 years",
+    "titanic old rose",
+    "been forever"
+   ],
+   "picture": "old woman with white hair looking down sadly, caption it's been 84 years, close-up"
+  },
+  "picked": [
+   {
+    "id": "waitingskeleton",
+    "name": "Waiting Skeleton",
+    "shape": "exaggeration",
+    "core": "Waiting so long for something that you've died and decomposed.",
+    "slots": [
+     "setup",
+     "what you're still waiting for"
+    ],
+    "aliases": [
+     "skeleton waiting",
+     "still waiting",
+     "skeleton on bench",
+     "me waiting"
+    ],
+    "picture": "skeleton sitting slumped on a wooden bench outdoors, waiting forever, grass behind"
+   },
+   {
+    "id": "illjustwaithere",
+    "name": "I'll Just Wait Here",
+    "shape": "before-after",
+    "core": "A man waiting at a computer turns into a skeleton, used for things that take forever.",
+    "slots": [
+     "what you're waiting for",
+     "how long it takes"
+    ],
+    "aliases": [
+     "i'll just wait here",
+     "waiting skeleton",
+     "skeleton computer",
+     "still waiting"
+    ],
+    "picture": "man sitting at computer waiting, then the same man as a skeleton still at the computer, two panels top and bottom"
+   },
+   {
+    "id": "mrbeanwaiting",
+    "name": "Mr Bean Waiting",
+    "shape": "exaggeration",
+    "core": "Mr Bean waiting in a field until he's lying down exhausted, used for waiting absurdly long for something.",
+    "slots": [
+     "what you're waiting for"
+    ],
+    "aliases": [
+     "mr bean waiting",
+     "waiting mr bean",
+     "mr bean field waiting",
+     "still waiting"
+    ],
+    "picture": "man in brown suit standing in yellow flower field checking his watch, then sitting and lying down bored, four panels"
+   }
+  ]
+ },
+ {
+  "qid": "awesome#bdev",
+  "request": "held the door for the whole class and everyone said thanks",
+  "style": "situation",
+  "target": {
+   "id": "awesome",
+   "name": "Socially Awesome Penguin",
+   "shape": "before-after",
+   "core": "A small awkward moment accidentally turns into a social win.",
+   "slots": [
+    "the awkward mistake or oddity",
+    "the unexpectedly great social payoff"
+   ],
+   "aliases": [
+    "socially awesome penguin"
+   ],
+   "picture": "penguin walking confidently on red radiating background"
+  },
+  "picked": [
+   {
+    "id": "borat",
+    "name": "Borat",
+    "shape": "approval",
+    "core": "Borat grinning with two thumbs up; used to celebrate a (often dubious) success with 'Great success!'.",
+    "slots": [
+     "the dubious achievement",
+     "the celebration"
+    ],
+    "aliases": [
+     "borat thumbs up",
+     "great success",
+     "very nice",
+     "borat"
+    ],
+    "picture": "man with curly hair and mustache in gray suit giving two thumbs up, big grin"
+   },
+   {
+    "id": "thankyouforsavingmylife",
+    "name": "Thank You For Changing My Life",
+    "shape": "approval",
+    "core": "A bearded Nordic gamer wojak solemnly saying 'Thank you for changing my life', used to express deep gratitude to something that improved your life.",
+    "slots": [
+     "context",
+     "the life-changing thing"
+    ],
+    "aliases": [
+     "Chad Thank You",
+     "Nordic Gamer Thank You",
+     "Thank You For Changing My Life",
+     "Yes Chad Grateful"
+    ],
+    "picture": "drawn blond bearded man in side profile with calm expression, saying thank you for changing my life, white background"
+   },
+   {
+    "id": "barneystinsonwin",
+    "name": "Barney Stinson Win",
+    "shape": "approval",
+    "core": "Barney Stinson giving double thumbs up, used to celebrate a small, smug victory.",
+    "slots": [
+     "the win",
+     "the celebration"
+    ],
+    "aliases": [
+     "Barney Thumbs Up",
+     "Barney Stinson",
+     "Nailed It Barney",
+     "Legendary Win"
+    ],
+    "picture": "man in suit grinning and giving two thumbs up in a bar, excited"
+   }
+  ]
+ },
+ {
+  "qid": "neuronactivation#bdev",
+  "request": "when someone mentions my favorite anime at work my brain lights up",
+  "style": "situation",
+  "target": {
+   "id": "neuronactivation",
+   "name": "Neuron Activation",
+   "shape": "reaction",
+   "core": "A monkey's brain lights up at a stimulus, used for something that instantly excites or triggers you.",
+   "slots": [
+    "the stimulus"
+   ],
+   "aliases": [
+    "neuron activation",
+    "monkey neuron activation",
+    "monkey sees action",
+    "brain activation"
+   ],
+   "picture": "monkey with pink brain highlighted labeled neuron activation, caption monkey sees action"
+  },
+  "picked": [
+   {
+    "id": "spongebobmoney",
+    "name": "Spongebob Money",
+    "shape": "before-after",
+    "core": "SpongeBob is bored, then gleefully grabs his wallet; used when something unappealing suddenly becomes exciting once money or a reward appears.",
+    "slots": [
+     "the boring situation",
+     "when the money shows up"
+    ],
+    "aliases": [
+     "spongebob wallet",
+     "spongebob money",
+     "spongebob payday",
+     "take my money spongebob"
+    ],
+    "picture": "SpongeBob looking tired and unimpressed, then grinning wildly holding open wallet, two panels"
+   },
+   {
+    "id": "reactionguys",
+    "name": "Reaction Guys",
+    "shape": "binary-choice",
+    "core": "A group of guys staring blankly at one thing and then going wild for another, used to show what bores people versus what excites them.",
+    "slots": [
+     "the boring thing",
+     "the exciting thing"
+    ],
+    "aliases": [
+     "Reaction Guys",
+     "Bored Vs Excited Guys",
+     "Gamers Reaction",
+     "Unimpressed Then Hyped"
+    ],
+    "picture": "group of young men watching a screen, calm and focused on top, then jumping up cheering and screaming excitedly below, two panels"
+   },
+   {
+    "id": "vince",
+    "name": "Vince McMahon Reaction",
+    "shape": "escalation",
+    "core": "Vince McMahon's face grows increasingly thrilled across panels as the option gets better.",
+    "slots": [
+     "mild or baseline option",
+     "better option, growing excitement",
+     "peak option, maximum ecstatic joy"
+    ],
+    "aliases": [
+     "vince mcmahon reaction",
+     "mr mcmahon reaction"
+    ],
+    "picture": "older man in suit getting increasingly excited, eyes widening to jaw-dropped ecstasy, three panels, blank left side"
+   }
+  ]
+ },
+ {
+  "qid": "deannorrissreaction#bdev",
+  "request": "same bald guy smiling then deadly serious, getting paid vs seeing the tax deductions",
+  "style": "visual",
+  "target": {
+   "id": "deannorrissreaction",
+   "name": "Dean Norris Happy and Grim",
+   "shape": "before-after",
+   "core": "Dean Norris grinning beside the same man scowling, used to contrast how you feel before and after learning something.",
+   "slots": [
+    "the good version",
+    "the grim version"
+   ],
+   "aliases": [
+    "dean norris reaction",
+    "hank happy sad",
+    "dean norris smile frown",
+    "happy then grim"
+   ],
+   "picture": "bald man portrait grinning happily on left, same man grim and stern on right, side by side"
+  },
+  "picked": [
+   {
+    "id": "happythensad",
+    "name": "Happy Then Sad",
+    "shape": "plan-backfires",
+    "core": "A man smiling then instantly disappointed, used when good news is followed by a crushing catch.",
+    "slots": [
+     "the good news",
+     "the catch"
+    ],
+    "aliases": [
+     "Disappointed Black Guy",
+     "Happy Then Disappointed",
+     "Smile Then Sad",
+     "Excited Then Disappointed"
+    ],
+    "picture": "man laughing happily, then same man looking disappointed and sad, blank text boxes on left, two panels top and bottom"
+   },
+   {
+    "id": "oldmancupofcoffee",
+    "name": "Hide The Pain Harold Laptop",
+    "shape": "before-after",
+    "core": "Harold smiles at his laptop, then looks up with a pained forced smile; used when something seems fine then quietly turns awful.",
+    "slots": [
+     "what you see first",
+     "the painful realization"
+    ],
+    "aliases": [
+     "hide the pain harold",
+     "harold coffee laptop",
+     "old man coffee",
+     "pained smile old man"
+    ],
+    "picture": "smiling older white-haired man at laptop holding mug, forced pained smile, two panels top and bottom"
+   },
+   {
+    "id": "dbg",
+    "name": "Expectation vs. Reality",
+    "shape": "before-after",
+    "core": "Hopeful expectation versus disappointing reality, shown by a disappointed man looking away.",
+    "slots": [
+     "the hopeful expectation or normal action",
+     "the disappointing reality or twist"
+    ],
+    "aliases": [
+     "disappointed black guy",
+     "expectation vs reality",
+     "disappointed guy"
+    ],
+    "picture": "black man smiling happily then disappointed, two panels top and bottom, blank space on left"
+   }
+  ]
+ },
+ {
+  "qid": "drevilonemillion#bdev",
+  "request": "my 8 year old asking for one million dollars allowance",
+  "style": "situation",
+  "target": {
+   "id": "drevilonemillion",
+   "name": "Dr Evil One Million Dollars",
+   "shape": "exaggeration",
+   "core": "Dr Evil, pinky to lip, demands one million dollars; used for demands that sound huge but are laughably outdated or small.",
+   "slots": [
+    "the setup",
+    "the ridiculous demand"
+   ],
+   "aliases": [
+    "Dr Evil Pinky",
+    "One Million Dollars",
+    "Dr Evil Million",
+    "Austin Powers Pinky"
+   ],
+   "picture": "bald villain in grey suit holding pinky finger to the corner of his mouth, smug"
+  },
+  "picked": [
+   {
+    "id": "drevilpinky",
+    "name": "Dr Evil Pinky",
+    "shape": "exaggeration",
+    "core": "Dr Evil scheming with pinky to mouth, demanding an absurd amount or pitching a ridiculously evil plan.",
+    "slots": [
+     "the scheme",
+     "the outrageous demand"
+    ],
+    "aliases": [
+     "dr evil",
+     "one million dollars",
+     "pinky to mouth",
+     "austin powers"
+    ],
+    "picture": "bald man in grey suit with pinky finger at corner of mouth, scheming smirk"
+   },
+   {
+    "id": "highexpectationsasianfather",
+    "name": "High Expectations Asian Father",
+    "shape": "rejection",
+    "core": "A stern father is unimpressed by an achievement and demands even more, used for impossibly high standards.",
+    "slots": [
+     "your achievement",
+     "his unimpressed demand"
+    ],
+    "aliases": [
+     "asian father",
+     "high expectations dad",
+     "asian dad",
+     "why not a plus"
+    ],
+    "picture": "stern older asian man with glasses face on green starburst background, disappointed look"
+   },
+   {
+    "id": "michael-scott",
+    "name": "Michael Scott No God No",
+    "shape": "reaction",
+    "core": "Michael screams a dramatic denial of bad news or an unwanted outcome.",
+    "slots": [
+     "the bad news or unwanted situation",
+     "the dramatic 'nooo' scream"
+    ],
+    "aliases": [
+     "michael scott no",
+     "no god no"
+    ],
+    "picture": "man in suit and tie screaming in horror with mouth wide open, office background"
+   }
+  ]
+ },
+ {
+  "qid": "andjustlikethat#bdev",
+  "request": "carrie typing at her laptop by the window, deciding to quit my job",
+  "style": "visual",
+  "target": {
+   "id": "andjustlikethat",
+   "name": "And Just Like That",
+   "shape": "before-after",
+   "core": "Forrest Gump gazes off as something suddenly changes or ends, captioned 'and just like that...'.",
+   "slots": [
+    "the sudden event",
+    "and just like that..."
+   ],
+   "aliases": [
+    "and just like that",
+    "forrest gump stare",
+    "forrest gump",
+    "just like that"
+   ],
+   "picture": "close-up of man with short hair in light jacket, blank stunned faraway stare, blurry green park behind"
+  },
+  "picked": [
+   {
+    "id": "oldmancupofcoffee",
+    "name": "Hide The Pain Harold Laptop",
+    "shape": "before-after",
+    "core": "Harold smiles at his laptop, then looks up with a pained forced smile; used when something seems fine then quietly turns awful.",
+    "slots": [
+     "what you see first",
+     "the painful realization"
+    ],
+    "aliases": [
+     "hide the pain harold",
+     "harold coffee laptop",
+     "old man coffee",
+     "pained smile old man"
+    ],
+    "picture": "smiling older white-haired man at laptop holding mug, forced pained smile, two panels top and bottom"
+   },
+   {
+    "id": "robotnikpressingredbutton",
+    "name": "Robotnik Pressing Red Button",
+    "shape": "binary-choice",
+    "core": "Two buttons and Robotnik gleefully slams the red one: picking the chaotic or bad option with enthusiasm.",
+    "slots": [
+     "red button (chosen)",
+     "blue button (sensible)"
+    ],
+    "aliases": [
+     "robotnik button",
+     "eggman button",
+     "sonic movie button",
+     "jim carrey button"
+    ],
+    "picture": "cartoon hand choosing between red and blue buttons, then mustached man in red jacket laughing pressing button, two panels"
+   },
+   {
+    "id": "boat",
+    "name": "I Should Buy a Boat Cat",
+    "shape": "other",
+    "core": "Cat contemplating an impulsive purchase, reasoning that buying a boat solves everything.",
+    "slots": [
+     "often blank",
+     "the impulsive, extravagant idea or purchase thought"
+    ],
+    "aliases": [
+     "i should buy a boat cat",
+     "boat cat"
+    ],
+    "picture": "cat in suit sitting at table with newspaper and coffee cup by window, like businessman"
+   }
+  ]
+ },
+ {
+  "qid": "ss#bdev",
+  "request": "roommate borrows my charger and never gives it back",
+  "style": "situation",
+  "target": {
+   "id": "ss",
+   "name": "Scumbag Steve",
+   "shape": "dialogue",
+   "core": "Scumbag Steve: selfish, inconsiderate behavior; setup of need followed by antisocial act.",
+   "slots": [
+    "the favor or setup, such as asking for something",
+    "the inconsiderate act that undermines it"
+   ],
+   "aliases": [
+    "scumbag steve",
+    "scumbag hat",
+    "steve"
+   ],
+   "picture": "young man in plaid patterned backwards-tilted cap and fur-collared coat standing in a doorway, smug blank stare"
+  },
+  "picked": [
+   {
+    "id": "cake",
+    "name": "Office Space Milton",
+    "shape": "ironic-denial",
+    "core": "Meek Milton complains he was promised something and it never came.",
+    "slots": [
+     "often blank",
+     "'I was told there would be\u2026' broken promise"
+    ],
+    "aliases": [
+     "i was told there would be cake",
+     "milton"
+    ],
+    "picture": "nerdy man with glasses and mustache holding cake plate in crowded office party, sad"
+   },
+   {
+    "id": "milkcarton",
+    "name": "Milk Carton",
+    "shape": "irony",
+    "core": "A missing-person milk carton, used to joke that something has gone missing or disappeared for ages.",
+    "slots": [
+     "what's missing",
+     "who to contact"
+    ],
+    "aliases": [
+     "milk carton",
+     "missing milk carton",
+     "have you seen me",
+     "missing poster"
+    ],
+    "picture": "milk carton with missing poster, blank white square for photo, have you seen me text, if found contact"
+   },
+   {
+    "id": "kermit",
+    "name": "But That's None of My Business",
+    "shape": "ironic-denial",
+    "core": "Kermit sips tea while making a petty or shady comment, pretending it's not his business.",
+    "slots": [
+     "petty observation or shady fact, often blank",
+     "'but that's none of my business' deflection"
+    ],
+    "aliases": [
+     "but thats none of my business",
+     "kermit tea"
+    ],
+    "picture": "green frog puppet sipping cup of tea by window, nonchalant"
+   }
+  ]
+ },
+ {
+  "qid": "ackbar#bdev",
+  "request": "free pizza in the break room but theres a mandatory training after",
+  "style": "situation",
+  "target": {
+   "id": "ackbar",
+   "name": "It's A Trap!",
+   "shape": "reaction",
+   "core": "Admiral Ackbar warns of an obvious danger: 'It's a trap!'",
+   "slots": [
+    "often blank, or the tempting bait setup",
+    "it's a trap!"
+   ],
+   "aliases": [
+    "admiral ackbar",
+    "its a trap"
+   ],
+   "picture": "orange fish-headed alien with big bulging eyes in white uniform, Star Wars admiral, close-up"
+  },
+  "picked": [
+   {
+    "id": "happyshock",
+    "name": "Happy Then Shocked",
+    "shape": "before-after",
+    "core": "A man grinning, then his smile collapsing into dismay as he learns the catch.",
+    "slots": [
+     "the good news",
+     "the catch"
+    ],
+    "aliases": [
+     "disappointed black guy",
+     "happy then sad",
+     "smile fade",
+     "happy to disappointed"
+    ],
+    "picture": "man smiling happily then looking shocked and disappointed, blank spaces on left, two panels top and bottom"
+   },
+   {
+    "id": "wouldyoupressthebutton",
+    "name": "Would You Press The Button",
+    "shape": "binary-choice",
+    "core": "A dilemma: pressing the button gives you a great perk, but with a catch, and people debate whether it's worth it.",
+    "slots": [
+     "the reward",
+     "the catch"
+    ],
+    "aliases": [
+     "will you press the button",
+     "would you press the button",
+     "button dilemma",
+     "red button but"
+    ],
+    "picture": "big red button on blue background, title will you press the button, two blank boxes with but between"
+   },
+   {
+    "id": "goodguypizzarolls",
+    "name": "Good Guy Pizza Rolls",
+    "shape": "irony",
+    "core": "A bowl of pizza rolls framed as a helpful good guy that inevitably betrays you with molten filling or uneven heating.",
+    "slots": [
+     "what it promises",
+     "how it betrays you"
+    ],
+    "aliases": [
+     "good guy pizza rolls",
+     "pizza rolls",
+     "scumbag pizza rolls",
+     "totinos"
+    ],
+    "picture": "yellow paper plate full of golden pizza rolls in front of the box on a desk, laptop behind"
+   }
+  ]
+ },
+ {
+  "qid": "dallascowboys#bdev",
+  "request": "cowboys fans saying this is finally our year again",
+  "style": "situation",
+  "target": {
+   "id": "dallascowboys",
+   "name": "Dallas Cowboys",
+   "shape": "irony",
+   "core": "The Dallas Cowboys star logo, used to mock the team's hype and its habit of choking when it matters.",
+   "slots": [
+    "hype",
+    "letdown"
+   ],
+   "aliases": [
+    "Cowboys",
+    "Dallas Cowboys Star",
+    "Cowboys Logo"
+   ],
+   "picture": "blue star logo with white outline on black background, football team"
+  },
+  "picked": [
+   {
+    "id": "mariahcareyalliwantforchrist",
+    "name": "Mariah Carey It's Time",
+    "shape": "warning",
+    "core": "Mariah Carey announcing it's that time again, used for something annoying that returns every year.",
+    "slots": [
+     "date or trigger",
+     "what's back"
+    ],
+    "aliases": [
+     "mariah carey it's time",
+     "all i want for christmas",
+     "mariah defrosting",
+     "it's time"
+    ],
+    "picture": "smiling woman in red Santa dress with white fur trim, dancers in candy cane outfits behind"
+   },
+   {
+    "id": "happyshock",
+    "name": "Happy Then Shocked",
+    "shape": "before-after",
+    "core": "A man grinning, then his smile collapsing into dismay as he learns the catch.",
+    "slots": [
+     "the good news",
+     "the catch"
+    ],
+    "aliases": [
+     "disappointed black guy",
+     "happy then sad",
+     "smile fade",
+     "happy to disappointed"
+    ],
+    "picture": "man smiling happily then looking shocked and disappointed, blank spaces on left, two panels top and bottom"
+   },
+   {
+    "id": "cheems",
+    "name": "Cheems",
+    "shape": "plan-backfire",
+    "core": "Sad-meek Cheems states a reassuring thing, hinting disaster will follow.",
+    "slots": [
+     "the cozy or hopeful setup",
+     "the naive assurance that precedes doom"
+    ],
+    "aliases": [
+     "cheems",
+     "cheems doge",
+     "balltze"
+    ],
+    "picture": "shiba inu dog sitting with sad sideways look, white background"
+   }
+  ]
+ },
+ {
+  "qid": "wontsomebodythinkofthechildr#bdev",
+  "request": "my mom when i said i wanna skip thanksgiving this year",
+  "style": "situation",
+  "target": {
+   "id": "wontsomebodythinkofthechildr",
+   "name": "Won't Somebody Think Of The Children",
+   "shape": "exaggeration",
+   "core": "Helen Lovejoy hysterically wails 'won't somebody think of the children' to overdramatize a trivial issue.",
+   "slots": [
+    "the trivial issue",
+    "the hysterical plea"
+   ],
+   "aliases": [
+    "won't somebody think of the children",
+    "helen lovejoy",
+    "think of the children",
+    "simpsons lovejoy"
+   ],
+   "picture": "cartoon Simpsons woman Helen Lovejoy clutching hands, wide panicked eyes, pleading, crowd behind her"
+  },
+  "picked": [
+   {
+    "id": "telltalewillrememberthat",
+    "name": "Telltale Will Remember That",
+    "shape": "warning",
+    "core": "The Telltale game notice that a character will remember your choice; used when someone files away a slight for later.",
+    "slots": [
+     "who will remember",
+     "what you did"
+    ],
+    "aliases": [
+     "will remember that",
+     "telltale games",
+     "clementine will remember that",
+     "they will remember this"
+    ],
+    "picture": "video game scene, man sitting talking to girl in cap, text at top will remember that"
+   },
+   {
+    "id": "frowningnun",
+    "name": "Frowning Nun",
+    "shape": "rejection",
+    "core": "A stern nun glares with deep disapproval, used for silently judging bad behaviour.",
+    "slots": [
+     "the bad behaviour",
+     "the disapproval"
+    ],
+    "aliases": [
+     "disapproving nun",
+     "angry nun",
+     "stern nun",
+     "judging nun"
+    ],
+    "picture": "old nun in black and white habit with glasses, frowning disapprovingly, black and white photo"
+   },
+   {
+    "id": "vforvendetta",
+    "name": "V For Vendetta",
+    "shape": "warning",
+    "core": "V in his Guy Fawkes mask with crossed daggers, used for dramatic vows of revenge or rebellion over petty grievances.",
+    "slots": [
+     "grievance",
+     "dramatic vow"
+    ],
+    "aliases": [
+     "V Mask",
+     "Guy Fawkes Mask",
+     "Remember Remember"
+    ],
+    "picture": "figure in Guy Fawkes mask and black hat crossing two daggers, dark black background"
+   }
+  ]
+ },
+ {
+  "qid": "xy#bdev",
+  "request": "stick figure yelling with fist raised, fix all the bugs",
+  "style": "visual",
+  "target": {
+   "id": "xy",
+   "name": "X all the Y",
+   "shape": "exaggeration",
+   "core": "Buzz Lightyear presents 'X, X everywhere' with a sweeping gesture, stating abundance.",
+   "slots": [
+    "the X, the thing there is a lot of",
+    "'X everywhere' or 'all the Y' ending"
+   ],
+   "aliases": [
+    "x x everywhere",
+    "buzz lightyear x everywhere"
+   ],
+   "picture": "crude stick-figure girl with open screaming mouth raising a broom triumphantly, yellow burst background"
+  },
+  "picked": [
+   {
+    "id": "yuno",
+    "name": "Y U NO Guy",
+    "shape": "question",
+    "core": "Rage-faced stick figure demands to know why someone won't do the obvious thing.",
+    "slots": [
+     "'Y U NO' plus a verb",
+     "the action the speaker wishes were done"
+    ],
+    "aliases": [
+     "y u no guy",
+     "why you no"
+    ],
+    "picture": "rage comic face with furious gritted teeth, both hands raised in frustration, blue background"
+   },
+   {
+    "id": "sergeanthartmann",
+    "name": "Sergeant Hartman",
+    "shape": "warning",
+    "core": "The Full Metal Jacket drill sergeant points and barks at you; used for harsh, shouty demands or call-outs.",
+    "slots": [
+     "the accusation",
+     "the barked order"
+    ],
+    "aliases": [
+     "gunnery sergeant hartman",
+     "full metal jacket",
+     "drill sergeant",
+     "r lee ermey"
+    ],
+    "picture": "angry drill sergeant in campaign hat pointing finger at camera, yelling"
+   },
+   {
+    "id": "angrychickenboss",
+    "name": "Angry Chicken Boss",
+    "shape": "dialogue",
+    "core": "A chicken glaring sideways like a furious manager; used for petty boss demands and complaints.",
+    "slots": [
+     "the boss's demand",
+     "the angry follow-up"
+    ],
+    "aliases": [
+     "angry chicken",
+     "chicken boss",
+     "angry chicken boss",
+     "mad hen"
+    ],
+    "picture": "white hen with red comb seen from above glaring sideways at camera, straw on ground"
+   }
+  ]
+ },
+ {
+  "qid": "yodasmell#bdev",
+  "request": "when ur roommate microwaves fish at 8am and you sense it from the other room",
+  "style": "situation",
+  "target": {
+   "id": "yodasmell",
+   "name": "Yoda Smell",
+   "shape": "reaction",
+   "core": "Yoda with eyes closed, sniffing the air, for sensing something coming or savouring a moment.",
+   "slots": [
+    "the setup",
+    "what Yoda senses"
+   ],
+   "aliases": [
+    "yoda smell",
+    "yoda sniffing",
+    "i smell",
+    "yoda senses"
+   ],
+   "picture": "small green alien elder with big ears, eyes closed, smiling, savoring the air, sniffing"
+  },
+  "picked": [
+   {
+    "id": "suddendisgustdanny",
+    "name": "Sudden Disgust Danny",
+    "shape": "reaction",
+    "core": "A guy frozen in sudden horrified disgust, used for the moment you realise something gross or awful.",
+    "slots": [
+     "what happened",
+     "disgusted realisation"
+    ],
+    "aliases": [
+     "sudden disgust",
+     "disgusted danny",
+     "disgust guy",
+     "sudden realization disgust"
+    ],
+    "picture": "bearded man holding green beer bottle making disgusted shocked face at party"
+   },
+   {
+    "id": "hereitcomes",
+    "name": "Here It Comes",
+    "shape": "warning",
+    "core": "A man screaming at an approaching tornado, labeled as some inevitable disaster heading your way.",
+    "slots": [
+     "the incoming disaster"
+    ],
+    "aliases": [
+     "here it comes",
+     "tornado guy",
+     "screaming tornado",
+     "here it comes tornado"
+    ],
+    "picture": "man screaming at camera in fear as tornado approaches behind him, caption HERE IT COMES"
+   },
+   {
+    "id": "spongebobightimmaheadout",
+    "name": "Spongebob Ight Imma Head Out",
+    "shape": "rejection",
+    "core": "SpongeBob gets up from his chair to leave, used for the moment a situation makes you nope out.",
+    "slots": [
+     "the situation you leave"
+    ],
+    "aliases": [
+     "ight imma head out",
+     "spongebob leaving",
+     "imma head out",
+     "spongebob gets up"
+    ],
+    "picture": "yellow cartoon sponge with half-closed eyes getting up from red armchair in living room, caption ight imma head out"
+   }
+  ]
+ },
+ {
+  "qid": "somanyshirts#bdev",
+  "request": "guy holding a stack of free shirts happy, me leaving a tech conference",
+  "style": "visual",
+  "target": {
+   "id": "somanyshirts",
+   "name": "So Many Shirts",
+   "shape": "exaggeration",
+   "core": "A shocked man clutching an armful of boxed shirts; used for overbuying or being overwhelmed by too much of something.",
+   "slots": [
+    "the deal",
+    "how much I grabbed"
+   ],
+   "aliases": [
+    "so many shirts",
+    "shirt guy",
+    "armful of shirts",
+    "too many shirts"
+   ],
+   "picture": "man with shocked open mouth juggling an armful of packaged dress shirts in a store"
+  },
+  "picked": [
+   {
+    "id": "itsfreerealestate",
+    "name": "It's Free Real Estate",
+    "shape": "approval",
+    "core": "Tim Heidecker gleefully taking something offered for free; used when an opportunity is too easy not to grab.",
+    "slots": [
+     "the free opportunity"
+    ],
+    "aliases": [
+     "free real estate",
+     "it's free real estate",
+     "tim heidecker free"
+    ],
+    "picture": "smug man with slicked hair smiling smugly at camera, yellow caption it's free real estate"
+   },
+   {
+    "id": "tonystarksuccess",
+    "name": "Tony Stark Success",
+    "shape": "approval",
+    "core": "Tony Stark spreads his arms on stage basking in applause, for showing off a success like a celebrity.",
+    "slots": [
+     "the achievement",
+     "the victory lap"
+    ],
+    "aliases": [
+     "tony stark success",
+     "tony stark arms out",
+     "iron man stage",
+     "stark expo"
+    ],
+    "picture": "man in tuxedo standing on stage with arms spread wide, confident, bright yellow lights behind"
+   },
+   {
+    "id": "satisfiedseal",
+    "name": "Satisfied Seal",
+    "shape": "approval",
+    "core": "A smug, contented seal, used for small petty victories or quiet satisfaction.",
+    "slots": [
+     "the situation",
+     "the smug payoff"
+    ],
+    "aliases": [
+     "satisfied seal",
+     "smug seal",
+     "happy seal",
+     "content seal"
+    ],
+    "picture": "close-up of grey seal with eyes closed, content smug smile, whiskers, very satisfied"
+   }
+  ]
+ },
+ {
+  "qid": "sweatingbullets#bdev",
+  "request": "when the teacher says lets go over the homework i didnt do",
+  "style": "situation",
+  "target": {
+   "id": "sweatingbullets",
+   "name": "Sweating Bullets",
+   "shape": "reaction",
+   "core": "Jordan Peele sweating heavily in nervous silence, used for intense anxiety when you're about to be caught or exposed.",
+   "slots": [
+    "the nerve-wracking moment"
+   ],
+   "aliases": [
+    "sweating bullets",
+    "jordan peele sweating",
+    "nervous sweating",
+    "sweating guy"
+   ],
+   "picture": "nervous man sweating heavily, drops pouring down his face, looking sideways anxiously"
+  },
+  "picked": [
+   {
+    "id": "spongebobpanicinside",
+    "name": "SpongeBob Panic Inside",
+    "shape": "irony",
+    "core": "SpongeBob sitting calmly while a ghostly copy of him screams inside, used when you look composed on the outside but are panicking internally.",
+    "slots": [
+     "the stressful situation",
+     "calm outside, screaming inside"
+    ],
+    "aliases": [
+     "Internal Screaming SpongeBob",
+     "SpongeBob Calm Outside Panic Inside",
+     "Inner Panic SpongeBob",
+     "SpongeBob Screaming Inside"
+    ],
+    "picture": "SpongeBob sitting at desk smiling nervously, overlaid with screaming panicked SpongeBob ghost images"
+   },
+   {
+    "id": "panik-kalm-panik",
+    "name": "Panik Kalm Panik",
+    "shape": "escalation",
+    "core": "Panic, then false reassurance, then even worse panic.",
+    "slots": [
+     "alarming thing, panic",
+     "reassuring explanation, calm",
+     "reveal that makes it worse, panic"
+    ],
+    "aliases": [
+     "panik kalm",
+     "panik kalm panik",
+     "panic calm panic"
+    ],
+    "picture": "three rows, bald mannequin head panicking with hands on head, then calm, then panicking again, blank left panels"
+   },
+   {
+    "id": "sf",
+    "name": "Sealed Fate",
+    "shape": "plan-backfire",
+    "core": "Something minor goes wrong and you realize doom is certain and imminent.",
+    "slots": [
+     "the minor mishap or action that sets things off",
+     "the grim realization that consequences are unavoidable"
+    ],
+    "aliases": [
+     "impending doom seal",
+     "seal of doom",
+     "sealed fate seal"
+    ],
+    "picture": "baby seal peeking out of a wicker picnic basket with big dark eyes, lid half open"
+   }
+  ]
+ },
+ {
+  "qid": "awwdidsomeonegetaddictedtocr#bdev",
+  "request": "my little sister after i got her into the same video game she mocked",
+  "style": "situation",
+  "target": {
+   "id": "awwdidsomeonegetaddictedtocr",
+   "name": "Aww Did Someone Get Addicted To Crack",
+   "shape": "reaction",
+   "core": "Dennis and Mac mock-crying with fists at their eyes, used to sarcastically pity someone for a problem they caused themselves.",
+   "slots": [
+    "setup",
+    "aww, did someone..."
+   ],
+   "aliases": [
+    "aww did someone get addicted to crack",
+    "always sunny fake crying",
+    "dennis and mac crying",
+    "boo hoo meme"
+   ],
+   "picture": "two men, one in top hat, mockingly rubbing fists at eyes pretending to cry, brick alley"
+  },
+  "picked": [
+   {
+    "id": "rpgfan",
+    "name": "RPG Fan",
+    "shape": "self-own",
+    "core": "The South Park World of Warcraft guy glued to his keyboard, used for obsessive no-life dedication to something.",
+    "slots": [
+     "the setup",
+     "the obsessive admission"
+    ],
+    "aliases": [
+     "south park wow guy",
+     "world of warcraft guy",
+     "gamer basement",
+     "no life gamer"
+    ],
+    "picture": "cartoon overweight balding man with glasses sitting at gaming keyboard and mouse, messy room, unhealthy"
+   },
+   {
+    "id": "tyronebiggumstheaddict",
+    "name": "Tyrone Biggums",
+    "shape": "exaggeration",
+    "core": "A twitchy addict character, used for desperately craving something you're hooked on.",
+    "slots": [
+     "setup",
+     "desperate craving"
+    ],
+    "aliases": [
+     "tyrone biggums",
+     "chappelle crackhead",
+     "addict meme",
+     "y'all got any more"
+    ],
+    "picture": "scruffy man in red beanie and jacket scratching his neck, twitchy addict look"
+   },
+   {
+    "id": "pikachu",
+    "name": "Surprised Pikachu",
+    "shape": "irony",
+    "core": "Shock at an outcome that was obvious from what you did.",
+    "slots": [
+     "what you did",
+     "the obvious consequence",
+     "who is surprised (often \"me:\")"
+    ],
+    "aliases": [
+     "shocked pikachu",
+     "surprised pikachu",
+     "pikachu face"
+    ],
+    "picture": "yellow cartoon electric mouse creature with mouth open in shock, surprised face, white space above"
+   }
+  ]
+ },
+ {
+  "qid": "spongebobwaiting#bdev",
+  "request": "waiting forever for the ci pipeline to finish",
+  "style": "situation",
+  "target": {
+   "id": "spongebobwaiting",
+   "name": "SpongeBob Waiting",
+   "shape": "reaction",
+   "core": "SpongeBob sitting alone at a booth, used for waiting forever for something or someone that never comes.",
+   "slots": [
+    "what I'm waiting for",
+    "how long it's been"
+   ],
+   "aliases": [
+    "spongebob waiting",
+    "spongebob alone booth",
+    "lonely spongebob",
+    "spongebob still waiting"
+   ],
+   "picture": "cartoon yellow sponge sitting alone in red diner booth, sad and bored, coffee mug on table, waiting"
+  },
+  "picked": [
+   {
+    "id": "skeletoncomputer",
+    "name": "Skeleton Waiting at Computer",
+    "shape": "exaggeration",
+    "core": "A skeleton still sitting at its desk, used for waiting absurdly long for something to finish or reply.",
+    "slots": [
+     "what you're waiting for",
+     "how long it's been"
+    ],
+    "aliases": [
+     "skeleton computer",
+     "waiting skeleton",
+     "skeleton at desk",
+     "still waiting"
+    ],
+    "picture": "skeleton sitting at office desk in front of computer, waiting forever, keyboard and mouse"
+   },
+   {
+    "id": "illjustwaithere",
+    "name": "I'll Just Wait Here",
+    "shape": "before-after",
+    "core": "A man waiting at a computer turns into a skeleton, used for things that take forever.",
+    "slots": [
+     "what you're waiting for",
+     "how long it takes"
+    ],
+    "aliases": [
+     "i'll just wait here",
+     "waiting skeleton",
+     "skeleton computer",
+     "still waiting"
+    ],
+    "picture": "man sitting at computer waiting, then the same man as a skeleton still at the computer, two panels top and bottom"
+   },
+   {
+    "id": "mattdamongetsolder",
+    "name": "Matt Damon Gets Older",
+    "shape": "escalation",
+    "core": "Four panels of Matt Damon aging into an old man; used for something that drags on so long you age waiting for it.",
+    "slots": [
+     "the endless wait"
+    ],
+    "aliases": [
+     "matt damon aging",
+     "matt damon gets older",
+     "saving private ryan aging",
+     "me waiting"
+    ],
+    "picture": "same soldier man's face aging progressively older across four panels in a grid"
+   }
+  ]
+ },
+ {
+  "qid": "titanicband#bdev",
+  "request": "devs still pushing features while the whole prod server is down",
+  "style": "situation",
+  "target": {
+   "id": "titanicband",
+   "name": "Titanic Band",
+   "shape": "irony",
+   "core": "The Titanic sinking while the band keeps calmly playing, used when people carry on as normal while everything collapses around them.",
+   "slots": [
+    "the sinking thing",
+    "who keeps playing"
+   ],
+   "aliases": [
+    "Titanic Band Playing",
+    "The Band Played On",
+    "Titanic Violinists",
+    "Keep Playing As Ship Sinks"
+   ],
+   "picture": "sinking ship at night tilted in the water on top, string musicians calmly playing violins on deck below, two panels"
+  },
+  "picked": [
+   {
+    "id": "fine",
+    "name": "This is Fine",
+    "shape": "ironic-denial",
+    "core": "Calmly insisting everything is fine while surrounded by disaster.",
+    "slots": [
+     "the escalating disaster or stressful situation (often blank)",
+     "calm denial line, e.g. 'this is fine'"
+    ],
+    "aliases": [
+     "this is fine dog",
+     "burning room dog"
+    ],
+    "picture": "cartoon dog in hat sitting at table in burning room, calm smile, coffee mug, flames everywhere"
+   },
+   {
+    "id": "spongebobfire",
+    "name": "SpongeBob Office Fire",
+    "shape": "reaction",
+    "core": "Many SpongeBobs panicking in a burning office; used for total chaos and panic.",
+    "slots": [
+     "situation",
+     "the panic"
+    ],
+    "aliases": [
+     "spongebob panic",
+     "spongebob fire",
+     "everything is on fire spongebob",
+     "spongebob chaos"
+    ],
+    "picture": "many cartoon sponges running in panic in a burning office with fire everywhere, chaos"
+   },
+   {
+    "id": "chillguy",
+    "name": "Chill Guy",
+    "shape": "irony",
+    "core": "A relaxed dog-like guy in a sweater stays totally unbothered, used to describe staying chill despite chaos.",
+    "slots": [
+     "the situation he's chill about"
+    ],
+    "aliases": [
+     "chill guy",
+     "just a chill guy",
+     "my new character is a chill guy",
+     "lowkey chill guy"
+    ],
+    "picture": "cartoon dog in grey sweater and jeans, hands in pockets, smug relaxed smirk, standing in grassy field under sunset sky"
+   }
+  ]
+ },
+ {
+  "qid": "spongebobyelling#bdev",
+  "request": "me screaming at my printer when it says paper jam again",
+  "style": "situation",
+  "target": {
+   "id": "spongebobyelling",
+   "name": "Spongebob Yelling",
+   "shape": "exaggeration",
+   "core": "Spongebob screams in front of a stunned crowd, for an over-the-top outburst nobody asked for.",
+   "slots": [
+    "the setup",
+    "the screamed outburst"
+   ],
+   "aliases": [
+    "Spongebob Yelling",
+    "Spongebob Screaming",
+    "Spongebob crowd scream",
+    "Spongebob outburst"
+   ],
+   "picture": "cartoon yellow sponge screaming with mouth wide open and fists clenched, on a bench between startled fish and squid"
+  },
+  "picked": [
+   {
+    "id": "shouter",
+    "name": "Shouter",
+    "shape": "reaction",
+    "core": "A man screams furiously into a phone, used for losing it at customer service or someone on a call.",
+    "slots": [
+     "what the other person said",
+     "the screaming reply"
+    ],
+    "aliases": [
+     "man yelling into phone",
+     "angry phone guy",
+     "screaming on phone",
+     "shouting man"
+    ],
+    "picture": "man with stubble screaming furiously into telephone handset, mouth wide open, angry eyes"
+   },
+   {
+    "id": "woman-cat",
+    "name": "Woman Yelling at a Cat",
+    "shape": "dialogue",
+    "core": "Angry woman yells at a confused, unbothered cat at a dinner table.",
+    "slots": [
+     "the accusation or yelling, from the woman",
+     "the cat's calm, confused or indifferent response"
+    ],
+    "aliases": [
+     "woman yelling at cat",
+     "smudge the cat"
+    ],
+    "picture": "crying blonde woman yelling and pointing, friend holding her back, next to white cat sitting at dinner table, side by side"
+   },
+   {
+    "id": "chrisfarleyfortheloveofgod",
+    "name": "Chris Farley For the Love of God",
+    "shape": "reaction",
+    "core": "Chris Farley lunging and yelling in exasperation, used to beg someone to finally stop doing something.",
+    "slots": [
+     "the frustrating situation",
+     "the desperate plea"
+    ],
+    "aliases": [
+     "for the love of god",
+     "chris farley yelling",
+     "farley screaming",
+     "tommy boy yelling"
+    ],
+    "picture": "heavy man in plaid jacket and glasses hunched over yelling with mouth open, motivational speaker, living room"
+   }
+  ]
+ },
+ {
+  "qid": "mrbeanwaiting#bdev",
+  "request": "waiting forever for the client to reply to my email",
+  "style": "situation",
+  "target": {
+   "id": "mrbeanwaiting",
+   "name": "Mr Bean Waiting",
+   "shape": "exaggeration",
+   "core": "Mr Bean waiting in a field until he's lying down exhausted, used for waiting absurdly long for something.",
+   "slots": [
+    "what you're waiting for"
+   ],
+   "aliases": [
+    "mr bean waiting",
+    "waiting mr bean",
+    "mr bean field waiting",
+    "still waiting"
+   ],
+   "picture": "man in brown suit standing in yellow flower field checking his watch, then sitting and lying down bored, four panels"
+  },
+  "picked": [
+   {
+    "id": "skeletoncomputer",
+    "name": "Skeleton Waiting at Computer",
+    "shape": "exaggeration",
+    "core": "A skeleton still sitting at its desk, used for waiting absurdly long for something to finish or reply.",
+    "slots": [
+     "what you're waiting for",
+     "how long it's been"
+    ],
+    "aliases": [
+     "skeleton computer",
+     "waiting skeleton",
+     "skeleton at desk",
+     "still waiting"
+    ],
+    "picture": "skeleton sitting at office desk in front of computer, waiting forever, keyboard and mouse"
+   },
+   {
+    "id": "illjustwaithere",
+    "name": "I'll Just Wait Here",
+    "shape": "before-after",
+    "core": "A man waiting at a computer turns into a skeleton, used for things that take forever.",
+    "slots": [
+     "what you're waiting for",
+     "how long it takes"
+    ],
+    "aliases": [
+     "i'll just wait here",
+     "waiting skeleton",
+     "skeleton computer",
+     "still waiting"
+    ],
+    "picture": "man sitting at computer waiting, then the same man as a skeleton still at the computer, two panels top and bottom"
+   },
+   {
+    "id": "spongebobwaiting",
+    "name": "SpongeBob Waiting",
+    "shape": "reaction",
+    "core": "SpongeBob sitting alone at a booth, used for waiting forever for something or someone that never comes.",
+    "slots": [
+     "what I'm waiting for",
+     "how long it's been"
+    ],
+    "aliases": [
+     "spongebob waiting",
+     "spongebob alone booth",
+     "lonely spongebob",
+     "spongebob still waiting"
+    ],
+    "picture": "cartoon yellow sponge sitting alone in red diner booth, sad and bored, coffee mug on table, waiting"
+   }
+  ]
+ },
+ {
+  "qid": "unhappybaby#bdev",
+  "request": "grumpy baby face scowling, me when the coffee machine is broken",
+  "style": "visual",
+  "target": {
+   "id": "unhappybaby",
+   "name": "Unhappy Baby",
+   "shape": "reaction",
+   "core": "A baby wailing, used for overreacting to small, first-world problems.",
+   "slots": [
+    "minor problem",
+    "dramatic wail"
+   ],
+   "aliases": [
+    "Crying Baby",
+    "Sad Baby",
+    "Baby Crying",
+    "Wailing Baby"
+   ],
+   "picture": "baby crying and wailing with mouth wide open, tears, close up"
+  },
+  "picked": [
+   {
+    "id": "angrytoddler",
+    "name": "Angry Toddler",
+    "shape": "reaction",
+    "core": "A furious, pouting little girl glaring sideways, used for petty, simmering anger at a small injustice.",
+    "slots": [
+     "the setup",
+     "the petty grudge"
+    ],
+    "aliases": [
+     "angry little girl",
+     "mad toddler",
+     "grumpy toddler",
+     "side eye girl"
+    ],
+    "picture": "little girl in tutu dress clenching fists, glaring sideways with furious pouting face, black and white photo"
+   },
+   {
+    "id": "evilbaby",
+    "name": "Evil Baby",
+    "shape": "reaction",
+    "core": "A baby glaring furiously; used for petty rage or plotting revenge.",
+    "slots": [
+     "the trigger",
+     "the furious plan"
+    ],
+    "aliases": [
+     "evil baby",
+     "angry baby",
+     "evil plotting baby",
+     "furious baby"
+    ],
+    "picture": "baby in pink with furrowed brows and angry glaring face, mouth open, evil expression"
+   },
+   {
+    "id": "grumpytoad",
+    "name": "Grumpy Toad",
+    "shape": "reaction",
+    "core": "A round desert rain frog with a furious scowl, used for grumpy, irritable reactions to minor annoyances.",
+    "slots": [
+     "annoyance",
+     "grumpy reaction"
+    ],
+    "aliases": [
+     "Angry Frog",
+     "Grumpy Frog",
+     "Rain Frog"
+    ],
+    "picture": "round brown rain frog with grumpy downturned frowning mouth sitting on red dirt"
+   }
+  ]
+ },
+ {
+  "qid": "ronburgundy#bdev",
+  "request": "when someone at work doesnt know who i am after 5 years there",
+  "style": "situation",
+  "target": {
+   "id": "ronburgundy",
+   "name": "Ron Burgundy",
+   "shape": "irony",
+   "core": "The pompous anchorman announces something trivial with total seriousness.",
+   "slots": [
+    "the setup",
+    "the pompous announcement"
+   ],
+   "aliases": [
+    "Ron Burgundy",
+    "Anchorman",
+    "Stay classy",
+    "I'm kind of a big deal"
+   ],
+   "picture": "mustached news anchor in brown suit at desk holding papers, Channel 4 news team logos behind him"
+  },
+  "picked": [
+   {
+    "id": "amiajoketoyou",
+    "name": "Am I A Joke To You",
+    "shape": "reaction",
+    "core": "A neglected thing, ignored in favor of something else, asks indignantly 'Am I a joke to you?'.",
+    "slots": [
+     "the situation where it's ignored",
+     "the ignored thing"
+    ],
+    "aliases": [
+     "Am I A Joke To You",
+     "Am I a joke to you guy",
+     "SABC man",
+     "Ignored feature"
+    ],
+    "picture": "bald man looking offended and confused at camera, subtitle asking if he is a joke, blank white space on top"
+   },
+   {
+    "id": "idontthinkaboutyouatallmadme",
+    "name": "I Don't Think About You at All",
+    "shape": "rejection",
+    "core": "One man says 'I feel bad for you' and Don Draper replies 'I don't think about you at all', used when something obsessed with you is totally ignored in return.",
+    "slots": [
+     "the one who cares",
+     "the one who doesn't"
+    ],
+    "aliases": [
+     "i don't think about you at all",
+     "mad men elevator",
+     "don draper",
+     "i feel bad for you"
+    ],
+    "picture": "young man in elevator saying I feel bad for you, then serious man in suit replying I don't think about you at all, two panels"
+   },
+   {
+    "id": "harold",
+    "name": "Hide the Pain Harold",
+    "shape": "ironic-denial",
+    "core": "Forced smile masking internal pain or embarrassment.",
+    "slots": [
+     "the awkward or painful situation",
+     "what he's pretending, or the detail that stings"
+    ],
+    "aliases": [
+     "hide the pain harold",
+     "harold"
+    ],
+    "picture": "smiling old man with white beard at laptop holding coffee mug, forced fake smile hiding pain"
+   }
+  ]
+ },
+ {
+  "qid": "venndiagram#bdev",
+  "request": "two overlapping circles, things my cat loves and things that are expensive",
+  "style": "visual",
+  "target": {
+   "id": "venndiagram",
+   "name": "Venn Diagram",
+   "shape": "comparison",
+   "core": "Two overlapping circles showing two groups and the surprising thing they have in common.",
+   "slots": [
+    "first group",
+    "what they share",
+    "second group"
+   ],
+   "aliases": [
+    "venn diagram",
+    "two circle venn",
+    "overlap meme",
+    "venn"
+   ],
+   "picture": "two overlapping empty circles, blank Venn diagram on white"
+  },
+  "picked": []
+ },
+ {
+  "qid": "trollface#bdev",
+  "request": "told my brother the wifi password changed and watched him reset the router",
+  "style": "situation",
+  "target": {
+   "id": "trollface",
+   "name": "Troll Face",
+   "shape": "reaction",
+   "core": "The classic rage-comic troll grin; used when someone deliberately trolls or pranks others and is smug about it.",
+   "slots": [
+    "the troll move",
+    "problem?"
+   ],
+   "aliases": [
+    "troll face",
+    "trollface",
+    "problem",
+    "u mad bro"
+   ],
+   "picture": "black and white drawn face with huge mischievous grin and squinting eyes, rage comic troll"
+  },
+  "picked": [
+   {
+    "id": "jimofficeblinds",
+    "name": "Jim Peeking Through Blinds",
+    "shape": "irony",
+    "core": "Jim grinning through office blinds; used when you secretly watch someone's plan or mistake play out.",
+    "slots": [
+     "situation",
+     "what you're watching"
+    ],
+    "aliases": [
+     "jim blinds",
+     "jim halpert blinds",
+     "the office blinds",
+     "jim smirk blinds"
+    ],
+    "picture": "man peeking through window blinds with a sly smug smile"
+   },
+   {
+    "id": "evilplottingraccoon",
+    "name": "Evil Plotting Raccoon",
+    "shape": "plan-backfires",
+    "core": "A raccoon rubbing its paws together while hatching a sneaky, petty evil plan.",
+    "slots": [
+     "the setup",
+     "the evil plan"
+    ],
+    "aliases": [
+     "scheming raccoon",
+     "plotting raccoon",
+     "evil raccoon"
+    ],
+    "picture": "raccoon with paws pressed together scheming, sly grin, autumn leaves background"
+   },
+   {
+    "id": "kermit",
+    "name": "But That's None of My Business",
+    "shape": "ironic-denial",
+    "core": "Kermit sips tea while making a petty or shady comment, pretending it's not his business.",
+    "slots": [
+     "petty observation or shady fact, often blank",
+     "'but that's none of my business' deflection"
+    ],
+    "aliases": [
+     "but thats none of my business",
+     "kermit tea"
+    ],
+    "picture": "green frog puppet sipping cup of tea by window, nonchalant"
+   }
+  ]
+ },
+ {
+  "qid": "adamsilvergetreadytolearnbud#bdev",
+  "request": "nba commissioner at a podium, me explaining git rebase to my team",
+  "style": "visual",
+  "target": {
+   "id": "adamsilvergetreadytolearnbud",
+   "name": "Adam Silver Get Ready To Learn Buddy",
+   "shape": "warning",
+   "core": "A smug explainer gestures as if about to teach someone a lesson they didn't ask for.",
+   "slots": [
+    "the setup",
+    "the lesson incoming"
+   ],
+   "aliases": [
+    "get ready to learn buddy",
+    "adam silver",
+    "adam silver explaining",
+    "nba commissioner"
+   ],
+   "picture": "bald man in glasses and suit gesturing with both hands while speaking at a press podium"
+  },
+  "picked": [
+   {
+    "id": "talkingtowall",
+    "name": "Talking to Wall",
+    "shape": "labeling",
+    "core": "A guy passionately arguing with a brick wall, used for explaining something to someone who will never listen.",
+    "slots": [
+     "the one not listening",
+     "me explaining"
+    ],
+    "aliases": [
+     "talking to wall",
+     "arguing with a wall",
+     "brick wall guy",
+     "talking to a brick wall"
+    ],
+    "picture": "young man standing close to red brick wall, gesturing with hands and talking to it"
+   },
+   {
+    "id": "womanshowingpapertocat",
+    "name": "Woman Showing Paper To Cat",
+    "shape": "dialogue",
+    "core": "A woman earnestly explains a document to an unimpressed cat; used for presenting something to someone who clearly doesn't care or understand.",
+    "slots": [
+     "what she explains",
+     "cat's indifferent reply"
+    ],
+    "aliases": [
+     "woman showing paper to cat",
+     "cat reading paper",
+     "explaining to cat",
+     "cat looking at document"
+    ],
+    "picture": "older woman with glasses showing printed papers to grey cat at table with laptop, cat staring at paper, two panels"
+   },
+   {
+    "id": "meexplainingtomymom",
+    "name": "Me Explaining To My Mom",
+    "shape": "dialogue",
+    "core": "A girl passionately explains something to her bored, unconvinced mom; used for explaining niche interests to someone who doesn't care.",
+    "slots": [
+     "what I'm explaining",
+     "the unimpressed listener"
+    ],
+    "aliases": [
+     "me explaining to my mom",
+     "explaining to mom",
+     "girl explaining",
+     "mom not listening"
+    ],
+    "picture": "girl in headwrap gesturing while explaining on left, woman on couch under blanket staring skeptically on right, side by side"
+   }
+  ]
+ },
+ {
+  "qid": "imawakebutatwhatcost#bdev",
+  "request": "made it to my 8am class on 3 hours sleep",
+  "style": "situation",
+  "target": {
+   "id": "imawakebutatwhatcost",
+   "name": "I'm Awake But At What Cost",
+   "shape": "reaction",
+   "core": "Groggy exhausted kitten: technically functioning but completely drained.",
+   "slots": [
+    "what I did",
+    "at what cost"
+   ],
+   "aliases": [
+    "im awake but at what cost",
+    "tired kitten",
+    "sleepy cat"
+   ],
+   "picture": "tired white kitten with half-closed sleepy eyes and grumpy exhausted face"
+  },
+  "picked": [
+   {
+    "id": "spongebobcoffee",
+    "name": "Spongebob Coffee",
+    "shape": "reaction",
+    "core": "An exhausted, wide-eyed Spongebob sits with his coffee, used for being drained, sleep-deprived or waiting forever.",
+    "slots": [
+     "the situation",
+     "the tired reaction"
+    ],
+    "aliases": [
+     "tired spongebob",
+     "spongebob coffee",
+     "spongebob waiting",
+     "exhausted spongebob"
+    ],
+    "picture": "cartoon sponge sitting alone in a restaurant booth with coffee cups, tired anxious look"
+   },
+   {
+    "id": "tireddadatcomputer",
+    "name": "Tired Dad At Computer",
+    "shape": "reaction",
+    "core": "Coraline's exhausted dad slumped at his computer, used for the drained feeling of grinding through tedious work.",
+    "slots": [
+     "situation",
+     "the exhausting part"
+    ],
+    "aliases": [
+     "coraline dad",
+     "tired dad at computer",
+     "exhausted at computer",
+     "coraline dad working"
+    ],
+    "picture": "stop-motion puppet man with tired droopy eyes slumped typing at old computer under desk lamp"
+   },
+   {
+    "id": "sadthumbsupcat",
+    "name": "Sad Thumbs Up Cat",
+    "shape": "irony",
+    "core": "A teary cat giving a thumbs up, for pretending to be fine with something that hurts.",
+    "slots": [
+     "the bad news",
+     "forced okay"
+    ],
+    "aliases": [
+     "crying cat thumbs up",
+     "sad cat thumbs up",
+     "its fine cat",
+     "thumbs up crying cat"
+    ],
+    "picture": "calico cat with teary sad eyes giving a thumbs up with its paw, black background"
+   }
+  ]
+ },
+ {
+  "qid": "10guy#bdev",
+  "request": "what if my dog thinks im the pet tho",
+  "style": "situation",
+  "target": {
+   "id": "10guy",
+   "name": "10 Guy",
+   "shape": "reaction",
+   "core": "A dazed, very high-looking guy, used for spaced-out 'deep' thoughts or baffling logic.",
+   "slots": [
+    "setup",
+    "stoned realization"
+   ],
+   "aliases": [
+    "10 guy",
+    "stoner stanley",
+    "really high guy",
+    "stoned guy"
+   ],
+   "picture": "young man with messy hair and droopy red eyes, dazed stoned smile, holding something"
+  },
+  "picked": [
+   {
+    "id": "keanu",
+    "name": "Conspiracy Keanu",
+    "shape": "question",
+    "core": "Stoned-sounding conspiracy theory musing 'what if' that connects unrelated things.",
+    "slots": [
+     "'what if' wild premise",
+     "the absurd connection or twist ending the thought"
+    ],
+    "aliases": [
+     "conspiracy keanu",
+     "what if keanu"
+    ],
+    "picture": "young man with shaggy hair and shocked open-mouth expression, mind-blown look, close-up"
+   },
+   {
+    "id": "philosoraptor",
+    "name": "Philosoraptor",
+    "shape": "question",
+    "core": "A pseudo-deep shower thought or logical paradox posed as a rhetorical question.",
+    "slots": [
+     "premise or setup of the thought",
+     "the paradoxical question or conclusion"
+    ],
+    "aliases": [
+     "philosoraptor",
+     "shower thought",
+     "deep thinker"
+    ],
+    "picture": "green velociraptor dinosaur cartoon in profile with claw on chin, thinking deeply, green background"
+   },
+   {
+    "id": "fry",
+    "name": "Futurama Fry",
+    "shape": "question",
+    "core": "Squinting suspicion: unable to decide between two explanations for something.",
+    "slots": [
+     "first possibility: 'not sure if X'",
+     "second possibility: 'or Y'"
+    ],
+    "aliases": [
+     "futurama fry",
+     "not sure if",
+     "squinting fry"
+    ],
+    "picture": "cartoon orange-haired guy squinting suspiciously with narrowed eyes, red jacket"
+   }
+  ]
+ },
+ {
+  "qid": "evenharder#bdev",
+  "request": "kid getting more intense each panel, me on my third energy drink still coding",
+  "style": "visual",
+  "target": {
+   "id": "evenharder",
+   "name": "Even Harder",
+   "shape": "rejection",
+   "core": "Pam says stop doing something and Michael replies he'll do it even harder; used for doubling down out of spite when told to quit.",
+   "slots": [
+    "what she says to stop",
+    "what he'll do even harder"
+   ],
+   "aliases": [
+    "even harder",
+    "michael scott even harder",
+    "the office even harder",
+    "stop i'm gonna even harder"
+   ],
+   "picture": "woman with brown hair yelling stop, then man in suit replying angrily, two panels top and bottom"
+  },
+  "picked": [
+   {
+    "id": "spongefinnacommitmuder",
+    "name": "Sponge Finna Commit Muder",
+    "shape": "escalation",
+    "core": "SpongeBob gets progressively angrier and more buff across four panels as a provocation gets worse.",
+    "slots": [
+     "mild annoyance",
+     "getting mad",
+     "really mad",
+     "full rage"
+    ],
+    "aliases": [
+     "spongebob getting angry",
+     "sponge finna commit muder",
+     "angry buff spongebob",
+     "spongebob rage"
+    ],
+    "picture": "four panels left side, yellow sponge getting progressively angrier and more muscular, glowing eyes, blank boxes right"
+   },
+   {
+    "id": "vincemcmahon5tier",
+    "name": "Vince McMahon Reaction 5 Tier",
+    "shape": "escalation",
+    "core": "Vince McMahon gets more and more excited across five panels as each listed thing gets better, ending in glowing-eyed ecstasy.",
+    "slots": [
+     "mildly good thing",
+     "better thing",
+     "even better",
+     "amazing",
+     "ultimate thing"
+    ],
+    "aliases": [
+     "vince mcmahon reaction",
+     "vince mcmahon escalating",
+     "vince mcmahon chair",
+     "mcmahon hype"
+    ],
+    "picture": "man in suit getting increasingly excited, mouth open in ecstasy, eyes glowing red at end, five panels with blank left side"
+   },
+   {
+    "id": "gb",
+    "name": "Galaxy Brain",
+    "shape": "escalation",
+    "core": "Four tiers of increasingly enlightened thinking, ending in absurd or overcomplicated 'genius'.",
+    "slots": [
+     "basic, ordinary take",
+     "slightly smarter take",
+     "more advanced take",
+     "absurdly elevated final take"
+    ],
+    "aliases": [
+     "expanding brain",
+     "galaxy brain",
+     "big brain"
+    ],
+    "picture": "four panels: brain in skull glowing brighter and more cosmic each step, blank text boxes on left"
+   }
+  ]
+ },
+ {
+  "qid": "happening#bdev",
+  "request": "its happening guy, my pr finally got approved",
+  "style": "named",
+  "target": {
+   "id": "happening",
+   "name": "It's Happening",
+   "shape": "reaction",
+   "core": "Excited anticipation that something long-awaited or ominous is finally starting.",
+   "slots": [
+    "the long-awaited or ominous event trigger (often blank)",
+    "'it's happening'"
+   ],
+   "aliases": [
+    "its happening",
+    "ron paul it's happening"
+   ],
+   "picture": "old man in suit at CNN debate podium smiling excitedly and pointing, blue background"
+  },
+  "picked": [
+   {
+    "id": "castawayfire",
+    "name": "Castaway Fire",
+    "shape": "approval",
+    "core": "Tom Hanks screams in triumph after making fire, for wildly celebrating a small hard-won success.",
+    "slots": [
+     "the setup",
+     "the triumphant shout"
+    ],
+    "aliases": [
+     "castaway fire",
+     "look what i have created",
+     "tom hanks fire",
+     "i have made fire"
+    ],
+    "picture": "bearded shirtless man on island screaming excitedly holding stick next to small fire he made"
+   },
+   {
+    "id": "happypicard",
+    "name": "Happy Picard",
+    "shape": "reaction",
+    "core": "Picard pumping his fists in delight, used to celebrate a small, satisfying victory.",
+    "slots": [
+     "the situation",
+     "the win"
+    ],
+    "aliases": [
+     "picard fist pump",
+     "happy picard",
+     "picard yes",
+     "star trek celebration"
+    ],
+    "picture": "bald starship captain in red uniform pumping both fists with eyes closed, gleeful celebration"
+   },
+   {
+    "id": "success",
+    "name": "Success Kid",
+    "shape": "exaggeration",
+    "core": "Small triumph or lucky win celebrated with a clenched fist.",
+    "slots": [
+     "the situation or struggle",
+     "the triumphant payoff"
+    ],
+    "aliases": [
+     "success kid",
+     "sandcastle kid",
+     "i hate sandcastles"
+    ],
+    "picture": "toddler on beach clenching fist triumphantly, determined smug face, green and white shirt, colorful radial background"
+   }
+  ]
+ }
+]

@@ -1,0 +1,1044 @@
+[
+{
+"id": "spongebob",
+"name": "Mocking Spongebob",
+"lines": 2,
+"shape": "mocking-echo",
+"core": "Repeat someone's statement in alternating caps to mock it childishly.",
+"slots": [
+"the original statement being mocked",
+"the mocked repeat in aLtErNaTiNg cApS"
+],
+"aliases": [
+"mocking spongebob",
+"chicken spongebob",
+"spongebob mock"
+],
+"avoid": "Genuine agreement or original statements not being echoed."
+},
+{
+"id": "ss",
+"name": "Scumbag Steve",
+"lines": 2,
+"shape": "dialogue",
+"core": "Scumbag Steve: selfish, inconsiderate behavior; setup of need followed by antisocial act.",
+"slots": [
+"the favor or setup, such as asking for something",
+"the inconsiderate act that undermines it"
+],
+"aliases": [
+"scumbag steve",
+"scumbag hat",
+"steve"
+],
+"avoid": "Wholesome acts or victim-side stories."
+},
+{
+"id": "stew",
+"name": "Baby, You've Got a Stew Going",
+"lines": 2,
+"shape": "other",
+"core": "An exclamation announcing the stew going, usually in a mundane, mocking domestic context.",
+"slots": [
+"often blank",
+"'baby, you've got a stew going!' style line"
+],
+"aliases": [
+"baby you've got a stew going",
+"stew going",
+"stew"
+],
+"avoid": "Serious announcements or cooking tutorials."
+},
+{
+"id": "stonks",
+"name": "Stonks",
+"lines": 2,
+"shape": "ironic-denial",
+"core": "Confidently smug 'stonks' as a bad financial or life decision is celebrated.",
+"slots": [
+"the reckless or foolish decision",
+"the smug 'stonks' or confident reaction"
+],
+"aliases": [
+"stonks",
+"meme man stonks",
+"surreal stonks"
+],
+"avoid": "Genuinely wise financial moves or sincere investing advice."
+},
+{
+"id": "stop",
+"name": "Stop It Patrick You're Scaring Him",
+"lines": 6,
+"shape": "dialogue",
+"core": "Patrick makes a dumb misunderstanding while scaring Squidward, until Spongebob scolds him.",
+"slots": [
+"a character's statement or confession",
+"the other character's naive question",
+"the explanation that makes a wrong connection",
+"the denial or correction",
+"the scary or absurd action",
+"the scolding: 'stop it, Patrick, you're scaring him!'"
+],
+"aliases": [
+"stop it patrick",
+"patrick you're scaring him",
+"claustrophobic"
+],
+"avoid": "Serious conflicts or jokes lacking an escalation to scaring."
+},
+{
+"id": "stop-it",
+"name": "Stop It, Get Some Help",
+"lines": 2,
+"shape": "advice",
+"core": "Command someone to stop a bad behavior and seek help.",
+"slots": [
+"'stop it'",
+"'get some help'"
+],
+"aliases": [
+"stop it get some help",
+"get some help",
+"stop it"
+],
+"avoid": "Encouraging a behavior or friendly suggestions."
+},
+{
+"id": "success",
+"name": "Success Kid",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Small triumph or lucky win celebrated with a clenched fist.",
+"slots": [
+"the situation or struggle",
+"the triumphant payoff"
+],
+"aliases": [
+"success kid",
+"sandcastle kid",
+"i hate sandcastles"
+],
+"avoid": "Failures, defeats, or big life accomplishments treated seriously."
+},
+{
+"id": "tenguy",
+"name": "10 Guy",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Absurdly illogical behavior in response to a problem, one dumb fix.",
+"slots": [
+"the problem or confusing situation",
+"the nonsensical, irrational reaction"
+],
+"aliases": [
+"10 guy",
+"ten guy",
+"confused guy"
+],
+"avoid": "Logical solutions or smart decisions."
+},
+{
+"id": "toohigh",
+"name": "The Rent Is Too Damn High",
+"lines": 2,
+"shape": "hot-take",
+"core": "Jimmy McMillan's rant that something is 'too damn high', a complaint about excess.",
+"slots": [
+"the thing complained about, 'the X is'",
+"'too damn high' punchline"
+],
+"aliases": [
+"rent is too damn high",
+"too damn high",
+"jimmy mcmillan"
+],
+"avoid": "Things that are too low or fine."
+},
+{
+"id": "touch",
+"name": "Principal Skinner",
+"lines": 2,
+"shape": "ironic-denial",
+"core": "Skinner wonders if he's out of touch, then blames everyone else instead.",
+"slots": [
+"the rhetorical question, 'am I so out of touch?'",
+"the self-assured conclusion that others are wrong"
+],
+"aliases": [
+"principal skinner",
+"am i out of touch",
+"out of touch skinner"
+],
+"avoid": "Genuine self-reflection or admitting fault."
+},
+{
+"id": "tried",
+"name": "At Least You Tried",
+"lines": 2,
+"shape": "advice",
+"core": "Condescending consolation to someone who failed but made an effort.",
+"slots": [
+"'at least' or the setup of effort",
+"'you tried' or the patronizing consolation"
+],
+"aliases": [
+"at least you tried",
+"you tried",
+"you tried trophy"
+],
+"avoid": "Real successes or sincere encouragement."
+},
+{
+"id": "trump",
+"name": "Donald Trump",
+"lines": 2,
+"shape": "hot-take",
+"core": "Trump-style boastful, superlative claim delivered with absurd confidence.",
+"slots": [
+"the grandiose claim",
+"the hedge or exaggerated addendum, such as 'maybe ever'"
+],
+"aliases": [
+"donald trump",
+"trump meme",
+"trump best ever"
+],
+"avoid": "Humble or modest statements."
+},
+{
+"id": "ugandanknuck",
+"name": "Ugandan Knuckles",
+"lines": 2,
+"shape": "question",
+"core": "Crowd of Ugandan Knuckles characters demands that others 'show de wey' or asks 'do u know de wey'.",
+"slots": [
+"often blank",
+"the 'do u know de wey' demand or question"
+],
+"aliases": [
+"do you know de wey",
+"da wae"
+],
+"avoid": "serious tone; jokes unrelated to knowing or showing the way"
+},
+{
+"id": "vince",
+"name": "Vince McMahon Reaction",
+"lines": 3,
+"shape": "escalation",
+"core": "Vince McMahon's face grows increasingly thrilled across panels as the option gets better.",
+"slots": [
+"mild or baseline option",
+"better option, growing excitement",
+"peak option, maximum ecstatic joy"
+],
+"aliases": [
+"vince mcmahon reaction",
+"mr mcmahon reaction"
+],
+"avoid": "binary choices or negative things that disappoint"
+},
+{
+"id": "wallet",
+"name": "Patrick Star's Wallet",
+"lines": 8,
+"shape": "dialogue",
+"core": "Patrick accepts flawed ID logic, then refuses the wallet, exposing the absurdity.",
+"slots": [
+"Squidward asks Patrick if he is Patrick",
+"Patrick confirms",
+"Squidward asks if this is his ID",
+"Patrick confirms again",
+"Squidward says the ID was in the wallet so it's his",
+"Patrick agrees it makes sense",
+"Squidward offers the wallet",
+"Patrick denies the wallet is his"
+],
+"aliases": [
+"it's not my wallet",
+"patrick star wallet"
+],
+"avoid": "simple single-punchline jokes; needs a circular logic setup"
+},
+{
+"id": "waygd",
+"name": "What Are Ya Gonna Do?",
+"lines": 2,
+"shape": "ironic-denial",
+"core": "Resigned shrug at an unfixable bad situation: 'what are ya gonna do?'",
+"slots": [
+"the unfortunate situation, 'yeah...'",
+"'what are ya gonna do?' resignation"
+],
+"aliases": [
+"what are you gonna do",
+"fuhgeddaboudit"
+],
+"avoid": "hopeful or triumphant jokes; things that can be fixed"
+},
+{
+"id": "wddth",
+"name": "We Don't Do That Here",
+"lines": 2,
+"shape": "advice",
+"core": "Calmly and firmly stating an annoying behavior is not tolerated here.",
+"slots": [
+"the annoying or unacceptable behavior or situation",
+"'We don't do that here.' verdict"
+],
+"aliases": [
+"we dont do that here",
+"black panther we don't do that here"
+],
+"avoid": "praise or enthusiastic approval; behaviors one actually likes"
+},
+{
+"id": "whatyear",
+"name": "What Year Is It?",
+"lines": 2,
+"shape": "question",
+"core": "Someone confused about what year it is after something anachronistic or shocking.",
+"slots": [
+"often blank",
+"'what year is it?' disbelief"
+],
+"aliases": [
+"what year is it",
+"what year is it tho"
+],
+"avoid": "jokes with no outdated or regressive element"
+},
+{
+"id": "winter",
+"name": "Winter is coming",
+"lines": 2,
+"shape": "advice",
+"core": "Ned Stark-style warning of a coming dreaded event: 'brace yourselves, X is coming'.",
+"slots": [
+"'brace yourselves' warning setup",
+"'X is coming' dreaded imminent event"
+],
+"aliases": [
+"brace yourselves",
+"winter is coming",
+"ned stark"
+],
+"avoid": "pleasant surprises; events that have already happened"
+},
+{
+"id": "wishes",
+"name": "Genie Rules",
+"lines": 1,
+"shape": "other",
+"core": "Genie grants a wish; the wisher asks for something impossible or a loophole.",
+"slots": [
+"the clever, absurd or paradoxical wish"
+],
+"aliases": [
+"genie rules",
+"genie wish",
+"i wish"
+],
+"avoid": "jokes with no wish or rule-breaking premise"
+},
+{
+"id": "wkh",
+"name": "Who Killed Hannibal?",
+"lines": 3,
+"shape": "dialogue",
+"core": "Someone is killed or harmed, the obvious culprit is ignored, and a bystander asks why the wrong suspect would do it.",
+"slots": [
+"the harm or event that occurred",
+"the obvious true cause or culprit, ignored",
+"the baffled question of why the wrong party would do it"
+],
+"aliases": [
+"who killed hannibal",
+"hannibal conspiracy"
+],
+"avoid": "jokes without a misplaced-blame or conspiracy structure"
+},
+{
+"id": "woman-cat",
+"name": "Woman Yelling at a Cat",
+"lines": 2,
+"shape": "dialogue",
+"core": "Angry woman yells at a confused, unbothered cat at a dinner table.",
+"slots": [
+"the accusation or yelling, from the woman",
+"the cat's calm, confused or indifferent response"
+],
+"aliases": [
+"woman yelling at cat",
+"smudge the cat"
+],
+"avoid": "jokes without two opposing perspectives or an unbothered side"
+},
+{
+"id": "wonka",
+"name": "Condescending Wonka",
+"lines": 2,
+"shape": "mocking-echo",
+"core": "Smug, condescending Wonka sarcastically feigns interest in someone's claim to mock them.",
+"slots": [
+"the person's claim or situation, 'oh you...'",
+"sarcastic mock follow-up, 'you must...'"
+],
+"aliases": [
+"creepy wonka",
+"condescending wonka"
+],
+"avoid": "sincere praise; jokes lacking a target to condescend to"
+},
+{
+"id": "worst",
+"name": "The Worst Day Of Your Life So Far",
+"lines": 2,
+"shape": "dialogue",
+"core": "Someone says they're having the worst day; reply: it's the worst day of your life so far, ominously.",
+"slots": [
+"the person's complaint about their bad day",
+"'This is the worst day of your life so far.' ominous reply"
+],
+"aliases": [
+"worst day of your life so far",
+"it gets worse"
+],
+"avoid": "happy situations; jokes with no escalating dread"
+},
+{
+"id": "xy",
+"name": "X all the Y",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Buzz Lightyear presents 'X, X everywhere' with a sweeping gesture, stating abundance.",
+"slots": [
+"the X, the thing there is a lot of",
+"'X everywhere' or 'all the Y' ending"
+],
+"aliases": [
+"x x everywhere",
+"buzz lightyear x everywhere"
+],
+"avoid": "scarcity or subtle, understated jokes"
+},
+{
+"id": "yallgot",
+"name": "Y'all Got Any More of Them",
+"lines": 2,
+"shape": "question",
+"core": "Man asks 'y'all got any more of them' about a thing he wants more of.",
+"slots": [
+"'y'all got any more of them' request",
+"the thing desired more of"
+],
+"aliases": [
+"y'all got any more of that",
+"yall got any more of them"
+],
+"avoid": "things the speaker dislikes or wants less of"
+},
+{
+"id": "yodawg",
+"name": "Xzibit Yo Dawg",
+"lines": 2,
+"shape": "other",
+"core": "Recursive joke: 'I heard you like X so I put X in your X'.",
+"slots": [
+"'yo dawg, i heard you like X'",
+"'so i put X in your X so you can X while you X'"
+],
+"aliases": [
+"xzibit",
+"yo dawg",
+"pimp my ride"
+],
+"avoid": "jokes lacking a recursive or nested structure"
+},
+{
+"id": "yuno",
+"name": "Y U NO Guy",
+"lines": 2,
+"shape": "question",
+"core": "Rage-faced stick figure demands to know why someone won't do the obvious thing.",
+"slots": [
+"'Y U NO' plus a verb",
+"the action the speaker wishes were done"
+],
+"aliases": [
+"y u no guy",
+"why you no"
+],
+"avoid": "calm, subtle, or ironic observations"
+},
+{
+"id": "zero-wing",
+"name": "All Your Base Are Belong to Us",
+"lines": 1,
+"shape": "other",
+"core": "Broken-English villain line 'all your base are belong to us' declaring domination or takeover.",
+"slots": [
+"a takeover declaration phrased as 'all your X are belong to us'"
+],
+"aliases": [
+"all your base",
+"aybabtu"
+],
+"avoid": "modern jokes unrelated to takeover or retro gaming"
+},
+{
+"id": "chloe",
+"name": "Side-Eyeing Chloe",
+"lines": 2,
+"shape": "reaction",
+"core": "A little girl gives a silent, skeptical side-eye at what someone just said or did.",
+"slots": [
+"the line or situation: \"me: X\" or \"when he says X\"",
+"who is reacting, often just a name and a colon: \"her:\""
+],
+"aliases": [
+"side eye",
+"side eyeing chloe",
+"little girl side eye",
+"weird face girl"
+],
+"avoid": "two-sided dialogue that needs a spoken reply"
+},
+{
+"id": "bernieiamonceagainaskingfory",
+"name": "Bernie I Am Once Again Asking",
+"lines": 1,
+"shape": "reaction",
+"core": "A weary, repeated plea: someone asking yet again for the same thing they keep having to request.",
+"slots": [
+"what you keep asking for"
+],
+"aliases": [
+"once again asking",
+"bernie asking",
+"financial support",
+"bernie sanders mittens"
+],
+"avoid": "Not for one-off requests or anything not repeated."
+},
+{
+"id": "unodraw25cards",
+"name": "UNO Draw 25 Cards",
+"lines": 2,
+"shape": "rejection",
+"core": "Someone would rather suffer a huge penalty than do one simple, reasonable thing.",
+"slots": [
+"the simple thing to do",
+"the stubborn person"
+],
+"aliases": [
+"draw 25",
+"uno draw 25",
+"uno or draw 25",
+"uno card"
+],
+"avoid": "Not for cases where the person happily does the thing."
+},
+{
+"id": "boardroom",
+"name": "Boardroom Meeting Suggestion",
+"lines": 4,
+"shape": "rejection",
+"core": "A boss asks for ideas; two safe ones get nods and the one sensible idea gets the person thrown out the window.",
+"slots": [
+"the boss's question",
+"first bad idea",
+"second bad idea",
+"the sensible idea that gets him thrown out"
+],
+"aliases": [
+"boardroom suggestion",
+"thrown out the window",
+"meeting suggestion"
+],
+"avoid": "Jokes with no single good idea that gets punished."
+},
+{
+"id": "waitingskeleton",
+"name": "Waiting Skeleton",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Waiting so long for something that you've died and decomposed.",
+"slots": [
+"setup",
+"what you're still waiting for"
+],
+"aliases": [
+"skeleton waiting",
+"still waiting",
+"skeleton on bench",
+"me waiting"
+],
+"avoid": "Not for things that arrive quickly."
+},
+{
+"id": "buffdoge",
+"name": "Buff Doge vs. Cheems",
+"lines": 4,
+"shape": "before-after",
+"core": "The strong past (or ideal) version versus the weak present (or real) one.",
+"slots": [
+"label for the buff doge",
+"label for cheems",
+"what the buff doge says or does",
+"what cheems says or does"
+],
+"aliases": [
+"swole doge",
+"buff doge vs cheems",
+"doge vs cheems"
+],
+"avoid": "Jokes without a strong-versus-weak contrast."
+},
+{
+"id": "batmanslappingrobin",
+"name": "Batman Slapping Robin",
+"lines": 2,
+"shape": "rejection",
+"core": "One person's bad or annoying idea gets cut off mid-sentence by someone shutting it down hard.",
+"slots": [
+"Robin's bad idea",
+"Batman's retort"
+],
+"aliases": [
+"batman slap",
+"batman slapping robin",
+"robin slap",
+"slap meme"
+],
+"avoid": "Not for agreeable exchanges or real violence."
+},
+{
+"id": "blanknutbutton",
+"name": "Blank Nut Button",
+"lines": 1,
+"shape": "reaction",
+"core": "A hand eagerly slamming a button, used for something you can't resist doing every time it comes up.",
+"slots": [
+"the irresistible thing"
+],
+"aliases": [
+"nut button",
+"blue button",
+"smash the button",
+"button slap"
+],
+"avoid": "Not for reluctant choices or comparing two options."
+},
+{
+"id": "markedsafefrom",
+"name": "Marked Safe From",
+"lines": 1,
+"shape": "irony",
+"core": "A fake safety check-in announcing you survived some trivial or absurd threat today.",
+"slots": [
+"the trivial danger avoided"
+],
+"aliases": [
+"marked safe",
+"marked safe from today",
+"facebook safety check",
+"safe from"
+],
+"avoid": "Not for real disasters or tragedies."
+},
+{
+"id": "pikachu",
+"name": "Surprised Pikachu",
+"lines": 3,
+"shape": "irony",
+"core": "Shock at an outcome that was obvious from what you did.",
+"slots": [
+"what you did",
+"the obvious consequence",
+"who is surprised (often \"me:\")"
+],
+"aliases": [
+"shocked pikachu",
+"surprised pikachu",
+"pikachu face"
+],
+"avoid": "Outcomes that were genuinely unexpected."
+},
+{
+"id": "leonardodicapriocheers",
+"name": "Leonardo DiCaprio Cheers",
+"lines": 2,
+"shape": "approval",
+"core": "Gatsby raising a glass in a toast, used to salute someone or something people respect or relate to.",
+"slots": [
+"who or what is being toasted",
+"the toast"
+],
+"aliases": [
+"gatsby toast",
+"leo cheers",
+"great gatsby",
+"dicaprio toast",
+"here's to you"
+],
+"avoid": "Not for disappointment or failure."
+},
+{
+"id": "thescrolloftruth",
+"name": "The Scroll Of Truth",
+"lines": 1,
+"shape": "rejection",
+"core": "Someone finds the scroll of truth, reads an uncomfortable fact, and angrily throws it away; used for truths people refuse to accept.",
+"slots": [
+"the unwelcome truth"
+],
+"aliases": [
+"scroll of truth",
+"nyeh",
+"truth scroll",
+"uncomfortable truth"
+],
+"avoid": "Not for truths people happily accept."
+},
+{
+"id": "0dayswithoutlennysimpsons",
+"name": "0 Days Without",
+"lines": 1,
+"shape": "irony",
+"core": "The streak counter reset to zero again because the same mistake keeps happening.",
+"slots": [
+"the recurring mishap"
+],
+"aliases": [
+"0 days without",
+"zero days without accident",
+"lenny days without",
+"days since last incident"
+],
+"avoid": "Not for rare one-time events."
+},
+{
+"id": "therockdriving",
+"name": "The Rock Driving",
+"lines": 2,
+"shape": "dialogue",
+"core": "The Rock asks a casual question, the passenger gives an alarming answer, and he turns in shock; used for a reply that's unexpectedly disturbing.",
+"slots": [
+"innocent question",
+"shocking answer"
+],
+"aliases": [
+"rock driving",
+"the rock car",
+"dwayne johnson driving",
+"rock looking back"
+],
+"avoid": "Not for answers that are pleasant or expected."
+},
+{
+"id": "sadpablo",
+"name": "Sad Pablo Escobar",
+"lines": 3,
+"shape": "reaction",
+"core": "Lonely, bored waiting for something that never comes, across three scenes.",
+"slots": [
+"what you are waiting for",
+"still waiting",
+"still waiting"
+],
+"aliases": [
+"waiting pablo",
+"lonely pablo",
+"pablo escobar waiting"
+],
+"avoid": "Excited or active situations."
+},
+{
+"id": "absolutecinema",
+"name": "Absolute Cinema",
+"lines": 2,
+"shape": "approval",
+"core": "Declaring something a perfect, masterful moment, often ironically for something mundane.",
+"slots": [
+"the thing being praised",
+"the verdict"
+],
+"aliases": [
+"absolute cinema",
+"scorsese hands",
+"martin scorsese",
+"cinema"
+],
+"avoid": "Not for criticism or disappointment."
+},
+{
+"id": "squidwardwindow",
+"name": "Squidward Window",
+"lines": 2,
+"shape": "labeling",
+"core": "Watching others have fun from a distance while you're stuck inside, left out or working.",
+"slots": [
+"the fun others are having",
+"you, stuck inside"
+],
+"aliases": [
+"squidward window",
+"squidward looking out window",
+"spongebob patrick window",
+"left out"
+],
+"avoid": "Not for when you're the one having fun."
+},
+{
+"id": "thisiswhereidputmytrophyifih",
+"name": "This Is Where I'd Put My Trophy If I Had One",
+"lines": 2,
+"shape": "self-own",
+"core": "Proudly showing off the empty spot where an achievement would be, admitting you never got it.",
+"slots": [
+"the thing you'd display",
+"admission you don't have it"
+],
+"aliases": [
+"trophy if I had one",
+"Mr Turner trophy",
+"Fairly OddParents trophy",
+"empty pedestal"
+],
+"avoid": "Not for things you actually achieved or genuine bragging."
+},
+{
+"id": "megamindpeeking",
+"name": "Megamind Peeking",
+"lines": 1,
+"shape": "irony",
+"core": "A smug, pouting \"No X?\" question teasing someone for lacking something.",
+"slots": [
+"\"No X?\" taunt"
+],
+"aliases": [
+"no bitches",
+"no b megamind",
+"megamind no",
+"megamind meme"
+],
+"avoid": "Not for sincere questions or cheerful reactions."
+},
+{
+"id": "pawnstarsbesticando",
+"name": "Pawn Stars Best I Can Do",
+"lines": 2,
+"shape": "rejection",
+"core": "Lowballing someone's offer with an insultingly small counteroffer.",
+"slots": [
+"what was asked for",
+"lowball counteroffer"
+],
+"aliases": [
+"best I can do",
+"Rick Harrison",
+"pawn stars",
+"lowball offer"
+],
+"avoid": "Not for fair deals or generous offers."
+},
+{
+"id": "ibethesthinkingaboutotherwom",
+"name": "I Bet He's Thinking About Other Women",
+"lines": 2,
+"shape": "irony",
+"core": "She suspects he's thinking about other women while he's actually obsessing over something trivial or nerdy.",
+"slots": [
+"her suspicion",
+"what he's really thinking"
+],
+"aliases": [
+"he's probably thinking about other women",
+"couple in bed",
+"I bet he's thinking",
+"what he's thinking"
+],
+"avoid": "Not for actual cheating or relationship drama."
+},
+{
+"id": "soldierprotectingsleepingchi",
+"name": "Soldier Protecting Sleeping Child",
+"lines": 3,
+"shape": "labeling",
+"core": "Someone takes every attack to shield something they love that's blissfully unaware.",
+"slots": [
+"the attacks",
+"the protector",
+"what's protected"
+],
+"aliases": [
+"soldier protecting child",
+"protector meme",
+"sleeping child soldier",
+"taking bullets for"
+],
+"avoid": "Not for real war or violence news."
+},
+{
+"id": "theydontknow",
+"name": "They Don't Know",
+"lines": 1,
+"shape": "irony",
+"core": "A loner at a party privately smug about a niche secret or achievement nobody else cares about.",
+"slots": [
+"\"they don't know I...\" secret"
+],
+"aliases": [
+"they don't know",
+"wojak party",
+"party hat wojak",
+"they don't know I"
+],
+"avoid": "Not for big public achievements or group fun."
+},
+{
+"id": "grandmafindstheinternet",
+"name": "Grandma Finds The Internet",
+"lines": 2,
+"shape": "irony",
+"core": "A grandma squinting at a laptop, used for someone naively misunderstanding technology or the internet.",
+"slots": [
+"what she discovers",
+"her clueless take"
+],
+"aliases": [
+"grandma internet",
+"grandma computer",
+"old lady laptop",
+"grandma finds"
+],
+"avoid": "Not for tech-savvy or expert behavior."
+},
+{
+"id": "findingneverland",
+"name": "Finding Neverland",
+"lines": 2,
+"shape": "dialogue",
+"core": "A teary boy asks a hopeful question and the man gives a gentle, crushing answer before they hug; used for delivering a sad truth.",
+"slots": [
+"hopeful question",
+"sad answer"
+],
+"aliases": [
+"finding neverland",
+"johnny depp boy bench",
+"sad bench hug",
+"neverland crying kid"
+],
+"avoid": "Not for happy news or good answers."
+},
+{
+"id": "monkeypuppet",
+"name": "Monkey Puppet",
+"lines": 1,
+"shape": "reaction",
+"core": "Awkwardly looking away when caught in an uncomfortable or guilty situation.",
+"slots": [
+"the awkward situation"
+],
+"aliases": [
+"awkward look monkey",
+"monkey looking away",
+"side eye monkey",
+"awkward puppet"
+],
+"avoid": "Not for confident or proud moments."
+},
+{
+"id": "unsettledtom",
+"name": "Unsettled Tom",
+"lines": 1,
+"shape": "reaction",
+"core": "Tom's uneasy, side-eyed stare, used for something quietly disturbing or suspicious that makes you uncomfortable.",
+"slots": [
+"the unsettling situation"
+],
+"aliases": [
+"unsettled tom",
+"tom side eye",
+"uncomfortable tom",
+"tom and jerry stare"
+],
+"avoid": "Not for open shock or happy surprise."
+},
+{
+"id": "imaginationspongebob",
+"name": "Imagination Spongebob",
+"lines": 2,
+"shape": "irony",
+"core": "SpongeBob gleefully suggests an obviously wrong or absurd 'solution' as if it were a brilliant idea; used to mock naive thinking.",
+"slots": [
+"the obvious-but-wrong idea",
+"imagination (punchline)"
+],
+"aliases": [
+"imagination",
+"spongebob rainbow",
+"spongebob imagination",
+"spongebob hands rainbow"
+],
+"avoid": "Not for genuine inspiration or praising real creativity."
+},
+{
+"id": "trumpbillsigning",
+"name": "Trump Bill Signing",
+"lines": 1,
+"shape": "labeling",
+"core": "Holding up a freshly signed executive order, used to announce a ridiculous new rule or decree as if official.",
+"slots": [
+"the new rule"
+],
+"aliases": [
+"trump executive order",
+"trump signing",
+"signed order",
+"new law"
+],
+"avoid": "Not for real political news or attacks."
+},
+{
+"id": "spidermantriple",
+"name": "Spider-Man Triple",
+"lines": 3,
+"shape": "labeling",
+"core": "Three Spider-Men point at each other, for three things that are basically the same or all blaming each other.",
+"slots": [
+"first lookalike",
+"second lookalike",
+"third lookalike"
+],
+"aliases": [
+"three spidermen pointing",
+"spider-verse pointing",
+"triple spiderman",
+"spiderman pointing 3"
+],
+"avoid": "Not for things that are genuinely different; it's about sameness or mutual blame."
+},
+{
+"id": "yuno1bh3",
+"name": "Y U No",
+"lines": 2,
+"shape": "reaction",
+"core": "A rage-comic face demanding why someone or something won't do the obvious thing.",
+"slots": [
+"who or what",
+"Y U NO do the thing"
+],
+"aliases": [
+"y u no",
+"why you no",
+"y u no guy",
+"rage face"
+],
+"avoid": "Not for calm or polite requests."
+}
+]

@@ -1,0 +1,995 @@
+[
+{
+"id": "ds",
+"name": "Daily Struggle",
+"lines": 3,
+"shape": "dilemma",
+"core": "A sweating man must choose between two equally agonizing buttons.",
+"slots": [
+"the first agonizing option",
+"the second agonizing option",
+"the person sweating over the choice"
+],
+"aliases": [
+"daily struggle",
+"two buttons",
+"sweating guy buttons"
+],
+"avoid": "easy choices or one option clearly better"
+},
+{
+"id": "dsm",
+"name": "Dating Site Murderer",
+"lines": 2,
+"shape": "dialogue",
+"core": "A smiling man delivers a creepy, ambiguous line that sounds like a murderer's pickup.",
+"slots": [
+"the ominous setup or threat",
+"the cheerful, flattering punchline completing the creepy line"
+],
+"aliases": [
+"dating site murderer",
+"creepy dating",
+"murderer smile"
+],
+"avoid": "genuinely romantic, wholesome, or non-threatening humor"
+},
+{
+"id": "dwight",
+"name": "Schrute Facts",
+"lines": 2,
+"shape": "advice",
+"core": "Dwight Schrute smugly corrects a common belief with a blunt, survivalist 'fact'.",
+"slots": [
+"the common belief or claim, phrased as a question",
+"the 'false.' correction with a harsh, pragmatic truth"
+],
+"aliases": [
+"schrute facts",
+"dwight false",
+"the office dwight"
+],
+"avoid": "humble, uncertain, or gentle statements"
+},
+{
+"id": "elf",
+"name": "You Sit on a Throne of Lies",
+"lines": 2,
+"shape": "hot-take",
+"core": "Buddy the Elf accuses someone of being a fraud: 'You sit on a throne of lies.'",
+"slots": [
+"often blank",
+"the accusation that someone or something is a liar or fraud"
+],
+"aliases": [
+"throne of lies",
+"buddy the elf",
+"you sit on a throne of lies"
+],
+"avoid": "praise, earnest agreement, or mild disagreement"
+},
+{
+"id": "elmo",
+"name": "Elmo Choosing Cocaine",
+"lines": 5,
+"shape": "escalation",
+"core": "Elmo gets increasingly fixated on a bad vice, with tiers of temptation or addiction.",
+"slots": [
+"the sensible thing",
+"the tempting bad option",
+"the intermediate lure",
+"the final thing Elmo goes back to",
+"the final choice"
+],
+"aliases": [
+"elmo cocaine",
+"elmo choosing cocaine",
+"elmo temptation"
+],
+"avoid": "simple two-way choices or wholesome preferences"
+},
+{
+"id": "ermg",
+"name": "Ermahgerd",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Girl excitedly gushes in garbled 'Ermahgerd' speech about something she loves.",
+"slots": [
+"the garbled exclamation ('ermahgerd')",
+"the loved thing in mangled spelling"
+],
+"aliases": [
+"ermahgerd",
+"ermahgerd berks",
+"gersberms"
+],
+"avoid": "serious, bitter, or articulate jokes"
+},
+{
+"id": "exit",
+"name": "Left Exit 12 Off Ramp",
+"lines": 3,
+"shape": "binary-choice",
+"core": "A driver swerves hard from the sensible highway to take an off-ramp for something unwise.",
+"slots": [
+"the sensible path continuing straight",
+"the tempting off-ramp alternative",
+"the car/person making the sudden swerve"
+],
+"aliases": [
+"left exit 12",
+"exit 12 off ramp",
+"car swerving exit"
+],
+"avoid": "gradual changes, two-option polite preferences, or non-impulsive choices"
+},
+{
+"id": "fa",
+"name": "Forever Alone",
+"lines": 2,
+"shape": "exaggeration",
+"core": "A lonely, sad stick-face laments being alone with no one else around.",
+"slots": [
+"the lonely setup",
+"the alone punchline"
+],
+"aliases": [
+"forever alone",
+"fa face",
+"lonely guy"
+],
+"avoid": "social triumphs, happy gatherings, or non-lonely sadness"
+},
+{
+"id": "facepalm",
+"name": "Facepalm",
+"lines": 2,
+"shape": "reaction",
+"core": "Someone facepalms in exasperation at a stupid situation.",
+"slots": [
+"often blank",
+"the dumb thing prompting the facepalm"
+],
+"aliases": [
+"picard facepalm",
+"facepalm",
+"i can't even"
+],
+"avoid": "approval, excitement, or smug triumph"
+},
+{
+"id": "fbf",
+"name": "Foul Bachelor Frog",
+"lines": 2,
+"shape": "other",
+"core": "A frog describes a gross, lazy bachelor habit treated as a clever life hack.",
+"slots": [
+"the lazy or unhygienic setup",
+"the gross payoff framed as a hack"
+],
+"aliases": [
+"foul bachelor frog",
+"bachelor frog",
+"disgusting frog"
+],
+"avoid": "clean, wholesome, or sophisticated behavior"
+},
+{
+"id": "feelsgood",
+"name": "Feels Good",
+"lines": 2,
+"shape": "reaction",
+"core": "A smug green frog smiles in contentment, savoring a small satisfaction.",
+"slots": [
+"often blank",
+"the small private pleasure or smug satisfaction"
+],
+"aliases": [
+"feels good man",
+"pepe",
+"feels good"
+],
+"avoid": "anger, anxiety, or large-scale triumph"
+},
+{
+"id": "fetch",
+"name": "Stop Trying to Make Fetch Happen",
+"lines": 2,
+"shape": "mocking-echo",
+"core": "Regina George shuts down someone trying to force an unpopular trend or phrase.",
+"slots": [
+"the repeated thing being forced",
+"the dismissal that it's never going to catch on"
+],
+"aliases": [
+"stop trying to make fetch happen",
+"regina george fetch",
+"mean girls fetch"
+],
+"avoid": "genuine encouragement or things that actually caught on"
+},
+{
+"id": "fine",
+"name": "This is Fine",
+"lines": 2,
+"shape": "ironic-denial",
+"core": "Calmly insisting everything is fine while surrounded by disaster.",
+"slots": [
+"the escalating disaster or stressful situation (often blank)",
+"calm denial line, e.g. 'this is fine'"
+],
+"aliases": [
+"this is fine dog",
+"burning room dog"
+],
+"avoid": "genuine panic, actual optimism, or situations that are not getting worse"
+},
+{
+"id": "firsttry",
+"name": "First Try!",
+"lines": 2,
+"shape": "reaction",
+"core": "Celebrating an improbable success achieved on the first attempt, often after a long struggle.",
+"slots": [
+"the difficult task or expectation of failure (often blank)",
+"triumphant 'first try!' payoff"
+],
+"aliases": [
+"first try",
+"got it first try"
+],
+"avoid": "failures, repeated attempts, or mundane achievements nobody doubted"
+},
+{
+"id": "fmr",
+"name": "Fuck Me, Right?",
+"lines": 2,
+"shape": "reaction",
+"core": "Smug rhetorical 'right?' after a deliberately suggestive or crude setup.",
+"slots": [
+"the suggestive or ambiguous setup (often blank)",
+"'fuck me, right?' punchline"
+],
+"aliases": [
+"fuck me right",
+"fmr"
+],
+"avoid": "wholesome jokes, serious statements, or anything without innuendo or irony"
+},
+{
+"id": "friends",
+"name": "Are You Two Friends?",
+"lines": 3,
+"shape": "dialogue",
+"core": "A hostile figure asks two unlikely groups if they are friends; they awkwardly claim they are.",
+"slots": [
+"the first group or person",
+"the second group, awkwardly allied",
+"the third party asking or observing, or the line spoken"
+],
+"aliases": [
+"are you two friends",
+"are you two friends? yes"
+],
+"avoid": "genuine friendships or sincere group unity"
+},
+{
+"id": "fry",
+"name": "Futurama Fry",
+"lines": 2,
+"shape": "question",
+"core": "Squinting suspicion: unable to decide between two explanations for something.",
+"slots": [
+"first possibility: 'not sure if X'",
+"second possibility: 'or Y'"
+],
+"aliases": [
+"futurama fry",
+"not sure if",
+"squinting fry"
+],
+"avoid": "confident statements or choices between two things you like"
+},
+{
+"id": "fwp",
+"name": "First World Problems",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Mocking trivial privileged complaints as if they were real hardship.",
+"slots": [
+"the petty privileged situation",
+"the trivial complaint or outcome"
+],
+"aliases": [
+"first world problems",
+"white woman crying"
+],
+"avoid": "real hardship, serious grievances, or non-privileged problems"
+},
+{
+"id": "gandalf",
+"name": "Confused Gandalf",
+"lines": 2,
+"shape": "reaction",
+"core": "Confused, returning to a place or thing and not remembering it.",
+"slots": [
+"the forgotten place or thing being revisited (often blank)",
+"'I have no memory of this place' or similar"
+],
+"aliases": [
+"gandalf no memory of this place",
+"confused gandalf"
+],
+"avoid": "anger, certainty, or jokes without forgetting or confusion"
+},
+{
+"id": "gb",
+"name": "Galaxy Brain",
+"lines": 4,
+"shape": "escalation",
+"core": "Four tiers of increasingly enlightened thinking, ending in absurd or overcomplicated 'genius'.",
+"slots": [
+"basic, ordinary take",
+"slightly smarter take",
+"more advanced take",
+"absurdly elevated final take"
+],
+"aliases": [
+"expanding brain",
+"galaxy brain",
+"big brain"
+],
+"avoid": "two-option choices or non-escalating comparisons"
+},
+{
+"id": "gears",
+"name": "You Know What Really Grinds My Gears?",
+"lines": 2,
+"shape": "hot-take",
+"core": "Host announces the thing that really grinds their gears, then a petty gripe.",
+"slots": [
+"'you know what really grinds my gears?'",
+"the petty annoyance"
+],
+"aliases": [
+"grinds my gears",
+"peter griffin gears"
+],
+"avoid": "serious grievances or positive observations"
+},
+{
+"id": "genie",
+"name": "Genie Lamp",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Immense power or potential trapped in a tiny, cramped, or limited space.",
+"slots": [
+"the huge power or capability",
+"the tiny limitation or confinement"
+],
+"aliases": [
+"genie lamp",
+"phenomenal cosmic powers"
+],
+"avoid": "jokes without a contrast between big power and small constraint"
+},
+{
+"id": "ggg",
+"name": "Good Guy Greg",
+"lines": 2,
+"shape": "other",
+"core": "A person who does a kind, selfless favor above and beyond expectations.",
+"slots": [
+"the favor or kind act setup",
+"the extra generous gesture"
+],
+"aliases": [
+"good guy greg",
+"good guy"
+],
+"avoid": "jerks, betrayals, or selfish behavior"
+},
+{
+"id": "glasses",
+"name": "Peter Parker's Glasses",
+"lines": 2,
+"shape": "before-after",
+"core": "Hypocritical or contradictory stance revealed by a sudden shift, like removing glasses to reveal the real self.",
+"slots": [
+"the virtuous or claimed stance",
+"the contradictory real behavior"
+],
+"aliases": [
+"peter parker glasses",
+"peter parker without glasses"
+],
+"avoid": "consistent behavior or sincere positions"
+},
+{
+"id": "gone",
+"name": "And It's Gone",
+"lines": 2,
+"shape": "plan-backfire",
+"core": "Optimistic plan with money or opportunity that vanishes in an instant.",
+"slots": [
+"the hopeful plan or setup",
+"'aaand it's gone' vanishing payoff"
+],
+"aliases": [
+"and its gone",
+"aaaand its gone",
+"south park and it's gone"
+],
+"avoid": "things that last, gradual change, or successful investments"
+},
+{
+"id": "grave",
+"name": "Grant Gustin Next To Oliver Queen's Grave",
+"lines": 3,
+"shape": "labeling",
+"core": "A mourner at a grave, with labels for the deceased and the people present.",
+"slots": [
+"the grave inscription (what died)",
+"the mourner or person at the grave",
+"the cause or third party in scene"
+],
+"aliases": [
+"grant gustin grave",
+"oliver queen grave"
+],
+"avoid": "jokes with nothing dying or lost"
+},
+{
+"id": "gru",
+"name": "Gru's Plan",
+"lines": 4,
+"shape": "plan-backfire",
+"core": "A confident four-step plan whose last step reveals it backfired, repeating the previous step.",
+"slots": [
+"step 1 of the plan",
+"step 2 of the plan",
+"step 3, the unexpected problem",
+"step 4, same problem repeated with shock"
+],
+"aliases": [
+"gru's plan",
+"gru plan"
+],
+"avoid": "plans that succeed or lack a twist on step three"
+},
+{
+"id": "grumpycat",
+"name": "Grumpy Cat",
+"lines": 2,
+"shape": "hot-take",
+"core": "Pessimistic, deadpan grouchy statement from a perpetually unhappy cat.",
+"slots": [
+"the setup, often a cheerful saying",
+"the pessimistic twist or negative punchline"
+],
+"aliases": [
+"grumpy cat",
+"tardar sauce"
+],
+"avoid": "cheerful or optimistic jokes"
+},
+{
+"id": "hagrid",
+"name": "I Should Not Have Said That",
+"lines": 2,
+"shape": "reaction",
+"core": "Realizing too late you've blurted out something you shouldn't have.",
+"slots": [
+"the secret or indiscreet statement (often blank)",
+"'I should not have said that'"
+],
+"aliases": [
+"i should not have said that",
+"hagrid oops"
+],
+"avoid": "intentional boasts or statements that are not regrettable"
+},
+{
+"id": "handshake",
+"name": "Epic Handshake",
+"lines": 3,
+"shape": "other",
+"core": "Two different parties find agreement over a shared interest.",
+"slots": [
+"first party",
+"second party",
+"the shared interest connecting them"
+],
+"aliases": [
+"epic handshake",
+"predator handshake",
+"arm wrestle handshake"
+],
+"avoid": "disagreements or things with no unexpected common ground"
+},
+{
+"id": "happening",
+"name": "It's Happening",
+"lines": 2,
+"shape": "reaction",
+"core": "Excited anticipation that something long-awaited or ominous is finally starting.",
+"slots": [
+"the long-awaited or ominous event trigger (often blank)",
+"'it's happening'"
+],
+"aliases": [
+"its happening",
+"ron paul it's happening"
+],
+"avoid": "disappointment or things that are not coming"
+},
+{
+"id": "harold",
+"name": "Hide the Pain Harold",
+"lines": 2,
+"shape": "ironic-denial",
+"core": "Forced smile masking internal pain or embarrassment.",
+"slots": [
+"the awkward or painful situation",
+"what he's pretending, or the detail that stings"
+],
+"aliases": [
+"hide the pain harold",
+"harold"
+],
+"avoid": "genuine happiness or open anger"
+},
+{
+"id": "headaches",
+"name": "Types of Headaches",
+"lines": 1,
+"shape": "labeling",
+"core": "A diagram of headache types with the worst one labeled by a specific, painful scenario.",
+"slots": [
+"the specific painful thing (the worst headache type)"
+],
+"aliases": [
+"types of headaches",
+"headache chart"
+],
+"avoid": "non-painful topics or multi-part dialogue"
+},
+{
+"id": "hipster",
+"name": "Hipster Barista",
+"lines": 2,
+"shape": "dialogue",
+"core": "A smug, condescending barista sarcastically mocking customers or marketing in a passive-aggressive way.",
+"slots": [
+"the barista's or business's action",
+"the sneering response to the customer"
+],
+"aliases": [
+"hipster barista",
+"condescending barista"
+],
+"avoid": "warm customer service or wholesome interactions"
+},
+{
+"id": "home",
+"name": "We Have Food at Home",
+"lines": 3,
+"shape": "dialogue",
+"core": "Child asks for something exciting; parent says there is some at home; the home version disappoints.",
+"slots": [
+"the child's request",
+"the parent's 'we have X at home' reply",
+"the cheap, disappointing home substitute"
+],
+"aliases": [
+"we have food at home",
+"we have x at home",
+"mom at home"
+],
+"avoid": "jokes without a cheap knockoff or substitute"
+},
+{
+"id": "icanhas",
+"name": "I Can Has Cheezburger?",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Cat begging for something it wants in lolcat-speak.",
+"slots": [
+"'I can has' request opener",
+"the object of desire"
+],
+"aliases": [
+"i can has cheezburger",
+"lolcat",
+"happy cat"
+],
+"avoid": "serious requests or anything not cute or lolcat-style"
+},
+{
+"id": "imsorry",
+"name": "Oh, I'm Sorry, I Thought This Was America",
+"lines": 2,
+"shape": "mocking-echo",
+"core": "Sarcastic mock-apology implying someone's behavior would be unacceptable here, usually by contrasting local norms.",
+"slots": [
+"sarcastic 'oh, I'm sorry' setup, often a complaint or situation",
+"'did I think this was America' punchline, ironic contrast"
+],
+"aliases": [
+"oh i'm sorry i thought this was america",
+"this is america"
+],
+"avoid": "sincere apologies, wholesome moments, jokes unrelated to expectations or norms"
+},
+{
+"id": "inigo",
+"name": "Inigo Montoya",
+"lines": 2,
+"shape": "dialogue",
+"core": "Calling out someone for misusing a word or concept they clearly misunderstand.",
+"slots": [
+"you keep using that word",
+"I don't think it means what you think it means"
+],
+"aliases": [
+"inigo montoya",
+"you keep using that word"
+],
+"avoid": "general disagreement not about word meaning or misuse"
+},
+{
+"id": "interesting",
+"name": "The Most Interesting Man in the World",
+"lines": 2,
+"shape": "hot-take",
+"core": "Suave man with a catchphrase endorsing something while 'I don't always X, but when I do, Y'.",
+"slots": [
+"I don't always... / setup of rare behavior",
+"but when I do, the surprising or absurd choice"
+],
+"aliases": [
+"most interesting man",
+"i don't always"
+],
+"avoid": "sincere praise, jokes that do not fit the 'I don't always' format"
+},
+{
+"id": "ive",
+"name": "Jony Ive Redesigns Things",
+"lines": 2,
+"shape": "dialogue",
+"core": "Designer smugly presenting a questionable redesign or removal as a bold improvement.",
+"slots": [
+"we think / the smug design rationale",
+"you'll love it / the questionable change presented as a feature"
+],
+"aliases": [
+"jony ive",
+"jonathan ive"
+],
+"avoid": "genuine praise of good design, non-product jokes"
+},
+{
+"id": "iw",
+"name": "Insanity Wolf",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Unhinged wolf recommending reckless, extreme, or self-destructive actions as the obvious move.",
+"slots": [
+"extreme setup or mundane action",
+"reckless escalation or absurd extreme response"
+],
+"aliases": [
+"insanity wolf",
+"insane wolf"
+],
+"avoid": "wholesome advice, mild jokes, gentle sarcasm"
+},
+{
+"id": "jd",
+"name": "Joseph Ducreux",
+"lines": 2,
+"shape": "other",
+"core": "Archaic, pompous phrasing of a modern idea, spoken by a 1700s French aristocrat.",
+"slots": [
+"modern idea rendered in flowery archaic English",
+"punchline or second half in archaic English"
+],
+"aliases": [
+"joseph ducreux",
+"archaic rap"
+],
+"avoid": "modern slang, casual dialogue, non-archaic wording"
+},
+{
+"id": "jetpack",
+"name": "Nothing To Do Here",
+"lines": 2,
+"shape": "ironic-denial",
+"core": "Hovering jetpack guy claims there is nothing to do, awkwardly ignoring an obvious problem.",
+"slots": [
+"'nothing to do here' or obvious situation, often blank",
+"'nothing to do here' or deflecting statement"
+],
+"aliases": [
+"nothing to do here",
+"jetpack guy"
+],
+"avoid": "genuine action or calls to arms"
+},
+{
+"id": "jim",
+"name": "Jim Halpert Pointing to Whiteboard",
+"lines": 2,
+"shape": "advice",
+"core": "Jim at the whiteboard, patiently explaining a basic point to a slow audience.",
+"slots": [
+"the obvious statement or rule written on the board",
+"the clarifying or condescending follow-up explanation"
+],
+"aliases": [
+"jim halpert whiteboard",
+"jim whiteboard"
+],
+"avoid": "jokes with no lecturing tone, complex arguments"
+},
+{
+"id": "joker",
+"name": "It's Simple, Kill the Batman",
+"lines": 2,
+"shape": "plan-backfire",
+"core": "Joker presents a deceptively simple plan or step that clearly sounds absurd.",
+"slots": [
+"'it's simple' setup",
+"the shockingly drastic or absurd step"
+],
+"aliases": [
+"its simple kill the batman",
+"simple plan joker"
+],
+"avoid": "actual plans that work, non-villainous contexts"
+},
+{
+"id": "jw",
+"name": "Probably Not a Good Idea",
+"lines": 2,
+"shape": "dialogue",
+"core": "A skeptical character states a reckless creation or decision is a bad idea.",
+"slots": [
+"the reckless thing someone did, stated incredulously",
+"'probably not a good idea' deadpan response"
+],
+"aliases": [
+"jurassic world probably not a good idea",
+"probably not a good idea"
+],
+"avoid": "praise, harmless actions, self-aware lighthearted jokes"
+},
+{
+"id": "keanu",
+"name": "Conspiracy Keanu",
+"lines": 2,
+"shape": "question",
+"core": "Stoned-sounding conspiracy theory musing 'what if' that connects unrelated things.",
+"slots": [
+"'what if' wild premise",
+"the absurd connection or twist ending the thought"
+],
+"aliases": [
+"conspiracy keanu",
+"what if keanu"
+],
+"avoid": "serious conspiracies, direct statements without 'what if' wondering"
+},
+{
+"id": "kermit",
+"name": "But That's None of My Business",
+"lines": 2,
+"shape": "ironic-denial",
+"core": "Kermit sips tea while making a petty or shady comment, pretending it's not his business.",
+"slots": [
+"petty observation or shady fact, often blank",
+"'but that's none of my business' deflection"
+],
+"aliases": [
+"but thats none of my business",
+"kermit tea"
+],
+"avoid": "genuine uninvolved stance, earnest opinions"
+},
+{
+"id": "khaby-lame",
+"name": "Khaby Lame Shrug",
+"lines": 2,
+"shape": "reaction",
+"core": "Hands-out shrug mocking an overcomplicated solution when the answer is obvious.",
+"slots": [
+"the problem or overcomplicated process",
+"the obvious simple solution"
+],
+"aliases": [
+"khaby shrug",
+"it's that simple"
+],
+"avoid": "actually complex problems, confusion without a simple answer"
+},
+{
+"id": "kk",
+"name": "Karate Kyle",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Disproportionate, violent retaliation to a minor slight.",
+"slots": [
+"the minor offense done to me",
+"the wildly disproportionate revenge"
+],
+"aliases": [
+"karate kyle",
+"karate kid kyle"
+],
+"avoid": "proportionate responses, non-violent humor"
+},
+{
+"id": "kombucha",
+"name": "Kombucha Girl",
+"lines": 2,
+"shape": "reaction",
+"core": "Disgusted-then-forced-composure reaction to trying something awful and pretending it is fine.",
+"slots": [
+"the thing being tried",
+"the second attempt or the grimacing reaction"
+],
+"aliases": [
+"kombucha girl",
+"kombucha reaction"
+],
+"avoid": "genuine enjoyment, pleasant surprise"
+},
+{
+"id": "kramer",
+"name": "Kramer, What's Going On In There?",
+"lines": 2,
+"shape": "dialogue",
+"core": "Someone asks what's happening inside, and gets an absurdly mundane or weird explanation.",
+"slots": [
+"the question asking what's going on",
+"the odd or unexpectedly mundane explanation"
+],
+"aliases": [
+"kramer whats going on in there",
+"seinfeld kramer"
+],
+"avoid": "genuine serious questions"
+},
+{
+"id": "leo",
+"name": "Leo Strutting",
+"lines": 2,
+"shape": "labeling",
+"core": "Confident strut implying unearned swagger despite having no idea what you're doing.",
+"slots": [
+"admission of cluelessness, first half",
+"'what I am doing' completing the sentence"
+],
+"aliases": [
+"strutting leo",
+"leo walking"
+],
+"avoid": "genuine competence, non-self-deprecating confidence"
+},
+{
+"id": "light",
+"name": "Everything the Light Touches is Our Kingdom",
+"lines": 2,
+"shape": "dialogue",
+"core": "A father tells a child their kingdom ends at the light and the shadowy place is forbidden.",
+"slots": [
+"naive question about the forbidden or dark area",
+"the authority's warning to never go there"
+],
+"aliases": [
+"the lion king shadowy place",
+"everything the light touches"
+],
+"avoid": "cheerful kingdoms, non-forbidden places"
+},
+{
+"id": "live",
+"name": "Do It Live!",
+"lines": 2,
+"shape": "hot-take",
+"core": "Excited insistence on doing something risky or unprepared live, with no safeguards.",
+"slots": [
+"often blank, or the risky thing",
+"'do it live!' punchline"
+],
+"aliases": [
+"do it live",
+"bill oreilly"
+],
+"avoid": "careful planning, quiet or private actions"
+},
+{
+"id": "ll",
+"name": "Laughing Lizard",
+"lines": 2,
+"shape": "reaction",
+"core": "Lizard cackles to itself at something mischievous or inappropriate.",
+"slots": [
+"often blank, or the mischievous setup",
+"the 'hhhehehe' laugh or smirking line"
+],
+"aliases": [
+"laughing lizard",
+"hhhehehe"
+],
+"avoid": "serious reaction, wholesome humor"
+},
+{
+"id": "lrv",
+"name": "Laundry Room Viking",
+"lines": 2,
+"shape": "ironic-denial",
+"core": "Viking looks unhappy because the promised easy chore turned out to be a nightmare.",
+"slots": [
+"'X they said' about a promised task",
+"'it'll be fun they said' ironic follow-up"
+],
+"aliases": [
+"laundry room viking",
+"they said"
+],
+"avoid": "genuinely fun tasks, positive outcomes"
+},
+{
+"id": "made",
+"name": "I Made This",
+"lines": 5,
+"shape": "dialogue",
+"core": "Someone claims credit for creating something, others dismiss, they repeat 'I made this'.",
+"slots": [
+"a creator or group posting the creation",
+"reacting audience or doubter",
+"first claim of 'I made this'",
+"accusing question 'You made this?'",
+"repeated insistent 'I made this'"
+],
+"aliases": [
+"i made this",
+"you made this"
+],
+"avoid": "actual credit, collaborative work, genuine praise"
+},
+{
+"id": "mb",
+"name": "Member Berries",
+"lines": 2,
+"shape": "other",
+"core": "Nostalgic berry says 'member' before recalling pop culture or a past thing.",
+"slots": [
+"'member' lead-in",
+"the nostalgic thing remembered"
+],
+"aliases": [
+"member berries",
+"'member"
+],
+"avoid": "forward-looking jokes, non-nostalgic topics"
+},
+{
+"id": "michael-scott",
+"name": "Michael Scott No God No",
+"lines": 2,
+"shape": "reaction",
+"core": "Michael screams a dramatic denial of bad news or an unwanted outcome.",
+"slots": [
+"the bad news or unwanted situation",
+"the dramatic 'nooo' scream"
+],
+"aliases": [
+"michael scott no",
+"no god no"
+],
+"avoid": "calm acceptance, positive reactions"
+}
+]

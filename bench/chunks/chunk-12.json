@@ -1,0 +1,1079 @@
+[
+{
+"id": "cryingwojakvschad",
+"name": "Crying Wojak Vs Chad",
+"lines": 2,
+"shape": "comparison",
+"core": "A hysterical, crying side yelling an argument while a calm, confident Chad replies coolly.",
+"slots": [
+"the crying wojak's rant",
+"chad's calm reply"
+],
+"aliases": [
+"wojak vs chad",
+"crying wojak chad",
+"soyjak vs chad",
+"yes chad"
+],
+"avoid": "Not for two equally reasonable positions."
+},
+{
+"id": "futuramazoidberg",
+"name": "Why Not Zoidberg",
+"lines": 2,
+"shape": "other",
+"core": "Suggesting an obviously bad, desperate option with \"Need X? Why not Zoidberg?\".",
+"slots": [
+"the need",
+"the desperate offer"
+],
+"aliases": [
+"why not zoidberg",
+"zoidberg",
+"futurama zoidberg",
+"need help why not zoidberg"
+],
+"avoid": "Not for genuinely good suggestions."
+},
+{
+"id": "jackiechanconfused",
+"name": "Jackie Chan Confused",
+"lines": 2,
+"shape": "reaction",
+"core": "Utter bafflement at something that makes no logical sense.",
+"slots": [
+"the confusing setup",
+"the contradiction"
+],
+"aliases": [
+"jackie chan confused",
+"jackie chan wtf",
+"my brain is full of",
+"jackie chan meme"
+],
+"avoid": "Not for things that are clear and sensible."
+},
+{
+"id": "badjokeeel",
+"name": "Bad Joke Eel",
+"lines": 2,
+"shape": "other",
+"core": "Telling a terrible pun or anti-joke, with the setup on top and the groan-worthy punchline below.",
+"slots": [
+"the joke setup",
+"the awful punchline"
+],
+"aliases": [
+"bad joke eel",
+"moray eel",
+"pun eel",
+"bad pun eel"
+],
+"avoid": "Not for genuinely clever jokes or serious points."
+},
+{
+"id": "piechartmeme",
+"name": "Pie Chart",
+"lines": 3,
+"shape": "exaggeration",
+"core": "A pie chart where one thing takes up almost everything and the other is a sliver, showing a lopsided split.",
+"slots": [
+"chart title",
+"the tiny sliver",
+"the huge majority"
+],
+"aliases": [
+"pie chart",
+"pie chart meme",
+"how i spend my time",
+"chart meme"
+],
+"avoid": "Not for balanced, even comparisons."
+},
+{
+"id": "narutohandshakememetemplate",
+"name": "Naruto Handshake",
+"lines": 3,
+"shape": "labeling",
+"core": "Two rival groups shaking hands, showing what unlikely sides agree on.",
+"slots": [
+"one side",
+"the other side",
+"what they agree on"
+],
+"aliases": [
+"naruto handshake",
+"madara hashirama handshake",
+"anime handshake",
+"uchiha senju handshake"
+],
+"avoid": "Not for one-sided situations with no common ground."
+},
+{
+"id": "beargrylls",
+"name": "Bear Grylls",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Survival-expert advice that solves a problem in the most extreme or disgusting way possible.",
+"slots": [
+"the problem",
+"the extreme survival solution"
+],
+"aliases": [
+"bear grylls",
+"man vs wild",
+"improvise adapt overcome",
+"drink your own pee"
+],
+"avoid": "Not for sensible, normal advice."
+},
+{
+"id": "blackpanthergetthismanashiel",
+"name": "Get This Man A Shield",
+"lines": 2,
+"shape": "approval",
+"core": "Praising someone brave enough to say a bold, unpopular truth: get this man a shield.",
+"slots": [
+"the bold take",
+"get this man a shield"
+],
+"aliases": [
+"get this man a shield",
+"black panther shield",
+"t'challa shield",
+"give this man a shield"
+],
+"avoid": "Not for cowardly or uncontroversial statements."
+},
+{
+"id": "bonjour",
+"name": "Bonjour Polar Bear",
+"lines": 1,
+"shape": "reaction",
+"core": "A polar bear popping out of a snow hole to cheerfully say \"bonjour\", for awkwardly showing up or popping in unexpectedly.",
+"slots": [
+"the situation"
+],
+"aliases": [
+"bonjour",
+"bonjour polar bear",
+"polar bear hole",
+"bonjour bear"
+],
+"avoid": "Not for serious or tense moments."
+},
+{
+"id": "saywhatagain",
+"name": "Say What Again",
+"lines": 2,
+"shape": "warning",
+"core": "Daring someone to repeat something annoying one more time: \"say X again, I dare you\".",
+"slots": [
+"the threat",
+"the forbidden word"
+],
+"aliases": [
+"say what again",
+"pulp fiction",
+"samuel l jackson",
+"i dare you"
+],
+"avoid": "Not for friendly or calm conversations."
+},
+{
+"id": "megfamilyguybetterthanme",
+"name": "Meg You Think You're Better Than Me",
+"lines": 2,
+"shape": "dialogue",
+"core": "Meg indignantly accusing someone of thinking they're better than her, answered by the family in top hats smugly confirming it.",
+"slots": [
+"meg's accusation",
+"the smug superior group"
+],
+"aliases": [
+"meg family guy better than me",
+"you think you're better than me",
+"family guy top hats",
+"meg griffin"
+],
+"avoid": "Not for genuinely humble comparisons."
+},
+{
+"id": "patricksays",
+"name": "Patrick Says",
+"lines": 2,
+"shape": "other",
+"core": "Patrick confidently raising a finger to share a dumb or naively literal piece of wisdom.",
+"slots": [
+"the setup",
+"patrick's dumb insight"
+],
+"aliases": [
+"patrick says",
+"patrick star finger",
+"patrick idea",
+"patrick wisdom"
+],
+"avoid": "Not for genuinely smart advice."
+},
+{
+"id": "laughingkid",
+"name": "Laughing Kid",
+"lines": 2,
+"shape": "reaction",
+"core": "A kid laughing hysterically at someone else's misfortune or a ridiculous situation.",
+"slots": [
+"the setup",
+"the funny misfortune"
+],
+"aliases": [
+"laughing kid",
+"kid laughing apple",
+"ginger kid laughing",
+"laughing boy"
+],
+"avoid": "Not for sympathetic or sad moments."
+},
+{
+"id": "maybeiamamonsterblank",
+"name": "Maybe I Am A Monster",
+"lines": 2,
+"shape": "self-own",
+"core": "Vision accepting that his unpopular habit or opinion makes him a monster: \"Maybe I am a ___\".",
+"slots": [
+"the unpopular habit",
+"what that makes me"
+],
+"aliases": [
+"maybe i am a monster",
+"vision maybe i am a",
+"wandavision monster",
+"vision meme"
+],
+"avoid": "Not for widely liked choices."
+},
+{
+"id": "soldierjumpspetznaz",
+"name": "Soldier Jump Attack",
+"lines": 2,
+"shape": "labeling",
+"core": "One soldier leaping through the air to ambush another who is completely unaware, for a sudden surprise attack.",
+"slots": [
+"the attacker",
+"the unaware victim"
+],
+"aliases": [
+"soldier jump",
+"spetsnaz jump",
+"flying soldier",
+"surprise attack soldier"
+],
+"avoid": "Not for situations where the target sees it coming."
+},
+{
+"id": "snape",
+"name": "Snape",
+"lines": 2,
+"shape": "reaction",
+"core": "Snape recoiling in pained shock, for reacting to something unbearable or outrageous.",
+"slots": [
+"the setup",
+"the painful punchline"
+],
+"aliases": [
+"snape",
+"severus snape",
+"snape shocked",
+"snape flinch"
+],
+"avoid": "Not for happy or calm reactions."
+},
+{
+"id": "noidontthinkiwill",
+"name": "No I Don't Think I Will",
+"lines": 1,
+"shape": "rejection",
+"core": "Old Captain America calmly and smugly refusing a request or suggestion.",
+"slots": [
+"the request being refused"
+],
+"aliases": [
+"no i don't think i will",
+"old captain america",
+"old cap no",
+"steve rogers no"
+],
+"avoid": "Not for agreeing or complying."
+},
+{
+"id": "venndiagram",
+"name": "Venn Diagram",
+"lines": 3,
+"shape": "comparison",
+"core": "Two overlapping circles showing two groups and the surprising thing they have in common.",
+"slots": [
+"first group",
+"what they share",
+"second group"
+],
+"aliases": [
+"venn diagram",
+"two circle venn",
+"overlap meme",
+"venn"
+],
+"avoid": "Not for things with nothing in common."
+},
+{
+"id": "thecount",
+"name": "The Count",
+"lines": 2,
+"shape": "exaggeration",
+"core": "The Count gleefully counting up something that keeps piling up, ah ah ah.",
+"slots": [
+"the thing being counted",
+"the gleeful count"
+],
+"aliases": [
+"the count",
+"count von count",
+"sesame street count",
+"one ah ah ah"
+],
+"avoid": "Not for things that can't be counted or aren't repeating."
+},
+{
+"id": "talktospongebob",
+"name": "Squidward Talking To SpongeBob",
+"lines": 2,
+"shape": "dialogue",
+"core": "Squidward whispering advice to SpongeBob, then pointing him off somewhere, for telling someone exactly what to do or where to go.",
+"slots": [
+"the whispered advice",
+"the direction or follow-up"
+],
+"aliases": [
+"talk to spongebob",
+"squidward whispering",
+"squidward pointing",
+"squidward advice"
+],
+"avoid": "Not for two-sided debates."
+},
+{
+"id": "robertdowneyjrscomments",
+"name": "Robert Downey Jr's Comments",
+"lines": 1,
+"shape": "reaction",
+"core": "Robert Downey Jr pointing at himself in mock surprise, as if to say \"who, me?\" about something he clearly did.",
+"slots": [
+"the accusation or comment"
+],
+"aliases": [
+"robert downey jr comments",
+"rdj who me",
+"robert downey jr pointing at himself",
+"who me"
+],
+"avoid": "Not for situations where the person is truly innocent."
+},
+{
+"id": "excitedcat",
+"name": "Excited Cat",
+"lines": 2,
+"shape": "reaction",
+"core": "A kitten with a wide-open mouth, overjoyed and excited about something.",
+"slots": [
+"the setup",
+"the exciting news"
+],
+"aliases": [
+"excited cat",
+"happy kitten",
+"screaming kitten",
+"excited kitten"
+],
+"avoid": "Not for disappointment or dread."
+},
+{
+"id": "smilingjesus",
+"name": "Smiling Jesus",
+"lines": 2,
+"shape": "approval",
+"core": "A beaming, serene Jesus cheerfully approving of or forgiving something, often with a wholesome or ironic twist.",
+"slots": [
+"the setup",
+"the cheerful verdict"
+],
+"aliases": [
+"smiling jesus",
+"happy jesus",
+"jesus smiling",
+"jesus approves"
+],
+"avoid": "Not for mocking anyone's faith or real tragedies."
+},
+{
+"id": "fastestthingpossible",
+"name": "Fastest Things On Earth",
+"lines": 2,
+"shape": "escalation",
+"core": "A speed ranking of cheetah, airplane and light, topped by something everyday that happens absurdly fast.",
+"slots": [
+"the fastest thing",
+"its label"
+],
+"aliases": [
+"fastest thing possible",
+"fastest things on earth",
+"cheetah airplane speed of light",
+"speed ranking"
+],
+"avoid": "Not for slow things, unless the joke is ironic."
+},
+{
+"id": "nofearonefear",
+"name": "No Fear One Fear",
+"lines": 1,
+"shape": "irony",
+"core": "A tough guy with a NO FEAR shirt meets one thing and his shirt changes to ONE FEAR.",
+"slots": [
+"the one thing he fears"
+],
+"aliases": [
+"no fear one fear",
+"one fear",
+"no fear shirt",
+"teen comix one fear"
+],
+"avoid": "Not for things that inspire no fear at all."
+},
+{
+"id": "spongebobhypestand",
+"name": "SpongeBob Hype Stand",
+"lines": 2,
+"shape": "irony",
+"core": "SpongeBob sets up a stand selling something and an enormous crowd swarms to get it.",
+"slots": [
+"what's being offered",
+"the huge crowd"
+],
+"aliases": [
+"spongebob hype stand",
+"spongebob stand crowd",
+"spongebob selling",
+"spongebob crowd"
+],
+"avoid": "Not for things nobody wants."
+},
+{
+"id": "tunathedogphteven",
+"name": "Phteven",
+"lines": 2,
+"shape": "reaction",
+"core": "An overbitten dog with a lisp; used to mispronounce a word or make a goofy, awkward statement.",
+"slots": [
+"setup",
+"lisped punchline"
+],
+"aliases": [
+"phteven",
+"tuna the dog",
+"overbite dog",
+"phteven dog"
+],
+"avoid": "Serious or sincere messages."
+},
+{
+"id": "jimofficeblinds",
+"name": "Jim Peeking Through Blinds",
+"lines": 2,
+"shape": "irony",
+"core": "Jim grinning through office blinds; used when you secretly watch someone's plan or mistake play out.",
+"slots": [
+"situation",
+"what you're watching"
+],
+"aliases": [
+"jim blinds",
+"jim halpert blinds",
+"the office blinds",
+"jim smirk blinds"
+],
+"avoid": "Sad or angry reactions."
+},
+{
+"id": "spongebobfire",
+"name": "SpongeBob Office Fire",
+"lines": 2,
+"shape": "reaction",
+"core": "Many SpongeBobs panicking in a burning office; used for total chaos and panic.",
+"slots": [
+"situation",
+"the panic"
+],
+"aliases": [
+"spongebob panic",
+"spongebob fire",
+"everything is on fire spongebob",
+"spongebob chaos"
+],
+"avoid": "Calm or orderly situations."
+},
+{
+"id": "shortsatisfactionvstruth",
+"name": "Satisfied Seal vs Awkward Seal",
+"lines": 2,
+"shape": "before-after",
+"core": "A smug seal, then the awkward seal; used when brief satisfaction turns into an uncomfortable realisation.",
+"slots": [
+"the satisfying moment",
+"the awkward truth"
+],
+"aliases": [
+"satisfaction vs truth",
+"seal satisfaction truth",
+"awkward seal",
+"short satisfaction"
+],
+"avoid": "Two equally good outcomes."
+},
+{
+"id": "challengeacceptedrageface",
+"name": "Challenge Accepted",
+"lines": 1,
+"shape": "approval",
+"core": "The smug rage-comic face; used when you take on a dare or a ridiculous self-imposed challenge.",
+"slots": [
+"the challenge"
+],
+"aliases": [
+"challenge accepted",
+"rage face challenge",
+"challenge accepted guy",
+"rage comic challenge"
+],
+"avoid": "Admitting defeat or refusing something."
+},
+{
+"id": "thewhat",
+"name": "The What",
+"lines": 1,
+"shape": "reaction",
+"core": "A retro ad woman whose zoomed face reads 'The WHAT'; used to react to something absurd you just heard.",
+"slots": [
+"the absurd statement"
+],
+"aliases": [
+"the what",
+"the WHAT",
+"the what meme",
+"zoomed the what"
+],
+"avoid": "Agreeable or boring news."
+},
+{
+"id": "gretathunberghowdareyou",
+"name": "How Dare You",
+"lines": 2,
+"shape": "rejection",
+"core": "Greta Thunberg glaring mid-speech; used for mock outrage at someone's offence.",
+"slots": [
+"the offence",
+"how dare you"
+],
+"aliases": [
+"how dare you",
+"greta how dare you",
+"greta thunberg",
+"angry greta"
+],
+"avoid": "Genuinely serious climate or political attacks."
+},
+{
+"id": "chocolatespongebob",
+"name": "Chocolate SpongeBob",
+"lines": 3,
+"shape": "exaggeration",
+"core": "SpongeBob offers something and the man screams it back; used when someone reacts to a thing with desperate, overblown hunger.",
+"slots": [
+"the offer",
+"what is offered",
+"the frantic reply"
+],
+"aliases": [
+"chocolate",
+"spongebob chocolate",
+"chocolate guy",
+"chocolate meme"
+],
+"avoid": "Quiet or indifferent reactions."
+},
+{
+"id": "pleasesirmayihavesomemore",
+"name": "Please Sir, May I Have Some More",
+"lines": 2,
+"shape": "other",
+"core": "Oliver Twist holding out his bowl; used to beg for more of something, often something bad.",
+"slots": [
+"what you got",
+"the request for more"
+],
+"aliases": [
+"oliver twist",
+"please sir",
+"may i have some more",
+"more please"
+],
+"avoid": "Saying you have too much."
+},
+{
+"id": "billmurraygroundhogday",
+"name": "Groundhog Day",
+"lines": 2,
+"shape": "irony",
+"core": "Bill Murray reporting in Groundhog Day; used when the same thing happens again and again.",
+"slots": [
+"the repeated event",
+"the realisation"
+],
+"aliases": [
+"groundhog day",
+"bill murray groundhog",
+"same day again",
+"phil connors"
+],
+"avoid": "Things that happen once."
+},
+{
+"id": "evilbaby",
+"name": "Evil Baby",
+"lines": 2,
+"shape": "reaction",
+"core": "A baby glaring furiously; used for petty rage or plotting revenge.",
+"slots": [
+"the trigger",
+"the furious plan"
+],
+"aliases": [
+"evil baby",
+"angry baby",
+"evil plotting baby",
+"furious baby"
+],
+"avoid": "Cute, wholesome moments."
+},
+{
+"id": "pinkyandthebrain",
+"name": "Pinky And The Brain",
+"lines": 2,
+"shape": "dialogue",
+"core": "Pinky and the Brain; used as 'Are you pondering what I'm pondering?' with an absurd answer or plan.",
+"slots": [
+"the question",
+"the absurd answer"
+],
+"aliases": [
+"pinky and the brain",
+"are you pondering what im pondering",
+"take over the world",
+"brain and pinky"
+],
+"avoid": "Single reactions with no plan."
+},
+{
+"id": "fairlyoddparents",
+"name": "If I Had One",
+"lines": 2,
+"shape": "self-own",
+"core": "Mr. Crocker shows where he'd put something, then sobs that he doesn't have one; used for lacking something you'd want.",
+"slots": [
+"this is where I'd put my...",
+"if I had one"
+],
+"aliases": [
+"if i had one",
+"this is where id put my",
+"fairly odd parents trophy",
+"dinkleberg trophy"
+],
+"avoid": "Things you actually have."
+},
+{
+"id": "stupiddumbdroolingpuzzle",
+"name": "Drooling Shape Puzzle",
+"lines": 2,
+"shape": "self-own",
+"core": "A drooling idiot fails a baby shape-sorting toy; used to mock someone failing at something trivially easy.",
+"slots": [
+"the easy task",
+"the toy"
+],
+"aliases": [
+"drooling puzzle",
+"shape sorter wojak",
+"stupid dumb drooling",
+"baby puzzle"
+],
+"avoid": "Truly hard problems."
+},
+{
+"id": "corporateneedsyoutofindthedi",
+"name": "Corporate Needs You To Find The Differences",
+"lines": 2,
+"shape": "comparison",
+"core": "Pam says two pictures are the same; used when two things claimed to be different are identical.",
+"slots": [
+"first picture",
+"second picture"
+],
+"aliases": [
+"theyre the same picture",
+"find the differences",
+"pam same picture",
+"corporate wants you"
+],
+"avoid": "Things that really differ."
+},
+{
+"id": "bonk",
+"name": "Bonk",
+"lines": 2,
+"shape": "rejection",
+"core": "A dog bonks another with a bat; used to swiftly punish someone for a bad take.",
+"slots": [
+"the one bonking",
+"the one getting bonked"
+],
+"aliases": [
+"bonk",
+"go to horny jail",
+"cheems bonk",
+"doge bonk"
+],
+"avoid": "Approving of someone."
+},
+{
+"id": "arewethebaddies",
+"name": "Are We The Baddies?",
+"lines": 2,
+"shape": "self-own",
+"core": "A soldier in a skull-cap realises his side might be the villains; used when you notice you're the bad guy.",
+"slots": [
+"the evidence",
+"the realisation"
+],
+"aliases": [
+"are we the baddies",
+"mitchell and webb",
+"hans are we the baddies",
+"skulls on our caps"
+],
+"avoid": "Actual atrocities or praising villains."
+},
+{
+"id": "successfulblackman",
+"name": "Successful Black Man",
+"lines": 2,
+"shape": "irony",
+"core": "An advice-animal guy in a suit; the top line leads you to expect a stereotype and the bottom line turns into a successful, responsible twist.",
+"slots": [
+"the setup",
+"the respectable twist"
+],
+"aliases": [
+"successful black man",
+"successful guy",
+"bait and switch suit guy"
+],
+"avoid": "Racial jokes; the twist must stay wholesome."
+},
+{
+"id": "silencexayistalking",
+"name": "Silence, X, A Y Is Talking",
+"lines": 2,
+"shape": "rejection",
+"core": "A masked king hushes someone; used to silence a lesser group when a 'superior' one speaks.",
+"slots": [
+"who to silence",
+"who is talking"
+],
+"aliases": [
+"silence brand",
+"silence x a y is talking",
+"baldwin silence",
+"kingdom of heaven silence"
+],
+"avoid": "Encouraging people to speak."
+},
+{
+"id": "interuptingkanye",
+"name": "Interrupting Kanye",
+"lines": 2,
+"shape": "labeling",
+"core": "Kanye grabs the mic from Taylor Swift; used when something barges in and steals the spotlight.",
+"slots": [
+"the interrupter",
+"the one interrupted"
+],
+"aliases": [
+"imma let you finish",
+"kanye interrupts",
+"kanye taylor",
+"kanye vmas"
+],
+"avoid": "Polite turn-taking."
+},
+{
+"id": "oopsallberries",
+"name": "Oops! All Berries",
+"lines": 2,
+"shape": "exaggeration",
+"core": "A Cap'n Crunch box reading 'Oops! All...'; used when something is nothing but one (usually bad) thing.",
+"slots": [
+"picture or thing in the bowl",
+"what it's all made of"
+],
+"aliases": [
+"oops all berries",
+"oops all",
+"cap n crunch oops",
+"oops all x"
+],
+"avoid": "Healthy variety."
+},
+{
+"id": "tryingtocalculatehowmuchslee",
+"name": "Hangover Math",
+"lines": 2,
+"shape": "reaction",
+"core": "Alan from The Hangover doing mental math; used for overthinking a simple calculation.",
+"slots": [
+"the calculation",
+"the result"
+],
+"aliases": [
+"hangover math",
+"alan math",
+"calculating meme",
+"zach galifianakis math"
+],
+"avoid": "Calm, simple decisions."
+},
+{
+"id": "futuristicutopia",
+"name": "Futuristic Utopia",
+"lines": 2,
+"shape": "exaggeration",
+"core": "A shining future city; used as 'if X had happened, we'd be here by now'.",
+"slots": [
+"if this happened",
+"we'd be here"
+],
+"aliases": [
+"futuristic utopia",
+"we would be here",
+"where we could be",
+"if only city"
+],
+"avoid": "Bleak outcomes."
+},
+{
+"id": "morelikelythanyouthink",
+"name": "It's More Likely Than You Think",
+"lines": 1,
+"shape": "warning",
+"core": "A PC-check ad: 'X? In my Y? It's more likely than you think'; used to warn about a surprising hidden problem.",
+"slots": [
+"X? In my Y?"
+],
+"aliases": [
+"more likely than you think",
+"free pc check",
+"in my x",
+"its more likely"
+],
+"avoid": "Reassuring news."
+},
+{
+"id": "intermsofmoneywehavenomoney",
+"name": "In Terms Of Money, We Have No Money",
+"lines": 1,
+"shape": "self-own",
+"core": "Gru telling the minions there's none of something; used as 'In terms of X, we have no X'.",
+"slots": [
+"in terms of X, we have no X"
+],
+"aliases": [
+"in terms of money",
+"we have no money",
+"gru no money",
+"gru minions money"
+],
+"avoid": "Having plenty of something."
+},
+{
+"id": "youhavenopowerhere",
+"name": "You Have No Power Here",
+"lines": 2,
+"shape": "rejection",
+"core": "Gandalf telling Saruman/Th\u00e9oden 'you have no power here'; used to dismiss someone's authority in a place.",
+"slots": [
+"where we are",
+"who has no power"
+],
+"aliases": [
+"you have no power here",
+"gandalf no power",
+"theoden possessed",
+"lotr no power"
+],
+"avoid": "Respecting authority."
+},
+{
+"id": "wearethemillers",
+"name": "We're The Millers",
+"lines": 4,
+"shape": "reaction",
+"core": "Four shocked faces from We're the Millers; used when a group reacts in shock to something absurd.",
+"slots": [
+"first reaction",
+"second reaction",
+"third reaction",
+"fourth reaction"
+],
+"aliases": [
+"were the millers",
+"no fucking way",
+"millers reaction",
+"four shocked faces"
+],
+"avoid": "Single-person reactions."
+},
+{
+"id": "adios",
+"name": "Adios",
+"lines": 1,
+"shape": "rejection",
+"core": "A man walks into a glowing portal with 'Adi\u00f3s'; used for leaving something behind for good.",
+"slots": [
+"what you're leaving"
+],
+"aliases": [
+"adios",
+"adios portal",
+"red shirt adios",
+"walking into the light"
+],
+"avoid": "Arrivals or welcomes."
+},
+{
+"id": "vanyaandfive",
+"name": "Vanya And Five",
+"lines": 2,
+"shape": "irony",
+"core": "Two siblings in passing cars spot each other; used when two people catch each other somewhere they shouldn't be.",
+"slots": [
+"first person",
+"second person"
+],
+"aliases": [
+"vanya and five",
+"umbrella academy cars",
+"cars passing each other",
+"spotting each other"
+],
+"avoid": "Planned meetings."
+},
+{
+"id": "billmurraygolf",
+"name": "Bill Murray Golf",
+"lines": 2,
+"shape": "approval",
+"core": "Bill Murray tossing his club and waving; used for cheerfully not caring or giving up.",
+"slots": [
+"the situation",
+"the carefree reaction"
+],
+"aliases": [
+"bill murray golf",
+"bill murray wave",
+"throw club",
+"bill murray dont care"
+],
+"avoid": "Serious disappointment."
+},
+{
+"id": "happypicard",
+"name": "Happy Picard",
+"lines": 2,
+"shape": "reaction",
+"core": "Picard pumping his fists in delight, used to celebrate a small, satisfying victory.",
+"slots": [
+"the situation",
+"the win"
+],
+"aliases": [
+"picard fist pump",
+"happy picard",
+"picard yes",
+"star trek celebration"
+],
+"avoid": "Not for disappointment or facepalm moments; that's Picard Facepalm."
+},
+{
+"id": "emperorpalpatine",
+"name": "Emperor Palpatine",
+"lines": 2,
+"shape": "approval",
+"core": "Palpatine grinning wickedly, used to egg on a bad idea or gloat as a scheme comes together.",
+"slots": [
+"the temptation or setup",
+"the sinister encouragement"
+],
+"aliases": [
+"palpatine",
+"do it",
+"good good",
+"emperor smile",
+"sidious grin"
+],
+"avoid": "Not for genuine, wholesome approval."
+},
+{
+"id": "happysquirrel",
+"name": "Happy Squirrel",
+"lines": 2,
+"shape": "reaction",
+"core": "A squirrel throwing its arms up in joy, used to celebrate good news or praise the heavens.",
+"slots": [
+"the good news",
+"the celebration"
+],
+"aliases": [
+"praise squirrel",
+"happy squirrel",
+"squirrel arms up",
+"hallelujah squirrel"
+],
+"avoid": "Not for sad or annoyed reactions."
+},
+{
+"id": "ronaldmcdonaldtemp",
+"name": "Ronald McDonald on the Phone",
+"lines": 2,
+"shape": "dialogue",
+"core": "Ronald McDonald taking a phone call, used for an absurd or ominous call he answers or makes.",
+"slots": [
+"the call opener",
+"the punchline"
+],
+"aliases": [
+"ronald mcdonald phone",
+"ronald mcdonald calling",
+"clown on phone",
+"mcdonalds phone call"
+],
+"avoid": "Not for multi-panel conversations."
+}
+]

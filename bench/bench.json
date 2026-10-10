@@ -574,10 +574,11 @@
 {
 "qid": "feelsgood#1",
 "target": "feelsgood",
-"request": "when the code compiles and nobody saw how many tries it took, quietly smug",
+"request": "bald drawn guy hands on cheeks eyes closed, peeling plastic off a new phone",
 "style": "situation",
 "weak": true,
-"split": "test"
+"split": "test",
+"adjudicated": true
 },
 {
 "qid": "fetch#1",
@@ -1626,10 +1627,11 @@
 {
 "qid": "winter#1",
 "target": "winter",
-"request": "brace yourselves, finals week is coming for my college roommates",
+"request": "ned stark winter is coming but its tax season",
 "style": "situation",
 "weak": false,
-"split": "test"
+"split": "test",
+"adjudicated": true
 },
 {
 "qid": "wishes#1",
@@ -1835,10 +1837,11 @@
 {
 "qid": "sadpablo#1",
 "target": "sadpablo",
-"request": "sitting around bored and alone waiting for my code review to get approved for days",
+"request": "pablo on the swing, then the table, then the empty pool, waiting on code review",
 "style": "situation",
 "weak": false,
-"split": "test"
+"split": "test",
+"adjudicated": true
 },
 {
 "qid": "absolutecinema#1",
@@ -3658,10 +3661,11 @@
 {
 "qid": "gravestone#1",
 "target": "gravestone",
-"request": "rip my new years gym resolution, died jan 9, it will not be missed",
+"request": "blank granite headstone in a cemetery, here lies my gym resolution",
 "style": "situation",
 "weak": false,
-"split": "test"
+"split": "test",
+"adjudicated": true
 },
 {
 "qid": "societyif#1",
@@ -4068,10 +4072,11 @@
 {
 "qid": "monkeylookingaway#1",
 "target": "monkeylookingaway",
-"request": "teacher asks who hasnt turned in the group project yet",
+"request": "monkey puppet side eye then looks away when teacher asks about the group project",
 "style": "situation",
 "weak": false,
-"split": "test"
+"split": "test",
+"adjudicated": true
 },
 {
 "qid": "rightinthechildhood#1",
@@ -4813,10 +4818,11 @@
 {
 "qid": "internetexplorer#1",
 "target": "internetexplorer",
-"request": "my dad just found out about the ice bucket challenge",
+"request": "me loading the trend from 2014 like internet explorer",
 "style": "situation",
 "weak": false,
-"split": "test"
+"split": "test",
+"adjudicated": true
 },
 {
 "qid": "tyronebiggumstheaddict#1",
@@ -5273,10 +5279,11 @@
 {
 "qid": "blanktombstone#1",
 "target": "blanktombstone",
-"request": "rip to my favorite snack that just got discontinued",
+"request": "just a plain blank tombstone, epitaph: my fave snack 2009-2026",
 "style": "situation",
 "weak": false,
-"split": "test"
+"split": "test",
+"adjudicated": true
 },
 {
 "qid": "sadcatholdingdog#1",
@@ -5429,10 +5436,11 @@
 {
 "qid": "drevilpinky#1",
 "target": "drevilpinky",
-"request": "my kid demanding one million dollars to clean his room",
+"request": "dr evil pinky scheming his evil plan to get out of chores",
 "style": "situation",
 "weak": false,
-"split": "test"
+"split": "test",
+"adjudicated": true
 },
 {
 "qid": "victoriadavidbeckhambehonest#1",
@@ -5445,10 +5453,11 @@
 {
 "qid": "findingnemoseagulls#1",
 "target": "findingnemoseagulls",
-"request": "everyone in the office swarming the free leftover donuts after the meeting",
+"request": "the whole office going mine mine mine at the last donut",
 "style": "situation",
 "weak": false,
-"split": "test"
+"split": "test",
+"adjudicated": true
 },
 {
 "qid": "thesilentprotector#1",
@@ -5544,10 +5553,11 @@
 {
 "qid": "samuelljacksonsayonemoretime#1",
 "target": "samuelljacksonsayonemoretime",
-"request": "pm says 'quick sync' one more time i swear",
+"request": "jules close up glaring no gun, say 'per my last email' one more time",
 "style": "situation",
 "weak": false,
-"split": "test"
+"split": "test",
+"adjudicated": true
 },
 {
 "qid": "tryingtoexplain#1",
@@ -5905,10 +5915,11 @@
 {
 "qid": "ohno#1",
 "target": "ohno",
-"request": "realizing i replied all with my complaint about the client",
+"request": "that horrified grimace guy when i realize i hit reply all",
 "style": "situation",
 "weak": true,
-"split": "test"
+"split": "test",
+"adjudicated": true
 },
 {
 "qid": "limmywakingup#1",
@@ -6231,10 +6242,11 @@
 {
 "qid": "evilbaby#1",
 "target": "evilbaby",
-"request": "my little brother ate my last fry and now im plotting his downfall",
+"request": "angry glaring baby in pink when my brother eats my last fry",
 "style": "situation",
 "weak": false,
-"split": "test"
+"split": "test",
+"adjudicated": true
 },
 {
 "qid": "pinkyandthebrain#1",
@@ -7018,10 +7030,11 @@
 {
 "qid": "happywojakvsdepressedwojak#1",
 "target": "happywojakvsdepressedwojak",
-"request": "me starting a new side project vs me 3 weeks later debugging webpack config",
+"request": "happy wojak vs doomer wojak, me day 1 of a side project vs week 3",
 "style": "situation",
 "weak": false,
-"split": "test"
+"split": "test",
+"adjudicated": true
 },
 {
 "qid": "youngthugandlildurktroublesh#1",
@@ -8625,10 +8638,11 @@
 {
 "qid": "doyouwannabuildasnowman#1",
 "target": "doyouwannabuildasnowman",
-"request": "texting my friend every single day begging him to play elden ring w me",
+"request": "do u wanna play elden ring, sung through his door like anna",
 "style": "situation",
 "weak": false,
-"split": "test"
+"split": "test",
+"adjudicated": true
 },
 {
 "qid": "lordfarquaad#1",
@@ -8738,10 +8752,11 @@
 {
 "qid": "depressedcat#1",
 "target": "depressedcat",
-"request": "when the pizza place is closed on sunday and its a tiny tragedy",
+"request": "droopy eyed sad tabby when the pizza place is closed sunday",
 "style": "situation",
 "weak": true,
-"split": "test"
+"split": "test",
+"adjudicated": true
 },
 {
 "qid": "jokerrainbowhands#1",
@@ -9903,10 +9918,11 @@
 {
 "qid": "laviejaconfiable#1",
 "target": "laviejaconfiable",
-"request": "every time prod breaks i just restart the server and it works",
+"request": "spongebob opening his glowing case: restarting the server",
 "style": "situation",
 "weak": false,
-"split": "test"
+"split": "test",
+"adjudicated": true
 },
 {
 "qid": "mantriggeredatschool#1",
@@ -9952,10 +9968,11 @@
 {
 "qid": "thecircleoflife#1",
 "target": "thecircleoflife",
-"request": "cycle where i buy a planner, use it 2 days, feel guilty, buy a new planner",
+"request": "plain circle of arrows: buy planner, use 2 days, guilt, buy planner",
 "style": "situation",
 "weak": false,
-"split": "test"
+"split": "test",
+"adjudicated": true
 },
 {
 "qid": "gta5franklinandhisdogchop#1",
@@ -11765,10 +11782,11 @@
 {
 "qid": "depressiondog#1",
 "target": "depressiondog",
-"request": "its friday night and my only plans are laundry and nobody has texted me",
+"request": "sad dog head on grey sunburst: my weekend plans are laundry",
 "style": "situation",
 "weak": true,
-"split": "test"
+"split": "test",
+"adjudicated": true
 },
 {
 "qid": "photogeniccollegefootballpla#1",
@@ -12452,10 +12470,11 @@
 {
 "qid": "cbb#blind",
 "target": "cbb",
-"request": "my roommates eating my leftovers like its shared property now",
+"request": "bugs bunny in the soviet hat going our leftovers, my roommate",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "cbg#blind",
@@ -12500,10 +12519,11 @@
 {
 "qid": "feelsgood#blind",
 "target": "feelsgood",
-"request": "when the office coffee machine finally gets fixed after a month",
+"request": "that smug blissful face when i get the parking spot right by the door",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "friends#blind",
@@ -12660,10 +12680,11 @@
 {
 "qid": "oprah#blind",
 "target": "oprah",
-"request": "manager handing out extra meetings to everyone on the team",
+"request": "oprah in the red suit pointing at the crowd, you get a jira ticket",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "panik-kalm-panik#blind",
@@ -12724,10 +12745,11 @@
 {
 "qid": "sad-bush#blind",
 "target": "sad-bush",
-"request": "when you realize the weekend is over and its monday tomorrow",
+"request": "sad bush face, monday doesnt think you'll make it to friday",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "ski#blind",
@@ -12788,10 +12810,11 @@
 {
 "qid": "tried#blind",
 "target": "tried",
-"request": "kid with a little cake congratulating, my mom making the wifi password secure",
+"request": "wolf pup patting the other ones head, my moms wifi password attempt",
 "style": "visual",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "trump#blind",
@@ -12876,10 +12899,11 @@
 {
 "qid": "imaginationspongebob#blind",
 "target": "imaginationspongebob",
-"request": "when my manager says we can fix scope creep with more meetings",
+"request": "spongebob rainbow hands, just ship it without testing. imagination",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "evilkermit#blind",
@@ -12892,10 +12916,11 @@
 {
 "qid": "bikefall#blind",
 "target": "bikefall",
-"request": "i unplugged the server to clean it and now the whole office is down why",
+"request": "i jam a stick in my own deploy then blame the ci server",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "spongebobightimmaheadout#blind",
@@ -13068,10 +13093,11 @@
 {
 "qid": "petergriffinnews#blind",
 "target": "petergriffinnews",
-"request": "breaking news my roommate actually washed his dishes",
+"request": "peter griffin at the news desk, what grinds my gears is reply-all",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "moethrowsbarney#blind",
@@ -13140,10 +13166,11 @@
 {
 "qid": "obiwankenobi#blind",
 "target": "obiwankenobi",
-"request": "obi wan meme from star wars, you were supposed to be the chosen one about my fantasy football pick",
+"request": "old obi wan in the hood, my code works from a certain point of view",
 "style": "named",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "thatsapaddlin#blind",
@@ -13196,10 +13223,11 @@
 {
 "qid": "thisisbrilliantbutilikethis#blind",
 "target": "thisisbrilliantbutilikethis",
-"request": "guy holding up papers pointing at one, my team's design doc vs my napkin sketch",
+"request": "clarkson by the two cars, the test suite is brilliant but i like console.log",
 "style": "visual",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "firsttime#blind",
@@ -13252,10 +13280,11 @@
 {
 "qid": "coolcatstroll#blind",
 "target": "coolcatstroll",
-"request": "me walking out of the dentist with zero cavities like a boss",
+"request": "kitten strutting on two legs after i parallel parked first try",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "ibelieveinsupremacy#blind",
@@ -13332,10 +13361,11 @@
 {
 "qid": "npcmeme#blind",
 "target": "npcmeme",
-"request": "grey expressionless stick face guy repeating whatever linkedin influencers say",
+"request": "npc face turning angry when i say i dont like hustle culture",
 "style": "visual",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "dinkleberg#blind",
@@ -13492,10 +13522,11 @@
 {
 "qid": "drowningkidskeleton#blind",
 "target": "drowningkidskeleton",
-"request": "the old feature requests while everyone focuses on the shiny new one",
+"request": "drowning kid meme: new js framework, jquery drowning, cobol skeleton at the bottom",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "ceilingcat#blind",
@@ -13508,10 +13539,11 @@
 {
 "qid": "monkeylookingaway#blind",
 "target": "monkeylookingaway",
-"request": "when the teacher asks who hasnt done the reading",
+"request": "me looking away real slow when the teacher asks who hasnt done the reading",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "oldmancupofcoffee#blind",
@@ -13540,10 +13572,11 @@
 {
 "qid": "herewegoagain#blind",
 "target": "herewegoagain",
-"request": "when its monday and the same server goes down again",
+"request": "ah sh*t here we go again, the server's down on monday",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "rainbowsixfuzethehostage#blind",
@@ -13588,18 +13621,20 @@
 {
 "qid": "batmansmiles#blind",
 "target": "batmansmiles",
-"request": "when my code compiles on the first try for once",
+"request": "my usually grim face cracking a tiny smile when the tests pass",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "cryingpeterparker#blind",
 "target": "cryingpeterparker",
-"request": "spiderman guy crying in the dark when my favorite show gets cancelled",
+"request": "tobey maguire sobbing close up when my favorite show gets cancelled",
 "style": "visual",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "ibringasortofxvibetothey#blind",
@@ -13692,18 +13727,20 @@
 {
 "qid": "1950smiddlefinger#blind",
 "target": "1950smiddlefinger",
-"request": "when the printer jams for the fifth time today",
+"request": "smiling retro guy flipping the bird at monday mornings",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "chainsawbear#blind",
 "target": "chainsawbear",
-"request": "when someone says my code needs refactoring and i take it too far",
+"request": "someone says touch my code again and i calmly hold up a chainsaw",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "yhormdarksouls#blind",
@@ -13788,10 +13825,11 @@
 {
 "qid": "spongefinnacommitmuder#blind",
 "target": "spongefinnacommitmuder",
-"request": "when my roommate eats the leftovers i labeled with my name",
+"request": "roommate eats one fry, then my burger, then the whole leftovers, i get progressively buffer",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "bluegrinch#blind",
@@ -13884,10 +13922,11 @@
 {
 "qid": "findingnemoseagulls#blind",
 "target": "findingnemoseagulls",
-"request": "my siblings when theres one slice of pizza left yelling mine mine mine",
+"request": "finding nemo seagull close up staring, my siblings vs the last slice",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "thesilentprotector#blind",
@@ -13924,10 +13963,11 @@
 {
 "qid": "spongebobtimecardbackground#blind",
 "target": "spongebobtimecardbackground",
-"request": "3 hours later my build is still running",
+"request": "spongebob narrator card: 'three eternities later' my build finishes",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "samuelljacksonsayonemoretime#blind",
@@ -13964,10 +14004,11 @@
 {
 "qid": "badassskeleton#blind",
 "target": "badassskeleton",
-"request": "me still waiting for the landlord to fix the heater",
+"request": "skeleton with two revolvers when someone touches my parking spot",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "mybeloved#blind",
@@ -13988,10 +14029,11 @@
 {
 "qid": "jayinbetweenerscompletedit#blind",
 "target": "jayinbetweenerscompletedit",
-"request": "when you finish the whole netflix series in one weekend and feel proud",
+"request": "binged the whole show in a weekend, completed it mate",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "tomchasingharryandronweasly#blind",
@@ -14020,10 +14062,11 @@
 {
 "qid": "blankkermitwaiting#blind",
 "target": "blankkermitwaiting",
-"request": "still waiting for the recruiter to email me back",
+"request": "kermit waiting through spring summer fall winter for the recruiter to reply",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "turnupthevolume#blind",
@@ -14172,18 +14215,20 @@
 {
 "qid": "youhavenopowerhere#blind",
 "target": "youhavenopowerhere",
-"request": "my toddler trying to tell me bedtime is optional",
+"request": "toddler declares bedtime optional, me: you have no power here",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "wearethemillers#blind",
 "target": "wearethemillers",
-"request": "my team pretending to be a functional agile squad during the client demo",
+"request": "the whole family's shocked faces one by one when grandma says she's on tinder",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "adios#blind",
@@ -14236,10 +14281,11 @@
 {
 "qid": "howaboutnobear#blind",
 "target": "howaboutnobear",
-"request": "my boss asked if i could work saturday",
+"request": "boss asks me to work saturday, bear with paws up: how about no",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "ptsddog#blind",
@@ -14268,10 +14314,11 @@
 {
 "qid": "spongebobmoney#blind",
 "target": "spongebobmoney",
-"request": "spongebob holding cash meme for payday and my bills are already waiting",
+"request": "spongebob bored at work then grabbing his wallet when they mention overtime",
 "style": "named",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "blackscientistfinallyxium#blind",
@@ -14316,18 +14363,20 @@
 {
 "qid": "jessewtfareyoutalkingabout#blind",
 "target": "jessewtfareyoutalkingabout",
-"request": "my dad explaining crypto to me at thanksgiving makes zero sense",
+"request": "jesse and walt diner convo but walt keeps explaining crypto weirder",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "catlooksinside#blind",
 "target": "catlooksinside",
-"request": "opened my bank app to check balance, immediately regretted it",
+"request": "be me, open bank app, cat looks inside",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "themandalorian#blind",
@@ -14388,10 +14437,11 @@
 {
 "qid": "angryturkishmanplayingcardsm#blind",
 "target": "angryturkishmanplayingcardsm",
-"request": "my uncle losing at uno and accusing everyone of cheating",
+"request": "my uncle slamming down the draw four like it's a war move",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "guytalkingtogirlinclub#blind",
@@ -14524,10 +14574,11 @@
 {
 "qid": "platetoss#blind",
 "target": "platetoss",
-"request": "when the dishwasher is full and i just give up",
+"request": "wife hands me a salad and i yeet the plate across the room",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "kevinjames#blind",
@@ -14580,10 +14631,11 @@
 {
 "qid": "adviceyoda#blind",
 "target": "adviceyoda",
-"request": "commit early you must, or lose your work you will",
+"request": "advice yoda on the green rays background: commit early you must",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "ericandreletmeinblank#blind",
@@ -14596,10 +14648,11 @@
 {
 "qid": "ismayonnaiseaninstrument#blind",
 "target": "ismayonnaiseaninstrument",
-"request": "my coworker asked if excel counts as a database",
+"request": "patrick raising his hand asking if excel is a database",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "wewantyou#blind",
@@ -14668,10 +14721,11 @@
 {
 "qid": "randyortonundertaker#blind",
 "target": "randyortonundertaker",
-"request": "my dog sneaking up behind the cat while it eats",
+"request": "my ex's face when the old bug i fixed shows up again",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "mybodyismachine#blind",
@@ -14740,10 +14794,11 @@
 {
 "qid": "whatifyoubutgodsaid#blind",
 "target": "whatifyoubutgodsaid",
-"request": "i planned to sleep in saturday but my neighbors leaf blower had other plans",
+"request": "what if i slept in saturday, but god said leaf blower",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "confuciussays#blind",
@@ -14804,18 +14859,20 @@
 {
 "qid": "peasants#blind",
 "target": "peasants",
-"request": "snobby rich lady in fancy hat sneering, me with my new phone around android users",
+"request": "pale twilight vampire guys on a balcony lookin down at android users",
 "style": "visual",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "notbadobama#blind",
 "target": "notbadobama",
-"request": "my code ran with zero warnings on the first try",
+"request": "the intern's code is actually kinda decent, not bad face",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "anakinandobiwan#blind",
@@ -14852,18 +14909,20 @@
 {
 "qid": "uncomfortablenightclubgirl#blind",
 "target": "uncomfortablenightclubgirl",
-"request": "girl at party looking super awkward while guys talk to her, me at networking events",
+"request": "guy whispering in her ear at the club, her face says get me out",
 "style": "visual",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "willemdafoelookingup#blind",
 "target": "willemdafoelookingup",
-"request": "when my kid says something smart for once and i feel proud",
+"request": "when the sunrise hits the mountains on my hike and i just stare in awe",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "doyouwannabuildasnowman#blind",
@@ -14892,18 +14951,20 @@
 {
 "qid": "gottagocat#blind",
 "target": "gottagocat",
-"request": "when my coworker starts telling his weekend story at 4:59",
+"request": "me crossing my legs in line for the only bathroom at the festival",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "miketyson#blind",
 "target": "miketyson",
-"request": "boxer with face tattoo looking confused, my professor explaining the grading rubric",
+"request": "tattooed boxer pointing at the camera telling me to drink more water",
 "style": "visual",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "spongebobsquarepantsscaredbu#blind",
@@ -14916,10 +14977,11 @@
 {
 "qid": "tomthecatshootinghimself#blind",
 "target": "tomthecatshootinghimself",
-"request": "when the group project partner submits the wrong file",
+"request": "when the printer jams for the fifth time and im ready to end it all lol",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "depressedcat#blind",
@@ -14940,10 +15002,11 @@
 {
 "qid": "tornadoguy#blind",
 "target": "tornadoguy",
-"request": "my landlord calmly saying everything is fine while the ceiling leaks",
+"request": "me grinning at my desk while the layoff email tornado heads my way",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "hellomynameis#blind",
@@ -14964,10 +15027,11 @@
 {
 "qid": "austedeslespagan#blind",
 "target": "austedeslespagan",
-"request": "when i'm working overtime and my coworkers are just chilling",
+"request": "when coworkers answer slack at midnight on salary, do u guys get paid",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "ihavefailedyou#blind",
@@ -14996,10 +15060,11 @@
 {
 "qid": "omgkaren#blind",
 "target": "omgkaren",
-"request": "two women gossiping shocked, mom finding out the neighbor painted their house pink",
+"request": "blonde mean girl gasping when my coworker asks how much i make",
 "style": "visual",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "idontcareifyouwinijustneedxt#blind",
@@ -15036,10 +15101,11 @@
 {
 "qid": "staringfish#blind",
 "target": "staringfish",
-"request": "when my coworker says reply all was an accident and i just stare",
+"request": "orange fish staring blankly into the camera when my boss says we're a family",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "spongebobpanicinside#blind",
@@ -15060,10 +15126,11 @@
 {
 "qid": "sleepyguy#blind",
 "target": "sleepyguy",
-"request": "me at 3am when the baby finally sleeps but my brain decides to replay every mistake",
+"request": "when the garbage truck wakes me up at 6am on my day off",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "pokewithstick#blind",
@@ -15108,18 +15175,20 @@
 {
 "qid": "yodabeguntheclonewarhas#blind",
 "target": "yodabeguntheclonewarhas",
-"request": "when my sister and i both bought the same dress for the wedding",
+"request": "when my neighbor puts up bigger christmas lights than mine, begun the war has",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "confessionkid#blind",
 "target": "confessionkid",
-"request": "kid with a guilty smirk admitting something, confessing i ate my roomies leftovers",
+"request": "kid hiding his face in shame, confessing i still sleep with a nightlight",
 "style": "visual",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "varvideoassistantreferee#blind",
@@ -15132,10 +15201,11 @@
 {
 "qid": "interruptingbird#blind",
 "target": "interruptingbird",
-"request": "me trying to explain my plan and my dad cutting me off yelling",
+"request": "me trying to talk 3 times at dinner and my uncle squawking over me every time",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "hewasaboyshewasagirl#blind",
@@ -15204,10 +15274,11 @@
 {
 "qid": "thecircleoflife#blind",
 "target": "thecircleoflife",
-"request": "dad lifting my kid up like simba, passing down his terrible jokes",
+"request": "the cycle of getting paid, spending it all, being broke, getting paid again",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "motherofgod#blind",
@@ -15252,10 +15323,11 @@
 {
 "qid": "antanddeclaughing#blind",
 "target": "antanddeclaughing",
-"request": "when my team watches the new guy run the migration on prod",
+"request": "me and my brother crying laughing when dad sits on the whoopee cushion",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "praisesquirrel#blind",
@@ -15308,10 +15380,11 @@
 {
 "qid": "trapcard#blind",
 "target": "trapcard",
-"request": "guy dramatically flipping a card, my cat lying belly up so i pet her then attacking",
+"request": "blank trap card, card effect: cat shows belly, you pet, you lose hand",
 "style": "visual",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "sigmamale#blind",
@@ -15356,10 +15429,11 @@
 {
 "qid": "annoyingfacebookgirl#blind",
 "target": "annoyingfacebookgirl",
-"request": "blonde girl rolling her eyes at the screen, my aunt posting vague status updates",
+"request": "that eye rolling facebook girl, posting 'ugh some people' with zero context",
 "style": "visual",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "derp#blind",
@@ -15396,10 +15470,11 @@
 {
 "qid": "gasprageface#blind",
 "target": "gasprageface",
-"request": "when i see my teammate pushed straight to main with no review",
+"request": "rage comic gasp face when someone says they dont like pizza",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "tintinandhaddock#blind",
@@ -15476,10 +15551,11 @@
 {
 "qid": "ididnthearnobell#blind",
 "target": "ididnthearnobell",
-"request": "still at my desk at 7pm refusing to log off before this deploy finishes",
+"request": "down 40 at halftime and still talking trash, i didnt hear no bell",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "scumbagminecraft#blind",
@@ -15500,10 +15576,11 @@
 {
 "qid": "efrainjuarez#blind",
 "target": "efrainjuarez",
-"request": "the exact moment i realized i replied all to the whole company",
+"request": "footballer on the grass covering his mouth when the ref gives a red card for nothing",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "scroogemcduck#blind",
@@ -15620,10 +15697,11 @@
 {
 "qid": "killyoucat#blind",
 "target": "killyoucat",
-"request": "when someone wakes me from my nap and i want to end them",
+"request": "wet kitten glaring after a bath, me after my brother dumps water on me",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "deadpoolpickuplines#blind",
@@ -15644,10 +15722,11 @@
 {
 "qid": "mrtroc9#blind",
 "target": "mrtroc9",
-"request": "when my little brother keeps whining about doing homework, quit your jibber jabber",
+"request": "mr t flexing his bicep in gold chains, i pity the fool who skips leg day",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "littleromney#blind",
@@ -15788,10 +15867,11 @@
 {
 "qid": "manningbroncos#blind",
 "target": "manningbroncos",
-"request": "when my old team cut me and i went somewhere better and won",
+"request": "broncos qb calling an audible at the line on 3rd and long",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "angrychickenboss#blind",
@@ -15812,10 +15892,11 @@
 {
 "qid": "nailedit#blind",
 "target": "nailedit",
-"request": "tried to make the pinterest cake for my kids birthday",
+"request": "me wiping out face first on my first wakeboard try, nailed it",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "badwifeworsemom#blind",
@@ -15884,10 +15965,11 @@
 {
 "qid": "gangnamstyle#blind",
 "target": "gangnamstyle",
-"request": "me hearing that one 2012 song at every wedding reception still",
+"request": "me lounging like a millionaire in the playground sandbox at my nephews party",
 "style": "situation",
 "weak": false,
-"split": "blind"
+"split": "blind",
+"adjudicated": true
 },
 {
 "qid": "familytechsupportguy#blind",
@@ -18868,5 +18950,589 @@
 "style": "situation",
 "weak": false,
 "split": "bdev"
+},
+{
+"qid": "communistcat#adj3",
+"target": "communistcat",
+"request": "my roommates eating my leftovers like its shared property now",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "gordonramsaysomegoodfood#adj3",
+"target": "gordonramsaysomegoodfood",
+"request": "when the office coffee machine finally gets fixed after a month",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "yougetanxandyougetanx#adj2",
+"target": "yougetanxandyougetanx",
+"request": "manager handing out extra meetings to everyone on the team",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "andjustlikethat#adj3",
+"target": "andjustlikethat",
+"request": "when you realize the weekend is over and its monday tomorrow",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "happystarcongratulations#adj3",
+"target": "happystarcongratulations",
+"request": "kid with a little cake congratulating, my mom making the wifi password secure",
+"style": "visual",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "needsmorecowbell#adj2",
+"target": "needsmorecowbell",
+"request": "when my manager says we can fix scope creep with more meetings",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "howcouldtheyhavedonethis#adj3",
+"target": "howcouldtheyhavedonethis",
+"request": "i unplugged the server to clean it and now the whole office is down why",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "cnnbreakingnewstemplate#adj2",
+"target": "cnnbreakingnewstemplate",
+"request": "breaking news my roommate actually washed his dishes",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "chosen#adj3",
+"target": "chosen",
+"request": "obi wan meme from star wars, you were supposed to be the chosen one about my fantasy football pick",
+"style": "named",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "drake#adj2",
+"target": "drake",
+"request": "guy holding up papers pointing at one, my team's design doc vs my napkin sketch",
+"style": "visual",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "npccrowd#adj2",
+"target": "npccrowd",
+"request": "grey expressionless stick face guy repeating whatever linkedin influencers say",
+"style": "visual",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "swimmingpoolkids#adj3",
+"target": "swimmingpoolkids",
+"request": "the old feature requests while everyone focuses on the shiny new one",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "sweatingbullets#adj3",
+"target": "sweatingbullets",
+"request": "when the teacher asks who hasnt done the reading",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "billmurraygroundhogday#adj2",
+"target": "billmurraygroundhogday",
+"request": "when its monday and the same server goes down again",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "firsttry#adj2",
+"target": "firsttry",
+"request": "when my code compiles on the first try for once",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "tableflipguy#adj2",
+"target": "tableflipguy",
+"request": "when the printer jams for the fifth time today",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "spartaleonidas#adj2",
+"target": "spartaleonidas",
+"request": "when someone says my code needs refactoring and i take it too far",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "hector#adj3",
+"target": "hector",
+"request": "when my roommate eats the leftovers i labeled with my name",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "freezingcold#adj2",
+"target": "freezingcold",
+"request": "me still waiting for the landlord to fix the heater",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "bugsbunnyking#adj3",
+"target": "bugsbunnyking",
+"request": "when you finish the whole netflix series in one weekend and feel proud",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "iamthesenate#adj3",
+"target": "iamthesenate",
+"request": "my toddler trying to tell me bedtime is optional",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "homersimpsonsbackfat#adj3",
+"target": "homersimpsonsbackfat",
+"request": "my team pretending to be a functional agile squad during the client demo",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "yeahifyoucould#adj2",
+"target": "yeahifyoucould",
+"request": "my boss asked if i could work saturday",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "jackiechanwtf#adj2",
+"target": "jackiechanwtf",
+"request": "my dad explaining crypto to me at thanksgiving makes zero sense",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "regret#adj3",
+"target": "regret",
+"request": "opened my bank app to check balance, immediately regretted it",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "touch#adj3",
+"target": "touch",
+"request": "my uncle losing at uno and accusing everyone of cheating",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "tennisdefeat#adj2",
+"target": "tennisdefeat",
+"request": "when the dishwasher is full and i just give up",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "starwarsyoda#adj3",
+"target": "starwarsyoda",
+"request": "commit early you must, or lose your work you will",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "pigeon#adj2",
+"target": "pigeon",
+"request": "my coworker asked if excel counts as a database",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "jasonmomoahenrycavillmeme#adj3",
+"target": "jasonmomoahenrycavillmeme",
+"request": "my dog sneaking up behind the cat while it eats",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "sleepyguy#adj3",
+"target": "sleepyguy",
+"request": "i planned to sleep in saturday but my neighbors leaf blower had other plans",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "firsttry#adj3",
+"target": "firsttry",
+"request": "my code ran with zero warnings on the first try",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "guytalkingtogirlinclub#adj3",
+"target": "guytalkingtogirlinclub",
+"request": "girl at party looking super awkward while guys talk to her, me at networking events",
+"style": "visual",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "proudness#adj3",
+"target": "proudness",
+"request": "when my kid says something smart for once and i feel proud",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "mathladyconfusedlady#adj3",
+"target": "mathladyconfusedlady",
+"request": "boxer with face tattoo looking confused, my professor explaining the grading rubric",
+"style": "visual",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "facepalm#adj3",
+"target": "facepalm",
+"request": "when the group project partner submits the wrong file",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "squidwardwindow#adj3",
+"target": "squidwardwindow",
+"request": "when i'm working overtime and my coworkers are just chilling",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "girlsgossiping#adj2",
+"target": "girlsgossiping",
+"request": "two women gossiping shocked, mom finding out the neighbor painted their house pink",
+"style": "visual",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "chloe#adj2",
+"target": "chloe",
+"request": "when my coworker says reply all was an accident and i just stare",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "brainbeforesleep#adj3",
+"target": "brainbeforesleep",
+"request": "me at 3am when the baby finally sleeps but my brain decides to replay every mistake",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "spiderman#adj3",
+"target": "spiderman",
+"request": "when my sister and i both bought the same dress for the wedding",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "cb#adj3",
+"target": "cb",
+"request": "kid with a guilty smirk admitting something, confessing i ate my roomies leftovers",
+"style": "visual",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "lionkingrafikisimba#adj2",
+"target": "lionkingrafikisimba",
+"request": "dad lifting my kid up like simba, passing down his terrible jokes",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "jimofficeblinds#adj3",
+"target": "jimofficeblinds",
+"request": "when my team watches the new guy run the migration on prod",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "faceyoumakerobertdowneyjr#adj3",
+"target": "faceyoumakerobertdowneyjr",
+"request": "blonde girl rolling her eyes at the screen, my aunt posting vague status updates",
+"style": "visual",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "ohno#adj3",
+"target": "ohno",
+"request": "when i see my teammate pushed straight to main with no review",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "scaredcat#adj3",
+"target": "scaredcat",
+"request": "the exact moment i realized i replied all to the whole company",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "mrtpitythefool#adj2",
+"target": "mrtpitythefool",
+"request": "when my little brother keeps whining about doing homework, quit your jibber jabber",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "success#adj2",
+"target": "success",
+"request": "when my old team cut me and i went somewhere better and won",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "squidward#adj3",
+"target": "squidward",
+"request": "tried to make the pinterest cake for my kids birthday",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "billmurraygroundhogday#adj3",
+"target": "billmurraygroundhogday",
+"request": "me hearing that one 2012 song at every wedding reception still",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "success#adj3",
+"target": "success",
+"request": "me walking out of the dentist with zero cavities like a boss",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "elitistvictorianscumbag#adj3",
+"target": "elitistvictorianscumbag",
+"request": "snobby rich lady in fancy hat sneering, me with my new phone around android users",
+"style": "visual",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "yugioh#adj2",
+"target": "yugioh",
+"request": "guy dramatically flipping a card, my cat lying belly up so i pet her then attacking",
+"style": "visual",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "nemoseagullsmine#adj2",
+"target": "nemoseagullsmine",
+"request": "my siblings when theres one slice of pizza left yelling mine mine mine",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "spongebobhappyandsad#adj3",
+"target": "spongebobhappyandsad",
+"request": "spongebob holding cash meme for payday and my bills are already waiting",
+"style": "named",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "batmanslappingrobin#adj2",
+"target": "batmanslappingrobin",
+"request": "me trying to explain my plan and my dad cutting me off yelling",
+"style": "situation",
+"weak": false,
+"split": "blind"
+},
+{
+"qid": "smirkrageface#adj3",
+"target": "smirkrageface",
+"request": "when the code compiles and nobody saw how many tries it took, quietly smug",
+"style": "situation",
+"weak": true,
+"split": "test"
+},
+{
+"qid": "slowpoke#adj3",
+"target": "slowpoke",
+"request": "my dad just found out about the ice bucket challenge",
+"style": "situation",
+"weak": false,
+"split": "test"
+},
+{
+"qid": "rip#adj3",
+"target": "rip",
+"request": "rip to my favorite snack that just got discontinued",
+"style": "situation",
+"weak": false,
+"split": "test"
+},
+{
+"qid": "spongebobhypestand#adj3",
+"target": "spongebobhypestand",
+"request": "everyone in the office swarming the free leftover donuts after the meeting",
+"style": "situation",
+"weak": false,
+"split": "test"
+},
+{
+"qid": "bernieiamonceagainaskingfory#adj3",
+"target": "bernieiamonceagainaskingfory",
+"request": "texting my friend every single day begging him to play elden ring w me",
+"style": "situation",
+"weak": false,
+"split": "test"
+},
+{
+"qid": "sadbaby#adj3",
+"target": "sadbaby",
+"request": "when the pizza place is closed on sunday and its a tiny tragedy",
+"style": "situation",
+"weak": true,
+"split": "test"
+},
+{
+"qid": "olreliable#adj3",
+"target": "olreliable",
+"request": "every time prod breaks i just restart the server and it works",
+"style": "situation",
+"weak": false,
+"split": "test"
+},
+{
+"qid": "viciouscycle#adj2",
+"target": "viciouscycle",
+"request": "cycle where i buy a planner, use it 2 days, feel guilty, buy a new planner",
+"style": "situation",
+"weak": false,
+"split": "test"
+},
+{
+"qid": "sadkeanu#adj3",
+"target": "sadkeanu",
+"request": "its friday night and my only plans are laundry and nobody has texted me",
+"style": "situation",
+"weak": true,
+"split": "test"
+},
+{
+"qid": "pabloescobarwaitingalone#adj2",
+"target": "pabloescobarwaitingalone",
+"request": "sitting around bored and alone waiting for my code review to get approved for days",
+"style": "situation",
+"weak": false,
+"split": "test"
+},
+{
+"qid": "ripheadstone#adj2",
+"target": "ripheadstone",
+"request": "rip my new years gym resolution, died jan 9, it will not be missed",
+"style": "situation",
+"weak": false,
+"split": "test"
+},
+{
+"qid": "monkeypuppet#adj2",
+"target": "monkeypuppet",
+"request": "teacher asks who hasnt turned in the group project yet",
+"style": "situation",
+"weak": false,
+"split": "test"
+},
+{
+"qid": "onemilliondollars#adj3",
+"target": "onemilliondollars",
+"request": "my kid demanding one million dollars to clean his room",
+"style": "situation",
+"weak": false,
+"split": "test"
+},
+{
+"qid": "evilplottingraccoon#adj3",
+"target": "evilplottingraccoon",
+"request": "my little brother ate my last fry and now im plotting his downfall",
+"style": "situation",
+"weak": false,
+"split": "test"
+},
+{
+"qid": "braceyourself#adj2",
+"target": "braceyourself",
+"request": "brace yourselves, finals week is coming for my college roommates",
+"style": "situation",
+"weak": false,
+"split": "test"
+},
+{
+"qid": "saythatagainidareyou#adj2",
+"target": "saythatagainidareyou",
+"request": "pm says 'quick sync' one more time i swear",
+"style": "situation",
+"weak": false,
+"split": "test"
 }
 ]

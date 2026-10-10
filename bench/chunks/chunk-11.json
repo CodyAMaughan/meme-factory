@@ -1,0 +1,1091 @@
+[
+{
+"id": "victoriadavidbeckhambehonest",
+"name": "Victoria Beckham Be Honest",
+"lines": 3,
+"shape": "dialogue",
+"core": "Victoria insists on a flattering version of a story while David peeks in and pushes her to 'be honest' about the less glamorous truth.",
+"slots": [
+"the flattering claim",
+"be honest",
+"the honest truth"
+],
+"aliases": [
+"be honest",
+"beckham be honest",
+"victoria beckham working class",
+"david beckham door"
+],
+"avoid": "Not for stories with no gap between the claim and reality."
+},
+{
+"id": "findingnemoseagulls",
+"name": "Finding Nemo Seagulls Mine",
+"lines": 2,
+"shape": "labeling",
+"core": "A flock of seagulls mindlessly chanting 'mine' at the same thing, for a crowd greedily grabbing something.",
+"slots": [
+"the greedy crowd",
+"what they all want"
+],
+"aliases": [
+"mine mine mine",
+"nemo seagulls",
+"seagulls mine",
+"finding nemo birds"
+],
+"avoid": "Not for sharing or generosity."
+},
+{
+"id": "thesilentprotector",
+"name": "The Silent Protector",
+"lines": 3,
+"shape": "labeling",
+"core": "A soldier takes every attack so the sleeping person never knows, for someone silently shielding another from trouble.",
+"slots": [
+"the threats",
+"the protector",
+"the one sleeping peacefully"
+],
+"aliases": [
+"silent protector",
+"soldier protecting sleeping child",
+"soldier shielding",
+"protector meme"
+],
+"avoid": "Not for real military casualties or war tragedies."
+},
+{
+"id": "sadhamster",
+"name": "Sad Hamster",
+"lines": 2,
+"shape": "reaction",
+"core": "A hamster staring with huge sad eyes, for quiet pitiful disappointment.",
+"slots": [
+"what happened",
+"the sad reaction"
+],
+"aliases": [
+"sad hamster",
+"hamster stare",
+"sad hamster meme",
+"teary hamster"
+],
+"avoid": "Not for anger or celebration."
+},
+{
+"id": "rip",
+"name": "RIP Tombstone",
+"lines": 1,
+"shape": "labeling",
+"core": "A blank gravestone marked R.I.P. for mourning something that just died or got discontinued.",
+"slots": [
+"what died"
+],
+"aliases": [
+"rip",
+"tombstone",
+"gravestone",
+"rest in peace"
+],
+"avoid": "Not for real people's deaths or tragedies."
+},
+{
+"id": "spidermanlaugh",
+"name": "J Jonah Jameson Laughing",
+"lines": 2,
+"shape": "rejection",
+"core": "Peter makes a hopeful request, Jameson stares, then bursts out laughing at it.",
+"slots": [
+"the boss's question",
+"the hopeful request"
+],
+"aliases": [
+"jameson laugh",
+"spiderman laugh",
+"jjj laughing",
+"jonah jameson"
+],
+"avoid": "Not for requests that actually get approved."
+},
+{
+"id": "trumpetboy",
+"name": "Trumpet Boy",
+"lines": 2,
+"shape": "labeling",
+"core": "A boy blasts a trumpet at a girl covering her ears, for something loud and annoying pestering someone.",
+"slots": [
+"the annoyed victim",
+"the noisy pest"
+],
+"aliases": [
+"trumpet boy",
+"trumpet kid",
+"kid playing trumpet at girl",
+"trumpet meme"
+],
+"avoid": "Not for welcome attention."
+},
+{
+"id": "thatsmysecret",
+"name": "That's My Secret",
+"lines": 2,
+"shape": "irony",
+"core": "Hulk's 'that's my secret, I'm always angry', for revealing that your trick is a permanent bad state.",
+"slots": [
+"the question",
+"that's my secret, I'm always X"
+],
+"aliases": [
+"i'm always angry",
+"hulk secret",
+"that's my secret cap",
+"bruce banner"
+],
+"avoid": "Not for genuine skills or real secrets."
+},
+{
+"id": "thumbsuprambo",
+"name": "Thumbs Up Rambo",
+"lines": 2,
+"shape": "approval",
+"core": "A battered, bloody Rambo giving an intense double thumbs up, for approving something despite being wrecked.",
+"slots": [
+"the situation",
+"enthusiastic approval"
+],
+"aliases": [
+"rambo thumbs up",
+"thumbs up rambo",
+"stallone thumbs up",
+"approved"
+],
+"avoid": "Not for disapproval."
+},
+{
+"id": "blinkingguy",
+"name": "Blinking Guy",
+"lines": 2,
+"shape": "reaction",
+"core": "A man blinks in disbelief, for hearing something so baffling you have to do a double take.",
+"slots": [
+"what was said",
+"the stunned reaction"
+],
+"aliases": [
+"drew scanlon",
+"white guy blinking",
+"blinking white guy",
+"disbelief blink"
+],
+"avoid": "Not for things that are unsurprising."
+},
+{
+"id": "familyguylouispills",
+"name": "Lois Pills",
+"lines": 2,
+"shape": "labeling",
+"core": "Lois next to a giant pill bottle, for something you take to cope with a situation.",
+"slots": [
+"the situation",
+"what's on the pill bottle"
+],
+"aliases": [
+"lois pills",
+"family guy pills",
+"pill bottle",
+"lois griffin pills"
+],
+"avoid": "Not for real medication advice."
+},
+{
+"id": "windowserrormessage",
+"name": "Windows Error Message",
+"lines": 2,
+"shape": "warning",
+"core": "A blank Windows error dialog for presenting some life failure as a system error.",
+"slots": [
+"error title",
+"error message"
+],
+"aliases": [
+"windows error",
+"error message",
+"error dialog",
+"windows popup"
+],
+"avoid": "Not for good news."
+},
+{
+"id": "spongebobtimecardbackground",
+"name": "Spongebob Time Card",
+"lines": 1,
+"shape": "exaggeration",
+"core": "The SpongeBob narrator time card background, for announcing an absurd passage of time.",
+"slots": [
+"the time card text"
+],
+"aliases": [
+"spongebob time card",
+"a few moments later",
+"spongebob narrator",
+"time skip"
+],
+"avoid": "Not for anything that needs more than a short title."
+},
+{
+"id": "samuelljacksonsayonemoretime",
+"name": "Samuel L Jackson Say One More Time",
+"lines": 2,
+"shape": "warning",
+"core": "Jules daring someone to say a hated phrase one more time.",
+"slots": [
+"say X",
+"one more time"
+],
+"aliases": [
+"say what again",
+"say one more time",
+"pulp fiction jules",
+"i dare you"
+],
+"avoid": "Not for friendly encouragement."
+},
+{
+"id": "tryingtoexplain",
+"name": "Pepe Silvia Conspiracy Board",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Charlie frantically explaining a conspiracy board, for over-explaining a convoluted theory.",
+"slots": [
+"me explaining",
+"the convoluted thing"
+],
+"aliases": [
+"pepe silvia",
+"charlie conspiracy",
+"conspiracy board",
+"trying to explain"
+],
+"avoid": "Not for simple, clear explanations."
+},
+{
+"id": "traviskelcescreaming",
+"name": "Travis Kelce Screaming",
+"lines": 2,
+"shape": "labeling",
+"core": "A player screaming in his calm coach's face, for someone losing it at a person who stays unbothered.",
+"slots": [
+"the calm one being yelled at",
+"the one screaming"
+],
+"aliases": [
+"kelce yelling",
+"kelce andy reid",
+"travis kelce screaming",
+"screaming at coach"
+],
+"avoid": "Not for calm, polite conversations."
+},
+{
+"id": "whatmyfriendsthinkido",
+"name": "What My Friends Think I Do",
+"lines": 7,
+"shape": "comparison",
+"core": "Six panels contrasting how different people imagine your job versus what you actually do.",
+"slots": [
+"the job",
+"what my friends think I do",
+"what my mom thinks I do",
+"what society thinks I do",
+"what my boss thinks I do",
+"what I think I do",
+"what I actually do"
+],
+"aliases": [
+"what people think i do",
+"what i actually do",
+"what my friends think",
+"perception grid"
+],
+"avoid": "Not for topics without several contrasting perceptions."
+},
+{
+"id": "blankpokemoncard",
+"name": "Blank Pokemon Card",
+"lines": 3,
+"shape": "labeling",
+"core": "A blank Pokemon card for presenting a person or thing as a creature with silly stats and attacks.",
+"slots": [
+"card name",
+"the creature",
+"its attacks"
+],
+"aliases": [
+"pokemon card",
+"blank pokemon card",
+"pokemon card template",
+"make your own pokemon card"
+],
+"avoid": "Not for long stories; it's a stat card."
+},
+{
+"id": "barthittinghomerwithachair",
+"name": "Bart Hitting Homer With A Chair",
+"lines": 2,
+"shape": "labeling",
+"core": "Bart sneaks up to smash an oblivious Homer in the bath with a chair, for something about to blindside the unsuspecting.",
+"slots": [
+"the attacker",
+"the unsuspecting victim"
+],
+"aliases": [
+"bart chair",
+"bart hitting homer",
+"chair attack",
+"simpsons chair"
+],
+"avoid": "Not for situations where the victim saw it coming."
+},
+{
+"id": "partyloner",
+"name": "Party Loner Wojak",
+"lines": 2,
+"shape": "irony",
+"core": "A sad wojak alone at the wall while everyone else parties, for feeling left out or thinking about something else.",
+"slots": [
+"me at the party",
+"what I'm thinking about"
+],
+"aliases": [
+"wojak at party",
+"party loner",
+"lonely wojak",
+"sad guy at party",
+"wallflower wojak"
+],
+"avoid": "Not for being the life of the party."
+},
+{
+"id": "coolobama",
+"name": "Cool Obama",
+"lines": 2,
+"shape": "approval",
+"core": "Obama in sunglasses grinning and pointing, giving smooth, confident approval to something done well.",
+"slots": [
+"the situation",
+"the cool approval"
+],
+"aliases": [
+"obama sunglasses",
+"cool obama pointing",
+"obama nice",
+"obama approves"
+],
+"avoid": "Not for disappointment or criticism."
+},
+{
+"id": "tellmethetruthimreadytoheari",
+"name": "Tell Me The Truth, I'm Ready To Hear It",
+"lines": 2,
+"shape": "dialogue",
+"core": "Mary Jane asks for the truth, Peter delivers a harsh one, and she is crushed; used for painful truths people pretend they can handle.",
+"slots": [
+"the harsh truth",
+"her reaction"
+],
+"aliases": [
+"tell me the truth",
+"spiderman truth",
+"mary jane crying",
+"ready to hear it"
+],
+"avoid": "Not for good news or happy reveals."
+},
+{
+"id": "sadthumbsupcat",
+"name": "Sad Thumbs Up Cat",
+"lines": 2,
+"shape": "irony",
+"core": "A teary cat giving a thumbs up, for pretending to be fine with something that hurts.",
+"slots": [
+"the bad news",
+"forced okay"
+],
+"aliases": [
+"crying cat thumbs up",
+"sad cat thumbs up",
+"its fine cat",
+"thumbs up crying cat"
+],
+"avoid": "Not for genuine enthusiasm."
+},
+{
+"id": "badassskeleton",
+"name": "Badass Skeleton",
+"lines": 2,
+"shape": "warning",
+"core": "A skeleton aiming two revolvers, used for aggressive threats or extreme over-the-top reactions to small things.",
+"slots": [
+"the trigger",
+"the threat"
+],
+"aliases": [
+"skeleton with guns",
+"skeleton guns",
+"badass skeleton",
+"skeleton revolvers"
+],
+"avoid": "Not for calm or gentle messages."
+},
+{
+"id": "mybeloved",
+"name": "My Beloved",
+"lines": 2,
+"shape": "labeling",
+"core": "Two linked hearts holding two things that belong together, used to declare a beloved pairing.",
+"slots": [
+"first beloved",
+"second beloved"
+],
+"aliases": [
+"my beloved",
+"two hearts",
+"heart template",
+"beloved hearts"
+],
+"avoid": "Not for rivalries or things you dislike."
+},
+{
+"id": "iwishallxaveryy",
+"name": "I Wish All X A Very Y",
+"lines": 2,
+"shape": "irony",
+"core": "A polite Bugs Bunny extending formal wishes to a group, usually a sarcastic or oddly specific greeting.",
+"slots": [
+"the group",
+"the wish"
+],
+"aliases": [
+"i wish all",
+"bugs bunny i wish all",
+"a very",
+"bugs bunny tuxedo"
+],
+"avoid": "Not for sincere heartfelt messages."
+},
+{
+"id": "bropleasebro",
+"name": "Bro Please Bro",
+"lines": 1,
+"shape": "reaction",
+"core": "A tearful close-up for desperately begging someone to do or stop doing something.",
+"slots": [
+"the desperate plea"
+],
+"aliases": [
+"bro please",
+"crying guy begging",
+"please bro",
+"bro please bro"
+],
+"avoid": "Not for confident or calm requests."
+},
+{
+"id": "thanosinfinitystones",
+"name": "Thanos Infinity Stones",
+"lines": 7,
+"shape": "labeling",
+"core": "Six infinity stones each labelled as a component, combining into Thanos's ultimate power; used for collecting all the parts of something.",
+"slots": [
+"yellow stone",
+"blue stone",
+"purple stone",
+"red stone",
+"green stone",
+"orange stone",
+"what they combine into"
+],
+"aliases": [
+"infinity stones",
+"thanos stones",
+"infinity gauntlet",
+"thanos snap"
+],
+"avoid": "Not for simple two-way comparisons."
+},
+{
+"id": "jayinbetweenerscompletedit",
+"name": "Jay Inbetweeners Completed It",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Jay from The Inbetweeners smugly claiming he's completed something, used for bragging or obviously false boasts.",
+"slots": [
+"the challenge",
+"completed it, mate"
+],
+"aliases": [
+"completed it mate",
+"jay inbetweeners",
+"completed it",
+"inbetweeners"
+],
+"avoid": "Not for genuine modest achievements."
+},
+{
+"id": "suntzu",
+"name": "Sun Tzu",
+"lines": 2,
+"shape": "irony",
+"core": "A fake wise Sun Tzu quote from The Art of War, giving mundane or absurd advice in a solemn tone.",
+"slots": [
+"the fake wisdom",
+"attribution"
+],
+"aliases": [
+"sun tzu art of war",
+"art of war quote",
+"sun tzu quote",
+"terracotta warrior"
+],
+"avoid": "Not for real historical quotes."
+},
+{
+"id": "neckveinguy",
+"name": "Neck Vein Guy",
+"lines": 2,
+"shape": "reaction",
+"core": "A guy visibly straining to hold back laughter or anger, for when you desperately try not to react.",
+"slots": [
+"the situation",
+"trying not to react"
+],
+"aliases": [
+"trying not to laugh",
+"holding in laugh",
+"neck vein guy",
+"trying to hold it in"
+],
+"avoid": "Not for relaxed or carefree moments."
+},
+{
+"id": "tomchasingharryandronweasly",
+"name": "Tom Chasing Harry And Ron Weasley",
+"lines": 3,
+"shape": "labeling",
+"core": "Harry and Ron screaming in the flying car as a crazed Tom drives up behind them; used for something terrifying catching up with you.",
+"slots": [
+"first victim",
+"second victim",
+"the pursuer"
+],
+"aliases": [
+"harry and ron scared",
+"tom chasing harry potter",
+"flying car tom",
+"harry ron screaming"
+],
+"avoid": "Not for calm or friendly situations."
+},
+{
+"id": "clowncomputer",
+"name": "Clown Computer",
+"lines": 2,
+"shape": "self-own",
+"core": "A full-costume clown at an office computer, for doing something foolish at work or online.",
+"slots": [
+"the setup",
+"the clown move"
+],
+"aliases": [
+"clown at computer",
+"clown office",
+"clown typing",
+"clown working"
+],
+"avoid": "Not for competent or serious work."
+},
+{
+"id": "vegetaover9000",
+"name": "Vegeta Over 9000",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Vegeta crushing his scouter in disbelief, for a number or level that is absurdly high.",
+"slots": [
+"what was measured",
+"it's over 9000"
+],
+"aliases": [
+"its over 9000",
+"over 9000",
+"vegeta scouter",
+"vegeta power level"
+],
+"avoid": "Not for small or ordinary amounts."
+},
+{
+"id": "blankwildpokemonappears",
+"name": "Wild Pokemon Appears",
+"lines": 2,
+"shape": "labeling",
+"core": "The Pokemon battle screen announcing a wild encounter, used when an unwelcome thing suddenly shows up.",
+"slots": [
+"the creature",
+"its name"
+],
+"aliases": [
+"wild pokemon appeared",
+"a wild appeared",
+"pokemon encounter",
+"wild appeared"
+],
+"avoid": "Not for things you planned or expected."
+},
+{
+"id": "bartsimpsonchalkboard",
+"name": "Bart Simpson Chalkboard",
+"lines": 1,
+"shape": "self-own",
+"core": "Bart writing lines on the chalkboard as punishment, for a lesson someone keeps having to relearn.",
+"slots": [
+"the line written as punishment"
+],
+"aliases": [
+"bart chalkboard",
+"simpsons chalkboard",
+"bart writing lines",
+"i will not"
+],
+"avoid": "Not for multi-person dialogue."
+},
+{
+"id": "donaltrumpbirthday",
+"name": "Donald Trump Birthday",
+"lines": 2,
+"shape": "approval",
+"core": "Trump grinning and pointing at someone, used for over-the-top birthday wishes or singling someone out with praise.",
+"slots": [
+"the setup",
+"the shout-out"
+],
+"aliases": [
+"trump pointing",
+"trump birthday",
+"happy birthday trump",
+"trump you"
+],
+"avoid": "Not for sad or sympathetic messages."
+},
+{
+"id": "blankkermitwaiting",
+"name": "Kermit Waiting",
+"lines": 2,
+"shape": "reaction",
+"core": "Four shots of Kermit waiting patiently through every season, for waiting forever on something that never comes.",
+"slots": [
+"what you're waiting for",
+"how long it's been"
+],
+"aliases": [
+"kermit waiting",
+"still waiting kermit",
+"waiting kermit",
+"kermit seasons"
+],
+"avoid": "Not for things that arrive quickly."
+},
+{
+"id": "krustykrabvschumbucket",
+"name": "Krusty Krab Vs Chum Bucket",
+"lines": 2,
+"shape": "comparison",
+"core": "The successful Krusty Krab beside the sad Chum Bucket, comparing a popular original with its inferior rival.",
+"slots": [
+"the good original",
+"the sad knockoff"
+],
+"aliases": [
+"krusty krab vs chum bucket",
+"chum bucket",
+"spongebob krusty krab",
+"original vs knockoff"
+],
+"avoid": "Not for two equally good options."
+},
+{
+"id": "everywhereigoiseehisface",
+"name": "Everywhere I Go I See His Face",
+"lines": 1,
+"shape": "reaction",
+"core": "Spider-Man haunted by a face on every wall, for something you can't escape seeing everywhere.",
+"slots": [
+"the thing you keep seeing"
+],
+"aliases": [
+"everywhere i go i see his face",
+"spiderman mural",
+"i see his face",
+"far from home mural"
+],
+"avoid": "Not for things that are rare or hard to find."
+},
+{
+"id": "confusedscreaming",
+"name": "Confused Screaming",
+"lines": 1,
+"shape": "reaction",
+"core": "Filthy Frank screaming in total confusion, for situations that make no sense at all.",
+"slots": [
+"the baffling situation"
+],
+"aliases": [
+"confused screaming",
+"filthy frank screaming",
+"screaming confused",
+"confused screaming frank"
+],
+"avoid": "Not for calm, well-understood situations."
+},
+{
+"id": "turnupthevolume",
+"name": "Turn Up The Volume",
+"lines": 1,
+"shape": "exaggeration",
+"core": "A volume knob cranked to max and a kid screaming along in headphones, for getting way too into something.",
+"slots": [
+"the trigger"
+],
+"aliases": [
+"turn up the volume",
+"volume knob screaming",
+"headphones screaming kid",
+"volume up"
+],
+"avoid": "Not for quiet or subtle reactions."
+},
+{
+"id": "milkingthecow",
+"name": "Milking The Cow",
+"lines": 2,
+"shape": "labeling",
+"core": "A cheerful farmer loaded with buckets greets an exhausted, drained cow; used for someone who keeps squeezing an already depleted source.",
+"slots": [
+"the drained cow",
+"the one milking it"
+],
+"aliases": [
+"milking the cow",
+"good morning sunshine cow",
+"drained cow cartoon",
+"milked dry"
+],
+"avoid": "Not for fair or sustainable arrangements."
+},
+{
+"id": "sadkeanu",
+"name": "Sad Keanu",
+"lines": 2,
+"shape": "reaction",
+"core": "Keanu Reeves eating alone on a park bench, for lonely, melancholy moments.",
+"slots": [
+"the sad situation",
+"the lonely punchline"
+],
+"aliases": [
+"sad keanu",
+"keanu bench",
+"lonely keanu",
+"keanu reeves sad"
+],
+"avoid": "Not for happy or social moments."
+},
+{
+"id": "illusionoffreechoice",
+"name": "Illusion Of Free Choice",
+"lines": 4,
+"shape": "irony",
+"core": "A cow choosing between two paths that both lead to the same place, for choices that don't really matter.",
+"slots": [
+"where both paths end",
+"option A",
+"option B",
+"who's choosing"
+],
+"aliases": [
+"illusion of free choice",
+"illusion of choice",
+"cow two paths",
+"same destination"
+],
+"avoid": "Not for choices with genuinely different outcomes."
+},
+{
+"id": "soyjakpointing",
+"name": "Soyjak Pointing",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Two soyjaks gasping and pointing in excitement, mocking people who overreact to something mundane.",
+"slots": [
+"the setup",
+"the thing they're excited about"
+],
+"aliases": [
+"soyjak pointing",
+"two soyjaks pointing",
+"pointing soyjaks",
+"soy boy pointing",
+"consoomer pointing"
+],
+"avoid": "Not for genuinely impressive things."
+},
+{
+"id": "yugioh",
+"name": "Yu-Gi-Oh Card Reveal",
+"lines": 2,
+"shape": "plan-backfires",
+"core": "Kaiba plays a card, Yugi calmly reveals a counter card, and Kaiba is blown away; used when a confident move gets instantly countered.",
+"slots": [
+"my card",
+"their counter"
+],
+"aliases": [
+"yugioh card",
+"kaiba card",
+"yu gi oh blank card",
+"trap card"
+],
+"avoid": "Not for one-sided wins with no comeback."
+},
+{
+"id": "deepthoughts",
+"name": "Deep Thoughts Gorilla",
+"lines": 2,
+"shape": "irony",
+"core": "A gorilla stroking its chin in contemplation, for absurd shower thoughts or mock-profound questions.",
+"slots": [
+"the setup",
+"the deep thought"
+],
+"aliases": [
+"thinking gorilla",
+"deep thoughts",
+"pondering gorilla",
+"philosoraptor gorilla"
+],
+"avoid": "Not for simple obvious statements."
+},
+{
+"id": "blankietheshockeddog",
+"name": "Blankie The Shocked Dog",
+"lines": 2,
+"shape": "reaction",
+"core": "A boxer dog with wide, startled eyes, for being shocked or caught off guard.",
+"slots": [
+"the shocking thing",
+"the reaction"
+],
+"aliases": [
+"shocked dog",
+"surprised boxer dog",
+"blankie dog",
+"wide eyed dog"
+],
+"avoid": "Not for calm or expected news."
+},
+{
+"id": "weirdstuffidopotoo",
+"name": "Weird Stuff I Do Potoo",
+"lines": 2,
+"shape": "self-own",
+"core": "A wide-eyed potoo bird confessing strange, awkward habits people secretly have.",
+"slots": [
+"the weird habit",
+"the awkward follow-up"
+],
+"aliases": [
+"potoo bird",
+"weird stuff i do",
+"awkward potoo",
+"big eyed bird"
+],
+"avoid": "Not for normal, relatable behaviour."
+},
+{
+"id": "angrymanpointingathand",
+"name": "Angry Man Pointing At Hand",
+"lines": 2,
+"shape": "dialogue",
+"core": "A man in an old painting jabbing at his palm mid-argument, for indignantly explaining something obvious or making a heated point.",
+"slots": [
+"the setup",
+"the indignant point"
+],
+"aliases": [
+"man pointing at hand",
+"angry man painting",
+"pointing at palm",
+"explaining painting"
+],
+"avoid": "Not for calm agreement."
+},
+{
+"id": "yodasmell",
+"name": "Yoda Smell",
+"lines": 2,
+"shape": "reaction",
+"core": "Yoda with eyes closed, sniffing the air, for sensing something coming or savouring a moment.",
+"slots": [
+"the setup",
+"what Yoda senses"
+],
+"aliases": [
+"yoda smell",
+"yoda sniffing",
+"i smell",
+"yoda senses"
+],
+"avoid": "Not for disgust at a bad smell."
+},
+{
+"id": "iamspeed",
+"name": "I Am Speed",
+"lines": 1,
+"shape": "exaggeration",
+"core": "Lightning McQueen declaring 'I am speed', for being proudly, absurdly fast at something.",
+"slots": [
+"what you did fast"
+],
+"aliases": [
+"i am speed",
+"lightning mcqueen",
+"kachow",
+"cars speed"
+],
+"avoid": "Not for slow or careful work."
+},
+{
+"id": "burnkitty",
+"name": "Burn Kitty",
+"lines": 2,
+"shape": "irony",
+"core": "Grumpy Cat glaring in front of a burning house, for unbothered, deadpan responses to a disaster you may have caused.",
+"slots": [
+"the disaster",
+"the grumpy remark"
+],
+"aliases": [
+"burn kitty",
+"grumpy cat fire",
+"grumpy cat burning house",
+"cat house fire"
+],
+"avoid": "Not for real house fires or tragedies."
+},
+{
+"id": "whoisthatpokemon",
+"name": "Who's That Pokemon",
+"lines": 2,
+"shape": "irony",
+"core": "A mystery reveal: something is presented as a big guessing game when the answer is obvious or disappointing.",
+"slots": [
+"the mystery question",
+"the obvious answer"
+],
+"aliases": [
+"who's that pokemon",
+"whos that pokemon",
+"pokemon silhouette",
+"guess the pokemon"
+],
+"avoid": "Not for straight reactions; it needs a guess-and-reveal setup."
+},
+{
+"id": "neododgingabulletmatrix",
+"name": "Neo Dodging Bullets",
+"lines": 2,
+"shape": "labeling",
+"core": "Someone narrowly and acrobatically dodging a responsibility, question or problem coming at them.",
+"slots": [
+"the incoming thing",
+"the person dodging it"
+],
+"aliases": [
+"neo dodge",
+"matrix bullet dodge",
+"bullet time",
+"dodging bullets"
+],
+"avoid": "Not for cases where the person actually gets hit or faces the problem."
+},
+{
+"id": "ohno",
+"name": "Oh No",
+"lines": 2,
+"shape": "reaction",
+"core": "A horrified, disgusted reaction to realising something awful.",
+"slots": [
+"the setup",
+"the horrifying realisation"
+],
+"aliases": [
+"oh no",
+"oh no face",
+"disgusted guy",
+"horrified guy"
+],
+"avoid": "Not for pleasant surprises."
+},
+{
+"id": "limmywakingup",
+"name": "Limmy Waking Up",
+"lines": 1,
+"shape": "reaction",
+"core": "Waking up groggy and dazed, used for the miserable moment after a bad night or a rude awakening.",
+"slots": [
+"the situation"
+],
+"aliases": [
+"limmy waking up",
+"limmy",
+"waking up hungover",
+"groggy wake up"
+],
+"avoid": "Not for energetic or happy moments."
+},
+{
+"id": "austinpowershonestly",
+"name": "Austin Powers Honestly",
+"lines": 2,
+"shape": "self-own",
+"core": "Sheepishly admitting an embarrassing truth with a shrug, as in \"if I'm being honest...\".",
+"slots": [
+"the honest setup",
+"the embarrassing admission"
+],
+"aliases": [
+"austin powers honestly",
+"honestly",
+"austin powers shrug",
+"if i'm being honest"
+],
+"avoid": "Not for proud or serious confessions."
+},
+{
+"id": "esdemiagradoinformarles",
+"name": "Gentleman Frog Pleasure To Inform",
+"lines": 2,
+"shape": "approval",
+"core": "A dignified frog in a suit formally announcing good (or smug) news to everyone.",
+"slots": [
+"the formal announcement",
+"the news"
+],
+"aliases": [
+"es de mi agrado informarles",
+"gentleman frog",
+"gentlemen it is with great pleasure",
+"frog in suit"
+],
+"avoid": "Not for bad news delivered sincerely."
+}
+]

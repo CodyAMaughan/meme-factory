@@ -1,0 +1,1088 @@
+[
+{
+"id": "laughinggoat",
+"name": "Laughing Goat",
+"lines": 2,
+"shape": "reaction",
+"core": "A mountain goat cackling with its mouth wide open, used for laughing hard at something absurd or someone's misfortune.",
+"slots": [
+"the funny thing",
+"the laugh"
+],
+"aliases": [
+"Goat Laughing",
+"Happy Goat",
+"Laughing Mountain Goat",
+"Goat LOL"
+],
+"avoid": "Not for sad or serious news."
+},
+{
+"id": "reactionguys",
+"name": "Reaction Guys",
+"lines": 2,
+"shape": "binary-choice",
+"core": "A group of guys staring blankly at one thing and then going wild for another, used to show what bores people versus what excites them.",
+"slots": [
+"the boring thing",
+"the exciting thing"
+],
+"aliases": [
+"Reaction Guys",
+"Bored Vs Excited Guys",
+"Gamers Reaction",
+"Unimpressed Then Hyped"
+],
+"avoid": "Not for things that get equal reactions."
+},
+{
+"id": "imnevergoingtofinanciallyrec",
+"name": "I'm Never Going To Financially Recover From This",
+"lines": 1,
+"shape": "self-own",
+"core": "Joe Exotic lamenting 'I'm never gonna financially recover from this', used when something small or self-inflicted costs you way too much.",
+"slots": [
+"the costly mistake"
+],
+"aliases": [
+"Joe Exotic Financially Recover",
+"Never Financially Recover",
+"Tiger King Meme",
+"Financially Recover From This"
+],
+"avoid": "Not for genuine financial hardship."
+},
+{
+"id": "pokewithstick",
+"name": "Poke With Stick",
+"lines": 2,
+"shape": "labeling",
+"core": "A stick figure cautiously poking something with a stick, used for warily testing or provoking something you don't trust.",
+"slots": [
+"who is poking",
+"the thing being poked"
+],
+"aliases": [
+"Poking With A Stick",
+"Stick Figure Poke",
+"Poke It With A Stick",
+"Is It Dead"
+],
+"avoid": "Not for confident direct action."
+},
+{
+"id": "samueljacksonglance",
+"name": "Samuel Jackson Glance",
+"lines": 2,
+"shape": "reaction",
+"core": "Samuel L. Jackson giving a sideways look of disbelief, used when someone says something suspicious or outrageous.",
+"slots": [
+"what they said",
+"the incredulous reply"
+],
+"aliases": [
+"Samuel L Jackson Side Eye",
+"Pulp Fiction Glance",
+"Jules Glance",
+"Say What Again"
+],
+"avoid": "Not for calm agreement."
+},
+{
+"id": "titanicband",
+"name": "Titanic Band",
+"lines": 2,
+"shape": "irony",
+"core": "The Titanic sinking while the band keeps calmly playing, used when people carry on as normal while everything collapses around them.",
+"slots": [
+"the sinking thing",
+"who keeps playing"
+],
+"aliases": [
+"Titanic Band Playing",
+"The Band Played On",
+"Titanic Violinists",
+"Keep Playing As Ship Sinks"
+],
+"avoid": "Not for situations that are actually fine."
+},
+{
+"id": "tightenmegamindthereisnoeast",
+"name": "Tighten There Is No Easter Bunny",
+"lines": 1,
+"shape": "rejection",
+"core": "Tighten from Megamind gleefully crushing illusions, 'there is no Easter Bunny, no Tooth Fairy, and there is no...', used to deliver a harsh truth that something hoped-for doesn't exist.",
+"slots": [
+"the thing that doesn't exist"
+],
+"aliases": [
+"There Is No Easter Bunny",
+"Megamind Tighten",
+"There Is No Tooth Fairy",
+"Titan Megamind"
+],
+"avoid": "Not for confirming good news."
+},
+{
+"id": "awizardisneverlate",
+"name": "A Wizard Is Never Late",
+"lines": 2,
+"shape": "irony",
+"core": "Gandalf insisting a wizard arrives precisely when he means to, used to excuse being late or arriving at the last possible moment.",
+"slots": [
+"a wizard is never late",
+"he arrives precisely when"
+],
+"aliases": [
+"Gandalf Never Late",
+"Wizard Is Never Late",
+"Gandalf Arrives Precisely",
+"Nor Is He Early"
+],
+"avoid": "Not for being genuinely punctual."
+},
+{
+"id": "thankyouforsavingmylife",
+"name": "Thank You For Changing My Life",
+"lines": 2,
+"shape": "approval",
+"core": "A bearded Nordic gamer wojak solemnly saying 'Thank you for changing my life', used to express deep gratitude to something that improved your life.",
+"slots": [
+"context",
+"the life-changing thing"
+],
+"aliases": [
+"Chad Thank You",
+"Nordic Gamer Thank You",
+"Thank You For Changing My Life",
+"Yes Chad Grateful"
+],
+"avoid": "Not for things you dislike."
+},
+{
+"id": "beardbaby",
+"name": "Beard Baby",
+"lines": 2,
+"shape": "irony",
+"core": "A baby with a full grown-man beard, used for someone young or new acting way more mature or experienced than they are.",
+"slots": [
+"the setup",
+"the grown-up claim"
+],
+"aliases": [
+"Bearded Baby",
+"Baby With Beard",
+"Grown Man Baby",
+"Manly Baby"
+],
+"avoid": "Not for actual veterans."
+},
+{
+"id": "hewillnever",
+"name": "He Will Never",
+"lines": 2,
+"shape": "plan-backfires",
+"core": "Cereal Guy reads a sad statement then spits out his cereal at a twist ending, used for a sympathetic setup with a shocking or absurd punchline.",
+"slots": [
+"the sad setup",
+"the shocking twist"
+],
+"aliases": [
+"Cereal Guy",
+"Cereal Guy Spitting",
+"He Will Never Have A Girlfriend",
+"Spit Take Rage Comic"
+],
+"avoid": "Not for stories without a twist."
+},
+{
+"id": "nevergiveup",
+"name": "Never Give Up",
+"lines": 3,
+"shape": "irony",
+"core": "One miner keeps digging while another quits just inches from the diamonds; used for giving up right before success.",
+"slots": [
+"one who keeps going",
+"one who quits just before success",
+"the reward"
+],
+"aliases": [
+"Miners Giving Up",
+"Diamond Miners",
+"Don't Give Up Diamonds",
+"Almost There Miner"
+],
+"avoid": "Not for situations with no effort or payoff involved."
+},
+{
+"id": "nonappaitsatrick",
+"name": "No Nappa It's A Trick",
+"lines": 2,
+"shape": "warning",
+"core": "Vegeta frantically warns Nappa, who is about to fall for something obvious; used for warning someone off a tempting trap.",
+"slots": [
+"frantic warning",
+"the one about to fall for it"
+],
+"aliases": [
+"Vegeta Warning Nappa",
+"No Nappa",
+"It's A Trick Vegeta",
+"Vegeta Nappa"
+],
+"avoid": "Not for calm advice or situations without a trap."
+},
+{
+"id": "tomandspikefighting",
+"name": "Tom And Spike Fighting",
+"lines": 3,
+"shape": "labeling",
+"core": "Spike and Tom duel while Jerry grins at the chaos; used when two parties fight and a third enjoys watching or benefits.",
+"slots": [
+"first fighter",
+"second fighter",
+"gleeful onlooker"
+],
+"aliases": [
+"Jerry Watching Fight",
+"Tom and Spike Sword Fight",
+"Jerry Enjoying Chaos",
+"Jerry Smiling Fight"
+],
+"avoid": "Not for situations where nobody enjoys the conflict."
+},
+{
+"id": "ptsdclarinetboy",
+"name": "PTSD Clarinet Boy",
+"lines": 2,
+"shape": "reaction",
+"core": "A grim boy flashes back to his happier clarinet days; used for being haunted by a memory triggered by something small.",
+"slots": [
+"the trigger",
+"the haunting memory"
+],
+"aliases": [
+"Clarinet Boy Flashback",
+"PTSD Clarinet Kid",
+"Band Kid Flashback",
+"Clarinet Flashback"
+],
+"avoid": "Not for happy nostalgia without any dread."
+},
+{
+"id": "angrypingu",
+"name": "Angry Pingu",
+"lines": 1,
+"shape": "reaction",
+"core": "Pingu sits with arms crossed, sulking; used to show grumpy, stubborn annoyance at something.",
+"slots": [
+"what annoys me"
+],
+"aliases": [
+"Pingu Arms Crossed",
+"Grumpy Pingu",
+"Pingu Sulking",
+"Mad Pingu"
+],
+"avoid": "Not for real anger or happy moods."
+},
+{
+"id": "kurtanglestare",
+"name": "Kurt Angle Stare",
+"lines": 1,
+"shape": "reaction",
+"core": "Kurt Angle stares wide-eyed into the camera; used for stunned, awkward disbelief at what someone just said or did.",
+"slots": [
+"what I just witnessed"
+],
+"aliases": [
+"Kurt Angle Stare",
+"Kurt Angle Wide Eyes",
+"Kurt Angle Staring",
+"Wide Eyed Stare"
+],
+"avoid": "Not for happy surprise or excitement."
+},
+{
+"id": "interstellarsmoking",
+"name": "Interstellar Smoking",
+"lines": 2,
+"shape": "reaction",
+"core": "A haggard man drags on a cigarette with a wide, haunted stare; used for weary shock after hearing something unsettling.",
+"slots": [
+"the situation",
+"my haunted reaction"
+],
+"aliases": [
+"Smoking Stare",
+"Haunted Cigarette Guy",
+"Stressed Smoking Man",
+"Nervous Smoking"
+],
+"avoid": "Not for cheerful or relaxed moods."
+},
+{
+"id": "twocatsfightingforreal",
+"name": "Two Cats Fighting",
+"lines": 2,
+"shape": "labeling",
+"core": "Two cats brawl mid-air; used to label two sides locked in a pointless, heated fight.",
+"slots": [
+"first side",
+"second side"
+],
+"aliases": [
+"Cats Fighting",
+"Cat Fight",
+"Two Cats Brawling",
+"Cats Punching"
+],
+"avoid": "Not for friendly disagreements or one-sided situations."
+},
+{
+"id": "ponyshrugs",
+"name": "Pony Shrugs",
+"lines": 2,
+"shape": "reaction",
+"core": "Rainbow Dash shrugs with a blank face; used for 'I don't know' or 'whatever, not my problem'.",
+"slots": [
+"the question or situation",
+"the shrugging answer"
+],
+"aliases": [
+"Rainbow Dash Shrug",
+"MLP Shrug",
+"Shrugging Pony",
+"Brony Shrug"
+],
+"avoid": "Not for strong emotions or clear answers."
+},
+{
+"id": "lazycollegesenior",
+"name": "Lazy College Senior",
+"lines": 2,
+"shape": "self-own",
+"core": "A scruffy student drinking beer; used for confessions of lazy, half-hearted, senior-year-style effort.",
+"slots": [
+"the responsibility",
+"the lazy way out"
+],
+"aliases": [
+"Lazy Senior",
+"Beer Student",
+"College Senior",
+"Senioritis Guy"
+],
+"avoid": "Not for genuine hard work or achievement."
+},
+{
+"id": "grumpycathappy",
+"name": "Grumpy Cat Happy",
+"lines": 2,
+"shape": "irony",
+"core": "Grumpy Cat edited to look happy; used for rare joy, usually at someone else's misfortune or something sarcastic.",
+"slots": [
+"the setup",
+"the twisted happy reason"
+],
+"aliases": [
+"Happy Grumpy Cat",
+"Grumpy Cat Smiling",
+"Smiling Grumpy Cat",
+"Grumpy Cat Good"
+],
+"avoid": "Not for plain grumpy reactions; use regular Grumpy Cat."
+},
+{
+"id": "andydroppingwoody",
+"name": "Andy Dropping Woody",
+"lines": 2,
+"shape": "rejection",
+"core": "Andy carelessly drops Woody, his old favourite; used for abandoning something you used to love for something new.",
+"slots": [
+"the old favourite being dropped",
+"the person dropping it"
+],
+"aliases": [
+"Andy Drops Woody",
+"Toy Story Dropping Woody",
+"Woody Abandoned",
+"Andy Throwing Woody"
+],
+"avoid": "Not for things being treasured or kept."
+},
+{
+"id": "yodabeguntheclonewarhas",
+"name": "Begun The Clone War Has",
+"lines": 2,
+"shape": "warning",
+"core": "A grave Yoda announces that a war has begun; used when a petty conflict or rivalry officially kicks off.",
+"slots": [
+"the triggering event",
+"begun the ___ war has"
+],
+"aliases": [
+"Begun The Clone War Has",
+"Yoda Clone War",
+"Begun This War Has",
+"Yoda War Has Begun"
+],
+"avoid": "Not for peaceful or resolved situations."
+},
+{
+"id": "memespoopjurassicpark",
+"name": "That Is One Big Pile Of Poop",
+"lines": 2,
+"shape": "labeling",
+"core": "Ian Malcolm stands beside a giant pile of dinosaur dung; used for facing an enormous mess.",
+"slots": [
+"the person facing it",
+"the huge mess"
+],
+"aliases": [
+"Jurassic Park Poop",
+"Ian Malcolm Dung",
+"One Big Pile",
+"Dino Poop Pile"
+],
+"avoid": "Not for small or tidy problems."
+},
+{
+"id": "smallknightgiantknight",
+"name": "Small Knight Giant Knight",
+"lines": 2,
+"shape": "comparison",
+"core": "A tiny knight faces a towering giant; used for a small person up against an overwhelming challenge.",
+"slots": [
+"the overwhelming challenge",
+"the tiny challenger"
+],
+"aliases": [
+"Yhorm The Giant",
+"Dark Souls Giant",
+"Small Knight vs Giant",
+"Tiny Knight Giant"
+],
+"avoid": "Not for evenly matched fights."
+},
+{
+"id": "abbacchiojoinsthekicking",
+"name": "Abbacchio Joins The Kicking",
+"lines": 3,
+"shape": "escalation",
+"core": "Two guys kick someone while Abbacchio calmly sips wine, then he leaps in to join; used when you can't resist piling on.",
+"slots": [
+"the one getting piled on",
+"the calm observer",
+"the observer joining in"
+],
+"aliases": [
+"Abbacchio Kicking",
+"JoJo Kicking Meme",
+"Abbacchio Joins In",
+"Golden Wind Kicking"
+],
+"avoid": "Not for real bullying or violence against people."
+},
+{
+"id": "rememberthattime",
+"name": "Remember That Time",
+"lines": 2,
+"shape": "dialogue",
+"core": "Chris Farley excitedly asks a guest 'remember when...' then calls it awesome; used for gushing over a shared memory.",
+"slots": [
+"remember that time...",
+"that was awesome"
+],
+"aliases": [
+"Chris Farley Show",
+"Remember When",
+"That Was Awesome",
+"Farley Remember"
+],
+"avoid": "Not for bad memories or serious nostalgia."
+},
+{
+"id": "ghostboo",
+"name": "Ghost Boo",
+"lines": 4,
+"shape": "irony",
+"core": "A ghost says boo three times with no reaction, then says nothing and gets a scream; used when the quiet thing is scarier than the loud ones.",
+"slots": [
+"first loud threat",
+"second loud threat",
+"third loud threat",
+"the silent scary one"
+],
+"aliases": [
+"Boo Ghost Comic",
+"Silent Ghost",
+"Ghost Says Nothing",
+"Boo Scream Comic"
+],
+"avoid": "Not for things that are scary in the obvious way."
+},
+{
+"id": "emergencyalert",
+"name": "Emergency Alert",
+"lines": 1,
+"shape": "warning",
+"core": "A blank phone emergency alert; used to announce a trivial or absurd 'emergency' with mock urgency.",
+"slots": [
+"the alert message"
+],
+"aliases": [
+"Emergency Alert",
+"Phone Alert",
+"Presidential Alert",
+"Emergency Alerts Notification"
+],
+"avoid": "Not for real emergencies or disasters."
+},
+{
+"id": "gladiator",
+"name": "Are You Not Entertained",
+"lines": 2,
+"shape": "reaction",
+"core": "Maximus shouts at the arena crowd 'Are you not entertained?'; used after delivering something impressive to an unimpressed audience.",
+"slots": [
+"what I just did",
+"are you not entertained?"
+],
+"aliases": [
+"Are You Not Entertained",
+"Gladiator Maximus",
+"Maximus Shouting",
+"Russell Crowe Gladiator"
+],
+"avoid": "Not for quiet or modest achievements."
+},
+{
+"id": "sadbaby",
+"name": "Sad Baby",
+"lines": 2,
+"shape": "reaction",
+"core": "A baby on the verge of tears; used for small, petty disappointments that feel devastating.",
+"slots": [
+"the setup",
+"the tiny tragedy"
+],
+"aliases": [
+"Crying Baby",
+"Sad Face Baby",
+"Baby About To Cry",
+"Pouting Baby"
+],
+"avoid": "Not for real grief or serious loss."
+},
+{
+"id": "barbosaandsparrow",
+"name": "Barbossa And Sparrow",
+"lines": 2,
+"shape": "dialogue",
+"core": "Barbossa yells in Jack Sparrow's face while Jack stares back unbothered; used for an angry rant met with a deadpan reply.",
+"slots": [
+"the angry rant",
+"the deadpan response"
+],
+"aliases": [
+"Barbossa Yelling At Jack",
+"Pirates Argument",
+"Jack Sparrow Barbossa",
+"Barbossa Sparrow"
+],
+"avoid": "Not for friendly or agreeable conversations."
+},
+{
+"id": "xbuty",
+"name": "X But Y",
+"lines": 1,
+"shape": "other",
+"core": "Don Draper confidently pitches a blank board; used for absurd 'it's X, but Y' mashup pitches.",
+"slots": [
+"the X but Y pitch"
+],
+"aliases": [
+"Don Draper Pitch",
+"X But Y Pitch",
+"Mad Men Pitch",
+"Uber But For"
+],
+"avoid": "Not for sensible or serious ideas."
+},
+{
+"id": "confessionkid",
+"name": "Confession Kid",
+"lines": 2,
+"shape": "self-own",
+"core": "A boy hides his face in shame; used to confess embarrassing habits or secrets.",
+"slots": [
+"the setup",
+"the embarrassing confession"
+],
+"aliases": [
+"Confession Kid",
+"Embarrassed Kid",
+"Facepalm Kid",
+"Shameful Confession"
+],
+"avoid": "Not for proud moments or other people's mistakes."
+},
+{
+"id": "varvideoassistantreferee",
+"name": "VAR Decision",
+"lines": 1,
+"shape": "approval",
+"core": "A stadium screen shows a VAR decision; used to announce an official verdict on a petty dispute.",
+"slots": [
+"the verdict"
+],
+"aliases": [
+"VAR Decision",
+"VAR Check",
+"Video Assistant Referee",
+"VAR Screen"
+],
+"avoid": "Not for situations with no ruling or judgement."
+},
+{
+"id": "hagridyerawizard",
+"name": "Yer A Wizard Harry",
+"lines": 2,
+"shape": "approval",
+"core": "Hagrid tells Harry he's a wizard; used to announce someone has a surprising new status or skill.",
+"slots": [
+"the setup",
+"yer a ___, Harry"
+],
+"aliases": [
+"Yer A Wizard Harry",
+"Hagrid Wizard",
+"You're A Wizard",
+"Hagrid Yer A"
+],
+"avoid": "Not for insults or bad news."
+},
+{
+"id": "interruptingbird",
+"name": "Interrupting Bird",
+"lines": 3,
+"shape": "dialogue",
+"core": "A small bird keeps trying to speak and a big bird loudly cuts it off; used for being repeatedly interrupted or talked over.",
+"slots": [
+"small bird starts",
+"small bird tries again",
+"big bird interrupts"
+],
+"aliases": [
+"Annoyed Bird",
+"Bird Interrupting",
+"Shut Up Bird",
+"Screaming Bird Comic"
+],
+"avoid": "Not for polite, turn-taking conversations."
+},
+{
+"id": "drevilonemillion",
+"name": "Dr Evil One Million Dollars",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Dr Evil, pinky to lip, demands one million dollars; used for demands that sound huge but are laughably outdated or small.",
+"slots": [
+"the setup",
+"the ridiculous demand"
+],
+"aliases": [
+"Dr Evil Pinky",
+"One Million Dollars",
+"Dr Evil Million",
+"Austin Powers Pinky"
+],
+"avoid": "Not for reasonable or modest requests."
+},
+{
+"id": "drakejoshmegan",
+"name": "Josh Megan",
+"lines": 2,
+"shape": "reaction",
+"core": "Josh stands frozen in exhausted exasperation; used for weary disbelief when someone does the annoying thing again.",
+"slots": [
+"what happened",
+"my exhausted reaction"
+],
+"aliases": [
+"Drake and Josh Megan",
+"Josh Peck Annoyed",
+"Megan!",
+"Josh Exasperated"
+],
+"avoid": "Not for happy or excited reactions."
+},
+{
+"id": "kidsafraidofrabbit",
+"name": "Kids Afraid Of Rabbit",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Two kids cower in a corner, terrified of a harmless bunny; used for overreacting in fear to something trivial.",
+"slots": [
+"the terrified ones",
+"the harmless thing"
+],
+"aliases": [
+"Scared Of Bunny",
+"Kids Scared Of Rabbit",
+"Afraid Of Bunny",
+"Terrified Kids Bunny"
+],
+"avoid": "Not for genuinely dangerous threats."
+},
+{
+"id": "doubleyeschad",
+"name": "Double Yes Chad",
+"lines": 2,
+"shape": "approval",
+"core": "Two Nordic Yes Chads face each other in calm agreement; used when two sides proudly agree on something controversial.",
+"slots": [
+"first side's bold claim",
+"second side's 'yes'"
+],
+"aliases": [
+"Two Yes Chads",
+"Yes Chad Facing",
+"Chad Agreement",
+"Nordic Gamer Agreement"
+],
+"avoid": "Not for disagreements or arguments."
+},
+{
+"id": "heroesiii",
+"name": "Heroes III Message Box",
+"lines": 1,
+"shape": "other",
+"core": "A blank Heroes of Might and Magic III event dialog; used to narrate everyday events as a game message you can only click OK on.",
+"slots": [
+"the game event message"
+],
+"aliases": [
+"Heroes 3 Dialog",
+"HoMM3 Message",
+"Heroes of Might and Magic",
+"Heroes III Event"
+],
+"avoid": "Not for anything needing a picture of a person's reaction."
+},
+{
+"id": "sadwojakcycle",
+"name": "Sad Wojak Cycle",
+"lines": 4,
+"shape": "escalation",
+"core": "A sad Wojak sits inside an endless loop of arrows; used for a miserable cycle you keep repeating.",
+"slots": [
+"step one",
+"step two",
+"step three",
+"step four"
+],
+"aliases": [
+"Wojak Cycle",
+"Vicious Cycle",
+"Endless Cycle",
+"Sad Feels Guy Cycle"
+],
+"avoid": "Not for one-off events or happy routines."
+},
+{
+"id": "hewasaboyshewasagirl",
+"name": "He Was A Boy She Was A Girl",
+"lines": 2,
+"shape": "labeling",
+"core": "Jesse and Jane stand apart in Breaking Bad, captioned with the Sk8er Boi opener; used to label two things obviously destined to clash or pair up.",
+"slots": [
+"he was a ___",
+"she was a ___"
+],
+"aliases": [
+"Sk8er Boi Meme",
+"Jesse and Jane",
+"Breaking Bad Sk8er Boi",
+"He Was A Boy"
+],
+"avoid": "Not for situations without two clearly matched sides."
+},
+{
+"id": "carefullyhesahero",
+"name": "Carefully He's A Hero",
+"lines": 1,
+"shape": "approval",
+"core": "A crowd gently carries an exhausted Spider-Man, 'carefully, he's a hero'; used to honour someone for a small heroic act.",
+"slots": [
+"what the hero did"
+],
+"aliases": [
+"He's A Hero",
+"Spider-Man Train Crowd",
+"Carefully He's A Hero",
+"Spider-Man Carried"
+],
+"avoid": "Not for mocking someone or for actual failures."
+},
+{
+"id": "busy",
+"name": "Busy",
+"lines": 2,
+"shape": "exaggeration",
+"core": "An office worker buried under a mountain of paperwork; used for being utterly swamped with work.",
+"slots": [
+"the setup",
+"the overwhelming pile"
+],
+"aliases": [
+"Buried In Paperwork",
+"Overwhelmed Office Worker",
+"Paperwork Pile",
+"Too Much Work"
+],
+"avoid": "Not for relaxed or quiet days."
+},
+{
+"id": "darthvaderwhereispadme",
+"name": "Darth Vader Where Is Padme",
+"lines": 2,
+"shape": "dialogue",
+"core": "Vader anxiously asks where something precious is, right after he was the one who destroyed it.",
+"slots": [
+"the setup",
+"the anxious question about the lost thing"
+],
+"aliases": [
+"where is padme",
+"vader is she safe",
+"where is padme is she safe",
+"darth vader padme"
+],
+"avoid": "Not for genuine concern; the joke is that you caused the loss."
+},
+{
+"id": "loudmusic",
+"name": "Loud Music",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Cranking the volume to max and screaming along when a favorite song or moment hits.",
+"slots": [
+"the trigger moment",
+"optional punchline"
+],
+"aliases": [
+"volume up screaming",
+"turn it up",
+"loud music meme",
+"volume knob crying"
+],
+"avoid": "Not for calm or quiet enjoyment."
+},
+{
+"id": "stopcop",
+"name": "Stop Cop",
+"lines": 2,
+"shape": "rejection",
+"core": "A cop holds up a hand to stop someone from doing something they shouldn't.",
+"slots": [
+"the stop command",
+"who is being stopped"
+],
+"aliases": [
+"stop cop",
+"police stop hand",
+"stop right there",
+"cop halt"
+],
+"avoid": "Not for encouraging or approving something."
+},
+{
+"id": "adamsilvergetreadytolearnbud",
+"name": "Adam Silver Get Ready To Learn Buddy",
+"lines": 2,
+"shape": "warning",
+"core": "A smug explainer gestures as if about to teach someone a lesson they didn't ask for.",
+"slots": [
+"the setup",
+"the lesson incoming"
+],
+"aliases": [
+"get ready to learn buddy",
+"adam silver",
+"adam silver explaining",
+"nba commissioner"
+],
+"avoid": "Not for sincere, welcome teaching."
+},
+{
+"id": "youwouldntdownloada",
+"name": "You Wouldn't Download A",
+"lines": 1,
+"shape": "irony",
+"core": "Parody of the anti-piracy ad, finishing 'you wouldn't download a...' with something absurd you obviously would.",
+"slots": [
+"the absurd thing to download"
+],
+"aliases": [
+"you wouldn't download a car",
+"you wouldnt steal a car",
+"piracy ad",
+"you wouldn't download"
+],
+"avoid": "Not for serious anti-piracy messaging."
+},
+{
+"id": "whoarewe",
+"name": "Who Are We",
+"lines": 6,
+"shape": "plan-backfires",
+"core": "A leader rallies a crowd with call-and-response questions until the last answer reveals they have no idea what they want or how.",
+"slots": [
+"who are we?",
+"crowd answer",
+"what do we want?",
+"crowd answer",
+"when do we want it?",
+"the awkward final answer"
+],
+"aliases": [
+"who are we",
+"what do we want",
+"when do we want it",
+"all the things chant"
+],
+"avoid": "Not for groups that actually agree on a plan."
+},
+{
+"id": "dependsonthecontext",
+"name": "Depends On The Context",
+"lines": 4,
+"shape": "dialogue",
+"core": "Someone asks a simple question and the Doctor launches into an overcomplicated 'it depends on the context' answer.",
+"slots": [
+"the simple question",
+"it depends",
+"on the context",
+"the overcomplicated detail"
+],
+"aliases": [
+"depends on the context",
+"doctor who it depends",
+"peter capaldi explaining",
+"clara asks doctor"
+],
+"avoid": "Not for questions with a straight yes or no answer."
+},
+{
+"id": "grimreaperclawmachine",
+"name": "Grim Reaper Claw Machine",
+"lines": 3,
+"shape": "labeling",
+"core": "Death plays a claw machine, randomly plucking one victim out of a crowd who are all equally doomed.",
+"slots": [
+"the picker (death)",
+"the one picked",
+"everyone else waiting"
+],
+"aliases": [
+"grim reaper claw machine",
+"death claw machine",
+"reaper arcade",
+"claw machine death"
+],
+"avoid": "Not for real deaths or tragedies."
+},
+{
+"id": "fakesearch",
+"name": "Fake Search",
+"lines": 2,
+"shape": "self-own",
+"core": "A fake dark-mode search screen showing an embarrassingly revealing query someone typed.",
+"slots": [
+"the search query",
+"optional result or reaction"
+],
+"aliases": [
+"fake search",
+"google search template",
+"search bar meme",
+"dark mode search"
+],
+"avoid": "Not for real screenshots of someone's private searches."
+},
+{
+"id": "soitbegins",
+"name": "So It Begins",
+"lines": 2,
+"shape": "warning",
+"core": "Theoden grimly acknowledges that an expected ordeal has finally started.",
+"slots": [
+"the ordeal starting",
+"so it begins"
+],
+"aliases": [
+"so it begins",
+"theoden so it begins",
+"lord of the rings so it begins",
+"helms deep"
+],
+"avoid": "Not for happy or exciting beginnings."
+},
+{
+"id": "subtlepickupliner",
+"name": "Subtle Pickup Liner",
+"lines": 2,
+"shape": "irony",
+"core": "A smug finger-gunning guy delivers a cheesy, sneaky pickup line built on a pun.",
+"slots": [
+"setup line",
+"the pun payoff"
+],
+"aliases": [
+"subtle pickup liner",
+"finger guns guy",
+"pickup line guy",
+"smooth pickup line"
+],
+"avoid": "Not for genuinely smooth or sincere flirting."
+},
+{
+"id": "iknowbuthecan",
+"name": "I Know But He Can",
+"lines": 3,
+"shape": "labeling",
+"core": "Thor admits he can't beat the enemy himself, so he unleashes something far more destructive that can.",
+"slots": [
+"the unbeatable foe",
+"the outmatched hero",
+"the overkill solution"
+],
+"aliases": [
+"i know but he can",
+"you can't defeat me",
+"thor ragnarok surtur",
+"thor hela"
+],
+"avoid": "Not for fair fights won on your own strength."
+},
+{
+"id": "guysmokingwhiletwopeoplefigh",
+"name": "Guy Smoking While Two People Fight",
+"lines": 2,
+"shape": "labeling",
+"core": "Two people brawl over something while a third calmly ignores it all and does his own thing.",
+"slots": [
+"the people fighting",
+"the unbothered one"
+],
+"aliases": [
+"guy smoking while girls fight",
+"vape guy fight",
+"unbothered smoking guy",
+"chillin while they fight"
+],
+"avoid": "Not for situations where everyone is involved in the conflict."
+}
+]

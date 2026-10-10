@@ -1,0 +1,1076 @@
+[
+{
+"id": "soanywayistartedblasting",
+"name": "So Anyway I Started Blasting",
+"lines": 1,
+"shape": "exaggeration",
+"core": "Danny DeVito casually describes a mild annoyance and ends with opening fire, used for absurd overreactions.",
+"slots": [
+"the mildly annoying situation"
+],
+"aliases": [
+"so anyway i started blasting",
+"danny devito guns",
+"started blasting",
+"frank reynolds blasting"
+],
+"avoid": "Not for real violence or tragedies."
+},
+{
+"id": "blanktshirt",
+"name": "Blank T-Shirt",
+"lines": 1,
+"shape": "other",
+"core": "A blank black shirt to print a slogan on, used for 'I'd wear this' jokes or fake merch.",
+"slots": [
+"the shirt slogan"
+],
+"aliases": [
+"blank t-shirt",
+"black t shirt",
+"shirt template",
+"i would wear this"
+],
+"avoid": "Not for multi-panel jokes."
+},
+{
+"id": "laughingvillains",
+"name": "Laughing Villains",
+"lines": 2,
+"shape": "irony",
+"core": "Dr. Evil and his henchmen burst out laughing, used for mocking a ridiculous suggestion or someone's naive plan.",
+"slots": [
+"the naive suggestion",
+"the group laughing"
+],
+"aliases": [
+"laughing villains",
+"dr evil laughing",
+"austin powers laughing",
+"evil laugh group"
+],
+"avoid": "Not for genuinely kind laughter."
+},
+{
+"id": "blanktrophy",
+"name": "Blank Trophy",
+"lines": 2,
+"shape": "approval",
+"core": "A gold trophy awarded for a dubious or ironic achievement.",
+"slots": [
+"the award title",
+"who wins it"
+],
+"aliases": [
+"blank trophy",
+"trophy award",
+"participation trophy",
+"award meme"
+],
+"avoid": "Not for long multi-step stories."
+},
+{
+"id": "gandalfyoushallnotpass",
+"name": "You Shall Not Pass",
+"lines": 2,
+"shape": "rejection",
+"core": "Gandalf blocks the way and declares 'You shall not pass,' used for someone or something firmly denying entry.",
+"slots": [
+"the gatekeeper",
+"what is blocked"
+],
+"aliases": [
+"you shall not pass",
+"gandalf you shall not pass",
+"gandalf balrog",
+"none shall pass"
+],
+"avoid": "Not for situations where something is let through."
+},
+{
+"id": "callanambulancebutnotforme",
+"name": "Call an Ambulance But Not for Me",
+"lines": 2,
+"shape": "plan-backfires",
+"core": "An attacker pulls a knife, then the old man pulls a gun and turns the tables, used when the underdog has an overwhelming counter.",
+"slots": [
+"the aggressor",
+"the underdog with the trump card"
+],
+"aliases": [
+"call an ambulance but not for me",
+"call the ambulance",
+"old man pulls gun",
+"uno reverse old man"
+],
+"avoid": "Not for situations where the aggressor wins."
+},
+{
+"id": "chemistrycat",
+"name": "Chemistry Cat",
+"lines": 2,
+"shape": "other",
+"core": "A cat in glasses and a bow tie delivers a science or chemistry pun.",
+"slots": [
+"the pun setup",
+"the punchline"
+],
+"aliases": [
+"chemistry cat",
+"science cat",
+"cat in lab",
+"chemistry pun cat"
+],
+"avoid": "Not for jokes without wordplay."
+},
+{
+"id": "crosseyedspongebob",
+"name": "Cross-Eyed SpongeBob",
+"lines": 3,
+"shape": "binary-choice",
+"core": "SpongeBob tries to read two pages at once with eyes pointing different ways, used for paying attention to two things simultaneously.",
+"slots": [
+"the situation",
+"first thing",
+"second thing"
+],
+"aliases": [
+"cross eyed spongebob",
+"spongebob reading two pages",
+"spongebob book eyes",
+"multitasking spongebob"
+],
+"avoid": "Not for choosing one option over another."
+},
+{
+"id": "homersimpsondrooling",
+"name": "Homer Simpson Drooling",
+"lines": 2,
+"shape": "reaction",
+"core": "Homer drools with desire, used for something irresistibly tempting.",
+"slots": [
+"the setup",
+"the tempting thing"
+],
+"aliases": [
+"homer drooling",
+"homer simpson drool",
+"mmm homer",
+"homer donuts"
+],
+"avoid": "Not for things that are unappealing."
+},
+{
+"id": "whyistherumgone",
+"name": "Why Is the Rum Gone",
+"lines": 2,
+"shape": "reaction",
+"core": "Jack Sparrow exasperatedly demands to know why something essential has run out.",
+"slots": [
+"the setup",
+"why is the ___ gone"
+],
+"aliases": [
+"why is the rum gone",
+"jack sparrow rum",
+"but why",
+"pirates rum gone"
+],
+"avoid": "Not for calm or happy moments."
+},
+{
+"id": "farquaadpointing",
+"name": "Farquaad Pointing",
+"lines": 2,
+"shape": "approval",
+"core": "Lord Farquaad smugly points and decrees something, used for selecting or blaming someone with self-satisfied authority.",
+"slots": [
+"the setup",
+"the decree"
+],
+"aliases": [
+"farquaad pointing",
+"lord farquaad",
+"shrek farquaad",
+"some of you may die"
+],
+"avoid": "Not for humble or uncertain statements."
+},
+{
+"id": "computerguy",
+"name": "Computer Guy",
+"lines": 1,
+"shape": "reaction",
+"core": "A rage-comic face glares suspiciously at his monitor, used for squinting at something online that seems off.",
+"slots": [
+"what he's reading"
+],
+"aliases": [
+"computer guy",
+"rage comic computer",
+"suspicious computer guy",
+"meme face at computer"
+],
+"avoid": "Not for happy or excited reactions."
+},
+{
+"id": "pissedoffobama",
+"name": "Pissed Off Obama",
+"lines": 2,
+"shape": "warning",
+"core": "A stern, pointing Obama calling someone out for something they did, like an angry personal accusation.",
+"slots": [
+"the offense",
+"the stern callout"
+],
+"aliases": [
+"angry obama pointing",
+"obama pointing",
+"obama mad",
+"obama finger point"
+],
+"avoid": "Not for happy approval or neutral announcements."
+},
+{
+"id": "wantedposter",
+"name": "Wanted Poster",
+"lines": 1,
+"shape": "labeling",
+"core": "An old west wanted poster used to name a culprit and their ridiculous crime.",
+"slots": [
+"the wanted person and their crime"
+],
+"aliases": [
+"wanted",
+"wanted sign",
+"old west wanted",
+"wanted dead or alive"
+],
+"avoid": "Not for real accusations against real people."
+},
+{
+"id": "elonmuskblanktweet",
+"name": "Elon Musk Blank Tweet",
+"lines": 1,
+"shape": "irony",
+"core": "A blank Elon Musk tweet for putting an absurd or impulsive announcement in his mouth.",
+"slots": [
+"the tweet text"
+],
+"aliases": [
+"elon tweet",
+"elon musk tweet",
+"fake elon tweet",
+"musk tweet template"
+],
+"avoid": "Not for passing off fake quotes as real news."
+},
+{
+"id": "thorishethough",
+"name": "Thor Is He Though",
+"lines": 1,
+"shape": "irony",
+"core": "Thor's knowing \"is he though?\" grin, used to doubt a claim that everyone secretly knows is false.",
+"slots": [
+"the dubious claim"
+],
+"aliases": [
+"is he though",
+"thor is he though",
+"thor ragnarok is he though",
+"is it though"
+],
+"avoid": "Not for sincere agreement."
+},
+{
+"id": "orangutaninterview",
+"name": "Orangutan Interview",
+"lines": 2,
+"shape": "reaction",
+"core": "Three orangutans sitting on a TV news sofa, used for an absurdly serious panel discussing something dumb.",
+"slots": [
+"the setup",
+"the panel's take"
+],
+"aliases": [
+"orangutans on couch",
+"orangutan news",
+"monkey interview",
+"orangutan panel"
+],
+"avoid": "Not for actual news commentary on serious events."
+},
+{
+"id": "nemoseagullsmine",
+"name": "Nemo Seagulls Mine",
+"lines": 2,
+"shape": "labeling",
+"core": "The Finding Nemo seagulls all screaming \"mine\", used for a crowd greedily fighting over one thing.",
+"slots": [
+"the crowd",
+"the thing they all want"
+],
+"aliases": [
+"mine mine mine",
+"finding nemo seagulls",
+"seagulls mine",
+"nemo seagulls"
+],
+"avoid": "Not for calm sharing or generosity."
+},
+{
+"id": "leonardodicapriodjangolaugh",
+"name": "Leonardo DiCaprio Django Laugh",
+"lines": 1,
+"shape": "reaction",
+"core": "Leo laughing with a drink in Django Unchained, used to mock something hilariously bad or someone's failure.",
+"slots": [
+"the thing being laughed at"
+],
+"aliases": [
+"leo laughing",
+"django laugh",
+"dicaprio laughing",
+"calvin candie laugh"
+],
+"avoid": "Not for genuine sympathy or wholesome joy."
+},
+{
+"id": "sonicsays",
+"name": "Sonic Says",
+"lines": 1,
+"shape": "approval",
+"core": "A thumbs-up Sonic tip card, used to give questionable or absurd advice as a cheerful PSA.",
+"slots": [
+"Sonic's advice"
+],
+"aliases": [
+"sonic says",
+"sonic tips",
+"sonic advice",
+"sonic loading screen"
+],
+"avoid": "Not for real safety advice."
+},
+{
+"id": "angrytoddler",
+"name": "Angry Toddler",
+"lines": 2,
+"shape": "reaction",
+"core": "A furious, pouting little girl glaring sideways, used for petty, simmering anger at a small injustice.",
+"slots": [
+"the setup",
+"the petty grudge"
+],
+"aliases": [
+"angry little girl",
+"mad toddler",
+"grumpy toddler",
+"side eye girl"
+],
+"avoid": "Not for real rage about serious issues."
+},
+{
+"id": "1950smiddlefinger",
+"name": "1950s Middle Finger",
+"lines": 2,
+"shape": "rejection",
+"core": "A grinning retro ad man flipping the bird, used for a cheerful, smug rejection of something.",
+"slots": [
+"what's being rejected",
+"the cheerful refusal"
+],
+"aliases": [
+"retro middle finger",
+"vintage middle finger guy",
+"50s guy middle finger",
+"happy middle finger"
+],
+"avoid": "Not for sincere politeness."
+},
+{
+"id": "beyonctiffanypollard",
+"name": "Tiffany Pollard Beyonce",
+"lines": 1,
+"shape": "reaction",
+"core": "Tiffany Pollard's wide-eyed screaming shock, used for an over-the-top reaction to unbelievable news.",
+"slots": [
+"the shocking news"
+],
+"aliases": [
+"beyonce tiffany pollard",
+"new york beyonce",
+"tiffany pollard shocked",
+"beyonce scream"
+],
+"avoid": "Not for calm or bored reactions."
+},
+{
+"id": "ralphwiggum",
+"name": "Ralph Wiggum",
+"lines": 2,
+"shape": "self-own",
+"core": "Ralph Wiggum waving cluelessly, used for innocently saying something dumb or oblivious.",
+"slots": [
+"the setup",
+"Ralph's clueless line"
+],
+"aliases": [
+"ralph wiggum",
+"im in danger",
+"ralph waving",
+"simpsons ralph"
+],
+"avoid": "Not for clever or competent moments."
+},
+{
+"id": "hohoho",
+"name": "Hohoho",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Santa firing a machine gun, used for festive cheer delivered with absurd aggression.",
+"slots": [
+"the festive setup",
+"the aggressive punchline"
+],
+"aliases": [
+"santa machine gun",
+"ho ho ho santa",
+"angry santa",
+"santa with gun"
+],
+"avoid": "Not for real violence or war news."
+},
+{
+"id": "chainsawbear",
+"name": "Chainsaw Bear",
+"lines": 2,
+"shape": "warning",
+"core": "A polar bear standing upright holding a chainsaw, used for a calm but menacing threat.",
+"slots": [
+"the provocation",
+"the menacing threat"
+],
+"aliases": [
+"polar bear chainsaw",
+"bear with chainsaw",
+"chainsaw polar bear",
+"angry polar bear"
+],
+"avoid": "Not for gentle or friendly messages."
+},
+{
+"id": "yhormdarksouls",
+"name": "Yhorm Dark Souls",
+"lines": 2,
+"shape": "comparison",
+"core": "Giant Yhorm towering over a tiny knight, used for a huge looming problem versus one small person facing it.",
+"slots": [
+"the giant problem",
+"the tiny challenger"
+],
+"aliases": [
+"yhorm the giant",
+"dark souls giant",
+"giant vs knight",
+"yhorm vs ashen one"
+],
+"avoid": "Not for evenly matched rivals."
+},
+{
+"id": "itsbeen84years",
+"name": "It's Been 84 Years",
+"lines": 1,
+"shape": "exaggeration",
+"core": "Old Rose from Titanic saying \"it's been 84 years\", used when something feels like it took forever.",
+"slots": [
+"the thing that took forever"
+],
+"aliases": [
+"84 years",
+"its been 84 years",
+"titanic old rose",
+"been forever"
+],
+"avoid": "Not for things that happened quickly."
+},
+{
+"id": "youunderestimatemypower",
+"name": "You Underestimate My Power",
+"lines": 2,
+"shape": "warning",
+"core": "Anakin glaring on Mustafar, used for overconfidently attempting something everyone warned you against.",
+"slots": [
+"the warning",
+"the cocky reply"
+],
+"aliases": [
+"anakin mustafar",
+"dont try it",
+"underestimate my power",
+"anakin glare"
+],
+"avoid": "Not for humble or cautious decisions."
+},
+{
+"id": "youguysalwaysactlikeyourebet",
+"name": "You Guys Always Act Like You're Better Than Me",
+"lines": 2,
+"shape": "irony",
+"core": "Meg complains the family acts superior, then they're shown in top hats looking smug, used when the snobbery is deserved.",
+"slots": [
+"the complainer",
+"the smug superior group"
+],
+"aliases": [
+"meg griffin better than me",
+"family guy top hats",
+"you guys act better than me",
+"meg complaint"
+],
+"avoid": "Not for genuine equality or humility."
+},
+{
+"id": "lookwhattheyneedtomimicafrac",
+"name": "Look What They Need To Mimic A Fraction Of Our Power",
+"lines": 2,
+"shape": "comparison",
+"core": "Omni-Man sneering at jets, used when others need elaborate tools to do what you do naturally.",
+"slots": [
+"their elaborate tool",
+"us, doing it effortlessly"
+],
+"aliases": [
+"omni man jets",
+"fraction of our power",
+"invincible omni man",
+"mimic our power"
+],
+"avoid": "Not for admiring the other side's effort."
+},
+{
+"id": "wantstoknowyourlocation",
+"name": "Wants To Know Your Location",
+"lines": 2,
+"shape": "warning",
+"core": "A browser location-permission popup, used when someone or something you upset is about to come find you.",
+"slots": [
+"what you searched or did",
+"who wants your location"
+],
+"aliases": [
+"know your location",
+"wants to know your location",
+"location permission",
+"allow location"
+],
+"avoid": "Not for real privacy or security advice."
+},
+{
+"id": "rpgfan",
+"name": "RPG Fan",
+"lines": 2,
+"shape": "self-own",
+"core": "The South Park World of Warcraft guy glued to his keyboard, used for obsessive no-life dedication to something.",
+"slots": [
+"the setup",
+"the obsessive admission"
+],
+"aliases": [
+"south park wow guy",
+"world of warcraft guy",
+"gamer basement",
+"no life gamer"
+],
+"avoid": "Not for healthy hobbies or balance."
+},
+{
+"id": "startrekkirkkhan",
+"name": "Kirk Khan",
+"lines": 2,
+"shape": "reaction",
+"core": "Captain Kirk screaming KHAAAN, used for furious, overdramatic rage at someone's betrayal.",
+"slots": [
+"the betrayal",
+"the dramatic scream"
+],
+"aliases": [
+"khaaan",
+"kirk scream",
+"star trek khan",
+"kirk yelling"
+],
+"avoid": "Not for calm disappointment."
+},
+{
+"id": "peterparkerreadingabook",
+"name": "Peter Parker Reading A Book",
+"lines": 1,
+"shape": "reaction",
+"core": "Peter Parker reads something in a book and turns to stare in disbelief, used for reading something absurd.",
+"slots": [
+"what the book says"
+],
+"aliases": [
+"peter parker book",
+"spiderman reading",
+"60s spiderman reading",
+"peter parker reads"
+],
+"avoid": "Not for boring or expected facts."
+},
+{
+"id": "simpsonsmonkeyfight",
+"name": "Simpsons Monkey Fight",
+"lines": 3,
+"shape": "labeling",
+"core": "Men cheering on two fighting monkeys, used when onlookers enjoy two sides clashing over something petty.",
+"slots": [
+"the cheering spectators",
+"fighter one",
+"fighter two"
+],
+"aliases": [
+"monkey fight",
+"simpsons monkeys fighting",
+"men cheering monkeys",
+"fight fight fight"
+],
+"avoid": "Not for real fights or cruelty."
+},
+{
+"id": "olivertwistpleasesir",
+"name": "Oliver Twist Please Sir",
+"lines": 2,
+"shape": "dialogue",
+"core": "Oliver holding up his bowl asking for more, used for timidly begging for a bit more of something.",
+"slots": [
+"the setup",
+"the humble request"
+],
+"aliases": [
+"please sir i want some more",
+"oliver twist bowl",
+"can i have more",
+"please sir"
+],
+"avoid": "Not for confident demands."
+},
+{
+"id": "shockedblackguy",
+"name": "Shocked Guy Hands On Head",
+"lines": 2,
+"shape": "reaction",
+"core": "A man clutching his head in wide-eyed horror, used for stunned disbelief at a shocking reveal.",
+"slots": [
+"the setup",
+"the shocking reveal"
+],
+"aliases": [
+"shocked guy",
+"hands on head shocked",
+"omg face",
+"shocked tiktok guy"
+],
+"avoid": "Not for mild surprise or calm reactions."
+},
+{
+"id": "childrenscaredofrabbit",
+"name": "Children Scared Of Rabbit",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Two kids cowering in terror from a tiny harmless bunny, used for overreacting to something trivial.",
+"slots": [
+"the terrified people",
+"the harmless thing"
+],
+"aliases": [
+"kids scared of bunny",
+"scared of rabbit",
+"children afraid of bunny",
+"terrified kids bunny"
+],
+"avoid": "Not for genuinely dangerous threats."
+},
+{
+"id": "silencecrab",
+"name": "Silence Crab",
+"lines": 2,
+"shape": "rejection",
+"core": "A giant crab laser-blasting a smaller one after saying \"silence,\", used to shut down an annoying opinion.",
+"slots": [
+"who is being silenced",
+"their annoying take"
+],
+"aliases": [
+"silence brand",
+"silence crab",
+"crab laser",
+"silence wench"
+],
+"avoid": "Not for listening or respectful debate."
+},
+{
+"id": "doubledfactsbook",
+"name": "Double D Facts Book",
+"lines": 1,
+"shape": "irony",
+"core": "Double D smugly pulls out his book of facts to present a \"fact\" as undeniable truth.",
+"slots": [
+"the smug fact"
+],
+"aliases": [
+"facts book",
+"double d facts",
+"ed edd n eddy facts",
+"book of facts"
+],
+"avoid": "Not for genuinely uncertain opinions."
+},
+{
+"id": "midwitmemes",
+"name": "Midwit Bell Curve",
+"lines": 3,
+"shape": "irony",
+"core": "An IQ bell curve where the simpleton and the genius agree while the overthinking midwit in the middle disagrees.",
+"slots": [
+"the simple take",
+"the midwit's overthinking",
+"the genius's same simple take"
+],
+"aliases": [
+"iq bell curve",
+"midwit",
+"bell curve meme",
+"iq distribution",
+"wojak bell curve"
+],
+"avoid": "Not for actual claims about intelligence of real groups."
+},
+{
+"id": "whenxjustright",
+"name": "Pacha Perfection",
+"lines": 2,
+"shape": "approval",
+"core": "Pacha making a chef's-kiss gesture, used when something is satisfyingly just right.",
+"slots": [
+"the setup",
+"the perfect thing"
+],
+"aliases": [
+"when x just right",
+"pacha perfect",
+"just right",
+"emperors new groove perfection",
+"chef's kiss"
+],
+"avoid": "Not for things that are merely okay or bad."
+},
+{
+"id": "leonardodicapriopointing",
+"name": "Leonardo DiCaprio Pointing",
+"lines": 2,
+"shape": "reaction",
+"core": "Leo excitedly pointing at the TV, used for recognising something familiar or relatable.",
+"slots": [
+"the setup",
+"the thing recognised"
+],
+"aliases": [
+"leo pointing",
+"once upon a time in hollywood pointing",
+"dicaprio pointing tv",
+"that's me"
+],
+"avoid": "Not for confusion or disapproval."
+},
+{
+"id": "internetexplorer",
+"name": "Internet Explorer",
+"lines": 2,
+"shape": "irony",
+"core": "The Internet Explorer logo stands for being painfully slow or finding out about something long after everyone else.",
+"slots": [
+"old news everyone knew",
+"slow late reaction"
+],
+"aliases": [
+"internet explorer",
+"ie slow",
+"slow browser",
+"ie logo"
+],
+"avoid": "Not for things that are fast or cutting-edge."
+},
+{
+"id": "tyronebiggumstheaddict",
+"name": "Tyrone Biggums",
+"lines": 2,
+"shape": "exaggeration",
+"core": "A twitchy addict character, used for desperately craving something you're hooked on.",
+"slots": [
+"setup",
+"desperate craving"
+],
+"aliases": [
+"tyrone biggums",
+"chappelle crackhead",
+"addict meme",
+"y'all got any more"
+],
+"avoid": "Not for calm, casual interest."
+},
+{
+"id": "lowkeyjustachillguy",
+"name": "Just a Chill Guy",
+"lines": 2,
+"shape": "irony",
+"core": "A relaxed dog-guy who couldn't care less, used for staying unbothered when things are chaotic.",
+"slots": [
+"chaotic situation",
+"chill label"
+],
+"aliases": [
+"chill guy",
+"just a chill guy",
+"my new character",
+"lowkey chill guy"
+],
+"avoid": "Not for stress, panic or genuine effort."
+},
+{
+"id": "allowustointroduceourselves",
+"name": "Allow Us to Introduce Ourselves",
+"lines": 1,
+"shape": "reaction",
+"core": "The VeggieTales trio introducing themselves, used when a group or thing suddenly shows up to announce itself.",
+"slots": [
+"who just showed up"
+],
+"aliases": [
+"allow us to introduce ourselves",
+"veggietales",
+"veggie tales intro",
+"pirates who don't do anything"
+],
+"avoid": "Not for things that quietly go unnoticed."
+},
+{
+"id": "youreawizardharry",
+"name": "You're a Wizard Harry",
+"lines": 2,
+"shape": "reaction",
+"core": "Hagrid's famous line, remixed as 'You're a ___, Harry' to tell someone a surprising truth about themselves.",
+"slots": [
+"setup",
+"you're a ___, Harry"
+],
+"aliases": [
+"you're a wizard harry",
+"hagrid",
+"yer a wizard",
+"harry potter hagrid"
+],
+"avoid": "Not for things everyone already knew about themselves."
+},
+{
+"id": "giantvsman",
+"name": "Giant vs Man",
+"lines": 2,
+"shape": "comparison",
+"core": "A towering Dark Souls giant looming over a tiny warrior, used for facing an overwhelmingly bigger problem.",
+"slots": [
+"huge threat",
+"tiny me"
+],
+"aliases": [
+"giant vs man",
+"yhorm",
+"dark souls giant",
+"tiny knight vs giant"
+],
+"avoid": "Not for evenly matched fights."
+},
+{
+"id": "nerdemoji",
+"name": "Nerd Emoji",
+"lines": 2,
+"shape": "reaction",
+"core": "The nerd-face emoji, used to mock a pedantic 'um, actually' correction.",
+"slots": [
+"setup",
+"pedantic correction"
+],
+"aliases": [
+"nerd emoji",
+"um actually",
+"nerd face",
+"erm actually"
+],
+"avoid": "Not for sincere praise of expertise."
+},
+{
+"id": "deadbabyvoldemortwhathappene",
+"name": "What Happened to Him",
+"lines": 3,
+"shape": "dialogue",
+"core": "Harry asks Dumbledore what happened to the wretched Voldemort fragment, used to explain why something ended up in a pitiful state.",
+"slots": [
+"pitiful thing",
+"what happened to it?",
+"the explanation"
+],
+"aliases": [
+"what happened to him",
+"baby voldemort",
+"dumbledore king's cross",
+"dead baby voldemort"
+],
+"avoid": "Not for things that are thriving."
+},
+{
+"id": "deathbattle",
+"name": "Death Battle",
+"lines": 2,
+"shape": "comparison",
+"core": "A Death Battle versus card, used to pit two things against each other in a showdown.",
+"slots": [
+"fighter one",
+"fighter two"
+],
+"aliases": [
+"death battle",
+"vs card",
+"versus",
+"who would win"
+],
+"avoid": "Not for things that are on the same side."
+},
+{
+"id": "talkingtowall",
+"name": "Talking to Wall",
+"lines": 2,
+"shape": "labeling",
+"core": "A guy passionately arguing with a brick wall, used for explaining something to someone who will never listen.",
+"slots": [
+"the one not listening",
+"me explaining"
+],
+"aliases": [
+"talking to wall",
+"arguing with a wall",
+"brick wall guy",
+"talking to a brick wall"
+],
+"avoid": "Not for conversations where the other side engages."
+},
+{
+"id": "stopgivingmeyourtoughestbatt",
+"name": "Stop Giving Me Your Toughest Battles",
+"lines": 2,
+"shape": "self-own",
+"core": "An exhausted wojak begging God to stop sending hard trials, used for being worn out by an endless, often trivial, struggle.",
+"slots": [
+"the struggle",
+"God's reply"
+],
+"aliases": [
+"toughest battles",
+"stop giving me your toughest battles",
+"god gives toughest battles",
+"tired wojak jesus"
+],
+"avoid": "Not for easy wins or genuine tragedies."
+},
+{
+"id": "lifesucks",
+"name": "Life Sucks",
+"lines": 2,
+"shape": "reaction",
+"core": "Finn and Jake sitting glumly in the rain, used for moments when life just feels miserable.",
+"slots": [
+"setup",
+"sad outcome"
+],
+"aliases": [
+"life sucks",
+"finn and jake rain",
+"adventure time sad",
+"sad finn"
+],
+"avoid": "Not for happy or triumphant moments."
+},
+{
+"id": "clippy",
+"name": "Clippy",
+"lines": 2,
+"shape": "irony",
+"core": "Microsoft's old paperclip assistant, used for unwanted, overeager 'It looks like you're trying to...' help.",
+"slots": [
+"It looks like you're...",
+"unhelpful offer"
+],
+"aliases": [
+"clippy",
+"it looks like you're trying to",
+"microsoft paperclip",
+"office assistant"
+],
+"avoid": "Not for help that's actually welcome."
+},
+{
+"id": "sleepydonaldduckinbed",
+"name": "Sleepy Donald Duck",
+"lines": 2,
+"shape": "before-after",
+"core": "Donald Duck wide-awake in bed, then finally asleep, used for what keeps you up versus what finally lets you rest.",
+"slots": [
+"what keeps me awake",
+"what finally lets me sleep"
+],
+"aliases": [
+"sleepy donald duck",
+"donald duck bed",
+"donald duck can't sleep",
+"donald duck awake asleep"
+],
+"avoid": "Not for daytime activities unrelated to rest."
+},
+{
+"id": "hideyokidshideyowife",
+"name": "Hide Yo Kids Hide Yo Wife",
+"lines": 2,
+"shape": "warning",
+"core": "Antoine Dodson's frantic news warning, used to alert everyone that something dangerous is on the loose.",
+"slots": [
+"the threat",
+"hide yo ___"
+],
+"aliases": [
+"hide yo kids",
+"antoine dodson",
+"hide yo wife",
+"bed intruder"
+],
+"avoid": "Not for calm, low-stakes news."
+},
+{
+"id": "tomandjerryswordfight",
+"name": "Tom and Jerry Swordfight",
+"lines": 3,
+"shape": "labeling",
+"core": "Spike and Tom sword-fighting while Jerry watches gleefully, used for enjoying two rivals going at each other.",
+"slots": [
+"fighter one",
+"fighter two",
+"gleeful onlooker"
+],
+"aliases": [
+"tom and jerry swordfight",
+"jerry watching fight",
+"spike vs tom",
+"jerry excited"
+],
+"avoid": "Not for fights you're personally caught up in."
+}
+]

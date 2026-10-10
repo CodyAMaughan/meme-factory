@@ -1,0 +1,1085 @@
+[
+{
+"id": "mysisterswedding",
+"name": "My Sister's Wedding",
+"lines": 3,
+"shape": "before-after",
+"core": "The same guy in pajamas versus a sharp suit, showing how differently you show up for two occasions.",
+"slots": [
+"the setup",
+"the casual occasion",
+"the occasion you dress up for"
+],
+"aliases": [
+"pajamas vs suit",
+"same guy two outfits",
+"my sisters wedding",
+"dressed up vs casual"
+],
+"avoid": "Not for comparing two different people."
+},
+{
+"id": "tooweakunlimitedpower",
+"name": "Too Weak Unlimited Power",
+"lines": 2,
+"shape": "escalation",
+"core": "Palpatine pretends to be weak then unleashes unlimited power, for someone who acts helpless until the right moment arrives.",
+"slots": [
+"when you seem weak",
+"when you unleash it"
+],
+"aliases": [
+"unlimited power",
+"palpatine too weak",
+"im too weak",
+"sidious unlimited power"
+],
+"avoid": "Not for genuine weakness with no reveal."
+},
+{
+"id": "michaelphelpsdeathstare",
+"name": "Michael Phelps Death Stare",
+"lines": 2,
+"shape": "reaction",
+"core": "Phelps glares with simmering rage, for quietly seething at someone who is annoying you.",
+"slots": [
+"the annoying situation",
+"the seething reaction"
+],
+"aliases": [
+"phelps face",
+"phelps glare",
+"angry phelps",
+"phelps death stare"
+],
+"avoid": "Not for happy or excited reactions."
+},
+{
+"id": "pokemonbattle",
+"name": "Pokemon Battle",
+"lines": 3,
+"shape": "dialogue",
+"core": "An empty Pokemon battle screen, used to stage a showdown between two things with a battle message.",
+"slots": [
+"the opponent",
+"you",
+"the battle message"
+],
+"aliases": [
+"pokemon battle",
+"wild pokemon appeared",
+"pokemon fight template",
+"battle screen"
+],
+"avoid": "Not for a single reaction with no opponent."
+},
+{
+"id": "nobodyabsolutelynoone",
+"name": "Nobody Absolutely No One",
+"lines": 1,
+"shape": "irony",
+"core": "Stresses that nobody asked, then shows someone doing something unprompted and weird anyway.",
+"slots": [
+"who does the unprompted thing"
+],
+"aliases": [
+"nobody",
+"absolutely no one",
+"not a single soul",
+"nobody asked"
+],
+"avoid": "Not for things people actually requested."
+},
+{
+"id": "confusedtravolta",
+"name": "Confused Travolta",
+"lines": 1,
+"shape": "reaction",
+"core": "Travolta looks around lost, for searching for something that should be there but isn't.",
+"slots": [
+"what you are looking for"
+],
+"aliases": [
+"confused travolta",
+"where is everyone",
+"travolta looking around",
+"pulp fiction confused"
+],
+"avoid": "Not for anger or excitement."
+},
+{
+"id": "bronotcool",
+"name": "Bro Not Cool",
+"lines": 4,
+"shape": "labeling",
+"core": "A guy ogles a passerby until his friend stops him, for one part of you stopping another from a bad temptation.",
+"slots": [
+"the temptation",
+"the tempted one",
+"the voice of reason",
+"the tempted one, stopped"
+],
+"aliases": [
+"bro not cool",
+"gillette ad",
+"friend stops catcalling",
+"not cool bro"
+],
+"avoid": "Not for situations with no temptation being resisted."
+},
+{
+"id": "straightouttaxblanktemplate",
+"name": "Straight Outta",
+"lines": 1,
+"shape": "other",
+"core": "The Straight Outta Compton poster with a blank, used to say where someone just came from or ran out of.",
+"slots": [
+"what you are straight out of"
+],
+"aliases": [
+"straight outta",
+"straight outta compton",
+"straight outta x",
+"straight outta template"
+],
+"avoid": "Not for long sentences."
+},
+{
+"id": "hillaryclintoncellphone",
+"name": "Texts From Hillary",
+"lines": 2,
+"shape": "reaction",
+"core": "Hillary Clinton in sunglasses coolly checking her phone, for being unbothered and all business while texting.",
+"slots": [
+"the setup",
+"the cool reply"
+],
+"aliases": [
+"texts from hillary",
+"hillary sunglasses phone",
+"hillary clinton phone",
+"hillary texting"
+],
+"avoid": "Not for panicked or emotional reactions."
+},
+{
+"id": "lickinglips",
+"name": "Rubbing Hands Behind Tree",
+"lines": 2,
+"shape": "reaction",
+"core": "A man peeks from behind a tree rubbing his hands, for eagerly anticipating something you're about to enjoy or exploit.",
+"slots": [
+"the opportunity",
+"who is waiting for it"
+],
+"aliases": [
+"rubbing hands",
+"anthony adams rubbing hands",
+"man behind tree",
+"licking lips",
+"excited hands"
+],
+"avoid": "Not for dread or disappointment."
+},
+{
+"id": "vladimirputin",
+"name": "Putin Air Quotes",
+"lines": 2,
+"shape": "irony",
+"core": "Putin makes air quotes at a desk, for sarcastically doubting a so-called fact or claim.",
+"slots": [
+"the setup",
+"the word in air quotes"
+],
+"aliases": [
+"putin air quotes",
+"putin quotes",
+"vladimir putin",
+"putin fingers"
+],
+"avoid": "Not for sincere statements or real political events."
+},
+{
+"id": "minions",
+"name": "Minion",
+"lines": 2,
+"shape": "other",
+"core": "A cheerful minion raising a finger, for chirpy life-advice quips and relatable everyday jokes.",
+"slots": [
+"the setup",
+"the punchline"
+],
+"aliases": [
+"minion",
+"minions",
+"despicable me minion",
+"minion quote"
+],
+"avoid": "Not for dark or serious topics."
+},
+{
+"id": "happywojakvsdepressedwojak",
+"name": "Happy Wojak Vs Depressed Wojak",
+"lines": 2,
+"shape": "before-after",
+"core": "A smiling wojak above a hollow, broken one, for something that starts fun and ends in despair.",
+"slots": [
+"what makes you happy",
+"what breaks you"
+],
+"aliases": [
+"happy wojak sad wojak",
+"wojak before after",
+"doomer wojak",
+"depressed wojak"
+],
+"avoid": "Not for two equally good options."
+},
+{
+"id": "youngthugandlildurktroublesh",
+"name": "Young Thug And Lil Durk Troubleshooting",
+"lines": 3,
+"shape": "labeling",
+"core": "One guy leans in intently over the screen while another watches nervously, for trying to fix something while someone hovers.",
+"slots": [
+"the problem",
+"the one fixing it",
+"the one watching"
+],
+"aliases": [
+"young thug lil durk",
+"troubleshooting",
+"fixing the computer",
+"young thug leaning"
+],
+"avoid": "Not for relaxed or celebratory moments."
+},
+{
+"id": "angryturkishmanplayingcardsm",
+"name": "Angry Turkish Man Playing Cards",
+"lines": 2,
+"shape": "reaction",
+"core": "A man slams down a card with furious force, for playing your winning move with way too much energy.",
+"slots": [
+"the winning move",
+"who plays it"
+],
+"aliases": [
+"angry card man",
+"turkish card slam",
+"slamming card",
+"trump card meme"
+],
+"avoid": "Not for calm or losing moments."
+},
+{
+"id": "guywithsandinthehandsofdespa",
+"name": "Guy With Sand In The Hands Of Despair",
+"lines": 2,
+"shape": "reaction",
+"core": "A man on a beach slips into dramatic despair over sand, for overreacting to a small loss or slow realization.",
+"slots": [
+"the setup",
+"the despair"
+],
+"aliases": [
+"sand despair",
+"guy with sand",
+"beach despair",
+"sand slipping through fingers"
+],
+"avoid": "Not for real tragedies."
+},
+{
+"id": "guytalkingtogirlinclub",
+"name": "Guy Talking To Girl In Club",
+"lines": 2,
+"shape": "dialogue",
+"core": "A guy whispers in a club while the girl looks bored, for someone rambling about a niche topic to an unimpressed listener.",
+"slots": [
+"what he is saying",
+"her inner reaction"
+],
+"aliases": [
+"guy whispering in club",
+"loud club talking",
+"guy talking to girl",
+"club whisper"
+],
+"avoid": "Not for flirting jokes that demean women."
+},
+{
+"id": "chadweknow",
+"name": "Yes Chad We Know",
+"lines": 3,
+"shape": "dialogue",
+"core": "Two wojaks argue loudly while two calm chads already agree, for stating something obvious that everyone knows.",
+"slots": [
+"smug wojak's take",
+"crying wojak's take",
+"chads calmly agreeing"
+],
+"aliases": [
+"yes chad we know",
+"chad we know",
+"nodding chads",
+"wojak vs chad"
+],
+"avoid": "Not for genuinely new information."
+},
+{
+"id": "znmd",
+"name": "Zindagi Na Milegi Dobara",
+"lines": 3,
+"shape": "dialogue",
+"core": "Three friends trade speech bubbles before cracking up laughing, for a group conversation that ends in a punchline.",
+"slots": [
+"first friend's line",
+"second friend's reply",
+"third friend's punchline"
+],
+"aliases": [
+"znmd",
+"zindagi na milegi dobara",
+"bollywood friends speech bubbles",
+"znmd friends laughing"
+],
+"avoid": "Not for single-line captions."
+},
+{
+"id": "takeaseatcat",
+"name": "Take A Seat Cat",
+"lines": 2,
+"shape": "rejection",
+"core": "A cat sits at a table like an interviewer, for calmly inviting someone to sit down for a serious talk.",
+"slots": [
+"the setup",
+"take a seat"
+],
+"aliases": [
+"take a seat cat",
+"cat at table",
+"we need to talk cat",
+"serious cat"
+],
+"avoid": "Not for excited or chaotic moments."
+},
+{
+"id": "avatarguy",
+"name": "Avatar Guy",
+"lines": 2,
+"shape": "reaction",
+"core": "A Na'vi stares wide-eyed in stunned disbelief, for being shocked by something absurd you just heard.",
+"slots": [
+"what you heard",
+"your stunned reply"
+],
+"aliases": [
+"avatar guy",
+"shocked avatar",
+"navi stare",
+"avatar staring"
+],
+"avoid": "Not for calm or happy reactions."
+},
+{
+"id": "showmethereal",
+"name": "Perfection Fassbender",
+"lines": 3,
+"shape": "escalation",
+"core": "Fassbender slowly warms with approval across three panels, for a sequence building to something satisfying.",
+"slots": [
+"first thing",
+"second thing",
+"the satisfying payoff"
+],
+"aliases": [
+"show me the real",
+"fassbender perfection",
+"perfection meme",
+"magneto approval"
+],
+"avoid": "Not for things that get worse."
+},
+{
+"id": "snakesontheplanesamuelljacks",
+"name": "Snakes On A Plane Samuel L Jackson",
+"lines": 2,
+"shape": "reaction",
+"core": "Samuel L. Jackson grimaces in fed-up fury, for having had it with some recurring annoyance.",
+"slots": [
+"the setup",
+"what you've had enough of"
+],
+"aliases": [
+"snakes on a plane",
+"samuel l jackson angry",
+"had it with these",
+"sam jackson grimace"
+],
+"avoid": "Not for calm or happy moments."
+},
+{
+"id": "callingthepolice",
+"name": "Calling The Police",
+"lines": 2,
+"shape": "warning",
+"core": "A man on the phone stares coldly at you, for reporting someone who just said or did something unacceptable.",
+"slots": [
+"the offense",
+"the call being made"
+],
+"aliases": [
+"calling the police",
+"guy on phone stare",
+"hello police",
+"reporting you"
+],
+"avoid": "Not for real emergencies or crimes."
+},
+{
+"id": "truestory",
+"name": "True Story",
+"lines": 2,
+"shape": "irony",
+"core": "A rage-comic man smugly sips wine beside 'True Story', for vouching for an absurd but supposedly real anecdote.",
+"slots": [
+"the absurd claim",
+"the follow-up"
+],
+"aliases": [
+"true story",
+"true story guy",
+"rage comic true story",
+"wine glass true story"
+],
+"avoid": "Not for obviously serious true events."
+},
+{
+"id": "beavisbutthead",
+"name": "Beavis And Butthead",
+"lines": 2,
+"shape": "reaction",
+"core": "Beavis and Butthead react with dumb snickering, for juvenile amusement at something that sounds silly.",
+"slots": [
+"the thing they hear",
+"their dumb reaction"
+],
+"aliases": [
+"beavis and butthead",
+"heh heh",
+"beavis butthead",
+"uh huh huh"
+],
+"avoid": "Not for smart or serious takes."
+},
+{
+"id": "castawayfire",
+"name": "Castaway Fire",
+"lines": 2,
+"shape": "approval",
+"core": "Tom Hanks screams in triumph after making fire, for wildly celebrating a small hard-won success.",
+"slots": [
+"the setup",
+"the triumphant shout"
+],
+"aliases": [
+"castaway fire",
+"look what i have created",
+"tom hanks fire",
+"i have made fire"
+],
+"avoid": "Not for failures or disappointment."
+},
+{
+"id": "tonystarksuccess",
+"name": "Tony Stark Success",
+"lines": 2,
+"shape": "approval",
+"core": "Tony Stark spreads his arms on stage basking in applause, for showing off a success like a celebrity.",
+"slots": [
+"the achievement",
+"the victory lap"
+],
+"aliases": [
+"tony stark success",
+"tony stark arms out",
+"iron man stage",
+"stark expo"
+],
+"avoid": "Not for failures or modest moments."
+},
+{
+"id": "2nickels",
+"name": "Two Nickels",
+"lines": 2,
+"shape": "irony",
+"core": "Doofenshmirtz notes he'd have two nickels for a weird thing happening twice, for a strangely specific coincidence repeating.",
+"slots": [
+"if I had a nickel for every time...",
+"I'd have two nickels"
+],
+"aliases": [
+"two nickels",
+"if i had a nickel",
+"doofenshmirtz nickel",
+"which isn't a lot"
+],
+"avoid": "Not for things that happen all the time."
+},
+{
+"id": "allrightthenkeepyoursecrets",
+"name": "All Right Then Keep Your Secrets",
+"lines": 1,
+"shape": "rejection",
+"core": "Frodo shrugs off an unanswered question, for giving up on getting an explanation from someone or something.",
+"slots": [
+"what won't explain itself"
+],
+"aliases": [
+"keep your secrets",
+"frodo keep your secrets",
+"all right then",
+"lotr secrets"
+],
+"avoid": "Not for situations where you got the answer."
+},
+{
+"id": "neveragain",
+"name": "Never Again Comfort Zone",
+"lines": 3,
+"shape": "plan-backfires",
+"core": "A blob leaves its frame, gets punched, and retreats saying never again, for trying something new and instantly regretting it.",
+"slots": [
+"staying in your comfort zone",
+"trying something new",
+"what hit you"
+],
+"aliases": [
+"never again",
+"comfort zone blob",
+"pink blob punched",
+"leaving comfort zone"
+],
+"avoid": "Not for adventures that went well."
+},
+{
+"id": "jacksparrowyouhaveheardofme",
+"name": "But You Have Heard Of Me",
+"lines": 2,
+"shape": "dialogue",
+"core": "Jack Sparrow turns an insult into a win by noting he's at least famous, for spinning bad reputation as notoriety.",
+"slots": [
+"the insult",
+"the smug comeback"
+],
+"aliases": [
+"but you have heard of me",
+"jack sparrow heard of me",
+"worst pirate",
+"pirates of the caribbean"
+],
+"avoid": "Not for genuine compliments."
+},
+{
+"id": "irobottesla",
+"name": "I Robot Sonny",
+"lines": 2,
+"shape": "reaction",
+"core": "The robot Sonny stares blankly, for a machine or AI giving a deadpan response to human nonsense.",
+"slots": [
+"the human question",
+"the robot's reply"
+],
+"aliases": [
+"i robot",
+"sonny robot",
+"i robot stare",
+"can a robot"
+],
+"avoid": "Not for emotional or excited reactions."
+},
+{
+"id": "mychildwill",
+"name": "Devil And Jesus Thinking",
+"lines": 2,
+"shape": "comparison",
+"core": "The devil and Jesus each picture something in thought bubbles, for contrasting the tempting idea with the virtuous one.",
+"slots": [
+"the devil's thought",
+"Jesus's thought"
+],
+"aliases": [
+"my child will",
+"devil and jesus thinking",
+"devil jesus thought bubble",
+"angel devil thoughts"
+],
+"avoid": "Not for mocking religion itself."
+},
+{
+"id": "thereisnowarinbasingse",
+"name": "There Is No War In Ba Sing Se",
+"lines": 2,
+"shape": "irony",
+"core": "Joo Dee cheerfully denies an obvious problem, for forced positivity that pretends everything is fine.",
+"slots": [
+"the obvious problem",
+"the cheerful denial"
+],
+"aliases": [
+"no war in ba sing se",
+"joo dee",
+"ba sing se",
+"avatar denial"
+],
+"avoid": "Not for real-world wars or tragedies."
+},
+{
+"id": "spongeboblookingoutwindow",
+"name": "Squidward Looking Out Window",
+"lines": 2,
+"shape": "labeling",
+"core": "Squidward watches SpongeBob and Patrick play outside, for being stuck inside while others have fun.",
+"slots": [
+"the people having fun",
+"you, stuck inside"
+],
+"aliases": [
+"squidward window",
+"squidward looking out window",
+"spongebob window",
+"lonely squidward"
+],
+"avoid": "Not for situations where you are the one having fun."
+},
+{
+"id": "animegirlbuying",
+"name": "Anime Girl Buying",
+"lines": 3,
+"shape": "escalation",
+"core": "A girl slaps down payment, lets it go, then beams at what she got; used for happily paying for something trivial or the joy of a small purchase.",
+"slots": [
+"what you pay or give",
+"letting it go",
+"what you happily get"
+],
+"aliases": [
+"anime girl paying",
+"anime girl shop",
+"anime girl buying meme",
+"paying anime girl"
+],
+"avoid": "Not for regret or bad deals; the payoff is pure delight."
+},
+{
+"id": "iamthesenate",
+"name": "I Am The Senate",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Palpatine calmly declares himself the authority; used when someone claims total, self-appointed control over a rule or decision.",
+"slots": [
+"someone cites the rules",
+"you are the rules"
+],
+"aliases": [
+"i am the senate",
+"palpatine senate",
+"not yet",
+"emperor palpatine"
+],
+"avoid": "Not for humble or shared decision-making."
+},
+{
+"id": "lanoirepressxtodoubt",
+"name": "Press X To Doubt",
+"lines": 1,
+"shape": "reaction",
+"core": "A detective's skeptical face with an 'X Doubt' prompt; used to express disbelief at a dubious claim.",
+"slots": [
+"the dubious claim"
+],
+"aliases": [
+"x to doubt",
+"press x to doubt",
+"la noire doubt",
+"doubt"
+],
+"avoid": "Not for things you actually believe or agree with."
+},
+{
+"id": "hereliesx",
+"name": "Here Lies X",
+"lines": 1,
+"shape": "labeling",
+"core": "A SpongeBob tombstone; write what died or was given up on, to mourn something lost or abandoned.",
+"slots": [
+"what died"
+],
+"aliases": [
+"spongebob tombstone",
+"here lies",
+"rip spongebob",
+"gravestone"
+],
+"avoid": "Not for real deaths or tragedies."
+},
+{
+"id": "whatismypurpose",
+"name": "What Is My Purpose",
+"lines": 3,
+"shape": "dialogue",
+"core": "The butter robot asks its purpose, learns it's something trivial, and despairs; used for something built or hired for a pointless job.",
+"slots": [
+"what is my purpose?",
+"the trivial purpose",
+"oh my god"
+],
+"aliases": [
+"butter robot",
+"you pass butter",
+"rick and morty purpose",
+"pass the butter"
+],
+"avoid": "Not for jobs that are actually meaningful."
+},
+{
+"id": "noicantobama",
+"name": "No I Can't Obama",
+"lines": 2,
+"shape": "rejection",
+"core": "Obama on the phone looking pained; used to turn a 'yes we can' expectation into a weary 'no, I can't'.",
+"slots": [
+"the request",
+"no I can't"
+],
+"aliases": [
+"obama phone",
+"no we can't",
+"obama facepalm phone",
+"no i cant"
+],
+"avoid": "Not for enthusiastic agreement."
+},
+{
+"id": "ryanbeckford",
+"name": "Hacker Kid",
+"lines": 2,
+"shape": "exaggeration",
+"core": "A kid in shades typing on a toy laptop over Matrix code; used for feeling like an elite hacker while doing something basic.",
+"slots": [
+"the basic thing",
+"feeling like a hacker"
+],
+"aliases": [
+"ryan beckford",
+"matrix kid",
+"hacker kid",
+"im in"
+],
+"avoid": "Not for genuinely advanced technical feats."
+},
+{
+"id": "questionrageface",
+"name": "Question Rage Face",
+"lines": 2,
+"shape": "reaction",
+"core": "A rage-comic face squinting in confusion; used when something makes no sense and you question it.",
+"slots": [
+"the confusing thing",
+"the puzzled question"
+],
+"aliases": [
+"confused rage face",
+"wat face",
+"question face",
+"rage comic confused"
+],
+"avoid": "Not for clear, satisfying answers."
+},
+{
+"id": "telltalewillrememberthat",
+"name": "Telltale Will Remember That",
+"lines": 2,
+"shape": "warning",
+"core": "The Telltale game notice that a character will remember your choice; used when someone files away a slight for later.",
+"slots": [
+"who will remember",
+"what you did"
+],
+"aliases": [
+"will remember that",
+"telltale games",
+"clementine will remember that",
+"they will remember this"
+],
+"avoid": "Not for things that are instantly forgotten."
+},
+{
+"id": "madmoneyjimcramer",
+"name": "Mad Money Jim Cramer",
+"lines": 2,
+"shape": "exaggeration",
+"core": "Jim Cramer pointing excitedly on set; used for loud, confident hype or a bold call that will probably be wrong.",
+"slots": [
+"the hyped thing",
+"the bold call"
+],
+"aliases": [
+"jim cramer",
+"mad money",
+"cramer pointing",
+"buy buy buy"
+],
+"avoid": "Not for cautious, measured advice."
+},
+{
+"id": "lisasimpsoncoffeethatxshit",
+"name": "Lisa Simpson Coffee That",
+"lines": 2,
+"shape": "labeling",
+"core": "Lisa smugly pours a full pot of coffee into her mug; used for eagerly consuming or piling on more of something.",
+"slots": [
+"what's being poured",
+"what it's poured into"
+],
+"aliases": [
+"lisa coffee",
+"lisa simpson pouring coffee",
+"coffee that shit",
+"lisa pour"
+],
+"avoid": "Not for moderation or cutting back."
+},
+{
+"id": "bazookasquirrel",
+"name": "Bazooka Squirrel",
+"lines": 2,
+"shape": "exaggeration",
+"core": "A squirrel in a helmet shouldering a bazooka; used for comically overkill responses to small threats.",
+"slots": [
+"the small threat",
+"the overkill response"
+],
+"aliases": [
+"squirrel bazooka",
+"army squirrel",
+"rocket launcher squirrel",
+"bazooka squirrel"
+],
+"avoid": "Not for proportionate, calm reactions."
+},
+{
+"id": "antijokechicken",
+"name": "Anti Joke Chicken",
+"lines": 2,
+"shape": "irony",
+"core": "A chicken on a pinwheel background; sets up a classic joke and delivers a painfully literal, unfunny answer.",
+"slots": [
+"joke setup",
+"literal anti-punchline"
+],
+"aliases": [
+"anti joke chicken",
+"anti-joke",
+"antijoke",
+"chicken meme"
+],
+"avoid": "Not for actual punchlines; the humour is the lack of one."
+},
+{
+"id": "iwillfindyouandiwillkillyou",
+"name": "I Will Find You",
+"lines": 2,
+"shape": "warning",
+"core": "Liam Neeson's Taken phone call; used for a grim, over-serious threat about a petty offense.",
+"slots": [
+"who wronged you",
+"the threat"
+],
+"aliases": [
+"taken",
+"liam neeson",
+"particular set of skills",
+"i will find you"
+],
+"avoid": "Not for real threats or violence."
+},
+{
+"id": "nahidwin",
+"name": "Nah I'd Win",
+"lines": 1,
+"shape": "reaction",
+"core": "Gojo grins with total confidence; used to answer a daunting challenge with cocky certainty.",
+"slots": [
+"the cocky reply"
+],
+"aliases": [
+"nah id win",
+"gojo",
+"would you lose",
+"stand proud"
+],
+"avoid": "Not for humble or anxious responses."
+},
+{
+"id": "judgementalvolturi",
+"name": "Judgemental Volturi",
+"lines": 1,
+"shape": "reaction",
+"core": "The Volturi stare down disdainfully from a balcony; used to show silent, smug judgement of someone's choices.",
+"slots": [
+"what's being judged"
+],
+"aliases": [
+"volturi",
+"twilight volturi",
+"judging volturi",
+"aro"
+],
+"avoid": "Not for approval or support."
+},
+{
+"id": "yugiohcarddraw",
+"name": "Yugioh Card Draw",
+"lines": 2,
+"shape": "escalation",
+"core": "Kaiba plays a card, Yugi draws, Kaiba plays another and is crushed; used for a counter move that backfires on the attacker.",
+"slots": [
+"first move",
+"the move that backfires"
+],
+"aliases": [
+"yugioh",
+"kaiba card",
+"yugi kaiba",
+"trap card"
+],
+"avoid": "Not for moves that actually succeed."
+},
+{
+"id": "startrek",
+"name": "Annoyed Picard",
+"lines": 2,
+"shape": "reaction",
+"core": "Picard gestures in exasperated disbelief; used to call out something absurd or contradictory.",
+"slots": [
+"the absurd thing",
+"the exasperated question"
+],
+"aliases": [
+"picard wtf",
+"annoyed picard",
+"star trek picard",
+"why the f"
+],
+"avoid": "Not for calm agreement."
+},
+{
+"id": "darthvadercometothedarkside",
+"name": "Come To The Dark Side",
+"lines": 2,
+"shape": "approval",
+"core": "Vader reaches out invitingly; used to tempt someone into a guilty pleasure or the 'wrong' side.",
+"slots": [
+"the invitation",
+"the temptation"
+],
+"aliases": [
+"darth vader",
+"join the dark side",
+"we have cookies",
+"vader reaching"
+],
+"avoid": "Not for warning people away."
+},
+{
+"id": "patrickscared",
+"name": "Patrick Scared Of Sign",
+"lines": 2,
+"shape": "reaction",
+"core": "Police hold up a sign and Patrick recoils in terror; used for something that instantly scares or triggers someone.",
+"slots": [
+"what's on the sign",
+"it shoved closer"
+],
+"aliases": [
+"patrick scared",
+"patrick police sign",
+"spongebob police",
+"patrick afraid"
+],
+"avoid": "Not for things people are happy to see."
+},
+{
+"id": "borndiedwelcomeback",
+"name": "Born Died Welcome Back",
+"lines": 2,
+"shape": "before-after",
+"core": "Two panels labelled Died and Born with 'welcome back'; used to show something old that returned as something new.",
+"slots": [
+"what died",
+"what it came back as"
+],
+"aliases": [
+"died born welcome back",
+"reincarnation meme",
+"welcome back",
+"born died"
+],
+"avoid": "Not for real deaths."
+},
+{
+"id": "1984calendar",
+"name": "1984 Calendar",
+"lines": 1,
+"shape": "irony",
+"core": "A woman reads news aloud while a man flips the calendar to 1984; used for news that sounds dystopian or Orwellian.",
+"slots": [
+"the dystopian news"
+],
+"aliases": [
+"1984 calendar",
+"orwell calendar",
+"january 1984",
+"dystopia calendar"
+],
+"avoid": "Not for genuinely good news."
+},
+{
+"id": "tiredcat",
+"name": "Tired Cat",
+"lines": 2,
+"shape": "reaction",
+"core": "A kitten slumped asleep on a keyboard; used for being utterly exhausted by work or a task.",
+"slots": [
+"the draining thing",
+"how you feel"
+],
+"aliases": [
+"tired cat",
+"sleepy kitten keyboard",
+"cat on keyboard",
+"exhausted cat"
+],
+"avoid": "Not for energetic or excited moods."
+},
+{
+"id": "showmethemoney",
+"name": "Show Me The Money",
+"lines": 2,
+"shape": "reaction",
+"core": "Jerry Maguire screaming into his phone; used for loudly demanding payment or proof.",
+"slots": [
+"the promise",
+"the demand"
+],
+"aliases": [
+"jerry maguire",
+"show me the money",
+"tom cruise phone",
+"pay me"
+],
+"avoid": "Not for calm or patient requests."
+}
+]

@@ -1,0 +1,10 @@
+[
+ {"qid": "blankforpresident#1", "acceptable": [], "why": "", "new_request": ""},
+ {"qid": "researchcat#1", "acceptable": [], "why": "", "new_request": ""},
+ {"qid": "legalbillmurray#1", "acceptable": [], "why": "", "new_request": ""},
+ {"qid": "winter#1", "acceptable": ["braceyourself"], "why": "braceyourself is a duplicate of the same Ned Stark 'brace yourselves, X is coming' template, so the request can't tell them apart.", "new_request": "ned stark winter is coming but its tax season"},
+ {"qid": "samuelljacksonsayonemoretime#1", "acceptable": ["saythatagainidareyou", "saywhatagain"], "why": "All three are Pulp Fiction Jules 'say it again, I dare you' templates; the request names no picture detail to pick the close-up glare.", "new_request": "jules close up glaring no gun, say 'per my last email' one more time"},
+ {"qid": "happywojakvsdepressedwojak#1", "acceptable": ["spongebobhappyandsad"], "why": "A generic 'fun at first vs despair later' before-after fits any happy-then-sad template; nothing points to wojaks.", "new_request": "happy wojak vs doomer wojak, me day 1 of a side project vs week 3"},
+ {"qid": "trailerparkboysbubbles#1", "acceptable": [], "why": "", "new_request": ""},
+ {"qid": "questionablestrategykobe#1", "acceptable": [], "why": "", "new_request": ""}
+]
