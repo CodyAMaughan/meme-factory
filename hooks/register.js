@@ -23,14 +23,12 @@ import {
   memegenOrigin,
   FACTORY_SERVER,
   FACTORY_CLIENT_KEY,
-  imgflipCandidates,
   serverCandidates,
   cardsPrompt,
   parseCards,
   addTemplates,
   removeTemplates,
   TEMPLATE_BY_ID,
-  sameMemeName,
   MAX_FULL_CATALOG,
   shortlistFor,
   hydePrompt,
@@ -196,7 +194,7 @@ export function register(on) {
       await $.process.run(['rm', '-f', note])
       $.prompt.submit({ text: `[Meme Factory reloaded] ${text}` }).catch(() => {})
     }
-    // The Meme Factory's own memegen server by default (its 1,500 templates, a "Meme Factory"
+    // The Meme Factory's own memegen server by default (its 1,400 templates, a "Meme Factory"
     // watermark without a key); MEMEGEN_URL picks another, such as https://api.memegen.link.
     const chosenServer = await $.env.get('MEMEGEN_URL')
     usingFactoryServer = !chosenServer
@@ -572,12 +570,11 @@ async function complete($, system, prompt, maxTokens, role = 'writer') {
   throw new Error(`The model didn't answer${reply?.reason ? `: ${reply.reason}` : ''}`)
 }
 
-// More templates than the built-in catalog:
-// - your own memegen server's (MEMEGEN_URL): every template it has that memegen.link doesn't,
-//   read each session, with the card it serves (card.json) when it has one;
-// - Imgflip's popular list, checked once a day: top-and-bottom memes the catalog lacks.
-// A template without a card gets one from the model, once, kept in the store; a meme the model
-// didn't know is asked about again after a month. MEME_FACTORY_IMGFLIP=0 leaves Imgflip out.
+// More templates than the built-in catalog: the memegen server's (the Meme Factory's, or your own
+// through MEMEGEN_URL). Every template it has that memegen.link doesn't is read each session, with
+// the card it serves (card.json) when it has one. A template without a card gets one from the
+// model, once, kept in the store; a meme the model didn't know is asked about again after a month.
+// Nothing is added from anywhere else: every template is one somebody looked at first.
 const MORE_EVERY = 24 * 60 * 60 * 1000
 const RETRY_SKIPPED = 30 * MORE_EVERY
 const CARDS_VERSION = 2
@@ -612,27 +609,22 @@ async function moreTemplates($, force = false) {
   // A new CARDS version rewrites every card (when the prompt that writes them improves).
   const stored = (await $.store.get('moreTemplates')) ?? {}
   const kept = stored.version === CARDS_VERSION ? stored : {}
-  const cards = Array.isArray(kept.cards) ? kept.cards : []
+  // Cards kept by versions that also read Imgflip's daily list are dropped: nobody screened those.
+  const cards = (Array.isArray(kept.cards) ? kept.cards : []).filter((t) => t.source !== 'imgflip')
   const now = Date.now()
   const skipped = Object.fromEntries(Object.entries(kept.skipped && !Array.isArray(kept.skipped) ? kept.skipped : {}).filter(([, at]) => now - at < RETRY_SKIPPED))
-  const imgflipOn = (await $.env.get('MEME_FACTORY_IMGFLIP')) !== '0'
-  const usable = (t) => (t.source === 'imgflip' ? imgflipOn : t.origin === memegenOrigin())
+  const usable = (t) => t.origin === memegenOrigin()
 
-  // Your server first, so an Imgflip template it also has (by name) gives way to its version.
   const server = await serverTemplates($)
   const ready = server.filter((t) => t.core)
-  const fromServer = (t) => t.source === 'imgflip' && ready.some((r) => sameMemeName(r.name, t.name))
-  // An Imgflip copy that loaded earlier (while the server was asleep) gives way now.
-  removeTemplates(cards.filter((t) => fromServer(t)).map((t) => t.id))
+  // A template the server no longer has (one taken out of the catalog) goes from here too.
+  const gone = (Array.isArray(kept.cards) ? kept.cards : []).filter((t) => t.source === 'imgflip' || (server.length && usable(t) && !server.some((s) => s.id === t.id)))
+  removeTemplates(gone.map((t) => t.id))
   const served = addTemplates(ready)
-  addTemplates(cards.filter(usable).filter((t) => !fromServer(t)))
+  addTemplates(cards.filter(usable).filter((t) => !gone.includes(t)))
 
   const due = force || !kept.checked || now - kept.checked >= MORE_EVERY || kept.origin !== memegenOrigin()
   const fresh = server.filter((t) => !t.core)
-  if (due && imgflipOn) {
-    const res = await $.http.fetch('https://api.imgflip.com/get_memes').catch(() => null)
-    if (res?.ok) fresh.push(...imgflipCandidates(JSON.parse(res.text)).filter((t) => !fromServer(t)))
-  }
   const ask = fresh.filter((t) => !skipped[t.id] && !cards.some((c) => c.id === t.id)).slice(0, 60)
   // Fifteen at a time, so a long answer isn't cut off mid-card.
   const made = []

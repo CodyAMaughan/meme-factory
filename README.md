@@ -52,14 +52,14 @@ Each screen shows its own actions first, then the same keys in the same place: `
 - **More like this** (`m`): three fresh takes on the meme you're looking at, instead of new formats.
 - **Your own words.** Put them in quotes: `/meme my wife watching me work, top "me: I built a meme factory"`. Quoted words are used exactly as written. To set a caption outright, say it in the chat box: *make the bottom say "my wife:"*.
 - **Different format** when the meme itself is wrong for the joke.
-- **Pick from the list.** In the browser gallery, **Choose the meme** searches all [1,500 or so](#more-templates) ("side eye", "two buttons") and drafts three takes on the one you click. Pick one before you've asked for a meme, and your next meme uses it.
+- **Pick from the list.** In the browser gallery, **Choose the meme** searches all [1,400 or so](#more-templates) ("side eye", "two buttons") and drafts three takes on the one you click. Pick one before you've asked for a meme, and your next meme uses it.
 
 ### More templates
 
-The mod draws on about 1,500 templates: memegen.link's 210, plus some 1,300 from [Imgflip's most popular of all time](https://imgflip.com/memetemplates?sort=top-all-time) that run on the Meme Factory's own server. Each one has a card saying what the meme means and what each box is for, and its popularity rank.
+The mod draws on about 1,400 templates: some 200 of memegen.link's, plus some 1,200 from [Imgflip's most popular of all time](https://imgflip.com/memetemplates?sort=top-all-time) that run on the Meme Factory's own server. Each one has a card saying what the meme means and what each box is for, and its popularity rank.
 
 - **Finding the right one.** With this many, the writer doesn't read them all. A quick model (Haiku) writes the card of the ideal template for your joke and, at the same time, names candidates from the whole catalog; then it reranks the search's best 200 for that card, with a description of each picture. The writer chooses from the 40 that come out. On a benchmark of about 2,400 requests ([bench/](bench/)), this puts the right template in the top three for 90% of requests written by people who only saw the picture, up from 76%.
-- **Imgflip's daily top 100.** Top-and-bottom memes from Imgflip's current list that the catalog lacks are added too, over Imgflip's picture. Set `MEME_FACTORY_IMGFLIP=0` to leave them out.
+- **Screened.** Every template was looked at before it went in. Offensive and crude ones are left out: profanity, sexual jokes, slurs and stereotypes, gore, mocking private people. Nothing is pulled in from outside lists at run time.
 - **Your own memegen server.** With `MEMEGEN_URL`, templates on your server that memegen.link doesn't have join the list. Add a folder to the server's `templates/` with the picture (`default.jpg`), a `config.yml` that places each box, and optionally a `card.json`, then redeploy.
 
 `meme_factory_debug` shows how many templates there are and when they were last checked.
@@ -180,7 +180,6 @@ Pictures come from the Meme Factory's own [memegen](https://github.com/jacebrown
 | `MEMEGEN_URL` | Render somewhere else: `https://api.memegen.link`, or a memegen server you host. |
 | `MEMEGEN_API_KEY` | A key for that server (in a header, read from stdin, so it never appears in a URL, a posted link, or the process list). With a valid key, downloads ask for `watermark=none` and skip the rate limit. |
 | `MEMEGEN_WATERMARK` | With a key: your own watermark text instead of none, such as `example.com`. |
-| `MEME_FACTORY_IMGFLIP` | `0` leaves out [Imgflip's daily top 100](#more-templates). |
 
 Set them like the Jev key (shell profile or `env` in `~/.claude/settings.json`) and restart Claude Code.
 
@@ -194,7 +193,7 @@ Previews in the browser gallery and posted links use the plain URL, so they show
 - **Model calls** go through your Claude Code session's own credentials (see [Models and your plan](#models-and-your-plan)).
 - **Pictures** are rendered by the Meme Factory server (or the one in `MEMEGEN_URL`) from the template and the caption text, and cached in `~/.cache/meme-factory/`. The server keeps rendered images in its cache and counts requests per address for its rate limit; it keeps no other record. memegen.link, if you use it, says requests without a key may be used as training data.
 - **Posts** go only where you send them, through your connectors. The posting helper can use only your connectors, and post only the meme you approved, once.
-- **Templates:** the mod reads the server's template list each session, and Imgflip's public list once a day. Nothing about you or your memes is sent.
+- **Templates:** the mod reads the server's template list each session. Nothing about you or your memes is sent.
 - **Jev**, if you set `TYPESAFE_API_KEY`, receives the meme request and the draft captions.
 - The mod keeps your settings and your last 50 approved memes in its local store.
 

@@ -1,7 +1,7 @@
 {
   "name": "meme-factory",
   "displayName": "Meme Factory",
-  "version": "0.12.1",
+  "version": "0.12.2",
   "description": "Fresh from the factory. Ask Claude for a meme and three drafts cook in a side panel while you keep working. Pick one, remix it in plain words, approve it, and post it to Slack.",
   "author": {
     "name": "Cody Maughan",

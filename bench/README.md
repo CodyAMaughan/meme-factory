@@ -21,3 +21,5 @@ pick fit as well, the request was rewritten for its target and given to the bett
     python3 bench/final.py                                            # held-out, with reviews
 
 Model calls go through `claude -p` with nothing loaded but a system prompt, cached in bench/cache.
+
+The catalog here is the one the benchmark ran on (October 2026). Templates screened out since (0.12.2) are still listed, so numbers stay comparable.
