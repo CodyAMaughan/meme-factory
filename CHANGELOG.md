@@ -2,6 +2,10 @@
 
 All notable changes to Meme Factory. Versions follow [semantic versioning](https://semver.org).
 
+## 0.12.1 (2026-10-10)
+
+- **"Change the images" changes the images.** Asking for different pictures in the chat box only worked if you used one of a few words ("different", "another", "switch"); anything else rewrote the captions on the same three memes. The chat model now says when you want new memes, a wider word check backs it up, and the new drafts stay away from every template already shown for that request.
+
 ## 0.12.0 (2026-10-10)
 
 - **Better at finding the right meme.** Measured on a new benchmark (bench/): about 2,400 requests, one to three per template, a 70/30 split, and a held-out set written by people who only saw the picture. On that set the right template now lands in the top three 90% of the time, up from 76%; for requests that describe only a situation ("my boss wants me to work saturday for a pizza"), 77%, up from 53%.

@@ -194,7 +194,7 @@ export function keepNamed(best, all, named) {
   return out
 }
 
-export function writerPrompt({ request, context, feedback, previous, templateIds, mustUse = [], exact = [], variations = false, shortlist = null }) {
+export function writerPrompt({ request, context, feedback, previous, templateIds, mustUse = [], exact = [], variations = false, shortlist = null, avoid = [] }) {
   const card = (id) => {
     const t = TEMPLATE_BY_ID.get(id)
     return `${id} (${t.name}, ${t.lines} boxes${t.slots ? `: ${t.slots.map((r, i) => `${i + 1}) ${r}`).join(' ')}` : ''})`
@@ -209,11 +209,11 @@ export function writerPrompt({ request, context, feedback, previous, templateIds
           : 'Pick the 3 templates from the catalog whose shape and core idea best fit this joke. Write 2 candidates per template, each a different angle.'
   const task = `Meme request: ${request}
 ${context ? `Context from the user's work: ${context}\n` : ''}${previous ? `Previous draft: ${previous.template_name} ${JSON.stringify(previous.lines)}\n` : ''}${feedback?.length ? `User feedback so far (most recent last): ${feedback.map((f) => JSON.stringify(f)).join(', ')}\n` : ''}${exact.length ? `The user's exact words (use verbatim): ${exact.map((x) => JSON.stringify(x)).join(', ')}\n` : ''}
-${pick}
+${pick}${avoid.length ? `\nThe user asked for different pictures: do not use ${avoid.join(', ')}.` : ''}
 Return: {"shape":"the joke's shape in a few words","candidates":[{"template_id":"...","lines":["..."]}]}`
   // A big catalog doesn't fit every prompt: the writer sees a shortlist chosen for this request.
   if (shortlist?.length) {
-    const ids = [...new Set([...shortlist, ...(templateIds ?? []), ...mustUse])].filter((id) => TEMPLATE_BY_ID.has(id))
+    const ids = [...new Set([...shortlist.filter((id) => !avoid.includes(id)), ...(templateIds ?? []), ...mustUse])].filter((id) => TEMPLATE_BY_ID.has(id))
     return [{ text: RULES_HEAD, cache: true }, { text: `${ids.map((id) => catalogLine(TEMPLATE_BY_ID.get(id))).join('\n')}\n\n${task}` }]
   }
   return [{ text: WRITER_RULES, cache: true }, { text: task }]
@@ -466,13 +466,18 @@ export function resolveDestination(text, channels, favorites) {
   return { kind: 'claude', target: raw }
 }
 
+// Words that ask for different memes, not different captions (a backstop for the chat model's flag).
+export const wantsNewPictures = (text) =>
+  /\b(different|another|other|new|change|swap|switch|replace)\b[^.!?]{0,25}\b(format|template|meme|image|picture|pic|photo|one)s?\b|\b(different|another|switch)\b|none of these|something else/i.test(String(text ?? ''))
+
 // ---------- The chat box ----------
 
 export const CHAT_SYSTEM = `You are the Meme Factory's editor, talking to the user in a small chat box beside their meme drafts.
 Read their message and choose one action. Reply with JSON only, no prose and no code fences:
 {"reply":"one short, friendly sentence","action":{"type":"..."}}
 Actions:
-- {"type":"remix","feedback":"what to change"}: new captions, same request (e.g. "meaner", "about Mondays", "different format"). Keep any words the user put in quotes, in quotes, unchanged.
+- {"type":"remix","feedback":"what to change"}: new captions on the same pictures, same request (e.g. "meaner", "about Mondays"). Keep any words the user put in quotes, in quotes, unchanged.
+- {"type":"remix","feedback":"what to change","newPictures":true}: the user wants different memes, not just different words: "change the images", "different pictures", "other memes", "new templates", "different format", "none of these work", "try something else". The drafts will use templates they haven't seen yet.
 - {"type":"edit","draft":2,"lines":["top text","bottom text"]}: the user dictated the exact caption for a draft (e.g. "make the bottom say 'her:'"). Copy their words exactly; keep the other boxes as they are.
 - {"type":"variations","draft":2}: more drafts on that one meme only ("more like this", "more of the Drake one")
 - {"type":"variations","template":"side eye"}: more drafts on a meme the user named

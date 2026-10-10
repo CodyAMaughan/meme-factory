@@ -31,6 +31,7 @@ import {
   removeTemplates,
   TEMPLATE_BY_ID,
   sameMemeName,
+  wantsNewPictures,
   MAX_FULL_CATALOG,
   shortlistFor,
   hydePrompt,
@@ -404,14 +405,17 @@ function startJob($, request, context, chat = []) {
   $.clock.after(0, () => cook($, id, null))
 }
 
-function remix($, feedback) {
+// fresh: the person asked for different pictures, so the drafts leave the templates shown so far.
+function remix($, feedback, fresh = false) {
   if (!job.request) return
   const id = ++seq
   const previous = job.drafts[job.selected] ?? null
   if (feedback) job = { ...job, feedback: [...job.feedback, feedback] }
   job = { ...job, status: 'working', stage: 'write', note: feedback ? 'Reworking with your notes…' : 'Remixing…', error: '', approved: null, post: null }
   changed($)
-  $.clock.after(0, () => cook($, id, previous, feedback))
+  // Every template shown for this request, so "different pictures" twice doesn't circle back.
+  if (fresh || wantsNewPictures(feedback)) job = { ...job, seen: [...new Set([...(job.seen ?? []), ...job.drafts.map((d) => d.template_id)])] }
+  $.clock.after(0, () => cook($, id, previous, feedback, fresh))
 }
 
 // "More like this": three fresh drafts on one template (the shown draft's, or one named).
@@ -436,11 +440,12 @@ async function editDraft($, index, lines) {
   changed($)
 }
 
-async function cook($, id, previous, latest = '') {
+async function cook($, id, previous, latest = '', fresh = false) {
   try {
     await Promise.race([templatesReady, new Promise((resolve) => $.clock.after(5000, resolve))])
     const jevKey = await $.env.get('TYPESAFE_API_KEY')
-    const newFormat = !previous || /different|another|new (format|template)|other (format|template)|switch/i.test(latest)
+    const newFormat = !previous || fresh || wantsNewPictures(latest)
+    const avoid = previous && newFormat ? (job.seen ?? []) : []
     // Words in quotes are the person's own: they stay, unchanged, until new quotes replace them.
     const quoted = quotedText(latest || (previous ? '' : job.request))
     if (quoted.length) job = { ...job, exact: quoted }
@@ -460,7 +465,7 @@ async function cook($, id, previous, latest = '') {
     const written = await complete(
       $,
       WRITER_SYSTEM,
-      writerPrompt({ request: job.request, context: job.context, feedback: job.feedback, previous, templateIds, mustUse: templateIds ? [] : named, exact, variations: Boolean(lock), shortlist }),
+      writerPrompt({ request: job.request, context: job.context, feedback: job.feedback, previous, templateIds, mustUse: templateIds ? [] : named, exact, variations: Boolean(lock), shortlist, avoid: avoid.filter((t) => !named.includes(t)) }),
       2000,
     )
     if (id !== seq) return
@@ -1087,7 +1092,7 @@ async function act($, action) {
   const hasDraft = Number.isInteger(draftIndex) && draftIndex >= 0 && draftIndex < job.drafts.length
   switch (action?.type) {
     case 'remix':
-      return remix($, String(action.feedback ?? '').slice(0, 300))
+      return remix($, String(action.feedback ?? '').slice(0, 300), action.newPictures === true)
     case 'select':
       if (hasDraft && job.status === 'review') select($, draftIndex)
       return

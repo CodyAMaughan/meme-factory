@@ -39,6 +39,7 @@ import {
   rankTemplates,
   shortlistFor,
   popularity,
+  wantsNewPictures,
 } from '../hooks/lib.js'
 
 const TOOL = 'mcp__meme-factory__make_meme'
@@ -1145,4 +1146,32 @@ test('with a big catalog, a quick model finds the template: its rerank and catal
   expect(lines[0].startsWith('big-042 |')).toBe(true)
   expect(lines[1].startsWith('big-007 |')).toBe(true)
   expect(lines.length).toBe(40)
+})
+
+test('"change the images" means different memes: the drafts leave the templates already shown, and stay away from them', async ($, on) => {
+  let next: object = { reply: 'New pictures coming.', action: { type: 'remix', feedback: 'change the images', newPictures: true } }
+  const { clock, log } = factory(on, { chatReply: () => next })
+  await draftsReady($, clock)
+  const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
+  const before = log.prompts.length
+  await ui.input({ key: 'chat', text: 'change the images' })
+  await clock.settle()
+  const writer = log.prompts.slice(before).map(String).find((p) => p.includes('"change the images"'))!
+  expect(writer).not.toContain('Use exactly these templates')
+  expect(writer).toMatch(/do not use [^\n]*drake/)
+  expect(writer).toMatch(/do not use [^\n]*fine/)
+
+  // A plain note keeps the pictures and changes the words.
+  next = { reply: 'Meaner.', action: { type: 'remix', feedback: 'meaner' } }
+  const mid = log.prompts.length
+  await ui.input({ key: 'chat', text: 'meaner' })
+  await clock.settle()
+  expect(log.prompts.slice(mid).map(String).some((p) => p.includes('Use exactly these templates'))).toBe(true)
+})
+
+test('the words that ask for new pictures, with or without the chat model\'s flag', () => {
+  for (const yes of ['change the images', 'different pictures please', 'use other memes', 'new templates', 'swap the picture', 'different format', 'try something else', 'none of these work', 'another one'])
+    expect(wantsNewPictures(yes)).toBe(true)
+  for (const no of ['meaner', 'make it about the PM', 'shorter', 'change the bottom text', 'new joke about mondays'])
+    expect(wantsNewPictures(no)).toBe(false)
 })
