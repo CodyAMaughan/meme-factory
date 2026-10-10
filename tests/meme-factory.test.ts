@@ -1146,3 +1146,36 @@ test('with a big catalog, a quick model finds the template: its rerank and catal
   expect(lines[1].startsWith('big-007 |')).toBe(true)
   expect(lines.length).toBe(40)
 })
+
+test('the chat model decides about the pictures: "new" leaves the templates already shown, "same" keeps them, and "keep" holds the ones you like', async ($, on) => {
+  // The words don't matter ("hmm, not feeling these" has none of the old trigger words): the model's call does.
+  let next: object = { reply: 'New pictures coming.', action: { type: 'remix', feedback: 'hmm, not feeling these', pictures: 'new' } }
+  const { clock, log } = factory(on, { chatReply: () => next })
+  await draftsReady($, clock)
+  const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
+  const writerSince = (n: number, note: string) => log.prompts.slice(n).map(String).find((p) => p.includes(JSON.stringify(note)))!
+  let n = log.prompts.length
+  await ui.input({ key: 'chat', text: 'hmm, not feeling these' })
+  await clock.settle()
+  let writer = writerSince(n, 'hmm, not feeling these')
+  expect(writer).not.toContain('Use exactly these templates')
+  expect(writer).toMatch(/do not use [^\n]*drake/)
+  expect(writer).toMatch(/do not use [^\n]*fine/)
+
+  // "same": a note with the old trigger word "different" in it still keeps the pictures, because the model said so.
+  next = { reply: 'On it.', action: { type: 'remix', feedback: 'a different tone, meaner', pictures: 'same' } }
+  n = log.prompts.length
+  await ui.input({ key: 'chat', text: 'a different tone, meaner' })
+  await clock.settle()
+  expect(writerSince(n, 'a different tone, meaner')).toContain('Use exactly these templates')
+
+  // "keep": new memes, except draft 1's.
+  next = { reply: 'Keeping the first.', action: { type: 'remix', feedback: 'keep the first, swap the rest', pictures: 'new', keep: [1] } }
+  n = log.prompts.length
+  await ui.input({ key: 'chat', text: 'keep the first, swap the rest' })
+  await clock.settle()
+  writer = writerSince(n, 'keep the first, swap the rest')
+  expect(writer).toMatch(/The user asked for [^\n]*drake[^\n]* by name/i)
+  expect(writer).not.toMatch(/do not use [^\n]*drake/)
+  expect(writer).toMatch(/do not use [^\n]*fine/)
+})
