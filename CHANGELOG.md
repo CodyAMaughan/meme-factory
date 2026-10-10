@@ -2,6 +2,12 @@
 
 All notable changes to Meme Factory. Versions follow [semantic versioning](https://semver.org).
 
+## 0.12.2 (2026-10-10)
+
+- **A clean catalog.** Every template was screened again, picture and words, for a work Slack: 92 offensive or crude ones are gone (swearing in the name or printed on the picture, bathroom and pickup-line jokes, drugs or drunkenness as the point, stereotypes, guns and gore played straight), 14 of them from the built-in list. Another 42 kept their picture and got clean names, aliases or example captions; 10 got new ids (`soup-nazi` is now `nosoup`). About 1,400 templates remain.
+- **Imgflip's daily top 100 is no longer read.** It added templates nobody had looked at, filtered only by a word list. `MEME_FACTORY_IMGFLIP` is gone, and cards kept from that list by earlier versions are dropped.
+- A template taken off the server leaves your catalog at the next session, including one whose card the model wrote.
+
 ## 0.12.1 (2026-10-10)
 
 - **The chat box decides when you want new memes.** Asking for different pictures only worked if you used one of a few words ("different", "another", "switch"); anything else rewrote the captions on the same three memes. That word list is gone. The chat model now reads what you mean and chooses: the same pictures with new words, new pictures (staying away from every template already shown for that request), or new pictures except the drafts you said you like.

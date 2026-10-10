@@ -621,7 +621,7 @@ const pickerEntry = (t) => ({
 })
 let PICKER = TEMPLATES.map(pickerEntry)
 
-// ---------- More templates: Imgflip's popular list, and your own memegen server's ----------
+// ---------- More templates: the memegen server's ----------
 
 // Two names are the same meme when one's distinctive words all appear in the other
 // ("Roll Safe" and "Roll Safe Think About It"; "Spider-Man Pointing" and "spiderman pointing").
@@ -639,25 +639,6 @@ function sameMeme(a, b) {
 export const sameMemeName = (a, b) => sameMeme(a, b)
 export function knownTemplate(name, list = TEMPLATES) {
   return list.some((t) => sameMeme(name, t.name) || (t.aliases ?? []).some((a) => sameMeme(name, a)))
-}
-
-// Names a work Slack shouldn't see in its template list.
-const CRUDE = /bitch|fuck|shit|dick|porn|sex|nsfw|9\/11/i
-
-// Imgflip's top 100 (api.imgflip.com/get_memes), kept to two-box memes the catalog lacks: they
-// render over Imgflip's picture through memegen's custom route, which places top and bottom text.
-export function imgflipCandidates(reply, have = TEMPLATES) {
-  const memes = reply?.data?.memes
-  if (!reply?.success || !Array.isArray(memes)) return []
-  const out = []
-  for (const m of memes) {
-    const url = String(m?.url ?? '')
-    if (m?.box_count !== 2 || !/^https:\/\/i\.imgflip\.com\/[\w]+\.(jpg|png)$/.test(url)) continue
-    const name = String(m.name ?? '').slice(0, 80)
-    if (!name || CRUDE.test(name) || knownTemplate(name, have) || out.some((o) => sameMeme(name, o.name))) continue
-    out.push({ id: `imgflip-${String(m.id).replace(/\W/g, '')}`, name, lines: 2, background: url, source: 'imgflip' })
-  }
-  return out
 }
 
 // Templates on your own memegen server (MEMEGEN_URL) that aren't in the catalog: ones you added.
@@ -898,7 +879,7 @@ export function shortlistFor(query, { matches = 30, popular = 10 } = {}) {
   return ids
 }
 
-// Takes templates back out (an Imgflip copy once your server's own version has arrived).
+// Takes templates back out (ones the server no longer has).
 export function removeTemplates(ids) {
   const out = new Set(ids)
   const before = TEMPLATES.length
