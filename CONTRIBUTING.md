@@ -10,7 +10,7 @@ Thanks for helping. Issues, ideas and pull requests are all welcome. Every pull 
 
 ## Set up
 
-You need Claude Code v2.1.287 or later and `python3`.
+You need Claude Code v2.1.287 or later and Python 3.
 
 ```bash
 git clone https://github.com/CodyAMaughan/meme-factory

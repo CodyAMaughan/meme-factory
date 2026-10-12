@@ -99,6 +99,9 @@ let inBand = false
 // post) and `-posted` (its post, once one went through), named for this session.
 let poster = null
 let posterFiles = ''
+// Whether Claude Code runs hooks in a POSIX shell, as the poster's are written: always on macOS and
+// Linux, and on Windows only with Git Bash (without it, hooks run in PowerShell and these fail).
+let hookShell = true
 // The helpers this mod started (picture checks, posters): their hand-backs never reach the conversation.
 const ownAgents = new Set()
 // Pictures per draft id: { png, size } for the terminal Image and uploads, { svg } for Desktop.
@@ -168,9 +171,12 @@ function freshJob() {
 
 export function register(on) {
   on('session.start', async ($, e, next) => {
-    const home = await $.env.get('HOME')
-    cacheDir = `${home || '/tmp'}/.cache/meme-factory`
+    // Windows sets USERPROFILE and often no HOME. Forward slashes work for every file call there,
+    // and the posting helper's shell hooks can name the path.
+    const home = (await $.env.get('HOME')) || (await $.env.get('USERPROFILE'))
+    cacheDir = `${(home || '/tmp').replaceAll('\\', '/')}/.cache/meme-factory`
     posterFiles = `${cacheDir}/poster-${String(await $.session.id().catch(() => 'session')).replace(/[^\w-]/g, '')}`
+    hookShell = (await $.env.get('OS')) !== 'Windows_NT' || (await findGitBash($))
     inlineImages = await detectInlineImages($)
     wordmark = await loadWordmark($)
     debugOn = (await $.env.get('MEME_FACTORY_DEBUG')) === '1'
@@ -187,13 +193,14 @@ export function register(on) {
       isDeferred: true,
     })
     // Development: a note left in the cache folder is handed to Claude once after a reload, so a
-    // test can continue on its own. The note is removed first, so this can't repeat.
+    // test can continue on its own. The note is emptied first, so this can't repeat ($.fs can't
+    // delete, and Windows has no rm to run).
     // Per session: other sessions running the same mod (another terminal) never take it.
     const note = `${cacheDir}/.reload-note-${await $.session.id().catch(() => 'none')}`
-    if (await $.fs.exists(note)) {
-      const text = String(await $.fs.read(note)).slice(0, 2000)
-      await $.process.run(['rm', '-f', note])
-      $.prompt.submit({ text: `[Meme Factory reloaded] ${text}` }).catch(() => {})
+    const noted = (await $.fs.exists(note)) ? String(await $.fs.read(note)).slice(0, 2000) : ''
+    if (noted.trim()) {
+      await $.fs.write(note, '')
+      $.prompt.submit({ text: `[Meme Factory reloaded] ${noted}` }).catch(() => {})
     }
     // The Meme Factory's own memegen server by default (its 1,400 templates, a "Meme Factory"
     // watermark without a key); MEMEGEN_URL picks another, such as https://api.memegen.link.
@@ -243,7 +250,7 @@ export function register(on) {
         model: 'sonnet',
         maxTurns: 10,
         omitClaudeMd: true,
-        hooks: posterHooks(posterFiles),
+        hooks: hookShell ? posterHooks(posterFiles) : undefined,
       })
       .catch(() => {})
     // Register commands last: a taken name throws and skips the rest of the hook.
@@ -692,7 +699,6 @@ function jevHeaders(key) {
 async function renderArt($, drafts) {
   const surfaces = await $.session.surfaces()
   const wantsDesktop = surfaces.some((s) => s !== 'terminal')
-  await $.process.run(['mkdir', '-p', cacheDir])
   for (const d of drafts) {
     if (art.get(d.id)?.size) continue
     const entry = {}
@@ -711,24 +717,23 @@ async function renderArt($, drafts) {
   }
 }
 
-// Downloads the meme's PNG to a temp file and moves it into place only when it is a whole
-// PNG, so a timed-out or empty download is never drawn or uploaded.
+// Downloads the meme's PNG. A picture is drawn or uploaded only once it's in `art`, which
+// takes it only after curl finished the whole download and the file reads as a PNG, so a
+// timed-out or empty download is never used.
 async function fetchPng($, d) {
   const png = `${cacheDir}/${d.id}.png`
-  const part = `${png}.part`
-  await download($, sizedUrl(d, 600, 'png', downloadParams()), part)
-  const { base64 } = await $.fs.read(part, { as: 'bytes' })
+  await download($, sizedUrl(d, 600, 'png', downloadParams()), png)
+  const { base64 } = await $.fs.read(png, { as: 'bytes' })
   const size = pngSize(Uint8Array.fromBase64(base64.slice(0, 64)))
-  const mv = await $.process.run(['mv', '-f', part, png])
-  if (mv.exitCode !== 0) throw new Error('could not save the picture')
   return { png, size }
 }
 
 // With MEMEGEN_API_KEY, curl reads the key header from stdin (-H @-), so it never shows
-// in a URL or in the process list.
+// in a URL or in the process list. curl makes the cache folder (--create-dirs): there's no
+// mkdir to run on Windows. Windows 10 and 11 ship curl.
 async function download($, url, path) {
   const keyed = Boolean(MEMEGEN.key)
-  const argv = ['curl', '-sfL', '--max-time', '20', ...(keyed ? ['-H', '@-'] : []), '-o', path, url]
+  const argv = ['curl', '-sfL', '--max-time', '20', '--create-dirs', ...(keyed ? ['-H', '@-'] : []), '-o', path, url]
   const r = await $.process.run(argv, { timeoutMs: 25000, ...(keyed ? { stdin: `X-API-KEY: ${MEMEGEN.key}\n` } : {}) })
   if (r.exitCode !== 0) throw new Error(`download failed (${r.exitCode})`)
 }
@@ -744,10 +749,29 @@ async function svgOf($, d) {
   return null
 }
 
+// Claude Code on Windows runs hooks in Git Bash when it finds it: where CLAUDE_CODE_GIT_BASH_PATH
+// says, or bin/bash.exe in the Git for Windows that git runs from. This looks in the same places.
+async function findGitBash($) {
+  const named = await $.env.get('CLAUDE_CODE_GIT_BASH_PATH')
+  if (named) return $.fs.exists(named).catch(() => false)
+  try {
+    // C:/Program Files/Git/mingw64/libexec/git-core: Git's own folder is three up.
+    const r = await $.process.run(['git', '--exec-path'], { timeoutMs: 5000 })
+    const root = r.stdout.trim().replaceAll('\\', '/').split('/').slice(0, -3).join('/')
+    return r.exitCode === 0 && Boolean(root) && (await $.fs.exists(`${root}/bin/bash.exe`))
+  } catch {
+    return false
+  }
+}
+
+// macOS, Linux, then Windows: rundll32 hands the URL to the default browser, with no shell
+// to read the & in it.
+const OPENERS = [['open'], ['xdg-open'], ['rundll32', 'url.dll,FileProtocolHandler']]
+
 async function openInBrowser($, url) {
-  for (const opener of ['open', 'xdg-open']) {
+  for (const opener of OPENERS) {
     try {
-      const r = await $.process.run([opener, url])
+      const r = await $.process.run([...opener, url])
       if (r.exitCode === 0) return true
     } catch {}
   }
@@ -1003,6 +1027,7 @@ async function postByAgent($) {
   let result
   try {
     // Without its hooks (a cache path the shell can't hold) it would post unguarded, and ask in the chat.
+    if (!hookShell) throw new Error('the posting helper needs Git for Windows here: its safety hooks run in Git Bash')
     if (!posterHooks(posterFiles)) throw new Error("the posting helper can't run safely here: the cache folder's path has unusual characters")
     await $.fs.write(`${posterFiles}-path`, memePath(draft.url))
     await $.fs.write(`${posterFiles}-posted`, '')
@@ -1132,6 +1157,10 @@ const TEMPLATE_IDS = { has: (id) => TEMPLATE_BY_ID.has(id) }
 
 // ---------- Browser gallery ----------
 
+// Python 3 goes by python3 on macOS and Linux, and by python or py on Windows. One that can't
+// start, or ends before READY (Windows' python3 can be a shortcut to the Store), tries the next.
+const PYTHONS = [['python3'], ['python'], ['py', '-3']]
+
 // Starts the local gallery server once per session. It prints READY <port>, then one
 // EVENT <json> line per action on the page; the child dies with the session or the mod.
 function startGallery($) {
@@ -1148,29 +1177,9 @@ function startGallery($) {
   gallery = { token, port: 0, ready }
   const mine = gallery
   void (async () => {
-    let buffered = ''
-    try {
-      const child = $.process.spawn({ argv: ['python3', `${$.plugin.root}/gallery/server.py`], input: `${token}\n${GALLERY_EVENTS.join(',')}\n${memegenOrigin()}\n` })
-      for await (const { stream, text } of child) {
-        if (stream !== 'stdout') continue
-        buffered += text
-        let nl
-        while ((nl = buffered.indexOf('\n')) >= 0) {
-          const line = buffered.slice(0, nl).trim()
-          buffered = buffered.slice(nl + 1)
-          if (line.startsWith('READY ')) {
-            mine.port = Number(line.slice(6))
-            resolveReady()
-            syncGallery($)
-          } else if (line.startsWith('EVENT ')) {
-            try {
-              await onGalleryEvent($, JSON.parse(line.slice(6)))
-            } catch {}
-          }
-        }
-      }
-    } catch (err) {
-      rejectReady(err)
+    for (const python of PYTHONS) {
+      await runGallery($, mine, python, resolveReady)
+      if (mine.port) break
     }
     if (gallery === mine) gallery = null
     rejectReady(new Error('the gallery server stopped'))
@@ -1178,11 +1187,39 @@ function startGallery($) {
   return ready
 }
 
+// Runs the server under one Python until it ends; `mine.port` is set once it's listening.
+async function runGallery($, mine, python, resolveReady) {
+  let buffered = ''
+  try {
+    const child = $.process.spawn({ argv: [...python, `${$.plugin.root}/gallery/server.py`], input: `${mine.token}\n${GALLERY_EVENTS.join(',')}\n${memegenOrigin()}\n` })
+    for await (const { stream, text } of child) {
+      if (stream !== 'stdout') continue
+      buffered += text
+      let nl
+      while ((nl = buffered.indexOf('\n')) >= 0) {
+        const line = buffered.slice(0, nl).trim()
+        buffered = buffered.slice(nl + 1)
+        if (line.startsWith('READY ')) {
+          mine.port = Number(line.slice(6))
+          resolveReady()
+          syncGallery($)
+        } else if (line.startsWith('EVENT ')) {
+          try {
+            await onGalleryEvent($, JSON.parse(line.slice(6)))
+          } catch {}
+        }
+      }
+    }
+  } catch {
+    // It couldn't start: the caller tries the next Python.
+  }
+}
+
 async function openGallery($, tab = 'drafts') {
   try {
     await startGallery($)
   } catch {
-    $.ui.toast('The browser gallery needs python3.')
+    $.ui.toast('The browser gallery needs Python 3.')
     return
   }
   syncGallery($)

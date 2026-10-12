@@ -21,9 +21,10 @@
 ```text
 Install the Meme Factory mod for me. Run `claude plugin marketplace add CodyAMaughan/meme-factory`
 and then `claude plugin install meme-factory@meme-factory`. Check that `claude --version` is 2.1.287
-or later and that `python3` is available, and tell me if either isn't. Then tell me to run
-/reload-plugins (or restart Claude Code) and try `/meme standups that run long`. If I don't have
-the Slack connector, point me to https://claude.ai/directory to add it.
+or later and that Python 3 is available (`python3`, or `python` on Windows), and tell me if either
+isn't. Then tell me to run /reload-plugins (or restart Claude Code) and try
+`/meme standups that run long`. If I don't have the Slack connector, point me to
+https://claude.ai/directory to add it.
 ```
 
 Or run the commands yourself:
@@ -35,7 +36,7 @@ claude plugin install meme-factory@meme-factory
 
 Inside a session, `/plugin install meme-factory --marketplace CodyAMaughan/meme-factory` does the same.
 
-**Requirements:** Claude Code **v2.1.287 or later** (mods), in the terminal or the Desktop app. `python3` for the browser gallery. To post, a Slack connection (the [Slack connector](https://claude.ai/directory), or Slack's Claude Code plugin) or any other connector that can post. Slack shows the picture only where the mod can upload it ([Pictures or links](#pictures-or-links)).
+**Requirements:** Claude Code **v2.1.287 or later** (mods), in the terminal or the Desktop app, on macOS, Linux or Windows. Python 3 for the browser gallery (`python3`, `python` or `py`). On Windows, the posting helper needs [Git for Windows](https://gitforwindows.org): its safety hooks are shell scripts, which Claude Code runs in Git Bash. To post, a Slack connection (the [Slack connector](https://claude.ai/directory), or Slack's Claude Code plugin) or any other connector that can post. Slack shows the picture only where the mod can upload it ([Pictures or links](#pictures-or-links)).
 
 ## How it works
 
@@ -191,7 +192,7 @@ Previews in the browser gallery and posted links use the plain URL, so they show
 ## Privacy
 
 - **Model calls** go through your Claude Code session's own credentials (see [Models and your plan](#models-and-your-plan)).
-- **Pictures** are rendered by the Meme Factory server (or the one in `MEMEGEN_URL`) from the template and the caption text, and cached in `~/.cache/meme-factory/`. The server keeps rendered images in its cache and counts requests per address for its rate limit; it keeps no other record. memegen.link, if you use it, says requests without a key may be used as training data.
+- **Pictures** are rendered by the Meme Factory server (or the one in `MEMEGEN_URL`) from the template and the caption text, and cached in `~/.cache/meme-factory/` (`%USERPROFILE%\.cache\meme-factory` on Windows). The server keeps rendered images in its cache and counts requests per address for its rate limit; it keeps no other record. memegen.link, if you use it, says requests without a key may be used as training data.
 - **Posts** go only where you send them, through your connectors. The posting helper can use only your connectors, and post only the meme you approved, once.
 - **Templates:** the mod reads the server's template list each session. Nothing about you or your memes is sent.
 - **Jev**, if you set `TYPESAFE_API_KEY`, receives the meme request and the draft captions.
@@ -201,7 +202,8 @@ Previews in the browser gallery and posted links use the plain URL, so they show
 
 - **The panel didn't open.** A panel the mod opens by itself waits for a window at least 144 columns wide, so in a narrower one the strip shows above the prompt. Press **Open the panel** in it (`e`, after `ctrl+x tab` or a click), or run `/meme`.
 - **No picture in the terminal.** See [Pictures](#pictures). Press `v` to see it in the browser.
-- **"The gallery needs python3".** Install Python 3, or use the panel.
+- **"The gallery needs Python 3".** Install Python 3 (on Windows, from python.org or `winget install Python.Python.3.12`), or use the panel.
+- **"The posting helper needs Git for Windows here".** Claude Code on Windows runs hooks in Git Bash, or in PowerShell when it can't find it, where the helper's safety hooks can't run, so the helper won't post. Install [Git for Windows](https://gitforwindows.org), or set `CLAUDE_CODE_GIT_BASH_PATH` to its `bash.exe`. Posting to a Slack channel the panel lists doesn't use the helper.
 - **No Slack channels listed.** Listing them needs a Slack connection with the channel list ([Pictures or links](#pictures-or-links)). Without one, say where in the chat box ("post it to #social on Slack") and the posting helper finds it.
 - **"Auto mode blocked the mod's Slack call."** Some Claude Code builds (the desktop app's 2.1.293, for one) put the mod's own Slack calls to auto mode's check, which refuses a call you didn't ask Claude for in the chat, such as a press of **Post it**. The mod then tries Slack's tools, and if those are refused too, the panel names the three tools to allow. Add them to `"permissions": { "allow": [...] }` in `~/.claude/settings.json`, spelled as the panel shows them (the desktop app's Slack names carry an ID). Other permission modes don't need them.
 - **Added the Slack connector, but nothing changed.** If Slack's Claude Code plugin is enabled too, Claude Code loads only the plugin, since they're the same Slack server. Keep one: `claude plugin disable slack@claude-plugins-official` lets the connector load.
