@@ -123,6 +123,10 @@ type Rig = {
   chatDelay?: number
   // What the store holds at the start
   store?: Record<string, unknown>
+  // Native Windows: USERPROFILE and no HOME, Windows Terminal (no TERM_PROGRAM), and no mkdir,
+  // rm, mv, open or xdg-open to run; Git for Windows, unless noGitBash
+  windows?: boolean
+  noGitBash?: boolean
 }
 
 // Stubs everything the mod reaches: the model, the shell, files, the store, and three
@@ -132,7 +136,8 @@ function factory(on, rig: Rig = {}) {
   const saved = new Map<string, unknown>([...Object.entries(rig.store ?? {}), ...(rig.settings ? ([['settings', rig.settings]] as [string, unknown][]) : [])])
   const clock = mock.clock(on)
   on('session.start', () => ({ cwd: '/work' }))
-  on('env.get', ($, e) => ({ value: ({ HOME: '/Users/test', TERM_PROGRAM: rig.termProgram ?? 'ghostty', MEMEGEN_URL: 'https://api.memegen.link', ...rig.env } as Record<string, string>)[e.name] }))
+  const home = rig.windows ? { OS: 'Windows_NT', USERPROFILE: 'C:\\Users\\test', WT_SESSION: '1' } : { HOME: '/Users/test', TERM_PROGRAM: 'ghostty' }
+  on('env.get', ($, e) => ({ value: ({ ...home, ...(rig.termProgram ? { TERM_PROGRAM: rig.termProgram } : {}), MEMEGEN_URL: 'https://api.memegen.link', ...rig.env } as Record<string, string>)[e.name] }))
   on('tool.register', () => ({ value: undefined }))
   on('command.register', () => ({ value: undefined }))
   // A narrow terminal holds back a pane the mod opens on its own; one you open is placed at any width.
@@ -174,6 +179,9 @@ function factory(on, rig: Rig = {}) {
   }
   on('process.run', ($, e) => {
     log.ran.push(e.argv)
+    // The call rejects, as it did for mkdir on Michael's Windows
+    if (rig.windows && ['mkdir', 'rm', 'mv', 'open', 'xdg-open', ...(rig.noGitBash ? ['git'] : [])].includes(e.argv[0])) return { deny: `ENOENT: Command '${e.argv[0]}' not found or is in an unsafe location (current directory)` }
+    if (rig.windows && e.argv.join(' ') === 'git --exec-path') return { value: { exitCode: 0, stdout: 'C:/Program Files/Git/mingw64/libexec/git-core\n', stderr: '' } }
     log.stdins.push(e.init?.stdin ?? '')
     const isUpload = e.argv[0] === 'curl' && e.argv.includes('--data-binary')
     return { value: { exitCode: 0, stdout: isUpload ? 'OK - 323850' : '', stderr: '' } }
@@ -183,7 +191,7 @@ function factory(on, rig: Rig = {}) {
     log.written.push({ path: e.path, text: e.text })
     return { value: undefined }
   })
-  on('fs.exists', ($, e) => ({ value: !String(e.path).includes('.reload-note') }))
+  on('fs.exists', ($, e) => ({ value: !String(e.path).includes('.reload-note') && (!rig.windows || !String(e.path).endsWith('.exe') || String(e.path).endsWith('C:/Program Files/Git/bin/bash.exe')) }))
   on('fs.stat', () => ({ value: { kind: 'file', size: 323850, mtimeMs: 0, isLink: false } }))
   on('tool.list', () => ({
     value: [
@@ -466,6 +474,71 @@ test('/meme settings opens the gallery on its Settings tab', async ($, on) => {
   const answer = await $.command.run({ command: 'meme', args: 'settings' })
   expect(answer.text).toMatch(/gallery/)
   expect(log.ran.find((argv) => argv[0] === 'open')?.[1]).toMatch(/:6000\/#t=[0-9a-f]+&tab=settings$/)
+})
+
+test('on Windows: the pictures render, the gallery finds Python and opens the browser, and the poster can run', async ($, on) => {
+  const spawned: string[][] = []
+  on('agent.spawn', ($, e) => {
+    spawned.push([e.subagent_type])
+    return { model: 'sonnet' }
+  })
+  // Windows' python3 can be a shortcut to the Store: it starts, says so, and ends.
+  on('process.spawn', async function* ($, e) {
+    spawned.push(e.argv)
+    if (e.argv[0] === 'python3') {
+      yield { stream: 'stderr', text: 'Python was not found; run without arguments to install from the Microsoft Store\n' }
+      return { value: { code: 9009, signal: null } }
+    }
+    yield { stream: 'stdout', text: 'READY 7000\n' }
+    return { value: { code: 0, signal: null } }
+  })
+  on('http.fetch', () => ({ value: { status: 204, ok: true, headers: {}, text: '' } }))
+  const { clock, log } = factory(on, { windows: true, chatReply: () => ({ reply: 'Posting it.', action: { type: 'post', destination: '#trustai-platform-team on Slack' } }) })
+  await draftsReady($, clock)
+
+  // Michael's panel said "The factory jammed: ... $.process.run(mkdir) failed to start". curl makes the folder.
+  const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
+  expect(await ui.find({ type: 'Text', text: /factory jammed/ })).toBeUndefined()
+  expect((await ui.find({ key: 'draft-0' }))?.props.label).toMatch(/^● Drakeposting/)
+  const downloads = log.ran.filter((argv) => argv[0] === 'curl' && argv.includes('-o'))
+  expect(downloads.length).toBeGreaterThan(0)
+  expect(downloads.every((argv) => argv.includes('--create-dirs'))).toBe(true)
+  expect(downloads.map((argv) => argv[argv.indexOf('-o') + 1])).toContainEqual(expect.stringMatching(/^C:\/Users\/test\/\.cache\/meme-factory\/drake-.*\.png$/))
+  expect(log.ran.some((argv) => ['mkdir', 'rm', 'mv'].includes(argv[0]))).toBe(false)
+
+  // The gallery: python3 ends before READY, so python runs it; rundll32 opens the browser.
+  await ui.press({ key: 'view' })
+  for (let i = 0; i < 20 && !log.ran.some((argv) => argv[0] === 'rundll32'); i++) await new Promise((r) => setTimeout(r, 10))
+  expect(spawned.filter((argv) => argv.length > 1).map((argv) => argv[0])).toEqual(['python3', 'python'])
+  expect(log.ran.find((argv) => argv[0] === 'rundll32')).toEqual(['rundll32', 'url.dll,FileProtocolHandler', expect.stringMatching(/^http:\/\/127\.0\.0\.1:7000\/#t=[0-9a-f]{48}&tab=drafts$/)])
+
+  // The poster's hooks name its files by the Windows path, as Git Bash reads it.
+  await ui.input({ key: 'chat', text: 'approve it and post it to #trustai-platform-team on Slack' })
+  await clock.settle()
+  await ui.press({ key: 'confirm' })
+  await clock.settle()
+  expect(spawned.some(([type]) => type === 'meme-factory:poster')).toBe(true)
+  // (The test kit runs on macOS, which reads C:/ as a folder in the working directory.)
+  expect(log.written.find((w) => w.path.endsWith('-path'))?.path).toMatch(/C:\/Users\/test\/\.cache\/meme-factory\/poster-\w+-path$/)
+  expect(posterHooks('C:/Users/test/.cache/meme-factory/poster-s1')?.PreToolUse[0].hooks[0].command).toContain("cat 'C:/Users/test/.cache/meme-factory/poster-s1-path'")
+})
+
+test("on Windows without Git for Windows, the poster refuses rather than post without its safety hooks", async ($, on) => {
+  const spawned: any[] = []
+  on('agent.spawn', ($, e) => {
+    spawned.push(e)
+    return { model: 'sonnet' }
+  })
+  const { clock } = factory(on, { windows: true, noGitBash: true, chatReply: () => ({ reply: 'Posting it.', action: { type: 'post', destination: '#trustai-platform-team on Slack' } }) })
+  await draftsReady($, clock)
+  const ui = await $.ui.mount({ ...PANE, surface: 'terminal' })
+  await ui.input({ key: 'chat', text: 'approve it and post it to #trustai-platform-team on Slack' })
+  await clock.settle()
+  await ui.press({ key: 'confirm' })
+  await clock.settle()
+  // Claude Code would run its bash hooks in PowerShell, where they fail and guard nothing.
+  expect(spawned.some((s) => s.subagent_type === 'meme-factory:poster')).toBe(false)
+  expect(await ui.find({ type: 'Text', text: /the posting helper needs Git for Windows here/ })).toBeDefined()
 })
 
 test('ask-before-posting holds a connector call Claude makes with a meme link', async ($, on) => {
@@ -910,6 +983,7 @@ test("the picture check approves its own reads: only Read, only inside the cache
   expect(command).toContain('"permissionDecision":"allow"')
   // A folder name the shell pattern can't hold safely gets no hook at all.
   expect(readCacheHook("/Users/o'brien/.cache/meme-factory")).toBeUndefined()
+  expect(readCacheHook('C:/Users/me/.cache/meme-factory')?.PreToolUse[0].hooks[0].command).toContain(`*'"file_path":"C:/Users/me/.cache/meme-factory/'*`)
 })
 
 test('ask-before-posting knows the mod’s memes on a self-hosted memegen server', () => {

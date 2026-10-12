@@ -2,6 +2,15 @@
 
 All notable changes to Meme Factory. Versions follow [semantic versioning](https://semver.org).
 
+## 0.12.4 (2026-10-12)
+
+- **Memes no longer jam on Windows.** They stopped at "The factory jammed: … `$.process.run(mkdir)` failed to start: ENOENT".
+  - **Why:** the mod ran `mkdir`, `mv` and `rm` as programs, and Windows has none of them; it opened the browser with `open` or `xdg-open`, started the gallery with `python3` only, and kept its files under `HOME`, which Windows often doesn't set.
+  - **The fix:** curl makes the cache folder (`--create-dirs`) and downloads each picture straight to its place, used only once the whole download read as a PNG. The reload note used in development is emptied rather than deleted. The browser opens with `rundll32` on Windows. The gallery tries `python3`, then `python`, then `py -3`, so Windows' `python3` shortcut to the Store is passed over. The cache folder falls back to `USERPROFILE`, written with forward slashes.
+  - **Posting and the picture check:** their safety hooks now accept a Windows path (`C:/Users/…`, as Git Bash reads it). Before, posting through the helper said the cache folder's path had unusual characters.
+  - **Without Git for Windows the helper won't post.** Claude Code then runs hooks in PowerShell, where the poster's safety hooks can't run, so the panel says the helper needs Git for Windows rather than post unguarded. The mod finds Git Bash where Claude Code does: `CLAUDE_CODE_GIT_BASH_PATH`, or the Git for Windows that `git` runs from.
+  - **Not tested on Windows itself:** the tests run the mod against the answers Windows gives.
+
 ## 0.12.3 (2026-10-10)
 
 - **The browser gallery shows your drafts again.** Since 0.11.0 it stayed on "Cooking drafts…".

@@ -526,6 +526,10 @@ The message to post, in the destination's own formatting (keep the link on the w
 ${message}`
 }
 
+// A path a hook's shell command can hold in single quotes. On Windows it starts with its drive, as
+// Git Bash (which runs hooks there) reads it: C:/Users/...
+const SHELL_SAFE_PATH = /^(?:[A-Za-z]:)?[\w./ -]+$/
+
 // The poster's own hooks: Claude Code runs an agent's hooks for its calls (a mod's tool.call hooks
 // never see a subagent's). Before a call: connectors and ToolSearch run without asking (you confirmed
 // the post in the panel), anything else is refused, and a write (send, post, create…) runs only if
@@ -533,7 +537,7 @@ ${message}`
 // succeeds: `<files>-posted` records it, which is how the mod knows it posted. `files` names the
 // session's two files in the cache folder; a path the shell can't hold safely gets no hooks.
 export function posterHooks(files) {
-  if (!/^[\w./ -]+$/.test(files)) return undefined
+  if (!SHELL_SAFE_PATH.test(files)) return undefined
   const decide = (verdict, reason) => JSON.stringify({ hookSpecificOutput: { hookEventName: 'PreToolUse', permissionDecision: verdict, permissionDecisionReason: reason } })
   const say = (verdict, reason) => `printf '%s' '${decide(verdict, reason)}'; exit 0`
   const onlyConnectors = say('deny', 'The Meme Factory poster only uses connectors.')
@@ -1012,7 +1016,7 @@ export function hash(s) {
 // cache folder, so nobody has to add a permission rule. Everything else goes through the
 // person's normal permissions.
 export function readCacheHook(dir) {
-  if (!/^[\w./ -]+$/.test(dir)) return undefined
+  if (!SHELL_SAFE_PATH.test(dir)) return undefined
   const allow = JSON.stringify({
     hookSpecificOutput: { hookEventName: 'PreToolUse', permissionDecision: 'allow', permissionDecisionReason: 'Meme Factory reads its own rendered memes' },
   })
